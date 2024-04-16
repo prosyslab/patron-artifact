@@ -46,10 +46,13 @@ debian_url = "https://packages.debian.org/bookworm/"
 debian_packages = get_debian(debian_url)
 
 if debian_packages:
-    debian_packages = set(
-        [re.sub(r'\(.*\)', '', x) for xs in debian_packages for x in xs])
+    debian_packages = [
+        re.sub(r'\(.*\)', '', x) for xs in debian_packages for x in xs
+    ]
+    filtered_packages = set([x for x in debian_packages if x != ''])
+
     with open('debian_packages.txt', 'w') as f:
-        for package in debian_packages:
+        for package in filtered_packages:
             f.write(f"{package}\n")
 else:
     print("Failed to retrieve the list of packages.")
