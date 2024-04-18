@@ -2,9 +2,14 @@
 
 PKG_NAME=$1
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
-OUT_DIR=$SCRIPT_DIR/i_files/$PKG_NAME
+if [ -n "$2" ]; then
+  OUT_DIR=$SCRIPT_DIR/i_files/$2/$PKG_NAME
+else
+  OUT_DIR=$SCRIPT_DIR/i_files/$PKG_NAME
+fi
+
 TMP='_tmp'
-TMP_DIR=$PKG_NAME$TMP
+TMP_DIR=$SCRIPT_DIR/$PKG_NAME$TMP
 
 error_exit() {
   echo $1 1>&2
@@ -56,4 +61,4 @@ mv sparrow $OUT_DIR || error_exit "Error: mv sparrow failed"
 
 # 9. clean the tmp directory
 cd $SCRIPT_DIR
-rm -rf $SCRIPT_DIR/$TMP_DIR || error_exit "Error: rm -rf $TMP_DIR failed"
+rm -rf $TMP_DIR || error_exit "Error: rm -rf $TMP_DIR failed"

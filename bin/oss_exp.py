@@ -8,10 +8,12 @@ def run_full():
     
 def main():
     config.setup(False)
+    if config.configuration["CRWAL_ONLY"]:
+        build.crawl()
     if config.configuration["BUILD_ONLY"]:
-        build.run()
-    else:
-        build.run()
+        build.smake()
+        return
+    
     
 if __name__ == '__main__':
     main()

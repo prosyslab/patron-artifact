@@ -2,55 +2,102 @@
 import os
 import sys
 import subprocess
-import time
+import datetime
+import csv
 import config
 from logger import log, INFO, ERROR, WARNING
 
 BIN_DIR = os.path.dirname(os.path.realpath(__file__))
-PKG_DIR = os.path.dirname(BIN_DIR) + '/pkg'
-PKG_LIST = ""
+PKG_DIR = os.path.join(os.path.dirname(BIN_DIR), 'pkg')
+LIST_DIR = os.path.join(PKG_DIR, 'lists')
 
-def get_debian_packages():
-    global PKG_LIST
-    log(INFO, "Retrieving the list of Debian packages from web ...")
-    PKG_LIST = os.path.join(PKG_DIR, 'debian_packages.txt')
-    if not os.path.exists(PKG_LIST):
-        status = subprocess.run(
-            [sys.executable,
-            os.path.join(PKG_DIR, 'debian_crawler.py')],
-            check=True)
-        if status.returncode != 0:
-            log(ERROR, "Failed to retrieve the list of packages.")
-            exit(1)
-        retry_cnt = 0
-        while os.path.exists(os.path.join(PKG_DIR, 'debian_packages.txt')):
-            retry_cnt += 1
-            log(WARNING, "Waiting for the file to be created. (Retry: {})".format(retry_cnt))
-            time.sleep(5)
-        log(INFO, "Package List ({}) is created.".format(PKG_LIST))
+def mk_category_dict():
+    categories = dict()
+    packages = config.configuration["ARGS"].build
+    if packages[0] == "all" and len(packages) == 1:
+        log(INFO, "Building all packages ...")
+        for file in os.listdir(LIST_DIR):
+            if file.endswith(".txt"):
+                category = str(file).split('.')[0]
+                with open(os.path.join(LIST_DIR, file), 'r') as f:
+                    categories[category] = f.readlines()
+        return categories
     else:
-        log(INFO,"Package List ({}) already exists.".format(os.path.join(PKG_DIR, 'debian_packages.txt')))
+        # extract the file name only from the path
+        packages = [os.path.join(LIST_DIR, os.path.basename(package)) for package in packages]
+        log(INFO, "Building selected package categories {}".format(packages))
+        for package in packages:
+            category_name = os.path.basename(package).split('.')[0]
+            if not os.path.exists(os.path.join(package)):
+                log(WARNING, f"{category_name} is not found in the package list.")
+                continue
+            with open(os.path.join(package), 'r') as f:
+                categories[category_name] = f.readlines()
+        return categories
+
+def crawl():
+    log(INFO, "Retrieving the list of Debian packages from web ...")
+    status = subprocess.run(
+        [sys.executable,
+        os.path.join(PKG_DIR, 'debian_crawler.py')],
+        check=True, capture_output=True)
+    if status.returncode != 0:
+        log(ERROR, "Failed to retrieve the list of packages.")
+        exit(1)
+    log(INFO, "Package Lists are created at {}.".format(os.path.join(PKG_DIR, 'lists')))
+
+def check_smake_result(path):
+    if not os.path.exists(path):
+        log(ERROR, f"{path} does not exist.")
+        return False
+    os.chdir(path)
+    # run ls -al | wc -l and get the output
+    status = subprocess.run(['ls', '-al'], check=True, capture_output=True)
+    output = status.stdout.decode('utf-8')
+    status = subprocess.run(['wc', '-l'], input=output.encode('utf-8'), check=True, capture_output=True)
+    output = status.stdout.decode('utf-8').strip()
+    if output == '8':
+        log(WARNING, f"{path} is empty.")
+        return False
+    log(INFO, f"{path} is not empty.")
+    return True
 
 def smake():
-    if len(config.configuration["ARGS"].build) == 0 or config.configuration["ARGS"].build[0] == "None":
-        get_debian_packages()
-    if PKG_LIST == "":
-        packages = config.configuration["ARGS"].build
-    if not os.path.exists(os.path.join(PKG_DIR, 'i_files')):
-        os.mkdir(os.path.join(PKG_DIR, 'i_files'))
-    with open(os.path.join(PKG_DIR, 'debian_packages.txt'), 'r') as f:
-        packages = f.readlines()
+    packages = mk_category_dict()
+    i_files_dir = os.path.join(PKG_DIR, 'i_files')
+    if not os.path.exists(i_files_dir):
+        os.mkdir(i_files_dir)
+    for category in packages.keys():
+        if not os.path.exists(os.path.join(i_files_dir, str(category))):
+            os.mkdir(os.path.join(i_files_dir, str(category)))
+        packages = packages[ str(category) ]
+        tsvfile = open(os.path.join(config.configuration['OUT_DIR'], '{}_build_stat_{}.tsv'.format(category, datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
+        writer = csv.writer(tsvfile, delimiter='\t')
+        writer.writerow(['Package', 'Status', '.i files?', 'Error Msg'])
+        tsvfile.flush()
         os.chdir(PKG_DIR)
         for package in packages:
             package = package.strip()
             log(INFO, f"Building {package} ...")
             try:
-                status = subprocess.run([os.path.join(PKG_DIR, 'build-deb.sh'), package],
-                                    check=True)
+                status = subprocess.run([os.path.join(PKG_DIR, 'build-deb.sh'), package, str(category)],
+                                    check=True, capture_output=True)
             except subprocess.CalledProcessError as e:
-                log(ERROR, f"building {package} has failed")
-                log(ERROR, e.stderr)
+                try:
+                    log(ERROR, f"building {package} has failed")
+                    parsed_errors = e.stderr.decode('utf-8').split('\n')
+                    for error in parsed_errors[-10:]:
+                        log(ERROR, error)
+                    writer.writerow([package, 'X', '-', parsed_errors[-2]])
+                    tsvfile.flush()
+                except Exception as e:
+                    continue
             else:
                 log(INFO, f"building {package} has succeeded")
+                is_i_files = check_smake_result(os.path.join(i_files_dir, str(category), package))
+                is_i_files = 'O' if is_i_files else 'X'
+                writer.writerow([package, 'O', is_i_files, '-'])
+                tsvfile.flush()
 def run():
+    crawl()
     smake()
