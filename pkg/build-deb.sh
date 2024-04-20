@@ -11,8 +11,14 @@ fi
 TMP='_tmp'
 TMP_DIR=$SCRIPT_DIR/$PKG_NAME$TMP
 
+clean() {
+  cd $1
+  rm -rf $2
+}
+
 error_exit() {
   echo $1 1>&2
+  clean $2 $3
   exit 1
 }
 
@@ -25,6 +31,7 @@ find_target() {
   fi
 }
 
+
 # 0. update package list
 apt update -y
 apt upgrade -y
@@ -32,33 +39,32 @@ apt upgrade -y
 # 1. download target source to the tmp directory
 mkdir $TMP_DIR
 cd $TMP_DIR
-apt source $PKG_NAME || error_exit "Error: downloading package"
+apt source $PKG_NAME || error_exit "Error: downloading package" $SCRIPT_DIR $TMP_DIR
 
 # 2. find target src dir
-find_target || error_exit "Error: find target"
+find_target || error_exit "Error: find target" $SCRIPT_DIR $TMP_DIR
 
 # 3. install dependencies
-apt build-dep -y $PKG_NAME || error_exit "Error: install dependencies"
+apt build-dep -y $PKG_NAME || error_exit "Error: install dependencies" $SCRIPT_DIR $TMP_DIR
 
 # 4. build the binary for the env settings
-dpkg-buildpackage -us -uc -d || error_exit "Error: dpkg-buildpackage"
+dpkg-buildpackage -us -uc -d || error_exit "Error: dpkg-buildpackage" $SCRIPT_DIR $TMP_DIR
 
 # 5. clear the build history
 if [ -f 'configure' ]; then
-  ./configure || error_exit "Error: configure failed"
+  ./configure || error_exit "Error: configure failed" $SCRIPT_DIR $TMP_DIR
 else
-  make distclean || make clean || error_exit "Error: distclean failed"
+  make distclean || make clean || error_exit "Error: distclean failed" $SCRIPT_DIR $TMP_DIR
 fi
 # 6. configure the package according to the pre-set env settings
-dh_auto_configure || error_exit "Error: dh_auto_configure failed"
+dh_auto_configure || error_exit "Error: dh_auto_configure failed" $SCRIPT_DIR $TMP_DIR
 
 # 7. build the package
 $SMAKE_BIN --init
-$SMAKE_BIN -j || error_exit "Error: SMAKE failed"
+$SMAKE_BIN -j || error_exit "Error: SMAKE failed" $SCRIPT_DIR $TMP_DIR
 
 # 8. install the package
-mv sparrow $OUT_DIR || error_exit "Error: mv sparrow failed"
+mv sparrow $OUT_DIR || error_exit "Error: mv sparrow failed" $SCRIPT_DIR $TMP_DIR
 
 # 9. clean the tmp directory
-cd $SCRIPT_DIR
-rm -rf $TMP_DIR || error_exit "Error: rm -rf $TMP_DIR failed"
+clean $SCRIPT_DIR $TMP_DIR
