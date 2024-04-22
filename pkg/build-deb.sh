@@ -9,7 +9,7 @@ else
 fi
 
 TMP='_tmp'
-TMP_DIR=$SCRIPT_DIR/$PKG_NAME$TMP
+TMP_DIR=$SCRIPT_DIR/i_files/$PKG_NAME$TMP
 
 clean() {
   cd $1
@@ -51,11 +51,8 @@ apt build-dep -y $PKG_NAME || error_exit "Error: install dependencies" $SCRIPT_D
 dpkg-buildpackage -us -uc -d || error_exit "Error: dpkg-buildpackage" $SCRIPT_DIR $TMP_DIR
 
 # 5. clear the build history
-if [ -f 'configure' ]; then
-  ./configure || error_exit "Error: configure failed" $SCRIPT_DIR $TMP_DIR
-else
-  make distclean || make clean || error_exit "Error: distclean failed" $SCRIPT_DIR $TMP_DIR
-fi
+make distclean || make clean || echo "No make file to clean"
+
 # 6. configure the package according to the pre-set env settings
 dh_auto_configure || error_exit "Error: dh_auto_configure failed" $SCRIPT_DIR $TMP_DIR
 
@@ -67,4 +64,4 @@ $SMAKE_BIN -j || error_exit "Error: SMAKE failed" $SCRIPT_DIR $TMP_DIR
 mv sparrow $OUT_DIR || error_exit "Error: mv sparrow failed" $SCRIPT_DIR $TMP_DIR
 
 # 9. clean the tmp directory
-clean $SCRIPT_DIR $TMP_DIR
+clean $SCRIPT_DIR/i_files $TMP_DIR

@@ -23,7 +23,6 @@ def mk_category_dict():
                     categories[category] = f.readlines()
         return categories
     else:
-        # extract the file name only from the path
         packages = [os.path.join(LIST_DIR, os.path.basename(package)) for package in packages]
         log(INFO, "Building selected package categories {}".format(packages))
         for package in packages:
@@ -51,7 +50,6 @@ def check_smake_result(path):
         log(ERROR, f"{path} does not exist.")
         return False
     os.chdir(path)
-    # run ls -al | wc -l and get the output
     status = subprocess.run(['ls', '-al'], check=True, capture_output=True)
     output = status.stdout.decode('utf-8')
     status = subprocess.run(['wc', '-l'], input=output.encode('utf-8'), check=True, capture_output=True)
