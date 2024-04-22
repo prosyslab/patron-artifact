@@ -1,0 +1,39 @@
+= Alarms =
+1. spd_audio.c:135 {spd_audio_open} UnProven
+  *(fn) @spd_audio_open-1784:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__lt_dlsym
+2. module_main.c:47 {main} UnProven
+  *(argv+1) @main-4144:  source = main-4126 @ module_main.c:40 UnProven
+  *(argv+1) @main-4144:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__argv
+3. module_process.c:531 {module_process} UnProven
+  strncmp((char const   *)line, \"DEBUG\", 5UL) @module_process-3940:  offset: [4, 4], size: [2, +oo] UnProven, allocsite: module_readline-4074
+4. module_readline.c:69 {module_readline} UnProven
+  *(@data+@data_no_lf) @module_readline-4025:  offset: [-oo, +oo], size: [2, +oo] UnProven, allocsite: module_readline-4111
+  *(@data+@data_no_lf) @module_readline-4024:  offset: [-oo, +oo], size: [2, +oo] UnProven, allocsite: module_readline-4111
+5. module_readline.c:119 {module_readline} UnProven
+  memmove ((void *)@data, (void const   *)(@data+@data_ptr), @data_used) @module_readline-4092:  offset: [-oo, +oo], size: [2, +oo] UnProven, allocsite: module_readline-4111
+  memmove ((void *)@data, (void const   *)(@data+@data_ptr), @data_used) @module_readline-4092:  offset: [-oo, +oo], size: [2, +oo] UnProven, allocsite: module_readline-4111
+6. module_utils.c:59 {MSG} UnProven
+  *(tstr+(__cil_tmp10-1UL)) @MSG-2568:  offset: [-1, +oo], size: [-oo, +oo] UnProven, allocsite: MSG-2565
+7. module_utils.c:641 {module_add_config_option} UnProven
+  *(opts+(num_config_options-1)) @module_add_config_option-3310:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+8. module_utils.c:642 {module_add_config_option} UnProven
+  *(opts+(num_config_options-1)) @module_add_config_option-3311:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+9. module_utils.c:643 {module_add_config_option} UnProven
+  *(opts+(num_config_options-1)) @module_add_config_option-3312:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+10. module_utils.c:644 {module_add_config_option} UnProven
+  *(opts+(num_config_options-1)) @module_add_config_option-3313:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+11. module_utils.c:645 {module_add_config_option} UnProven
+  *(opts+(num_config_options-1)) @module_add_config_option-3314:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+12. module_utils.c:670 {module_audio_init} UnProven
+  *(outputs+i) @module_audio_init-3321:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strsplit
+  *(outputs+i) @module_audio_init-3320:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strsplit
+13. module_utils.c:671 {module_audio_init} UnProven
+  *(outputs+i) @module_audio_init-3333:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strsplit
+14. module_utils.c:675 {module_audio_init} UnProven
+  *(outputs+i) @module_audio_init-3346:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strsplit
+
+#queries                 : 191
+#queries mod alarm point : 111
+#proven                  : 97
+#unproven                : 14
+#bot-involved            : 33

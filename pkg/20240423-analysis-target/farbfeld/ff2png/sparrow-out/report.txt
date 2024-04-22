@@ -1,0 +1,27 @@
+= Alarms =
+1. ff2png.c:54 {main} UnProven
+  argc-1 @main-672:  source = main-663 @ ff2png.c:45 UnProven
+2. ff2png.c:54 {main} UnProven
+  *(argv+0) @main-673:  source = main-663 @ ff2png.c:45 UnProven
+  *(argv+0) @main-673:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__argv
+3. util.c:26 {verr} UnProven
+  *(fmt+(__cil_tmp4-1UL)) @verr-370:  offset: [5, 28], size: [7, 7] UnProven, allocsite: efread-499
+  *(fmt+(__cil_tmp4-1UL)) @verr-370:  offset: [5, 28], size: [20, 20] UnProven, allocsite: ff_read_header-412
+  *(fmt+(__cil_tmp4-1UL)) @verr-370:  offset: [5, 28], size: [13, 13] UnProven, allocsite: fshut-480
+  *(fmt+(__cil_tmp4-1UL)) @verr-370:  offset: [5, 28], size: [13, 13] UnProven, allocsite: fshut-483
+  *(fmt+(__cil_tmp4-1UL)) @verr-370:  offset: [5, 28], size: [28, 28] UnProven, allocsite: png_setup_writer-647
+  *(fmt+(__cil_tmp4-1UL)) @verr-370:  offset: [5, 28], size: [28, 28] UnProven, allocsite: png_setup_writer-650
+  *(fmt+(__cil_tmp4-1UL)) @verr-370:  offset: [5, 28], size: [10, 10] UnProven, allocsite: usage-661
+  *(fmt+(__cil_tmp4-1UL)) @verr-369:  offset: [5, 28], size: [7, 7] UnProven, allocsite: efread-499
+  *(fmt+(__cil_tmp4-1UL)) @verr-369:  offset: [5, 28], size: [20, 20] UnProven, allocsite: ff_read_header-412
+  *(fmt+(__cil_tmp4-1UL)) @verr-369:  offset: [5, 28], size: [13, 13] UnProven, allocsite: fshut-480
+  *(fmt+(__cil_tmp4-1UL)) @verr-369:  offset: [5, 28], size: [13, 13] UnProven, allocsite: fshut-483
+  *(fmt+(__cil_tmp4-1UL)) @verr-369:  offset: [5, 28], size: [28, 28] UnProven, allocsite: png_setup_writer-647
+  *(fmt+(__cil_tmp4-1UL)) @verr-369:  offset: [5, 28], size: [28, 28] UnProven, allocsite: png_setup_writer-650
+  *(fmt+(__cil_tmp4-1UL)) @verr-369:  offset: [5, 28], size: [10, 10] UnProven, allocsite: usage-661
+
+#queries                 : 62
+#queries mod alarm point : 15
+#proven                  : 12
+#unproven                : 3
+#bot-involved            : 1

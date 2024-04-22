@@ -1,0 +1,151 @@
+= Alarms =
+1. main.c:86 {main} UnProven
+  *(argv+xArg) @main-1099:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+  *(argv+xArg) @main-1098:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+2. main.c:87 {main} UnProven
+  *(argv+xArg) @main-1133:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+3. main.c:90 {main} UnProven
+  *(argv+xArg) @main-1136:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+4. main.c:93 {main} UnProven
+  *(argv+xArg) @main-1138:  offset: [2, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+5. main.c:96 {main} UnProven
+  *(argv+xArg) @main-1141:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+6. main.c:99 {main} UnProven
+  *(argv+xArg) @main-1144:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+7. main.c:102 {main} UnProven
+  *(argv+xArg) @main-1146:  offset: [2, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+8. main.c:105 {main} UnProven
+  *(argv+xArg) @main-1149:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+9. main.c:108 {main} UnProven
+  *(argv+xArg) @main-1151:  offset: [2, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+10. main.c:111 {main} UnProven
+  *(argv+xArg) @main-1154:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+11. main.c:114 {main} UnProven
+  *(argv+xArg) @main-1156:  offset: [2, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+12. main.c:123 {main} UnProven
+  *(argv+xArg) @main-1161:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+13. main.c:124 {main} UnProven
+  *(argv+(xArg+1)) @main-1162:  offset: [2, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+14. sonic.c:77 {scaleSamples} UnProven
+  *(samples) @scaleSamples-351:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  *(samples) @scaleSamples-351:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+15. sonic.c:83 {scaleSamples} UnProven
+  *(__cil_tmp7) @scaleSamples-356:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  *(__cil_tmp7) @scaleSamples-356:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+16. sonic.c:376 {addShortSamplesToInputBuffer} UnProven
+  memcpy ((void *)(*stream.inputBuffer+(*stream.numInputSamples**stream.numChannels)), (void const   *)samples, (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @addShortSamplesToInputBuffer-497:  offset: [-1, +oo], size: [4096, 4096] UnProven, allocsite: runSonic-1051
+  memcpy ((void *)(*stream.inputBuffer+(*stream.numInputSamples**stream.numChannels)), (void const   *)samples, (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @addShortSamplesToInputBuffer-497:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-419
+  memcpy ((void *)(*stream.inputBuffer+(*stream.numInputSamples**stream.numChannels)), (void const   *)samples, (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @addShortSamplesToInputBuffer-497:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeInputBufferIfNeeded-473
+17. sonic.c:413 {removeInputSamples} UnProven
+  memmove ((void *)*stream.inputBuffer, (void const   *)(*stream.inputBuffer+(position**stream.numChannels)), (((unsigned long )remainingSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @removeInputSamples-522:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-419
+  memmove ((void *)*stream.inputBuffer, (void const   *)(*stream.inputBuffer+(position**stream.numChannels)), (((unsigned long )remainingSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @removeInputSamples-522:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeInputBufferIfNeeded-473
+  memmove ((void *)*stream.inputBuffer, (void const   *)(*stream.inputBuffer+(position**stream.numChannels)), (((unsigned long )remainingSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @removeInputSamples-522:  offset: [-1, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-419
+  memmove ((void *)*stream.inputBuffer, (void const   *)(*stream.inputBuffer+(position**stream.numChannels)), (((unsigned long )remainingSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @removeInputSamples-522:  offset: [-1, +oo], size: [0, +oo] UnProven, allocsite: enlargeInputBufferIfNeeded-473
+18. sonic.c:428 {copyToOutput} UnProven
+  memcpy ((void *)(*stream.outputBuffer+(*stream.numOutputSamples**stream.numChannels)), (void const   *)samples, (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @copyToOutput-528:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-419
+  memcpy ((void *)(*stream.outputBuffer+(*stream.numOutputSamples**stream.numChannels)), (void const   *)samples, (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @copyToOutput-528:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeInputBufferIfNeeded-473
+  memcpy ((void *)(*stream.outputBuffer+(*stream.numOutputSamples**stream.numChannels)), (void const   *)samples, (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @copyToOutput-528:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  memcpy ((void *)(*stream.outputBuffer+(*stream.numOutputSamples**stream.numChannels)), (void const   *)samples, (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @copyToOutput-528:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+19. sonic.c:502 {sonicReadShortFromStream} UnProven
+  memcpy ((void *)samples, (void const   *)*stream.outputBuffer, (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @sonicReadShortFromStream-575:  offset: [-1, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  memcpy ((void *)samples, (void const   *)*stream.outputBuffer, (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @sonicReadShortFromStream-575:  offset: [-1, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+  memcpy ((void *)samples, (void const   *)*stream.outputBuffer, (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @sonicReadShortFromStream-575:  offset: [-1, +oo], size: [4096, 4096] UnProven, allocsite: runSonic-1053
+20. sonic.c:504 {sonicReadShortFromStream} UnProven
+  memmove ((void *)*stream.outputBuffer, (void const   *)(*stream.outputBuffer+(numSamples**stream.numChannels)), (((unsigned long )remainingSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @sonicReadShortFromStream-576:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  memmove ((void *)*stream.outputBuffer, (void const   *)(*stream.outputBuffer+(numSamples**stream.numChannels)), (((unsigned long )remainingSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @sonicReadShortFromStream-576:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+  memmove ((void *)*stream.outputBuffer, (void const   *)(*stream.outputBuffer+(numSamples**stream.numChannels)), (((unsigned long )remainingSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @sonicReadShortFromStream-576:  offset: [-1, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  memmove ((void *)*stream.outputBuffer, (void const   *)(*stream.outputBuffer+(numSamples**stream.numChannels)), (((unsigned long )remainingSamples)*SizeOf(short ))*((unsigned long )*stream.numChannels)) @sonicReadShortFromStream-576:  offset: [-1, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+21. sonic.c:601 {downSampleInput} UnProven
+  *(__cil_tmp10) @downSampleInput-638:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-419
+  *(__cil_tmp10) @downSampleInput-638:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  *(__cil_tmp10) @downSampleInput-638:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeInputBufferIfNeeded-473
+  *(__cil_tmp10) @downSampleInput-638:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+22. sonic.c:604 {downSampleInput} UnProven
+  *(__cil_tmp12) @downSampleInput-643:  offset: [0, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-422
+23. sonic.c:627 {findPitchPeriodInRange} UnProven
+  *(__cil_tmp17) @findPitchPeriodInRange-666:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-419
+  *(__cil_tmp17) @findPitchPeriodInRange-666:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  *(__cil_tmp17) @findPitchPeriodInRange-666:  offset: [0, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-422
+  *(__cil_tmp17) @findPitchPeriodInRange-666:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeInputBufferIfNeeded-473
+  *(__cil_tmp17) @findPitchPeriodInRange-666:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+24. sonic.c:628 {findPitchPeriodInRange} UnProven
+  *(__cil_tmp18) @findPitchPeriodInRange-669:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-419
+  *(__cil_tmp18) @findPitchPeriodInRange-669:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  *(__cil_tmp18) @findPitchPeriodInRange-669:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-422
+  *(__cil_tmp18) @findPitchPeriodInRange-669:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeInputBufferIfNeeded-473
+  *(__cil_tmp18) @findPitchPeriodInRange-669:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+25. sonic.c:754 {overlapAdd} UnProven
+  *(o) @overlapAdd-748:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  *(o) @overlapAdd-748:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+  *(d) @overlapAdd-748:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-419
+  *(d) @overlapAdd-748:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  *(d) @overlapAdd-748:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeInputBufferIfNeeded-473
+  *(d) @overlapAdd-748:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+  *(u) @overlapAdd-748:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-419
+  *(u) @overlapAdd-748:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  *(u) @overlapAdd-748:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeInputBufferIfNeeded-473
+  *(u) @overlapAdd-748:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+26. sonic.c:782 {overlapAddWithSeparation} UnProven
+  *(o) @overlapAddWithSeparation-767:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  *(o) @overlapAddWithSeparation-767:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+  *(d) @overlapAddWithSeparation-767:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  *(d) @overlapAddWithSeparation-767:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+27. sonic.c:785 {overlapAddWithSeparation} UnProven
+  *(o) @overlapAddWithSeparation-769:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  *(o) @overlapAddWithSeparation-769:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+  *(d) @overlapAddWithSeparation-769:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  *(d) @overlapAddWithSeparation-769:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+  *(u) @overlapAddWithSeparation-769:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  *(u) @overlapAddWithSeparation-769:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+28. sonic.c:789 {overlapAddWithSeparation} UnProven
+  *(o) @overlapAddWithSeparation-772:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  *(o) @overlapAddWithSeparation-772:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+  *(u) @overlapAddWithSeparation-772:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  *(u) @overlapAddWithSeparation-772:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+29. sonic.c:813 {moveNewSamplesToPitchBuffer} UnProven
+  memcpy ((void *)(*stream.pitchBuffer+(*stream.numPitchSamples*numChannels)), (void const   *)(*stream.outputBuffer+(originalNumOutputSamples*numChannels)), (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )numChannels)) @moveNewSamplesToPitchBuffer-786:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  memcpy ((void *)(*stream.pitchBuffer+(*stream.numPitchSamples*numChannels)), (void const   *)(*stream.outputBuffer+(originalNumOutputSamples*numChannels)), (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )numChannels)) @moveNewSamplesToPitchBuffer-786:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+  memcpy ((void *)(*stream.pitchBuffer+(*stream.numPitchSamples*numChannels)), (void const   *)(*stream.outputBuffer+(originalNumOutputSamples*numChannels)), (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )numChannels)) @moveNewSamplesToPitchBuffer-786:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  memcpy ((void *)(*stream.pitchBuffer+(*stream.numPitchSamples*numChannels)), (void const   *)(*stream.outputBuffer+(originalNumOutputSamples*numChannels)), (((unsigned long )numSamples)*SizeOf(short ))*((unsigned long )numChannels)) @moveNewSamplesToPitchBuffer-786:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+30. sonic.c:833 {removePitchSamples} UnProven
+  memmove ((void *)*stream.pitchBuffer, (void const   *)source, (((unsigned long )(*stream.numPitchSamples-numSamples))*SizeOf(short ))*((unsigned long )numChannels)) @removePitchSamples-797:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  memmove ((void *)*stream.pitchBuffer, (void const   *)source, (((unsigned long )(*stream.numPitchSamples-numSamples))*SizeOf(short ))*((unsigned long )numChannels)) @removePitchSamples-797:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+  memmove ((void *)*stream.pitchBuffer, (void const   *)source, (((unsigned long )(*stream.numPitchSamples-numSamples))*SizeOf(short ))*((unsigned long )numChannels)) @removePitchSamples-797:  offset: [-1, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  memmove ((void *)*stream.pitchBuffer, (void const   *)source, (((unsigned long )(*stream.numPitchSamples-numSamples))*SizeOf(short ))*((unsigned long )numChannels)) @removePitchSamples-797:  offset: [-1, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+31. sonic.c:888 {interpolate} UnProven
+  *(in) @interpolate-834:  offset: [0, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  *(in) @interpolate-834:  offset: [0, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+32. sonic.c:889 {interpolate} UnProven
+  *(in+*stream.numChannels) @interpolate-835:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-421
+  *(in+*stream.numChannels) @interpolate-835:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: moveNewSamplesToPitchBuffer-789
+33. sonic.c:933 {adjustRate} UnProven
+  *(__cil_tmp13) @adjustRate-875:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  *(__cil_tmp13) @adjustRate-875:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+34. sonic.c:1001 {insertPitchPeriod} UnProven
+  memcpy ((void *)out, (void const   *)samples, (((unsigned long )period)*SizeOf(short ))*((unsigned long )numChannels)) @insertPitchPeriod-916:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-419
+  memcpy ((void *)out, (void const   *)samples, (((unsigned long )period)*SizeOf(short ))*((unsigned long )numChannels)) @insertPitchPeriod-916:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeInputBufferIfNeeded-473
+  memcpy ((void *)out, (void const   *)samples, (((unsigned long )period)*SizeOf(short ))*((unsigned long )numChannels)) @insertPitchPeriod-916:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: allocateStreamBuffers-420
+  memcpy ((void *)out, (void const   *)samples, (((unsigned long )period)*SizeOf(short ))*((unsigned long )numChannels)) @insertPitchPeriod-916:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: enlargeOutputBufferIfNeeded-465
+35. wave.c:94 {readBytes} UnProven
+  fread(bytes, SizeOf(char ), (unsigned long )length) @readBytes-1230:  offset: [0, +oo], size: [4096, 4096] UnProven, allocsite: readFromWaveFile-1474
+36. wave.c:108 {readExactBytes} UnProven
+  fread(bytes, SizeOf(char ), (unsigned long )length) @readExactBytes-1236:  offset: [2, 6], size: [4, 4] UnProven, allocsite: readInt-1242
+  fread(bytes, SizeOf(char ), (unsigned long )length) @readExactBytes-1236:  offset: [2, 6], size: [2, 2] UnProven, allocsite: readShort-1254
+37. wave.c:341 {readFromWaveFile} UnProven
+  bytes[__cil_tmp11] @readFromWaveFile-1487:  offset: [0, +oo], size: [4096, 4096] UnProven, allocsite: readFromWaveFile-1474
+38. wave.c:342 {readFromWaveFile} UnProven
+  bytes[__cil_tmp12] @readFromWaveFile-1490:  offset: [1, +oo], size: [4096, 4096] UnProven, allocsite: readFromWaveFile-1474
+39. wave.c:343 {readFromWaveFile} UnProven
+  *(__cil_tmp13) @readFromWaveFile-1493:  offset: [0, +oo], size: [2048, 2048] UnProven, allocsite: runSonic-1051
+40. wave.c:365 {writeToWaveFile} UnProven
+  *(buffer+i) @writeToWaveFile-1509:  offset: [0, +oo], size: [2048, 2048] UnProven, allocsite: runSonic-1053
+41. wave.c:366 {writeToWaveFile} UnProven
+  bytes[__cil_tmp9] @writeToWaveFile-1512:  offset: [0, +oo], size: [4096, 4096] UnProven, allocsite: writeToWaveFile-1496
+42. wave.c:367 {writeToWaveFile} UnProven
+  bytes[__cil_tmp10] @writeToWaveFile-1515:  offset: [1, +oo], size: [4096, 4096] UnProven, allocsite: writeToWaveFile-1496
+
+#queries                 : 451
+#queries mod alarm point : 247
+#proven                  : 205
+#unproven                : 42
+#bot-involved            : 0

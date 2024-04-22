@@ -1,0 +1,50 @@
+= Alarms =
+1. spd_audio.c:135 {spd_audio_open} UnProven
+  *(fn) @spd_audio_open-1743:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__lt_dlsym
+2. ivona_client.c:67 {ivona_init_sock} UnProven
+  *(h) @ivona_init_sock-4712:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gethostbyname
+3. module_main.c:47 {main} UnProven
+  *(argv+1) @main-3951:  source = main-3933 @ module_main.c:40 UnProven
+  *(argv+1) @main-3951:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__argv
+4. module_process.c:331 {cmd_list_voices} UnProven
+  *(voice) @cmd_list_voices-3469:  offset: [0, +oo], size: [2, 2] UnProven, allocsite: _G_-6099
+  *(voice) @cmd_list_voices-3468:  offset: [0, +oo], size: [2, 2] UnProven, allocsite: _G_-6099
+5. module_process.c:332 {cmd_list_voices} UnProven
+  *(voice) @cmd_list_voices-3483:  offset: [0, +oo], size: [2, 2] UnProven, allocsite: _G_-6099
+6. module_process.c:333 {cmd_list_voices} UnProven
+  *(voice) @cmd_list_voices-3484:  offset: [0, +oo], size: [2, 2] UnProven, allocsite: _G_-6099
+7. module_process.c:334 {cmd_list_voices} UnProven
+  *(voice) @cmd_list_voices-3485:  offset: [0, +oo], size: [2, 2] UnProven, allocsite: _G_-6099
+8. module_process.c:531 {module_process} UnProven
+  strncmp((char const   *)line, \"DEBUG\", 5UL) @module_process-3747:  offset: [4, 4], size: [2, +oo] UnProven, allocsite: module_readline-3881
+9. module_readline.c:69 {module_readline} UnProven
+  *(@data+@data_no_lf) @module_readline-3832:  offset: [-oo, +oo], size: [2, +oo] UnProven, allocsite: module_readline-3918
+  *(@data+@data_no_lf) @module_readline-3831:  offset: [-oo, +oo], size: [2, +oo] UnProven, allocsite: module_readline-3918
+10. module_readline.c:119 {module_readline} UnProven
+  memmove ((void *)@data, (void const   *)(@data+@data_ptr), @data_used) @module_readline-3899:  offset: [-oo, +oo], size: [2, +oo] UnProven, allocsite: module_readline-3918
+  memmove ((void *)@data, (void const   *)(@data+@data_ptr), @data_used) @module_readline-3899:  offset: [-oo, +oo], size: [2, +oo] UnProven, allocsite: module_readline-3918
+11. module_utils.c:59 {MSG} UnProven
+  *(tstr+(__cil_tmp10-1UL)) @MSG-2375:  offset: [-1, +oo], size: [-oo, +oo] UnProven, allocsite: MSG-2372
+12. module_utils.c:641 {module_add_config_option} UnProven
+  *(opts+(num_config_options-1)) @module_add_config_option-3117:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+13. module_utils.c:642 {module_add_config_option} UnProven
+  *(opts+(num_config_options-1)) @module_add_config_option-3118:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+14. module_utils.c:643 {module_add_config_option} UnProven
+  *(opts+(num_config_options-1)) @module_add_config_option-3119:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+15. module_utils.c:644 {module_add_config_option} UnProven
+  *(opts+(num_config_options-1)) @module_add_config_option-3120:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+16. module_utils.c:645 {module_add_config_option} UnProven
+  *(opts+(num_config_options-1)) @module_add_config_option-3121:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+17. module_utils.c:670 {module_audio_init} UnProven
+  *(outputs+i) @module_audio_init-3128:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strsplit
+  *(outputs+i) @module_audio_init-3127:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strsplit
+18. module_utils.c:671 {module_audio_init} UnProven
+  *(outputs+i) @module_audio_init-3140:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strsplit
+19. module_utils.c:675 {module_audio_init} UnProven
+  *(outputs+i) @module_audio_init-3153:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strsplit
+
+#queries                 : 107
+#queries mod alarm point : 76
+#proven                  : 57
+#unproven                : 19
+#bot-involved            : 5

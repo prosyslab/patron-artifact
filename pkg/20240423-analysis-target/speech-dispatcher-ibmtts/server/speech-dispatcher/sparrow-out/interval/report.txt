@@ -1,0 +1,46 @@
+= Alarms =
+1. configuration.c:58 {add_config_option} UnProven
+  *(opts+(*num_config_options-1)) @add_config_option-11177:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+2. configuration.c:59 {add_config_option} UnProven
+  *(opts+(*num_config_options-1)) @add_config_option-11178:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+3. configuration.c:60 {add_config_option} UnProven
+  *(opts+(*num_config_options-1)) @add_config_option-11179:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+4. configuration.c:61 {add_config_option} UnProven
+  *(opts+(*num_config_options-1)) @add_config_option-11180:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+5. configuration.c:62 {add_config_option} UnProven
+  *(opts+(*num_config_options-1)) @add_config_option-11181:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+6. configuration.c:75 {free_config_options} UnProven
+  *(opts+i) @free_config_options-11190:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
+7. speechd.c:272 {MSG} UnProven
+  *(tstr+(__cil_tmp15-1UL)) @MSG-12928:  offset: [-1, +oo], size: [-oo, +oo] UnProven, allocsite: MSG-12924
+8. speechd.c:767 {speechd_load_configuration} UnProven
+  *(configfile) @speechd_load_configuration-13498:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__dotconf_create
+9. speechd.c:768 {speechd_load_configuration} UnProven
+  *(configfile) @speechd_load_configuration-13499:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__dotconf_create
+10. speechd.c:769 {speechd_load_configuration} UnProven
+  *(configfile) @speechd_load_configuration-13522:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__dotconf_create
+11. speechd.c:796 {speechd_load_configuration} UnProven
+  *(detected_modules) @speechd_load_configuration-13511:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_list_delete_link
+  *(detected_modules) @speechd_load_configuration-13511:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_list_sort
+12. speechd.c:803 {speechd_load_configuration} UnProven
+  *(detected_modules) @speechd_load_configuration-13513:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_list_delete_link
+  *(detected_modules) @speechd_load_configuration-13513:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_list_sort
+13. speechd.c:804 {speechd_load_configuration} UnProven
+  *(detected_modules) @speechd_load_configuration-13514:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_list_delete_link
+  *(detected_modules) @speechd_load_configuration-13514:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_list_sort
+14. speechd.c:898 {logging_init} UnProven
+  strncmp((char const   *)file_name, \"stdout\", 6UL) @logging_init-13636:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strdup_printf
+15. speechd.c:900 {logging_init} UnProven
+  strncmp((char const   *)file_name, \"stderr\", 6UL) @logging_init-13638:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strdup_printf
+16. speechd.c:938 {make_local_socket} UnProven
+  strncpy (StartOf(name.sun_path), filename, SizeOfE(name.sun_path)) @make_local_socket-13671:  offset: [107, 107], size: [-oo, +oo] UnProven, allocsite: load_default_global_set_options-12188
+  strncpy (StartOf(name.sun_path), filename, SizeOfE(name.sun_path)) @make_local_socket-13671:  offset: [107, 107], size: [-oo, +oo] UnProven, allocsite: main-14015
+  strncpy (StartOf(name.sun_path), filename, SizeOfE(name.sun_path)) @make_local_socket-13671:  offset: [107, 107], size: [-oo, +oo] UnProven, allocsite: options_parse-6171
+17. speechd.c:1221 {main} UnProven
+  *(socket_filename) @main-14015:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_string_new
+
+#queries                 : 118
+#queries mod alarm point : 39
+#proven                  : 22
+#unproven                : 17
+#bot-involved            : 2

@@ -1,0 +1,273 @@
+= Alarms =
+1. buffer.c:34 {_buf_used} UnProven
+  *buf___4.size-((unsigned long )(*buf___4.readp-*buf___4.writep)) @_buf_used-8915:  source = main-10627 @ main.c:283 UnProven
+2. buffer.c:74 {buf_adjust} UnProven
+  ((unsigned long )((unsigned int )(*buf___11.base_size/mod)))*mod @buf_adjust-8941:  source = main-10627 @ main.c:283 UnProven
+3. buffer.c:151 {buf_init} UnProven
+  malloc(size___2) @buf_init-9035:  size = [0, +oo], source = main-10627 @ main.c:283 UnProven
+4. faad.c:597 {faad_close} UnProven
+  *(*@a.NeAACDecClose) @faad_close-2020:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__dlsym
+5. flac.c:241 {flac_close} UnProven
+  *(*@f.FLAC__stream_decoder_delete) @flac_close-4174:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__dlsym
+6. mad.c:363 {mad_close} UnProven
+  *(*@m___0.mad_frame_finish) @mad_close-3225:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__dlsym
+7. mad.c:364 {mad_close} UnProven
+  *(*@m___0.mad_stream_finish) @mad_close-3226:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__dlsym
+8. main.c:345 {main} UnProven
+  *(argv+i___0) @main-10877:  source = main-10627 @ main.c:283 UnProven
+  strcat (StartOf(cmdline), (char const   *)*(argv+i___0)) @main-10877:  offset: [0, +oo], size: [512, 512] UnProven, allocsite: main-10633
+  *(argv+i___0) @main-10877:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+9. main.c:346 {main} UnProven
+  strcat (StartOf(cmdline), __cil_tmp136) @main-11115:  offset: [1, +oo], size: [512, 512] UnProven, allocsite: main-10633
+10. main.c:349 {main} UnProven
+  *(argv+optind___41) @main-10880:  source = main-10627 @ main.c:283 UnProven
+  *(argv+optind___41) @main-10880:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+11. main.c:349 {main} UnProven
+  *(argv+optind___41) @main-10650:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+  *(argv+optind___41) @main-10649:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+12. main.c:350 {main} UnProven
+  *(argv+optind___41) @main-10881:  source = main-10627 @ main.c:283 UnProven
+  *(argv+optind___41) @main-10881:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+13. main.c:356 {main} UnProven
+  *(argv+(optind___41+1)) @main-10883:  source = main-10627 @ main.c:283 UnProven
+  *(argv+(optind___41+1)) @main-10883:  offset: [2, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+14. main.c:386 {main} UnProven
+  *(argv+0) @main-10889:  source = main-10627 @ main.c:283 UnProven
+15. main.c:391 {main} UnProven
+  *(opt+0) @main-10658:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10657:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+16. main.c:397 {main} UnProven
+  *(opt+0) @main-10660:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10659:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+17. main.c:400 {main} UnProven
+  *(opt+0) @main-10662:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10661:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+18. main.c:404 {main} UnProven
+  __cil_tmp50___0*1024 @main-10899:  source = main-10627 @ main.c:283 UnProven
+19. main.c:405 {main} UnProven
+  __cil_tmp51___0*1024 @main-10901:  source = main-10627 @ main.c:283 UnProven
+20. main.c:408 {main} UnProven
+  *(opt+0) @main-10664:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10663:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+21. main.c:411 {main} UnProven
+  *(opt+0) @main-10666:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10665:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+22. main.c:413 {main} UnProven
+  __cil_tmp53*1000 @main-10905:  source = main-10627 @ main.c:283 UnProven
+23. main.c:416 {main} UnProven
+  *(opt+0) @main-10668:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10667:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+24. main.c:419 {main} UnProven
+  *(opt+0) @main-10670:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10669:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+25. main.c:437 {main} UnProven
+  *(argv+0) @main-10935:  source = main-10627 @ main.c:283 UnProven
+26. main.c:437 {main} UnProven
+  *(argv+0) @main-10938:  source = main-10627 @ main.c:283 UnProven
+27. main.c:442 {main} UnProven
+  *(opt+0) @main-10672:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10671:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+28. main.c:445 {main} UnProven
+  *(opt+0) @main-10674:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10673:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+29. main.c:449 {main} UnProven
+  strncmp((char const   *)optarg___40, \"00:04:20\\251\", 8UL) @main-10942:  offset: [7, 7], size: [1, +oo] UnProven, allocsite: __extern__arg
+30. main.c:460 {main} UnProven
+  *(opt+0) @main-10676:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10675:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+31. main.c:463 {main} UnProven
+  *(opt+0) @main-10678:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10677:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+32. main.c:498 {main} UnProven
+  rates[j___0-1] @main-10782:  offset: [0, +oo], size: [20, 20] UnProven, allocsite: main-10631
+  rates[j___0-1] @main-10781:  offset: [0, +oo], size: [20, 20] UnProven, allocsite: main-10631
+33. main.c:499 {main} UnProven
+  rates[__cil_tmp110] @main-11022:  offset: [1, +oo], size: [20, 20] UnProven, allocsite: main-10631
+34. main.c:511 {main} UnProven
+  *(opt+0) @main-10680:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10679:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+35. main.c:514 {main} UnProven
+  *(opt+0) @main-10682:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10681:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+36. main.c:517 {main} UnProven
+  *(opt+0) @main-10684:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10683:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+37. main.c:520 {main} UnProven
+  *(opt+0) @main-10686:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10685:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+38. main.c:523 {main} UnProven
+  *(opt+0) @main-10688:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10687:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+39. main.c:527 {main} UnProven
+  *(opt+0) @main-10690:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10689:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+40. main.c:531 {main} UnProven
+  *(argv+0) @main-11035:  source = main-10627 @ main.c:283 UnProven
+41. main.c:531 {main} UnProven
+  *(argv+0) @main-11038:  source = main-10627 @ main.c:283 UnProven
+42. main.c:537 {main} UnProven
+  *(opt+0) @main-10692:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10691:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+43. main.c:541 {main} UnProven
+  *(opt+0) @main-10694:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10693:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+44. main.c:581 {main} UnProven
+  *(opt+0) @main-10696:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10695:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+45. main.c:584 {main} UnProven
+  *(opt+0) @main-10698:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10697:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+46. main.c:588 {main} UnProven
+  *(opt+0) @main-10700:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10699:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+47. main.c:591 {main} UnProven
+  *(opt+0) @main-10702:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10701:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+48. main.c:593 {main} UnProven
+  *(opt+0) @main-10704:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10703:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+49. main.c:670 {main} UnProven
+  *(opt+0) @main-10706:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10705:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+50. main.c:677 {main} UnProven
+  *(opt+0) @main-10708:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10707:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+51. main.c:680 {main} UnProven
+  *(opt+0) @main-10710:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+  *(opt+0) @main-10709:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
+52. main.c:681 {main} UnProven
+  *(argv+0) @main-11054:  source = main-10627 @ main.c:283 UnProven
+53. main.c:684 {main} UnProven
+  *(argv+optind___41) @main-11056:  source = main-10627 @ main.c:283 UnProven
+  *(argv+optind___41) @main-11056:  offset: [2, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
+54. main.c:692 {main} UnProven
+  *(argv+0) @main-11058:  source = main-10627 @ main.c:283 UnProven
+55. main.c:719 {main} UnProven
+  output_buf_size*scale___0 @main-11069:  source = main-10627 @ main.c:283 UnProven
+56. mpg.c:212 {mpg_close} UnProven
+  *(*@m.mpg123_delete) @mpg_close-2323:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__dlsym
+57. mpg.c:271 {register_mpg} UnProven
+  *(*@m.mpg123_init) @register_mpg-2417:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__dlsym
+58. mpg.c:273 {register_mpg} UnProven
+  *(*@m.mpg123_feature2) @register_mpg-2418:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__dlsym
+59. output.c:359 {output_init_common} UnProven
+  output_buf_size-(output_buf_size%8U) @output_init_common-7590:  source = main-10627 @ main.c:283 UnProven
+60. output.c:396 {output_init_common} UnProven
+  *(rates+i) @output_init_common-7614:  source = main-10627 @ main.c:283 UnProven
+61. output.c:421 {output_init_common} UnProven
+  @output.supported_rates[i] @output_init_common-7586:  offset: [0, +oo], size: [20, 20] UnProven, allocsite: _G_-11302
+  @output.supported_rates[i] @output_init_common-7585:  offset: [0, +oo], size: [20, 20] UnProven, allocsite: _G_-11302
+62. output.c:423 {output_init_common} UnProven
+  sprintf(StartOf(s), __cil_tmp31, @output.supported_rates[i]) @output_init_common-7653:  offset: [0, +oo], size: [10, 10] UnProven, allocsite: output_init_common-7557
+  @output.supported_rates[i] @output_init_common-7653:  offset: [0, +oo], size: [20, 20] UnProven, allocsite: _G_-11302
+63. output.c:424 {output_init_common} UnProven
+  strcat (StartOf(rates_buf), (char const   *)StartOf(s)) @output_init_common-7628:  offset: [0, +oo], size: [200, 200] UnProven, allocsite: output_init_common-7555
+64. output_alsa.c:91 {ctl4device} UnProven
+  strncmp(device, \"hw:\", 3UL) @ctl4device-5235:  offset: [2, 2], size: [1, +oo] UnProven, allocsite: __extern__arg
+65. output_alsa.c:93 {ctl4device} UnProven
+  strncmp(device, \"plughw:\", 7UL) @ctl4device-5237:  offset: [6, 6], size: [1, +oo] UnProven, allocsite: __extern__arg
+66. output_alsa.c:99 {ctl4device} UnProven
+  *(comma) @ctl4device-5240:  source = main-10627 @ main.c:283 UnProven
+  *(comma) @ctl4device-5240:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: ctl4device-5236
+  *(comma) @ctl4device-5240:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: ctl4device-5238
+67. output_alsa.c:296 {test_open} UnProven
+  ref[i] @test_open-5639:  offset: [0, +oo], size: [20, 20] UnProven, allocsite: test_open-5630
+  ref[i] @test_open-5638:  offset: [0, +oo], size: [20, 20] UnProven, allocsite: test_open-5630
+68. output_alsa.c:297 {test_open} UnProven
+  ref[i] @test_open-5681:  offset: [0, +oo], size: [20, 20] UnProven, allocsite: test_open-5630
+69. output_alsa.c:298 {test_open} UnProven
+  *(rates+__cil_tmp20) @test_open-5684:  offset: [0, +oo], size: [20, 20] UnProven, allocsite: _G_-11302
+  ref[i] @test_open-5684:  offset: [0, +oo], size: [20, 20] UnProven, allocsite: test_open-5630
+70. output_alsa.c:301 {test_open} UnProven
+  ref[i] @test_open-5701:  offset: [0, +oo], size: [20, 20] UnProven, allocsite: test_open-5630
+71. output_stdout.c:154 {output_init_stdout} UnProven
+  *(rates+0) @output_init_stdout-5110:  source = main-10627 @ main.c:283 UnProven
+72. slimproto.c:165 {sendSTAT} UnProven
+  ms_played+(now-@status.updated) @sendSTAT-9202:  source = main-10627 @ main.c:283 UnProven
+73. slimproto.c:198 {sendSTAT} UnProven
+  (ms_played-now)+@status.stream_start @sendSTAT-9250:  source = main-10627 @ main.c:283 UnProven
+  ms_played-now @sendSTAT-9250:  source = main-10627 @ main.c:283 UnProven
+74. slimproto.c:525 {process___0} UnProven
+  *(h) @process___0-9854:  offset: [0, +oo], size: [8, 8] UnProven, allocsite: _G_-11617
+75. slimproto.c:525 {process___0} UnProven
+  *(h) @process___0-9844:  offset: [0, +oo], size: [8, 8] UnProven, allocsite: _G_-11617
+  *(h) @process___0-9843:  offset: [0, +oo], size: [8, 8] UnProven, allocsite: _G_-11617
+76. slimproto.c:527 {process___0} UnProven
+  *(h) @process___0-9848:  offset: [0, +oo], size: [8, 8] UnProven, allocsite: _G_-11617
+  *(h) @process___0-9847:  offset: [0, +oo], size: [8, 8] UnProven, allocsite: _G_-11617
+77. slimproto.c:528 {process___0} UnProven
+  *(h) @process___0-9862:  offset: [0, +oo], size: [8, 8] UnProven, allocsite: _G_-11617
+78. slimproto.c:529 {process___0} UnProven
+  *(h) @process___0-9858:  offset: [0, +oo], size: [8, 8] UnProven, allocsite: _G_-11617
+79. slimproto.c:531 {process___0} UnProven
+  *(pack+4) @process___0-9859:  source = slimproto_run-10043 @ slimproto.c:559 UnProven
+  *(pack+4) @process___0-9859:  source = slimproto_run-10056 @ slimproto.c:574 UnProven
+80. slimproto.c:567 {slimproto_run} UnProven
+  expect-n___6 @slimproto_run-10052:  source = slimproto_run-10043 @ slimproto.c:559 UnProven
+  expect-n___6 @slimproto_run-10052:  source = slimproto_run-10056 @ slimproto.c:574 UnProven
+81. slimproto.c:568 {slimproto_run} UnProven
+  got+n___6 @slimproto_run-10053:  source = slimproto_run-10043 @ slimproto.c:559 UnProven
+  got+n___6 @slimproto_run-10053:  source = slimproto_run-10056 @ slimproto.c:574 UnProven
+82. slimproto.c:574 {slimproto_run} UnProven
+  2-got @slimproto_run-10056:  source = slimproto_run-10043 @ slimproto.c:559 UnProven
+  2-got @slimproto_run-10056:  source = slimproto_run-10056 @ slimproto.c:574 UnProven
+83. slimproto.c:582 {slimproto_run} UnProven
+  got+n___7 @slimproto_run-10065:  source = slimproto_run-10043 @ slimproto.c:559 UnProven
+  got+n___7 @slimproto_run-10065:  source = slimproto_run-10056 @ slimproto.c:574 UnProven
+84. slimproto.c:584 {slimproto_run} UnProven
+  ((int )@buffer[0])<<8 @slimproto_run-10066:  source = slimproto_run-10043 @ slimproto.c:559 UnProven
+  ((int )@buffer[0])<<8 @slimproto_run-10066:  source = slimproto_run-10056 @ slimproto.c:574 UnProven
+85. slimproto.c:852 {slimproto} UnProven
+  strncpy (StartOf(@player_name), name___0, 64UL) @slimproto-10446:  offset: [63, 63], size: [1, +oo] UnProven, allocsite: __extern__arg
+86. slimproto.c:887 {slimproto} UnProven
+  strcat (StartOf(@fixed_cap___0), __cil_tmp49) @slimproto-10528:  offset: [6, +oo], size: [256, 256] UnProven, allocsite: _G_-11697
+87. slimproto.c:888 {slimproto} UnProven
+  strcat (StartOf(@fixed_cap___0), (char const   *)*(@codecs[i]).types) @slimproto-10468:  offset: [9, +oo], size: [256, 256] UnProven, allocsite: _G_-11697
+88. slimproto.c:949 {slimproto} UnProven
+  strcat (StartOf(@var_cap___0), __cil_tmp62) @slimproto-10555:  offset: [6, +oo], size: [128, 128] UnProven, allocsite: _G_-11705
+89. utils.c:92 {next_param} UnProven
+  *(ptr) @next_param-7747:  source = main-10627 @ main.c:283 UnProven
+  *(ptr) @next_param-7747:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__arg
+90. utils.c:147 {get_mac} UnProven
+  *(mac+5) @get_mac-7843:  source = get_mac-7861 @ utils.c:133 UnProven
+91. utils.c:147 {get_mac} UnProven
+  *(mac+4) @get_mac-7844:  source = get_mac-7861 @ utils.c:133 UnProven
+  *(mac+5) @get_mac-7844:  source = get_mac-7861 @ utils.c:133 UnProven
+92. utils.c:147 {get_mac} UnProven
+  *(mac+3) @get_mac-7845:  source = get_mac-7861 @ utils.c:133 UnProven
+  *(mac+4) @get_mac-7845:  source = get_mac-7861 @ utils.c:133 UnProven
+93. utils.c:147 {get_mac} UnProven
+  *(mac+2) @get_mac-7846:  source = get_mac-7861 @ utils.c:133 UnProven
+  *(mac+3) @get_mac-7846:  source = get_mac-7861 @ utils.c:133 UnProven
+94. utils.c:147 {get_mac} UnProven
+  *(mac+1) @get_mac-7847:  source = get_mac-7861 @ utils.c:133 UnProven
+  *(mac+2) @get_mac-7847:  source = get_mac-7861 @ utils.c:133 UnProven
+95. utils.c:147 {get_mac} UnProven
+  *(mac+0) @get_mac-7848:  source = get_mac-7861 @ utils.c:133 UnProven
+  *(mac+1) @get_mac-7848:  source = get_mac-7861 @ utils.c:133 UnProven
+96. utils.c:158 {get_mac} UnProven
+  *(ifr) @get_mac-7835:  offset: [0, +oo], size: [4, 4] UnProven, allocsite: get_mac-7792
+  *(ifr) @get_mac-7834:  offset: [0, +oo], size: [4, 4] UnProven, allocsite: get_mac-7792
+97. utils.c:160 {get_mac} UnProven
+  *(ifr) @get_mac-7856:  offset: [0, +oo], size: [4, 4] UnProven, allocsite: get_mac-7792
+98. utils.c:394 {packN} UnProven
+  val>>24 @packN-7961:  source = main-10627 @ main.c:283 UnProven
+99. utils.c:394 {packN} UnProven
+  val>>16 @packN-7962:  source = main-10627 @ main.c:283 UnProven
+  *(ptr+1) @packN-7962:  source = main-10627 @ main.c:283 UnProven
+100. utils.c:394 {packN} UnProven
+  val>>8 @packN-7963:  source = main-10627 @ main.c:283 UnProven
+  *(ptr+2) @packN-7963:  source = main-10627 @ main.c:283 UnProven
+101. utils.c:394 {packN} UnProven
+  *(ptr+3) @packN-7964:  source = main-10627 @ main.c:283 UnProven
+102. utils.c:487 {touch_memory} UnProven
+  *(ptr) @touch_memory-7973:  offset: [-oo, +oo], size: [0, +oo] UnProven, allocsite: buf_init-9035
+  *(ptr) @touch_memory-7973:  offset: [-oo, +oo], size: [16384, 16384] UnProven, allocsite: output_init_common-7632
+103. vorbis.c:318 {vorbis_close} UnProven
+  *(*@v.ov_clear) @vorbis_close-2675:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__dlsym
+
+#queries                 : 634
+#queries mod alarm point : 315
+#proven                  : 212
+#unproven                : 103
+#bot-involved            : 19

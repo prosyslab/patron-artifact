@@ -1,0 +1,34 @@
+= Alarms =
+1. libspeechd.c:861 {spd_char} UnProven
+  sprintf(StartOf(@command___2), __cil_tmp8, character___0) @spd_char-3552:  source = main-5459 @ say.c:64 UnProven
+2. libspeechd.c:2095 {escape_dot} UnProven
+  *(__cil_tmp11) @escape_dot-4909:  source = main-5806 @ say.c:337 UnProven
+3. libspeechd.c:2096 {escape_dot} UnProven
+  *(__cil_tmp12) @escape_dot-4912:  source = main-5806 @ say.c:337 UnProven
+4. libspeechd.c:2106 {escape_dot} UnProven
+  *(__cil_tmp13) @escape_dot-4921:  source = main-5806 @ say.c:337 UnProven
+  *(__cil_tmp14) @escape_dot-4921:  source = main-5806 @ say.c:337 UnProven
+5. libspeechd.c:2106 {escape_dot} UnProven
+  *(__cil_tmp13) @escape_dot-4926:  source = main-5806 @ say.c:337 UnProven
+  *(__cil_tmp14) @escape_dot-4926:  source = main-5806 @ say.c:337 UnProven
+6. libspeechd.c:2106 {escape_dot} UnProven
+  *(__cil_tmp13) @escape_dot-4931:  source = main-5806 @ say.c:337 UnProven
+  *(__cil_tmp14) @escape_dot-4931:  source = main-5806 @ say.c:337 UnProven
+7. libspeechd.c:2110 {escape_dot} UnProven
+  *(result_ptr) @escape_dot-4932:  source = main-5806 @ say.c:337 UnProven
+8. options.c:68 {options_print_help} UnProven
+  *(argv+0) @options_print_help-4942:  source = main-5459 @ say.c:64 UnProven
+9. say.c:303 {main} UnProven
+  *(argv+@optind) @main-5796:  source = main-5459 @ say.c:64 UnProven
+10. say.c:320 {main} UnProven
+  *(argv+@optind) @main-5800:  source = main-5459 @ say.c:64 UnProven
+11. say.c:341 {main} UnProven
+  *(line+(__cil_tmp80-1UL)) @main-5810:  source = main-5806 @ say.c:337 UnProven
+12. say.c:355 {main} UnProven
+  *(argv+@optind) @main-5827:  source = main-5459 @ say.c:64 UnProven
+
+#queries                 : 15
+#queries mod alarm point : 12
+#proven                  : 0
+#unproven                : 12
+#bot-involved            : 0
