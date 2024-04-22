@@ -1,0 +1,41 @@
+/root/patron-artifact/pkg/analysis-target/libsox-fmt-all/example0/example0.c
+
+
+
+--------------------------------------------------------------------------------
+Front-end begins...
+--------------------------------------------------------------------------------
+
+Front-end completes: 0.060687
+'void*' returning functions: [bsearch]
+'void*' returning fields: []
+Unwrapped functions: []
+Unwrapped fields: []
+
+
+
+--------------------------------------------------------------------------------
+Graph construction begins...
+--------------------------------------------------------------------------------
+Warning: main not Found
+
+#nodes all    : 5271
+#unreachable  : 161
+
+Graph construction completes: 0.061142
+
+
+
+--------------------------------------------------------------------------------
+Pre-processing begins...
+--------------------------------------------------------------------------------
+InterCfg.cfgof main
+Fatal error: exception Not_found
+Raised at InterCfg.cfgof in file "src/program/interCfg.ml", line 127, characters 4-19
+Called from InterCfg.nodes_of_pid in file "src/program/interCfg.ml", line 138, characters 45-58
+Called from PreProcess.collect_fref_from_func in file "src/core/preProcess.ml", line 123, characters 16-44
+Called from PreProcess.find_func_refs in file "src/core/preProcess.ml", line 145, characters 2-72
+Called from StepManager.step in file "src/util/stepManager.ml", line 19, characters 10-14
+Called from Dune__exe__Main.init_analysis in file "src/core/main.ml", line 51, characters 4-194
+Called from Dune__exe__Main.main in file "src/core/main.ml", line 145, characters 8-135
+Called from Dune__exe__Main in file "src/core/main.ml", line 158, characters 8-15
