@@ -71,10 +71,14 @@ tuxpaint.c:17745	@old_cursor_x-1	Alarm-312
 tuxpaint.c:17745	@old_cursor_y-1	Alarm-311
 tuxpaint.c:21812	(((unsigned int )*(*(@color_hexes+(@NUM_COLORS-1))+1))&255U)<<8	Alarm-276
 tuxpaint.c:15848	*(thumbs+which)	Alarm-73
+tuxpaint.c:12072	tmp/tmp2	Alarm-830
 tuxpaint.c:21375	*(*(@color_hexes+(@NUM_COLORS-2))+0)	Alarm-23
 tuxpaint.c:24473	((int )tmp_str[4])-65	Alarm-711
 tuxpaint.c:17833	((@button_h*@buttons_tall)+((int )@r_ttools.h))-((int )dest.y)	Alarm-322
 tuxpaint.c:17670	*(*(@color_hexes+@cur_color)+0)	Alarm-94
+tuxpaint.c:22899	((4*j)*200)/*aux_node.save_height	Alarm-821
+tuxpaint.c:13846	((__cil_tmp53*((double )rx))*((double )@shape_valley[@cur_shape]))/((double )100)	Alarm-815
+tuxpaint.c:10901	sz/2	Alarm-805
 tuxpaint.c:13864	xp-offx	Alarm-377
 tuxpaint.c:22191	*(*(@color_hexes+@select_color)+1)	Alarm-202
 tuxpaint.c:5976	@cursor_y+__cil_tmp3	Alarm-462
@@ -111,18 +115,23 @@ tuxpaint.c:7137	*(files+i)	Alarm-126
 tuxpaint.c:7091	good_log-__cil_tmp12	Alarm-272
 tuxpaint.c:6566	*(*(@color_hexes+@cur_color)+0)	Alarm-229
 tuxpaint.c:10727	(((unsigned int )*(*(@color_hexes+@cur_color)+1))&255U)<<8	Alarm-650
+tuxpaint.c:10373	((float )*src.w)/((float )new_w)	Alarm-849
 tuxpaint.c:5793	((8-(@cur_eraser-8))-1)*17	Alarm-585
 tuxpaint.c:22624	((float )old_pos)*new_to_old_ratio	Alarm-535
 tuxpaint.c:22624	((float )old_height)*new_to_old_ratio	Alarm-533
 fill.c:652	orig_y1-16	Alarm-482
 tuxpaint.c:10734	*(*(@color_hexes+@cur_color)+0)	Alarm-171
 tuxpaint.c:20142	*(d_names+num_files)	Alarm-39
+tuxpaint.c:13790	(rx*rx)/max_x	Alarm-811
 tuxpaint.c:1191	x2+((int )@r_ttools.w)	Alarm-781
+tuxpaint.c:5836	w/2	Alarm-841
+tuxpaint.c:5836	h/2	Alarm-840
 fill.c:633	y+1	Alarm-480
 tuxpaint.c:1729	(*(str+i)&196608)>>12	Alarm-674
 tuxpaint.c:1729	(*(str+i)&61440)>>12	Alarm-673
 tuxpaint.c:2818	@texttool_len-1U	Alarm-550
 tuxpaint.c:21864	*(*(@color_hexes+(@NUM_COLORS-1))+1)	Alarm-13
+tuxpaint.c:13847	(((-__cil_tmp54)*((double )ry))*((double )@shape_valley[@cur_shape]))/((double )100)	Alarm-816
 tuxpaint.c:22630	((float )new_width)-(((float )old_width)*new_to_old_ratio)	Alarm-538
 tuxpaint.c:24484	(tmp___31<<4)+tmp___34	Alarm-752
 tuxpaint.c:22619	((float )old_pos)*new_to_old_ratio	Alarm-532
@@ -156,6 +165,7 @@ tuxpaint.c:3666	num_things+((int )gd_items.cols)	Alarm-554
 tuxpaint.c:10734	(((unsigned int )((((int )r)+((int )*(*(@color_hexes+@cur_color)+0)))>>1))&255U)<<16	Alarm-659
 parse.gperf:148	*(str+2)	Alarm-123
 tuxpaint.c:24483	((int )tmp_str[1])-97	Alarm-737
+tuxpaint.c:22578	((float )new_height)/((float )old_height)	Alarm-826
 tuxpaint.c:24473	(((int )tmp_str[5])-97)+10	Alarm-709
 tuxpaint.c:10881	7-which_eraser	Alarm-267
 tuxpaint.c:6028	r+22.	Alarm-244
@@ -169,6 +179,7 @@ tuxpaint.c:17712	*(unicodeIn+i)	Alarm-97
 tuxpaint.c:5829	((unsigned int )@old_x)-((((((((unsigned int )*@active_stamp.w)*@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].numer)+@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].denom)-1U)/@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].denom)+1U)/2U)	Alarm-613
 tuxpaint.c:5829	((unsigned int )@old_y)-((((((((unsigned int )*@active_stamp.h)*@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].numer)+@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].denom)-1U)/@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].denom)+1U)/2U)	Alarm-611
 parse.gperf:135	*(str+13)	Alarm-122
+tuxpaint.c:13719	__cil_tmp35/((double )2)	Alarm-810
 fill.c:653	orig_x2+16	Alarm-483
 tuxpaint.c:13956	((double )(x1+offx))*__cil_tmp79	Alarm-407
 tuxpaint.c:13956	((double )(y1___0+offy))*__cil_tmp80	Alarm-405
@@ -188,17 +199,21 @@ tuxpaint.c:6412	*(*(@color_hexes+@cur_color)+1)	Alarm-4
 tuxpaint.c:3960	@text_size-1U	Alarm-557
 tuxpaint.c:24484	tmp___31<<4	Alarm-751
 tuxpaint.c:11061	(__cil_tmp19>>1)+1	Alarm-501
+tuxpaint.c:13853	(((double )rotn)*3.14159265359)/((double )180)	Alarm-817
 tuxpaint.c:10727	*(*(@color_hexes+@cur_color)+2)	Alarm-163
 tuxpaint.c:17936	*(ustr+i)	Alarm-227
 tuxpaint.c:13719	ry*ry	Alarm-339
+tuxpaint.c:14034	(__cil_tmp6*((double )180))/3.14159265359	Alarm-845
 tuxpaint.c:10734	(((int )r)+((int )*(*(@color_hexes+@cur_color)+0)))>>1	Alarm-658
 tuxpaint.c:10734	(((int )g)+((int )*(*(@color_hexes+@cur_color)+1)))>>1	Alarm-655
 tuxpaint.c:10734	(((int )b)+((int )*(*(@color_hexes+@cur_color)+2)))>>1	Alarm-653
 tuxpaint.c:24483	((int )tmp_str[1])-65	Alarm-735
 tuxpaint.c:22512	y+((int )*dest_rect.y)	Alarm-631
+tuxpaint.c:12082	tmp2/tmp	Alarm-831
 tuxpaint.c:10790	m*((float )x1)	Alarm-523
 tuxpaint.c:22630	((float )old_pos)*new_to_old_ratio	Alarm-539
 tuxpaint.c:22630	((float )old_width)*new_to_old_ratio	Alarm-537
+tuxpaint.c:13954	(((double )rotn)*3.14159265359)/((double )180)	Alarm-818
 tuxpaint.c:15981	*(@screen)	Alarm-84
 tuxpaint.c:10772	x2-x1	Alarm-519
 tuxpaint.c:22931	(((unsigned int )(((4*j)*225)/*aux_node.save_height))&255U)<<8	Alarm-518
@@ -236,6 +251,7 @@ tuxpaint.c:22373	*(@user_font_families+j)	Alarm-216
 tuxpaint.c:21691	*(*(@color_hexes+(@NUM_COLORS-1))+2)	Alarm-6
 tuxpaint.c:22208	(((unsigned int )*tmp_node.save_color.g)&255U)<<8	Alarm-679
 tuxpaint.c:13980	(x2+sx)+offx	Alarm-445
+tuxpaint.c:5722	sz/2	Alarm-835
 tuxpaint.c:24483	((int )tmp_str[1])-97	Alarm-732
 tuxpaint.c:5787	5+(((8-@cur_eraser)-1)*17)	Alarm-581
 tuxpaint.c:13878	y1___0+sy	Alarm-393
@@ -326,20 +342,24 @@ tuxpaint.c:9566	*(@stamp_data[@stamp_group]+stamp)	Alarm-111
 tuxpaint.c:21812	(((unsigned int )*(*(@color_hexes+(@NUM_COLORS-1))+0))&255U)<<16	Alarm-277
 tuxpaint.c:5739	*(*(@color_hexes+@cur_color)+0)	Alarm-143
 tuxpaint.c:16361	*(d_names+num_files)	Alarm-104
+tuxpaint.c:13814	(ny-sy)/2	Alarm-814
 tuxpaint.c:1715	*(str+i)	Alarm-182
 tuxpaint.c:15848	*(@img_scroll_up)	Alarm-72
 tuxpaint.c:10535	x+((int )@r_canvas.x)	Alarm-798
 tuxpaint.c:20209	*(d_names+num_files)	Alarm-44
+fill.c:597	((float )dy)/((float )dx)	Alarm-819
 tuxpaint.c:10727	*(*(@color_hexes+@cur_color)+1)	Alarm-164
 tuxpaint.c:5838	(new_x+(w/2))+((int )@r_canvas.x)	Alarm-622
 tuxpaint.c:5838	(new_y+(h/2))+((int )@r_canvas.y)	Alarm-620
 tuxpaint.c:17706	SizeOf(FriBidiChar )*((unsigned long )(@texttool_len+1U))	Alarm-331
 tuxpaint.c:21865	*(*(@color_hexes+(@NUM_COLORS-1))+2)	Alarm-14
 tuxpaint.c:1145	x2+((int )@r_ttools.w)	Alarm-788
+tuxpaint.c:11005	((float )dy)/((float )dx)	Alarm-820
 tuxpaint.c:24484	((int )tmp_str[2])-48	Alarm-746
 tuxpaint.c:1727	*(utfstr+__cil_tmp21)	Alarm-185
 tuxpaint.c:6249	(((int )dest.x)-(@img_cur_brush_w>>1))+(*rotated_brush.w>>1)	Alarm-237
 tuxpaint.c:13980	x2+sx	Alarm-444
+tuxpaint.c:22931	((4*j)*225)/*aux_node.save_height	Alarm-822
 tuxpaint.c:24484	(((int )tmp_str[2])-65)+10	Alarm-748
 tuxpaint.c:24482	(((int )tmp_str[0])-65)+10	Alarm-719
 tuxpaint.c:20794	*(d_places+which)	Alarm-56
@@ -352,6 +372,8 @@ tuxpaint.c:20204	*(d_names+num_files)	Alarm-42
 tuxpaint.c:22630	(((float )old_pos)*new_to_old_ratio)+((((float )new_width)-(((float )old_width)*new_to_old_ratio))/((float )2))	Alarm-540
 tuxpaint.c:10926	x-xx	Alarm-288
 tuxpaint.c:16795	*(@screen)	Alarm-106
+tuxpaint.c:5838	w/2	Alarm-843
+tuxpaint.c:5838	h/2	Alarm-842
 tuxpaint.c:21691	(((unsigned int )*(*(@color_hexes+(@NUM_COLORS-1))+1))&255U)<<8	Alarm-274
 tuxpaint.c:24483	((int )tmp_str[1])-48	Alarm-729
 tuxpaint.c:13879	x2+sx	Alarm-395
@@ -384,6 +406,7 @@ tuxpaint.c:24472	(tmp___7<<4)+tmp___10	Alarm-704
 tuxpaint.c:24472	((int )tmp_str[2])-65	Alarm-699
 fill.c:570	x+xx	Alarm-486
 tuxpaint.c:13979	(y1___0+sy)+offy	Alarm-443
+tuxpaint.c:13718	__cil_tmp34/((double )2)	Alarm-809
 tuxpaint.c:15957	*(d_names+which)	Alarm-81
 tuxpaint.c:15957	*(d_exts+which)	Alarm-80
 fill.c:654	orig_y2+16	Alarm-484
@@ -407,6 +430,7 @@ tuxpaint.c:17745	(@old_cursor_y+1)+__cil_tmp25	Alarm-309
 tuxpaint.c:24484	(((int )tmp_str[2])-97)+10	Alarm-750
 tuxpaint.c:22895	((int )rect.w)-(2*j)	Alarm-509
 tuxpaint.c:4678	*(*(@color_hexes+@cur_color)+0)	Alarm-139
+tuxpaint.c:5061	((num_things+((int )gd_items___0.cols))-1)/((int )gd_items___0.cols)	Alarm-834
 tuxpaint.c:20933	*(*(@color_hexes+(which-1))+2)	Alarm-33
 tuxpaint.c:6042	y2-y1___0	Alarm-248
 tuxpaint.c:6759	((unsigned int )x)-((((((((unsigned int )*@active_stamp.w)*@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].numer)+@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].denom)-1U)/@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].denom)+1U)/2U)	Alarm-767
@@ -416,7 +440,11 @@ tuxpaint.c:10970	x-(sz/2)	Alarm-303
 tuxpaint.c:10970	y-(sz/2)	Alarm-302
 tuxpaint.c:6047	((float )y1___0)-(m*((float )x1))	Alarm-250
 tuxpaint.c:1735	*(utfstr+__cil_tmp24)	Alarm-191
+tuxpaint.c:5817	w/2	Alarm-839
+tuxpaint.c:5817	h/2	Alarm-838
 tuxpaint.c:22893	((int )rect.x)+j	Alarm-507
+tuxpaint.c:5815	w/2	Alarm-837
+tuxpaint.c:5815	h/2	Alarm-836
 tuxpaint.c:21441	*(*(@color_hexes+(@NUM_COLORS-2))+0)	Alarm-27
 tuxpaint.c:13954	((double )rotn)*3.14159265359	Alarm-403
 tuxpaint.c:21375	*(*(@color_hexes+(@NUM_COLORS-2))+1)	Alarm-22
@@ -434,6 +462,7 @@ tuxpaint.c:22666	(((unsigned int )a)&255U)<<24	Alarm-544
 tuxpaint.c:10734	*(*(@color_hexes+@cur_color)+2)	Alarm-169
 tuxpaint.c:13856	((double )(x1+offx))*__cil_tmp57	Alarm-363
 tuxpaint.c:13856	((double )(y1___0+offy))*__cil_tmp58	Alarm-361
+tuxpaint.c:13813	(nx-sx)/2	Alarm-813
 tuxpaint.c:10881	((7-which_eraser)*17)+5	Alarm-269
 tuxpaint.c:24483	(((int )tmp_str[1])-65)+10	Alarm-736
 fonts.c:1150	*(__cil_tmp29)	Alarm-194
@@ -459,9 +488,11 @@ tuxpaint.c:15297	*(d_names+num_files)	Alarm-70
 tuxpaint.c:21030	(((unsigned int )g)&255U)<<8	Alarm-306
 tuxpaint.c:1711	(*(str+i)&61440)>>12	Alarm-670
 tuxpaint.c:15310	*(thumbs+num_files)	Alarm-63
+tuxpaint.c:6046	((float )dy)/((float )dx)	Alarm-802
 tuxpaint.c:5061	num_things+((int )gd_items___0.cols)	Alarm-566
 tuxpaint.c:5807	((unsigned int )@old_x)-((((((((unsigned int )*@active_stamp.w)*@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].numer)+@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].denom)-1U)/@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].denom)+1U)/2U)	Alarm-593
 tuxpaint.c:5807	((unsigned int )@old_y)-((((((((unsigned int )*@active_stamp.h)*@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].numer)+@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].denom)-1U)/@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].denom)+1U)/2U)	Alarm-591
+tuxpaint.c:14041	(deg-15)/30	Alarm-847
 tuxpaint.c:11061	__cil_tmp19>>1	Alarm-500
 tuxpaint.c:11001	y2-y1___0	Alarm-488
 tuxpaint.c:1729	*(utfstr+__cil_tmp22)	Alarm-187
@@ -469,6 +500,7 @@ tuxpaint.c:22503	x+((int )*dest_rect.x)	Alarm-630
 tuxpaint.c:10780	m*((float )x1)	Alarm-521
 tuxpaint.c:5817	(@old_x-(w/2))+((int )@r_canvas.x)	Alarm-606
 tuxpaint.c:5817	(@old_y-(h/2))+((int )@r_canvas.y)	Alarm-604
+tuxpaint.c:3666	((num_things+((int )gd_items.cols))-1)/((int )gd_items.cols)	Alarm-833
 tuxpaint.c:24482	((int )tmp_str[0])-65	Alarm-718
 tuxpaint.c:6567	*(*(@color_hexes+@cur_color)+1)	Alarm-230
 tuxpaint.c:11062	orig_y2+length	Alarm-502
@@ -493,6 +525,7 @@ fonts.c:1313	*(@user_font_families+desire)	Alarm-118
 tuxpaint.c:14034	oy-ctr_y	Alarm-754
 tuxpaint.c:24482	*(*(@color_hexes+@NUM_COLORS)+0)	Alarm-212
 tuxpaint.c:10814	y-1	Alarm-530
+tuxpaint.c:10968	sz/2	Alarm-807
 tuxpaint.c:22635	((float )old_pos)*new_to_old_ratio	Alarm-541
 tuxpaint.c:13844	(-__cil_tmp52)*((double )ry)	Alarm-349
 tuxpaint.c:6062	y-1	Alarm-256
@@ -512,9 +545,11 @@ tuxpaint.c:17419	x+xx	Alarm-773
 tuxpaint.c:24484	((int )tmp_str[2])-97	Alarm-749
 tuxpaint.c:21812	*(*(@color_hexes+(@NUM_COLORS-1))+0)	Alarm-11
 i18n.c:852	*(cntrycode)	Alarm-207
+tuxpaint.c:13792	(ry*ry)/max_y	Alarm-812
 tuxpaint.c:1145	x1+((int )@r_ttools.w)	Alarm-789
 tuxpaint.c:10734	*(*(@color_hexes+@cur_color)+1)	Alarm-170
 tuxpaint.c:15875	*(d_names+which)	Alarm-77
+tuxpaint.c:6032	r/45.	Alarm-801
 tuxpaint.c:15248	*(d_places+num_files)	Alarm-69
 tuxpaint.c:3666	(num_things+((int )gd_items.cols))-1	Alarm-555
 tuxpaint.c:21251	(((unsigned int )*(*(@color_hexes+(@NUM_COLORS-2))+1))&255U)<<8	Alarm-278
@@ -539,6 +574,7 @@ playsound.c:100	(255-dist)*((*screen___0.w-1)-x)	Alarm-634
 tuxpaint.c:13780	__cil_tmp36*((double )rx)	Alarm-340
 tuxpaint.c:13790	rx*rx	Alarm-342
 tuxpaint.c:24471	((int )tmp_str[0])-97	Alarm-689
+tuxpaint.c:22574	((float )old_width)/((float )old_height)	Alarm-824
 tuxpaint.c:20853	*(d_places+which)	Alarm-59
 fonts.c:1186	*(__cil_tmp37)	Alarm-198
 tuxpaint.c:21426	*(*(@color_hexes+(@NUM_COLORS-2))+0)	Alarm-24
@@ -548,6 +584,7 @@ tuxpaint.c:14034	ox-ctr_x	Alarm-753
 tuxpaint.c:24473	((int )tmp_str[5])-97	Alarm-708
 tuxpaint.c:11062	orig_x1-length	Alarm-505
 tuxpaint.c:17782	((@button_h*@buttons_tall)+((int )@r_ttools.h))-((int )dest.y)	Alarm-317
+playsound.c:100	((255-dist)*((*screen___0.w-1)-x))/(*screen___0.w-1)	Alarm-844
 tuxpaint.c:1681	*(str+i)	Alarm-172
 tuxpaint.c:24484	((int )tmp_str[2])-65	Alarm-742
 fill.c:652	*(up_y1)	Alarm-108
@@ -569,6 +606,7 @@ tuxpaint.c:10507	y*((int )*surf.pitch)	Alarm-235
 tuxpaint.c:23615	*(__cil_tmp12)	Alarm-152
 tuxpaint.c:13968	((double )(xv+offx))*__cil_tmp87	Alarm-431
 tuxpaint.c:13968	((double )(yv+offy))*__cil_tmp88	Alarm-429
+tuxpaint.c:14070	(__cil_tmp6*((double )180))/3.14159265359	Alarm-803
 tuxpaint.c:22666	(((unsigned int )*new_node___0.save_color.g)&255U)<<8	Alarm-542
 tuxpaint.c:1119	(x2-x1)+1	Alarm-784
 dirwalk.c:317	*(dir+__cil_tmp16)	Alarm-222
@@ -605,7 +643,9 @@ tuxpaint.c:1120	(y2-y1___0)+1	Alarm-786
 tuxpaint.c:5722	new_x+(sz/2)	Alarm-571
 tuxpaint.c:5722	new_y+(sz/2)	Alarm-570
 tuxpaint.c:1690	*(utfstr+__cil_tmp16)	Alarm-175
+tuxpaint.c:10919	(sz*sz)/4	Alarm-806
 tuxpaint.c:5755	(((unsigned int )*(*(@color_hexes+@cur_color)+0))&255U)<<16	Alarm-577
+tuxpaint.c:12088	1./tmp	Alarm-832
 tuxpaint.c:13867	xv+offx	Alarm-381
 tuxpaint.c:10944	(((unsigned int )@canvas_color_g)&255U)<<8	Alarm-294
 dirwalk.c:395	*(file_names+num_file_names)	Alarm-224
@@ -631,12 +671,14 @@ tuxpaint.c:13880	(y2+sy)+offy	Alarm-398
 tuxpaint.c:17774	(@cursor_x-2)+((int )@r_ttools.w)	Alarm-314
 tuxpaint.c:10734	*(*(@color_hexes+@cur_color)+2)	Alarm-166
 fonts.c:1268	i-1U	Alarm-647
+tuxpaint.c:10779	((float )dy)/((float )dx)	Alarm-823
 tuxpaint.c:1120	y2-y1___0	Alarm-785
 tuxpaint.c:13882	(yv+sy)+offy	Alarm-402
 tuxpaint.c:15960	*(@screen)	Alarm-82
 tuxpaint.c:21443	*(*(@color_hexes+(@NUM_COLORS-2))+2)	Alarm-29
 tuxpaint.c:6057	m*((float )x1)	Alarm-251
 tuxpaint.c:1740	*(utfstr+j)	Alarm-192
+tuxpaint.c:14037	(deg+180)%360	Alarm-846
 tuxpaint.c:5650	@old_x+((int )@r_canvas.x)	Alarm-569
 fonts.c:1177	*(__cil_tmp35)	Alarm-197
 tuxpaint.c:17010	*(d_names+which)	Alarm-156
@@ -660,6 +702,7 @@ tuxpaint.c:15199	*(d_names+num_files)	Alarm-67
 tuxpaint.c:24483	(((int )tmp_str[1])-97)+10	Alarm-733
 tuxpaint.c:10791	x1+dx	Alarm-525
 tuxpaint.c:21880	*(*(@color_hexes+(@NUM_COLORS-1))+2)	Alarm-17
+tuxpaint.c:12060	__cil_tmp20/100.	Alarm-829
 playsound.c:113	(255-dist)-left	Alarm-635
 pixels.c:118	y*((int )*surface.pitch)	Alarm-643
 tuxpaint.c:24473	(((int )tmp_str[4])-65)+10	Alarm-712
@@ -700,17 +743,20 @@ tuxpaint.c:13871	yp-offy	Alarm-390
 tuxpaint.c:10932	(((unsigned int )@canvas_color_r)&255U)<<16	Alarm-291
 tuxpaint.c:6250	(((int )dest.y)-(@img_cur_brush_h>>1))+(*rotated_brush.h>>1)	Alarm-239
 tuxpaint.c:26919	*(dest+(n-1UL))	Alarm-200
+tuxpaint.c:22624	(((float )new_height)-(((float )old_height)*new_to_old_ratio))/((float )2)	Alarm-827
 tuxpaint.c:21442	*(*(@color_hexes+(@NUM_COLORS-2))+1)	Alarm-28
 tuxpaint.c:6105	orig_y2+sz	Alarm-260
 tuxpaint.c:13867	((double )(xv+offx))*__cil_tmp63	Alarm-382
 tuxpaint.c:13867	((double )(yv+offy))*__cil_tmp64	Alarm-380
 fonts.c:1262	malloc(SizeOf(family_info *)*((unsigned long )@num_font_families))	Alarm-161
+tuxpaint.c:14043	(deg-7)/15	Alarm-848
 tuxpaint.c:10919	sz*sz	Alarm-286
 tuxpaint.c:24484	*(*(@color_hexes+@NUM_COLORS)+2)	Alarm-214
 tuxpaint.c:24484	((int )tmp_str[2])-97	Alarm-744
 tuxpaint.c:17780	(@WINDOW_WIDTH-((int )@r_ttoolopt.w))-((int )dest.x)	Alarm-316
 tuxpaint.c:13968	(((double )(xv+offx))*__cil_tmp87)-(((double )(yv+offy))*__cil_tmp88)	Alarm-432
 dirwalk.c:318	*(dir+dirlen)	Alarm-223
+tuxpaint.c:6032	r/45.	Alarm-800
 tuxpaint.c:22624	((float )new_height)-(((float )old_height)*new_to_old_ratio)	Alarm-534
 fill.c:570	y+yy	Alarm-485
 tuxpaint.c:5829	(((unsigned int )@old_x)-((((((((unsigned int )*@active_stamp.w)*@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].numer)+@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].denom)-1U)/@scaletable[**(@stamp_data[@stamp_group]+@cur_stamp[@stamp_group]).size].denom)+1U)/2U))+((unsigned int )@r_canvas.x)	Alarm-614
@@ -750,12 +796,15 @@ tuxpaint.c:15854	*(d_names+which)	Alarm-75
 tuxpaint.c:15854	*(d_exts+which)	Alarm-74
 tuxpaint.c:24482	((int )tmp_str[0])-48	Alarm-722
 fonts.c:1258	@num_font_families+(((int )*((unsigned char *)__cil_tmp16))<<8U)	Alarm-646
+tuxpaint.c:10900	sz/2	Alarm-804
 tuxpaint.c:24483	(tmp___25<<4)+tmp___28	Alarm-740
 tuxpaint.c:17936	*(ustr+i)	Alarm-228
 tuxpaint.c:11062	orig_y1-length	Alarm-504
 parse.gperf:151	*(str+1)	Alarm-124
 tuxpaint.c:16372	*(thumbs+num_files)	Alarm-101
+tuxpaint.c:10374	((float )*src.h)/((float )new_h)	Alarm-850
 tuxpaint.c:17706	@texttool_len+1U	Alarm-330
+tuxpaint.c:10970	sz/2	Alarm-808
 tuxpaint.c:22406	((int )dest.x)+*(*node.label_node_surface).w	Alarm-764
 tuxpaint.c:22406	((int )dest.y)+*(*node.label_node_surface).h	Alarm-763
 tuxpaint.c:14070	__cil_tmp6*((double )180)	Alarm-266
@@ -764,6 +813,7 @@ tuxpaint.c:13965	xp-offx	Alarm-426
 tuxpaint.c:17707	@texttool_len+1U	Alarm-332
 tuxpaint.c:5793	(8-(@cur_eraser-8))-1	Alarm-584
 tuxpaint.c:10927	y-yy	Alarm-289
+tuxpaint.c:22630	(((float )new_width)-(((float )old_width)*new_to_old_ratio))/((float )2)	Alarm-828
 tuxpaint.c:11062	orig_x2+length	Alarm-503
 tuxpaint.c:6733	(((unsigned int )*(*(@color_hexes+@cur_color)+0))&255U)<<16	Alarm-766
 tuxpaint.c:14043	((deg-7)/15)*15	Alarm-760
@@ -788,6 +838,7 @@ tuxpaint.c:13981	(y2+sy)+offy	Alarm-447
 tuxpaint.c:6083	y+1	Alarm-259
 tuxpaint.c:15189	*(d_places+num_files)	Alarm-66
 tuxpaint.c:10727	*(*(@color_hexes+@cur_color)+0)	Alarm-165
+tuxpaint.c:22576	((float )new_width)/((float )old_width)	Alarm-825
 pixels.c:64	y*((int )*surface.pitch)	Alarm-637
 tuxpaint.c:24471	(tmp___1<<4)+tmp___4	Alarm-692
 tuxpaint.c:22192	*(*(@color_hexes+@select_color)+2)	Alarm-203

@@ -63,6 +63,7 @@
 17. ff2ppm.c:61 {main} UnProven
   *(row+(j+l)) @main-727:  source = efread-496 @ util.c:141 UnProven
 18. ff2ppm.c:61 {main} UnProven
+  ((a*((unsigned long )__cil_tmp33))+((65535UL-a)*((unsigned long )mask[l])))/16842495UL @main-728:  source = main-637 @ ff2ppm.c:21 UnProven
   (a*((unsigned long )__cil_tmp33))+((65535UL-a)*((unsigned long )mask[l])) @main-728:  source = main-637 @ ff2ppm.c:21 UnProven
   (65535UL-a)*((unsigned long )mask[l]) @main-728:  source = main-637 @ ff2ppm.c:21 UnProven
   *(rowout+(k+l)) @main-728:  source = main-637 @ ff2ppm.c:21 UnProven
@@ -84,8 +85,8 @@
   col[i]*colfac @parse_mask-461:  source = main-637 @ ff2ppm.c:21 UnProven
   *(mask+i) @parse_mask-461:  source = main-637 @ ff2ppm.c:21 UnProven
 
-#queries                 : 108
-#queries mod alarm point : 29
-#proven                  : 9
+#queries                 : 116
+#queries mod alarm point : 32
+#proven                  : 12
 #unproven                : 20
 #bot-involved            : 1

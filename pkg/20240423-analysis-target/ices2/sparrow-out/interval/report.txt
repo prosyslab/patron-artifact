@@ -5708,188 +5708,195 @@
   fread((void *)*rb.buf, 1UL, 32768UL) @stdin_read-4838:  offset: [32768, 32768], size: [-oo, +oo] UnProven, allocsite: oss_read-3430
   fread((void *)*rb.buf, 1UL, 32768UL) @stdin_read-4838:  offset: [32768, 32768], size: [-oo, +oo] UnProven, allocsite: playlist_read-5902
   fread((void *)*rb.buf, 1UL, 32768UL) @stdin_read-4838:  offset: [32768, 32768], size: [32768, 32768] UnProven, allocsite: stdin_read-4848
-133. input.c:387 {input_loop} UnProven
+133. input.c:129 {input_calculate_pcm_sleep} UnProven
+  (((uint64_t )bytes)*1000000UL)/((unsigned long )bytes_per_sec) @input_calculate_pcm_sleep-8032:  Divide by [0, +oo] UnProven
+134. input.c:387 {input_loop} UnProven
   @modules___0[current_module] @input_loop-8335:  offset: [0, +oo], size: [5, 5] UnProven, allocsite: _G_-8961
   @modules___0[current_module] @input_loop-8334:  offset: [0, +oo], size: [5, 5] UnProven, allocsite: _G_-8961
-134. input.c:389 {input_loop} UnProven
+135. input.c:389 {input_loop} UnProven
   @modules___0[current_module] @input_loop-8398:  offset: [0, +oo], size: [5, 5] UnProven, allocsite: _G_-8961
-135. input.c:392 {input_loop} UnProven
+136. input.c:392 {input_loop} UnProven
   @modules___0[current_module] @input_loop-8400:  offset: [0, +oo], size: [5, 5] UnProven, allocsite: _G_-8961
-136. playlist_basic.c:57 {shuffle} UnProven
+137. playlist_basic.c:47 {shuffle} UnProven
+  2147483647UL%range @shuffle-4938:  Divide by [-oo, +oo] UnProven
+  2147483647UL%range @shuffle-4937:  Divide by [-oo, +oo] UnProven
+138. playlist_basic.c:55 {shuffle} UnProven
+  ((size_t )d)%range @shuffle-4944:  Divide by [-oo, +oo] UnProven
+139. playlist_basic.c:57 {shuffle} UnProven
   *(buf+d) @shuffle-4945:  offset: [-oo, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
-137. playlist_basic.c:58 {shuffle} UnProven
+140. playlist_basic.c:58 {shuffle} UnProven
   *(buf+d) @shuffle-4946:  offset: [-oo, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
   *(buf+i) @shuffle-4946:  offset: [0, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
-138. playlist_basic.c:59 {shuffle} UnProven
+141. playlist_basic.c:59 {shuffle} UnProven
   *(buf+i) @shuffle-4947:  offset: [0, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
-139. playlist_basic.c:66 {shuffle} UnProven
+142. playlist_basic.c:66 {shuffle} UnProven
   *(buf+i) @shuffle-4964:  offset: [0, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
-140. playlist_basic.c:78 {load_playlist} UnProven
+143. playlist_basic.c:78 {load_playlist} UnProven
   *(data) @load_playlist-5012:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-141. playlist_basic.c:82 {load_playlist} UnProven
+144. playlist_basic.c:82 {load_playlist} UnProven
   *(data) @load_playlist-5044:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-142. playlist_basic.c:87 {load_playlist} UnProven
+145. playlist_basic.c:87 {load_playlist} UnProven
   *(data) @load_playlist-4978:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-4977:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-143. playlist_basic.c:90 {load_playlist} UnProven
+146. playlist_basic.c:90 {load_playlist} UnProven
   *(data) @load_playlist-4980:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-4979:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-144. playlist_basic.c:91 {load_playlist} UnProven
+147. playlist_basic.c:91 {load_playlist} UnProven
   *(*data.pl+i) @load_playlist-5017:  offset: [0, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
   *(data) @load_playlist-5017:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-145. playlist_basic.c:92 {load_playlist} UnProven
+148. playlist_basic.c:92 {load_playlist} UnProven
   *(data) @load_playlist-5019:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-146. playlist_basic.c:94 {load_playlist} UnProven
+149. playlist_basic.c:94 {load_playlist} UnProven
   *(data) @load_playlist-5020:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-147. playlist_basic.c:95 {load_playlist} UnProven
+150. playlist_basic.c:95 {load_playlist} UnProven
   *(data) @load_playlist-5021:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-148. playlist_basic.c:100 {load_playlist} UnProven
+151. playlist_basic.c:100 {load_playlist} UnProven
   *(ret+0) @load_playlist-4984:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4984:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4984:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
   *(ret+0) @load_playlist-4983:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4983:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4983:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-149. playlist_basic.c:102 {load_playlist} UnProven
+152. playlist_basic.c:102 {load_playlist} UnProven
   *(ret+0) @load_playlist-4986:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4986:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4986:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
   *(ret+0) @load_playlist-4985:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4985:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4985:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-150. playlist_basic.c:102 {load_playlist} UnProven
+153. playlist_basic.c:102 {load_playlist} UnProven
   *(ret+0) @load_playlist-4988:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4988:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4988:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
   *(ret+0) @load_playlist-4987:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4987:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4987:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-151. playlist_basic.c:102 {load_playlist} UnProven
+154. playlist_basic.c:102 {load_playlist} UnProven
   *(ret+1) @load_playlist-4990:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+1) @load_playlist-4990:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+1) @load_playlist-4990:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
   *(ret+1) @load_playlist-4989:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+1) @load_playlist-4989:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+1) @load_playlist-4989:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-152. playlist_basic.c:105 {load_playlist} UnProven
+155. playlist_basic.c:105 {load_playlist} UnProven
   *(ret+0) @load_playlist-4992:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4992:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4992:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
   *(ret+0) @load_playlist-4991:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4991:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4991:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-153. playlist_basic.c:108 {load_playlist} UnProven
+156. playlist_basic.c:108 {load_playlist} UnProven
   *(ret+(__cil_tmp13-1UL)) @load_playlist-5025:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+(__cil_tmp13-1UL)) @load_playlist-5025:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+(__cil_tmp13-1UL)) @load_playlist-5025:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-154. playlist_basic.c:111 {load_playlist} UnProven
+157. playlist_basic.c:111 {load_playlist} UnProven
   *(ret+(__cil_tmp15-1UL)) @load_playlist-4996:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+(__cil_tmp15-1UL)) @load_playlist-4996:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+(__cil_tmp15-1UL)) @load_playlist-4996:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
   *(ret+(__cil_tmp15-1UL)) @load_playlist-4995:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+(__cil_tmp15-1UL)) @load_playlist-4995:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+(__cil_tmp15-1UL)) @load_playlist-4995:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-155. playlist_basic.c:112 {load_playlist} UnProven
+158. playlist_basic.c:112 {load_playlist} UnProven
   *(ret+(__cil_tmp16-1UL)) @load_playlist-5029:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+(__cil_tmp16-1UL)) @load_playlist-5029:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+(__cil_tmp16-1UL)) @load_playlist-5029:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-156. playlist_basic.c:114 {load_playlist} UnProven
+159. playlist_basic.c:114 {load_playlist} UnProven
   *(data) @load_playlist-4998:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-4997:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-157. playlist_basic.c:131 {load_playlist} UnProven
+160. playlist_basic.c:131 {load_playlist} UnProven
   *(data) @load_playlist-5006:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-5005:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-158. playlist_basic.c:134 {load_playlist} UnProven
+161. playlist_basic.c:134 {load_playlist} UnProven
   *(data) @load_playlist-5037:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-159. playlist_basic.c:137 {load_playlist} UnProven
+162. playlist_basic.c:137 {load_playlist} UnProven
   *(data) @load_playlist-5038:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-160. playlist_basic.c:137 {load_playlist} UnProven
+163. playlist_basic.c:137 {load_playlist} UnProven
   *(data) @load_playlist-5039:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-5039:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-161. playlist_basic.c:137 {load_playlist} UnProven
+164. playlist_basic.c:137 {load_playlist} UnProven
   *(*data.pl+__cil_tmp20) @load_playlist-5040:  offset: [0, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
   *(data) @load_playlist-5040:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-162. playlist_basic.c:140 {load_playlist} UnProven
+165. playlist_basic.c:140 {load_playlist} UnProven
   *(data) @load_playlist-5008:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-5007:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-163. playlist_basic.c:142 {load_playlist} UnProven
+166. playlist_basic.c:142 {load_playlist} UnProven
   *(data) @load_playlist-5049:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-164. playlist_basic.c:147 {load_playlist} UnProven
+167. playlist_basic.c:147 {load_playlist} UnProven
   *(data) @load_playlist-5010:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-5009:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-165. playlist_basic.c:148 {load_playlist} UnProven
+168. playlist_basic.c:148 {load_playlist} UnProven
   *(data) @load_playlist-5042:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-5042:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-166. playlist_basic.c:158 {playlist_basic_clear} UnProven
+169. playlist_basic.c:158 {playlist_basic_clear} UnProven
   *(pl) @playlist_basic_clear-5073:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_clear-5072:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-167. playlist_basic.c:161 {playlist_basic_clear} UnProven
+170. playlist_basic.c:161 {playlist_basic_clear} UnProven
   *(pl) @playlist_basic_clear-5075:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_clear-5074:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-168. playlist_basic.c:162 {playlist_basic_clear} UnProven
+171. playlist_basic.c:162 {playlist_basic_clear} UnProven
   *(*pl.pl+i) @playlist_basic_clear-5078:  offset: [0, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
   *(pl) @playlist_basic_clear-5078:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-169. playlist_basic.c:163 {playlist_basic_clear} UnProven
+172. playlist_basic.c:163 {playlist_basic_clear} UnProven
   *(pl) @playlist_basic_clear-5080:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-170. playlist_basic.c:176 {playlist_basic_get_next_filename} UnProven
+173. playlist_basic.c:176 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5112:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-171. playlist_basic.c:178 {playlist_basic_get_next_filename} UnProven
+174. playlist_basic.c:178 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5130:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-172. playlist_basic.c:182 {playlist_basic_get_next_filename} UnProven
+175. playlist_basic.c:182 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5094:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5093:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-173. playlist_basic.c:184 {playlist_basic_get_next_filename} UnProven
+176. playlist_basic.c:184 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5096:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5095:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-174. playlist_basic.c:187 {playlist_basic_get_next_filename} UnProven
+177. playlist_basic.c:187 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5135:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-175. playlist_basic.c:188 {playlist_basic_get_next_filename} UnProven
+178. playlist_basic.c:188 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5118:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-176. playlist_basic.c:193 {playlist_basic_get_next_filename} UnProven
+179. playlist_basic.c:193 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5140:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-177. playlist_basic.c:195 {playlist_basic_get_next_filename} UnProven
+180. playlist_basic.c:195 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5121:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-178. playlist_basic.c:202 {playlist_basic_get_next_filename} UnProven
+181. playlist_basic.c:202 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5102:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5101:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-179. playlist_basic.c:203 {playlist_basic_get_next_filename} UnProven
+182. playlist_basic.c:203 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5123:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-180. playlist_basic.c:206 {playlist_basic_get_next_filename} UnProven
+183. playlist_basic.c:206 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5104:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5104:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5103:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5103:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-181. playlist_basic.c:208 {playlist_basic_get_next_filename} UnProven
+184. playlist_basic.c:208 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5106:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5105:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-182. playlist_basic.c:211 {playlist_basic_get_next_filename} UnProven
+185. playlist_basic.c:211 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5124:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-183. playlist_basic.c:212 {playlist_basic_get_next_filename} UnProven
+186. playlist_basic.c:212 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5108:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5107:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-184. playlist_basic.c:213 {playlist_basic_get_next_filename} UnProven
+187. playlist_basic.c:213 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5125:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5125:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-185. playlist_basic.c:216 {playlist_basic_get_next_filename} UnProven
+188. playlist_basic.c:216 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5126:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-186. playlist_basic.c:216 {playlist_basic_get_next_filename} UnProven
+189. playlist_basic.c:216 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5127:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5127:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-187. playlist_basic.c:216 {playlist_basic_get_next_filename} UnProven
+190. playlist_basic.c:216 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5128:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-188. playlist_script.c:72 {playlist_script_get_filename} UnProven
+191. playlist_script.c:72 {playlist_script_get_filename} UnProven
   *(buf+(__cil_tmp9-1UL)) @playlist_script_get_filename-4172:  offset: [-1, 1023], size: [1024, 1024] UnProven, allocsite: playlist_script_get_filename-4201
   *(buf+(__cil_tmp9-1UL)) @playlist_script_get_filename-4171:  offset: [-1, 1023], size: [1024, 1024] UnProven, allocsite: playlist_script_get_filename-4201
-189. playlist_script.c:73 {playlist_script_get_filename} UnProven
+192. playlist_script.c:73 {playlist_script_get_filename} UnProven
   *(buf+(__cil_tmp10-1UL)) @playlist_script_get_filename-4194:  offset: [-1, 1023], size: [1024, 1024] UnProven, allocsite: playlist_script_get_filename-4201
-190. playlist_script.c:78 {playlist_script_get_filename} UnProven
+193. playlist_script.c:78 {playlist_script_get_filename} UnProven
   *(buf+(__cil_tmp12-1UL)) @playlist_script_get_filename-4176:  offset: [-1, 1023], size: [1024, 1024] UnProven, allocsite: playlist_script_get_filename-4201
   *(buf+(__cil_tmp12-1UL)) @playlist_script_get_filename-4175:  offset: [-1, 1023], size: [1024, 1024] UnProven, allocsite: playlist_script_get_filename-4201
-191. playlist_script.c:79 {playlist_script_get_filename} UnProven
+194. playlist_script.c:79 {playlist_script_get_filename} UnProven
   *(buf+(__cil_tmp13-1UL)) @playlist_script_get_filename-4199:  offset: [-1, 1023], size: [1024, 1024] UnProven, allocsite: playlist_script_get_filename-4201
 
-#queries                 : 7540
-#queries mod alarm point : 1152
-#proven                  : 961
-#unproven                : 191
+#queries                 : 7569
+#queries mod alarm point : 1168
+#proven                  : 974
+#unproven                : 194
 #bot-involved            : 169

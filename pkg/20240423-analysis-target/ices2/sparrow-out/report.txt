@@ -6014,106 +6014,113 @@
   *(@ices_config) @input_sleep-8023:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_sleep-8023:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_sleep-8023:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-185. input.c:173 {input_calculate_ogg_sleep} UnProven
+185. input.c:129 {input_calculate_pcm_sleep} UnProven
+  (((uint64_t )bytes)*1000000UL)/((unsigned long )bytes_per_sec) @input_calculate_pcm_sleep-8032:  Divide by [0, +oo] UnProven
+186. input.c:173 {input_calculate_ogg_sleep} UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8185:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8185:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8185:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-186. input.c:206 {input_calculate_ogg_sleep} UnProven
+187. input.c:206 {input_calculate_ogg_sleep} UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8190:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8190:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8190:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-187. input.c:220 {input_calculate_ogg_sleep} UnProven
+188. input.c:220 {input_calculate_ogg_sleep} UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8195:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8195:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8195:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-188. input.c:236 {input_calculate_ogg_sleep} UnProven
+189. input.c:236 {input_calculate_ogg_sleep} UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8200:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8200:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8200:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-189. input.c:236 {input_calculate_ogg_sleep} UnProven
+190. input.c:236 {input_calculate_ogg_sleep} UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8205:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8205:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8205:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-190. input.c:257 {input_calculate_ogg_sleep} UnProven
+191. input.c:257 {input_calculate_ogg_sleep} UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8210:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8210:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8210:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-191. input.c:295 {input_calculate_ogg_sleep} UnProven
+192. input.c:295 {input_calculate_ogg_sleep} UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8215:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8215:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_calculate_ogg_sleep-8215:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-192. input.c:313 {input_flush_queue} UnProven
+193. input.c:313 {input_flush_queue} UnProven
   *(@ices_config) @input_flush_queue-8303:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_flush_queue-8303:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_flush_queue-8303:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-193. input.c:387 {input_loop} UnProven
+194. input.c:387 {input_loop} UnProven
   @modules___0[current_module] @input_loop-8335:  offset: [0, +oo], size: [5, 5] UnProven, allocsite: _G_-8961
   @modules___0[current_module] @input_loop-8334:  offset: [0, +oo], size: [5, 5] UnProven, allocsite: _G_-8961
-194. input.c:389 {input_loop} UnProven
+195. input.c:389 {input_loop} UnProven
   @modules___0[current_module] @input_loop-8398:  offset: [0, +oo], size: [5, 5] UnProven, allocsite: _G_-8961
-195. input.c:392 {input_loop} UnProven
+196. input.c:392 {input_loop} UnProven
   *(@ices_config) @input_loop-8400:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_loop-8400:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_loop-8400:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
   @modules___0[current_module] @input_loop-8400:  offset: [0, +oo], size: [5, 5] UnProven, allocsite: _G_-8961
-196. input.c:401 {input_loop} UnProven
+197. input.c:401 {input_loop} UnProven
   *(@ices_config) @input_loop-8515:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_loop-8515:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_loop-8515:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
   *(@ices_config) @input_loop-8515:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_loop-8515:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_loop-8515:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-197. input.c:404 {input_loop} UnProven
+198. input.c:404 {input_loop} UnProven
   *(@ices_config) @input_loop-8520:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_loop-8520:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_loop-8520:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
   *(@ices_config) @input_loop-8520:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_loop-8520:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_loop-8520:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-198. input.c:455 {input_loop} UnProven
+199. input.c:455 {input_loop} UnProven
   *(@ices_config) @input_loop-8529:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_loop-8529:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_loop-8529:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-199. input.c:466 {input_loop} UnProven
+200. input.c:466 {input_loop} UnProven
   *(instance) @input_loop-8422:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(instance) @input_loop-8422:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(instance) @input_loop-8422:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-200. input.c:504 {input_loop} UnProven
+201. input.c:504 {input_loop} UnProven
   *(inmod) @input_loop-8435:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(inmod) @input_loop-8435:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(inmod) @input_loop-8435:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-201. input.c:529 {input_loop} UnProven
+202. input.c:529 {input_loop} UnProven
   *(@ices_config) @input_loop-8441:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_loop-8441:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_loop-8441:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-202. input.c:588 {input_loop} UnProven
+203. input.c:588 {input_loop} UnProven
   *(@ices_config) @input_loop-8464:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_loop-8464:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_loop-8464:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-203. input.c:593 {input_loop} UnProven
+204. input.c:593 {input_loop} UnProven
   *(instance) @input_loop-8467:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(instance) @input_loop-8467:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(instance) @input_loop-8467:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-204. input.c:620 {input_loop} UnProven
+205. input.c:620 {input_loop} UnProven
   *(@ices_config) @input_loop-8564:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @input_loop-8564:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @input_loop-8564:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-205. playlist_basic.c:57 {shuffle} UnProven
+206. playlist_basic.c:47 {shuffle} UnProven
+  2147483647UL%range @shuffle-4938:  Divide by [-oo, +oo] UnProven
+  2147483647UL%range @shuffle-4937:  Divide by [-oo, +oo] UnProven
+207. playlist_basic.c:55 {shuffle} UnProven
+  ((size_t )d)%range @shuffle-4944:  Divide by [-oo, +oo] UnProven
+208. playlist_basic.c:57 {shuffle} UnProven
   *(buf+d) @shuffle-4945:  offset: [-oo, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
-206. playlist_basic.c:58 {shuffle} UnProven
+209. playlist_basic.c:58 {shuffle} UnProven
   *(buf+d) @shuffle-4946:  offset: [-oo, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
   *(buf+i) @shuffle-4946:  offset: [0, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
-207. playlist_basic.c:59 {shuffle} UnProven
+210. playlist_basic.c:59 {shuffle} UnProven
   *(buf+i) @shuffle-4947:  offset: [0, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
-208. playlist_basic.c:61 {shuffle} UnProven
+211. playlist_basic.c:61 {shuffle} UnProven
   *(@ices_config) @shuffle-4954:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @shuffle-4954:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @shuffle-4954:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-209. playlist_basic.c:63 {shuffle} UnProven
+212. playlist_basic.c:63 {shuffle} UnProven
   *(@ices_config) @shuffle-4959:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @shuffle-4959:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @shuffle-4959:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-210. playlist_basic.c:66 {shuffle} UnProven
+213. playlist_basic.c:66 {shuffle} UnProven
   *(@ices_config) @shuffle-4964:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @shuffle-4964:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @shuffle-4964:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
@@ -6121,9 +6128,9 @@
   *(buf+i) @shuffle-4964:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(buf+i) @shuffle-4964:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
   *(buf+i) @shuffle-4964:  offset: [0, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
-211. playlist_basic.c:78 {load_playlist} UnProven
+214. playlist_basic.c:78 {load_playlist} UnProven
   *(data) @load_playlist-5012:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-212. playlist_basic.c:82 {load_playlist} UnProven
+215. playlist_basic.c:82 {load_playlist} UnProven
   *(@ices_config) @load_playlist-5044:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @load_playlist-5044:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @load_playlist-5044:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
@@ -6131,91 +6138,91 @@
   *(data) @load_playlist-5044:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(data) @load_playlist-5044:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
   *(data) @load_playlist-5044:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-213. playlist_basic.c:87 {load_playlist} UnProven
+216. playlist_basic.c:87 {load_playlist} UnProven
   *(data) @load_playlist-4978:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-4977:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-214. playlist_basic.c:90 {load_playlist} UnProven
+217. playlist_basic.c:90 {load_playlist} UnProven
   *(data) @load_playlist-4980:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-4979:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-215. playlist_basic.c:91 {load_playlist} UnProven
+218. playlist_basic.c:91 {load_playlist} UnProven
   *(*data.pl+i) @load_playlist-5017:  offset: [0, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
   *(data) @load_playlist-5017:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-216. playlist_basic.c:92 {load_playlist} UnProven
+219. playlist_basic.c:92 {load_playlist} UnProven
   *(data) @load_playlist-5019:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-217. playlist_basic.c:94 {load_playlist} UnProven
+220. playlist_basic.c:94 {load_playlist} UnProven
   *(data) @load_playlist-5020:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-218. playlist_basic.c:95 {load_playlist} UnProven
+221. playlist_basic.c:95 {load_playlist} UnProven
   *(data) @load_playlist-5021:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-219. playlist_basic.c:100 {load_playlist} UnProven
+222. playlist_basic.c:100 {load_playlist} UnProven
   *(ret+0) @load_playlist-4984:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4984:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4984:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
   *(ret+0) @load_playlist-4983:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4983:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4983:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-220. playlist_basic.c:102 {load_playlist} UnProven
+223. playlist_basic.c:102 {load_playlist} UnProven
   *(ret+0) @load_playlist-4986:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4986:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4986:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
   *(ret+0) @load_playlist-4985:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4985:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4985:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-221. playlist_basic.c:102 {load_playlist} UnProven
+224. playlist_basic.c:102 {load_playlist} UnProven
   *(ret+0) @load_playlist-4988:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4988:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4988:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
   *(ret+0) @load_playlist-4987:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4987:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4987:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-222. playlist_basic.c:102 {load_playlist} UnProven
+225. playlist_basic.c:102 {load_playlist} UnProven
   *(ret+1) @load_playlist-4990:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+1) @load_playlist-4990:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+1) @load_playlist-4990:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
   *(ret+1) @load_playlist-4989:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+1) @load_playlist-4989:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+1) @load_playlist-4989:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-223. playlist_basic.c:105 {load_playlist} UnProven
+226. playlist_basic.c:105 {load_playlist} UnProven
   *(ret+0) @load_playlist-4992:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4992:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4992:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
   *(ret+0) @load_playlist-4991:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+0) @load_playlist-4991:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+0) @load_playlist-4991:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-224. playlist_basic.c:108 {load_playlist} UnProven
+227. playlist_basic.c:108 {load_playlist} UnProven
   *(ret+(__cil_tmp13-1UL)) @load_playlist-5025:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+(__cil_tmp13-1UL)) @load_playlist-5025:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+(__cil_tmp13-1UL)) @load_playlist-5025:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-225. playlist_basic.c:111 {load_playlist} UnProven
+228. playlist_basic.c:111 {load_playlist} UnProven
   *(ret+(__cil_tmp15-1UL)) @load_playlist-4996:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+(__cil_tmp15-1UL)) @load_playlist-4996:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+(__cil_tmp15-1UL)) @load_playlist-4996:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
   *(ret+(__cil_tmp15-1UL)) @load_playlist-4995:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+(__cil_tmp15-1UL)) @load_playlist-4995:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+(__cil_tmp15-1UL)) @load_playlist-4995:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-226. playlist_basic.c:112 {load_playlist} UnProven
+229. playlist_basic.c:112 {load_playlist} UnProven
   *(ret+(__cil_tmp16-1UL)) @load_playlist-5029:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_alias
   *(ret+(__cil_tmp16-1UL)) @load_playlist-5029:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk
   *(ret+(__cil_tmp16-1UL)) @load_playlist-5029:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern____fgets_chk_warn
-227. playlist_basic.c:114 {load_playlist} UnProven
+230. playlist_basic.c:114 {load_playlist} UnProven
   *(data) @load_playlist-4998:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-4997:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-228. playlist_basic.c:131 {load_playlist} UnProven
+231. playlist_basic.c:131 {load_playlist} UnProven
   *(data) @load_playlist-5006:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-5005:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-229. playlist_basic.c:134 {load_playlist} UnProven
+232. playlist_basic.c:134 {load_playlist} UnProven
   *(data) @load_playlist-5037:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-230. playlist_basic.c:137 {load_playlist} UnProven
+233. playlist_basic.c:137 {load_playlist} UnProven
   *(data) @load_playlist-5038:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-231. playlist_basic.c:137 {load_playlist} UnProven
+234. playlist_basic.c:137 {load_playlist} UnProven
   *(data) @load_playlist-5039:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-5039:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-232. playlist_basic.c:137 {load_playlist} UnProven
+235. playlist_basic.c:137 {load_playlist} UnProven
   *(*data.pl+__cil_tmp20) @load_playlist-5040:  offset: [0, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
   *(data) @load_playlist-5040:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-233. playlist_basic.c:140 {load_playlist} UnProven
+236. playlist_basic.c:140 {load_playlist} UnProven
   *(data) @load_playlist-5008:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-5007:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-234. playlist_basic.c:142 {load_playlist} UnProven
+237. playlist_basic.c:142 {load_playlist} UnProven
   *(@ices_config) @load_playlist-5049:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @load_playlist-5049:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @load_playlist-5049:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
@@ -6223,10 +6230,10 @@
   *(data) @load_playlist-5049:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(data) @load_playlist-5049:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
   *(data) @load_playlist-5049:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-235. playlist_basic.c:147 {load_playlist} UnProven
+238. playlist_basic.c:147 {load_playlist} UnProven
   *(data) @load_playlist-5010:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-5009:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-236. playlist_basic.c:148 {load_playlist} UnProven
+239. playlist_basic.c:148 {load_playlist} UnProven
   *(data) @load_playlist-5042:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(data) @load_playlist-5042:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(data) @load_playlist-5042:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
@@ -6235,20 +6242,20 @@
   *(data) @load_playlist-5042:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
   *(data) @load_playlist-5042:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(data) @load_playlist-5042:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-237. playlist_basic.c:158 {playlist_basic_clear} UnProven
+240. playlist_basic.c:158 {playlist_basic_clear} UnProven
   *(pl) @playlist_basic_clear-5073:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_clear-5072:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-238. playlist_basic.c:161 {playlist_basic_clear} UnProven
+241. playlist_basic.c:161 {playlist_basic_clear} UnProven
   *(pl) @playlist_basic_clear-5075:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_clear-5074:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-239. playlist_basic.c:162 {playlist_basic_clear} UnProven
+242. playlist_basic.c:162 {playlist_basic_clear} UnProven
   *(*pl.pl+i) @playlist_basic_clear-5078:  offset: [0, +oo], size: [100, +oo] UnProven, allocsite: load_playlist-5043
   *(pl) @playlist_basic_clear-5078:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-240. playlist_basic.c:163 {playlist_basic_clear} UnProven
+243. playlist_basic.c:163 {playlist_basic_clear} UnProven
   *(pl) @playlist_basic_clear-5080:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-241. playlist_basic.c:176 {playlist_basic_get_next_filename} UnProven
+244. playlist_basic.c:176 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5112:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-242. playlist_basic.c:178 {playlist_basic_get_next_filename} UnProven
+245. playlist_basic.c:178 {playlist_basic_get_next_filename} UnProven
   *(@ices_config) @playlist_basic_get_next_filename-5130:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_basic_get_next_filename-5130:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_basic_get_next_filename-5130:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
@@ -6256,13 +6263,13 @@
   *(pl) @playlist_basic_get_next_filename-5130:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(pl) @playlist_basic_get_next_filename-5130:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
   *(pl) @playlist_basic_get_next_filename-5130:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-243. playlist_basic.c:182 {playlist_basic_get_next_filename} UnProven
+246. playlist_basic.c:182 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5094:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5093:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-244. playlist_basic.c:184 {playlist_basic_get_next_filename} UnProven
+247. playlist_basic.c:184 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5096:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5095:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-245. playlist_basic.c:187 {playlist_basic_get_next_filename} UnProven
+248. playlist_basic.c:187 {playlist_basic_get_next_filename} UnProven
   *(@ices_config) @playlist_basic_get_next_filename-5135:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_basic_get_next_filename-5135:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_basic_get_next_filename-5135:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
@@ -6270,9 +6277,9 @@
   *(pl) @playlist_basic_get_next_filename-5135:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(pl) @playlist_basic_get_next_filename-5135:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
   *(pl) @playlist_basic_get_next_filename-5135:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-246. playlist_basic.c:188 {playlist_basic_get_next_filename} UnProven
+249. playlist_basic.c:188 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5118:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-247. playlist_basic.c:193 {playlist_basic_get_next_filename} UnProven
+250. playlist_basic.c:193 {playlist_basic_get_next_filename} UnProven
   *(@ices_config) @playlist_basic_get_next_filename-5140:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_basic_get_next_filename-5140:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_basic_get_next_filename-5140:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
@@ -6280,27 +6287,27 @@
   *(pl) @playlist_basic_get_next_filename-5140:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(pl) @playlist_basic_get_next_filename-5140:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
   *(pl) @playlist_basic_get_next_filename-5140:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-248. playlist_basic.c:195 {playlist_basic_get_next_filename} UnProven
+251. playlist_basic.c:195 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5121:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-249. playlist_basic.c:202 {playlist_basic_get_next_filename} UnProven
+252. playlist_basic.c:202 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5102:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5101:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-250. playlist_basic.c:203 {playlist_basic_get_next_filename} UnProven
+253. playlist_basic.c:203 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5123:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-251. playlist_basic.c:206 {playlist_basic_get_next_filename} UnProven
+254. playlist_basic.c:206 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5104:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5104:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5103:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5103:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-252. playlist_basic.c:208 {playlist_basic_get_next_filename} UnProven
+255. playlist_basic.c:208 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5106:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5105:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-253. playlist_basic.c:211 {playlist_basic_get_next_filename} UnProven
+256. playlist_basic.c:211 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5124:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-254. playlist_basic.c:212 {playlist_basic_get_next_filename} UnProven
+257. playlist_basic.c:212 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5108:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5107:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-255. playlist_basic.c:213 {playlist_basic_get_next_filename} UnProven
+258. playlist_basic.c:213 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5125:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(pl) @playlist_basic_get_next_filename-5125:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(pl) @playlist_basic_get_next_filename-5125:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
@@ -6309,83 +6316,83 @@
   *(pl) @playlist_basic_get_next_filename-5125:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
   *(pl) @playlist_basic_get_next_filename-5125:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5125:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-256. playlist_basic.c:216 {playlist_basic_get_next_filename} UnProven
+259. playlist_basic.c:216 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5126:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-257. playlist_basic.c:216 {playlist_basic_get_next_filename} UnProven
+260. playlist_basic.c:216 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5127:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
   *(pl) @playlist_basic_get_next_filename-5127:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-258. playlist_basic.c:216 {playlist_basic_get_next_filename} UnProven
+261. playlist_basic.c:216 {playlist_basic_get_next_filename} UnProven
   *(pl) @playlist_basic_get_next_filename-5128:  offset: [0, 0], size: [0, 0] UnProven, allocsite: playlist_script_initialise-4309
-259. playlist_basic.c:264 {playlist_basic_initialise} UnProven
+262. playlist_basic.c:264 {playlist_basic_initialise} UnProven
   *(@ices_config) @playlist_basic_initialise-5211:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_basic_initialise-5211:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_basic_initialise-5211:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-260. playlist_basic.c:272 {playlist_basic_initialise} UnProven
+263. playlist_basic.c:272 {playlist_basic_initialise} UnProven
   *(@ices_config) @playlist_basic_initialise-5216:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_basic_initialise-5216:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_basic_initialise-5216:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-261. playlist_basic.c:279 {playlist_basic_initialise} UnProven
+264. playlist_basic.c:279 {playlist_basic_initialise} UnProven
   *(@ices_config) @playlist_basic_initialise-5221:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_basic_initialise-5221:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_basic_initialise-5221:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-262. playlist_script.c:53 {playlist_script_get_filename} UnProven
+265. playlist_script.c:53 {playlist_script_get_filename} UnProven
   *(@ices_config) @playlist_script_get_filename-4202:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_script_get_filename-4202:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_script_get_filename-4202:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-263. playlist_script.c:58 {playlist_script_get_filename} UnProven
+266. playlist_script.c:58 {playlist_script_get_filename} UnProven
   *(@ices_config) @playlist_script_get_filename-4207:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_script_get_filename-4207:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_script_get_filename-4207:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-264. playlist_script.c:67 {playlist_script_get_filename} UnProven
+267. playlist_script.c:67 {playlist_script_get_filename} UnProven
   *(@ices_config) @playlist_script_get_filename-4212:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_script_get_filename-4212:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_script_get_filename-4212:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-265. playlist_script.c:67 {playlist_script_get_filename} UnProven
+268. playlist_script.c:67 {playlist_script_get_filename} UnProven
   *(@ices_config) @playlist_script_get_filename-4217:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_script_get_filename-4217:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_script_get_filename-4217:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-266. playlist_script.c:72 {playlist_script_get_filename} UnProven
+269. playlist_script.c:72 {playlist_script_get_filename} UnProven
   *(buf+(__cil_tmp9-1UL)) @playlist_script_get_filename-4172:  offset: [-1, 1023], size: [1024, 1024] UnProven, allocsite: playlist_script_get_filename-4201
   *(buf+(__cil_tmp9-1UL)) @playlist_script_get_filename-4171:  offset: [-1, 1023], size: [1024, 1024] UnProven, allocsite: playlist_script_get_filename-4201
-267. playlist_script.c:73 {playlist_script_get_filename} UnProven
+270. playlist_script.c:73 {playlist_script_get_filename} UnProven
   *(buf+(__cil_tmp10-1UL)) @playlist_script_get_filename-4194:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(buf+(__cil_tmp10-1UL)) @playlist_script_get_filename-4194:  offset: [-1, 1023], size: [1024, 1024] UnProven, allocsite: playlist_script_get_filename-4201
-268. playlist_script.c:75 {playlist_script_get_filename} UnProven
+271. playlist_script.c:75 {playlist_script_get_filename} UnProven
   *(@ices_config) @playlist_script_get_filename-4222:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_script_get_filename-4222:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_script_get_filename-4222:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-269. playlist_script.c:78 {playlist_script_get_filename} UnProven
+272. playlist_script.c:78 {playlist_script_get_filename} UnProven
   *(buf+(__cil_tmp12-1UL)) @playlist_script_get_filename-4176:  offset: [-1, 1023], size: [1024, 1024] UnProven, allocsite: playlist_script_get_filename-4201
   *(buf+(__cil_tmp12-1UL)) @playlist_script_get_filename-4175:  offset: [-1, 1023], size: [1024, 1024] UnProven, allocsite: playlist_script_get_filename-4201
-270. playlist_script.c:79 {playlist_script_get_filename} UnProven
+273. playlist_script.c:79 {playlist_script_get_filename} UnProven
   *(buf+(__cil_tmp13-1UL)) @playlist_script_get_filename-4199:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(buf+(__cil_tmp13-1UL)) @playlist_script_get_filename-4199:  offset: [-1, 1023], size: [1024, 1024] UnProven, allocsite: playlist_script_get_filename-4201
-271. playlist_script.c:81 {playlist_script_get_filename} UnProven
+274. playlist_script.c:81 {playlist_script_get_filename} UnProven
   *(@ices_config) @playlist_script_get_filename-4227:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_script_get_filename-4227:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_script_get_filename-4227:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-272. playlist_script.c:103 {playlist_script_file_ended} UnProven
+275. playlist_script.c:103 {playlist_script_file_ended} UnProven
   *(@ices_config) @playlist_script_file_ended-4263:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_script_file_ended-4263:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_script_file_ended-4263:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
   *(pl) @playlist_script_file_ended-4263:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(pl) @playlist_script_file_ended-4263:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(pl) @playlist_script_file_ended-4263:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-273. playlist_script.c:141 {playlist_script_initialise} UnProven
+276. playlist_script.c:141 {playlist_script_initialise} UnProven
   *(@ices_config) @playlist_script_initialise-4310:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_script_initialise-4310:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_script_initialise-4310:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-274. playlist_script.c:147 {playlist_script_initialise} UnProven
+277. playlist_script.c:147 {playlist_script_initialise} UnProven
   *(@ices_config) @playlist_script_initialise-4315:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @playlist_script_initialise-4315:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @playlist_script_initialise-4315:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
-275. signals.c:39 {signal_usr1_handler} UnProven
+278. signals.c:39 {signal_usr1_handler} UnProven
   *(@ices_config) @signal_usr1_handler-6092:  source = oss_read-3417 @ im_oss.c:131 UnProven
   *(@ices_config) @signal_usr1_handler-6092:  source = playlist_script_get_filename-4183 @ playlist_script.c:57 UnProven
   *(@ices_config) @signal_usr1_handler-6092:  source = stdin_read-4838 @ im_stdinpcm.c:121 UnProven
 
-#queries                 : 7952
-#queries mod alarm point : 1152
-#proven                  : 877
-#unproven                : 275
+#queries                 : 7981
+#queries mod alarm point : 1168
+#proven                  : 890
+#unproven                : 278
 #bot-involved            : 169

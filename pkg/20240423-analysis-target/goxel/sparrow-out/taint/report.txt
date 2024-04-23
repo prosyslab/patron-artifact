@@ -2,9 +2,10 @@
 1. main.c:149 {parse_options} UnProven
   *(argv+@optind) @parse_options-14856:  source = main-14989 @ main.c:258 UnProven
 2. main.c:172 {loop_function} UnProven
+  (@g_scale*((float )fb_size[0]))/((float )win_size[0]) @loop_function-14880:  source = main-14989 @ main.c:258 UnProven
   @g_scale*((float )fb_size[0]) @loop_function-14880:  source = main-14989 @ main.c:258 UnProven
 
-#queries                 : 2
+#queries                 : 3
 #queries mod alarm point : 2
 #proven                  : 0
 #unproven                : 2

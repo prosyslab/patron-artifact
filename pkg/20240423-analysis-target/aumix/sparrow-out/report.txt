@@ -87,34 +87,46 @@
 32. curses.c:497 {Inter} UnProven
   *(@key_undo) @Inter-3727:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1451
   *(@key_undo) @Inter-3726:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1451
-33. gtk.c:235 {InitScreenGTK} UnProven
+33. curses.c:544 {DrawLevelCurses} UnProven
+  left/@level_increment @DrawLevelCurses-3944:  Divide by [0, 16] UnProven
+34. curses.c:545 {DrawLevelCurses} UnProven
+  right/@level_increment @DrawLevelCurses-3948:  Divide by [0, 16] UnProven
+35. curses.c:548 {DrawLevelCurses} UnProven
+  (left+right)/@level_increment @DrawLevelCurses-3956:  Divide by [0, 16] UnProven
+36. curses.c:579 {RedrawBalanceCurses} UnProven
+  (50*right)/max @RedrawBalanceCurses-4030:  Divide by [-oo, +oo] UnProven
+37. curses.c:579 {RedrawBalanceCurses} UnProven
+  (50*left)/max @RedrawBalanceCurses-4031:  Divide by [-oo, +oo] UnProven
+38. curses.c:584 {RedrawBalanceCurses} UnProven
+  balset/@balance_increment @RedrawBalanceCurses-4038:  Divide by [0, 16] UnProven
+39. gtk.c:235 {InitScreenGTK} UnProven
   *(__cil_tmp54) @InitScreenGTK-2060:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: InitScreenGTK-2059
-34. gtk.c:261 {InitScreenGTK} UnProven
+40. gtk.c:261 {InitScreenGTK} UnProven
   *(__cil_tmp79) @InitScreenGTK-2105:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: InitScreenGTK-2104
-35. gtk.c:262 {InitScreenGTK} UnProven
+41. gtk.c:262 {InitScreenGTK} UnProven
   *(__cil_tmp80) @InitScreenGTK-2107:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: InitScreenGTK-2106
-36. gtk.c:263 {InitScreenGTK} UnProven
+42. gtk.c:263 {InitScreenGTK} UnProven
   *(__cil_tmp81) @InitScreenGTK-2109:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: InitScreenGTK-2108
-37. gtk.c:264 {InitScreenGTK} UnProven
+43. gtk.c:264 {InitScreenGTK} UnProven
   *(__cil_tmp82) @InitScreenGTK-2111:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: InitScreenGTK-2110
-38. gtk.c:334 {InitScreenGTK} UnProven
+44. gtk.c:334 {InitScreenGTK} UnProven
   *(window) @InitScreenGTK-2235:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_window_new
   *(style) @InitScreenGTK-2235:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_widget_get_style
-39. gtk.c:335 {InitScreenGTK} UnProven
+45. gtk.c:335 {InitScreenGTK} UnProven
   *(window) @InitScreenGTK-2236:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_window_new
   *(style) @InitScreenGTK-2236:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_widget_get_style
-40. gtk.c:392 {InitScreenGTK} UnProven
+46. gtk.c:392 {InitScreenGTK} UnProven
   *(window) @InitScreenGTK-2359:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_window_new
   *(style) @InitScreenGTK-2359:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_widget_get_style
-41. gtk.c:393 {InitScreenGTK} UnProven
+47. gtk.c:393 {InitScreenGTK} UnProven
   *(window) @InitScreenGTK-2360:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_window_new
-42. interactive.c:241 {UnmuteOne} UnProven
+48. interactive.c:241 {UnmuteOne} UnProven
   @mutelevel[dev] @UnmuteOne-1253:  offset: [-1, +oo], size: [25, 25] UnProven, allocsite: _G_-4871
-43. interactive.c:370 {SwitchRecordPlay} UnProven
+49. interactive.c:370 {SwitchRecordPlay} UnProven
   @our_recplay[dev] @SwitchRecordPlay-1411:  offset: [0, +oo], size: [25, 25] UnProven, allocsite: _G_-4898
 
-#queries                 : 240
-#queries mod alarm point : 166
-#proven                  : 123
-#unproven                : 43
+#queries                 : 270
+#queries mod alarm point : 188
+#proven                  : 139
+#unproven                : 49
 #bot-involved            : 9

@@ -1,4 +1,5 @@
 md5.c:272	(c___0+((d^a)^b))+X[7]	Alarm-371
+thumbnail.c:308	(@opt.thumb_h-hhh)/2	Alarm-486
 winwidget.c:1089	((double )*winwid.h)-(((double )*winwid.im_h)**winwid.zoom)	Alarm-455
 slideshow.c:623	*(win)	Alarm-146
 options.c:120	*(argv___0+0)	Alarm-8
@@ -11,6 +12,7 @@ menu.c:1328	*(m___27)	Alarm-83
 main.c:145	t1-@pt	Alarm-200
 imlib.c:374	*(file___19)	Alarm-41
 wallpaper.c:429	*(@xinerama_screens+i)	Alarm-123
+winwidget.c:526	((double )dh)/*winwid.zoom	Alarm-493
 md5.c:183	((int )*(xp+2))<<16	Alarm-290
 list.c:84	*(l___17)	Alarm-143
 menu.c:1288	*(m___27)	Alarm-74
@@ -21,6 +23,7 @@ md5.c:298	(c___0+(a^(d|(~b))))+X[10]	Alarm-403
 md5.c:292	((a+(c___0^(b|(~d))))+X[0])+4096336452U	Alarm-392
 index.c:242	x___16+max_column_w	Alarm-230
 menu.c:1276	*(*m___27.fehwin)	Alarm-70
+thumbnail.c:242	(((double )ww)/((double )hh))/(((double )www)/((double )hhh))	Alarm-483
 md5.c:216	(c___0+((d&a)|((~d)&b)))+X[2]	Alarm-299
 winwidget.c:1073	((double )*winwid.im_w)**winwid.zoom	Alarm-425
 md5.c:251	(b+((c___0&a)|(d&(~a))))+X[8]	Alarm-349
@@ -49,6 +52,7 @@ md5.c:246	((c___0+((d&b)|(a&(~b))))+X[15])+3634488961U	Alarm-340
 md5.c:300	(a+(c___0^(b|(~d))))+X[8]	Alarm-407
 thumbnail.c:157	index_image_width*index_image_height	Alarm-285
 winwidget.c:777	*(@windows+i)	Alarm-160
+thumbnail.c:153	((index_image_width*index_image_height)*4)/1048576	Alarm-488
 winwidget.c:477	((double )*winwid.im_h)**winwid.zoom	Alarm-443
 md5.c:294	((c___0+(a^(d|(~b))))+X[14])+2878612391U	Alarm-396
 index.c:385	*(tot_thumb_h___0)	Alarm-132
@@ -64,6 +68,7 @@ md5.c:272	((c___0+((d^a)^b))+X[7])+4139469664U	Alarm-372
 thumbnail.c:247	((double )@opt.thumb_w)*ratio	Alarm-259
 timers.c:44	*(ft)	Alarm-37
 options.c:912	*(endptr)	Alarm-2
+keyevents.c:611	((double )((*winwid___11.w/2)-*winwid___11.im_x))/*winwid___11.old_zoom	Alarm-466
 thumbnail.c:332	@td.text_area_w-fw	Alarm-272
 menu.c:1236	*(m___27)	Alarm-53
 index.c:274	@opt.thumb_w*3	Alarm-236
@@ -103,6 +108,7 @@ imlib.c:438	*(file___19)	Alarm-42
 md5.c:247	(b+((c___0&a)|(d&(~a))))+X[4]	Alarm-341
 menu.c:1199	*(m___26)	Alarm-84
 imlib.c:1461	*w___34.w-tw___31	Alarm-169
+keyevents.c:627	((double )((*winwid___11.h/2)-*winwid___11.im_y))/*winwid___11.old_zoom	Alarm-472
 menu.c:1269	*(m___27)	Alarm-64
 menu.c:1242	*(m___27)	Alarm-57
 thumbnail.c:153	index_image_width*index_image_height	Alarm-281
@@ -113,6 +119,8 @@ md5.c:279	(d+((a^b)^c___0))+X[12]	Alarm-385
 menu.c:1272	*(*m___27.fehwin)	Alarm-66
 md5.c:251	((b+((c___0&a)|(d&(~a))))+X[8])+1163531501U	Alarm-350
 index.c:179	*(l___18)	Alarm-135
+index.c:261	(@opt.thumb_h-hhh___0)/2	Alarm-478
+index.c:152	((index_image_width___0*index_image_height___0)*4)/1048576	Alarm-479
 md5.c:248	(a+((b&d)|(c___0&(~d))))+X[9]	Alarm-343
 md5.c:247	((b+((c___0&a)|(d&(~a))))+X[4])+3889429448U	Alarm-342
 thumbnail.c:308	@opt.thumb_h-hhh	Alarm-266
@@ -121,10 +129,13 @@ md5.c:303	(b+(d^(c___0|(~a))))+X[13]	Alarm-413
 keyevents.c:606	*winwid___11.zoom*1.25	Alarm-184
 keyevents.c:563	*(*winwid___11.file)	Alarm-29
 thumbnail.c:332	x___3+((@td.text_area_w-fw)>>1)	Alarm-274
+thumbnail.c:157	((index_image_width*index_image_height)*4)/1048576	Alarm-489
 md5.c:267	(d+((a^b)^c___0))+X[8]	Alarm-361
 md5.c:275	((d+((a^b)^c___0))+X[0])+3936430074U	Alarm-378
 md5.c:215	((d+((a&b)|((~a)&c___0)))+X[1])+3905402710U	Alarm-298
+thumbnail.c:153	((index_image_width*index_image_height)*4)/1048576	Alarm-487
 md5.c:255	(b+((c___0&a)|(d&(~a))))+X[12]	Alarm-357
+keyevents.c:625	*winwid___11.w/2	Alarm-469
 index.c:257	x___16+((text_area_w-www___0)/2)	Alarm-233
 index.c:280	y___16+@opt.thumb_h	Alarm-237
 md5.c:228	(c___0+((d&a)|((~d)&b)))+X[14]	Alarm-323
@@ -140,6 +151,7 @@ winwidget.c:567	*(*winwid.file)	Alarm-159
 utils.c:221	*(input+in)	Alarm-144
 menu.c:1416	*(mm___1)	Alarm-88
 index.c:383	x___17+text_area_w___0	Alarm-217
+winwidget.c:525	((double )dw)/*winwid.zoom	Alarm-492
 menu.c:1242	*(*m___27.fehwin)	Alarm-58
 thumbnail.c:375	index_image_width-fw___7	Alarm-277
 md5.c:223	(d+((a&b)|((~a)&c___0)))+X[9]	Alarm-313
@@ -148,12 +160,15 @@ wallpaper.c:465	*(@cmdargv+0)	Alarm-126
 imlib.c:1262	*(w___33)	Alarm-12
 thumbnail.c:147	@td.h+title_area_h	Alarm-256
 wallpaper.c:364	*(@scr)	Alarm-113
+winwidget.c:606	1./ratio	Alarm-460
 thumbnail.c:153	index_image_width*index_image_height	Alarm-283
+index.c:200	((double )www___0)/((double )hhh___0)	Alarm-474
 md5.c:224	((c___0+((d&a)|((~d)&b)))+X[10])+4294925233U	Alarm-316
 md5.c:183	*(xp+0)	Alarm-142
 index.c:407	*(tot_thumb_h___1)	Alarm-133
 thumbnail.c:289	x___3+@td.max_column_w	Alarm-262
 menu.c:1294	*(m___27)	Alarm-75
+winwidget.c:609	((double )dest_w)/((double )orig_w)	Alarm-461
 timers.c:156	*(*ft___2.next).in-*ft___2.in	Alarm-165
 imlib.c:1002	*w___29.zoom*((double )100)	Alarm-174
 md5.c:220	(c___0+((d&a)|((~d)&b)))+X[6]	Alarm-307
@@ -169,7 +184,10 @@ index.c:170	h___15+title_area_h___0	Alarm-227
 slideshow.c:640	*(win)	Alarm-148
 thumbnail.c:332	((y___3+@opt.thumb_h)+(__cil_tmp62*(th+2)))+2	Alarm-271
 winwidget.c:1009	*(p_str)	Alarm-154
+thumbnail.c:304	(@td.text_area_w-www)/2	Alarm-485
+winwidget.c:603	(((double )orig_w)/((double )orig_h))/(((double )dest_w)/((double )dest_h))	Alarm-459
 keyevents.c:434	*(winwid___11)	Alarm-18
+winwidget.c:508	((double )*winwid.im_y)/*winwid.zoom	Alarm-491
 thumbnail.c:332	(@td.text_area_w-fw)>>1	Alarm-273
 md5.c:304	((a+(c___0^(b|(~d))))+X[4])+4149444226U	Alarm-416
 md5.c:245	(d+((a&c___0)|(b&(~c___0))))+X[10]	Alarm-337
@@ -181,11 +199,14 @@ keyevents.c:785	@opt.reload+((double )1)	Alarm-198
 md5.c:277	(b+((c___0^d)^a))+X[6]	Alarm-381
 wallpaper.c:429	*(@xinerama_screens+i)	Alarm-122
 timers.c:108	*(*ft___1.next).in+*ft___1.in	Alarm-206
+keyevents.c:625	((double )((*winwid___11.w/2)-*winwid___11.im_x))/*winwid___11.old_zoom	Alarm-470
 md5.c:183	*(xp+3)	Alarm-139
+keyevents.c:627	*winwid___11.h/2	Alarm-471
 winwidget.c:1088	((double )*winwid.im_w)**winwid.zoom	Alarm-452
 md5.c:183	((int )*(xp+0))+(((int )*(xp+1))<<8)	Alarm-292
 keyevents.c:611	(((double )((*winwid___11.w/2)-*winwid___11.im_x))/*winwid___11.old_zoom)**winwid___11.zoom	Alarm-186
 md5.c:246	(c___0+((d&b)|(a&(~b))))+X[15]	Alarm-339
+keyevents.c:613	((double )((*winwid___11.h/2)-*winwid___11.im_y))/*winwid___11.old_zoom	Alarm-468
 keyevents.c:285	*(winwid___9)	Alarm-32
 md5.c:183	((int )*(xp+1))<<8	Alarm-291
 slideshow.c:549	*(c)	Alarm-98
@@ -210,6 +231,7 @@ thumbnail.c:175	@td.h+title_area_h	Alarm-258
 keyevents.c:504	*winwid___11.im_y-@opt.scroll_step	Alarm-178
 wallpaper.c:364	*(@scr)	Alarm-112
 keyevents.c:514	*winwid___11.im_x-*winwid___11.w	Alarm-180
+winwidget.c:611	((double )dest_h)/((double )orig_h)	Alarm-462
 md5.c:219	(d+((a&b)|((~a)&c___0)))+X[5]	Alarm-305
 menu.c:1229	*(m___27)	Alarm-49
 thumbnail.c:127	@opt.thumb_h+@td.text_area_h	Alarm-255
@@ -266,6 +288,7 @@ options.c:479	@opt.slideshow_delay*((double )-1)	Alarm-204
 md5.c:294	(c___0+(a^(d|(~b))))+X[14]	Alarm-395
 index.c:257	text_area_w-www___0	Alarm-232
 md5.c:241	((d+((a&c___0)|(b&(~c___0))))+X[6])+3225465664U	Alarm-330
+winwidget.c:603	((double )dest_w)/((double )dest_h)	Alarm-458
 md5.c:280	((c___0+((d^a)^b))+X[15])+530742520U	Alarm-388
 winwidget.c:215	*(ret)	Alarm-151
 index.c:422	*(tot_thumb_h___1)	Alarm-134
@@ -287,6 +310,7 @@ menu.c:316	*(i___23)	Alarm-91
 menu.c:1225	*(*m___27.fehwin)	Alarm-48
 winwidget.c:465	((double )(-@opt.offset_x))**winwid.zoom	Alarm-435
 md5.c:266	(a+((b^c___0)^d))+X[5]	Alarm-359
+thumbnail.c:242	((double )www)/((double )hhh)	Alarm-482
 winwidget.c:138	*(ret)	Alarm-149
 winwidget.c:472	((double )*winwid.im_h)**winwid.zoom	Alarm-439
 wallpaper.c:379	*(@xinerama_screens+i)	Alarm-114
@@ -308,10 +332,12 @@ thumbnail.c:924	*(p___1)	Alarm-107
 winwidget.c:477	((double )*winwid.h)-(((double )*winwid.im_h)**winwid.zoom)	Alarm-444
 keyevents.c:791	@opt.reload-((double )1)	Alarm-199
 index.c:205	((double )@opt.thumb_w)*ratio___1	Alarm-228
+winwidget.c:503	((double )*winwid.im_x)/*winwid.zoom	Alarm-490
 thumbnail.c:209	*(l)	Alarm-137
 winwidget.c:902	((double )*winwid.im_h)*required_zoom	Alarm-451
 options.c:882	*(filename_start)	Alarm-97
 menu.c:1239	*(*m___27.fehwin)	Alarm-56
+thumbnail.c:699	((double )@td.cache_dim)/ratio___0	Alarm-473
 winwidget.c:797	*(winwid)	Alarm-152
 md5.c:307	((b+(d^(c___0|(~a))))+X[9])+3951481745U	Alarm-422
 md5.c:183	((((int )*(xp+0))+(((int )*(xp+1))<<8))+(((int )*(xp+2))<<16))+(((int )*(xp+3))<<24)	Alarm-294
@@ -345,6 +371,7 @@ keyevents.c:524	*winwid___11.im_y-*winwid___11.h	Alarm-182
 wallpaper.c:437	*(@scr)	Alarm-124
 keyevents.c:611	((double )(*winwid___11.w/2))-((((double )((*winwid___11.w/2)-*winwid___11.im_x))/*winwid___11.old_zoom)**winwid___11.zoom)	Alarm-187
 thumbnail.c:376	(index_image_height-fh___8)-2	Alarm-280
+keyevents.c:611	*winwid___11.w/2	Alarm-465
 menu.c:1272	*(*(*m___27.fehwin).file)	Alarm-67
 md5.c:269	((b+((c___0^d)^a))+X[14])+4259657740U	Alarm-366
 wallpaper.c:415	*(@scr)	Alarm-121
@@ -360,12 +387,14 @@ md5.c:240	((a+((b&d)|(c___0&(~d))))+X[1])+4129170786U	Alarm-328
 timers.c:146	tally+*ptr___3.in	Alarm-162
 index.c:147	h___15+title_area_h___0	Alarm-225
 index.c:152	index_image_width___0*index_image_height___0	Alarm-251
+thumbnail.c:245	((double )@opt.thumb_h)/ratio	Alarm-484
 winwidget.c:468	((double )*winwid.im_w)**winwid.zoom	Alarm-436
 md5.c:229	((b+((c___0&d)|((~c___0)&a)))+X[15])+1236535329U	Alarm-326
 md5.c:216	((c___0+((d&a)|((~d)&b)))+X[2])+606105819U	Alarm-300
 md5.c:245	((d+((a&c___0)|(b&(~c___0))))+X[10])+38016083U	Alarm-338
 md5.c:218	(a+((b&c___0)|((~b)&d)))+X[4]	Alarm-303
 md5.c:277	((b+((c___0^d)^a))+X[6])+76029189U	Alarm-382
+index.c:152	((index_image_width___0*index_image_height___0)*4)/1048576	Alarm-480
 winwidget.c:452	0.0100000000001*((double )@opt.default_zoom)	Alarm-431
 md5.c:248	((a+((b&d)|(c___0&(~d))))+X[9])+568446438U	Alarm-344
 md5.c:242	((c___0+((d&b)|(a&(~b))))+X[11])+643717713U	Alarm-332
@@ -376,7 +405,9 @@ thumbnail.c:517	*(thumb___3)	Alarm-102
 md5.c:267	((d+((a^b)^c___0))+X[8])+2272392833U	Alarm-362
 winwidget.c:830	*(winwid)	Alarm-161
 md5.c:222	(a+((b&c___0)|((~b)&d)))+X[8]	Alarm-311
+imlib.c:1446	(tw___31-ww___1)/2	Alarm-463
 options.c:590	255-__cil_tmp35___2	Alarm-205
+keyevents.c:613	*winwid___11.h/2	Alarm-467
 imlib.c:1073	*w___31.h-th___30	Alarm-170
 imlib.c:694	*(tmpname___3+248)	Alarm-43
 winwidget.c:1119	((double )*winwid.im_w)**winwid.zoom	Alarm-457
@@ -400,7 +431,10 @@ keyevents.c:440	*(winwid___11)	Alarm-20
 wallpaper.c:407	*(@xinerama_screens+i)	Alarm-119
 winwidget.c:472	(((double )*winwid.h)-(((double )*winwid.im_h)**winwid.zoom))-((double )@opt.offset_y)	Alarm-441
 wallpaper.c:356	*(@xinerama_screens+i)	Alarm-111
+index.c:203	((double )@opt.thumb_h)/ratio___1	Alarm-476
+index.c:200	(((double )ww___0)/((double )hh___0))/(((double )www___0)/((double )hhh___0))	Alarm-475
 md5.c:295	(b+(d^(c___0|(~a))))+X[5]	Alarm-397
+index.c:156	((index_image_width___0*index_image_height___0)*4)/1048576	Alarm-481
 md5.c:244	((a+((b&d)|(c___0&(~d))))+X[5])+3593408605U	Alarm-336
 winwidget.c:999	*(winwid)	Alarm-153
 keyevents.c:613	(*winwid___11.h/2)-*winwid___11.im_y	Alarm-188
@@ -428,6 +462,7 @@ md5.c:278	((a+((b^c___0)^d))+X[9])+3654602809U	Alarm-384
 wallpaper.c:356	*(@xinerama_screens+i)	Alarm-110
 menu.c:1322	*(m___27)	Alarm-81
 thumbnail.c:304	x___3+((@td.text_area_w-www)/2)	Alarm-265
+index.c:257	(text_area_w-www___0)/2	Alarm-477
 md5.c:307	(b+(d^(c___0|(~a))))+X[9]	Alarm-421
 menu.c:1437	*(*m___30.fehwin)	Alarm-90
 index.c:371	*(tot_thumb_h___0)	Alarm-130
@@ -448,6 +483,7 @@ winwidget.c:611	*(zoom)	Alarm-6
 menu.c:1245	*(m___27)	Alarm-59
 winwidget.c:513	((double )*winwid.im_h)**winwid.zoom	Alarm-447
 gib_imlib.c:340	x___24-min_x	Alarm-210
+imlib.c:1461	(*w___34.w-tw___31)/2	Alarm-464
 md5.c:242	(c___0+((d&b)|(a&(~b))))+X[11]	Alarm-331
 winwidget.c:1073	(((long )((int )@opt.geom_w))-__cil_tmp6)>>1	Alarm-427
 keyevents.c:770	*(winwid___11)	Alarm-30
