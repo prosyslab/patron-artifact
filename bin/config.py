@@ -9,11 +9,13 @@ configuration = {
     "FILE_PATH": os.path.dirname(os.path.realpath(__file__)),
     "ROOT_PATH": os.path.dirname(os.path.dirname(os.path.realpath(__file__))),
     "OUT_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), ".." ,"out"),
+    "I_FILES_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "pkg", "i_files"),
     "ANALYSIS_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "pkg", "analysis-target"),
     "SPARROW_BIN_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "sparrow", "bin", "sparrow"),
     "BUILD_ONLY": False,
     "CRWAL_ONLY": False,
     "SPARROW_ONLY": False,
+    "COMBINE_ONLY": False,
     "CSV_FOR_STAT": False,
     "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full", "-no_bo"],
     "USER_SPARROW_OPT": [],
@@ -125,9 +127,9 @@ def setup(level):
     logger.logger = __get_logger()
     parser = argparse.ArgumentParser()
     if level == "TOP":
-        # parser.add_argument("-help", "-h", action="store_true", default=False, help="show this help message and exit")
         parser.add_argument("-build", "-b", nargs="*", default=["None"], help="build the given path for category list(s) of package only (default:all)")
         parser.add_argument("-crawl", "-c", action="store_true", default=False, help="crawl the package list from the web only")
+        parser.add_argument("-combine", "-m", nargs="*", default=["None"], help="combine *.i files into .c in the the given directory for packages only (default:all)")
         parser.add_argument("-sparrow", "-s", nargs="*", default=["None"], help="run the sparrow for the given directory(ies) (default:all)")
         parser = parse_sparrow_opt(parser)
         configuration["ARGS"] = parser.parse_args()
@@ -139,12 +141,17 @@ def setup(level):
             configuration["ARGS"].sparrow = ["all"]
         if configuration["ARGS"].sparrow[0] != "None":
             configuration["SPARROW_ONLY"] = True
+        if configuration["ARGS"].combine == []:
+            configuration["ARGS"].combine = ["all"]
+        if configuration["ARGS"].combine[0] != "None":
+            configuration["COMBINE_ONLY"] = True
         if configuration["ARGS"].crawl:
             configuration["CRWAL_ONLY"] = True
-        if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["SPARROW_ONLY"]:
+        if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"]:
             configuration["BUILD_ONLY"] = True
             configuration["CRWAL_ONLY"] = True
             configuration["SPARROW_ONLY"] = True
+            configuration["COMBINE_ONLY"] = True
         if configuration["CSV_FOR_STAT"]:
             configuration["CSV_FOR_STAT"] = True
         if configuration["SPARROW_ONLY"]:
@@ -152,16 +159,25 @@ def setup(level):
             get_sparrow_target_files(configuration["ARGS"].sparrow)
     if level == "SPARROW":
         configuration["SPARROW_ONLY"] = True
-        # parser.add_argument("-help", "-h", action="store_true", default=False, help="show this help message and exit")
         parser.add_argument("-files", "-f", nargs="*", default=["None"], help="run the sparrow for the given file(s) (default:all)")
+        parser.add_argument("-out", "-o", type=str, default=configuration["ANALYSIS_DIR"], help="output directory for the analysis results")
         parser = parse_sparrow_opt(parser)
         configuration["ARGS"] = parser.parse_args()
+        configuration["ANALYSIS_DIR"] = configuration["ARGS"].out
         if configuration["ARGS"].files == ["None"]:
             logger.log(logger.ERROR, "No file is given. Please provide at least one file.")
             sparrow_usage()
             exit(1)
         configuration["SPARROW_TARGET_FILES"] = configuration["ARGS"].files
         check_sparrow_opt(level)
-        
+    if level == "COMBINE":
+        configuration["COMBINE_ONLY"] = True
+        parser.add_argument("file", type=str, default="", help=".txt file containing list of target packages")
+        parser.add_argument("-out", "-o", type=str, default=configuration["ANALYSIS_DIR"], help="output directory for the analysis results")
+        configuration["ARGS"] = parser.parse_args()
+        configuration["ANALYSIS_DIR"] = configuration["ARGS"].out
+        if configuration["ARGS"].file == "":
+            logger.log(logger.ERROR, "No file is given. Please provide a file.")
+            exit(1)
     
     logger.log(logger.INFO, "Configuration: {}".format(configuration))

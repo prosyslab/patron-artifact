@@ -2,6 +2,7 @@
 import build
 import sparrow
 import config
+import combine
 
 def run_full():
     config.setup("TOP")
@@ -17,6 +18,8 @@ def main():
         build.smake()
     if config.configuration["SPARROW_ONLY"]:
         sparrow.sparrow(config.configuration["SPARROW_TARGET_FILES"])
+    if config.configuration["COMBINE_ONLY"]:
+        combine.oss_main()
     # if config.configuration["PATRON_ONLY"]:
     #     patron.run()
     return

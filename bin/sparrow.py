@@ -10,6 +10,8 @@ from logger import log, INFO, ERROR, WARNING
 def run_sparrow(file):
     os.chdir(os.path.dirname(file))
     sparrow_log = open('sparrow_log', 'w')
+    if os.path.exists(os.path.join(os.path.dirname(file), 'sparrow-out')):
+        os.system(f'rm -rf {os.path.join(os.path.dirname(file), "sparrow-out")}')
     cmd = [config.configuration["SPARROW_BIN_PATH"], file] + config.configuration["DEFAULT_SPARROW_OPT"] + config.configuration["USER_SPARROW_OPT"]
     log(INFO, f"Running sparrow with {cmd}")
     return sparrow_log, subprocess.Popen(cmd,
