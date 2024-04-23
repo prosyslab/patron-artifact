@@ -78,9 +78,16 @@ def smake():
             package = package.strip()
             log(INFO, f"Building {package} ...")
             try:
-                status = subprocess.run([os.path.join(PKG_DIR, 'build-deb.sh'), package, str(category)],
-                                    check=True, capture_output=True)
-            except subprocess.CalledProcessError as e:
+                proc = subprocess.Popen([os.path.join(PKG_DIR, 'build-deb.sh'), package, str(category)],
+                                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                proc = proc.communicate(timeout=900)
+            except subprocess.TimeoutExpired:
+                proc.kill()
+                log(ERROR, f"building {package} has timed out")
+                writer.writerow([package, 'X', '-', 'timeout'])
+                tsvfile.flush()
+            except Exception as e:
+                proc.kill()
                 try:
                     log(ERROR, f"building {package} has failed")
                     parsed_errors = e.stderr.decode('utf-8').split('\n')

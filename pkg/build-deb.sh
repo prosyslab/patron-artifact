@@ -57,8 +57,13 @@ make distclean || make clean || echo "No make file to clean"
 dh_auto_configure || error_exit "Error: dh_auto_configure failed" $SCRIPT_DIR $TMP_DIR
 
 # 7. build the package
-$SMAKE_BIN --init
-$SMAKE_BIN -j || error_exit "Error: SMAKE failed" $SCRIPT_DIR $TMP_DIR
+if [ -f "Makefile" ]; then
+  $SMAKE_BIN --init
+  $SMAKE_BIN -j || error_exit "Error: SMAKE failed" $SCRIPT_DIR $TMP_DIR
+elif [ -f "CMakeLists.txt" ]; then
+  /smake/scmake
+fi
+
 
 # 8. install the package
 mv sparrow $OUT_DIR || error_exit "Error: mv sparrow failed" $SCRIPT_DIR $TMP_DIR
