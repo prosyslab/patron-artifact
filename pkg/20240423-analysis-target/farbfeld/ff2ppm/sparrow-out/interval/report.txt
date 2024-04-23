@@ -1,70 +1,7 @@
 = Alarms =
-1. ff2ppm.c:30 {main} UnProven
-  *(argv+0) @main-684:  offset: [0, 1], size: [1, +oo] UnProven, allocsite: __extern__argv
-2. ff2ppm.c:30 {main} UnProven
-  *(*(argv+0)+1) @main-648:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-648:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(*(argv+0)+1) @main-647:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-647:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(argv+0) @main-646:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(argv+0) @main-645:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(argv+0) @main-644:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(argv+0) @main-643:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-3. ff2ppm.c:30 {main} UnProven
-  *(*(argv+0)+1) @main-650:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-650:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(*(argv+0)+1) @main-649:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-649:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-4. ff2ppm.c:30 {main} UnProven
-  *(*(argv+0)+2) @main-652:  offset: [2, 2], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-652:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(*(argv+0)+2) @main-651:  offset: [2, 2], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-651:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-5. ff2ppm.c:30 {main} UnProven
-  *(*(argv+0)+i_) @main-654:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-654:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(*(argv+0)+i_) @main-653:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-653:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-6. ff2ppm.c:31 {main} UnProven
-  *(*(argv+0)+i_) @main-656:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-656:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(*(argv+0)+i_) @main-655:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-655:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-7. ff2ppm.c:32 {main} UnProven
-  *(*(argv+0)+(i_+1)) @main-658:  offset: [2, +oo], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-658:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(*(argv+0)+(i_+1)) @main-657:  offset: [2, +oo], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-657:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-8. ff2ppm.c:32 {main} UnProven
-  *(argv+0) @main-692:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-9. ff2ppm.c:32 {main} UnProven
-  *(argv+1) @main-660:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(argv+1) @main-659:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-10. ff2ppm.c:32 {main} UnProven
-  *(argv+1) @main-694:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-11. ff2ppm.c:38 {main} UnProven
-  *(*(argv+0)+(i_+1)) @main-666:  offset: [2, +oo], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-666:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(*(argv+0)+(i_+1)) @main-665:  offset: [2, +oo], size: [1, +oo] UnProven, allocsite: __extern__arg
-  *(argv+0) @main-665:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-12. ff2ppm.c:61 {main} UnProven
-  *(rowout+(k+l)) @main-728:  offset: [0, +oo], size: [3, 3] UnProven, allocsite: main-736
-13. util.c:26 {verr} UnProven
-  *(fmt+(__cil_tmp4-1UL)) @verr-373:  offset: [5, 28], size: [7, 7] UnProven, allocsite: efread-502
-  *(fmt+(__cil_tmp4-1UL)) @verr-373:  offset: [5, 28], size: [8, 8] UnProven, allocsite: efwrite-516
-  *(fmt+(__cil_tmp4-1UL)) @verr-373:  offset: [5, 28], size: [20, 20] UnProven, allocsite: ff_read_header-415
-  *(fmt+(__cil_tmp4-1UL)) @verr-373:  offset: [5, 28], size: [13, 13] UnProven, allocsite: fshut-483
-  *(fmt+(__cil_tmp4-1UL)) @verr-373:  offset: [5, 28], size: [13, 13] UnProven, allocsite: fshut-486
-  *(fmt+(__cil_tmp4-1UL)) @verr-373:  offset: [5, 28], size: [22, 22] UnProven, allocsite: usage-635
-  *(fmt+(__cil_tmp4-1UL)) @verr-372:  offset: [5, 28], size: [7, 7] UnProven, allocsite: efread-502
-  *(fmt+(__cil_tmp4-1UL)) @verr-372:  offset: [5, 28], size: [8, 8] UnProven, allocsite: efwrite-516
-  *(fmt+(__cil_tmp4-1UL)) @verr-372:  offset: [5, 28], size: [20, 20] UnProven, allocsite: ff_read_header-415
-  *(fmt+(__cil_tmp4-1UL)) @verr-372:  offset: [5, 28], size: [13, 13] UnProven, allocsite: fshut-483
-  *(fmt+(__cil_tmp4-1UL)) @verr-372:  offset: [5, 28], size: [13, 13] UnProven, allocsite: fshut-486
-  *(fmt+(__cil_tmp4-1UL)) @verr-372:  offset: [5, 28], size: [22, 22] UnProven, allocsite: usage-635
 
-#queries                 : 101
-#queries mod alarm point : 28
-#proven                  : 15
-#unproven                : 13
-#bot-involved            : 1
+#queries                 : 7
+#queries mod alarm point : 5
+#proven                  : 5
+#unproven                : 0
+#bot-involved            : 0

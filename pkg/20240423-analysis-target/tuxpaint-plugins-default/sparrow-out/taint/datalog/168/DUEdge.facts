@@ -243,6 +243,7 @@ mainloop-10611	mainloop-9791
 loadbrush_callback-11715	loadbrush_callback-8043
 load_magic_plugins-21519	load_magic_plugins-21522
 load_magic_plugins-21519	load_magic_plugins-21810
+mainloop-10366	mainloop-7319
 mainloop-8369	mainloop-6450
 get_stamp_thumb-12248	do_loadimage-ENTRY
 get_stamp_thumb-12248	get_stamp_thumb-8392
@@ -925,6 +926,7 @@ load_user_fonts-5327	load_user_fonts-5287
 do_open-18499	do_open-13013
 do_new_dialog-22725	do_new_dialog-16626
 do_new_dialog-22725	safe_strncpy-ENTRY
+do_eraser-14314	calc_eraser_size-ENTRY
 draw_fonts-9221	draw_fonts-13261
 draw_fonts-9221	draw_fonts-13262
 setup_colors-26608	setup_colors-26609
@@ -1010,6 +1012,7 @@ do_quit-17801	do_prompt-ENTRY
 do_quit-17801	do_quit-12675
 setup_colors-26799	setup_colors-26800
 set_active_stamp-12009	set_active_stamp-12051
+eraser_draw-14408	calc_eraser_size-ENTRY
 wordwrap_text_ex-14583	wordwrap_text_ex-EXIT
 wordwrap_text_ex-14583	wordwrap_text_ex-10283
 do_prompt_image_flash_snd-16087	do_prompt_image_flash_snd-11328
@@ -1330,6 +1333,7 @@ load_template-11056	load_template-15633
 do_png_embed_data-17223	do_png_embed_data-12324
 receive_some_font_info-5634	receive_some_font_info-3461
 receive_some_font_info-5634	receive_some_font_info-5616
+calc_eraser_size-14282	calc_eraser_size-10019
 thumbnail2-9699	thumbnail2-EXIT
 mainloop-4964	mainloop-4946
 mainloop-9047	handle_keymouse-ENTRY
@@ -2203,6 +2207,7 @@ mainloop-10608	mainloop-6450
 trash-20857	trash-EXIT
 do_quit-17792	do_quit-17806
 do_color_picker-23766	do_color_picker-17276
+calc_eraser_size-14284	calc_eraser_size-10019
 do_new_dialog-22076	do_new_dialog-16100
 mainloop-8267	mainloop-6365
 do_new_dialog-22122	do_new_dialog-22568
@@ -2901,6 +2906,9 @@ mainloop-7985	mainloop-5903
 do_shape-16840	render_brush-ENTRY
 do_new_dialog-22922	do_new_dialog-16507
 do_new_dialog-22922	do_new_dialog-22674
+calc_eraser_size-ENTRY	calc_eraser_size-10019
+calc_eraser_size-ENTRY	calc_eraser_size-14282
+calc_eraser_size-ENTRY	calc_eraser_size-14283
 do_open-18782	do_open-18580
 draw_tux_text_ex-10225	draw_tux_text_ex-10252
 draw_tux_text_ex-10225	draw_tux_text_ex-14478
@@ -3715,7 +3723,9 @@ load_info_about_label_surface-24368	load_info_about_label_surface-24297
 load_info_about_label_surface-24368	load_info_about_label_surface-24299
 load_info_about_label_surface-24368	load_info_about_label_surface-24359
 eraser_draw-10136	eraser_draw-EXIT
+eraser_draw-10136	eraser_draw-14408
 eraser_draw-10136	eraser_draw-14410
+eraser_draw-10136	eraser_draw-14412
 do_new_dialog-22391	do_new_dialog-15877
 do_new_dialog-22391	do_new_dialog-23132
 mainloop-10542	mainloop-6679
@@ -4539,6 +4549,7 @@ mainloop-4946	mainloop-10309
 mainloop-4946	mainloop-10311
 mainloop-4946	mainloop-10315
 mainloop-4946	mainloop-10317
+mainloop-4946	mainloop-10366
 mainloop-4946	mainloop-10392
 mainloop-4946	mainloop-10427
 mainloop-4946	mainloop-10428
@@ -9200,6 +9211,8 @@ simply_render_node-24147	simply_render_node-17525
 simply_render_node-24147	simply_render_node-24162
 mainloop-8145	mainloop-6022
 mainloop-8145	mainloop-6037
+do_eraser-14355	do_eraser-EXIT
+do_eraser-14355	do_eraser-14343
 get_xdg_user_dir-28864	get_xdg_user_dir-21136
 do_render_cur_text-20450	do_render_cur_text-14676
 do_render_cur_text-20450	simply_render_node-ENTRY
@@ -9273,6 +9286,7 @@ load_embedded_data-24961	load_embedded_data-18292
 thumbnail2-13838	thumbnail2-9620
 do_slideshow-19087	do_slideshow-13782
 tmp_apply_uncommited_text-24551	tmp_apply_uncommited_text-17922
+eraser_draw-14412	eraser_draw-EXIT
 do_slideshow-19014	do_slideshow-19017
 do_slideshow-19014	do_slideshow-19018
 do_slideshow-19014	do_slideshow-19359
@@ -10351,8 +10365,10 @@ do_eraser-ENTRY	do_eraser-14286
 do_eraser-ENTRY	do_eraser-14287
 do_eraser-ENTRY	do_eraser-14288
 do_eraser-ENTRY	do_eraser-14289
+do_eraser-ENTRY	do_eraser-14314
 do_eraser-ENTRY	do_eraser-14332
 do_eraser-ENTRY	do_eraser-14343
+do_eraser-ENTRY	do_eraser-14355
 do_new_dialog-22674	do_save-ENTRY
 setup_colors-19686	setup_colors-26615
 setup_colors-19686	setup_colors-26616
@@ -12650,6 +12666,7 @@ mainloop-ENTRY	mainloop-10200
 mainloop-ENTRY	mainloop-10201
 mainloop-ENTRY	mainloop-10212
 mainloop-ENTRY	mainloop-10213
+mainloop-ENTRY	mainloop-10214
 mainloop-ENTRY	mainloop-10221
 mainloop-ENTRY	mainloop-10224
 mainloop-ENTRY	mainloop-10242
@@ -12671,6 +12688,7 @@ mainloop-ENTRY	mainloop-10303
 mainloop-ENTRY	mainloop-10306
 mainloop-ENTRY	mainloop-10309
 mainloop-ENTRY	mainloop-10315
+mainloop-ENTRY	mainloop-10366
 mainloop-ENTRY	mainloop-10392
 mainloop-ENTRY	mainloop-10427
 mainloop-ENTRY	mainloop-10428
@@ -15863,6 +15881,7 @@ do_open-18786	do_open-18580
 do_open-18786	do_open-18589
 do_open-18786	do_open-18592
 do_open-18786	do_open-18730
+calc_eraser_size-14283	calc_eraser_size-14284
 setup_normal_screen_layout-7142	setup_normal_screen_layout-7176
 main-28241	main-28233
 main-28241	main-28234
@@ -16252,6 +16271,9 @@ loadimage-EXIT	setup-27898
 loadimage-EXIT	setup-27899
 loadimage-EXIT	setup-27958
 loadimage-EXIT	setup-27962
+calc_eraser_size-EXIT	do_eraser-14355
+calc_eraser_size-EXIT	eraser_draw-14412
+calc_eraser_size-EXIT	mainloop-10366
 mainloop-10340	mainloop-10266
 mainloop-10340	mainloop-10268
 setup-27799	get_fname-ENTRY
@@ -19985,6 +20007,7 @@ mainloop-10296	mainloop-10294
 tmp_apply_uncommited_text-24490	tmp_apply_uncommited_text-24492
 tmp_apply_uncommited_text-24490	tmp_apply_uncommited_text-24493
 setup_normal_screen_layout-7193	setup_normal_screen_layout-EXIT
+calc_eraser_size-10019	calc_eraser_size-EXIT
 get_stamp_thumb-ENTRY	get_stamp_thumb-EXIT
 get_stamp_thumb-ENTRY	get_stamp_thumb-8330
 get_stamp_thumb-ENTRY	get_stamp_thumb-8336
@@ -20063,6 +20086,8 @@ receive_some_font_info-5575	receive_some_font_info-3461
 do_render_cur_text-20337	do_render_cur_text-14612
 do_render_cur_text-20337	do_render_cur_text-20443
 mainloop-10367	mainloop-7319
+mainloop-10367	mainloop-10214
+mainloop-10367	mainloop-10366
 do_save-17085	do_save-12143
 handle_keymouse_buttons-21058	handle_keymouse_buttons-15142
 handle_keymouse_buttons-21058	handle_keymouse_buttons-21042
@@ -21453,7 +21478,9 @@ eraser_draw-ENTRY	eraser_draw-10136
 eraser_draw-ENTRY	eraser_draw-14389
 eraser_draw-ENTRY	eraser_draw-14393
 eraser_draw-ENTRY	eraser_draw-14400
+eraser_draw-ENTRY	eraser_draw-14408
 eraser_draw-ENTRY	eraser_draw-14410
+eraser_draw-ENTRY	eraser_draw-14412
 in_word_set-2977	in_word_set-2979
 do_render_cur_text-20367	do_render_cur_text-14676
 in_word_set-2979	in_word_set-2981
@@ -22126,6 +22153,7 @@ in_word_set-3031	in_word_set-3033
 stamp_draw-11580	stamp_draw-7922
 tmp_apply_uncommited_text-24562	tmp_apply_uncommited_text-17922
 tmp_apply_uncommited_text-24562	tmp_apply_uncommited_text-24530
+mainloop-10214	calc_eraser_size-ENTRY
 mainloop-10071	do_shape-ENTRY
 mainloop-10071	mainloop-10112
 simply_render_node-17508	simply_render_node-24133

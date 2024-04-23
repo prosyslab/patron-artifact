@@ -423,6 +423,7 @@ sonicReadShortFromStream-505	sonicReadShortFromStream-EXIT	Loc-16
 sonicReadShortFromStream-505	sonicReadShortFromStream-511	Loc-16
 sonicReadShortFromStream-505	sonicReadShortFromStream-569	Loc-36
 sonicReadShortFromStream-505	sonicReadShortFromStream-570	Loc-36
+sonicReadShortFromStream-505	sonicReadShortFromStream-575	Loc-16
 sonicReadShortFromStream-505	sonicReadShortFromStream-576	Loc-16
 fread-109	fread-EXIT	{(fread,__return__)}
 adjustRate-878	adjustRate-773	Loc-141
@@ -914,6 +915,7 @@ sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-568	Loc-97
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-571	{NULL,(sonicReadShortFromStream,stream),sonicCreateStream-442.numOutputSamples}
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-573	Loc-97
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-574	Loc-97
+sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-575	{NULL,(sonicReadShortFromStream,samples),(sonicReadShortFromStream,stream),runSonic-1053,allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numChannels,sonicCreateStream-442.outputBuffer}
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-576	{NULL,(sonicReadShortFromStream,stream),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numChannels,sonicCreateStream-442.outputBuffer}
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-577	{NULL,(sonicReadShortFromStream,stream),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numOutputSamples}
 changeSpeed-947	changeSpeed-858	{(changeSpeed,newSamples),(enlargeOutputBufferIfNeeded,__return__),(enlargeOutputBufferIfNeeded,numSamples),(enlargeOutputBufferIfNeeded,stream),(overlapAdd,numChannels),(overlapAdd,numSamples),(overlapAdd,out),(overlapAdd,rampDown),(overlapAdd,rampUp),(skipPitchPeriod,__return__),(skipPitchPeriod,speed),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numOutputSamples,sonicCreateStream-442.outputBuffer,sonicCreateStream-442.outputBufferSize,sonicCreateStream-442.remainingInputToCopy}
@@ -1602,6 +1604,7 @@ sonicCreateStream-449	sonicCreateStream-438	Loc-81
 sonicCreateStream-449	sonicCreateStream-439	Loc-141
 sonicSetPitch-EXIT	runSonic-1087	Loc-51
 sonicReadShortFromStream-576	sonicReadShortFromStream-577	Loc-142
+sonicReadShortFromStream-575	sonicReadShortFromStream-EXIT	{runSonic-1053}
 readInt-1130	readInt-EXIT	{(readInt,__return__)}
 allocateStreamBuffers-396	allocateStreamBuffers-EXIT	Loc-180
 processStreamInput-981	processStreamInput-894	{(scaleSamples,numSamples),(scaleSamples,samples),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465}

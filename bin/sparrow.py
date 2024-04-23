@@ -9,10 +9,11 @@ from logger import log, INFO, ERROR, WARNING
 
 def run_sparrow(file):
     os.chdir(os.path.dirname(file))
-    log = open('sparrow_log', 'w')
-    print(file)
-    return log, subprocess.Popen([config.configuration["SPARROW_BIN_PATH"], file] + config.configuration["DEFAULT_SPARROW_OPT"] + config.configuration["USER_SPARROW_OPT"],
-                                 stdout=log,
+    sparrow_log = open('sparrow_log', 'w')
+    cmd = [config.configuration["SPARROW_BIN_PATH"], file] + config.configuration["DEFAULT_SPARROW_OPT"] + config.configuration["USER_SPARROW_OPT"]
+    log(INFO, f"Running sparrow with {cmd}")
+    return sparrow_log, subprocess.Popen(cmd,
+                                 stdout=sparrow_log,
                                  stderr=subprocess.STDOUT)
 
 def sparrow(files):

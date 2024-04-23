@@ -1,97 +1,12 @@
 = Alarms =
-1. cursors.c:76 {create_bitmap_and_mask_from_xpm} UnProven
-  *(*(xpm+(4+y))+x) @create_bitmap_and_mask_from_xpm-31079:  offset: [0, +oo], size: [10, 36] UnProven, allocsite: _G_-74672
-  *(*(xpm+(4+y))+x) @create_bitmap_and_mask_from_xpm-31079:  offset: [0, +oo], size: [10, 36] UnProven, allocsite: _G_-74673
-  *(*(xpm+(4+y))+x) @create_bitmap_and_mask_from_xpm-31079:  offset: [0, +oo], size: [10, 36] UnProven, allocsite: _G_-74674
-  *(*(xpm+(4+y))+x) @create_bitmap_and_mask_from_xpm-31078:  offset: [0, +oo], size: [10, 36] UnProven, allocsite: _G_-74672
-  *(*(xpm+(4+y))+x) @create_bitmap_and_mask_from_xpm-31078:  offset: [0, +oo], size: [10, 36] UnProven, allocsite: _G_-74673
-  *(*(xpm+(4+y))+x) @create_bitmap_and_mask_from_xpm-31078:  offset: [0, +oo], size: [10, 36] UnProven, allocsite: _G_-74674
-2. cursors.c:79 {create_bitmap_and_mask_from_xpm} UnProven
-  *(*(xpm+(4+y))+x) @create_bitmap_and_mask_from_xpm-31081:  offset: [0, +oo], size: [10, 36] UnProven, allocsite: _G_-74672
-  *(*(xpm+(4+y))+x) @create_bitmap_and_mask_from_xpm-31081:  offset: [0, +oo], size: [10, 36] UnProven, allocsite: _G_-74673
-  *(*(xpm+(4+y))+x) @create_bitmap_and_mask_from_xpm-31081:  offset: [0, +oo], size: [10, 36] UnProven, allocsite: _G_-74674
-  *(*(xpm+(4+y))+x) @create_bitmap_and_mask_from_xpm-31080:  offset: [0, +oo], size: [10, 36] UnProven, allocsite: _G_-74672
-  *(*(xpm+(4+y))+x) @create_bitmap_and_mask_from_xpm-31080:  offset: [0, +oo], size: [10, 36] UnProven, allocsite: _G_-74673
-  *(*(xpm+(4+y))+x) @create_bitmap_and_mask_from_xpm-31080:  offset: [0, +oo], size: [10, 36] UnProven, allocsite: _G_-74674
-3. cursors.c:85 {create_bitmap_and_mask_from_xpm} UnProven
-  pixmap_buffer[((y*4)+(x/8))-1] @create_bitmap_and_mask_from_xpm-31102:  offset: [-1, +oo], size: [128, 128] UnProven, allocsite: create_bitmap_and_mask_from_xpm-31062
-4. cursors.c:86 {create_bitmap_and_mask_from_xpm} UnProven
-  mask_buffer[((y*4)+(x/8))-1] @create_bitmap_and_mask_from_xpm-31103:  offset: [-1, +oo], size: [128, 128] UnProven, allocsite: create_bitmap_and_mask_from_xpm-31064
-5. interface.c:159 {create_color} UnProven
-  *(c) @create_color-20470:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_malloc
-6. interface.c:160 {create_color} UnProven
-  *(c) @create_color-20471:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_malloc
-7. interface.c:161 {create_color} UnProven
-  *(c) @create_color-20472:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_malloc
-8. interface.c:186 {create_style} UnProven
-  *(sty) @create_style-20491:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_style_copy
-  *(fg) @create_style-20491:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_malloc
-9. interface.c:188 {create_style} UnProven
-  *(sty) @create_style-20492:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_style_copy
-  *(bg) @create_style-20492:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_malloc
-10. interface.c:191 {create_style} UnProven
-  *(sty) @create_style-20493:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_style_copy
-  *(sty) @create_style-20493:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_style_copy
-  *(sty) @create_style-20493:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_style_copy
-11. interface.c:192 {create_style} UnProven
-  *(sty) @create_style-20494:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_style_copy
-  *(sty) @create_style-20494:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_style_copy
-  *(sty) @create_style-20494:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_style_copy
-12. interface.c:193 {create_style} UnProven
-  *(sty) @create_style-20495:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_style_copy
-  *(sty) @create_style-20495:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_style_copy
-  *(sty) @create_style-20495:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_style_copy
-13. main.c:163 {main} UnProven
-  *(argv+i) @main-32709:  source = main-32667 @ main.c:104 UnProven
-  *(argv+i) @main-32709:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-14. main.c:163 {main} UnProven
-  *(argv+i) @main-32710:  source = main-32667 @ main.c:104 UnProven
-  *(argv+i) @main-32710:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-15. main.c:166 {main} UnProven
-  *(argv+i) @main-32712:  source = main-32667 @ main.c:104 UnProven
-  *(argv+i) @main-32712:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-16. main.c:166 {main} UnProven
-  *(argv+i) @main-32714:  source = main-32667 @ main.c:104 UnProven
-  *(argv+i) @main-32714:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-17. main.c:167 {main} UnProven
-  *(argv+i) @main-32715:  source = main-32667 @ main.c:104 UnProven
-  *(argv+i) @main-32715:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-18. main.c:167 {main} UnProven
-  *(argv+i) @main-32716:  source = main-32667 @ main.c:104 UnProven
-  *(argv+i) @main-32716:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-19. main.c:170 {main} UnProven
-  *(argv+i) @main-32718:  source = main-32667 @ main.c:104 UnProven
-  *(argv+i) @main-32718:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-20. main.c:170 {main} UnProven
-  *(argv+i) @main-32720:  source = main-32667 @ main.c:104 UnProven
-  *(argv+i) @main-32720:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-21. main.c:171 {main} UnProven
-  *(argv+i) @main-32721:  source = main-32667 @ main.c:104 UnProven
-  *(argv+i) @main-32721:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-22. main.c:173 {main} UnProven
-  *(argv+i) @main-32723:  source = main-32667 @ main.c:104 UnProven
-  *(argv+i) @main-32723:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-23. main.c:184 {main} UnProven
-  *(argv+i) @main-32682:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(argv+i) @main-32681:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-24. main.c:189 {main} UnProven
-  *(argv+i) @main-32725:  source = main-32667 @ main.c:104 UnProven
-  *(argv+i) @main-32725:  offset: [1, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-25. main.c:202 {main} UnProven
-  *(argv+0) @main-32733:  source = main-32667 @ main.c:104 UnProven
-26. tdb.c:189 {convert} UnProven
+1. tdb.c:189 {convert} UnProven
   (*(p+i)&255U)<<24 @convert-980:  source = tdb_open_ex-2700 @ tdb.c:1803 UnProven
   (*(p+i)&65280U)<<8 @convert-980:  source = tdb_open_ex-2700 @ tdb.c:1803 UnProven
   *(p+i)>>8 @convert-980:  source = tdb_open_ex-2700 @ tdb.c:1803 UnProven
   *(p+i)>>24 @convert-980:  source = tdb_open_ex-2700 @ tdb.c:1803 UnProven
-  *(p+i) @convert-980:  source = tdb_open_ex-2700 @ tdb.c:1803 UnProven
-  *(p+i) @convert-980:  source = tdb_open_ex-2700 @ tdb.c:1803 UnProven
-  *(p+i) @convert-980:  source = tdb_open_ex-2700 @ tdb.c:1803 UnProven
-  *(p+i) @convert-980:  source = tdb_open_ex-2700 @ tdb.c:1803 UnProven
-  *(p+i) @convert-980:  source = tdb_open_ex-2700 @ tdb.c:1803 UnProven
 
-#queries                 : 998
-#queries mod alarm point : 318
-#proven                  : 292
-#unproven                : 26
-#bot-involved            : 9
+#queries                 : 12
+#queries mod alarm point : 6
+#proven                  : 5
+#unproven                : 1
+#bot-involved            : 0

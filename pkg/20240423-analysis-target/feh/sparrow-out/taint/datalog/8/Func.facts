@@ -345,6 +345,7 @@ feh_menu_show_at_submenu	feh_menu_show_at_submenu-7993
 feh_wm_set_bg	feh_wm_set_bg-2840
 feh_wm_set_bg	feh_wm_set_bg-2825
 feh_menu_deselect_selected	feh_menu_deselect_selected-ENTRY
+winwidget_setup_pixmaps	winwidget_setup_pixmaps-1520
 init_index_mode	init_index_mode-11834
 feh_filelist_image_remove	feh_filelist_image_remove-5653
 feh_menu_select	feh_menu_select-5804
@@ -358,6 +359,7 @@ feh_wm_set_bg	feh_wm_set_bg-2761
 feh_menu_func_gen_options	feh_menu_func_gen_options-9434
 atoi	atoi-789
 feh_draw_filename	feh_draw_filename-13252
+winwidget_create_window	winwidget_create_window-1336
 winwidget_resize	winwidget_resize-1630
 init_thumbnail_mode	init_thumbnail_mode-4219
 feh_event_handle_generic	feh_event_handle_generic-11556
@@ -409,6 +411,7 @@ feh_printf	feh_printf-5401
 feh_parse_option_array	feh_parse_option_array-7533
 winwidget_render_image	winwidget_render_image-1752
 check_options	check_options-7608
+init_x_and_imlib	init_x_and_imlib-12160
 feh_draw_caption	feh_draw_caption-13585
 cb_reload_timer	cb_reload_timer-4992
 feh_event_handle_generic	feh_event_handle_generic-11552
@@ -431,6 +434,7 @@ feh_menu_init_common	feh_menu_init_common-8742
 feh_draw_info	feh_draw_info-13359
 feh_check_theme_options	feh_check_theme_options-ENTRY
 feh_draw_filename	feh_draw_filename-13281
+feh_draw_errstr	feh_draw_errstr-9198
 winwidget_create_window	winwidget_create_window-1341
 feh_draw_info	feh_draw_info-9290
 feh_wrap_string	feh_wrap_string-13752
@@ -464,7 +468,6 @@ feh_draw_caption	feh_draw_caption-9396
 winwidget_show_menu	winwidget_show_menu-2349
 build_caption_filename	build_caption_filename-13468
 feh_unique_filename	feh_unique_filename-2830
-build_caption_filename	build_caption_filename-13429
 init_buttonbindings	init_buttonbindings-15826
 feh_remove_timer	feh_remove_timer-EXIT
 winwidget_show_menu	winwidget_show_menu-EXIT
@@ -534,6 +537,7 @@ init_xinerama	init_xinerama-12149
 feh_event_handle_MotionNotify	feh_event_handle_MotionNotify-16408
 feh_file_info_load	feh_file_info_load-15188
 feh_menu_cb_opt_fullscreen	feh_menu_cb_opt_fullscreen-9140
+winwidget_create_from_file	winwidget_create_from_file-1186
 feh_load_image	feh_load_image-12470
 slideshow_change_image	slideshow_change_image-3850
 getcwd	getcwd-434
@@ -559,6 +563,7 @@ winwidget_show_menu	winwidget_show_menu-2358
 winwidget_free_image	winwidget_free_image-2208
 feh_menu_init_main	feh_menu_init_main-8487
 feh_draw_actions	feh_draw_actions-14100
+winwidget_destroy_xwin	winwidget_destroy_xwin-1881
 feh_wm_set_bg	feh_wm_set_bg-3057
 init_buttonbindings	init_buttonbindings-15839
 feh_thumbnail_get_name	feh_thumbnail_get_name-4481
@@ -604,6 +609,7 @@ feh_wm_set_bg	feh_wm_set_bg-2646
 feh_main_iteration	feh_main_iteration-10014
 feh_http_unescape	feh_http_unescape-11040
 feh_event_invoke_action	feh_event_invoke_action-10800
+winwidget_setup_pixmaps	winwidget_setup_pixmaps-1549
 slideshow_change_image	slideshow_change_image-5108
 feh_event_handle_ButtonPress	feh_event_handle_ButtonPress-ENTRY
 feh_thumbnail_mark_removed	feh_thumbnail_mark_removed-4359
@@ -820,6 +826,7 @@ feh_wm_set_bg_filelist	feh_wm_set_bg_filelist-2391
 init_thumbnail_mode	init_thumbnail_mode-3057
 feh_event_handle_MotionNotify	feh_event_handle_MotionNotify-16309
 feh_menu_init_common	feh_menu_init_common-8532
+winwidget_setup_pixmaps	winwidget_setup_pixmaps-1522
 init_index_mode	init_index_mode-11902
 feh_printf	feh_printf-4290
 init_unloadables_mode	init_unloadables_mode-ENTRY
@@ -919,10 +926,8 @@ feh_http_load_image	feh_http_load_image-13032
 feh_wm_set_bg	feh_wm_set_bg-2787
 feh_menu_init_thumbnail_viewer	feh_menu_init_thumbnail_viewer-9065
 feh_menu_show_at_xy	feh_menu_show_at_xy-7962
-feh_thumbnail_setup_thumbnail_dir	feh_thumbnail_setup_thumbnail_dir-4819
 feh_event_handle_generic	feh_event_handle_generic-11313
 init_thumbnail_mode	init_thumbnail_mode-4149
-winwidget_rename	winwidget_rename-2183
 init_slideshow_mode	init_slideshow_mode-4925
 feh_printf	feh_printf-5616
 init_thumbnail_mode	init_thumbnail_mode-ENTRY
@@ -967,7 +972,6 @@ feh_event_handle_MotionNotify	feh_event_handle_MotionNotify-16310
 feh_menu_init_common	feh_menu_init_common-8510
 feh_event_handle_generic	feh_event_handle_generic-11554
 winwidget_register	winwidget_register-2127
-feh_parse_option_array	feh_parse_option_array-7123
 init_index_mode	init_index_mode-8311
 feh_menu_cb	feh_menu_cb-9283
 cb_reload_timer	cb_reload_timer-5011
@@ -1130,7 +1134,6 @@ feh_menu_cb	feh_menu_cb-9265
 feh_menu_select_parent	feh_menu_select_parent-7858
 init_thumbnail_mode	init_thumbnail_mode-4188
 feh_draw_info	feh_draw_info-13360
-gib_imlib_save_image_with_error_return	gib_imlib_save_image_with_error_return-14568
 feh_menu_init_common	feh_menu_init_common-8679
 enl_ipc_send	enl_ipc_send-3308
 feh_draw_caption	feh_draw_caption-9418
@@ -1193,7 +1196,6 @@ feh_parse_option_array	feh_parse_option_array-6945
 init_parse_options	init_parse_options-5978
 feh_remove_timer_by_data	feh_remove_timer_by_data-3772
 ereadfile	ereadfile-ENTRY
-check_options	check_options-7563
 feh_magick_load_image	feh_magick_load_image-9040
 feh_wm_set_bg_filelist	feh_wm_set_bg_filelist-2393
 feh_print_load_error	feh_print_load_error-12243
@@ -1332,7 +1334,6 @@ feh_action_run	feh_action_run-5231
 feh_reload_image	feh_reload_image-12611
 feh_menu_show_at_submenu	feh_menu_show_at_submenu-7990
 feh_main_iteration	feh_main_iteration-10055
-feh_http_load_image	feh_http_load_image-13015
 feh_menu_select_prev	feh_menu_select_prev-7825
 winwidget_get_first_window_of_type	winwidget_get_first_window_of_type-1541
 init_thumbnail_mode	init_thumbnail_mode-4174
@@ -1354,12 +1355,14 @@ feh_http_load_image	feh_http_load_image-13011
 init_thumbnail_mode	init_thumbnail_mode-4220
 feh_parse_option_array	feh_parse_option_array-7494
 feh_prepare_filelist	feh_prepare_filelist-15352
+winwidget_create_window	winwidget_create_window-1365
 feh_wm_set_bg	feh_wm_set_bg-2429
 feh_menu_init_common	feh_menu_init_common-8797
 feh_parse_options_from_string	feh_parse_options_from_string-6170
 feh_wm_set_bg	feh_wm_set_bg-2638
 feh_wrap_string	feh_wrap_string-13868
 feh_menu_init_common	feh_menu_init_common-8756
+winwidget_destroy_xwin	winwidget_destroy_xwin-1888
 add_file_to_filelist_recursively	add_file_to_filelist_recursively-15033
 feh_menu_new	feh_menu_new-ENTRY
 feh_action_run	feh_action_run-EXIT
@@ -1451,6 +1454,7 @@ feh_print_load_error	feh_print_load_error-12302
 feh_filelist_image_remove	feh_filelist_image_remove-5661
 getcwd	getcwd-424
 feh_draw_filename	feh_draw_filename-13254
+feh_draw_errstr	feh_draw_errstr-13212
 feh_event_handle_generic	feh_event_handle_generic-11332
 init_thumbnail_mode	init_thumbnail_mode-4115
 winwidget_render_image	winwidget_render_image-1751
@@ -1533,6 +1537,7 @@ feh_http_unescape	feh_http_unescape-15544
 feh_remove_timer_by_data	feh_remove_timer_by_data-3786
 init_parse_options	init_parse_options-5944
 feh_menu_init_common	feh_menu_init_common-8772
+winwidget_setup_pixmaps	winwidget_setup_pixmaps-1519
 gib_imlib_image_get_width	gib_imlib_image_get_width-9973
 feh_event_handle_generic	feh_event_handle_generic-11189
 index_calculate_width	index_calculate_width-12071
@@ -1578,7 +1583,6 @@ feh_thumbnail_generate	feh_thumbnail_generate-4625
 winwidget_render_image	winwidget_render_image-1380
 feh_dcraw_load_image	feh_dcraw_load_image-12754
 feh_menu_entry_get_size	feh_menu_entry_get_size-8118
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-10568
 feh_menu_init_common	feh_menu_init_common-8595
 feh_event_handle_generic	feh_event_handle_generic-11187
 feh_draw_caption	feh_draw_caption-9420
@@ -1720,7 +1724,6 @@ init_index_mode	init_index_mode-11957
 feh_menu_init_thumbnail_win	feh_menu_init_thumbnail_win-8935
 feh_menu_init_common	feh_menu_init_common-8587
 _estrdup	_estrdup-ENTRY
-feh_parse_option_array	feh_parse_option_array-5434
 slideshow_save_image	slideshow_save_image-5673
 feh_event_handle_generic	feh_event_handle_generic-11562
 init_parse_options	init_parse_options-5970
@@ -1742,7 +1745,6 @@ feh_menu_init_main	feh_menu_init_main-8460
 feh_reload_image	feh_reload_image-12612
 feh_parse_option_array	feh_parse_option_array-7077
 feh_menu_add_entry	feh_menu_add_entry-8082
-winwidget_rename	winwidget_rename-2189
 init_thumbnail_mode	init_thumbnail_mode-4159
 feh_load_image_char	feh_load_image_char-12210
 feh_parse_option_array	feh_parse_option_array-7496
@@ -1762,6 +1764,7 @@ feh_event_handle_generic	feh_event_handle_generic-11482
 feh_file_info_preload	feh_file_info_preload-15145
 feh_png_read_comments	feh_png_read_comments-EXIT
 feh_http_load_image	feh_http_load_image-13089
+winwidget_allocate	winwidget_allocate-1135
 feh_reload_image	feh_reload_image-12663
 init_index_mode	init_index_mode-11659
 feh_wm_set_bg	feh_wm_set_bg-2839
@@ -1863,7 +1866,6 @@ main	main-9806
 feh_event_invoke_action	feh_event_invoke_action-10801
 main	main-9790
 init_thumbnail_mode	init_thumbnail_mode-4043
-feh_parse_option_array	feh_parse_option_array-7122
 feh_draw_caption	feh_draw_caption-ENTRY
 feh_thumbnail_get_name_uri	feh_thumbnail_get_name_uri-4501
 feh_draw_actions	feh_draw_actions-14025
@@ -1885,7 +1887,6 @@ winwidget_create_window	winwidget_create_window-1329
 feh_thumbnail_select	feh_thumbnail_select-4726
 feh_parse_option_array	feh_parse_option_array-7121
 feh_wrap_string	feh_wrap_string-13833
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-14993
 feh_event_handle_ButtonRelease	feh_event_handle_ButtonRelease-16017
 feh_menu_init_main	feh_menu_init_main-8415
 init_list_mode	init_list_mode-10092
@@ -1914,11 +1915,9 @@ feh_wm_get_num_desks	feh_wm_get_num_desks-3156
 init_index_mode	init_index_mode-11884
 feh_reload_image	feh_reload_image-12652
 feh_menu_init_common	feh_menu_init_common-8636
-feh_parse_option_array	feh_parse_option_array-6544
 feh_draw_actions	feh_draw_actions-14072
 feh_thumbnail_select_prev	feh_thumbnail_select_prev-4780
 winwidget_get_from_window	winwidget_get_from_window-1711
-feh_thumbnail_setup_thumbnail_dir	feh_thumbnail_setup_thumbnail_dir-4797
 init_index_mode	init_index_mode-11901
 feh_http_load_image	feh_http_load_image-13049
 feh_menu_select_next	feh_menu_select_next-7809
@@ -1955,6 +1954,7 @@ winwidget_render_image	winwidget_render_image-1741
 winwidget_render_image	winwidget_render_image-1636
 feh_add_unique_timer	feh_add_unique_timer-3872
 feh_filelist_image_remove	feh_filelist_image_remove-5667
+winwidget_create_window	winwidget_create_window-1335
 feh_menu_func_gen_options	feh_menu_func_gen_options-9441
 winwidget_render_image	winwidget_render_image-1703
 feh_event_handle_ButtonRelease	feh_event_handle_ButtonRelease-16089
@@ -2007,7 +2007,6 @@ feh_filelist_image_remove	feh_filelist_image_remove-5669
 winwidget_resize	winwidget_resize-2067
 index_calculate_height	index_calculate_height-12013
 feh_draw_filename	feh_draw_filename-9235
-feh_http_load_image	feh_http_load_image-9069
 feh_thumbnail_get_generated	feh_thumbnail_get_generated-4662
 feh_menu_cb	feh_menu_cb-9336
 feh_draw_actions	feh_draw_actions-14077
@@ -2022,7 +2021,6 @@ feh_parse_option_array	feh_parse_option_array-7508
 init_thumbnail_mode	init_thumbnail_mode-4163
 add_file_to_filelist_recursively	add_file_to_filelist_recursively-10645
 main	main-6902
-gib_imlib_save_image_with_error_return	gib_imlib_save_image_with_error_return-14575
 init_thumbnail_mode	init_thumbnail_mode-4068
 feh_load_image	feh_load_image-12480
 feh_event_handle_generic	feh_event_handle_generic-11534
@@ -2097,6 +2095,7 @@ feh_wm_set_bg	feh_wm_set_bg-2799
 init_slideshow_mode	init_slideshow_mode-4920
 feh_event_handle_generic	feh_event_handle_generic-11084
 feh_wm_set_bg	feh_wm_set_bg-2818
+winwidget_setup_pixmaps	winwidget_setup_pixmaps-1547
 feh_draw_filename	feh_draw_filename-13275
 feh_edit_inplace	feh_edit_inplace-13703
 feh_menu_cb	feh_menu_cb-9382
@@ -2131,7 +2130,6 @@ feh_menu_init_thumbnail_viewer	feh_menu_init_thumbnail_viewer-ENTRY
 feh_event_handle_ButtonPress	feh_event_handle_ButtonPress-15918
 feh_main_iteration	feh_main_iteration-EXIT
 init_index_mode	init_index_mode-11725
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-14987
 winwidget_render_image	winwidget_render_image-1649
 estrjoin	estrjoin-2792
 init_index_mode	init_index_mode-11706
@@ -2140,7 +2138,6 @@ feh_menu_init_common	feh_menu_init_common-8624
 feh_event_handle_MotionNotify	feh_event_handle_MotionNotify-16326
 feh_load_image_char	feh_load_image_char-EXIT
 feh_menu_cb_opt_fullscreen	feh_menu_cb_opt_fullscreen-9146
-winwidget_rename	winwidget_rename-2185
 init_parse_options	init_parse_options-5983
 init_index_mode	init_index_mode-8297
 _estrdup	_estrdup-3571
@@ -2170,7 +2167,6 @@ winwidget_render_image	winwidget_render_image-1778
 feh_menu_cb	feh_menu_cb-6763
 feh_printf	feh_printf-4170
 feh_http_load_image	feh_http_load_image-13004
-feh_magick_load_image	feh_magick_load_image-8944
 feh_menu_select	feh_menu_select-7927
 feh_event_handle_ButtonRelease	feh_event_handle_ButtonRelease-16018
 feh_menu_find	feh_menu_find-ENTRY
@@ -2189,7 +2185,6 @@ feh_menu_init_common	feh_menu_init_common-8788
 feh_menu_cb	feh_menu_cb-9390
 feh_png_read_comments	feh_png_read_comments-15589
 feh_event_handle_MotionNotify	feh_event_handle_MotionNotify-16165
-feh_thumbnail_setup_thumbnail_dir	feh_thumbnail_setup_thumbnail_dir-3677
 check_options	check_options-7582
 feh_menu_init_main	feh_menu_init_main-8454
 feh_wm_set_bg_filled	feh_wm_set_bg_filled-ENTRY
@@ -2325,7 +2320,6 @@ feh_event_handle_ConfigureNotify	feh_event_handle_ConfigureNotify-16125
 init_thumbnail_mode	init_thumbnail_mode-4136
 index_calculate_width	index_calculate_width-EXIT
 feh_menu_slide_all_menus_relative	feh_menu_slide_all_menus_relative-8035
-check_options	check_options-7559
 feh_draw_zoom	feh_draw_zoom-13173
 feh_menu_init_main	feh_menu_init_main-8489
 check_options	check_options-7584
@@ -2376,7 +2370,6 @@ feh_load_image	feh_load_image-12519
 feh_load_font	feh_load_font-ENTRY
 feh_edit_inplace	feh_edit_inplace-9578
 feh_menu_init_thumbnail_viewer	feh_menu_init_thumbnail_viewer-9057
-estrjoin	estrjoin-3624
 feh_menu_find	feh_menu_find-6106
 index_calculate_height	index_calculate_height-12038
 init_index_mode	init_index_mode-11905
@@ -2422,7 +2415,6 @@ init_parse_options	init_parse_options-5954
 check_options	check_options-7587
 feh_thumbnail_get_name	feh_thumbnail_get_name-4480
 feh_edit_inplace_lossless	feh_edit_inplace_lossless-13916
-winwidget_rename	winwidget_rename-1734
 feh_thumbnail_calculate_geometry	feh_thumbnail_calculate_geometry-4386
 feh_menu_init_thumbnail_viewer	feh_menu_init_thumbnail_viewer-9099
 index_calculate_width	index_calculate_width-12051
@@ -2470,7 +2462,6 @@ slideshow_change_image	slideshow_change_image-5186
 feh_draw_filename	feh_draw_filename-13245
 winwidget_center_image	winwidget_center_image-2229
 feh_draw_errstr	feh_draw_errstr-13221
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-15024
 feh_thumbnail_select	feh_thumbnail_select-4723
 feh_parse_option_array	feh_parse_option_array-7467
 slideshow_change_image	slideshow_change_image-5144
@@ -2487,7 +2478,6 @@ feh_png_read_comments	feh_png_read_comments-11059
 winwidget_rename	winwidget_rename-2157
 slideshow_change_image	slideshow_change_image-5211
 feh_menu_init_main	feh_menu_init_main-8502
-gib_imlib_save_image_with_error_return	gib_imlib_save_image_with_error_return-14569
 cb_reload_timer	cb_reload_timer-5003
 feh_thumbnail_show_fullsize	feh_thumbnail_show_fullsize-4690
 feh_dcraw_load_image	feh_dcraw_load_image-12786
@@ -2509,12 +2499,12 @@ feh_menu_find_at_xy	feh_menu_find_at_xy-7883
 feh_event_handle_keypress	feh_event_handle_keypress-10935
 init_thumbnail_mode	init_thumbnail_mode-3261
 feh_dcraw_load_image	feh_dcraw_load_image-8923
-check_options	check_options-7560
 feh_event_handle_generic	feh_event_handle_generic-11247
 feh_thumbnail_show_fullsize	feh_thumbnail_show_fullsize-4700
 feh_menu_new	feh_menu_new-5567
 gib_hash_new	gib_hash_new-14768
 init_index_mode	init_index_mode-11782
+winwidget_create_window	winwidget_create_window-1061
 init_index_mode	init_index_mode-11635
 feh_wm_set_bg	feh_wm_set_bg-2112
 feh_menu_find_selected	feh_menu_find_selected-7765
@@ -2579,6 +2569,7 @@ init_slideshow_mode	init_slideshow_mode-4877
 feh_thumbnail_calculate_geometry	feh_thumbnail_calculate_geometry-3346
 slideshow_change_image	slideshow_change_image-5064
 feh_menu_cb	feh_menu_cb-6773
+winwidget_create_window	winwidget_create_window-1338
 slideshow_save_image	slideshow_save_image-4402
 feh_menu_init_thumbnail_win	feh_menu_init_thumbnail_win-8938
 winwidget_render_image	winwidget_render_image-1696
@@ -2612,6 +2603,7 @@ gib_imlib_save_image_with_error_return	gib_imlib_save_image_with_error_return-14
 feh_http_load_image	feh_http_load_image-13090
 index_calculate_width	index_calculate_width-12048
 winwidget_setup_pixmaps	winwidget_setup_pixmaps-1546
+winwidget_setup_pixmaps	winwidget_setup_pixmaps-1552
 feh_http_load_image	feh_http_load_image-13076
 feh_draw_filename	feh_draw_filename-13284
 slideshow_change_image	slideshow_change_image-5081
@@ -2686,6 +2678,7 @@ feh_menu_init_common	feh_menu_init_common-8777
 feh_load_font	feh_load_font-13137
 feh_menu_draw_item	feh_menu_draw_item-6064
 init_keyevents	init_keyevents-10646
+winwidget_allocate	winwidget_allocate-1128
 feh_event_handle_generic	feh_event_handle_generic-11161
 feh_reload_image	feh_reload_image-12665
 check_options	check_options-7552
@@ -2835,6 +2828,7 @@ feh_dcraw_load_image	feh_dcraw_load_image-12717
 init_thumbnail_mode	init_thumbnail_mode-4276
 feh_edit_inplace	feh_edit_inplace-13709
 feh_menu_draw_menu_bg	feh_menu_draw_menu_bg-8315
+winwidget_setup_pixmaps	winwidget_setup_pixmaps-1240
 feh_menu_cb	feh_menu_cb-9368
 feh_draw_caption	feh_draw_caption-13574
 winwidget_render_image	winwidget_render_image-1275
@@ -2879,6 +2873,7 @@ init_thumbnail_mode	init_thumbnail_mode-4287
 feh_absolute_path	feh_absolute_path-15484
 init_thumbnail_mode	init_thumbnail_mode-4295
 feh_reload_image	feh_reload_image-12642
+feh_draw_errstr	feh_draw_errstr-13229
 feh_menu_show_at	feh_menu_show_at-5819
 feh_menu_init_thumbnail_viewer	feh_menu_init_thumbnail_viewer-9079
 feh_menu_init_thumbnail_win	feh_menu_init_thumbnail_win-8951
@@ -2921,7 +2916,6 @@ init_slideshow_mode	init_slideshow_mode-4870
 init_multiwindow_mode	init_multiwindow_mode-EXIT
 feh_thumbnail_get_generated	feh_thumbnail_get_generated-4652
 feh_reload_image	feh_reload_image-12653
-feh_parse_option_array	feh_parse_option_array-6501
 feh_event_handle_generic	feh_event_handle_generic-11550
 slideshow_change_image	slideshow_change_image-3864
 feh_draw_info	feh_draw_info-13344
@@ -2959,7 +2953,6 @@ winwidget_create_from_image	winwidget_create_from_image-1167
 winwidget_render_image	winwidget_render_image-1737
 feh_menu_init_single_win	feh_menu_init_single_win-8857
 feh_menu_init_thumbnail_viewer	feh_menu_init_thumbnail_viewer-9077
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-15108
 gib_style_new	gib_style_new-ENTRY
 feh_printf	feh_printf-5536
 cb_reload_timer	cb_reload_timer-5005
@@ -3096,6 +3089,7 @@ feh_wm_set_bg	feh_wm_set_bg-3107
 feh_event_handle_MotionNotify	feh_event_handle_MotionNotify-16400
 winwidget_destroy_all	winwidget_destroy_all-ENTRY
 estrjoin	estrjoin-2804
+winwidget_destroy_xwin	winwidget_destroy_xwin-1491
 slideshow_change_image	slideshow_change_image-5055
 feh_load_font	feh_load_font-13138
 feh_menu_redraw	feh_menu_redraw-8257
@@ -3167,6 +3161,7 @@ feh_menu_func_gen_info	feh_menu_func_gen_info-EXIT
 feh_wm_set_bg	feh_wm_set_bg-2772
 feh_draw_caption	feh_draw_caption-13582
 main	main-9805
+winwidget_create_window	winwidget_create_window-1454
 feh_magick_load_image	feh_magick_load_image-12894
 winwidget_render_image	winwidget_render_image-1592
 feh_magick_load_image	feh_magick_load_image-12948
@@ -3294,7 +3289,6 @@ init_thumbnail_mode	init_thumbnail_mode-3197
 feh_dcraw_load_image	feh_dcraw_load_image-12767
 feh_printf	feh_printf-5304
 feh_load_image	feh_load_image-12549
-check_options	check_options-7564
 init_index_mode	init_index_mode-11683
 feh_draw_info	feh_draw_info-13342
 feh_reload_image	feh_reload_image-12580
@@ -3346,8 +3340,10 @@ winwidget_render_image	winwidget_render_image-1666
 feh_thumbnail_show_selected	feh_thumbnail_show_selected-4782
 feh_event_handle_ButtonPress	feh_event_handle_ButtonPress-15979
 feh_menu_init_common	feh_menu_init_common-8645
+winwidget_setup_pixmaps	winwidget_setup_pixmaps-1510
 feh_list_jump	feh_list_jump-5747
 init_multiwindow_mode	init_multiwindow_mode-7653
+feh_draw_errstr	feh_draw_errstr-13213
 feh_draw_info	feh_draw_info-13368
 init_index_mode	init_index_mode-11975
 feh_menu_get_from_window	feh_menu_get_from_window-8367
@@ -3405,7 +3401,6 @@ feh_wm_set_bg	feh_wm_set_bg-2672
 init_thumbnail_mode	init_thumbnail_mode-4140
 feh_thumbnail_show_fullsize	feh_thumbnail_show_fullsize-4701
 feh_thumbnail_get_generated	feh_thumbnail_get_generated-4664
-feh_magick_load_image	feh_magick_load_image-12849
 init_slideshow_mode	init_slideshow_mode-4906
 feh_string_normalize	feh_string_normalize-6247
 im_weprintf	im_weprintf-13209
@@ -3465,7 +3460,6 @@ gib_imlib_load_font	gib_imlib_load_font-14727
 feh_menu_cb	feh_menu_cb-9391
 add_file_to_filelist_recursively	add_file_to_filelist_recursively-15076
 feh_wrap_string	feh_wrap_string-13773
-feh_parse_option_array	feh_parse_option_array-7124
 feh_event_handle_ButtonRelease	feh_event_handle_ButtonRelease-16001
 feh_printf	feh_printf-5441
 feh_menu_new	feh_menu_new-7682
@@ -3520,7 +3514,6 @@ feh_menu_func_gen_info	feh_menu_func_gen_info-9417
 init_thumbnail_mode	init_thumbnail_mode-3879
 init_thumbnail_mode	init_thumbnail_mode-3934
 feh_reload_image	feh_reload_image-8824
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-14991
 feh_event_handle_generic	feh_event_handle_generic-11335
 init_slideshow_mode	init_slideshow_mode-3759
 feh_wm_set_bg_filelist	feh_wm_set_bg_filelist-2394
@@ -3569,7 +3562,6 @@ init_slideshow_mode	init_slideshow_mode-4924
 feh_draw_caption	feh_draw_caption-13526
 feh_menu_find_selected	feh_menu_find_selected-5628
 feh_thumbnail_get_selected_file	feh_thumbnail_get_selected_file-4788
-build_caption_filename	build_caption_filename-13467
 feh_parse_option_array	feh_parse_option_array-7120
 feh_read_filelist	feh_read_filelist-15436
 feh_wm_get_num_desks	feh_wm_get_num_desks-EXIT
@@ -3641,10 +3633,10 @@ feh_menu_select_parent	feh_menu_select_parent-7845
 init_parse_options	init_parse_options-5959
 feh_menu_slide_all_menus_relative	feh_menu_slide_all_menus_relative-5877
 add_file_to_filelist_recursively	add_file_to_filelist_recursively-15105
+winwidget_destroy_xwin	winwidget_destroy_xwin-1883
 feh_load_image	feh_load_image-12521
 feh_menu_func_gen_options	feh_menu_func_gen_options-9479
 enl_send_and_wait	enl_send_and_wait-2649
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-14992
 winwidget_render_image	winwidget_render_image-1580
 winwidget_allocate	winwidget_allocate-1132
 feh_wm_set_bg	feh_wm_set_bg-3052
@@ -3654,7 +3646,6 @@ feh_file_info_load	feh_file_info_load-15190
 feh_draw_zoom	feh_draw_zoom-13151
 feh_menu_init_single_win	feh_menu_init_single_win-8848
 feh_wrap_string	feh_wrap_string-9672
-gib_imlib_save_image_with_error_return	gib_imlib_save_image_with_error_return-14574
 feh_thumbnail_get_name	feh_thumbnail_get_name-4474
 feh_menu_init_common	feh_menu_init_common-8715
 feh_http_load_image	feh_http_load_image-13092
@@ -3731,11 +3722,11 @@ feh_parse_option_array	feh_parse_option_array-7536
 feh_event_handle_generic	feh_event_handle_generic-11143
 feh_print_load_error	feh_print_load_error-12296
 feh_event_handle_generic	feh_event_handle_generic-11409
+winwidget_create_window	winwidget_create_window-1331
 add_file_to_rm_filelist	add_file_to_rm_filelist-EXIT
 feh_event_handle_generic	feh_event_handle_generic-8054
 winwidget_resize	winwidget_resize-2087
 feh_event_handle_generic	feh_event_handle_generic-11393
-check_options	check_options-7586
 index_calculate_width	index_calculate_width-8376
 feh_thumbnail_select	feh_thumbnail_select-4718
 feh_thumbnail_generate	feh_thumbnail_generate-EXIT
@@ -3779,7 +3770,6 @@ enl_ipc_send	enl_ipc_send-2525
 feh_edit_inplace	feh_edit_inplace-13662
 winwidget_unregister	winwidget_unregister-2140
 feh_printf	feh_printf-5569
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-15023
 feh_menu_hide	feh_menu_hide-8042
 init_thumbnail_mode	init_thumbnail_mode-3247
 feh_menu_init_thumbnail_win	feh_menu_init_thumbnail_win-8941
@@ -3830,6 +3820,7 @@ get_index_string_dim	get_index_string_dim-12101
 feh_draw_actions	feh_draw_actions-14038
 feh_menu_select_parent	feh_menu_select_parent-7843
 cb_reload_timer	cb_reload_timer-3816
+winwidget_destroy_xwin	winwidget_destroy_xwin-1884
 feh_wm_set_bg_centered	feh_wm_set_bg_centered-1934
 feh_thumbnail_get_generated	feh_thumbnail_get_generated-3520
 feh_load_image	feh_load_image-12479
@@ -3839,6 +3830,7 @@ feh_menu_func_gen_info	feh_menu_func_gen_info-9415
 feh_string_normalize	feh_string_normalize-6246
 feh_menu_show_at	feh_menu_show_at-7949
 feh_draw_caption	feh_draw_caption-13535
+winwidget_setup_pixmaps	winwidget_setup_pixmaps-1542
 feh_print_load_error	feh_print_load_error-12345
 feh_menu_select_next	feh_menu_select_next-7808
 add_file_to_filelist_recursively	add_file_to_filelist_recursively-15045
@@ -3873,7 +3865,6 @@ feh_file_info_load	feh_file_info_load-10756
 init_keyevents	init_keyevents-7360
 feh_read_filelist	feh_read_filelist-10944
 feh_remove_timer_by_data	feh_remove_timer_by_data-EXIT
-feh_dcraw_load_image	feh_dcraw_load_image-12729
 feh_main_iteration	feh_main_iteration-6970
 feh_http_load_image	feh_http_load_image-ENTRY
 feh_wm_set_bg	feh_wm_set_bg-3075
@@ -3920,6 +3911,7 @@ cb_reload_timer	cb_reload_timer-4967
 feh_parse_option_array	feh_parse_option_array-7522
 feh_event_handle_MotionNotify	feh_event_handle_MotionNotify-16191
 feh_draw_caption	feh_draw_caption-13514
+winwidget_setup_pixmaps	winwidget_setup_pixmaps-1521
 feh_thumbnail_get_generated	feh_thumbnail_get_generated-4680
 feh_event_handle_generic	feh_event_handle_generic-11512
 feh_menu_init_thumbnail_win	feh_menu_init_thumbnail_win-8977
@@ -4010,7 +4002,6 @@ init_index_mode	init_index_mode-11949
 index_calculate_width	index_calculate_width-12078
 feh_wm_set_bg_centered	feh_wm_set_bg_centered-1943
 winwidget_create_window	winwidget_create_window-1266
-gib_imlib_save_image_with_error_return	gib_imlib_save_image_with_error_return-14573
 init_thumbnail_mode	init_thumbnail_mode-4286
 feh_menu_show_at_xy	feh_menu_show_at_xy-5838
 init_index_mode	init_index_mode-11986
@@ -4108,8 +4099,10 @@ feh_event_handle_generic	feh_event_handle_generic-11366
 winwidget_destroy	winwidget_destroy-1897
 feh_wm_set_bg	feh_wm_set_bg-2640
 feh_menu_init_common	feh_menu_init_common-8604
+winwidget_destroy_xwin	winwidget_destroy_xwin-1882
 init_thumbnail_mode	init_thumbnail_mode-4028
 feh_parse_option_array	feh_parse_option_array-5367
+winwidget_create_from_file	winwidget_create_from_file-1185
 feh_event_handle_generic	feh_event_handle_generic-11155
 feh_file_new	feh_file_new-14828
 feh_load_image	feh_load_image-12528
@@ -4149,7 +4142,6 @@ feh_event_handle_generic	feh_event_handle_generic-11324
 feh_menu_init_main	feh_menu_init_main-8506
 feh_draw_caption	feh_draw_caption-13559
 winwidget_get_first_window_of_type	winwidget_get_first_window_of_type-1933
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-15025
 slideshow_change_image	slideshow_change_image-5192
 feh_wrap_string	feh_wrap_string-9685
 feh_event_handle_generic	feh_event_handle_generic-11347
@@ -4201,7 +4193,6 @@ feh_file_info_load	feh_file_info_load-15222
 feh_draw_actions	feh_draw_actions-14069
 feh_load_options_for_theme	feh_load_options_for_theme-4705
 feh_load_image	feh_load_image-12536
-gib_imlib_save_image_with_error_return	gib_imlib_save_image_with_error_return-10200
 slideshow_change_image	slideshow_change_image-5176
 feh_printf	feh_printf-5404
 feh_menu_init_common	feh_menu_init_common-8751
@@ -4230,6 +4221,7 @@ feh_http_load_image	feh_http_load_image-13005
 init_parse_options	init_parse_options-5990
 feh_draw_info	feh_draw_info-13408
 feh_wrap_string	feh_wrap_string-13786
+feh_draw_errstr	feh_draw_errstr-13241
 _estrdup	_estrdup-3576
 feh_edit_inplace	feh_edit_inplace-13642
 feh_menu_select	feh_menu_select-7919
@@ -4245,7 +4237,6 @@ feh_event_handle_MotionNotify	feh_event_handle_MotionNotify-16179
 feh_check_theme_options	feh_check_theme_options-6001
 feh_menu_cb_opt_fullscreen	feh_menu_cb_opt_fullscreen-6502
 slideshow_change_image	slideshow_change_image-5085
-check_options	check_options-7556
 feh_event_handle_stdin	feh_event_handle_stdin-EXIT
 feh_event_handle_generic	feh_event_handle_generic-11436
 feh_event_handle_generic	feh_event_handle_generic-11186
@@ -4293,7 +4284,6 @@ feh_wm_set_bg	feh_wm_set_bg-2255
 feh_menu_func_gen_options	feh_menu_func_gen_options-ENTRY
 feh_event_handle_stdin	feh_event_handle_stdin-10861
 init_thumbnail_mode	init_thumbnail_mode-3956
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-10584
 feh_menu_hide	feh_menu_hide-8061
 feh_printf	feh_printf-5559
 winwidget_create_window	winwidget_create_window-1411
@@ -4373,7 +4363,6 @@ feh_event_handle_MotionNotify	feh_event_handle_MotionNotify-16389
 winwidget_resize	winwidget_resize-2088
 feh_thumbnail_generate	feh_thumbnail_generate-4589
 feh_draw_actions	feh_draw_actions-14022
-feh_dcraw_load_image	feh_dcraw_load_image-8884
 slideshow_change_image	slideshow_change_image-5056
 winwidget_render_image_cached	winwidget_render_image_cached-1794
 feh_filelist_image_remove	feh_filelist_image_remove-5659
@@ -4480,9 +4469,11 @@ feh_draw_caption	feh_draw_caption-13537
 feh_parse_option_array	feh_parse_option_array-7418
 feh_menu_cb	feh_menu_cb-9358
 feh_reload_image	feh_reload_image-12649
+winwidget_setup_pixmaps	winwidget_setup_pixmaps-1509
 feh_menu_cb	feh_menu_cb-9297
 feh_draw_caption	feh_draw_caption-13522
 feh_event_handle_ButtonPress	feh_event_handle_ButtonPress-15966
+winwidget_create_window	winwidget_create_window-1337
 estrjoin	estrjoin-3638
 add_file_to_filelist_recursively	add_file_to_filelist_recursively-14984
 slideshow_change_image	slideshow_change_image-5115
@@ -4533,7 +4524,6 @@ feh_draw_caption	feh_draw_caption-13588
 gib_imlib_create_cropped_scaled_image	gib_imlib_create_cropped_scaled_image-10157
 feh_remove_timer	feh_remove_timer-3817
 feh_thumbnail_generate	feh_thumbnail_generate-3497
-winwidget_rename	winwidget_rename-2184
 feh_load_options_for_theme	feh_load_options_for_theme-6097
 feh_dcraw_load_image	feh_dcraw_load_image-8891
 feh_reload_image	feh_reload_image-12597
@@ -4651,7 +4641,6 @@ feh_string_normalize	feh_string_normalize-ENTRY
 feh_filelist_image_remove	feh_filelist_image_remove-5642
 feh_event_handle_generic	feh_event_handle_generic-11239
 feh_printf	feh_printf-5491
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-15022
 init_thumbnail_mode	init_thumbnail_mode-4224
 winwidget_render_image_cached	winwidget_render_image_cached-1781
 init_thumbnail_mode	init_thumbnail_mode-3008
@@ -4717,7 +4706,6 @@ feh_thumbnail_get_generated	feh_thumbnail_get_generated-4677
 feh_menu_new	feh_menu_new-7686
 feh_absolute_path	feh_absolute_path-15486
 feh_printf	feh_printf-4250
-build_caption_filename	build_caption_filename-13430
 init_thumbnail_mode	init_thumbnail_mode-3968
 feh_file_new	feh_file_new-14823
 feh_menu_slide_all_menus_relative	feh_menu_slide_all_menus_relative-8031
@@ -4805,10 +4793,10 @@ feh_menu_cb_opt_fullscreen	feh_menu_cb_opt_fullscreen-9125
 feh_draw_caption	feh_draw_caption-13471
 feh_thumbnail_setup_thumbnail_dir	feh_thumbnail_setup_thumbnail_dir-4815
 estrjoin	estrjoin-3643
-feh_thumbnail_setup_thumbnail_dir	feh_thumbnail_setup_thumbnail_dir-4825
 feh_unique_filename	feh_unique_filename-3679
 feh_menu_init_thumbnail_viewer	feh_menu_init_thumbnail_viewer-9087
 feh_event_handle_generic	feh_event_handle_generic-11592
+winwidget_setup_pixmaps	winwidget_setup_pixmaps-1236
 getcwd	getcwd-432
 feh_add_timer	feh_add_timer-3838
 cb_reload_timer	cb_reload_timer-4993
@@ -4868,7 +4856,6 @@ feh_png_read_comments	feh_png_read_comments-11093
 winwidget_destroy	winwidget_destroy-1501
 feh_save_filelist	feh_save_filelist-ENTRY
 index_calculate_width	index_calculate_width-12063
-feh_thumbnail_setup_thumbnail_dir	feh_thumbnail_setup_thumbnail_dir-4824
 feh_printf	feh_printf-4164
 feh_event_handle_ConfigureNotify	feh_event_handle_ConfigureNotify-16121
 feh_wm_set_bg	feh_wm_set_bg-2854
@@ -4886,7 +4873,6 @@ init_thumbnail_mode	init_thumbnail_mode-4114
 feh_thumbnail_calculate_geometry	feh_thumbnail_calculate_geometry-4381
 feh_load_image	feh_load_image-12490
 feh_menu_select_prev	feh_menu_select_prev-7834
-feh_parse_option_array	feh_parse_option_array-6502
 feh_parse_option_array	feh_parse_option_array-7008
 winwidget_create_window	winwidget_create_window-1413
 feh_unique_filename	feh_unique_filename-3692
@@ -4904,12 +4890,10 @@ feh_file_info_preload	feh_file_info_preload-15162
 feh_wm_set_bg	feh_wm_set_bg-3110
 feh_event_handle_keypress	feh_event_handle_keypress-10901
 feh_edit_inplace_lossless	feh_edit_inplace_lossless-13927
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-14994
 slideshow_change_image	slideshow_change_image-5114
 feh_wm_get_num_desks	feh_wm_get_num_desks-ENTRY
 feh_event_handle_MotionNotify	feh_event_handle_MotionNotify-16176
 im_weprintf	im_weprintf-13189
-add_file_to_filelist_recursively	add_file_to_filelist_recursively-14988
 init_index_mode	init_index_mode-11923
 feh_event_handle_MotionNotify	feh_event_handle_MotionNotify-11564
 init_thumbnail_mode	init_thumbnail_mode-4250
@@ -4996,7 +4980,6 @@ init_thumbnail_mode	init_thumbnail_mode-4072
 feh_draw_filename	feh_draw_filename-13319
 feh_add_timer	feh_add_timer-3845
 real_loadables_mode	real_loadables_mode-10185
-feh_parse_option_array	feh_parse_option_array-7464
 winwidget_unregister	winwidget_unregister-2144
 cb_reload_timer	cb_reload_timer-4978
 create_index_title_string	create_index_title_string-12122
@@ -5043,7 +5026,6 @@ feh_menu_init_main	feh_menu_init_main-8457
 feh_action_run	feh_action_run-5221
 winwidget_resize	winwidget_resize-2103
 feh_thumbnail_select	feh_thumbnail_select-4730
-feh_thumbnail_setup_thumbnail_dir	feh_thumbnail_setup_thumbnail_dir-4820
 enl_ipc_get_win	enl_ipc_get_win-3210
 feh_event_handle_ButtonPress	feh_event_handle_ButtonPress-15922
 enl_ipc_get_win	enl_ipc_get_win-ENTRY
@@ -5071,12 +5053,10 @@ feh_menu_hide	feh_menu_hide-8052
 feh_event_handle_ButtonPress	feh_event_handle_ButtonPress-15977
 add_file_to_filelist_recursively	add_file_to_filelist_recursively-15061
 init_slideshow_mode	init_slideshow_mode-4933
-feh_thumbnail_setup_thumbnail_dir	feh_thumbnail_setup_thumbnail_dir-3652
 init_index_mode	init_index_mode-11968
 feh_load_font	feh_load_font-13109
 init_multiwindow_mode	init_multiwindow_mode-7646
 init_index_mode	init_index_mode-11985
-winwidget_rename	winwidget_rename-2202
 winwidget_render_image_cached	winwidget_render_image_cached-1784
 feh_menu_slide_all_menus_relative	feh_menu_slide_all_menus_relative-8027
 slideshow_change_image	slideshow_change_image-5161
@@ -5187,6 +5167,7 @@ init_index_mode	init_index_mode-11908
 feh_wm_set_bg	feh_wm_set_bg-3082
 feh_print_load_error	feh_print_load_error-12340
 winwidget_get_geometry	winwidget_get_geometry-EXIT
+winwidget_create_window	winwidget_create_window-1332
 winwidget_rerender_all	winwidget_rerender_all-ENTRY
 feh_set_parse_bb_partial	feh_set_parse_bb_partial-15741
 feh_menu_init_main	feh_menu_init_main-8451
@@ -5206,7 +5187,6 @@ feh_thumbnail_get_generated	feh_thumbnail_get_generated-4675
 feh_menu_init_main	feh_menu_init_main-8383
 feh_wrap_string	feh_wrap_string-13753
 index_calculate_width	index_calculate_width-12049
-check_options	check_options-7555
 feh_menu_init_main	feh_menu_init_main-8396
 feh_event_handle_generic	feh_event_handle_generic-11370
 slideshow_change_image	slideshow_change_image-EXIT
@@ -5261,7 +5241,6 @@ init_index_mode	init_index_mode-11999
 feh_wm_set_bg	feh_wm_set_bg-2652
 feh_thumbnail_calculate_geometry	feh_thumbnail_calculate_geometry-4401
 main	main-9801
-feh_thumbnail_setup_thumbnail_dir	feh_thumbnail_setup_thumbnail_dir-3679
 gib_imlib_load_font	gib_imlib_load_font-14713
 feh_main_iteration	feh_main_iteration-9889
 feh_menu_add_entry	feh_menu_add_entry-8095

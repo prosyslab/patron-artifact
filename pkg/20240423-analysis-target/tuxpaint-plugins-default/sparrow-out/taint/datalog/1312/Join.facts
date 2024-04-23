@@ -53,11 +53,13 @@ loadsound_extra-14725
 render_text-7343
 cleanup-16348
 do_new_dialog_add_colors-EXIT
+do_eraser-14343
 setup_colors-26584
 mainloop-9936
 in_word_set-2861
 textdir-20594
 in_word_set-2831
+rect_xor-10005
 cleanup-16227
 in_word_set-3117
 search_label_list-24057
@@ -78,6 +80,7 @@ parse_argv_options-25460
 mainloop-9326
 in_word_set-2953
 make_directory-15797
+eraser_draw-14408
 do_new_dialog-22335
 mainloop-8548
 grid_hit_gd-7262
@@ -90,8 +93,10 @@ receive_some_font_info-5517
 loadimagerb-8768
 do_slideshow-19023
 do_slideshow-19112
+do_shape-16722
 in_word_set-2827
 draw_fonts-13229
+rect_xor-10011
 do_loadimage-12844
 in_word_set-3255
 mainloop-8811
@@ -152,6 +157,7 @@ wordwrap_text_ex-14595
 in_word_set-2943
 do_open-17924
 in_word_set-3317
+do_shape-16720
 mainloop-9327
 mainloop-8063
 in_word_set-3049
@@ -171,6 +177,7 @@ loaddescsound-10421
 in_word_set-3177
 grid_hit_gd-7256
 in_word_set-3249
+mainloop-10228
 TuxPaint_Font_CloseFont-2633
 do_open-18618
 cleanup-16305
@@ -216,11 +223,13 @@ load_brush_dir-11847
 handle_keymouse-20701
 setup_colors-26935
 set_langint_from_locale_string-4447
+eraser_draw-14382
 get_export_filepath-ENTRY
 cleanup-16377
 in_word_set-2919
 do_open-18173
 do_render_cur_text-20439
+do_shape-16636
 draw_brushes-EXIT
 do_shape-16716
 reliable_read-4621
@@ -231,6 +240,7 @@ cleanup-16373
 setup_config-18750
 draw_fonts-13225
 in_word_set-3195
+eraser_draw-14370
 cleanup-16325
 loadsound_extra-ENTRY
 reliable_write-4598
@@ -245,12 +255,12 @@ do_color_sel-23417
 load_starter_id-EXIT
 draw_shapes-9443
 reliable_write-4597
+do_shape-16750
 in_word_set-3079
 parse_argv_options-25470
 draw_stamps-13538
 in_word_set-2961
 in_word_set-3029
-mainloop-10231
 loaddesc-14854
 set_label_fonts-ENTRY
 load_info_about_label_surface-24368
@@ -283,6 +293,7 @@ load_starter_helper-EXIT
 do_open-18575
 cleanup-16378
 handle_keymouse-20719
+eraser_draw-14363
 set_langint_from_locale_string-6805
 do_slideshow-19028
 simply_render_node-24177
@@ -296,6 +307,7 @@ load_magic_plugins-15547
 cleanup-16341
 parse_file_options-25393
 in_word_set-2877
+rect_xor-14258
 render_text-7340
 parse_file_options-25391
 in_word_set-3013
@@ -399,7 +411,6 @@ in_word_set-2933
 get_xdg_user_dir-28780
 cleanup-16324
 do_open-17978
-do_shape-16828
 do_slideshow-19242
 loadinfo-10692
 loadinfo-15092
@@ -438,6 +449,7 @@ do_new_dialog-22404
 in_word_set-3083
 in_word_set-3143
 hash-2307
+do_eraser-14344
 do_quit-17811
 do_open-13220
 loadinfo-15075
@@ -517,7 +529,6 @@ do_open-17979
 setup_colors-26754
 in_word_set-3233
 update_stamp_xor-20078
-do_eraser-EXIT
 get_stamp_thumb-12377
 draw_toolbar-12886
 do_slideshow-19008
@@ -543,10 +554,12 @@ flip_surface-11890
 setup_colors-19690
 setup_colors-26741
 load_info_about_label_surface-24321
+do_shape-16734
 cleanup-16385
 mainloop-5235
 myIMG_Load-15380
 in_word_set-2811
+rect_xor-14264
 loadstamp_finisher-11925
 in_word_set-3295
 loadinfo-15078
@@ -561,6 +574,7 @@ handle_keymouse_buttons-15114
 search_label_list-23994
 draw_stamps-13452
 do_open-17854
+line_xor-14203
 in_word_set-2809
 do_open-18910
 parse_argv_options-25492
@@ -573,12 +587,14 @@ loadimagerb-12824
 do_new_dialog-23087
 setup_normal_screen_layout-7187
 in_word_set-2863
+do_shape-16751
 do_open-17911
 loadsound_extra-14681
 render_text_w-ENTRY
 in_word_set-3023
 do_new_dialog-16305
 in_word_set-3045
+do_shape-16742
 reliable_write-4594
 mirror_starter-21112
 export_gif-21261
@@ -588,6 +604,7 @@ do_open-18912
 parse_one_option-4217
 export_gif-28972
 do_slideshow-19467
+do_shape-16637
 seticon-EXIT
 loadsound_extra-14702
 in_word_set-3041
@@ -595,6 +612,7 @@ do_redo_label_node-24115
 do_save-17031
 do_new_dialog-22716
 receive_some_font_info-5628
+do_eraser-14355
 in_word_set-3061
 in_word_set-3075
 cleanup-16370
@@ -611,7 +629,6 @@ do_slideshow-19154
 myIMG_Load_RWops-15371
 parse_argv_options-25477
 export_gif-28954
-eraser_draw-14389
 redraw_tux_text-ENTRY
 do_slideshow-19290
 tmp_apply_uncommited_text-24530
@@ -641,6 +658,7 @@ draw_shapes-EXIT
 flip_starter-21156
 load_embedded_data-25112
 parse_one_option-4238
+draw_blinking_cursor-11053
 do_prompt_image_flash_snd-15867
 parse_argv_options-25493
 setup_normal_screen_layout-7163
@@ -685,6 +703,7 @@ mainloop-8383
 setup_colors-26871
 textdir-20595
 do_slideshow-19561
+eraser_draw-14364
 setup_normal_screen_layout-7185
 in_word_set-3299
 in_word_set-3199
@@ -726,6 +745,7 @@ brush_draw-11139
 compute_default_scale_factor-8009
 in_word_set-3281
 mainloop-5271
+eraser_draw-14366
 in_word_set-2897
 in_word_set-3019
 draw_magic-12928
@@ -760,7 +780,6 @@ do_render_button_label-12680
 stamp_draw-11557
 get_export_filepath-21368
 in_word_set-3277
-eraser_draw-10088
 setup-27149
 in_word_set-2803
 receive_some_font_info-5514
@@ -795,6 +814,7 @@ wordwrap_text-EXIT
 in_word_set-2895
 in_word_set-3127
 do_slideshow-19150
+rect_xor-14260
 do_open-18211
 loadstamp_finisher-8207
 uppercase-14712
@@ -858,6 +878,7 @@ simply_render_node-24181
 in_word_set-2857
 mainloop-9526
 tmp_apply_uncommited_text-24534
+do_shape-16725
 mainloop-8094
 loadinfo-15026
 set_chunk_data-17179
@@ -946,6 +967,7 @@ setup_colors-19655
 parse_argv_options-EXIT
 do_redo-14102
 mainloop-8480
+do_shape-16635
 brush_draw-7526
 wordwrap_text_ex-14629
 loadfonts-EXIT
@@ -1080,6 +1102,7 @@ do_render_cur_text-20529
 reliable_write-2721
 tp_ftw-2091
 do_slideshow-19177
+do_shape-16743
 get_xdg_user_dir-28849
 draw_shapes-9433
 do_undo-14083
@@ -1109,6 +1132,7 @@ cleanup-16330
 loadsound_extra-14684
 mainloop-6772
 set_label_fonts-24405
+do_shape-16634
 cleanup-16371
 in_word_set-2849
 myIMG_Load-15396
@@ -1143,6 +1167,7 @@ do_new_dialog-22484
 load_starter_id-15299
 loadstamp_finisher-11952
 do_new_dialog-22187
+rect_xor-10007
 in_word_set-3063
 do_open-17920
 do_slideshow-13832
@@ -1172,12 +1197,14 @@ do_lock_file-26986
 do_slideshow-13993
 reliable_write-ENTRY
 in_word_set-3179
+rect_xor-14262
 mainloop-8500
 do_undo_label_node-24097
 in_word_set-2931
 do_undo-14081
 load_starter_helper-15372
 do_color_picker-23767
+eraser_draw-14362
 do_open-13332
 do_color_sel-23416
 tmp_apply_uncommited_text-24538
@@ -1209,6 +1236,7 @@ draw_shapes-9450
 do_open-17855
 mirror_surface-ENTRY
 do_new_dialog-22124
+mainloop-10227
 mainloop-5374
 load_info_about_label_surface-24343
 do_new_dialog-22205
@@ -1242,6 +1270,7 @@ do_prompt_image_flash_snd-16109
 in_word_set-3285
 render_text_w-4889
 setup_normal_screen_layout-7156
+do_shape-16655
 in_word_set-3303
 mainloop-9533
 cleanup-11624
@@ -1277,6 +1306,7 @@ do_new_dialog-22044
 in_word_set-3151
 cleanup-16327
 do_new_dialog-22253
+eraser_draw-14383
 cleanup-16366
 set_active_stamp-12019
 do_render_cur_text-20426
@@ -1285,6 +1315,7 @@ do_render_button_label-12690
 receive_some_font_info-5558
 load_kpx-21358
 mainloop-8556
+rect_xor-10009
 in_word_set-2837
 mainloop-8095
 set_current_language-4588
@@ -1311,7 +1342,6 @@ do_new_dialog-22350
 set_langint_from_locale_string-4432
 do_ps_save-1029
 do_open-17968
-eraser_draw-14400
 mainloop-6063
 stamp_draw-11587
 in_word_set-3053
@@ -1358,6 +1388,7 @@ draw_magic-12959
 loadinfo-10642
 load_embedded_data-25113
 setup_colors-19754
+do_shape-16723
 do_prompt_image_flash-EXIT
 cleanup-16430
 do_open-17947
@@ -1442,6 +1473,7 @@ do_prompt_image_flash_snd-16034
 loaddesc-10524
 mainloop-5548
 load_current-15718
+do_shape-16654
 setup-27385
 reset_avail_tools-10159
 loadsound_extra-14695
@@ -1450,6 +1482,7 @@ flip_surface-8172
 in_word_set-2901
 charset_works-5817
 in_word_set-2985
+mainloop-8919
 in_word_set-2969
 render_brush-14160
 cleanup-16360
@@ -1467,6 +1500,7 @@ update_canvas_ex_r-4781
 myIMG_Load_RWops-15358
 do_open-18097
 tp_ftw-2055
+do_shape-16735
 export_pict-29140
 brush_draw-7478
 mainloop-8549
@@ -1478,6 +1512,7 @@ in_word_set-3287
 setup_config-26014
 handle_keymouse_buttons-21043
 in_word_set-3031
+mainloop-10214
 simply_render_node-17508
 in_word_set-2921
 duplicate_surface-15160
@@ -1485,7 +1520,6 @@ in_word_set-2793
 loadbrush_callback-11774
 loadinfo-15071
 stamp_draw-7882
-eraser_draw-14393
 draw_fonts-13218
 in_word_set-2925
 thumbnail-9608
@@ -1510,6 +1544,7 @@ parse_one_option-4242
 draw_tux_text-EXIT
 mainloop-8684
 in_word_set-3279
+mainloop-8915
 loadsound_extra-14711
 do_open-18574
 mainloop-9811

@@ -1,110 +1,19 @@
 = Alarms =
-1. common.c:188 {main} UnProven
-  *(argv+@optind) @main-4131:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(argv+@optind) @main-4130:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-2. common.c:188 {main} UnProven
-  *(argv+@optind) @main-4133:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(argv+@optind) @main-4132:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-3. common.c:188 {main} UnProven
-  *(argv+@optind) @main-4135:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-  *(argv+@optind) @main-4134:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-4. common.c:191 {main} UnProven
-  *(argv+__cil_tmp18) @main-4207:  offset: [0, +oo], size: [1, +oo] UnProven, allocsite: __extern__argv
-5. common.c:236 {main} UnProven
-  *(env_display) @main-4155:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: main-4256
-  *(env_display) @main-4154:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: main-4256
-6. common.c:314 {ErrorExitWarn} UnProven
-  errorlist[error-1] @ErrorExitWarn-4343:  offset: [0, 11], size: [11, 11] UnProven, allocsite: ErrorExitWarn-4314
-7. common.c:635 {OpenDefaultFile} UnProven
-  sprintf(StartOf(filename), __cil_tmp16, home) @OpenDefaultFile-4614:  offset: [-oo, +oo], size: [4096, 4096] UnProven, allocsite: OpenDefaultFile-4584
-8. common.c:664 {SetShowNoninter} UnProven
-  strncpy (StartOf(dest), (char const   *)(@optarg+1), 3UL) @SetShowNoninter-4685:  offset: [3, 3], size: [2, 2] UnProven, allocsite: main-4255
-  strncpy (StartOf(dest), (char const   *)(@optarg+1), 3UL) @SetShowNoninter-4685:  offset: [3, 3], size: [1, +oo] UnProven, allocsite: __extern__arg
-9. curses.c:57 {InitScreenCurses} UnProven
-  strncmp((char const   *)@lang, (char const   *)@LANGUAGES___1[ii], 5UL) @InitScreenCurses-2975:  offset: [4, 4], size: [3, 6] UnProven, allocsite: _G_-5771
-  strncmp((char const   *)@lang, (char const   *)@LANGUAGES___1[ii], 5UL) @InitScreenCurses-2975:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: InitScreenCurses-3102
-10. curses.c:64 {InitScreenCurses} UnProven
-  strncmp((char const   *)@lang, (char const   *)@LANGUAGES___1[ii], 5UL) @InitScreenCurses-2982:  offset: [4, 4], size: [3, 6] UnProven, allocsite: _G_-5771
-  strncmp((char const   *)@lang, (char const   *)@LANGUAGES___1[ii], 5UL) @InitScreenCurses-2982:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: InitScreenCurses-3102
-  strncmp((char const   *)@lang, (char const   *)@LANGUAGES___1[ii], 5UL) @InitScreenCurses-2982:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: InitScreenCurses-3105
-11. curses.c:106 {InitScreenCurses} UnProven
-  strncpy (StartOf(hotkey), (char const   *)__cil_tmp18, 1UL) @InitScreenCurses-3016:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: InitScreenCurses-3015
-12. curses.c:160 {HighlightLabelCurses} UnProven
-  @dev_label[@current_dev] @HighlightLabelCurses-3211:  offset: [0, +oo], size: [25, 25] UnProven, allocsite: _G_-5270
-13. curses.c:298 {InitColors} UnProven
-  *(p) @InitColors-3454:  offset: [0, +oo], size: [8192, 8192] UnProven, allocsite: InitColors-3441
-  *(p) @InitColors-3453:  offset: [0, +oo], size: [8192, 8192] UnProven, allocsite: InitColors-3441
-  *(p) @InitColors-3452:  offset: [0, +oo], size: [8192, 8192] UnProven, allocsite: InitColors-3441
-  *(p) @InitColors-3451:  offset: [0, +oo], size: [8192, 8192] UnProven, allocsite: InitColors-3441
-14. curses.c:300 {InitColors} UnProven
-  *(p) @InitColors-3456:  offset: [0, +oo], size: [8192, 8192] UnProven, allocsite: InitColors-3441
-  *(p) @InitColors-3455:  offset: [0, +oo], size: [8192, 8192] UnProven, allocsite: InitColors-3441
-15. curses.c:300 {InitColors} UnProven
-  *(p) @InitColors-3458:  offset: [0, +oo], size: [8192, 8192] UnProven, allocsite: InitColors-3441
-  *(p) @InitColors-3457:  offset: [0, +oo], size: [8192, 8192] UnProven, allocsite: InitColors-3441
-16. curses.c:412 {Inter} UnProven
-  @dev_label[@current_dev] @Inter-3770:  offset: [0, +oo], size: [25, 25] UnProven, allocsite: _G_-5270
-17. curses.c:485 {Inter} UnProven
-  *(@key_keys) @Inter-3715:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1433
-  *(@key_keys) @Inter-3714:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1433
-18. curses.c:487 {Inter} UnProven
-  *(@key_load) @Inter-3717:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1436
-  *(@key_load) @Inter-3716:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1436
-19. curses.c:489 {Inter} UnProven
-  *(@key_mute) @Inter-3719:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1439
-  *(@key_mute) @Inter-3718:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1439
-20. curses.c:491 {Inter} UnProven
-  *(@key_only) @Inter-3721:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1442
-  *(@key_only) @Inter-3720:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1442
-21. curses.c:493 {Inter} UnProven
-  *(@key_quit) @Inter-3723:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1445
-  *(@key_quit) @Inter-3722:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1445
-22. curses.c:495 {Inter} UnProven
-  *(@key_save) @Inter-3725:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1448
-  *(@key_save) @Inter-3724:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1448
-23. curses.c:497 {Inter} UnProven
-  *(@key_undo) @Inter-3727:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1451
-  *(@key_undo) @Inter-3726:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: ReadInteractiveKeys-1451
-24. curses.c:544 {DrawLevelCurses} UnProven
+1. curses.c:544 {DrawLevelCurses} UnProven
   left/@level_increment @DrawLevelCurses-3944:  Divide by [0, 16] UnProven
-25. curses.c:545 {DrawLevelCurses} UnProven
+2. curses.c:545 {DrawLevelCurses} UnProven
   right/@level_increment @DrawLevelCurses-3948:  Divide by [0, 16] UnProven
-26. curses.c:548 {DrawLevelCurses} UnProven
+3. curses.c:548 {DrawLevelCurses} UnProven
   (left+right)/@level_increment @DrawLevelCurses-3956:  Divide by [0, 16] UnProven
-27. curses.c:579 {RedrawBalanceCurses} UnProven
+4. curses.c:579 {RedrawBalanceCurses} UnProven
   (50*right)/max @RedrawBalanceCurses-4030:  Divide by [-oo, +oo] UnProven
-28. curses.c:579 {RedrawBalanceCurses} UnProven
+5. curses.c:579 {RedrawBalanceCurses} UnProven
   (50*left)/max @RedrawBalanceCurses-4031:  Divide by [-oo, +oo] UnProven
-29. curses.c:584 {RedrawBalanceCurses} UnProven
+6. curses.c:584 {RedrawBalanceCurses} UnProven
   balset/@balance_increment @RedrawBalanceCurses-4038:  Divide by [0, 16] UnProven
-30. gtk.c:235 {InitScreenGTK} UnProven
-  *(__cil_tmp54) @InitScreenGTK-2060:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: InitScreenGTK-2059
-31. gtk.c:261 {InitScreenGTK} UnProven
-  *(__cil_tmp79) @InitScreenGTK-2105:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: InitScreenGTK-2104
-32. gtk.c:262 {InitScreenGTK} UnProven
-  *(__cil_tmp80) @InitScreenGTK-2107:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: InitScreenGTK-2106
-33. gtk.c:263 {InitScreenGTK} UnProven
-  *(__cil_tmp81) @InitScreenGTK-2109:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: InitScreenGTK-2108
-34. gtk.c:264 {InitScreenGTK} UnProven
-  *(__cil_tmp82) @InitScreenGTK-2111:  offset: [0, 0], size: [-oo, +oo] UnProven, allocsite: InitScreenGTK-2110
-35. gtk.c:334 {InitScreenGTK} UnProven
-  *(window) @InitScreenGTK-2235:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_window_new
-  *(style) @InitScreenGTK-2235:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_widget_get_style
-36. gtk.c:335 {InitScreenGTK} UnProven
-  *(window) @InitScreenGTK-2236:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_window_new
-  *(style) @InitScreenGTK-2236:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_widget_get_style
-37. gtk.c:392 {InitScreenGTK} UnProven
-  *(window) @InitScreenGTK-2359:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_window_new
-  *(style) @InitScreenGTK-2359:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_widget_get_style
-38. gtk.c:393 {InitScreenGTK} UnProven
-  *(window) @InitScreenGTK-2360:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gtk_window_new
-39. interactive.c:241 {UnmuteOne} UnProven
-  @mutelevel[dev] @UnmuteOne-1253:  offset: [-1, +oo], size: [25, 25] UnProven, allocsite: _G_-4871
-40. interactive.c:370 {SwitchRecordPlay} UnProven
-  @our_recplay[dev] @SwitchRecordPlay-1411:  offset: [0, +oo], size: [25, 25] UnProven, allocsite: _G_-4898
 
-#queries                 : 257
-#queries mod alarm point : 180
-#proven                  : 140
-#unproven                : 40
-#bot-involved            : 9
+#queries                 : 30
+#queries mod alarm point : 22
+#proven                  : 16
+#unproven                : 6
+#bot-involved            : 0

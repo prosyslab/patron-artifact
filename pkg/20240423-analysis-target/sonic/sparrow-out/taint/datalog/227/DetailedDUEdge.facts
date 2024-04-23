@@ -125,6 +125,7 @@ findPitchPeriod-719	findPitchPeriod-721	Loc-46
 findPitchPeriod-719	findPitchPeriod-733	Loc-46
 findPitchPeriod-719	findPitchPeriod-735	Loc-46
 scaleSamples-290	scaleSamples-EXIT	{(scaleSamples,samples),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465}
+scaleSamples-290	scaleSamples-350	Loc-390
 scaleSamples-290	scaleSamples-351	{(scaleSamples,samples),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465}
 scaleSamples-290	scaleSamples-354	Loc-147
 scaleSamples-290	scaleSamples-355	Loc-147
@@ -500,6 +501,8 @@ openOutputWaveFile-ENTRY	openOutputWaveFile-1256	{(openOutputWaveFile,__return__
 openOutputWaveFile-ENTRY	openOutputWaveFile-1419	{(openOutputWaveFile,fileName),__extern__fopen}
 openOutputWaveFile-ENTRY	openOutputWaveFile-1424	{NULL,openOutputWaveFile-1429.soundFile}
 openOutputWaveFile-ENTRY	openOutputWaveFile-1428	{NULL,closeFile,(closeFile,file),openInputWaveFile-1404.soundFile}
+scaleSamples-350	scaleSamples-EXIT	Loc-390
+scaleSamples-350	scaleSamples-290	Loc-390
 sonicFlushStream-612	sonicFlushStream-614	Loc-154
 interpolate-835	interpolate-746	Loc-67
 readHeader-1377	readHeader-EXIT	{(fread,__return__),(readExactBytes,bytes),(readExactBytes,file),(readExactBytes,length),(readShort,__return__),expectString-1266,readInt-1242,readShort-1254,openInputWaveFile-1404.failed}

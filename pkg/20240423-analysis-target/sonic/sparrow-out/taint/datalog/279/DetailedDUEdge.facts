@@ -43,6 +43,7 @@ downSampleInput-562	downSampleInput-636	Loc-225
 downSampleInput-562	downSampleInput-637	Loc-225
 downSampleInput-562	downSampleInput-638	Loc-182
 downSampleInput-562	downSampleInput-640	Loc-182
+writeToWaveFile-1512	writeToWaveFile-1515	Loc-407
 overlapAddWithSeparation-ENTRY	overlapAddWithSeparation-667	Loc-142
 overlapAddWithSeparation-ENTRY	overlapAddWithSeparation-754	Loc-224
 overlapAddWithSeparation-ENTRY	overlapAddWithSeparation-756	{(overlapAddWithSeparation,numSamples),(overlapAddWithSeparation,separation)}
@@ -193,6 +194,8 @@ interpolate-ENTRY	interpolate-835	{NULL,(interpolate,in),(interpolate,stream),al
 interpolate-ENTRY	interpolate-836	{NULL,(interpolate,oldSampleRate),(interpolate,stream),sonicCreateStream-442.newRatePosition}
 interpolate-ENTRY	interpolate-837	{NULL,(interpolate,newSampleRate),(interpolate,stream),sonicCreateStream-442.oldRatePosition}
 interpolate-ENTRY	interpolate-838	{NULL,(interpolate,newSampleRate),(interpolate,stream),sonicCreateStream-442.oldRatePosition}
+writeToWaveFile-1510	writeToWaveFile-1306	Loc-409
+writeToWaveFile-1510	writeToWaveFile-1512	Loc-409
 addShortSamplesToInputBuffer-497	addShortSamplesToInputBuffer-EXIT	{allocateStreamBuffers-419,enlargeInputBufferIfNeeded-473}
 readInt-1247	readExactBytes-ENTRY	{NULL,fprintf,fread,(fprintf,__fmt),(fread,__return__),(readExactBytes,bytes),(readExactBytes,file),(readExactBytes,length),expectString-1266,readInt-1242,readShort-1254,openInputWaveFile-1404.failed,openInputWaveFile-1404.soundFile}
 readInt-1247	readInt-EXIT	{(readExactBytes,bytes),(readExactBytes,file),(readExactBytes,length)}
@@ -346,6 +349,7 @@ openOutputWaveFile-1244	openOutputWaveFile-EXIT	{(openOutputWaveFile,__return__)
 scaleSamples-356	scaleSamples-290	Loc-142
 readFromWaveFile-1491	readFromWaveFile-1295	Loc-144
 readFromWaveFile-1491	readFromWaveFile-1493	Loc-144
+runSonic-1057	runSonic-971	Loc-294
 readHeader-1375	readHeader-EXIT	Loc-289
 readHeader-1375	readHeader-1344	{(fprintf,__fmt),(fread,__return__),(readExactBytes,bytes),(readExactBytes,file),(readExactBytes,length),expectString-1266,readInt-1242,readShort-1254,openInputWaveFile-1404.failed}
 readHeader-1375	readHeader-1346	{(readShort,__return__)}
@@ -361,6 +365,8 @@ changeSpeed-929	changeSpeed-EXIT	Loc-39
 changeSpeed-929	changeSpeed-842	Loc-39
 adjustRate-871	adjustRate-784	Loc-149
 freeStreamBuffers-372	freeStreamBuffers-333	Loc-151
+writeToWaveFile-1498	writeToWaveFile-1509	Loc-412
+writeToWaveFile-1498	writeToWaveFile-1516	Loc-412
 sonicFlushStream-614	sonicFlushStream-608	Loc-153
 sonicFlushStream-614	sonicFlushStream-609	Loc-153
 sonicFlushStream-614	sonicFlushStream-619	Loc-153
@@ -373,6 +379,7 @@ overlapAdd-654	overlapAdd-750	Loc-0
 overlapAdd-654	overlapAdd-751	Loc-191
 allocateStreamBuffers-393	allocateStreamBuffers-415	Loc-156
 findPitchPeriod-720	findPitchPeriod-703	Loc-157
+runSonic-1059	runSonic-965	Loc-294
 adjustPitch-832	adjustPitch-EXIT	{(adjustPitch,period),(downSampleInput,samples),(downSampleInput,skip),(downSampleInput,stream),(findPitchPeriod,__return__),(findPitchPeriod,maxDiff),(findPitchPeriod,minDiff),(findPitchPeriodInRange,__return__),(findPitchPeriodInRange,maxPeriod),(findPitchPeriodInRange,minPeriod),(findPitchPeriodInRange,retMaxDiff),(findPitchPeriodInRange,retMinDiff),(findPitchPeriodInRange,samples),(prevPeriodBetter,__return__),(prevPeriodBetter,maxDiff),(prevPeriodBetter,minDiff),(prevPeriodBetter,preferNewPeriod),(prevPeriodBetter,stream),allocateStreamBuffers-422,sonicCreateStream-442.numChannels,sonicCreateStream-442.prevMinDiff,sonicCreateStream-442.prevPeriod,sonicCreateStream-442.quality}
 adjustPitch-832	adjustPitch-719	{(adjustPitch,period),(downSampleInput,samples),(downSampleInput,skip),(downSampleInput,stream),(findPitchPeriod,__return__),(findPitchPeriod,maxDiff),(findPitchPeriod,minDiff),(findPitchPeriodInRange,__return__),(findPitchPeriodInRange,maxPeriod),(findPitchPeriodInRange,minPeriod),(findPitchPeriodInRange,retMaxDiff),(findPitchPeriodInRange,retMinDiff),(findPitchPeriodInRange,samples),(prevPeriodBetter,__return__),(prevPeriodBetter,maxDiff),(prevPeriodBetter,minDiff),(prevPeriodBetter,preferNewPeriod),(prevPeriodBetter,stream),allocateStreamBuffers-422,sonicCreateStream-442.numChannels,sonicCreateStream-442.prevMinDiff,sonicCreateStream-442.prevPeriod,sonicCreateStream-442.quality}
 adjustPitch-832	adjustPitch-815	Loc-188
@@ -414,6 +421,7 @@ closeFile-1216	closeFile-EXIT	Loc-336
 readFromWaveFile-1490	readFromWaveFile-1295	Loc-163
 readFromWaveFile-1490	readFromWaveFile-1493	Loc-163
 allocateStreamBuffers-424	allocateStreamBuffers-EXIT	{(freeStreamBuffers,stream),sonicCreateStream-442.downSampleBuffer,sonicCreateStream-442.inputBuffer,sonicCreateStream-442.outputBuffer,sonicCreateStream-442.pitchBuffer}
+writeToWaveFile-1500	writeToWaveFile-1509	Loc-411
 adjustRate-884	adjustRate-885	Loc-141
 freeStreamBuffers-333	freeStreamBuffers-EXIT	Loc-151
 readHeader-1374	readHeader-EXIT	Loc-169
@@ -423,6 +431,7 @@ sonicReadShortFromStream-505	sonicReadShortFromStream-EXIT	Loc-16
 sonicReadShortFromStream-505	sonicReadShortFromStream-511	Loc-16
 sonicReadShortFromStream-505	sonicReadShortFromStream-569	Loc-36
 sonicReadShortFromStream-505	sonicReadShortFromStream-570	Loc-36
+sonicReadShortFromStream-505	sonicReadShortFromStream-575	Loc-16
 sonicReadShortFromStream-505	sonicReadShortFromStream-576	Loc-16
 fread-109	fread-EXIT	{(fread,__return__)}
 adjustRate-878	adjustRate-773	Loc-141
@@ -453,10 +462,12 @@ readHeader-1344	readInt-ENTRY	{NULL,fprintf,fread,readExactBytes,(fprintf,__fmt)
 enlargeOutputBufferIfNeeded-459	enlargeOutputBufferIfNeeded-462	Loc-174
 expectString-1277	expectString-1160	Loc-175
 fread-112	fread-EXIT	{(fread,__return__)}
+writeToWaveFile-1514	writeToWaveFile-1306	Loc-411
 enlargeOutputBufferIfNeeded-401	enlargeOutputBufferIfNeeded-EXIT	{(enlargeOutputBufferIfNeeded,__return__)}
 removeInputSamples-520	removeInputSamples-522	Loc-108
 removeInputSamples-520	removeInputSamples-523	Loc-108
 adjustPitch-829	adjustPitch-825	Loc-142
+runSonic-1060	runSonic-955	Loc-294
 enlargeInputBufferIfNeeded-473	enlargeInputBufferIfNeeded-EXIT	Loc-179
 enlargeInputBufferIfNeeded-473	enlargeInputBufferIfNeeded-410	Loc-179
 enlargeInputBufferIfNeeded-473	enlargeInputBufferIfNeeded-472	Loc-179
@@ -499,6 +510,7 @@ openOutputWaveFile-ENTRY	openOutputWaveFile-1255	{(openOutputWaveFile,__return__
 openOutputWaveFile-ENTRY	openOutputWaveFile-1256	{(openOutputWaveFile,__return__)}
 openOutputWaveFile-ENTRY	openOutputWaveFile-1419	{(openOutputWaveFile,fileName),__extern__fopen}
 openOutputWaveFile-ENTRY	openOutputWaveFile-1424	{NULL,openOutputWaveFile-1429.soundFile}
+openOutputWaveFile-ENTRY	openOutputWaveFile-1426	{NULL,(openOutputWaveFile,numChannels),openOutputWaveFile-1429.numChannels}
 openOutputWaveFile-ENTRY	openOutputWaveFile-1428	{NULL,closeFile,(closeFile,file),openInputWaveFile-1404.soundFile}
 sonicFlushStream-612	sonicFlushStream-614	Loc-154
 interpolate-835	interpolate-746	Loc-67
@@ -543,6 +555,10 @@ enlargeInputBufferIfNeeded-470	enlargeInputBufferIfNeeded-473	Loc-180
 overlapAddWithSeparation-756	overlapAddWithSeparation-758	Loc-90
 overlapAddWithSeparation-756	overlapAddWithSeparation-759	Loc-90
 removePitchSamples-798	removePitchSamples-EXIT	{(removePitchSamples,numSamples),allocateStreamBuffers-421,moveNewSamplesToPitchBuffer-789,sonicCreateStream-442.numPitchSamples}
+runSonic-971	runSonic-955	{(fprintf,__fmt),(writeBytes,bytes),(writeBytes,file),(writeBytes,length),(writeToWaveFile,buffer),(writeToWaveFile,file),(writeToWaveFile,numSamples),writeToWaveFile-1496,openInputWaveFile-1404.failed,openOutputWaveFile-1429.failed}
+runSonic-971	runSonic-965	{(fprintf,__fmt),(writeBytes,bytes),(writeBytes,file),(writeBytes,length),(writeToWaveFile,buffer),(writeToWaveFile,file),(writeToWaveFile,numSamples),writeToWaveFile-1496,openInputWaveFile-1404.failed,openOutputWaveFile-1429.failed}
+runSonic-971	runSonic-1059	Loc-294
+runSonic-971	runSonic-1060	Loc-294
 runSonic-963	runSonic-955	{(addShortSamplesToInputBuffer,__return__),(addShortSamplesToInputBuffer,numSamples),(addShortSamplesToInputBuffer,samples),(addShortSamplesToInputBuffer,stream),(adjustPitch,__return__),(adjustPitch,originalNumOutputSamples),(adjustPitch,stream),(adjustRate,__return__),(adjustRate,originalNumOutputSamples),(adjustRate,rate),(adjustRate,stream),(changeSpeed,speed),(changeSpeed,stream),(copyInputToOutput,__return__),(copyInputToOutput,position),(copyInputToOutput,stream),(copyToOutput,__return__),(copyToOutput,numSamples),(copyToOutput,samples),(copyToOutput,stream),(downSampleInput,samples),(downSampleInput,skip),(downSampleInput,stream),(enlargeInputBufferIfNeeded,__return__),(enlargeInputBufferIfNeeded,numSamples),(enlargeInputBufferIfNeeded,stream),(enlargeOutputBufferIfNeeded,__return__),(enlargeOutputBufferIfNeeded,numSamples),(enlargeOutputBufferIfNeeded,stream),(findPitchPeriod,__return__),(findPitchPeriod,maxDiff),(findPitchPeriod,minDiff),(findPitchPeriod,preferNewPeriod),(findPitchPeriod,samples),(findPitchPeriod,stream),(findPitchPeriodInRange,__return__),(findPitchPeriodInRange,maxPeriod),(findPitchPeriodInRange,minPeriod),(findPitchPeriodInRange,retMaxDiff),(findPitchPeriodInRange,retMinDiff),(findPitchPeriodInRange,samples),(insertPitchPeriod,__return__),(insertPitchPeriod,period),(insertPitchPeriod,samples),(insertPitchPeriod,speed),(insertPitchPeriod,stream),(interpolate,__return__),(interpolate,in),(interpolate,newSampleRate),(interpolate,oldSampleRate),(interpolate,stream),(memset,__ch),(memset,__dest),(memset,__len),(moveNewSamplesToPitchBuffer,__return__),(moveNewSamplesToPitchBuffer,originalNumOutputSamples),(moveNewSamplesToPitchBuffer,stream),(overlapAdd,numChannels),(overlapAdd,numSamples),(overlapAdd,out),(overlapAdd,rampDown),(overlapAdd,rampUp),(overlapAddWithSeparation,numChannels),(overlapAddWithSeparation,numSamples),(overlapAddWithSeparation,out),(overlapAddWithSeparation,rampDown),(overlapAddWithSeparation,rampUp),(overlapAddWithSeparation,separation),(prevPeriodBetter,__return__),(prevPeriodBetter,maxDiff),(prevPeriodBetter,minDiff),(prevPeriodBetter,preferNewPeriod),(prevPeriodBetter,stream),(processStreamInput,__return__),(processStreamInput,stream),(removeInputSamples,position),(removeInputSamples,stream),(removePitchSamples,numSamples),(removePitchSamples,stream),(scaleSamples,numSamples),(scaleSamples,samples),(scaleSamples,volume),(skipPitchPeriod,__return__),(skipPitchPeriod,period),(skipPitchPeriod,samples),(skipPitchPeriod,speed),(skipPitchPeriod,stream),(sonicFlushStream,stream),(sonicWriteShortToStream,__return__),(sonicWriteShortToStream,numSamples),(sonicWriteShortToStream,samples),(sonicWriteShortToStream,stream),allocateStreamBuffers-419,allocateStreamBuffers-421,allocateStreamBuffers-422,enlargeInputBufferIfNeeded-473,moveNewSamplesToPitchBuffer-789,sonicCreateStream-442.inputBuffer,sonicCreateStream-442.inputBufferSize,sonicCreateStream-442.maxRequired,sonicCreateStream-442.newRatePosition,sonicCreateStream-442.numChannels,sonicCreateStream-442.numInputSamples,sonicCreateStream-442.numPitchSamples,sonicCreateStream-442.oldRatePosition,sonicCreateStream-442.outputBuffer,sonicCreateStream-442.outputBufferSize,sonicCreateStream-442.pitch,sonicCreateStream-442.pitchBuffer,sonicCreateStream-442.pitchBufferSize,sonicCreateStream-442.prevMinDiff,sonicCreateStream-442.prevPeriod,sonicCreateStream-442.quality,sonicCreateStream-442.remainingInputToCopy,sonicCreateStream-442.useChordPitch,sonicCreateStream-442.volume}
 runSonic-963	runSonic-965	{(fprintf,__fmt),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numOutputSamples}
 runSonic-963	runSonic-1061	Loc-6
@@ -705,6 +721,11 @@ readHeader-EXIT	openInputWaveFile-1412	{(expectString,expectedString),(expectStr
 adjustPitch-744	adjustPitch-EXIT	{(adjustPitch,__return__)}
 runSonic-1073	runSonic-963	{(sonicWriteShortToStream,numSamples),(sonicWriteShortToStream,samples),(sonicWriteShortToStream,stream)}
 runSonic-1073	sonicWriteShortToStream-ENTRY	{NULL,addShortSamplesToInputBuffer,adjustPitch,adjustRate,changeSpeed,copyInputToOutput,copyToOutput,downSampleInput,enlargeInputBufferIfNeeded,enlargeOutputBufferIfNeeded,findPitchPeriod,findPitchPeriodInRange,fprintf,insertPitchPeriod,interpolate,moveNewSamplesToPitchBuffer,overlapAdd,overlapAddWithSeparation,prevPeriodBetter,processStreamInput,removeInputSamples,removePitchSamples,scaleSamples,skipPitchPeriod,(addShortSamplesToInputBuffer,__return__),(addShortSamplesToInputBuffer,numSamples),(addShortSamplesToInputBuffer,samples),(addShortSamplesToInputBuffer,stream),(adjustPitch,__return__),(adjustPitch,originalNumOutputSamples),(adjustPitch,stream),(adjustRate,__return__),(adjustRate,originalNumOutputSamples),(adjustRate,rate),(adjustRate,stream),(changeSpeed,speed),(changeSpeed,stream),(copyInputToOutput,__return__),(copyInputToOutput,position),(copyInputToOutput,stream),(copyToOutput,__return__),(copyToOutput,numSamples),(copyToOutput,samples),(copyToOutput,stream),(downSampleInput,samples),(downSampleInput,skip),(downSampleInput,stream),(enlargeInputBufferIfNeeded,__return__),(enlargeInputBufferIfNeeded,numSamples),(enlargeInputBufferIfNeeded,stream),(enlargeOutputBufferIfNeeded,__return__),(enlargeOutputBufferIfNeeded,numSamples),(enlargeOutputBufferIfNeeded,stream),(findPitchPeriod,__return__),(findPitchPeriod,maxDiff),(findPitchPeriod,minDiff),(findPitchPeriod,preferNewPeriod),(findPitchPeriod,samples),(findPitchPeriod,stream),(findPitchPeriodInRange,__return__),(findPitchPeriodInRange,maxPeriod),(findPitchPeriodInRange,minPeriod),(findPitchPeriodInRange,retMaxDiff),(findPitchPeriodInRange,retMinDiff),(findPitchPeriodInRange,samples),(fprintf,__fmt),(insertPitchPeriod,__return__),(insertPitchPeriod,period),(insertPitchPeriod,samples),(insertPitchPeriod,speed),(insertPitchPeriod,stream),(interpolate,__return__),(interpolate,in),(interpolate,newSampleRate),(interpolate,oldSampleRate),(interpolate,stream),(moveNewSamplesToPitchBuffer,__return__),(moveNewSamplesToPitchBuffer,originalNumOutputSamples),(moveNewSamplesToPitchBuffer,stream),(overlapAdd,numChannels),(overlapAdd,numSamples),(overlapAdd,out),(overlapAdd,rampDown),(overlapAdd,rampUp),(overlapAddWithSeparation,numChannels),(overlapAddWithSeparation,numSamples),(overlapAddWithSeparation,out),(overlapAddWithSeparation,rampDown),(overlapAddWithSeparation,rampUp),(overlapAddWithSeparation,separation),(prevPeriodBetter,__return__),(prevPeriodBetter,maxDiff),(prevPeriodBetter,minDiff),(prevPeriodBetter,preferNewPeriod),(prevPeriodBetter,stream),(processStreamInput,__return__),(processStreamInput,stream),(removeInputSamples,position),(removeInputSamples,stream),(removePitchSamples,numSamples),(removePitchSamples,stream),(scaleSamples,numSamples),(scaleSamples,samples),(scaleSamples,volume),(skipPitchPeriod,__return__),(skipPitchPeriod,period),(skipPitchPeriod,samples),(skipPitchPeriod,speed),(skipPitchPeriod,stream),(sonicWriteShortToStream,__return__),(sonicWriteShortToStream,numSamples),(sonicWriteShortToStream,samples),(sonicWriteShortToStream,stream),runSonic-1051,allocateStreamBuffers-419,allocateStreamBuffers-420,allocateStreamBuffers-421,allocateStreamBuffers-422,enlargeInputBufferIfNeeded-473,enlargeOutputBufferIfNeeded-465,moveNewSamplesToPitchBuffer-789,sonicCreateStream-442.downSampleBuffer,sonicCreateStream-442.inputBuffer,sonicCreateStream-442.inputBufferSize,sonicCreateStream-442.maxPeriod,sonicCreateStream-442.maxRequired,sonicCreateStream-442.minPeriod,sonicCreateStream-442.newRatePosition,sonicCreateStream-442.numChannels,sonicCreateStream-442.numInputSamples,sonicCreateStream-442.numOutputSamples,sonicCreateStream-442.numPitchSamples,sonicCreateStream-442.oldRatePosition,sonicCreateStream-442.outputBuffer,sonicCreateStream-442.outputBufferSize,sonicCreateStream-442.pitch,sonicCreateStream-442.pitchBuffer,sonicCreateStream-442.pitchBufferSize,sonicCreateStream-442.prevMinDiff,sonicCreateStream-442.prevPeriod,sonicCreateStream-442.quality,sonicCreateStream-442.rate,sonicCreateStream-442.remainingInputToCopy,sonicCreateStream-442.sampleRate,sonicCreateStream-442.speed,sonicCreateStream-442.useChordPitch,sonicCreateStream-442.volume}
+writeToWaveFile-1509	writeToWaveFile-1306	{(fprintf,__fmt),(writeBytes,bytes),(writeBytes,file),(writeBytes,length),(writeToWaveFile,sample),openInputWaveFile-1404.failed,openOutputWaveFile-1429.failed}
+writeToWaveFile-1509	writeToWaveFile-1510	Loc-411
+writeToWaveFile-1509	writeToWaveFile-1511	Loc-411
+writeToWaveFile-1509	writeToWaveFile-1512	Loc-410
+writeToWaveFile-1509	writeToWaveFile-1515	Loc-410
 adjustRate-ENTRY	adjustRate-EXIT	{(enlargeOutputBufferIfNeeded,__return__),(enlargeOutputBufferIfNeeded,numSamples),(enlargeOutputBufferIfNeeded,stream),(fprintf,__fmt),(interpolate,__return__),(interpolate,in),(interpolate,newSampleRate),(interpolate,oldSampleRate),(interpolate,stream),(moveNewSamplesToPitchBuffer,__return__),(moveNewSamplesToPitchBuffer,originalNumOutputSamples),(moveNewSamplesToPitchBuffer,stream),(removePitchSamples,numSamples),(removePitchSamples,stream),allocateStreamBuffers-420,allocateStreamBuffers-421,enlargeOutputBufferIfNeeded-465,moveNewSamplesToPitchBuffer-789,sonicCreateStream-442.newRatePosition,sonicCreateStream-442.numPitchSamples,sonicCreateStream-442.oldRatePosition,sonicCreateStream-442.outputBuffer,sonicCreateStream-442.outputBufferSize,sonicCreateStream-442.pitchBuffer,sonicCreateStream-442.pitchBufferSize}
 adjustRate-ENTRY	adjustRate-759	{(adjustRate,__return__)}
 adjustRate-ENTRY	adjustRate-763	{(adjustRate,__return__)}
@@ -810,9 +831,13 @@ sonicReadShortFromStream-565	sonicReadShortFromStream-568	Loc-16
 prevPeriodBetter-602	prevPeriodBetter-EXIT	{(prevPeriodBetter,__return__)}
 overlapAdd-751	overlapAdd-654	Loc-191
 insertPitchPeriod-919	insertPitchPeriod-EXIT	Loc-17
+writeToWaveFile-1511	writeToWaveFile-1513	Loc-411
+writeToWaveFile-1511	writeToWaveFile-1514	Loc-411
 adjustRate-880	adjustRate-857	Loc-81
 adjustRate-880	adjustRate-858	Loc-81
 readHeader-1365	readHeader-1338	{(fprintf,__fmt),(fread,__return__),(readExactBytes,bytes),(readExactBytes,file),(readExactBytes,length),expectString-1266,readInt-1242,readShort-1254,openInputWaveFile-1404.failed}
+runSonic-1058	runSonic-971	Loc-294
+runSonic-1058	runSonic-1075	Loc-294
 moveNewSamplesToPitchBuffer-697	moveNewSamplesToPitchBuffer-EXIT	{(moveNewSamplesToPitchBuffer,__cil_tmp5),sonicCreateStream-442.pitchBuffer,sonicCreateStream-442.pitchBufferSize}
 moveNewSamplesToPitchBuffer-697	moveNewSamplesToPitchBuffer-786	Loc-83
 adjustRate-859	adjustRate-884	Loc-141
@@ -862,6 +887,8 @@ main-1167	main-1168	Loc-348
 readHeader-1368	readHeader-EXIT	{(fprintf,__fmt),(fread,__return__),(readExactBytes,bytes),(readExactBytes,file),(readExactBytes,length),(readInt,__return__),expectString-1266,readInt-1242,readShort-1254,openInputWaveFile-1404.failed}
 copyInputToOutput-479	copyInputToOutput-EXIT	{(copyInputToOutput,__return__)}
 sonicReadShortFromStream-577	sonicReadShortFromStream-EXIT	{(sonicReadShortFromStream,remainingSamples),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numOutputSamples}
+writeToWaveFile-1515	writeToWaveFile-1306	Loc-407
+openOutputWaveFile-1426	openOutputWaveFile-EXIT	Loc-400
 readBytes-1231	readBytes-EXIT	{(fread,__return__),(readBytes,__cil_tmp4)}
 readBytes-1231	readBytes-1106	Loc-128
 interpolate-837	interpolate-840	Loc-264
@@ -896,6 +923,9 @@ openOutputWaveFile-1415	openOutputWaveFile-1424	Loc-280
 overlapAdd-745	overlapAdd-654	Loc-191
 runSonic-1079	runSonic-955	{(sonicReadShortFromStream,__return__),runSonic-1053,allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numOutputSamples}
 runSonic-1079	runSonic-965	{(sonicReadShortFromStream,__return__),runSonic-1053,allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numOutputSamples}
+runSonic-1079	runSonic-1057	Loc-294
+runSonic-1079	runSonic-1058	Loc-294
+runSonic-1079	runSonic-1075	Loc-413
 findPitchPeriodInRange-678	findPitchPeriodInRange-575	{(findPitchPeriodInRange,maxDiff),(findPitchPeriodInRange,period),(findPitchPeriodInRange,worstPeriod)}
 copyInputToOutput-474	copyInputToOutput-479	Loc-10
 copyInputToOutput-474	copyInputToOutput-538	Loc-10
@@ -914,6 +944,7 @@ sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-568	Loc-97
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-571	{NULL,(sonicReadShortFromStream,stream),sonicCreateStream-442.numOutputSamples}
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-573	Loc-97
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-574	Loc-97
+sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-575	{NULL,(sonicReadShortFromStream,samples),(sonicReadShortFromStream,stream),runSonic-1053,allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numChannels,sonicCreateStream-442.outputBuffer}
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-576	{NULL,(sonicReadShortFromStream,stream),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numChannels,sonicCreateStream-442.outputBuffer}
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-577	{NULL,(sonicReadShortFromStream,stream),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numOutputSamples}
 changeSpeed-947	changeSpeed-858	{(changeSpeed,newSamples),(enlargeOutputBufferIfNeeded,__return__),(enlargeOutputBufferIfNeeded,numSamples),(enlargeOutputBufferIfNeeded,stream),(overlapAdd,numChannels),(overlapAdd,numSamples),(overlapAdd,out),(overlapAdd,rampDown),(overlapAdd,rampUp),(skipPitchPeriod,__return__),(skipPitchPeriod,speed),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numOutputSamples,sonicCreateStream-442.outputBuffer,sonicCreateStream-442.outputBufferSize,sonicCreateStream-442.remainingInputToCopy}
@@ -956,6 +987,7 @@ findPitchPeriod-711	findPitchPeriod-718	Loc-157
 openInputWaveFile-1403	openInputWaveFile-EXIT	Loc-220
 readInt-1249	readInt-1250	Loc-291
 main-1165	closeWaveFile-ENTRY	{NULL,closeFile,fprintf,writeBytes,writeInt,(closeFile,file),(closeWaveFile,file),(fprintf,__fmt),(writeBytes,bytes),(writeBytes,file),(writeBytes,length),(writeInt,file),(writeInt,value),writeInt-1208,writeShort-1218,writeToWaveFile-1496,writeHeader-1301,writeHeader-1304,writeHeader-1307,writeHeader-1310,openInputWaveFile-1404.failed,openInputWaveFile-1404.isInput,openInputWaveFile-1404.soundFile,openOutputWaveFile-1429.failed,openOutputWaveFile-1429.soundFile}
+writeToWaveFile-1516	writeToWaveFile-1306	Loc-412
 adjustPitch-821	adjustPitch-824	Loc-204
 adjustPitch-821	adjustPitch-825	Loc-204
 prevPeriodBetter-684	prevPeriodBetter-EXIT	Loc-187
@@ -1116,6 +1148,7 @@ main-1173	main-1168	{writeShort-1218,writeHeader-1301,writeHeader-1304,writeHead
 openOutputWaveFile-EXIT	main-1173	{(closeFile,file),(fprintf,__fmt),(openOutputWaveFile,__return__),(writeBytes,bytes),(writeBytes,file),(writeBytes,length),(writeHeader,file),(writeHeader,sampleRate),(writeInt,file),(writeInt,value),(writeShort,file),(writeShort,value),(writeString,file),(writeString,string),writeInt-1208,writeShort-1218,writeHeader-1301,writeHeader-1304,writeHeader-1307,writeHeader-1310,__extern__fopen,openInputWaveFile-1404.failed,openInputWaveFile-1404.soundFile,openOutputWaveFile-1429.failed,openOutputWaveFile-1429.numChannels,openOutputWaveFile-1429.soundFile}
 findPitchPeriod-726	findPitchPeriod-637	{(findPitchPeriodInRange,maxPeriod),(findPitchPeriodInRange,minPeriod),(findPitchPeriodInRange,retMaxDiff),(findPitchPeriodInRange,retMinDiff),(findPitchPeriodInRange,samples)}
 findPitchPeriod-726	findPitchPeriodInRange-ENTRY	{(findPitchPeriodInRange,__return__),(findPitchPeriodInRange,maxPeriod),(findPitchPeriodInRange,minPeriod),(findPitchPeriodInRange,retMaxDiff),(findPitchPeriodInRange,retMinDiff),(findPitchPeriodInRange,samples),allocateStreamBuffers-419,allocateStreamBuffers-421,allocateStreamBuffers-422,enlargeInputBufferIfNeeded-473,moveNewSamplesToPitchBuffer-789}
+writeToWaveFile-1505	writeToWaveFile-1498	Loc-402
 sonicCreateStream-378	sonicCreateStream-EXIT	{(sonicCreateStream,__return__)}
 adjustPitch-804	adjustPitch-EXIT	Loc-69
 adjustPitch-804	adjustPitch-719	Loc-69
@@ -1220,10 +1253,16 @@ findPitchPeriodInRange-582	findPitchPeriodInRange-672	Loc-230
 findPitchPeriodInRange-582	findPitchPeriodInRange-674	Loc-230
 findPitchPeriodInRange-582	findPitchPeriodInRange-676	Loc-230
 findPitchPeriod-729	findPitchPeriod-730	Loc-327
+writeToWaveFile-1306	writeToWaveFile-EXIT	Loc-407
+writeToWaveFile-1306	writeToWaveFile-1498	Loc-412
+writeToWaveFile-1306	writeToWaveFile-1500	Loc-411
+writeToWaveFile-1306	writeToWaveFile-1509	{(fprintf,__fmt),(writeBytes,bytes),(writeBytes,file),(writeBytes,length),openInputWaveFile-1404.failed,openOutputWaveFile-1429.failed}
+writeToWaveFile-1306	writeToWaveFile-1512	Loc-407
 main-1122	main-1165	Loc-270
 main-1122	main-1166	Loc-270
 main-1122	main-1167	Loc-270
 addShortSamplesToInputBuffer-EXIT	sonicWriteShortToStream-998	{(addShortSamplesToInputBuffer,__return__),(addShortSamplesToInputBuffer,numSamples),(enlargeInputBufferIfNeeded,__return__),(enlargeInputBufferIfNeeded,numSamples),(enlargeInputBufferIfNeeded,stream),allocateStreamBuffers-419,enlargeInputBufferIfNeeded-473,sonicCreateStream-442.inputBuffer,sonicCreateStream-442.inputBufferSize,sonicCreateStream-442.numInputSamples}
+runSonic-1078	runSonic-971	{(fprintf,__fmt),(writeBytes,bytes),(writeBytes,file),(writeBytes,length),writeToWaveFile-1496,openInputWaveFile-1404.failed,openOutputWaveFile-1429.failed}
 findPitchPeriod-713	findPitchPeriod-694	Loc-233
 freeStreamBuffers-365	freeStreamBuffers-324	Loc-21
 findPitchPeriod-643	findPitchPeriod-EXIT	{(findPitchPeriod,__return__)}
@@ -1294,6 +1333,9 @@ skipPitchPeriod-814	skipPitchPeriod-821	Loc-216
 skipPitchPeriod-814	skipPitchPeriod-901	Loc-216
 skipPitchPeriod-814	skipPitchPeriod-902	Loc-216
 skipPitchPeriod-814	skipPitchPeriod-903	Loc-216
+writeToWaveFile-ENTRY	writeToWaveFile-1306	{(fprintf,__fmt),(writeBytes,bytes),(writeBytes,file),(writeBytes,length),writeToWaveFile-1496,openInputWaveFile-1404.failed,openOutputWaveFile-1429.failed}
+writeToWaveFile-ENTRY	writeToWaveFile-1505	{NULL,(writeToWaveFile,file),(writeToWaveFile,numSamples),openOutputWaveFile-1429.numChannels}
+writeToWaveFile-ENTRY	writeToWaveFile-1509	{(writeToWaveFile,buffer),runSonic-1053}
 findPitchPeriod-735	findPitchPeriod-637	{(findPitchPeriod,maxDiff),(findPitchPeriod,minDiff),(findPitchPeriod,period),(findPitchPeriodInRange,__return__)}
 openOutputWaveFile-1424	openOutputWaveFile-EXIT	Loc-331
 openOutputWaveFile-1424	openOutputWaveFile-1428	Loc-331
@@ -1312,6 +1354,8 @@ readFromWaveFile-1493	readFromWaveFile-1295	Loc-333
 findPitchPeriod-712	findPitchPeriod-637	Loc-193
 findPitchPeriod-712	findPitchPeriod-716	Loc-193
 findPitchPeriod-712	findPitchPeriod-718	Loc-193
+runSonic-1075	runSonic-971	{(writeToWaveFile,buffer),(writeToWaveFile,file),(writeToWaveFile,numSamples)}
+runSonic-1075	writeToWaveFile-ENTRY	{NULL,fprintf,writeBytes,(fprintf,__fmt),(writeBytes,bytes),(writeBytes,file),(writeBytes,length),(writeToWaveFile,buffer),(writeToWaveFile,file),(writeToWaveFile,numSamples),runSonic-1053,writeInt-1208,writeShort-1218,writeToWaveFile-1496,writeHeader-1301,writeHeader-1304,writeHeader-1307,writeHeader-1310,openInputWaveFile-1404.failed,openInputWaveFile-1404.soundFile,openOutputWaveFile-1429.failed,openOutputWaveFile-1429.numChannels,openOutputWaveFile-1429.soundFile}
 processStreamInput-890	processStreamInput-EXIT	{(processStreamInput,__return__)}
 findPitchPeriodInRange-679	findPitchPeriodInRange-EXIT	Loc-119
 readHeader-1358	expectString-ENTRY	{NULL,fprintf,fread,readExactBytes,(expectString,expectedString),(expectString,file),(fprintf,__fmt),(fread,__return__),(readExactBytes,bytes),(readExactBytes,file),(readExactBytes,length),expectString-1266,readInt-1242,readShort-1254,readHeader-1354,readHeader-1357,readHeader-1360,readHeader-1363,openInputWaveFile-1404.failed,openInputWaveFile-1404.soundFile}
@@ -1380,6 +1424,8 @@ adjustRate-891	adjustRate-EXIT	{(enlargeOutputBufferIfNeeded,__return__),sonicCr
 adjustRate-891	adjustRate-773	{(enlargeOutputBufferIfNeeded,__return__),sonicCreateStream-442.outputBuffer,sonicCreateStream-442.outputBufferSize}
 adjustRate-891	adjustRate-870	Loc-186
 enlargeInputBufferIfNeeded-409	enlargeInputBufferIfNeeded-EXIT	{(enlargeInputBufferIfNeeded,__return__)}
+writeToWaveFile-1513	writeToWaveFile-1306	Loc-415
+writeToWaveFile-1513	writeToWaveFile-1515	Loc-415
 sonicCreateStream-437	sonicCreateStream-EXIT	Loc-56
 moveNewSamplesToPitchBuffer-783	moveNewSamplesToPitchBuffer-EXIT	Loc-53
 moveNewSamplesToPitchBuffer-783	moveNewSamplesToPitchBuffer-697	Loc-53
@@ -1552,6 +1598,7 @@ findPitchPeriod-718	findPitchPeriodInRange-ENTRY	{(findPitchPeriodInRange,__retu
 changeSpeed-927	changeSpeed-858	Loc-350
 changeSpeed-927	changeSpeed-942	Loc-350
 openOutputWaveFile-1439	openOutputWaveFile-1420	Loc-347
+writeToWaveFile-EXIT	runSonic-1078	{(fprintf,__fmt),(writeBytes,bytes),(writeBytes,file),(writeBytes,length),writeToWaveFile-1496,openInputWaveFile-1404.failed,openOutputWaveFile-1429.failed}
 sonicCreateStream-434	sonicCreateStream-EXIT	Loc-50
 changeSpeed-928	changeSpeed-858	Loc-350
 changeSpeed-928	changeSpeed-940	Loc-350
@@ -1573,6 +1620,7 @@ runSonic-ENTRY	runSonic-1071	{NULL,fread,readBytes,readFromWaveFile,(runSonic,in
 runSonic-ENTRY	runSonic-1072	{NULL,addShortSamplesToInputBuffer,adjustPitch,adjustRate,changeSpeed,copyInputToOutput,copyToOutput,downSampleInput,enlargeInputBufferIfNeeded,enlargeOutputBufferIfNeeded,findPitchPeriod,findPitchPeriodInRange,fprintf,insertPitchPeriod,interpolate,memset,moveNewSamplesToPitchBuffer,overlapAdd,overlapAddWithSeparation,prevPeriodBetter,processStreamInput,removeInputSamples,removePitchSamples,scaleSamples,skipPitchPeriod,sonicFlushStream,sonicWriteShortToStream}
 runSonic-ENTRY	runSonic-1073	{NULL,addShortSamplesToInputBuffer,adjustPitch,adjustRate,changeSpeed,copyInputToOutput,copyToOutput,downSampleInput,enlargeInputBufferIfNeeded,enlargeOutputBufferIfNeeded,findPitchPeriod,findPitchPeriodInRange,fprintf,insertPitchPeriod,interpolate,moveNewSamplesToPitchBuffer,overlapAdd,overlapAddWithSeparation,prevPeriodBetter,processStreamInput,removeInputSamples,removePitchSamples,scaleSamples,skipPitchPeriod,sonicWriteShortToStream}
 runSonic-ENTRY	runSonic-1074	{NULL,sonicReadShortFromStream,(runSonic,numChannels)}
+runSonic-ENTRY	runSonic-1075	{NULL,fprintf,writeBytes,writeToWaveFile,(runSonic,outFile),writeInt-1208,writeShort-1218,writeHeader-1301,writeHeader-1304,writeHeader-1307,writeHeader-1310,openInputWaveFile-1404.soundFile,openOutputWaveFile-1429.numChannels,openOutputWaveFile-1429.soundFile}
 runSonic-ENTRY	runSonic-1076	{NULL,freeStreamBuffers,sonicDestroyStream}
 runSonic-ENTRY	runSonic-1079	Loc-295
 runSonic-ENTRY	runSonic-1082	Loc-260
@@ -1602,6 +1650,7 @@ sonicCreateStream-449	sonicCreateStream-438	Loc-81
 sonicCreateStream-449	sonicCreateStream-439	Loc-141
 sonicSetPitch-EXIT	runSonic-1087	Loc-51
 sonicReadShortFromStream-576	sonicReadShortFromStream-577	Loc-142
+sonicReadShortFromStream-575	sonicReadShortFromStream-EXIT	Loc-413
 readInt-1130	readInt-EXIT	{(readInt,__return__)}
 allocateStreamBuffers-396	allocateStreamBuffers-EXIT	Loc-180
 processStreamInput-981	processStreamInput-894	{(scaleSamples,numSamples),(scaleSamples,samples),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465}
@@ -1661,7 +1710,9 @@ findPitchPeriod-694	findPitchPeriod-617	Loc-233
 findPitchPeriod-694	findPitchPeriod-715	Loc-233
 allocateStreamBuffers-418	allocateStreamBuffers-EXIT	Loc-187
 readShort-1262	readShort-1137	Loc-195
+runSonic-965	runSonic-971	{(fprintf,__fmt),(writeBytes,bytes),(writeBytes,file),(writeBytes,length),(writeToWaveFile,buffer),(writeToWaveFile,file),(writeToWaveFile,numSamples),writeToWaveFile-1496,openInputWaveFile-1404.failed,openOutputWaveFile-1429.failed}
 runSonic-965	runSonic-1074	{(sonicReadShortFromStream,__return__),(sonicReadShortFromStream,maxSamples),(sonicReadShortFromStream,samples),(sonicReadShortFromStream,stream),runSonic-1053,allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numOutputSamples}
+runSonic-965	runSonic-1075	{(fprintf,__fmt),(writeBytes,bytes),(writeBytes,file),(writeBytes,length),(writeToWaveFile,buffer),(writeToWaveFile,file),(writeToWaveFile,numSamples),writeToWaveFile-1496,openInputWaveFile-1404.failed,openOutputWaveFile-1429.failed}
 runSonic-965	runSonic-1079	{(runSonic,samplesWritten),(sonicReadShortFromStream,__return__)}
 copyInputToOutput-EXIT	changeSpeed-949	{(copyInputToOutput,__return__),(copyToOutput,__return__),(copyToOutput,numSamples),(copyToOutput,samples),(copyToOutput,stream),(enlargeOutputBufferIfNeeded,__return__),(enlargeOutputBufferIfNeeded,numSamples),(enlargeOutputBufferIfNeeded,stream),allocateStreamBuffers-420,enlargeOutputBufferIfNeeded-465,sonicCreateStream-442.numOutputSamples,sonicCreateStream-442.outputBuffer,sonicCreateStream-442.outputBufferSize,sonicCreateStream-442.remainingInputToCopy}
 freeStreamBuffers-330	freeStreamBuffers-EXIT	Loc-83

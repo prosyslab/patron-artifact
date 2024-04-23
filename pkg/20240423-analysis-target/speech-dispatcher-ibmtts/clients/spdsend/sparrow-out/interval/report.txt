@@ -1,21 +1,7 @@
 = Alarms =
-1. server.c:85 {set_connection} UnProven
-  *(@connections+id___0) @set_connection-1112:  offset: [-oo, +oo], size: [1000, 1000] UnProven, allocsite: init_connections-1469
-2. server.c:131 {do_open_connection} UnProven
-  *(hostinfo) @do_open_connection-1150:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gethostbyname
-3. server.c:271 {process_open} UnProven
-  *(host___0+hostlen) @process_open-1262:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: process_open-1267
-4. spdsend.c:106 {main} UnProven
-  *(argv+1) @main-1604:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__argv
-5. spdsend.c:121 {main} UnProven
-  *(argv+2) @main-1611:  offset: [2, 2], size: [1, +oo] UnProven, allocsite: __extern__argv
-6. spdsend.c:122 {main} UnProven
-  *(argv+3) @main-1612:  offset: [3, 3], size: [1, +oo] UnProven, allocsite: __extern__argv
-7. spdsend.c:126 {main} UnProven
-  *(argv+2) @main-1615:  offset: [2, 2], size: [1, +oo] UnProven, allocsite: __extern__argv
 
-#queries                 : 35
-#queries mod alarm point : 25
-#proven                  : 18
-#unproven                : 7
-#bot-involved            : 3
+#queries                 : 4
+#queries mod alarm point : 2
+#proven                  : 2
+#unproven                : 0
+#bot-involved            : 0

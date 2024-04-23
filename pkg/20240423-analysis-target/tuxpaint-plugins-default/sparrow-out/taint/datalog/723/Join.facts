@@ -48,14 +48,12 @@ tmp_apply_uncommited_text-24550
 in_word_set-2887
 mainloop-6484
 mainloop-9325
-do_shape-16712
 draw_blinking_cursor-11062
 loadsound_extra-14725
 render_text-7343
 cleanup-16348
 do_new_dialog_add_colors-EXIT
 setup_colors-26584
-groupfonts_range-4799
 mainloop-9936
 in_word_set-2861
 textdir-20594
@@ -100,7 +98,9 @@ mainloop-8811
 parse_one_option-4234
 loadsound_extra-14713
 do_shape-16679
+loadfonts_locale_filter-5260
 do_new_dialog-22010
+shape_rotation-12011
 do_new_dialog_add_colors-23167
 cleanup-11643
 do_eraser-10039
@@ -117,6 +117,7 @@ reliable_read-4618
 in_word_set-3291
 charset_works-3669
 in_word_set-3223
+mainloop-8501
 do_new_dialog-22204
 load_embedded_data-25108
 load_kpx-15420
@@ -133,7 +134,6 @@ load_embedded_data-18459
 mainloop-9536
 do_slideshow-19419
 in_word_set-3103
-load_brush_dir-11846
 setup_colors-26750
 cleanup-16328
 export_gif-28906
@@ -173,6 +173,7 @@ in_word_set-3249
 TuxPaint_Font_CloseFont-2633
 do_open-18618
 cleanup-16305
+do_shape-16783
 loadstamp_finisher-11913
 in_word_set-2865
 do_new_dialog-22255
@@ -193,7 +194,6 @@ in_word_set-3017
 getfonthandle-5685
 do_render_cur_text-20396
 in_word_set-3121
-groupfonts_range-4792
 mainloop-9753
 draw_brushes-13126
 do_open-17953
@@ -209,10 +209,10 @@ do_new_dialog-22153
 loadbrush_callback-11777
 setup_normal_screen_layout-7162
 parse_argv_options-25551
-parse_font_style-4905
 cleanup-16351
 draw_brushes-13148
 in_word_set-3093
+load_brush_dir-11847
 handle_keymouse-20701
 setup_colors-26935
 set_langint_from_locale_string-4447
@@ -236,6 +236,7 @@ reliable_write-4598
 get_stamp_thumb-12270
 do_render_cur_text-20414
 in_word_set-3115
+do_shape-16771
 loadsound_extra-14717
 load_brush_dir-ENTRY
 do_render_cur_text-20407
@@ -254,6 +255,7 @@ loaddesc-14854
 set_label_fonts-ENTRY
 load_info_about_label_surface-24368
 do_new_dialog-22391
+do_shape-16602
 in_word_set-3011
 do_new_dialog-22130
 in_word_set-2907
@@ -342,6 +344,7 @@ in_word_set-2971
 get_stamp_thumb-12279
 do_loadimage-12840
 load_current-15711
+mainloop-10059
 do_new_dialog-16427
 in_word_set-2819
 in_word_set-2947
@@ -352,7 +355,6 @@ do_new_dialog-22042
 mainloop-8762
 do_new_dialog-16545
 do_ps_save-975
-run_font_scanner-5394
 loaddescsound-14832
 get_fname-1775
 cleanup-16372
@@ -370,6 +372,8 @@ do_open-18241
 cleanup-16339
 get_fname-1767
 do_new_dialog-22246
+mainloop-10060
+do_shape-16785
 do_open-18024
 in_word_set-2847
 do_slideshow-19356
@@ -386,7 +390,6 @@ draw_colors-13091
 loadinfo-15069
 setup_config-19183
 cleanup-16319
-groupfonts-5162
 do_redo-ENTRY
 mainloop-6072
 loadsound-14827
@@ -397,7 +400,6 @@ in_word_set-2933
 get_xdg_user_dir-28780
 cleanup-16324
 do_open-17978
-do_shape-16828
 do_slideshow-19242
 loadinfo-10692
 loadinfo-15092
@@ -408,7 +410,6 @@ do_new_dialog_add_colors-16696
 cleanup-16326
 in_word_set-3147
 getfonthandle-5680
-parse_font_style-4982
 loadsound_extra-14686
 autoscale_copy_smear_free-10743
 mainloop-9040
@@ -418,6 +419,7 @@ handle_keymouse_buttons-21037
 mainloop-9035
 setup-28031
 receive_some_font_info-5520
+do_shape-16773
 mainloop-6826
 load_starter-15455
 loadsound_extra-14726
@@ -459,6 +461,7 @@ in_word_set-3065
 loadbrush_callback-ENTRY
 add_label_node-23959
 in_word_set-2855
+shape_rotation-EXIT
 loadbrush_callback-8026
 mainloop-8481
 load_embedded_data-25307
@@ -474,7 +477,6 @@ loadsound_extra-14698
 cleanup-16311
 setup_config-18762
 draw_fonts-13272
-run_font_scanner-5397
 render_text-7344
 getfonthandle-5676
 setup_config-19172
@@ -586,7 +588,6 @@ do_render_cur_text-20435
 do_open-18912
 parse_one_option-4217
 export_gif-28972
-set_label_fonts-17780
 do_slideshow-19467
 seticon-EXIT
 loadsound_extra-14702
@@ -628,7 +629,6 @@ draw_stamps-13436
 mainloop-9021
 do_new_dialog-22160
 handle_keymouse_buttons-21038
-run_font_scanner-5468
 draw_brushes-13127
 do_new_dialog-22789
 do_slideshow-18959
@@ -699,7 +699,6 @@ do_open-17998
 do_render_cur_text-20536
 load_stamp_dir-ENTRY
 do_eraser-10032
-TuxPaint_Font_FontFaceFamilyName-3680
 do_slideshow-19313
 handle_keymouse-20702
 do_slideshow-19086
@@ -734,7 +733,6 @@ draw_magic-12928
 render_text-4835
 loadbrush_callback-11766
 draw_stamps-13471
-groupfonts-5164
 in_word_set-3241
 in_word_set-2973
 in_word_set-2917
@@ -770,7 +768,6 @@ receive_some_font_info-5514
 setup_colors-19717
 do_quit-17810
 mainloop-6037
-do_shape-11760
 draw_brushes-13125
 do_new_dialog-22251
 cleanup-16353
@@ -834,7 +831,6 @@ do_new_dialog-22117
 reliable_read-4619
 load_current-15736
 mainloop-9591
-tp_ftw-2066
 do_open-18091
 setup_normal_screen_layout-7191
 do_lock_file-26969
@@ -855,6 +851,7 @@ in_word_set-3067
 textdir-20598
 brush_draw-11146
 do_slideshow-19024
+do_shape-16609
 draw_toolbar-12893
 receive_some_font_info-5614
 setup_colors-19831
@@ -916,7 +913,6 @@ cycle_highlighted_label_node-18043
 cleanup-16320
 tp_ftw-1712
 do_new_dialog-22016
-groupfonts-5165
 derender_node-EXIT
 loaddesc-14880
 rec_undo_buffer-7953
@@ -927,8 +923,6 @@ highlight_label_nodes-ENTRY
 cleanup-16340
 tp_ftw-1708
 load_starter-15567
-TuxPaint_Font_FontFaceFamilyName-5850
-TuxPaint_Font_OpenFont-4565
 in_word_set-3043
 render_all_nodes_starting_at-24195
 set_active_stamp-12050
@@ -942,7 +936,6 @@ in_word_set-2823
 draw_fonts-9232
 draw_toolbar-12891
 search_label_list-24009
-groupfonts-3217
 do_new_dialog_add_colors-23154
 do_new_dialog-22189
 render_text_w-7443
@@ -970,10 +963,9 @@ draw_toolbar-12880
 do_new_dialog_add_colors-23164
 mainloop-5804
 myIMG_Load_RWops-21313
-do_png_embed_data-12454
 simply_render_node-24133
-parse_font_style-2901
 cleanup-16344
+do_shape-16696
 handle_keymouse-20687
 do_new_dialog-22357
 do_new_dialog-22952
@@ -1030,7 +1022,6 @@ duplicate_surface-EXIT
 setup_config-26000
 mainloop-8318
 in_word_set-3297
-tp_ftw-2035
 do_slideshow-19088
 in_word_set-2975
 do_open-18557
@@ -1041,7 +1032,6 @@ do_open-18137
 do_png_embed_data-17391
 mainloop-8825
 in_word_set-3001
-do_shape-16698
 mainloop-8352
 in_word_set-2945
 export_gif-29008
@@ -1075,14 +1065,15 @@ receive_some_font_info-5573
 cleanup-16310
 setup_normal_screen_layout-7188
 load_magic_plugins-21601
+do_shape-16690
 in_word_set-3005
 setup_colors-26742
 myIMG_Load_RWops-21312
 do_prompt_snd-11182
 parse_argv_options-25552
 parse_file_options-25429
-tp_ftw-2039
 load_magic_plugins-15617
+do_shape-16611
 in_word_set-2799
 do_render_button_label-8664
 do_render_cur_text-20529
@@ -1101,9 +1092,7 @@ do_save-17067
 do_prompt_image_snd-15846
 read-ENTRY
 load_embedded_data-24976
-TuxPaint_Font_FontFaceFamilyName-5849
 set_active_stamp-12112
-do_shape-11913
 rec_undo_label-24076
 mainloop-5257
 setup_normal_screen_layout-7199
@@ -1126,17 +1115,16 @@ do_new_dialog-22386
 in_word_set-3071
 do_new_dialog-22337
 search_label_list-24011
-tp_ftw-2058
 setup_config-26504
 tp_ftw-2038
 play_slideshow-19972
 in_word_set-3101
 do_png_embed_data-17607
 in_word_set-3211
-groupfonts_range-4798
 render_text_w-7437
 do_open-17961
 play_slideshow-19821
+do_shape-16697
 in_word_set-2815
 do_new_dialog-22761
 loadinfo-15081
@@ -1147,7 +1135,6 @@ cleanup-16335
 do_new_dialog-22950
 do_open-18136
 setup_i18n-7062
-run_font_scanner-5436
 do_new_dialog-22123
 loaddesc-14914
 draw_toolbar-12868
@@ -1168,14 +1155,12 @@ set_current_language-6948
 in_word_set-3311
 cleanup-16318
 do_slideshow-19058
-TuxPaint_Font_FontFaceFamilyName-5856
 cleanup-16284
 in_word_set-3207
 handle_keymouse-20678
 setup_colors-19670
 do_prompt_snd-15842
 cleanup-16309
-run_font_scanner-5406
 in_word_set-3247
 handle_keymouse-20681
 mainloop-9392
@@ -1184,9 +1169,9 @@ draw_stamps-13534
 do_color_picker-23647
 do_lock_file-26986
 do_slideshow-13993
-loadfont_callback-1872
 reliable_write-ENTRY
 in_word_set-3179
+mainloop-8500
 do_undo_label_node-24097
 in_word_set-2931
 do_undo-14081
@@ -1198,6 +1183,7 @@ tmp_apply_uncommited_text-24538
 load_template-15679
 parse_file_options-25428
 mainloop-9924
+mainloop-8686
 load_current-15735
 do_prompt_image_flash_snd-16203
 loadsound_extra-14708
@@ -1206,7 +1192,6 @@ in_word_set-3131
 set_active_stamp-12110
 in_word_set-3283
 draw_stamps-13532
-mainloop-9835
 mainloop-5919
 tmp_apply_uncommited_text-24546
 play_slideshow-19970
@@ -1228,13 +1213,12 @@ load_info_about_label_surface-24343
 do_new_dialog-22205
 loaddesc-10527
 getfonthandle-5693
-run_font_scanner-5428
+mainloop-8687
 do_slideshow-19149
 tp_ftw-2090
 mainloop-9808
 do_open-18095
 in_word_set-2873
-run_font_scanner-5460
 do_open-18626
 do_slideshow-19006
 setup_colors-19705
@@ -1269,6 +1253,8 @@ parse_file_options-25410
 draw_cur_tool_tip-14540
 setup-27181
 mainloop-9530
+mainloop-8685
+mainloop-7397
 do_slideshow-19527
 in_word_set-3243
 do_new_dialog-22349
@@ -1300,7 +1286,6 @@ load_kpx-21358
 mainloop-8556
 in_word_set-2837
 mainloop-8095
-run_font_scanner-5409
 set_current_language-4588
 myIMG_Load-21338
 load_template-15638
@@ -1322,7 +1307,6 @@ do_open-18239
 do_slideshow-19078
 loadimagerb-8779
 do_new_dialog-22350
-do_png_embed_data-12416
 set_langint_from_locale_string-4432
 do_ps_save-1029
 do_open-17968
@@ -1333,7 +1317,6 @@ in_word_set-3053
 highlight_label_nodes-18038
 in_word_set-2839
 setup_normal_screen_layout-7193
-load_stamp_dir-12546
 handle_keymouse_buttons-21058
 charset_works-EXIT
 do_open-17966
@@ -1353,15 +1336,17 @@ do_slideshow-19241
 cycle_highlighted_label_node-24737
 do_slideshow-19178
 thumbnail2-9619
+do_shape-11796
 in_word_set-2893
 in_word_set-3097
 draw_brushes-13117
 loadfonts_locale_filter-ENTRY
-run_font_scanner-5403
 do_slideshow-19399
+load_stamp_dir-12548
 in_word_set-3167
 load_template-15626
 receive_some_font_info-5620
+do_shape-16688
 do_new_dialog-22274
 wordwrap_text_ex-14603
 setup_normal_screen_layout-7141
@@ -1417,6 +1402,7 @@ do_slideshow-19065
 do_slideshow-19111
 in_word_set-3293
 in_word_set-2320
+set_label_fonts-17771
 cleanup-16380
 do_new_dialog_add_colors-16678
 draw_colors-8999
@@ -1430,7 +1416,6 @@ cleanup-16343
 do_new_dialog-22334
 mirror_starter-21142
 mainloop-6251
-run_font_scanner-5452
 do_color_picker-23765
 mainloop-7774
 do_redo-14112
@@ -1489,7 +1474,6 @@ draw_fills-13796
 loaddesc-14917
 textdir-20597
 in_word_set-3287
-load_user_fonts-5281
 setup_config-26014
 handle_keymouse_buttons-21043
 in_word_set-3031
@@ -1523,10 +1507,10 @@ do_new_dialog-23085
 draw_fonts-13232
 parse_one_option-4242
 draw_tux_text-EXIT
+mainloop-8684
 in_word_set-3279
 loadsound_extra-14711
 do_open-18574
-run_font_scanner-5400
 mainloop-9811
 setup_config-19203
 mirror_starter-15185
@@ -1543,7 +1527,6 @@ wordwrap_text_ex-ENTRY
 stamp_draw-7913
 search_label_list-24056
 mainloop-9391
-loadfonts_locale_filter-5259
 loadinfo-15084
 claim_to_be_ready-28168
 do_redo-EXIT
@@ -1576,7 +1559,6 @@ load_magic_plugins-15635
 get_stamp_thumb-12271
 setup-27327
 in_word_set-3235
-run_font_scanner-5444
 mainloop-9022
 get_export_filepath-29183
 draw_stamps-13426
@@ -1590,6 +1572,7 @@ in_word_set-2797
 setup_colors-26885
 do_new_dialog-22212
 render_text-7339
+mainloop-5666
 in_word_set-3261
 stamp_draw-11594
 parse_file_options-25392
@@ -1597,7 +1580,6 @@ mainloop-5650
 in_word_set-3219
 mainloop-9807
 mainloop-6190
-TuxPaint_Font_FontFaceFamilyName-5853
 brush_draw-EXIT
 do_loadimage-8808
 draw_brushes-13129

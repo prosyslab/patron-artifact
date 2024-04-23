@@ -89,7 +89,6 @@ do_color_sel	do_color_sel-ENTRY
 mainloop	mainloop-10611
 loadbrush_callback	loadbrush_callback-11715
 load_magic_plugins	load_magic_plugins-21519
-mainloop	mainloop-10366
 mainloop	mainloop-8369
 get_stamp_thumb	get_stamp_thumb-12248
 load_template	load_template-15677
@@ -108,6 +107,7 @@ mainloop	mainloop-10862
 getfonthandle	getfonthandle-5678
 do_png_embed_data	do_png_embed_data-17234
 in_word_set	in_word_set-2853
+do_shape	do_shape-16872
 in_word_set	in_word_set-2899
 do_open	do_open-18771
 loaddesc	loaddesc-10446
@@ -122,7 +122,6 @@ draw_brushes	draw_brushes-9030
 do_png_embed_data	do_png_embed_data-17254
 loadinfo	loadinfo-15024
 do_prompt_image	do_prompt_image-11185
-do_shape	do_shape-16731
 do_png_embed_data	do_png_embed_data-17542
 do_new_dialog	do_new_dialog-22630
 set_active_stamp	set_active_stamp-12032
@@ -140,6 +139,7 @@ mainloop	mainloop-9319
 do_new_dialog	do_new_dialog-22866
 mainloop	mainloop-8862
 receive_some_font_info	receive_some_font_info-5605
+do_shape	do_shape-16777
 do_slideshow	do_slideshow-14002
 do_slideshow	do_slideshow-19175
 setup_colors	setup_colors-19697
@@ -153,7 +153,6 @@ search_label_list	search_label_list-ENTRY
 do_slideshow	do_slideshow-19747
 mainloop	mainloop-11042
 reliable_read	reliable_read-4620
-stamp_xor	stamp_xor-ENTRY
 load_starter	load_starter-15386
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24567
 load_current	load_current-15744
@@ -170,7 +169,6 @@ cleanup	cleanup-16352
 get_stamp_thumb	get_stamp_thumb-12294
 do_open	do_open-18888
 do_prompt_image_flash_snd	do_prompt_image_flash_snd-16019
-mainloop	mainloop-10238
 do_png_embed_data	do_png_embed_data-12324
 language_to_locale	language_to_locale-EXIT
 do_new_dialog	do_new_dialog-22649
@@ -274,7 +272,6 @@ mainloop	mainloop-7969
 mainloop	mainloop-10607
 do_save	do_save-17113
 mainloop	mainloop-7995
-rect_xor	rect_xor-10005
 mainloop	mainloop-8522
 do_print	do_print-20290
 cleanup	cleanup-16227
@@ -353,7 +350,7 @@ setup	setup-27889
 load_user_fonts	load_user_fonts-5327
 do_open	do_open-18499
 do_new_dialog	do_new_dialog-22725
-do_eraser	do_eraser-14314
+do_shape	do_shape-16769
 draw_fonts	draw_fonts-9221
 setup_colors	setup_colors-26608
 loaddesc	loaddesc-14943
@@ -394,7 +391,6 @@ do_new_dialog	do_new_dialog-22985
 do_quit	do_quit-17801
 setup_colors	setup_colors-26799
 set_active_stamp	set_active_stamp-12009
-eraser_draw	eraser_draw-14408
 wordwrap_text_ex	wordwrap_text_ex-14583
 do_prompt_image_flash_snd	do_prompt_image_flash_snd-16087
 setup	setup-27460
@@ -455,12 +451,10 @@ trash	trash-20786
 do_slideshow	do_slideshow-13574
 setup_config	setup_config-26080
 setup_colors	setup_colors-26920
-do_shape	do_shape-16722
 setup	setup-27878
 receive_some_font_info	receive_some_font_info-5549
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24502
 mainloop	mainloop-8326
-line_xor	line_xor-9933
 loadinfo	loadinfo-14992
 setup	setup-27216
 render_brush	render_brush-14173
@@ -471,7 +465,6 @@ draw_fonts	draw_fonts-13229
 draw_fonts	draw_fonts-13270
 mainloop	mainloop-10839
 draw_toolbar	draw_toolbar-12870
-rect_xor	rect_xor-10011
 draw_toolbar	draw_toolbar-12873
 setup_colors	setup_colors-26824
 do_shape	do_shape-16762
@@ -512,7 +505,6 @@ do_prompt_image_flash_snd	do_prompt_image_flash_snd-15886
 load_magic_plugins	load_magic_plugins-21546
 mainloop	mainloop-10913
 brush_draw	brush_draw-7487
-line_xor	line_xor-14243
 in_word_set	in_word_set-3255
 do_open	do_open-18725
 mainloop	mainloop-8811
@@ -539,7 +531,6 @@ mainloop	mainloop-10832
 do_new_dialog	do_new_dialog-22010
 shape_rotation	shape_rotation-16923
 load_starter	load_starter-15554
-line_xor	line_xor-14225
 shape_rotation	shape_rotation-12011
 setup	setup-27796
 do_new_dialog_add_colors	do_new_dialog_add_colors-23167
@@ -566,8 +557,8 @@ get_xdg_user_dir	get_xdg_user_dir-28884
 load_template	load_template-11056
 do_png_embed_data	do_png_embed_data-17223
 receive_some_font_info	receive_some_font_info-5634
-calc_eraser_size	calc_eraser_size-14282
 thumbnail2	thumbnail2-9699
+do_shape	do_shape-16651
 mainloop	mainloop-4964
 mainloop	mainloop-9047
 render_brush	render_brush-EXIT
@@ -610,7 +601,6 @@ charset_works	charset_works-3669
 textdir	textdir-20602
 get_chunk_data	get_chunk_data-24896
 mainloop	mainloop-9776
-line_xor	line_xor-14230
 charset_works	charset_works-ENTRY
 in_word_set	in_word_set-3223
 mainloop	mainloop-7814
@@ -744,7 +734,6 @@ do_png_embed_data	do_png_embed_data-17606
 render_text_w	render_text_w-4894
 setup_colors	setup_colors-26854
 handle_keymouse_buttons	handle_keymouse_buttons-21065
-do_shape	do_shape-16726
 get_fname	get_fname-1542
 mainloop	mainloop-7638
 loadsound_extra	loadsound_extra-14689
@@ -784,7 +773,6 @@ mainloop	mainloop-8069
 loadsound	loadsound-14824
 mainloop	mainloop-8458
 loadimagerb	loadimagerb-12816
-do_shape	do_shape-16718
 receive_some_font_info	receive_some_font_info-5607
 mainloop	mainloop-9893
 loadbrush_callback	loadbrush_callback-11752
@@ -830,7 +818,6 @@ do_save	do_save-17071
 load_kpx	load_kpx-21354
 in_word_set	in_word_set-3317
 zoom	zoom-13936
-do_shape	do_shape-16720
 mainloop	mainloop-10771
 mainloop	mainloop-9458
 do_new_dialog	do_new_dialog-22614
@@ -838,7 +825,6 @@ do_open	do_open-13011
 mainloop	mainloop-8909
 set_chunk_data	set_chunk_data-17190
 do_slideshow	do_slideshow-19347
-do_shape	do_shape-16756
 mainloop	mainloop-7540
 do_undo_label_node	do_undo_label_node-ENTRY
 mainloop	mainloop-9327
@@ -860,7 +846,6 @@ do_quit	do_quit-17790
 setup_colors	setup_colors-26783
 load_embedded_data	load_embedded_data-24941
 setup_colors	setup_colors-26897
-do_shape	do_shape-16758
 parse_file_options	parse_file_options-25444
 loadsound_extra	loadsound_extra-14718
 cleanup	cleanup-16298
@@ -895,7 +880,6 @@ mainloop	mainloop-10608
 trash	trash-20857
 do_quit	do_quit-17792
 do_color_picker	do_color_picker-23766
-calc_eraser_size	calc_eraser_size-14284
 do_new_dialog	do_new_dialog-22076
 mainloop	mainloop-8267
 do_new_dialog	do_new_dialog-22122
@@ -905,7 +889,6 @@ do_prompt	do_prompt-ENTRY
 setup_normal_screen_layout	setup_normal_screen_layout-7157
 load_user_fonts	load_user_fonts-5311
 setup	setup-27320
-do_shape	do_shape-16760
 do_new_dialog	do_new_dialog-22406
 strip_trailing_whitespace	strip_trailing_whitespace-14844
 mainloop	mainloop-9567
@@ -915,6 +898,7 @@ set_active_stamp	set_active_stamp-12111
 draw_stamps	draw_stamps-13427
 setup_config	setup_config-26081
 load_user_fonts	load_user_fonts-5318
+do_shape	do_shape-11945
 do_save	do_save-17002
 do_color_sel	do_color_sel-16827
 undo_tmp_applied_text	undo_tmp_applied_text-24635
@@ -962,7 +946,6 @@ do_open	do_open-18774
 cleanup	cleanup-16368
 export_gif	export_gif-21150
 do_open	do_open-17894
-mainloop	mainloop-10228
 mainloop	mainloop-8507
 TuxPaint_Font_CloseFont	TuxPaint_Font_CloseFont-2633
 mainloop	mainloop-10483
@@ -986,7 +969,6 @@ mainloop	mainloop-4938
 load_magic_plugins	load_magic_plugins-21684
 do_open	do_open-18674
 do_save	do_save-17105
-rect_xor	rect_xor-14270
 do_new_dialog	do_new_dialog-22896
 undo_tmp_applied_text	undo_tmp_applied_text-17963
 mainloop	mainloop-8569
@@ -1034,7 +1016,6 @@ do_open	do_open-18792
 mainloop	mainloop-9211
 mainloop	mainloop-8810
 mainloop	mainloop-8552
-xorpixel	xorpixel-14046
 wordwrap_text_ex	wordwrap_text_ex-EXIT
 mainloop	mainloop-8015
 mainloop	mainloop-8161
@@ -1117,7 +1098,6 @@ do_render_cur_text	do_render_cur_text-20396
 set_current_language	set_current_language-ENTRY
 set_current_language	set_current_language-6936
 in_word_set	in_word_set-3121
-line_xor	line_xor-14216
 loadbrush_callback	loadbrush_callback-8043
 setup_colors	setup_colors-26698
 wordwrap_text_ex	wordwrap_text_ex-14604
@@ -1136,7 +1116,6 @@ do_new_dialog	do_new_dialog-22448
 mainloop	mainloop-7985
 do_shape	do_shape-16840
 do_new_dialog	do_new_dialog-22922
-calc_eraser_size	calc_eraser_size-ENTRY
 do_open	do_open-18782
 draw_tux_text_ex	draw_tux_text_ex-10225
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24531
@@ -1146,7 +1125,6 @@ mainloop	mainloop-10772
 in_word_set	in_word_set-3173
 mainloop	mainloop-8771
 setup_colors	setup_colors-26806
-mainloop	mainloop-10250
 mainloop	mainloop-6081
 mainloop	mainloop-9786
 cycle_highlighted_label_node	cycle_highlighted_label_node-EXIT
@@ -1225,7 +1203,6 @@ getfonthandle	getfonthandle-3518
 simply_render_node	simply_render_node-24159
 load_template	load_template-11052
 update_canvas	update_canvas-7313
-do_shape	do_shape-16894
 mainloop	mainloop-10929
 undo_tmp_applied_text	undo_tmp_applied_text-24616
 do_prompt_image_flash_snd	do_prompt_image_flash_snd-16053
@@ -1234,7 +1211,6 @@ set_langint_from_locale_string	set_langint_from_locale_string-4447
 search_label_list	search_label_list-24033
 load_starter	load_starter-15553
 do_new_dialog_add_colors	do_new_dialog_add_colors-23141
-eraser_draw	eraser_draw-14382
 load_info_about_label_surface	load_info_about_label_surface-17749
 create_button_labels	create_button_labels-12708
 get_export_filepath	get_export_filepath-ENTRY
@@ -1275,12 +1251,10 @@ mainloop	mainloop-10149
 cleanup	cleanup-16550
 load_embedded_data	load_embedded_data-25053
 setup_colors	setup_colors-26745
-do_shape	do_shape-16636
 draw_brushes	draw_brushes-EXIT
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24558
 mainloop	mainloop-10884
 mainloop	mainloop-9228
-do_shape	do_shape-16716
 load_starter	load_starter-15520
 search_label_list	search_label_list-24035
 export_gif	export_gif-21184
@@ -1318,7 +1292,6 @@ do_slideshow	do_slideshow-19564
 setup_config	setup_config-18750
 draw_fonts	draw_fonts-13225
 in_word_set	in_word_set-3195
-eraser_draw	eraser_draw-14370
 cleanup	cleanup-16325
 TuxPaint_Font_OpenFont	TuxPaint_Font_OpenFont-EXIT
 load_magic_plugins	load_magic_plugins-21716
@@ -1378,7 +1351,6 @@ mainloop	mainloop-8739
 load_info_about_label_surface	load_info_about_label_surface-24325
 do_open	do_open-12882
 load_brush_dir	load_brush_dir-ENTRY
-do_shape	do_shape-16732
 setup_colors	setup_colors-26598
 mainloop	mainloop-9520
 shape_rotation	shape_rotation-16925
@@ -1415,7 +1387,6 @@ load_embedded_data	load_embedded_data-25154
 load_kpx	load_kpx-21363
 draw_toolbar	draw_toolbar-12871
 load_magic_plugins	load_magic_plugins-21701
-do_shape	do_shape-16750
 do_redo	do_redo-14103
 draw_stamps	draw_stamps-13561
 mainloop	mainloop-8867
@@ -1568,6 +1539,7 @@ great_str	great_str-ENTRY
 get_chunk_data	get_chunk_data-24869
 loadsound_extra	loadsound_extra-14690
 cleanup	cleanup-16514
+do_shape	do_shape-16645
 do_new_dialog	do_new_dialog-15946
 in_word_set	in_word_set-3171
 tp_ftw	tp_ftw-2083
@@ -1603,7 +1575,6 @@ export_gif	export_gif-28904
 set_active_stamp	set_active_stamp-12021
 mainloop	mainloop-10155
 loadstamp_callback	loadstamp_callback-12388
-line_xor	line_xor-14222
 do_shape	do_shape-11988
 do_open	do_open-18668
 load_info_about_label_surface	load_info_about_label_surface-24301
@@ -1668,7 +1639,6 @@ tp_ftw	tp_ftw-2008
 loadinfo	loadinfo-15060
 do_slideshow	do_slideshow-19168
 mainloop	mainloop-9322
-eraser_draw	eraser_draw-14363
 setup	setup-27491
 set_langint_from_locale_string	set_langint_from_locale_string-6805
 free_surface	free_surface-ENTRY
@@ -1689,7 +1659,6 @@ hash	hash-2618
 do_slideshow	do_slideshow-19439
 save_current	save_current-EXIT
 do_redo	do_redo-14093
-mainloop	mainloop-10230
 do_new_dialog	do_new_dialog-22701
 mainloop	mainloop-9277
 load_embedded_data	load_embedded_data-25153
@@ -1737,7 +1706,6 @@ mainloop	mainloop-6621
 mainloop	mainloop-8335
 mainloop	mainloop-8834
 uppercase_w	uppercase_w-EXIT
-rect_xor	rect_xor-14258
 mainloop	mainloop-9297
 render_text	render_text-7340
 draw_stamps	draw_stamps-13558
@@ -1796,7 +1764,6 @@ setup	setup-27616
 mainloop	mainloop-10757
 setup_colors	setup_colors-19769
 mainloop	mainloop-9509
-rect_xor	rect_xor-14271
 loadstamp_callback	loadstamp_callback-12446
 mirror_surface	mirror_surface-8148
 safe_strncpy	safe_strncpy-29211
@@ -1807,7 +1774,6 @@ loadbrush_callback	loadbrush_callback-11801
 search_label_list	search_label_list-24034
 mainloop	mainloop-7888
 mainloop	mainloop-7821
-do_shape	do_shape-16893
 load_info_about_label_surface	load_info_about_label_surface-24338
 grid_hit_gd	grid_hit_gd-7258
 mainloop	mainloop-9093
@@ -1888,7 +1854,6 @@ setup_colors	setup_colors-19634
 mainloop	mainloop-7923
 do_slideshow	do_slideshow-19085
 do_slideshow	do_slideshow-13513
-do_shape	do_shape-16882
 mainloop	mainloop-7986
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24575
 mainloop	mainloop-8381
@@ -1944,6 +1909,7 @@ in_word_set	in_word_set-3191
 create_button_labels	create_button_labels-12744
 run_font_scanner	run_font_scanner-5387
 do_new_dialog_add_colors	do_new_dialog_add_colors-23136
+do_shape	do_shape-16807
 set_current_language	set_current_language-7028
 mainloop	mainloop-10920
 receive_some_font_info	receive_some_font_info-5625
@@ -1972,6 +1938,7 @@ wordwrap_text_ex	wordwrap_text_ex-14622
 setup	setup-ENTRY
 mainloop	mainloop-9722
 setup_colors	setup_colors-26929
+do_shape	do_shape-16866
 do_save	do_save-16971
 loadinfo	loadinfo-15134
 setup_colors	setup_colors-26718
@@ -2000,7 +1967,6 @@ draw_toolbar	draw_toolbar-12872
 in_word_set	in_word_set-2949
 in_word_set	in_word_set-2971
 mainloop	mainloop-8669
-line_xor	line_xor-9980
 get_stamp_thumb	get_stamp_thumb-12279
 do_slideshow	do_slideshow-19269
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24559
@@ -2020,11 +1986,11 @@ mainloop	mainloop-9474
 setup_colors	setup_colors-26622
 setup	setup-27841
 setup_screen_layout	setup_screen_layout-7205
-do_shape	do_shape-16713
 mainloop	mainloop-10059
 mainloop	mainloop-8637
 do_new_dialog	do_new_dialog-22859
 do_new_dialog	do_new_dialog-16427
+do_shape	do_shape-16650
 in_word_set	in_word_set-2819
 do_slideshow	do_slideshow-19440
 receive_some_font_info	receive_some_font_info-5637
@@ -2084,7 +2050,6 @@ load_template	load_template-15673
 setup	setup-27507
 do_new_dialog	do_new_dialog-23101
 cleanup	cleanup-16483
-eraser_draw	eraser_draw-14401
 loadinfo	loadinfo-15034
 setup	setup-27790
 do_new_dialog	do_new_dialog-23047
@@ -2101,7 +2066,6 @@ tmp_apply_uncommited_text	tmp_apply_uncommited_text-24565
 load_kpx	load_kpx-15415
 load_template	load_template-15665
 in_word_set	in_word_set-3309
-mainloop	mainloop-9820
 setup	setup-27424
 setup_colors	setup_colors-26909
 load_starter_id	load_starter_id-15307
@@ -2125,11 +2089,11 @@ magic_modeint	magic_modeint-17319
 mainloop	mainloop-8062
 setup_colors	setup_colors-26594
 do_new_dialog	do_new_dialog-22676
+do_shape	do_shape-16774
 export_gif	export_gif-EXIT
 load_current	load_current-15762
 mainloop	mainloop-9913
 set_active_stamp	set_active_stamp-8316
-line_xor	line_xor-14235
 do_slideshow	do_slideshow-19179
 mainloop	mainloop-11016
 update_canvas_ex	update_canvas_ex-4802
@@ -2154,7 +2118,6 @@ search_label_list	search_label_list-24032
 setup_config	setup_config-25777
 setup	setup-27595
 draw_stamps	draw_stamps-13458
-eraser_draw	eraser_draw-14357
 parse_file_options	parse_file_options-25434
 in_word_set	in_word_set-2817
 mainloop	mainloop-10488
@@ -2200,7 +2163,6 @@ do_shape	do_shape-16752
 setup	setup-27607
 mainloop	mainloop-9512
 draw_fonts	draw_fonts-13211
-xorpixel	xorpixel-ENTRY
 in_word_set	in_word_set-3305
 setup_normal_screen_layout	setup_normal_screen_layout-7152
 parse_one_option	parse_one_option-2331
@@ -2318,9 +2280,7 @@ get_xdg_user_dir	get_xdg_user_dir-28780
 mainloop	mainloop-8456
 get_stamp_thumb	get_stamp_thumb-12221
 mainloop	mainloop-9839
-do_shape	do_shape-16728
 mainloop	mainloop-10604
-mainloop	mainloop-10187
 do_open	do_open-17843
 cleanup	cleanup-16324
 mainloop	mainloop-10524
@@ -2377,7 +2337,6 @@ mainloop	mainloop-5096
 loadinfo	loadinfo-15092
 mainloop	mainloop-10474
 loadbrush_callback	loadbrush_callback-11772
-do_shape	do_shape-16896
 loadfont_callback	loadfont_callback-1948
 loadfont_callback	loadfont_callback-1865
 getfonthandle	getfonthandle-3526
@@ -2389,7 +2348,6 @@ mainloop	mainloop-9164
 mainloop	mainloop-9339
 cleanup	cleanup-16475
 receive_some_font_info	receive_some_font_info-5547
-mainloop	mainloop-8917
 do_new_dialog_add_colors	do_new_dialog_add_colors-16696
 mainloop	mainloop-9239
 cleanup	cleanup-16326
@@ -2472,7 +2430,6 @@ mainloop	mainloop-10973
 mainloop	mainloop-8024
 load_starter	load_starter-15511
 get_stamp_thumb	get_stamp_thumb-12194
-do_shape	do_shape-16745
 getfonthandle	getfonthandle-5664
 mainloop	mainloop-8010
 magic_switchout	magic_switchout-23895
@@ -2529,13 +2486,10 @@ mainloop	mainloop-10664
 setup	setup-27816
 loadstamp_finisher	loadstamp_finisher-11954
 hash	hash-2307
-do_eraser	do_eraser-14344
 do_slideshow	do_slideshow-19637
 export_gif	export_gif-28937
 set_label_fonts	set_label_fonts-24436
-line_xor	line_xor-14191
 mainloop	mainloop-10027
-eraser_draw	eraser_draw-14396
 disable_avail_tools	disable_avail_tools-ENTRY
 mainloop	mainloop-7554
 load_template	load_template-15653
@@ -2564,7 +2518,7 @@ loadsound_extra	loadsound_extra-14675
 do_slideshow	do_slideshow-19684
 setup	setup-27881
 mainloop	mainloop-6981
-stamp_xor	stamp_xor-20155
+do_shape	do_shape-16643
 load_embedded_data	load_embedded_data-24955
 play_slideshow	play_slideshow-19908
 do_save	do_save-16990
@@ -2582,9 +2536,9 @@ export_gif	export_gif-28979
 play_slideshow	play_slideshow-19974
 do_png_embed_data	do_png_embed_data-17546
 play_slideshow	play_slideshow-19830
+do_shape	do_shape-16871
 do_open	do_open-13433
 do_render_cur_text	do_render_cur_text-20309
-do_shape	do_shape-16884
 mainloop	mainloop-5081
 mainloop	mainloop-9651
 setup_i18n	setup_i18n-7058
@@ -2716,7 +2670,6 @@ tp_ftw	tp_ftw-2031
 mainloop	mainloop-10893
 loaddesc	loaddesc-14891
 do_color_sel	do_color_sel-23473
-do_shape	do_shape-16883
 handle_keymouse	handle_keymouse-14833
 do_render_cur_text	do_render_cur_text-14604
 mainloop	mainloop-10427
@@ -2743,7 +2696,6 @@ mainloop	mainloop-8629
 do_color_picker	do_color_picker-23823
 cleanup	cleanup-16553
 do_open	do_open-18730
-stamp_xor	stamp_xor-20145
 magic_switchout	magic_switchout-17305
 loadbrush_callback	loadbrush_callback-11813
 render_text	render_text-7344
@@ -2798,7 +2750,6 @@ do_new_dialog	do_new_dialog-22854
 setup	setup-27739
 do_quit	do_quit-17764
 cleanup	cleanup-16482
-line_xor	line_xor-14219
 do_open	do_open-18060
 do_new_dialog	do_new_dialog-22967
 draw_fonts	draw_fonts-13273
@@ -2822,7 +2773,6 @@ do_open	do_open-18272
 mainloop	mainloop-11014
 do_new_dialog	do_new_dialog-22764
 load_embedded_data	load_embedded_data-18334
-eraser_draw	eraser_draw-14391
 mainloop	mainloop-10845
 mainloop	mainloop-10685
 mainloop	mainloop-10445
@@ -2887,7 +2837,6 @@ mainloop	mainloop-9052
 export_gif	export_gif-28959
 do_slideshow	do_slideshow-19073
 mainloop	mainloop-9724
-line_xor	line_xor-14238
 get_xdg_user_dir	get_xdg_user_dir-28814
 setup	setup-EXIT
 get_stamp_thumb	get_stamp_thumb-12253
@@ -2992,7 +2941,6 @@ loadinfo	loadinfo-10687
 mainloop	mainloop-6838
 do_new_dialog	do_new_dialog-22931
 load_starter	load_starter-15408
-do_shape	do_shape-16738
 do_slideshow	do_slideshow-19711
 claim_to_be_ready	claim_to_be_ready-28175
 mainloop	mainloop-8128
@@ -3050,7 +2998,6 @@ mainloop	mainloop-8035
 do_open	do_open-17945
 export_gif	export_gif-ENTRY
 play_slideshow	play_slideshow-19897
-do_shape	do_shape-16734
 mainloop	mainloop-6837
 simply_render_node	simply_render_node-24161
 textdir	textdir-EXIT
@@ -3070,7 +3017,6 @@ do_new_dialog	do_new_dialog-22074
 in_word_set	in_word_set-2811
 do_open	do_open-18742
 do_new_dialog	do_new_dialog-16559
-rect_xor	rect_xor-14264
 loadstamp_finisher	loadstamp_finisher-11925
 in_word_set	in_word_set-3295
 mirror_starter	mirror_starter-21124
@@ -3083,7 +3029,6 @@ load_embedded_data	load_embedded_data-24953
 mainloop	mainloop-9317
 do_open	do_open-18802
 create_button_labels	create_button_labels-12733
-do_shape	do_shape-16730
 setup_colors	setup_colors-26887
 do_open	do_open-18532
 mainloop	mainloop-6997
@@ -3166,7 +3111,6 @@ search_label_list	search_label_list-23997
 setup_colors	setup_colors-26861
 print_image	print_image-20260
 set_active_stamp	set_active_stamp-12049
-line_xor	line_xor-14193
 get_current_language	get_current_language-EXIT
 setup_config	setup_config-18725
 search_label_list	search_label_list-23994
@@ -3182,7 +3126,6 @@ do_render_cur_text	do_render_cur_text-14612
 load_info_about_label_surface	load_info_about_label_surface-17739
 do_open	do_open-17854
 setup_colors	setup_colors-26705
-line_xor	line_xor-14203
 do_slideshow	do_slideshow-19610
 get_chunk_data	get_chunk_data-24926
 play_slideshow	play_slideshow-20006
@@ -3198,7 +3141,6 @@ do_open	do_open-18910
 load_embedded_data	load_embedded_data-25060
 do_slideshow	do_slideshow-19123
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24527
-xorpixel	xorpixel-14044
 undo_tmp_applied_text	undo_tmp_applied_text-24594
 parse_argv_options	parse_argv_options-25492
 mainloop	mainloop-10715
@@ -3214,7 +3156,6 @@ main	main-28234
 do_shape	do_shape-16695
 do_png_save	do_png_save-17723
 get_stamp_thumb	get_stamp_thumb-12365
-rect_xor	rect_xor-14273
 do_color_sel	do_color_sel-EXIT
 do_render_cur_text	do_render_cur_text-20348
 mainloop	mainloop-10717
@@ -3233,7 +3174,6 @@ load_magic_plugins	load_magic_plugins-21520
 do_open	do_open-18422
 do_open	do_open-18710
 set_langint_from_locale_string	set_langint_from_locale_string-4426
-line_xor	line_xor-14218
 do_new_dialog	do_new_dialog-23087
 strip_trailing_whitespace	strip_trailing_whitespace-14838
 mainloop	mainloop-8681
@@ -3246,12 +3186,10 @@ do_new_dialog	do_new_dialog-22603
 in_word_set	in_word_set-2863
 set_active_stamp	set_active_stamp-11971
 mainloop	mainloop-10719
-do_shape	do_shape-16751
 do_open	do_open-17911
 loadsound_extra	loadsound_extra-14681
 setup	setup-27466
 TuxPaint_Font_CloseFont	TuxPaint_Font_CloseFont-ENTRY
-stamp_xor	stamp_xor-20158
 do_ps_save	do_ps_save-1144
 parse_one_option	parse_one_option-4267
 load_starter_helper	load_starter_helper-15382
@@ -3281,7 +3219,6 @@ setup_colors	setup_colors-26680
 tp_ftw	tp_ftw-1998
 load_stamps	load_stamps-12557
 get_stamp_thumb	get_stamp_thumb-12191
-eraser_draw	eraser_draw-14387
 mainloop	mainloop-9469
 render_brush	render_brush-14164
 do_new_dialog	do_new_dialog-16305
@@ -3290,7 +3227,6 @@ in_word_set	in_word_set-3045
 do_slideshow	do_slideshow-19563
 draw_stamps	draw_stamps-9353
 mainloop	mainloop-10614
-do_shape	do_shape-16742
 tp_ftw	tp_ftw-1688
 do_undo	do_undo-14088
 do_open	do_open-17980
@@ -3335,7 +3271,6 @@ setup_config	setup_config-26007
 export_gif	export_gif-28972
 mainloop	mainloop-6314
 do_slideshow	do_slideshow-19467
-do_shape	do_shape-16637
 do_new_dialog	do_new_dialog-22080
 loadsound_extra	loadsound_extra-14814
 setup	setup-27472
@@ -3354,6 +3289,7 @@ do_save	do_save-17031
 load_embedded_data	load_embedded_data-25327
 claim_to_be_ready	claim_to_be_ready-28196
 mainloop	mainloop-9921
+do_shape	do_shape-16806
 do_new_dialog	do_new_dialog-22716
 parse_file_options	parse_file_options-18578
 create_button_labels	create_button_labels-12757
@@ -3363,7 +3299,6 @@ get_chunk_data	get_chunk_data-24920
 load_template	load_template-15598
 simply_render_node	simply_render_node-24147
 mainloop	mainloop-8145
-do_eraser	do_eraser-14355
 get_xdg_user_dir	get_xdg_user_dir-28864
 do_render_cur_text	do_render_cur_text-20450
 mainloop	mainloop-10947
@@ -3402,7 +3337,6 @@ load_embedded_data	load_embedded_data-24961
 thumbnail2	thumbnail2-13838
 do_slideshow	do_slideshow-19087
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24551
-eraser_draw	eraser_draw-14412
 do_slideshow	do_slideshow-19014
 do_new_dialog_add_colors	do_new_dialog_add_colors-16691
 draw_cur_tool_tip	draw_cur_tool_tip-10262
@@ -3465,7 +3399,6 @@ mainloop	mainloop-9095
 load_magic_plugins	load_magic_plugins-21537
 do_prompt_image	do_prompt_image-15843
 mainloop	mainloop-8332
-rect_xor	rect_xor-14276
 delete_label_list	delete_label_list-24216
 parse_one_option	parse_one_option-4150
 mainloop	mainloop-8745
@@ -3540,7 +3473,6 @@ set_label_fonts	set_label_fonts-24433
 handle_keymouse_buttons	handle_keymouse_buttons-21038
 receive_some_font_info	receive_some_font_info-3394
 setup	setup-27296
-line_xor	line_xor-14195
 loadfont_callback	loadfont_callback-1924
 uppercase	uppercase-20560
 load_magic_plugins	load_magic_plugins-21746
@@ -3563,14 +3495,12 @@ do_prompt_snd	do_prompt_snd-ENTRY
 load_magic_plugins	load_magic_plugins-21737
 do_slideshow	do_slideshow-18959
 do_new_dialog	do_new_dialog-22025
-do_shape	do_shape-16747
 mainloop	mainloop-8224
 myIMG_Load	myIMG_Load-15390
 mainloop	mainloop-9813
 getfonthandle	getfonthandle-3541
 do_new_dialog	do_new_dialog-22851
 do_prompt_image_flash_snd	do_prompt_image_flash_snd-16135
-eraser_draw	eraser_draw-14369
 draw_fonts	draw_fonts-13263
 cleanup	cleanup-16495
 mainloop	mainloop-9766
@@ -3598,12 +3528,10 @@ setup_colors	setup_colors-19659
 do_slideshow	do_slideshow-19679
 mainloop	mainloop-8972
 load_magic_plugins	load_magic_plugins-21738
-do_shape	do_shape-16754
 mainloop	mainloop-9404
 do_render_cur_text	do_render_cur_text-20342
 parse_argv_options	parse_argv_options-25545
 draw_shapes	draw_shapes-EXIT
-do_shape	do_shape-16897
 flip_starter	flip_starter-21156
 do_undo_label_node	do_undo_label_node-24093
 draw_colors	draw_colors-13065
@@ -3630,7 +3558,6 @@ set_langint_from_locale_string	set_langint_from_locale_string-4493
 setup_colors	setup_colors-26715
 do_open	do_open-18629
 do_open	do_open-18013
-xorpixel	xorpixel-14048
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24557
 do_new_dialog	do_new_dialog-15983
 do_slideshow	do_slideshow-13968
@@ -3639,7 +3566,6 @@ load_magic_plugins	load_magic_plugins-21543
 mainloop	mainloop-7894
 mainloop	mainloop-8260
 load_starter	load_starter-15407
-draw_blinking_cursor	draw_blinking_cursor-11053
 mainloop	mainloop-10503
 myIMG_Load_RWops	myIMG_Load_RWops-15366
 mainloop	mainloop-8523
@@ -3647,7 +3573,6 @@ do_prompt_image_flash_snd	do_prompt_image_flash_snd-15867
 mainloop	mainloop-10631
 mainloop	mainloop-9511
 setup_colors	setup_colors-26788
-eraser_draw	eraser_draw-14388
 mainloop	mainloop-8680
 setup_colors	setup_colors-26652
 do_shape	do_shape-16877
@@ -3719,7 +3644,6 @@ do_slideshow	do_slideshow-19402
 loadsound_extra	loadsound_extra-14730
 load_embedded_data	load_embedded_data-25137
 cleanup	cleanup-16356
-line_xor	line_xor-14233
 loadstamp_callback	loadstamp_callback-12461
 setup_colors	setup_colors-26580
 mainloop	mainloop-10826
@@ -3740,7 +3664,6 @@ reliable_read	reliable_read-2738
 mainloop	mainloop-7241
 do_open	do_open-13335
 set_active_stamp	set_active_stamp-11999
-do_shape	do_shape-16719
 play_slideshow	play_slideshow-19809
 in_word_set	in_word_set-2935
 eraser_draw	eraser_draw-10127
@@ -3756,7 +3679,6 @@ do_new_dialog	do_new_dialog-22489
 loadinfo	loadinfo-10567
 do_open	do_open-18658
 do_open	do_open-18439
-rect_xor	rect_xor-10003
 setup	setup-28021
 mainloop	mainloop-7720
 in_word_set	in_word_set-3033
@@ -3780,7 +3702,6 @@ mainloop	mainloop-8274
 handle_keymouse_buttons	handle_keymouse_buttons-20991
 mainloop	mainloop-10798
 magic_switchin	magic_switchin-23910
-do_shape	do_shape-16892
 do_render_cur_text	do_render_cur_text-20481
 mainloop	mainloop-9153
 setup_colors	setup_colors-26699
@@ -3791,6 +3712,7 @@ mainloop	mainloop-9314
 mainloop	mainloop-8962
 get_chunk_data	get_chunk_data-24927
 do_open	do_open-18263
+do_shape	do_shape-16653
 set_current_language	set_current_language-4597
 mainloop	mainloop-8386
 mainloop	mainloop-9379
@@ -3879,7 +3801,6 @@ do_render_cur_text	do_render_cur_text-20366
 draw_stamps	draw_stamps-13454
 get_chunk_data	get_chunk_data-24898
 do_render_cur_text	do_render_cur_text-20518
-line_xor	line_xor-9931
 get_stamp_thumb	get_stamp_thumb-12259
 load_magic_plugins	load_magic_plugins-21752
 mainloop	mainloop-8383
@@ -3908,7 +3829,6 @@ receive_some_font_info	receive_some_font_info-5630
 do_prompt_image_flash_snd	do_prompt_image_flash_snd-16226
 draw_stamps	draw_stamps-13560
 setup	setup-27842
-eraser_draw	eraser_draw-14364
 setup_normal_screen_layout	setup_normal_screen_layout-7185
 mainloop	mainloop-10285
 loadstamp_callback	loadstamp_callback-12483
@@ -3917,6 +3837,7 @@ setup	setup-20413
 setup	setup-28023
 loadinfo	loadinfo-15119
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24525
+do_shape	do_shape-16831
 mainloop	mainloop-7877
 setup	setup-27879
 do_png_embed_data	do_png_embed_data-12544
@@ -3932,6 +3853,7 @@ do_new_dialog	do_new_dialog-22000
 do_slideshow	do_slideshow-19156
 do_open	do_open-18795
 receive_some_font_info	receive_some_font_info-3401
+do_shape	do_shape-16775
 setup_colors	setup_colors-26793
 setup	setup-27715
 mainloop	mainloop-8070
@@ -4037,7 +3959,6 @@ setup	setup-27667
 do_new_dialog	do_new_dialog-22436
 load_current	load_current-15764
 free_surface	free_surface-16570
-rect_xor	rect_xor-ENTRY
 setup	setup-27258
 draw_blinking_cursor	draw_blinking_cursor-11054
 do_new_dialog	do_new_dialog-22288
@@ -4071,7 +3992,6 @@ do_color_picker	do_color_picker-23628
 mainloop	mainloop-10325
 mainloop	mainloop-9110
 get_fname	get_fname-ENTRY
-rect_xor	rect_xor-14252
 mainloop	mainloop-8372
 do_new_dialog	do_new_dialog-22712
 setup_colors	setup_colors-19800
@@ -4120,7 +4040,6 @@ draw_brushes	draw_brushes-13193
 mainloop	mainloop-6450
 setup	setup-27877
 load_starter_helper	load_starter_helper-15383
-do_shape	do_shape-16746
 mainloop	mainloop-10939
 setup	setup-27730
 mainloop	mainloop-10086
@@ -4145,7 +4064,6 @@ flip_surface	flip_surface-11877
 mainloop	mainloop-5271
 setup_normal_screen_layout	setup_normal_screen_layout-7151
 loadsound_extra	loadsound_extra-14797
-eraser_draw	eraser_draw-14394
 do_prompt_image_flash_snd	do_prompt_image_flash_snd-11315
 load_template	load_template-15676
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24453
@@ -4156,7 +4074,6 @@ mainloop	mainloop-8109
 load_starter	load_starter-15559
 setup_normal_screen_layout	setup_normal_screen_layout-7176
 setup	setup-27775
-eraser_draw	eraser_draw-14366
 do_open	do_open-18656
 in_word_set	in_word_set-2897
 in_word_set	in_word_set-3019
@@ -4281,7 +4198,6 @@ play_slideshow	play_slideshow-14155
 load_current	load_current-15732
 mainloop	mainloop-8331
 do_slideshow	do_slideshow-19094
-do_shape	do_shape-16748
 parse_file_options	parse_file_options-25412
 do_render_cur_text	do_render_cur_text-20409
 do_color_picker	do_color_picker-23729
@@ -4318,6 +4234,7 @@ draw_shapes	draw_shapes-ENTRY
 mainloop	mainloop-5521
 set_active_stamp	set_active_stamp-8310
 loadsound	loadsound-10418
+do_shape	do_shape-16808
 load_magic_plugins	load_magic_plugins-21763
 mainloop	mainloop-8721
 mainloop	mainloop-9309
@@ -4396,12 +4313,10 @@ do_new_dialog	do_new_dialog-22838
 load_info_about_label_surface	load_info_about_label_surface-24305
 claim_to_be_ready	claim_to_be_ready-28204
 do_new_dialog	do_new_dialog-22909
-line_xor	line_xor-14229
 do_slideshow	do_slideshow-19012
 do_open	do_open-13252
 load_user_fonts	load_user_fonts-5287
 mainloop	mainloop-10822
-xorpixel	xorpixel-14047
 do_png_embed_data	do_png_embed_data-17533
 mainloop	mainloop-10952
 mainloop	mainloop-10692
@@ -4488,7 +4403,6 @@ receive_some_font_info	receive_some_font_info-5542
 simply_render_node	simply_render_node-24184
 mainloop	mainloop-8033
 get_stamp_thumb	get_stamp_thumb-12186
-stamp_xor	stamp_xor-14395
 setup	setup-27894
 loadstamp_finisher	loadstamp_finisher-11943
 search_label_list	search_label_list-24053
@@ -4522,6 +4436,7 @@ wordwrap_text	wordwrap_text-EXIT
 do_shape	do_shape-16685
 mainloop	mainloop-9219
 in_word_set	in_word_set-2895
+do_shape	do_shape-16788
 setup	setup-27978
 make_directory	make_directory-15795
 mainloop	mainloop-7896
@@ -4530,7 +4445,6 @@ do_color_sel	do_color_sel-16831
 setup_colors	setup_colors-26944
 cleanup	cleanup-16502
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24479
-do_shape	do_shape-16891
 mainloop	mainloop-9150
 do_new_dialog	do_new_dialog-22361
 mainloop	mainloop-7965
@@ -4554,7 +4468,6 @@ loaddesc	loaddesc-14904
 in_word_set	in_word_set-3127
 load_starter	load_starter-15555
 do_slideshow	do_slideshow-19150
-rect_xor	rect_xor-14260
 do_open	do_open-18211
 get_stamp_thumb	get_stamp_thumb-12193
 loadstamp_finisher	loadstamp_finisher-8207
@@ -4720,7 +4633,6 @@ do_open	do_open-18268
 loadfont_callback	loadfont_callback-1934
 setup_normal_screen_layout	setup_normal_screen_layout-7191
 do_slideshow	do_slideshow-19246
-stamp_xor	stamp_xor-20143
 do_new_dialog	do_new_dialog-22291
 load_starter_id	load_starter_id-15295
 getfonthandle	getfonthandle-5684
@@ -4739,7 +4651,6 @@ setup_colors	setup_colors-19736
 do_slideshow	do_slideshow-19174
 do_render_cur_text	do_render_cur_text-20358
 do_prompt_image_flash_snd	do_prompt_image_flash_snd-15883
-line_xor	line_xor-14236
 do_shape	do_shape-16584
 setup	setup-27946
 do_new_dialog	do_new_dialog-16640
@@ -4858,7 +4769,6 @@ mainloop	mainloop-6749
 load_starter_id	load_starter_id-15309
 in_word_set	in_word_set-2857
 mainloop	mainloop-6409
-line_xor	line_xor-14189
 receive_some_font_info	receive_some_font_info-3395
 mainloop	mainloop-10764
 setup_config	setup_config-26102
@@ -4880,10 +4790,10 @@ do_open	do_open-18011
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24534
 do_loadimage	do_loadimage-12831
 simply_render_node	simply_render_node-24158
-do_shape	do_shape-16725
 mainloop	mainloop-10785
 loadinfo	loadinfo-14982
 do_open	do_open-18717
+do_shape	do_shape-16652
 mainloop	mainloop-10504
 load_starter_helper	load_starter_helper-ENTRY
 setup_colors	setup_colors-26604
@@ -4905,10 +4815,8 @@ claim_to_be_ready	claim_to_be_ready-28190
 claim_to_be_ready	claim_to_be_ready-28189
 draw_brushes	draw_brushes-13158
 mainloop	mainloop-8876
-eraser_draw	eraser_draw-14381
 loadinfo	loadinfo-15086
 play_slideshow	play_slideshow-19829
-line_xor	line_xor-14232
 do_slideshow	do_slideshow-19075
 loaddescsound	loaddescsound-14829
 draw_fonts	draw_fonts-13334
@@ -4936,6 +4844,7 @@ receive_some_font_info	receive_some_font_info-5632
 do_render_cur_text	do_render_cur_text-14602
 in_word_set	in_word_set-3215
 do_open	do_open-18550
+do_shape	do_shape-16787
 uppercase_w	uppercase_w-20565
 mainloop	mainloop-8328
 do_new_dialog	do_new_dialog-22072
@@ -4947,7 +4856,6 @@ do_open	do_open-18238
 do_quit	do_quit-17781
 do_new_dialog	do_new_dialog-22921
 mainloop	mainloop-8682
-line_xor	line_xor-9943
 draw_fonts	draw_fonts-13286
 do_new_dialog	do_new_dialog-23073
 do_save	do_save-17137
@@ -4978,7 +4886,6 @@ wcstou16	wcstou16-7356
 do_new_dialog	do_new_dialog-23114
 do_new_dialog	do_new_dialog-22466
 setup_colors	setup_colors-26637
-line_xor	line_xor-14242
 do_new_dialog	do_new_dialog-22908
 load_magic_plugins	load_magic_plugins-21688
 do_png_embed_data	do_png_embed_data-17545
@@ -5015,7 +4922,6 @@ mainloop	mainloop-8339
 cleanup	cleanup-16367
 mainloop	mainloop-8106
 set_current_language	set_current_language-7022
-stamp_xor	stamp_xor-20154
 in_word_set	in_word_set-3133
 mainloop	mainloop-6744
 search_label_list	search_label_list-24010
@@ -5044,7 +4950,6 @@ great_str	great_str-14793
 do_slideshow	do_slideshow-19331
 do_new_dialog	do_new_dialog-22897
 do_prompt_image_flash_snd	do_prompt_image_flash_snd-15997
-line_xor	line_xor-14190
 setup_config	setup_config-26098
 search_label_list	search_label_list-24023
 load_starter	load_starter-15564
@@ -5073,6 +4978,7 @@ load_starter_id	load_starter_id-15353
 mirror_starter	mirror_starter-EXIT
 mainloop	mainloop-7729
 trash	trash-28485
+do_shape	do_shape-16646
 do_png_embed_data	do_png_embed_data-17316
 setup_colors	setup_colors-26647
 mainloop	mainloop-10500
@@ -5180,7 +5086,6 @@ setup	setup-28071
 load_current	load_current-15759
 setup_colors	setup_colors-26863
 mainloop	mainloop-5180
-line_xor	line_xor-ENTRY
 do_save	do_save-17053
 derender_node	derender_node-EXIT
 textdir	textdir-20607
@@ -5204,7 +5109,6 @@ load_starter	load_starter-15567
 load_magic_plugins	load_magic_plugins-21751
 setup	setup-27887
 mainloop	mainloop-7293
-mainloop	mainloop-10188
 load_info_about_label_surface	load_info_about_label_surface-17692
 mainloop	mainloop-10676
 loadfont_callback	loadfont_callback-1891
@@ -5289,7 +5193,6 @@ do_new_dialog	do_new_dialog-22902
 undo_tmp_applied_text	undo_tmp_applied_text-24598
 do_render_cur_text	do_render_cur_text-20530
 mainloop	mainloop-9452
-stamp_xor	stamp_xor-20157
 setup	setup-27121
 do_new_dialog	do_new_dialog-22939
 do_new_dialog_add_colors	do_new_dialog_add_colors-23154
@@ -5324,7 +5227,6 @@ get_chunk_data	get_chunk_data-24921
 mainloop	mainloop-8480
 setup	setup-27798
 setup_colors	setup_colors-26568
-do_shape	do_shape-16635
 brush_draw	brush_draw-7526
 wordwrap_text_ex	wordwrap_text_ex-14629
 loadfonts	loadfonts-EXIT
@@ -5367,7 +5269,6 @@ loaddesc	loaddesc-10508
 setup_config	setup_config-25992
 mainloop	mainloop-7872
 mainloop	mainloop-8075
-rect_xor	rect_xor-14250
 load_embedded_data	load_embedded_data-25193
 mainloop	mainloop-7901
 load_starter	load_starter-15529
@@ -5414,7 +5315,6 @@ do_slideshow	do_slideshow-19148
 mainloop	mainloop-5804
 mainloop	mainloop-10683
 loadfont_callback	loadfont_callback-1930
-do_shape	do_shape-16755
 myIMG_Load_RWops	myIMG_Load_RWops-21313
 save_current	save_current-15837
 setup	setup-27315
@@ -5425,7 +5325,6 @@ mainloop	mainloop-10043
 setup	setup-27365
 cleanup	cleanup-16344
 load_user_fonts	load_user_fonts-5299
-_xorpixel	_xorpixel-14016
 do_shape	do_shape-16696
 trash	trash-28465
 mainloop	mainloop-10807
@@ -5445,7 +5344,6 @@ mainloop	mainloop-8108
 setup_colors	setup_colors-19907
 setup	setup-20166
 handle_keymouse	handle_keymouse-20767
-mainloop	mainloop-10232
 handle_keymouse	handle_keymouse-20687
 create_button_labels	create_button_labels-8699
 do_new_dialog	do_new_dialog-22357
@@ -5455,7 +5353,6 @@ do_open	do_open-12682
 do_new_dialog	do_new_dialog-22952
 safe_snprintf	safe_snprintf-EXIT
 mainloop	mainloop-9063
-mainloop	mainloop-10044
 setup_colors	setup_colors-26728
 setup_colors	setup_colors-26801
 mainloop	mainloop-8557
@@ -5466,7 +5363,6 @@ receive_some_font_info	receive_some_font_info-5592
 parse_argv_options	parse_argv_options-25458
 do_open	do_open-18750
 mainloop	mainloop-8388
-line_xor	line_xor-14223
 mainloop	mainloop-7704
 mainloop	mainloop-8564
 do_shape	do_shape-16703
@@ -5483,7 +5379,6 @@ mainloop	mainloop-8002
 get_fname	get_fname-1764
 render_brush	render_brush-14144
 do_new_dialog	do_new_dialog-22018
-do_shape	do_shape-16699
 do_quit	do_quit-17789
 cleanup	cleanup-11487
 do_new_dialog	do_new_dialog-22760
@@ -5544,10 +5439,8 @@ mainloop	mainloop-9424
 handle_active	handle_active-21095
 setup	setup-27888
 do_open	do_open-18015
-do_shape	do_shape-16715
 do_prompt_image_flash_snd	do_prompt_image_flash_snd-16024
 textdir	textdir-20581
-do_shape	do_shape-16714
 do_render_button_label	do_render_button_label-8659
 mainloop	mainloop-9038
 mainloop	mainloop-8996
@@ -5605,7 +5498,6 @@ do_print	do_print-20291
 mainloop	mainloop-8462
 do_save	do_save-17081
 setup	setup-27366
-do_shape	do_shape-16717
 mainloop	mainloop-10809
 mainloop	mainloop-9672
 mainloop	mainloop-5198
@@ -5638,7 +5530,6 @@ compute_default_scale_factor	compute_default_scale_factor-7993
 setup_colors	setup_colors-26609
 loadinfo	loadinfo-14977
 load_starter_id	load_starter_id-15356
-do_shape	do_shape-16737
 setup	setup-27885
 in_word_set	in_word_set-2813
 add_label_node	add_label_node-23968
@@ -5736,11 +5627,9 @@ do_open	do_open-18557
 setup	setup-27896
 load_starter	load_starter-15400
 mainloop	mainloop-10046
-rect_xor	rect_xor-14277
 setup	setup-27598
 draw_cur_tool_tip	draw_cur_tool_tip-14536
 setup_config	setup_config-26005
-eraser_draw	eraser_draw-14368
 loadbrush_callback	loadbrush_callback-EXIT
 handle_keymouse_buttons	handle_keymouse_buttons-21061
 do_open	do_open-18137
@@ -5841,12 +5730,10 @@ get_stamp_thumb	get_stamp_thumb-12303
 do_open	do_open-18309
 mainloop	mainloop-10794
 do_png_embed_data	do_png_embed_data-17498
-do_shape	do_shape-16888
 do_open	do_open-18671
 reliable_write	reliable_write-4596
 load_embedded_data	load_embedded_data-25279
 load_starter	load_starter-10924
-eraser_draw	eraser_draw-14386
 set_label_fonts	set_label_fonts-24403
 render_brush	render_brush-ENTRY
 mainloop	mainloop-10979
@@ -5855,10 +5742,8 @@ load_info_about_label_surface	load_info_about_label_surface-24308
 draw_toolbar	draw_toolbar-8830
 loadbrush_callback	loadbrush_callback-11805
 get_export_filepath	get_export_filepath-29201
-eraser_draw	eraser_draw-14392
 mainloop	mainloop-4987
 get_chunk_data	get_chunk_data-24903
-mainloop	mainloop-10234
 mainloop	mainloop-10047
 do_render_button_label	do_render_button_label-12691
 mainloop	mainloop-9341
@@ -5867,7 +5752,6 @@ set_active_stamp	set_active_stamp-12012
 undo_tmp_applied_text	undo_tmp_applied_text-24655
 get_export_filepath	get_export_filepath-21359
 do_new_dialog	do_new_dialog-22066
-do_shape	do_shape-16895
 setup_colors	setup_colors-26899
 mainloop	mainloop-10655
 set_langint_from_locale_string	set_langint_from_locale_string-4475
@@ -5877,7 +5761,6 @@ setup_config	setup_config-26549
 trash	trash-20842
 export_gif	export_gif-21281
 do_open	do_open-18786
-calc_eraser_size	calc_eraser_size-14283
 setup_normal_screen_layout	setup_normal_screen_layout-7142
 main	main-28241
 mainloop	mainloop-5135
@@ -5930,6 +5813,7 @@ save_current	save_current-15813
 do_shape	do_shape-16709
 render_text	render_text-4829
 run_font_scanner	run_font_scanner-ENTRY
+do_shape	do_shape-16786
 get_chunk_data	get_chunk_data-24842
 do_color_sel	do_color_sel-23420
 myIMG_Load_RWops	myIMG_Load_RWops-21312
@@ -5960,7 +5844,6 @@ mainloop	mainloop-7912
 mainloop	mainloop-9266
 mainloop	mainloop-7636
 loadinfo	loadinfo-15057
-_xorpixel	_xorpixel-14020
 mainloop	mainloop-10971
 do_render_button_label	do_render_button_label-8664
 do_save	do_save-EXIT
@@ -5982,7 +5865,6 @@ do_slideshow	do_slideshow-19177
 mainloop	mainloop-10958
 setup_colors	setup_colors-26832
 mainloop	mainloop-7960
-do_shape	do_shape-16743
 mainloop	mainloop-7655
 get_xdg_user_dir	get_xdg_user_dir-28849
 handle_keymouse	handle_keymouse-14862
@@ -6009,7 +5891,6 @@ setup_colors	setup_colors-26949
 do_shape	do_shape-16680
 mainloop	mainloop-8385
 set_active_stamp	set_active_stamp-12045
-do_shape	do_shape-16740
 tp_ftw	tp_ftw-2015
 do_redo	do_redo-14120
 mainloop	mainloop-9508
@@ -6032,7 +5913,6 @@ are_labels	are_labels-ENTRY
 load_embedded_data	load_embedded_data-25285
 mainloop	mainloop-10686
 do_loadimage	do_loadimage-12855
-_xorpixel	_xorpixel-14018
 cleanup	cleanup-16486
 mainloop	mainloop-9498
 do_prompt_image_snd	do_prompt_image_snd-15846
@@ -6044,22 +5924,17 @@ do_slideshow	do_slideshow-19096
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24512
 load_magic_plugins	load_magic_plugins-21644
 trash	trash-28410
-line_xor	line_xor-14209
 read	read-ENTRY
 load_starter	load_starter-15396
 mainloop	mainloop-7727
 loadimage	loadimage-EXIT
-mainloop	mainloop-10236
-calc_eraser_size	calc_eraser_size-EXIT
 mainloop	mainloop-10340
 setup	setup-27799
 mainloop	mainloop-8839
-do_shape	do_shape-16889
 load_embedded_data	load_embedded_data-24976
 load_magic_plugins	load_magic_plugins-21691
 do_png_save	do_png_save-17678
 setup_colors	setup_colors-26665
-do_shape	do_shape-16759
 do_new_dialog	do_new_dialog-22568
 loaddesc	loaddesc-10463
 set_active_stamp	set_active_stamp-12112
@@ -6153,7 +6028,6 @@ setup_normal_screen_layout	setup_normal_screen_layout-7148
 draw_fonts	draw_fonts-13298
 mainloop	mainloop-7867
 set_label_fonts	set_label_fonts-24405
-do_shape	do_shape-16634
 cleanup	cleanup-16371
 mainloop	mainloop-5760
 mainloop	mainloop-10479
@@ -6178,7 +6052,6 @@ do_new_dialog	do_new_dialog-22337
 do_slideshow	do_slideshow-18945
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24556
 search_label_list	search_label_list-24011
-rect_xor	rect_xor-14256
 setup	setup-27135
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24458
 mainloop	mainloop-5004
@@ -6199,7 +6072,6 @@ do_open	do_open-18704
 load_starter_id	load_starter_id-15324
 setup_config	setup_config-26332
 loadsound_extra	loadsound_extra-14764
-mainloop	mainloop-9819
 setup_colors	setup_colors-26843
 mainloop	mainloop-8041
 load_starter	load_starter-15563
@@ -6229,7 +6101,6 @@ loadsound_extra	loadsound_extra-14820
 do_slideshow	do_slideshow-19108
 load_current	load_current-15704
 loadfont_callback	loadfont_callback-1881
-do_shape	do_shape-16729
 render_text_w	render_text_w-7437
 loadinfo	loadinfo-15077
 save_current	save_current-15838
@@ -6250,7 +6121,6 @@ mainloop	mainloop-6795
 search_label_list	search_label_list-17360
 loadinfo	loadinfo-15081
 play_slideshow	play_slideshow-19932
-do_shape	do_shape-16721
 load_embedded_data	load_embedded_data-25334
 setup	setup-28036
 setup	setup-27462
@@ -6348,7 +6218,6 @@ mainloop	mainloop-9640
 loadstamp_finisher	loadstamp_finisher-11952
 main	main-28239
 do_png_embed_data	do_png_embed_data-17557
-eraser_draw	eraser_draw-14398
 loadbrush_callback	loadbrush_callback-11798
 do_color_picker	do_color_picker-17276
 load_user_fonts	load_user_fonts-5326
@@ -6371,7 +6240,6 @@ do_shape	do_shape-16681
 do_new_dialog	do_new_dialog-22983
 do_slideshow	do_slideshow-19119
 do_new_dialog	do_new_dialog-22264
-rect_xor	rect_xor-10007
 setup_config	setup_config-26011
 load_info_about_label_surface	load_info_about_label_surface-24261
 export_gif	export_gif-29045
@@ -6404,7 +6272,6 @@ load_starter	load_starter-10936
 do_open	do_open-17969
 do_open	do_open-18727
 do_open	do_open-18170
-line_xor	line_xor-14241
 in_word_set	in_word_set-2955
 load_embedded_data	load_embedded_data-24951
 export_gif	export_gif-28934
@@ -6422,6 +6289,7 @@ mainloop	mainloop-10702
 setup_colors	setup_colors-26597
 setup_colors	setup_colors-26673
 create_button_labels	create_button_labels-12751
+do_shape	do_shape-16819
 do_slideshow	do_slideshow-ENTRY
 in_word_set	in_word_set-3311
 do_render_cur_text	do_render_cur_text-20468
@@ -6551,7 +6419,6 @@ do_open	do_open-18510
 draw_fonts	draw_fonts-13320
 in_word_set	in_word_set-3179
 cleanup	cleanup-16526
-rect_xor	rect_xor-14262
 mainloop	mainloop-8500
 setup_colors	setup_colors-26678
 mainloop	mainloop-7895
@@ -6564,6 +6431,7 @@ free_surface	free_surface-EXIT
 free_surface_array	free_surface_array-16581
 render_all_nodes_starting_at	render_all_nodes_starting_at-17553
 load_magic_plugins	load_magic_plugins-21695
+do_shape	do_shape-16648
 do_undo_label_node	do_undo_label_node-24097
 do_slideshow	do_slideshow-19601
 in_word_set	in_word_set-2931
@@ -6576,7 +6444,6 @@ load_starter_helper	load_starter_helper-15372
 do_slideshow	do_slideshow-13927
 do_color_picker	do_color_picker-23767
 do_eraser	do_eraser-14304
-eraser_draw	eraser_draw-14362
 setup	setup-27129
 create_button_labels	create_button_labels-12758
 loaddescsound	loaddescsound-ENTRY
@@ -6678,6 +6545,7 @@ tp_ftw	tp_ftw-2007
 mainloop	mainloop-9834
 do_new_dialog	do_new_dialog-22488
 handle_keymouse	handle_keymouse-14823
+do_shape	do_shape-16865
 mainloop	mainloop-8188
 set_active_stamp	set_active_stamp-11967
 export_gif	export_gif-28951
@@ -6692,7 +6560,6 @@ mainloop	mainloop-7349
 loadfont_callback	loadfont_callback-1898
 mainloop	mainloop-10259
 mainloop	mainloop-9301
-line_xor	line_xor-14202
 mainloop	mainloop-6306
 setup_colors	setup_colors-26931
 load_starter	load_starter-15589
@@ -6701,7 +6568,6 @@ tmp_apply_uncommited_text	tmp_apply_uncommited_text-24578
 cleanup	cleanup-16498
 mainloop	mainloop-9662
 setup	setup-27502
-stamp_xor	stamp_xor-14402
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24493
 do_slideshow	do_slideshow-19192
 mainloop	mainloop-8634
@@ -6721,7 +6587,6 @@ mainloop	mainloop-8164
 mainloop	mainloop-6488
 do_new_dialog	do_new_dialog-22124
 mainloop	mainloop-8455
-mainloop	mainloop-10227
 mainloop	mainloop-8340
 cleanup	cleanup-16522
 load_embedded_data	load_embedded_data-24980
@@ -6759,7 +6624,6 @@ setup_colors	setup_colors-26821
 mainloop	mainloop-8687
 load_embedded_data	load_embedded_data-25138
 load_user_fonts	load_user_fonts-5325
-line_xor	line_xor-14227
 do_new_dialog	do_new_dialog-22088
 add_label_node	add_label_node-23956
 reliable_write	reliable_write-4603
@@ -6775,7 +6639,6 @@ get_fname	get_fname-1761
 mainloop	mainloop-7555
 do_color_sel	do_color_sel-23309
 mainloop	mainloop-9808
-do_shape	do_shape-16736
 do_open	do_open-18095
 in_word_set	in_word_set-2873
 do_open	do_open-18626
@@ -6836,7 +6699,6 @@ textdir	textdir-20604
 do_open	do_open-18199
 set_langint_from_locale_string	set_langint_from_locale_string-4411
 do_open	do_open-18305
-stamp_xor	stamp_xor-14403
 draw_stamps	draw_stamps-9277
 get_stamp_thumb	get_stamp_thumb-12368
 mainloop	mainloop-10299
@@ -6880,7 +6742,6 @@ setup_normal_screen_layout	setup_normal_screen_layout-7156
 do_new_dialog	do_new_dialog-22984
 play_slideshow	play_slideshow-19831
 mainloop	mainloop-10705
-do_shape	do_shape-16655
 mainloop	mainloop-8400
 do_open	do_open-18062
 mainloop	mainloop-9788
@@ -6957,7 +6818,6 @@ setup	setup-27670
 mainloop	mainloop-10502
 play_slideshow	play_slideshow-19825
 setup	setup-27949
-do_shape	do_shape-16887
 do_new_dialog	do_new_dialog-22332
 do_prompt_image_flash_snd	do_prompt_image_flash_snd-ENTRY
 loadsound_extra	loadsound_extra-14803
@@ -7053,7 +6913,6 @@ mainloop	mainloop-9030
 do_shape	do_shape-16901
 parse_one_option	parse_one_option-4258
 mainloop	mainloop-7648
-eraser_draw	eraser_draw-14383
 create_button_labels	create_button_labels-12696
 mainloop	mainloop-11030
 do_new_dialog	do_new_dialog-22973
@@ -7104,7 +6963,6 @@ receive_some_font_info	receive_some_font_info-5558
 create_button_labels	create_button_labels-12754
 load_kpx	load_kpx-21358
 mainloop	mainloop-9604
-do_shape	do_shape-16886
 undo_tmp_applied_text	undo_tmp_applied_text-24592
 cleanup	cleanup-16297
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24482
@@ -7112,7 +6970,6 @@ get_export_filepath	get_export_filepath-29189
 do_slideshow	do_slideshow-19181
 receive_some_font_info	receive_some_font_info-5611
 mainloop	mainloop-8556
-rect_xor	rect_xor-10009
 load_magic_plugins	load_magic_plugins-21700
 in_word_set	in_word_set-2837
 undo_tmp_applied_text	undo_tmp_applied_text-24593
@@ -7138,7 +6995,6 @@ get_xdg_user_dir	get_xdg_user_dir-28855
 mainloop	mainloop-10623
 load_embedded_data	load_embedded_data-25310
 mainloop	mainloop-9481
-line_xor	line_xor-9963
 load_template	load_template-15638
 load_info_about_label_surface	load_info_about_label_surface-24283
 cleanup	cleanup-16540
@@ -7153,7 +7009,6 @@ strip_trailing_whitespace	strip_trailing_whitespace-EXIT
 setup_config	setup_config-25997
 loadinfo	loadinfo-10540
 do_render_cur_text	do_render_cur_text-20357
-rect_xor	rect_xor-14274
 do_new_dialog	do_new_dialog-23083
 setup_config	setup_config-26545
 mainloop	mainloop-10371
@@ -7178,7 +7033,6 @@ do_new_dialog	do_new_dialog-22634
 do_open	do_open-18600
 do_new_dialog	do_new_dialog-22398
 stamp_draw	stamp_draw-11539
-line_xor	line_xor-14239
 load_embedded_data	load_embedded_data-25341
 loadbrush_callback	loadbrush_callback-11758
 save_current	save_current-15825
@@ -7234,7 +7088,6 @@ do_shape	do_shape-11906
 get_xdg_user_dir	get_xdg_user_dir-EXIT
 TuxPaint_Font_OpenFont	TuxPaint_Font_OpenFont-4532
 set_langint_from_locale_string	set_langint_from_locale_string-4432
-do_shape	do_shape-16733
 do_slideshow	do_slideshow-19263
 loadstamp_callback	loadstamp_callback-12481
 mainloop	mainloop-7909
@@ -7297,7 +7150,6 @@ trash	trash-EXIT
 mainloop	mainloop-10296
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24490
 setup_normal_screen_layout	setup_normal_screen_layout-7193
-calc_eraser_size	calc_eraser_size-10019
 get_stamp_thumb	get_stamp_thumb-ENTRY
 do_open	do_open-18703
 mainloop	mainloop-9495
@@ -7341,7 +7193,6 @@ do_prompt_image_flash_snd	do_prompt_image_flash_snd-16045
 mainloop	mainloop-8763
 mainloop	mainloop-9773
 mainloop	mainloop-10842
-line_xor	line_xor-14194
 setup_config	setup_config-26015
 setup_config	setup_config-26012
 do_shape	do_shape-16665
@@ -7364,7 +7215,6 @@ cycle_highlighted_label_node	cycle_highlighted_label_node-24737
 do_redo	do_redo-14115
 do_quit	do_quit-17813
 do_open	do_open-17896
-xorpixel	xorpixel-14042
 tp_ftw	tp_ftw-2028
 do_color_picker	do_color_picker-EXIT
 do_slideshow	do_slideshow-19178
@@ -7409,14 +7259,12 @@ load_svg	load_svg-21247
 setup	setup-20419
 mainloop	mainloop-7907
 mainloop	mainloop-8170
-do_shape	do_shape-16628
 load_stamp_dir	load_stamp_dir-12548
 export_pict	export_pict-ENTRY
 do_new_dialog	do_new_dialog-22431
 setup_colors	setup_colors-26627
 mainloop	mainloop-8910
 mainloop	mainloop-10941
-rect_xor	rect_xor-9999
 setup_colors	setup_colors-19896
 mainloop	mainloop-10860
 do_open	do_open-18915
@@ -7440,7 +7288,6 @@ parse_file_options	parse_file_options-18577
 do_save	do_save-17057
 do_open	do_open-18365
 do_slideshow	do_slideshow-19448
-line_xor	line_xor-14188
 handle_keymouse	handle_keymouse-20765
 cleanup	cleanup-16471
 handle_keymouse	handle_keymouse-14806
@@ -7527,7 +7374,6 @@ do_new_dialog	do_new_dialog-22920
 mainloop	mainloop-9749
 do_new_dialog	do_new_dialog-22926
 mainloop	mainloop-8222
-do_shape	do_shape-16723
 setup	setup-27685
 loadstamp_callback	loadstamp_callback-12493
 mainloop	mainloop-10891
@@ -7544,7 +7390,6 @@ draw_colors	draw_colors-13066
 setup	setup-27139
 loadfont_callback	loadfont_callback-1928
 cleanup	cleanup-16430
-do_shape	do_shape-16757
 do_open	do_open-17947
 receive_some_font_info	receive_some_font_info-5609
 setup_normal_screen_layout	setup_normal_screen_layout-7161
@@ -7587,7 +7432,6 @@ mainloop	mainloop-8336
 do_open	do_open-18426
 get_cursor	get_cursor-12798
 claim_to_be_ready	claim_to_be_ready-28202
-eraser_draw	eraser_draw-14397
 setup	setup-27428
 mainloop	mainloop-9060
 trash	trash-20780
@@ -7652,10 +7496,10 @@ mainloop	mainloop-10457
 load_embedded_data	load_embedded_data-25223
 mainloop	mainloop-10368
 in_word_set	in_word_set-3163
+do_shape	do_shape-16789
 load_magic_plugins	load_magic_plugins-21719
 mainloop	mainloop-9892
 receive_some_font_info	receive_some_font_info-5571
-line_xor	line_xor-14226
 setup_colors	setup_colors-26787
 do_png_save	do_png_save-17730
 setup_normal_screen_layout	setup_normal_screen_layout-7158
@@ -7673,7 +7517,6 @@ do_new_dialog	do_new_dialog-22131
 setup	setup-27733
 mainloop	mainloop-7945
 setup	setup-20279
-mainloop	mainloop-8913
 draw_fonts	draw_fonts-13410
 loaddesc	loaddesc-14925
 handle_keymouse_buttons	handle_keymouse_buttons-21004
@@ -7710,6 +7553,7 @@ tmp_apply_uncommited_text	tmp_apply_uncommited_text-24471
 set_active_stamp	set_active_stamp-11965
 mainloop	mainloop-10999
 draw_shapes	draw_shapes-13617
+do_shape	do_shape-16856
 do_open	do_open-ENTRY
 update_canvas_ex_r	update_canvas_ex_r-7267
 load_kpx	load_kpx-21359
@@ -7722,7 +7566,6 @@ setup_colors	setup_colors-26779
 draw_stamps	draw_stamps-13540
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24465
 setup_config	setup_config-26107
-do_shape	do_shape-16749
 setup	setup-27983
 do_new_dialog_add_colors	do_new_dialog_add_colors-23166
 do_open	do_open-18458
@@ -7746,7 +7589,6 @@ receive_some_font_info	receive_some_font_info-5633
 setup_colors	setup_colors-26600
 mainloop	mainloop-10888
 parse_one_option	parse_one_option-4269
-_xorpixel	_xorpixel-ENTRY
 get_xdg_user_dir	get_xdg_user_dir-28810
 draw_shapes	draw_shapes-13609
 play_slideshow	play_slideshow-19979
@@ -7774,7 +7616,6 @@ parse_argv_options	parse_argv_options-25648
 setup	setup-28020
 mainloop	mainloop-10997
 do_new_dialog	do_new_dialog-22128
-rect_xor	rect_xor-10001
 do_open	do_open-18260
 do_slideshow	do_slideshow-19065
 load_user_fonts	load_user_fonts-5314
@@ -7843,7 +7684,6 @@ mainloop	mainloop-9767
 magic_modeint	magic_modeint-17317
 do_new_dialog	do_new_dialog-22334
 mirror_starter	mirror_starter-21142
-do_shape	do_shape-16727
 do_open	do_open-18791
 mainloop	mainloop-6251
 export_gif_monitor_events	export_gif_monitor_events-EXIT
@@ -7890,7 +7730,6 @@ setup	setup-27870
 mainloop	mainloop-8107
 mainloop	mainloop-10200
 setup	setup-27360
-rect_xor	rect_xor-14272
 mainloop	mainloop-8595
 trash	trash-28483
 setup	setup-27806
@@ -7909,7 +7748,6 @@ load_starter	load_starter-15391
 loadsound_extra	loadsound_extra-10413
 do_slideshow	do_slideshow-19176
 do_slideshow	do_slideshow-19107
-eraser_draw	eraser_draw-14399
 do_open	do_open-17950
 draw_fonts	draw_fonts-13231
 create_button_labels	create_button_labels-12735
@@ -7956,7 +7794,6 @@ load_current	load_current-15718
 TuxPaint_Font_OpenFont	TuxPaint_Font_OpenFont-ENTRY
 do_open	do_open-18724
 mainloop	mainloop-8373
-do_shape	do_shape-16654
 mainloop	mainloop-8103
 save_current	save_current-15811
 loadstamp_finisher	loadstamp_finisher-11936
@@ -7982,7 +7819,6 @@ setup_colors	setup_colors-19842
 cleanup	cleanup-16530
 flip_surface	flip_surface-8172
 do_slideshow	do_slideshow-19198
-do_shape	do_shape-16753
 in_word_set	in_word_set-2901
 loadstamp_finisher	loadstamp_finisher-11948
 mainloop	mainloop-7925
@@ -7992,10 +7828,7 @@ do_shape	do_shape-16910
 load_magic_plugins	load_magic_plugins-21819
 do_save	do_save-16980
 load_embedded_data	load_embedded_data-25288
-do_shape	do_shape-16890
-line_xor	line_xor-14215
 in_word_set	in_word_set-2985
-mainloop	mainloop-8919
 do_new_dialog	do_new_dialog-16133
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24494
 cleanup	cleanup-16543
@@ -8004,7 +7837,6 @@ set_active_stamp	set_active_stamp-11988
 do_slideshow	do_slideshow-19060
 in_word_set	in_word_set-2969
 load_info_about_label_surface	load_info_about_label_surface-24314
-_xorpixel	_xorpixel-14033
 trash	trash-28487
 do_open	do_open-17930
 do_new_dialog	do_new_dialog-22144
@@ -8032,7 +7864,6 @@ tmp_apply_uncommited_text	tmp_apply_uncommited_text-24539
 mainloop	mainloop-7823
 mainloop	mainloop-10998
 do_shape	do_shape-16601
-mainloop	mainloop-10037
 in_word_set	in_word_set-2927
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24497
 mainloop	mainloop-10713
@@ -8057,15 +7888,11 @@ do_new_dialog	do_new_dialog-22604
 mainloop	mainloop-10463
 loadstamp_finisher	loadstamp_finisher-11911
 do_color_picker	do_color_picker-23872
-do_shape	do_shape-16881
 load_embedded_data	load_embedded_data-25335
 trash	trash-28474
-do_shape	do_shape-16744
 do_lock_file	do_lock_file-ENTRY
-rect_xor	rect_xor-14275
 do_save	do_save-17080
 do_new_dialog	do_new_dialog-22598
-line_xor	line_xor-14224
 do_new_dialog	do_new_dialog-22102
 do_open	do_open-18736
 print_image	print_image-ENTRY
@@ -8099,7 +7926,6 @@ mainloop	mainloop-10987
 myIMG_Load_RWops	myIMG_Load_RWops-15358
 parse_argv_options	parse_argv_options-18683
 do_open	do_open-18097
-line_xor	line_xor-14231
 loadstamp_callback	loadstamp_callback-12472
 tp_ftw	tp_ftw-2070
 tp_ftw	tp_ftw-2055
@@ -8112,7 +7938,6 @@ do_new_dialog	do_new_dialog-22622
 do_new_dialog	do_new_dialog-22244
 do_save	do_save-12124
 thumbnail	thumbnail-13832
-do_shape	do_shape-16735
 do_open	do_open-18434
 export_pict	export_pict-29140
 get_xdg_user_dir	get_xdg_user_dir-28883
@@ -8142,6 +7967,7 @@ receive_some_font_info	receive_some_font_info-5513
 mainloop	mainloop-8902
 set_current_language	set_current_language-7020
 draw_fills	draw_fills-13796
+do_shape	do_shape-16794
 setup_i18n	setup_i18n-4653
 loaddesc	loaddesc-14917
 textdir	textdir-20597
@@ -8161,7 +7987,6 @@ mainloop	mainloop-4940
 handle_keymouse_buttons	handle_keymouse_buttons-21043
 do_slideshow	do_slideshow-13508
 do_new_dialog	do_new_dialog-22450
-do_shape	do_shape-16741
 mainloop	mainloop-9787
 do_slideshow	do_slideshow-13990
 get_xdg_user_dir	get_xdg_user_dir-28809
@@ -8174,8 +7999,6 @@ load_current	load_current-15705
 in_word_set	in_word_set-3031
 stamp_draw	stamp_draw-11580
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24562
-rect_xor	rect_xor-14254
-mainloop	mainloop-10214
 mainloop	mainloop-10071
 simply_render_node	simply_render_node-17508
 mainloop	mainloop-10201
@@ -8208,7 +8031,6 @@ trash	trash-28339
 mainloop	mainloop-8151
 do_slideshow	do_slideshow-18979
 do_shape	do_shape-16899
-rect_xor	rect_xor-9997
 setup_colors	setup_colors-26703
 do_open	do_open-18175
 do_new_dialog	do_new_dialog-16335
@@ -8269,7 +8091,6 @@ do_open	do_open-18698
 loadstamp_finisher	loadstamp_finisher-11955
 do_png_embed_data	do_png_embed_data-17524
 trash	trash-28479
-mainloop	mainloop-10229
 do_slideshow	do_slideshow-19428
 render_brush	render_brush-14147
 trash	trash-28404
@@ -8279,7 +8100,6 @@ draw_stamps	draw_stamps-13455
 load_magic_plugins	load_magic_plugins-21385
 get_xdg_user_dir	get_xdg_user_dir-28782
 setup_colors	setup_colors-19732
-line_xor	line_xor-14201
 setup	setup-27479
 do_open	do_open-17958
 claim_to_be_ready	claim_to_be_ready-28187
@@ -8339,7 +8159,6 @@ in_word_set	in_word_set-3279
 mainloop	mainloop-10970
 do_shape	do_shape-16670
 do_open	do_open-18593
-mainloop	mainloop-8915
 do_open	do_open-18877
 do_open	do_open-13360
 load_starter	load_starter-15390
@@ -8401,7 +8220,6 @@ stamp_draw	stamp_draw-EXIT
 parse_file_options	parse_file_options-ENTRY
 cleanup	cleanup-16554
 load_info_about_label_surface	load_info_about_label_surface-24288
-_xorpixel	_xorpixel-14022
 do_new_dialog_add_colors	do_new_dialog_add_colors-23170
 setup_colors	setup_colors-26813
 do_new_dialog	do_new_dialog-22874
@@ -8432,7 +8250,6 @@ load_starter	load_starter-10928
 do_shape	do_shape-16915
 loadfonts_locale_filter	loadfonts_locale_filter-5258
 claim_to_be_ready	claim_to_be_ready-28201
-do_shape	do_shape-16724
 do_new_dialog	do_new_dialog-16104
 load_embedded_data	load_embedded_data-25026
 do_render_cur_text	do_render_cur_text-20459
@@ -8505,7 +8322,6 @@ load_user_fonts	load_user_fonts-5302
 load_brush_dir	load_brush_dir-EXIT
 play_slideshow	play_slideshow-19967
 setup	setup-27646
-mainloop	mainloop-10215
 do_new_dialog	do_new_dialog-22844
 setup	setup-27119
 do_shape	do_shape-11813
@@ -8535,7 +8351,6 @@ parse_argv_options	parse_argv_options-25650
 do_render_button_label	do_render_button_label-ENTRY
 do_new_dialog_add_colors	do_new_dialog_add_colors-23168
 export_gif	export_gif-28907
-eraser_draw	eraser_draw-14360
 do_slideshow	do_slideshow-19786
 load_user_fonts	load_user_fonts-5284
 do_redo	do_redo-14094
@@ -8589,7 +8404,6 @@ mainloop	mainloop-10765
 get_stamp_thumb	get_stamp_thumb-12333
 mainloop	mainloop-8619
 do_new_dialog	do_new_dialog-22975
-do_shape	do_shape-16898
 mainloop	mainloop-8454
 do_png_embed_data	do_png_embed_data-17394
 do_png_embed_data	do_png_embed_data-17544
@@ -8604,7 +8418,6 @@ do_slideshow	do_slideshow-19121
 in_word_set	in_word_set-3235
 load_template	load_template-ENTRY
 get_xdg_user_dir	get_xdg_user_dir-21132
-do_shape	do_shape-16739
 undo_tmp_applied_text	undo_tmp_applied_text-24638
 mainloop	mainloop-9022
 get_export_filepath	get_export_filepath-29183
@@ -8634,6 +8447,7 @@ setup_colors	setup_colors-26569
 setup	setup-27802
 do_png_save	do_png_save-17746
 draw_fonts	draw_fonts-13296
+do_shape	do_shape-16855
 setup_i18n	setup_i18n-7054
 mainloop	mainloop-8893
 mainloop	mainloop-7576
@@ -8663,11 +8477,9 @@ load_brush_dir	load_brush_dir-11850
 do_slideshow	do_slideshow-19130
 do_new_dialog	do_new_dialog-22212
 setup_colors	setup_colors-19743
-mainloop	mainloop-9745
 set_current_language	set_current_language-EXIT
 render_text	render_text-7339
 do_open	do_open-18248
-eraser_draw	eraser_draw-14380
 load_current	load_current-EXIT
 tmp_apply_uncommited_text	tmp_apply_uncommited_text-24470
 mainloop	mainloop-9721
@@ -8711,6 +8523,7 @@ setup_colors	setup_colors-26674
 mainloop	mainloop-7908
 do_slideshow	do_slideshow-19270
 in_word_set	in_word_set-3219
+do_shape	do_shape-16776
 do_quit	do_quit-17803
 atoi	atoi-613
 do_png_embed_data	do_png_embed_data-17301
@@ -8770,7 +8583,6 @@ mainloop	mainloop-9067
 mainloop	mainloop-10754
 draw_toolbar	draw_toolbar-12866
 myIMG_Load_RWops	myIMG_Load_RWops-ENTRY
-do_shape	do_shape-16885
 get_fname	get_fname-1777
 load_embedded_data	load_embedded_data-25178
 do_slideshow	do_slideshow-19701
@@ -8840,7 +8652,6 @@ do_new_dialog	do_new_dialog-22806
 do_render_cur_text	do_render_cur_text-20447
 do_prompt_image_flash_snd	do_prompt_image_flash_snd-11328
 mainloop	mainloop-10327
-mainloop	mainloop-10246
 do_slideshow	do_slideshow-19465
 setup_colors	setup_colors-26617
 stamp_draw	stamp_draw-ENTRY
@@ -8855,7 +8666,6 @@ setup_colors	setup_colors-26723
 do_new_dialog	do_new_dialog-22610
 do_new_dialog	do_new_dialog-22169
 load_starter	load_starter-15401
-stamp_xor	stamp_xor-20156
 do_save	do_save-17115
 do_slideshow	do_slideshow-14030
 do_open	do_open-18287

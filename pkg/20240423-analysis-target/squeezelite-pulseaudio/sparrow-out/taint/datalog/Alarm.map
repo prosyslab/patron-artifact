@@ -1,56 +1,24 @@
-main.c:345	*(argv+i___0)	Alarm-13
-slimproto.c:164	(((u64_t )(@status.frames_played-@status.device_frames))*1000UL)/((u64_t )@status.current_sample_rate)	Alarm-53
-slimproto.c:568	got+n___6	Alarm-46
-main.c:531	*(argv+0)	Alarm-21
-main.c:413	__cil_tmp53*1000	Alarm-36
-utils.c:92	*(ptr)	Alarm-25
-utils.c:394	val>>16	Alarm-40
-utils.c:147	*(mac+0)	Alarm-12
-utils.c:147	*(mac+2)	Alarm-9
-slimproto.c:584	((int )@buffer[0])<<8	Alarm-49
-main.c:386	*(argv+0)	Alarm-17
-main.c:681	*(argv+0)	Alarm-22
-buffer.c:34	*buf___4.size-((unsigned long )(*buf___4.readp-*buf___4.writep))	Alarm-32
-main.c:531	*(argv+0)	Alarm-20
-slimproto.c:574	2-got	Alarm-47
-utils.c:394	val>>24	Alarm-39
-main.c:715	rates[0]/44100U	Alarm-51
-main.c:350	*(argv+optind___41)	Alarm-15
-main.c:692	*(argv+0)	Alarm-24
-slimproto.c:165	ms_played+(now-@status.updated)	Alarm-42
-utils.c:147	*(mac+2)	Alarm-8
-output_stdout.c:154	*(rates+0)	Alarm-27
-utils.c:394	*(ptr+1)	Alarm-28
-main.c:437	*(argv+0)	Alarm-19
-utils.c:394	*(ptr+2)	Alarm-29
-main.c:437	*(argv+0)	Alarm-18
-buffer.c:151	malloc(size___2)	Alarm-0
-utils.c:147	*(mac+5)	Alarm-3
-slimproto.c:189	ms_played/1000U	Alarm-54
-slimproto.c:531	*(pack+4)	Alarm-31
-slimproto.c:198	(ms_played-now)+@status.stream_start	Alarm-44
-slimproto.c:567	expect-n___6	Alarm-45
-main.c:684	*(argv+optind___41)	Alarm-23
-utils.c:147	*(mac+1)	Alarm-11
-output_alsa.c:99	*(comma)	Alarm-1
-utils.c:147	*(mac+4)	Alarm-4
-slimproto.c:198	(@status.device_frames*1000U)/@status.current_sample_rate	Alarm-55
-slimproto.c:198	ms_played-now	Alarm-43
-utils.c:147	*(mac+1)	Alarm-10
-main.c:405	__cil_tmp51___0*1024	Alarm-35
-utils.c:147	*(mac+4)	Alarm-5
-main.c:404	__cil_tmp50___0*1024	Alarm-34
-utils.c:147	*(mac+5)	Alarm-2
-buffer.c:74	*buf___11.base_size/mod	Alarm-50
-utils.c:147	*(mac+3)	Alarm-7
-output.c:359	output_buf_size-(output_buf_size%8U)	Alarm-38
-utils.c:394	val>>8	Alarm-41
-main.c:719	output_buf_size*scale___0	Alarm-37
-utils.c:147	*(mac+3)	Alarm-6
-slimproto.c:582	got+n___7	Alarm-48
-main.c:349	*(argv+optind___41)	Alarm-14
-utils.c:394	*(ptr+3)	Alarm-30
-output.c:359	output_buf_size%8U	Alarm-52
-output.c:396	*(rates+i)	Alarm-26
-main.c:356	*(argv+(optind___41+1))	Alarm-16
-buffer.c:74	((unsigned long )((unsigned int )(*buf___11.base_size/mod)))*mod	Alarm-33
+buffer.c:74	*buf___11.base_size/mod	Alarm-18
+slimproto.c:568	got+n___6	Alarm-14
+buffer.c:34	*buf___4.size-((unsigned long )(*buf___4.readp-*buf___4.writep))	Alarm-0
+utils.c:394	val>>24	Alarm-7
+main.c:404	__cil_tmp50___0*1024	Alarm-2
+slimproto.c:567	expect-n___6	Alarm-13
+buffer.c:74	((unsigned long )((unsigned int )(*buf___11.base_size/mod)))*mod	Alarm-1
+main.c:413	__cil_tmp53*1000	Alarm-4
+utils.c:394	val>>8	Alarm-9
+slimproto.c:584	((int )@buffer[0])<<8	Alarm-17
+slimproto.c:165	ms_played+(now-@status.updated)	Alarm-10
+slimproto.c:198	ms_played-now	Alarm-11
+main.c:405	__cil_tmp51___0*1024	Alarm-3
+main.c:715	rates[0]/44100U	Alarm-19
+slimproto.c:164	(((u64_t )(@status.frames_played-@status.device_frames))*1000UL)/((u64_t )@status.current_sample_rate)	Alarm-21
+slimproto.c:198	(ms_played-now)+@status.stream_start	Alarm-12
+slimproto.c:198	(@status.device_frames*1000U)/@status.current_sample_rate	Alarm-23
+main.c:719	output_buf_size*scale___0	Alarm-5
+output.c:359	output_buf_size%8U	Alarm-20
+output.c:359	output_buf_size-(output_buf_size%8U)	Alarm-6
+slimproto.c:189	ms_played/1000U	Alarm-22
+slimproto.c:582	got+n___7	Alarm-16
+utils.c:394	val>>16	Alarm-8
+slimproto.c:574	2-got	Alarm-15

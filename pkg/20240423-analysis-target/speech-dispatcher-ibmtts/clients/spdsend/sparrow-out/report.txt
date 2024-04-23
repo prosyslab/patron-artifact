@@ -3,34 +3,11 @@
   nread+((unsigned long )n) @read_data-536:  source = read_data-535 @ common.c:58 UnProven
 2. common.c:65 {read_data} UnProven
   max_size-((unsigned long )n) @read_data-538:  source = read_data-535 @ common.c:58 UnProven
-3. server.c:85 {set_connection} UnProven
-  *(@connections+id___0) @set_connection-1112:  offset: [-oo, +oo], size: [1000, 1000] UnProven, allocsite: init_connections-1469
-4. server.c:131 {do_open_connection} UnProven
-  *(hostinfo) @do_open_connection-1150:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__gethostbyname
-5. server.c:263 {process_open} UnProven
+3. server.c:263 {process_open} UnProven
   hostlen+1 @process_open-1267:  source = read_data-535 @ common.c:58 UnProven
-  malloc(hostlen+1) @process_open-1267:  size = [-oo, +oo], source = read_data-535 @ common.c:58 UnProven
-6. server.c:271 {process_open} UnProven
-  *(host___0+hostlen) @process_open-1262:  source = read_data-535 @ common.c:58 UnProven
-  *(host___0+hostlen) @process_open-1262:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: process_open-1267
-7. server.c:387 {serve} UnProven
-  *(s___10) @serve-1396:  source = forward_data-552 @ common.c:77 UnProven
-  *(s___10) @serve-1396:  source = read_data-535 @ common.c:58 UnProven
-8. spdsend.c:106 {main} UnProven
-  *(argv+1) @main-1604:  source = main-1581 @ spdsend.c:100 UnProven
-  *(argv+1) @main-1604:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__argv
-9. spdsend.c:121 {main} UnProven
-  *(argv+2) @main-1611:  source = main-1581 @ spdsend.c:100 UnProven
-  *(argv+2) @main-1611:  offset: [2, 2], size: [1, +oo] UnProven, allocsite: __extern__argv
-10. spdsend.c:122 {main} UnProven
-  *(argv+3) @main-1612:  source = main-1581 @ spdsend.c:100 UnProven
-  *(argv+3) @main-1612:  offset: [3, 3], size: [1, +oo] UnProven, allocsite: __extern__argv
-11. spdsend.c:126 {main} UnProven
-  *(argv+2) @main-1615:  source = main-1581 @ spdsend.c:100 UnProven
-  *(argv+2) @main-1615:  offset: [2, 2], size: [1, +oo] UnProven, allocsite: __extern__argv
 
-#queries                 : 46
-#queries mod alarm point : 28
-#proven                  : 17
-#unproven                : 11
-#bot-involved            : 3
+#queries                 : 7
+#queries mod alarm point : 5
+#proven                  : 2
+#unproven                : 3
+#bot-involved            : 0

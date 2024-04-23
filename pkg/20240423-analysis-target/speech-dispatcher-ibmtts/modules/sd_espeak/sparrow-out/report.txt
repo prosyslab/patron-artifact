@@ -1,64 +1,7 @@
 = Alarms =
-1. spd_audio.c:135 {spd_audio_open} UnProven
-  *(fn) @spd_audio_open-1740:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__lt_dlsym
-2. espeak.c:820 {espeak_list_synthesis_voices} UnProven
-  *(espeak_voices+i) @espeak_list_synthesis_voices-4735:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__espeak_ListVoices
-  *(espeak_voices+i) @espeak_list_synthesis_voices-4734:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__espeak_ListVoices
-3. espeak.c:821 {espeak_list_synthesis_voices} UnProven
-  *(espeak_voices+i) @espeak_list_synthesis_voices-4785:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__espeak_ListVoices
-4. espeak.c:852 {espeak_list_synthesis_voices} UnProven
-  *(espeak_variants+i) @espeak_list_synthesis_voices-4743:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__espeak_ListVoices
-  *(espeak_variants+i) @espeak_list_synthesis_voices-4742:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__espeak_ListVoices
-5. espeak.c:853 {espeak_list_synthesis_voices} UnProven
-  *(espeak_variants+i) @espeak_list_synthesis_voices-4805:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__espeak_ListVoices
-6. espeak.c:937 {espeak_list_synthesis_voices} UnProven
-  *(voice_list_iter) @espeak_list_synthesis_voices-4816:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_queue_peek_head_link
-7. espeak.c:940 {espeak_list_synthesis_voices} UnProven
-  *(voice_list_iter) @espeak_list_synthesis_voices-4818:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_queue_peek_head_link
-8. espeak.c:943 {espeak_list_synthesis_voices} UnProven
-  *(variant_list_iter) @espeak_list_synthesis_voices-4751:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_queue_peek_head_link
-  *(variant_list_iter) @espeak_list_synthesis_voices-4750:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_queue_peek_head_link
-9. espeak.c:946 {espeak_list_synthesis_voices} UnProven
-  *(variant_list_iter) @espeak_list_synthesis_voices-4821:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_queue_peek_head_link
-10. espeak.c:949 {espeak_list_synthesis_voices} UnProven
-  *(variant_list_iter) @espeak_list_synthesis_voices-4823:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_queue_peek_head_link
-11. espeak.c:952 {espeak_list_synthesis_voices} UnProven
-  *(variant_list_iter) @espeak_list_synthesis_voices-4826:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_queue_peek_head_link
-12. espeak.c:956 {espeak_list_synthesis_voices} UnProven
-  *(voice_list_iter) @espeak_list_synthesis_voices-4827:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_queue_peek_head_link
-13. module_main.c:47 {main} UnProven
-  *(argv+1) @main-3828:  source = main-3810 @ module_main.c:40 UnProven
-  *(argv+1) @main-3828:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__argv
-14. module_process.c:531 {module_process} UnProven
-  strncmp((char const   *)line, \"DEBUG\", 5UL) @module_process-3624:  offset: [4, 4], size: [2, +oo] UnProven, allocsite: module_readline-3758
-15. module_readline.c:69 {module_readline} UnProven
-  *(@data+@data_no_lf) @module_readline-3709:  offset: [-oo, +oo], size: [2, +oo] UnProven, allocsite: module_readline-3795
-  *(@data+@data_no_lf) @module_readline-3708:  offset: [-oo, +oo], size: [2, +oo] UnProven, allocsite: module_readline-3795
-16. module_readline.c:119 {module_readline} UnProven
-  memmove ((void *)@data, (void const   *)(@data+@data_ptr), @data_used) @module_readline-3776:  offset: [-oo, +oo], size: [2, +oo] UnProven, allocsite: module_readline-3795
-  memmove ((void *)@data, (void const   *)(@data+@data_ptr), @data_used) @module_readline-3776:  offset: [-oo, +oo], size: [2, +oo] UnProven, allocsite: module_readline-3795
-17. module_utils.c:59 {MSG} UnProven
-  *(tstr+(__cil_tmp10-1UL)) @MSG-2252:  offset: [-1, +oo], size: [-oo, +oo] UnProven, allocsite: MSG-2249
-18. module_utils.c:641 {module_add_config_option} UnProven
-  *(opts+(num_config_options-1)) @module_add_config_option-2994:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
-19. module_utils.c:642 {module_add_config_option} UnProven
-  *(opts+(num_config_options-1)) @module_add_config_option-2995:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
-20. module_utils.c:643 {module_add_config_option} UnProven
-  *(opts+(num_config_options-1)) @module_add_config_option-2996:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
-21. module_utils.c:644 {module_add_config_option} UnProven
-  *(opts+(num_config_options-1)) @module_add_config_option-2997:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
-22. module_utils.c:645 {module_add_config_option} UnProven
-  *(opts+(num_config_options-1)) @module_add_config_option-2998:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_realloc
-23. module_utils.c:670 {module_audio_init} UnProven
-  *(outputs+i) @module_audio_init-3005:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strsplit
-  *(outputs+i) @module_audio_init-3004:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strsplit
-24. module_utils.c:671 {module_audio_init} UnProven
-  *(outputs+i) @module_audio_init-3017:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strsplit
-25. module_utils.c:675 {module_audio_init} UnProven
-  *(outputs+i) @module_audio_init-3030:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__g_strsplit
 
-#queries                 : 158
-#queries mod alarm point : 108
-#proven                  : 83
-#unproven                : 25
-#bot-involved            : 16
+#queries                 : 9
+#queries mod alarm point : 5
+#proven                  : 5
+#unproven                : 0
+#bot-involved            : 0

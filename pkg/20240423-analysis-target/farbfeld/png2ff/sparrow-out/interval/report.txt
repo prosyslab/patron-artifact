@@ -1,24 +1,7 @@
 = Alarms =
-1. png2ff.c:60 {main} UnProven
-  *(argv+0) @main-700:  offset: [1, 1], size: [1, +oo] UnProven, allocsite: __extern__argv
-2. png2ff.c:79 {main} UnProven
-  *(pngrows+r) @main-711:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__png_get_rows
-3. png2ff.c:86 {main} UnProven
-  *(pngrows+r) @main-716:  offset: [-oo, +oo], size: [-oo, +oo] UnProven, allocsite: __extern__png_get_rows
-4. util.c:26 {verr} UnProven
-  *(fmt+(__cil_tmp4-1UL)) @verr-373:  offset: [6, 26], size: [8, 8] UnProven, allocsite: efwrite-516
-  *(fmt+(__cil_tmp4-1UL)) @verr-373:  offset: [6, 26], size: [13, 13] UnProven, allocsite: fshut-483
-  *(fmt+(__cil_tmp4-1UL)) @verr-373:  offset: [6, 26], size: [13, 13] UnProven, allocsite: fshut-486
-  *(fmt+(__cil_tmp4-1UL)) @verr-373:  offset: [6, 26], size: [18, 18] UnProven, allocsite: main-727
-  *(fmt+(__cil_tmp4-1UL)) @verr-373:  offset: [6, 26], size: [10, 10] UnProven, allocsite: usage-680
-  *(fmt+(__cil_tmp4-1UL)) @verr-372:  offset: [6, 26], size: [8, 8] UnProven, allocsite: efwrite-516
-  *(fmt+(__cil_tmp4-1UL)) @verr-372:  offset: [6, 26], size: [13, 13] UnProven, allocsite: fshut-483
-  *(fmt+(__cil_tmp4-1UL)) @verr-372:  offset: [6, 26], size: [13, 13] UnProven, allocsite: fshut-486
-  *(fmt+(__cil_tmp4-1UL)) @verr-372:  offset: [6, 26], size: [18, 18] UnProven, allocsite: main-727
-  *(fmt+(__cil_tmp4-1UL)) @verr-372:  offset: [6, 26], size: [10, 10] UnProven, allocsite: usage-680
 
-#queries                 : 64
-#queries mod alarm point : 20
-#proven                  : 16
-#unproven                : 4
-#bot-involved            : 2
+#queries                 : 0
+#queries mod alarm point : 0
+#proven                  : 0
+#unproven                : 0
+#bot-involved            : 0

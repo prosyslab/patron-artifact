@@ -15,7 +15,7 @@ configuration = {
     "CRWAL_ONLY": False,
     "SPARROW_ONLY": False,
     "CSV_FOR_STAT": False,
-    "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full"],
+    "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full", "-no_bo"],
     "USER_SPARROW_OPT": [],
     "SPARROW_TARGET_FILES": []
 }

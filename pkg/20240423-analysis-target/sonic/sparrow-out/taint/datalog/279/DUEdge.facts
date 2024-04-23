@@ -43,6 +43,7 @@ downSampleInput-562	downSampleInput-636
 downSampleInput-562	downSampleInput-637
 downSampleInput-562	downSampleInput-638
 downSampleInput-562	downSampleInput-640
+writeToWaveFile-1512	writeToWaveFile-1515
 overlapAddWithSeparation-ENTRY	overlapAddWithSeparation-667
 overlapAddWithSeparation-ENTRY	overlapAddWithSeparation-754
 overlapAddWithSeparation-ENTRY	overlapAddWithSeparation-756
@@ -193,6 +194,8 @@ interpolate-ENTRY	interpolate-835
 interpolate-ENTRY	interpolate-836
 interpolate-ENTRY	interpolate-837
 interpolate-ENTRY	interpolate-838
+writeToWaveFile-1510	writeToWaveFile-1306
+writeToWaveFile-1510	writeToWaveFile-1512
 addShortSamplesToInputBuffer-497	addShortSamplesToInputBuffer-EXIT
 readInt-1247	readExactBytes-ENTRY
 readInt-1247	readInt-EXIT
@@ -346,6 +349,7 @@ openOutputWaveFile-1244	openOutputWaveFile-EXIT
 scaleSamples-356	scaleSamples-290
 readFromWaveFile-1491	readFromWaveFile-1295
 readFromWaveFile-1491	readFromWaveFile-1493
+runSonic-1057	runSonic-971
 readHeader-1375	readHeader-EXIT
 readHeader-1375	readHeader-1344
 readHeader-1375	readHeader-1346
@@ -361,6 +365,8 @@ changeSpeed-929	changeSpeed-EXIT
 changeSpeed-929	changeSpeed-842
 adjustRate-871	adjustRate-784
 freeStreamBuffers-372	freeStreamBuffers-333
+writeToWaveFile-1498	writeToWaveFile-1509
+writeToWaveFile-1498	writeToWaveFile-1516
 sonicFlushStream-614	sonicFlushStream-608
 sonicFlushStream-614	sonicFlushStream-609
 sonicFlushStream-614	sonicFlushStream-619
@@ -373,6 +379,7 @@ overlapAdd-654	overlapAdd-750
 overlapAdd-654	overlapAdd-751
 allocateStreamBuffers-393	allocateStreamBuffers-415
 findPitchPeriod-720	findPitchPeriod-703
+runSonic-1059	runSonic-965
 adjustPitch-832	adjustPitch-EXIT
 adjustPitch-832	adjustPitch-719
 adjustPitch-832	adjustPitch-815
@@ -414,6 +421,7 @@ closeFile-1216	closeFile-EXIT
 readFromWaveFile-1490	readFromWaveFile-1295
 readFromWaveFile-1490	readFromWaveFile-1493
 allocateStreamBuffers-424	allocateStreamBuffers-EXIT
+writeToWaveFile-1500	writeToWaveFile-1509
 adjustRate-884	adjustRate-885
 freeStreamBuffers-333	freeStreamBuffers-EXIT
 readHeader-1374	readHeader-EXIT
@@ -423,6 +431,7 @@ sonicReadShortFromStream-505	sonicReadShortFromStream-EXIT
 sonicReadShortFromStream-505	sonicReadShortFromStream-511
 sonicReadShortFromStream-505	sonicReadShortFromStream-569
 sonicReadShortFromStream-505	sonicReadShortFromStream-570
+sonicReadShortFromStream-505	sonicReadShortFromStream-575
 sonicReadShortFromStream-505	sonicReadShortFromStream-576
 fread-109	fread-EXIT
 adjustRate-878	adjustRate-773
@@ -453,10 +462,12 @@ readHeader-1344	readInt-ENTRY
 enlargeOutputBufferIfNeeded-459	enlargeOutputBufferIfNeeded-462
 expectString-1277	expectString-1160
 fread-112	fread-EXIT
+writeToWaveFile-1514	writeToWaveFile-1306
 enlargeOutputBufferIfNeeded-401	enlargeOutputBufferIfNeeded-EXIT
 removeInputSamples-520	removeInputSamples-522
 removeInputSamples-520	removeInputSamples-523
 adjustPitch-829	adjustPitch-825
+runSonic-1060	runSonic-955
 enlargeInputBufferIfNeeded-473	enlargeInputBufferIfNeeded-EXIT
 enlargeInputBufferIfNeeded-473	enlargeInputBufferIfNeeded-410
 enlargeInputBufferIfNeeded-473	enlargeInputBufferIfNeeded-472
@@ -499,6 +510,7 @@ openOutputWaveFile-ENTRY	openOutputWaveFile-1255
 openOutputWaveFile-ENTRY	openOutputWaveFile-1256
 openOutputWaveFile-ENTRY	openOutputWaveFile-1419
 openOutputWaveFile-ENTRY	openOutputWaveFile-1424
+openOutputWaveFile-ENTRY	openOutputWaveFile-1426
 openOutputWaveFile-ENTRY	openOutputWaveFile-1428
 sonicFlushStream-612	sonicFlushStream-614
 interpolate-835	interpolate-746
@@ -543,6 +555,10 @@ enlargeInputBufferIfNeeded-470	enlargeInputBufferIfNeeded-473
 overlapAddWithSeparation-756	overlapAddWithSeparation-758
 overlapAddWithSeparation-756	overlapAddWithSeparation-759
 removePitchSamples-798	removePitchSamples-EXIT
+runSonic-971	runSonic-955
+runSonic-971	runSonic-965
+runSonic-971	runSonic-1059
+runSonic-971	runSonic-1060
 runSonic-963	runSonic-955
 runSonic-963	runSonic-965
 runSonic-963	runSonic-1061
@@ -705,6 +721,11 @@ readHeader-EXIT	openInputWaveFile-1412
 adjustPitch-744	adjustPitch-EXIT
 runSonic-1073	runSonic-963
 runSonic-1073	sonicWriteShortToStream-ENTRY
+writeToWaveFile-1509	writeToWaveFile-1306
+writeToWaveFile-1509	writeToWaveFile-1510
+writeToWaveFile-1509	writeToWaveFile-1511
+writeToWaveFile-1509	writeToWaveFile-1512
+writeToWaveFile-1509	writeToWaveFile-1515
 adjustRate-ENTRY	adjustRate-EXIT
 adjustRate-ENTRY	adjustRate-759
 adjustRate-ENTRY	adjustRate-763
@@ -810,9 +831,13 @@ sonicReadShortFromStream-565	sonicReadShortFromStream-568
 prevPeriodBetter-602	prevPeriodBetter-EXIT
 overlapAdd-751	overlapAdd-654
 insertPitchPeriod-919	insertPitchPeriod-EXIT
+writeToWaveFile-1511	writeToWaveFile-1513
+writeToWaveFile-1511	writeToWaveFile-1514
 adjustRate-880	adjustRate-857
 adjustRate-880	adjustRate-858
 readHeader-1365	readHeader-1338
+runSonic-1058	runSonic-971
+runSonic-1058	runSonic-1075
 moveNewSamplesToPitchBuffer-697	moveNewSamplesToPitchBuffer-EXIT
 moveNewSamplesToPitchBuffer-697	moveNewSamplesToPitchBuffer-786
 adjustRate-859	adjustRate-884
@@ -862,6 +887,8 @@ main-1167	main-1168
 readHeader-1368	readHeader-EXIT
 copyInputToOutput-479	copyInputToOutput-EXIT
 sonicReadShortFromStream-577	sonicReadShortFromStream-EXIT
+writeToWaveFile-1515	writeToWaveFile-1306
+openOutputWaveFile-1426	openOutputWaveFile-EXIT
 readBytes-1231	readBytes-EXIT
 readBytes-1231	readBytes-1106
 interpolate-837	interpolate-840
@@ -896,6 +923,9 @@ openOutputWaveFile-1415	openOutputWaveFile-1424
 overlapAdd-745	overlapAdd-654
 runSonic-1079	runSonic-955
 runSonic-1079	runSonic-965
+runSonic-1079	runSonic-1057
+runSonic-1079	runSonic-1058
+runSonic-1079	runSonic-1075
 findPitchPeriodInRange-678	findPitchPeriodInRange-575
 copyInputToOutput-474	copyInputToOutput-479
 copyInputToOutput-474	copyInputToOutput-538
@@ -914,6 +944,7 @@ sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-568
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-571
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-573
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-574
+sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-575
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-576
 sonicReadShortFromStream-ENTRY	sonicReadShortFromStream-577
 changeSpeed-947	changeSpeed-858
@@ -956,6 +987,7 @@ findPitchPeriod-711	findPitchPeriod-718
 openInputWaveFile-1403	openInputWaveFile-EXIT
 readInt-1249	readInt-1250
 main-1165	closeWaveFile-ENTRY
+writeToWaveFile-1516	writeToWaveFile-1306
 adjustPitch-821	adjustPitch-824
 adjustPitch-821	adjustPitch-825
 prevPeriodBetter-684	prevPeriodBetter-EXIT
@@ -1116,6 +1148,7 @@ main-1173	main-1168
 openOutputWaveFile-EXIT	main-1173
 findPitchPeriod-726	findPitchPeriod-637
 findPitchPeriod-726	findPitchPeriodInRange-ENTRY
+writeToWaveFile-1505	writeToWaveFile-1498
 sonicCreateStream-378	sonicCreateStream-EXIT
 adjustPitch-804	adjustPitch-EXIT
 adjustPitch-804	adjustPitch-719
@@ -1220,10 +1253,16 @@ findPitchPeriodInRange-582	findPitchPeriodInRange-672
 findPitchPeriodInRange-582	findPitchPeriodInRange-674
 findPitchPeriodInRange-582	findPitchPeriodInRange-676
 findPitchPeriod-729	findPitchPeriod-730
+writeToWaveFile-1306	writeToWaveFile-EXIT
+writeToWaveFile-1306	writeToWaveFile-1498
+writeToWaveFile-1306	writeToWaveFile-1500
+writeToWaveFile-1306	writeToWaveFile-1509
+writeToWaveFile-1306	writeToWaveFile-1512
 main-1122	main-1165
 main-1122	main-1166
 main-1122	main-1167
 addShortSamplesToInputBuffer-EXIT	sonicWriteShortToStream-998
+runSonic-1078	runSonic-971
 findPitchPeriod-713	findPitchPeriod-694
 freeStreamBuffers-365	freeStreamBuffers-324
 findPitchPeriod-643	findPitchPeriod-EXIT
@@ -1294,6 +1333,9 @@ skipPitchPeriod-814	skipPitchPeriod-821
 skipPitchPeriod-814	skipPitchPeriod-901
 skipPitchPeriod-814	skipPitchPeriod-902
 skipPitchPeriod-814	skipPitchPeriod-903
+writeToWaveFile-ENTRY	writeToWaveFile-1306
+writeToWaveFile-ENTRY	writeToWaveFile-1505
+writeToWaveFile-ENTRY	writeToWaveFile-1509
 findPitchPeriod-735	findPitchPeriod-637
 openOutputWaveFile-1424	openOutputWaveFile-EXIT
 openOutputWaveFile-1424	openOutputWaveFile-1428
@@ -1312,6 +1354,8 @@ readFromWaveFile-1493	readFromWaveFile-1295
 findPitchPeriod-712	findPitchPeriod-637
 findPitchPeriod-712	findPitchPeriod-716
 findPitchPeriod-712	findPitchPeriod-718
+runSonic-1075	runSonic-971
+runSonic-1075	writeToWaveFile-ENTRY
 processStreamInput-890	processStreamInput-EXIT
 findPitchPeriodInRange-679	findPitchPeriodInRange-EXIT
 readHeader-1358	expectString-ENTRY
@@ -1380,6 +1424,8 @@ adjustRate-891	adjustRate-EXIT
 adjustRate-891	adjustRate-773
 adjustRate-891	adjustRate-870
 enlargeInputBufferIfNeeded-409	enlargeInputBufferIfNeeded-EXIT
+writeToWaveFile-1513	writeToWaveFile-1306
+writeToWaveFile-1513	writeToWaveFile-1515
 sonicCreateStream-437	sonicCreateStream-EXIT
 moveNewSamplesToPitchBuffer-783	moveNewSamplesToPitchBuffer-EXIT
 moveNewSamplesToPitchBuffer-783	moveNewSamplesToPitchBuffer-697
@@ -1552,6 +1598,7 @@ findPitchPeriod-718	findPitchPeriodInRange-ENTRY
 changeSpeed-927	changeSpeed-858
 changeSpeed-927	changeSpeed-942
 openOutputWaveFile-1439	openOutputWaveFile-1420
+writeToWaveFile-EXIT	runSonic-1078
 sonicCreateStream-434	sonicCreateStream-EXIT
 changeSpeed-928	changeSpeed-858
 changeSpeed-928	changeSpeed-940
@@ -1573,6 +1620,7 @@ runSonic-ENTRY	runSonic-1071
 runSonic-ENTRY	runSonic-1072
 runSonic-ENTRY	runSonic-1073
 runSonic-ENTRY	runSonic-1074
+runSonic-ENTRY	runSonic-1075
 runSonic-ENTRY	runSonic-1076
 runSonic-ENTRY	runSonic-1079
 runSonic-ENTRY	runSonic-1082
@@ -1602,6 +1650,7 @@ sonicCreateStream-449	sonicCreateStream-438
 sonicCreateStream-449	sonicCreateStream-439
 sonicSetPitch-EXIT	runSonic-1087
 sonicReadShortFromStream-576	sonicReadShortFromStream-577
+sonicReadShortFromStream-575	sonicReadShortFromStream-EXIT
 readInt-1130	readInt-EXIT
 allocateStreamBuffers-396	allocateStreamBuffers-EXIT
 processStreamInput-981	processStreamInput-894
@@ -1661,7 +1710,9 @@ findPitchPeriod-694	findPitchPeriod-617
 findPitchPeriod-694	findPitchPeriod-715
 allocateStreamBuffers-418	allocateStreamBuffers-EXIT
 readShort-1262	readShort-1137
+runSonic-965	runSonic-971
 runSonic-965	runSonic-1074
+runSonic-965	runSonic-1075
 runSonic-965	runSonic-1079
 copyInputToOutput-EXIT	changeSpeed-949
 freeStreamBuffers-330	freeStreamBuffers-EXIT

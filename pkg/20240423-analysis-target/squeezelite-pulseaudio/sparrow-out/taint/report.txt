@@ -4,111 +4,53 @@
 2. buffer.c:74 {buf_adjust} UnProven
   *buf___11.base_size/mod @buf_adjust-8941:  source = main-10627 @ main.c:283 UnProven
   ((unsigned long )((unsigned int )(*buf___11.base_size/mod)))*mod @buf_adjust-8941:  source = main-10627 @ main.c:283 UnProven
-3. buffer.c:151 {buf_init} UnProven
-  malloc(size___2) @buf_init-9035:  size = [0, +oo], source = main-10627 @ main.c:283 UnProven
-4. main.c:345 {main} UnProven
-  *(argv+i___0) @main-10877:  source = main-10627 @ main.c:283 UnProven
-5. main.c:349 {main} UnProven
-  *(argv+optind___41) @main-10880:  source = main-10627 @ main.c:283 UnProven
-6. main.c:350 {main} UnProven
-  *(argv+optind___41) @main-10881:  source = main-10627 @ main.c:283 UnProven
-7. main.c:356 {main} UnProven
-  *(argv+(optind___41+1)) @main-10883:  source = main-10627 @ main.c:283 UnProven
-8. main.c:386 {main} UnProven
-  *(argv+0) @main-10889:  source = main-10627 @ main.c:283 UnProven
-9. main.c:404 {main} UnProven
+3. main.c:404 {main} UnProven
   __cil_tmp50___0*1024 @main-10899:  source = main-10627 @ main.c:283 UnProven
-10. main.c:405 {main} UnProven
+4. main.c:405 {main} UnProven
   __cil_tmp51___0*1024 @main-10901:  source = main-10627 @ main.c:283 UnProven
-11. main.c:413 {main} UnProven
+5. main.c:413 {main} UnProven
   __cil_tmp53*1000 @main-10905:  source = main-10627 @ main.c:283 UnProven
-12. main.c:437 {main} UnProven
-  *(argv+0) @main-10935:  source = main-10627 @ main.c:283 UnProven
-13. main.c:437 {main} UnProven
-  *(argv+0) @main-10938:  source = main-10627 @ main.c:283 UnProven
-14. main.c:531 {main} UnProven
-  *(argv+0) @main-11035:  source = main-10627 @ main.c:283 UnProven
-15. main.c:531 {main} UnProven
-  *(argv+0) @main-11038:  source = main-10627 @ main.c:283 UnProven
-16. main.c:681 {main} UnProven
-  *(argv+0) @main-11054:  source = main-10627 @ main.c:283 UnProven
-17. main.c:684 {main} UnProven
-  *(argv+optind___41) @main-11056:  source = main-10627 @ main.c:283 UnProven
-18. main.c:692 {main} UnProven
-  *(argv+0) @main-11058:  source = main-10627 @ main.c:283 UnProven
-19. main.c:715 {main} UnProven
+6. main.c:715 {main} UnProven
   rates[0]/44100U @main-11066:  source = main-10627 @ main.c:283 UnProven
-20. main.c:719 {main} UnProven
+7. main.c:719 {main} UnProven
   output_buf_size*scale___0 @main-11069:  source = main-10627 @ main.c:283 UnProven
-21. output.c:359 {output_init_common} UnProven
+8. output.c:359 {output_init_common} UnProven
   output_buf_size%8U @output_init_common-7590:  source = main-10627 @ main.c:283 UnProven
   output_buf_size-(output_buf_size%8U) @output_init_common-7590:  source = main-10627 @ main.c:283 UnProven
-22. output.c:396 {output_init_common} UnProven
-  *(rates+i) @output_init_common-7614:  source = main-10627 @ main.c:283 UnProven
-23. output_alsa.c:99 {ctl4device} UnProven
-  *(comma) @ctl4device-5240:  source = main-10627 @ main.c:283 UnProven
-24. output_stdout.c:154 {output_init_stdout} UnProven
-  *(rates+0) @output_init_stdout-5110:  source = main-10627 @ main.c:283 UnProven
-25. slimproto.c:164 {sendSTAT} UnProven
+9. slimproto.c:164 {sendSTAT} UnProven
   (((u64_t )(@status.frames_played-@status.device_frames))*1000UL)/((u64_t )@status.current_sample_rate) @sendSTAT-9201:  source = main-10627 @ main.c:283 UnProven
-26. slimproto.c:165 {sendSTAT} UnProven
+10. slimproto.c:165 {sendSTAT} UnProven
   ms_played+(now-@status.updated) @sendSTAT-9202:  source = main-10627 @ main.c:283 UnProven
-27. slimproto.c:189 {sendSTAT} UnProven
+11. slimproto.c:189 {sendSTAT} UnProven
   ms_played/1000U @sendSTAT-9223:  source = main-10627 @ main.c:283 UnProven
-28. slimproto.c:198 {sendSTAT} UnProven
+12. slimproto.c:198 {sendSTAT} UnProven
   (@status.device_frames*1000U)/@status.current_sample_rate @sendSTAT-9250:  source = main-10627 @ main.c:283 UnProven
   (ms_played-now)+@status.stream_start @sendSTAT-9250:  source = main-10627 @ main.c:283 UnProven
   ms_played-now @sendSTAT-9250:  source = main-10627 @ main.c:283 UnProven
-29. slimproto.c:531 {process___0} UnProven
-  *(pack+4) @process___0-9859:  source = slimproto_run-10043 @ slimproto.c:559 UnProven
-  *(pack+4) @process___0-9859:  source = slimproto_run-10056 @ slimproto.c:574 UnProven
-30. slimproto.c:567 {slimproto_run} UnProven
+13. slimproto.c:567 {slimproto_run} UnProven
   expect-n___6 @slimproto_run-10052:  source = slimproto_run-10043 @ slimproto.c:559 UnProven
   expect-n___6 @slimproto_run-10052:  source = slimproto_run-10056 @ slimproto.c:574 UnProven
-31. slimproto.c:568 {slimproto_run} UnProven
+14. slimproto.c:568 {slimproto_run} UnProven
   got+n___6 @slimproto_run-10053:  source = slimproto_run-10043 @ slimproto.c:559 UnProven
   got+n___6 @slimproto_run-10053:  source = slimproto_run-10056 @ slimproto.c:574 UnProven
-32. slimproto.c:574 {slimproto_run} UnProven
+15. slimproto.c:574 {slimproto_run} UnProven
   2-got @slimproto_run-10056:  source = slimproto_run-10043 @ slimproto.c:559 UnProven
   2-got @slimproto_run-10056:  source = slimproto_run-10056 @ slimproto.c:574 UnProven
-33. slimproto.c:582 {slimproto_run} UnProven
+16. slimproto.c:582 {slimproto_run} UnProven
   got+n___7 @slimproto_run-10065:  source = slimproto_run-10043 @ slimproto.c:559 UnProven
   got+n___7 @slimproto_run-10065:  source = slimproto_run-10056 @ slimproto.c:574 UnProven
-34. slimproto.c:584 {slimproto_run} UnProven
+17. slimproto.c:584 {slimproto_run} UnProven
   ((int )@buffer[0])<<8 @slimproto_run-10066:  source = slimproto_run-10043 @ slimproto.c:559 UnProven
   ((int )@buffer[0])<<8 @slimproto_run-10066:  source = slimproto_run-10056 @ slimproto.c:574 UnProven
-35. utils.c:92 {next_param} UnProven
-  *(ptr) @next_param-7747:  source = main-10627 @ main.c:283 UnProven
-36. utils.c:147 {get_mac} UnProven
-  *(mac+5) @get_mac-7843:  source = get_mac-7861 @ utils.c:133 UnProven
-37. utils.c:147 {get_mac} UnProven
-  *(mac+4) @get_mac-7844:  source = get_mac-7861 @ utils.c:133 UnProven
-  *(mac+5) @get_mac-7844:  source = get_mac-7861 @ utils.c:133 UnProven
-38. utils.c:147 {get_mac} UnProven
-  *(mac+3) @get_mac-7845:  source = get_mac-7861 @ utils.c:133 UnProven
-  *(mac+4) @get_mac-7845:  source = get_mac-7861 @ utils.c:133 UnProven
-39. utils.c:147 {get_mac} UnProven
-  *(mac+2) @get_mac-7846:  source = get_mac-7861 @ utils.c:133 UnProven
-  *(mac+3) @get_mac-7846:  source = get_mac-7861 @ utils.c:133 UnProven
-40. utils.c:147 {get_mac} UnProven
-  *(mac+1) @get_mac-7847:  source = get_mac-7861 @ utils.c:133 UnProven
-  *(mac+2) @get_mac-7847:  source = get_mac-7861 @ utils.c:133 UnProven
-41. utils.c:147 {get_mac} UnProven
-  *(mac+0) @get_mac-7848:  source = get_mac-7861 @ utils.c:133 UnProven
-  *(mac+1) @get_mac-7848:  source = get_mac-7861 @ utils.c:133 UnProven
-42. utils.c:394 {packN} UnProven
+18. utils.c:394 {packN} UnProven
   val>>24 @packN-7961:  source = main-10627 @ main.c:283 UnProven
-43. utils.c:394 {packN} UnProven
+19. utils.c:394 {packN} UnProven
   val>>16 @packN-7962:  source = main-10627 @ main.c:283 UnProven
-  *(ptr+1) @packN-7962:  source = main-10627 @ main.c:283 UnProven
-44. utils.c:394 {packN} UnProven
+20. utils.c:394 {packN} UnProven
   val>>8 @packN-7963:  source = main-10627 @ main.c:283 UnProven
-  *(ptr+2) @packN-7963:  source = main-10627 @ main.c:283 UnProven
-45. utils.c:394 {packN} UnProven
-  *(ptr+3) @packN-7964:  source = main-10627 @ main.c:283 UnProven
 
-#queries                 : 62
-#queries mod alarm point : 45
+#queries                 : 29
+#queries mod alarm point : 20
 #proven                  : 0
-#unproven                : 45
+#unproven                : 20
 #bot-involved            : 0

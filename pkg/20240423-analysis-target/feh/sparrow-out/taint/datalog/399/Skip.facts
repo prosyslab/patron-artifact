@@ -565,7 +565,6 @@ feh_reload_image-12663
 feh_menu_cb-9353
 feh_draw_caption-13596
 feh_draw_errstr-13242
-feh_draw_filename-13311
 feh_menu_cb-6746
 feh_parse_option_array-7465
 feh_event_handle_ButtonRelease-16090
@@ -605,6 +604,7 @@ feh_reload_image-12652
 index_calculate_width-8370
 feh_draw_filename-9239
 winwidget_render_image-1397
+feh_thumbnail_get_name_md5-4547
 init_index_mode-11941
 feh_menu_func_free_options-9481
 feh_menu_cb-9385
@@ -632,6 +632,7 @@ feh_event_handle_generic-11470
 feh_filelist_image_remove-5669
 feh_draw_filename-9235
 feh_http_load_image-9069
+feh_thumbnail_get_name_md5-4546
 winwidget_destroy-1496
 feh_parse_option_array-7508
 add_file_to_filelist_recursively-10645
@@ -654,6 +655,7 @@ feh_draw_caption-13590
 feh_parse_option_array-7541
 feh_menu_cb_opt_fullscreen-6509
 init_thumbnail_mode-3090
+feh_thumbnail_get_name_md5-4544
 init_index_mode-8238
 feh_menu_init_main-8498
 feh_menu_select_parent-5737
@@ -700,10 +702,12 @@ feh_menu_cb-9390
 feh_png_read_comments-15589
 feh_thumbnail_setup_thumbnail_dir-3677
 feh_wm_load_next-2419
+feh_thumbnail_get_name_md5-4545
 init_index_mode-11952
 winwidget_render_image-1775
 feh_event_handle_keypress-10939
 gib_hash_get-14814
+md5_append-6850
 feh_event_handle_ButtonRelease-16080
 init_multiwindow_mode-7650
 feh_should_ignore_image-12205
@@ -827,6 +831,7 @@ main-9810
 feh_reload_image-12651
 real_loadables_mode-7168
 feh_menu_calc_size-5994
+md5_finish-6869
 feh_thumbnail_calculate_geometry-3346
 feh_menu_cb-6773
 slideshow_save_image-4402
@@ -839,6 +844,7 @@ feh_draw_actions-9809
 gib_imlib_save_image_with_error_return-14582
 feh_http_load_image-13090
 feh_http_load_image-13076
+md5_append-6837
 feh_menu_init_single_win-8908
 feh_menu_select_parent-5726
 feh_main_iteration-10039
@@ -915,6 +921,7 @@ feh_menu_cb-9368
 feh_draw_caption-13574
 winwidget_render_image-1275
 cb_reload_timer-5013
+md5_append-6841
 feh_printf-4045
 feh_parse_option_array-7520
 feh_menu_cb-9372
@@ -933,7 +940,6 @@ init_thumbnail_mode-4295
 feh_reload_image-12642
 feh_menu_show_at-5819
 feh_menu_init_thumbnail_viewer-9079
-feh_draw_filename-13314
 feh_wm_set_bg-3115
 feh_menu_init_common-8754
 feh_menu_init_common-8791
@@ -992,7 +998,6 @@ feh_wm_set_bg-3066
 winwidget_create_window-1070
 feh_print_load_error-12330
 gib_imlib_save_image_with_error_return-10209
-feh_draw_filename-13312
 feh_menu_cb-6679
 winwidget_create_from_file-1209
 feh_event_handle_generic-8041
@@ -1010,7 +1015,6 @@ feh_prepare_filelist-15364
 winwidget_resize-2106
 init_parse_options-4610
 feh_wm_set_bg-3092
-feh_thumbnail_get_name_md5-3440
 feh_printf-4190
 feh_prepare_filelist-15355
 feh_event_handle_generic-11517
@@ -1114,6 +1118,7 @@ feh_wm_set_bg-3102
 init_thumbnail_mode-4289
 feh_draw_zoom-13172
 feh_draw_caption-13592
+md5_finish-9747
 feh_event_handle_generic-11577
 feh_menu_init_common-8801
 feh_event_handle_ButtonPress-15984
@@ -1141,7 +1146,6 @@ init_thumbnail_mode-3229
 init_index_mode-8102
 feh_menu_item_activate-7880
 feh_print_load_error-8501
-feh_draw_filename-13315
 gib_imlib_load_font-14728
 winwidget_show_menu-2352
 feh_wm_set_bg-3104
@@ -1452,6 +1456,7 @@ feh_reload_image-12646
 feh_event_handle_generic-11582
 feh_event_handle_stdin-10867
 feh_edit_inplace-9575
+md5_process-6821
 add_stdin_to_filelist-14967
 feh_menu_init_common-8768
 feh_menu_init_single_win-8909
@@ -1526,6 +1531,7 @@ feh_wrap_string-13856
 index_calculate_width-8372
 feh_printf-4299
 feh_wm_set_bg_filled-2544
+md5_finish-9748
 feh_thumbnail_get_generated-4677
 feh_printf-4250
 feh_reload_image-12640
@@ -1583,6 +1589,7 @@ init_thumbnail_mode-3143
 feh_unique_filename-3692
 feh_printf-5590
 slideshow_change_image-4005
+md5_append-6852
 init_multiwindow_mode-7652
 feh_dcraw_load_image-8869
 feh_wm_set_bg-3110
