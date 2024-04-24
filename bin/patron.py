@@ -4,6 +4,8 @@ import os
 from logger import log, INFO, ERROR, WARNING
 import subprocess
 import json
+import csv
+import datetime
 
 expriment_ready_to_go = {
     "patron": [
@@ -19,6 +21,10 @@ level = ""
 donor_list = []
 
 def run_patron(worklist):
+    tsv_file = open(os.path.join(config.configuration["OUT_DIR"], "patron_{}.tsv".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
+    writer = csv.writer(tsv_file, delimiter='\t')
+    write.writerow(["PROJECT", "ALARM_ID", "STATUS"])
+    tsv_file.flush()
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     for cmd in worklist:
         log(INFO, f"Running patron with {cmd}")
@@ -27,7 +33,13 @@ def run_patron(worklist):
         if result.returncode != 0:
             log(ERROR, f"Failed to run patron with {cmd}")
             log(ERROR, result.stderr.read().decode('utf-8'))
-        log(INFO, f"Successfully ran patron with {cmd}")
+            writer.writerow([cmd[1].split('/')[-1], cmd[2], "X"])
+            tsv_file.flush()
+        else:
+            log(INFO, f"Successfully ran patron with {cmd}")
+            writer.writerow([cmd[1].split('/')[-1], cmd[2], "O"])
+            tsv_file.flush()
+        
 
 def mk_worklist():
     base_cmd = [config.configuration["PATRON_BIN_PATH"]]
@@ -91,6 +103,10 @@ def check_sparrow():
     return True            
 
 def mk_database():
+    tsv_file = open(os.path.join(config.configuration["OUT_DIR"], "database_{}.tsv".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
+    writer = csv.writer(tsv_file, delimiter='\t')
+    writer.writerow(["BENCHMARK", "ID", "STATUS"])
+    tsv_file.flush()
     log(WARNING, f"Creating patron-DB from scratch...")
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     cmd = [config.configuration["PATRON_BIN_PATH"], "db"]
@@ -111,9 +127,13 @@ def mk_database():
         if result.returncode != 0:
             log(ERROR, f"Failed to create patron-DB for {donor}")
             log(ERROR, result.stderr.read().decode('utf-8'))
-            exit(1)
-        log(INFO, f"Successfully created patron-DB for {donor}")
+            writer.writerow([donor.split('/')[-2], donor.split('/')[-1], "X"])
+            tsv_file.flush()
+        else:
+            log(INFO, f"Successfully created patron-DB for {donor}")
+            writer.writerow([donor.split('/')[-2], donor.split('/')[-1], "O"])
     log(INFO, "Successfully finished making patron-DB.")
+    tsv_file.close()
     
 def check_database():
     if not os.path.exists(os.path.join(config.configuration["PATRON_ROOT_PATH"], 'patron-DB')):
