@@ -23,6 +23,7 @@ def sparrow(files):
     writer = csv.writer(tsvfile, delimiter='\t')
     writer.writerow(['Package', 'Status'])
     tsvfile.flush()
+    success_cnt = 0
     for file in files:
         log(INFO, f"Running sparrow for {file} ...")
         sparrow_log, process = run_sparrow(file)
@@ -31,12 +32,37 @@ def sparrow(files):
         if process.returncode == 0:
             log(INFO, f"{file} is successfully analyzed.")
             writer.writerow([file, 'O'])
+            success_cnt += 1
         else:
             log(ERROR, f"Failed to analyze {file}.")
             writer.writerow([file, 'X'])
         tsvfile.flush()
     tsvfile.close()
-    
+    if success_cnt == 0:
+        log(ERROR, f"No file is successfully analyzed.")
+        return False
+    log(INFO, f"{success_cnt} files are successfully analyzed.")
+    return True
+
+def sparrow_pipe(package):
+    target_dir = os.path.join(config.configuration["ANALYSIS_DIR"], package)
+    if not os.path.exists(target_dir):
+        log(ERROR, f"{target_dir} does not exist.")
+        return False
+    # find all .c files in the subdirectories and its path
+    c_files = []
+    for root, dirs, files in os.walk(target_dir):
+        for file in files:
+            if file.endswith('.c'):
+                c_files.append(os.path.join(root, file))
+    if len(c_files) == 0:
+        log(ERROR, f"No .c files found in {target_dir}.")
+        return False
+    log(INFO, f"Found {len(c_files)} .c files in {target_dir}.")
+    return sparrow(c_files)
+                
+                
+
 def main():
     config.setup("SPARROW")
     log(INFO, "You are running sparrow.py script directly.")

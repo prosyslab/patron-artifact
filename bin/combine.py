@@ -42,6 +42,7 @@ def run(tups):
     writer.writerow(['Category', 'Package',	'Combined', 'Note'])
     tsvfile.flush()
     out_dir = config.configuration["ANALYSIS_DIR"]
+    success_cnt = 0
     for category, package in tups:
         reason = ""
         target_path = os.path.join(config.configuration["I_FILES_DIR"], category, package)
@@ -126,18 +127,23 @@ def run(tups):
         writer.writerow([category, package, 'O', "-"])
         log(INFO, f"Combining {package} was successful. {success_cnt} files were combined.")
         tsvfile.flush()
+        success_cnt += 1
     tsvfile.close()
+    if success_cnt == 0:
+        log(ERROR, "No package was combined.")
+        return False
+    return True
         
 
-def process_top_level_call():
-    if config.configuration["ARGS"].combine == ["all"]:
+def process_top_level_call(dirs):
+    if dirs == ["all"]:
         log(ERROR, "Combining all packages is not supported yet.")
         exit(1)
     tups = []
-    for dir_path in config.configuration["ARGS"].combine:
+    for dir_path in dirs:
         if not os.path.exists(os.path.abspath(dir_path)):
             log(ERROR, f"{dir_path} does not exist.")
-            exit(1)
+            continue
         sp = dir_path.split('/')
         if sp[-1].strip() == "":
             package = sp[-2]
@@ -147,10 +153,16 @@ def process_top_level_call():
             category = sp[-2]
         tups.append((category, package))
     return tups
-    
+
+def combine_pipe(dirs):
+    tups = process_top_level_call(dirs)
+    if tups == []:
+        log(ERROR, "No valid package found.")
+        return False
+    return run(tups)
     
 def oss_main():
-    run(process_top_level_call())
+    run(process_top_level_call(config.configuration["ARGS"].combine))
 
 def main():
     config.setup("COMBINE")

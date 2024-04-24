@@ -12,6 +12,9 @@ def run_full():
     
 def main():
     config.setup("TOP")
+    if config.configuration["PIPE_MODE"]:
+        build.smake_pipe()
+        return
     if config.configuration["CRWAL_ONLY"]:
         build.crawl()
     if config.configuration["BUILD_ONLY"]:
