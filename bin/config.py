@@ -11,15 +11,22 @@ configuration = {
     "OUT_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), ".." ,"out"),
     "I_FILES_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "pkg", "i_files"),
     "ANALYSIS_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "pkg", "analysis-target"),
+    "EXP_ROOT_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment"),
     "SPARROW_BIN_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "sparrow", "bin", "sparrow"),
+    "PATRON_ROOT_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "patron"),
+    "PATRON_BIN_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "patron", "patron"),
+    "EXP_BIN_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "bin"),
+    "BENCHMARK_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "benchmark"),
     "BUILD_ONLY": False,
     "CRWAL_ONLY": False,
     "SPARROW_ONLY": False,
     "COMBINE_ONLY": False,
+    "PATRON_ONLY": False,
     "CSV_FOR_STAT": False,
     "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full", "-no_bo"],
     "USER_SPARROW_OPT": [],
     "SPARROW_TARGET_FILES": []
+    "DONEE_LIST": []
 }
 
 def __get_logger():
@@ -131,6 +138,7 @@ def setup(level):
         parser.add_argument("-crawl", "-c", action="store_true", default=False, help="crawl the package list from the web only")
         parser.add_argument("-combine", "-m", nargs="*", default=["None"], help="combine *.i files into .c in the the given directory for packages only (default:all)")
         parser.add_argument("-sparrow", "-s", nargs="*", default=["None"], help="run the sparrow for the given directory(ies) (default:all)")
+        parser.add_argument("-patron", "-p", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
         parser = parse_sparrow_opt(parser)
         configuration["ARGS"] = parser.parse_args()
         if configuration["ARGS"].build == []:
@@ -145,6 +153,10 @@ def setup(level):
             configuration["ARGS"].combine = ["all"]
         if configuration["ARGS"].combine[0] != "None":
             configuration["COMBINE_ONLY"] = True
+        if configuration["ARGS"].patron == []:
+            configuration["ARGS"].patron = ["all"]
+        if configuration["ARGS"].patron[0] != "None":
+            configuration["PATRON_ONLY"] = True
         if configuration["ARGS"].crawl:
             configuration["CRWAL_ONLY"] = True
         if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"]:
@@ -179,5 +191,9 @@ def setup(level):
         if configuration["ARGS"].file == "":
             logger.log(logger.ERROR, "No file is given. Please provide a file.")
             exit(1)
-    
+    if level == "PATRON":
+        configuration["PATRON_ONLY"] = True
+        parser.add_argument("-donee", "-d", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
+        configuration["ARGS"] = parser.parse_args()
+        configuration["DONEE_LIST"] = configuration["ARGS"].donee
     logger.log(logger.INFO, "Configuration: {}".format(configuration))

@@ -97,12 +97,11 @@ def smake():
                     tsvfile.flush()
                 except Exception as e:
                     continue
-            else:
-                log(INFO, f"building {package} has succeeded")
-                is_i_files = check_smake_result(os.path.join(i_files_dir, str(category), package))
-                is_i_files = 'O' if is_i_files else 'X'
-                writer.writerow([package, 'O', is_i_files, '-'])
-                tsvfile.flush()
+            log(INFO, f"building {package} has succeeded")
+            is_i_files = check_smake_result(os.path.join(i_files_dir, str(category), package))
+            is_i_files = 'O' if is_i_files else 'X'
+            writer.writerow([package, 'O', is_i_files, '-'])
+            tsvfile.flush()
 def run():
     crawl()
     smake()
