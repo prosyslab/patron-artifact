@@ -31,6 +31,13 @@ find_target() {
   fi
 }
 
+# remove lock files
+rm /var/lib/apt/lists/lock 
+rm /var/cache/apt/archives/lock
+rm /var/lib/dpkg/lock*
+
+# package reset
+dpkg --configure -a
 
 # 0. update package list
 apt update -y
