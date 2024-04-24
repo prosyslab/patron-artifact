@@ -23,7 +23,7 @@ donor_list = []
 def run_patron(worklist):
     tsv_file = open(os.path.join(config.configuration["OUT_DIR"], "patron_{}.tsv".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
     writer = csv.writer(tsv_file, delimiter='\t')
-    write.writerow(["PROJECT", "ALARM_ID", "STATUS"])
+    writer.writerow(["PROJECT", "ALARM_ID", "STATUS"])
     tsv_file.flush()
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     for cmd in worklist:
@@ -46,7 +46,7 @@ def mk_worklist():
     out_opt = ["-o", config.configuration["OUT_DIR"]]
     worklist = []
     for donee in config.configuration["DONEE_LIST"]:
-        worklist.append(base_cmd + ['patch' + donee] + out_opt)
+        worklist.append(base_cmd + ['patch', donee] + out_opt)
     return worklist
 
 def run_sparrow():
