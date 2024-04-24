@@ -22,10 +22,11 @@ configuration = {
     "SPARROW_ONLY": False,
     "COMBINE_ONLY": False,
     "PATRON_ONLY": False,
+    "PIPE_MODE": False,
     "CSV_FOR_STAT": False,
     "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full", "-no_bo"],
     "USER_SPARROW_OPT": [],
-    "SPARROW_TARGET_FILES": []
+    "SPARROW_TARGET_FILES": [],
     "DONEE_LIST": []
 }
 
@@ -37,6 +38,8 @@ def __get_logger():
     __logger.addHandler(stream_handler)
     if not os.path.isdir(configuration["OUT_DIR"]):
         os.mkdir(configuration["OUT_DIR"])
+    configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], datetime.datetime.now().strftime("%Y%m%d%H%M%S"))
+    os.mkdir(configuration["OUT_DIR"])
     file_handler = logging.FileHandler(
         os.path.join(configuration["OUT_DIR"], "log_{}.txt".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))))
     file_handler.setFormatter(formatter)
@@ -139,8 +142,13 @@ def setup(level):
         parser.add_argument("-combine", "-m", nargs="*", default=["None"], help="combine *.i files into .c in the the given directory for packages only (default:all)")
         parser.add_argument("-sparrow", "-s", nargs="*", default=["None"], help="run the sparrow for the given directory(ies) (default:all)")
         parser.add_argument("-patron", "-p", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
+        parser.add_argument("-pipe", nargs="*", default=["None"], help="run the sparrow in pipe mode (build->combine->sparrow)")
         parser = parse_sparrow_opt(parser)
         configuration["ARGS"] = parser.parse_args()
+        if configuration["ARGS"].pipe == []:
+            configuration["ARGS"].pipe = ["all"]
+        if configuration["ARGS"].pipe[0] != "None":
+            configuration["PIPE_MODE"] = True
         if configuration["ARGS"].build == []:
             configuration["ARGS"].build = ["all"]
         if configuration["ARGS"].build[0] != "None":
@@ -159,7 +167,7 @@ def setup(level):
             configuration["PATRON_ONLY"] = True
         if configuration["ARGS"].crawl:
             configuration["CRWAL_ONLY"] = True
-        if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"]:
+        if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"] and not configuration["PIPE_MODE"] and not configuration["PATRON_ONLY"]:
             configuration["BUILD_ONLY"] = True
             configuration["CRWAL_ONLY"] = True
             configuration["SPARROW_ONLY"] = True

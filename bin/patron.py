@@ -3,6 +3,7 @@ import config
 import os
 from logger import log, INFO, ERROR, WARNING
 import subprocess
+import json
 
 expriment_ready_to_go = {
     "patron": [
@@ -18,6 +19,7 @@ level = ""
 donor_list = []
 
 def run_patron(worklist):
+    os.chdir(config.configuration["PATRON_ROOT_PATH"])
     for cmd in worklist:
         log(INFO, f"Running patron with {cmd}")
         result = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -32,22 +34,23 @@ def mk_worklist():
     out_opt = ["-o", config.configuration["OUT_DIR"]]
     worklist = []
     for donee in config.configuration["DONEE_LIST"]:
-        for donor in donor_list:
-            worklist.append(base_cmd + [donee, donor] + out_opt)
+        worklist.append(base_cmd + ['patch' + donee] + out_opt)
     return worklist
 
-def setup_database():
+def run_sparrow():
     log(WARNING, f"Running sparrow to construct databse from scratch...")
     os.chdir(config.configuration["EXP_ROOT_PATH"])
-    log(INFO, "Detailed log is saved in {}".format(os.path.join(config.configuration["EXP_ROOT_PATH"], 'out')))
-    result_patchweave = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patchweave'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    result_patron = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patron'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    log(INFO, "Detailed log will be saved in {}".format(os.path.join(config.configuration["EXP_ROOT_PATH"], 'out')))
+    log(INFO, "Running sparrow for patchweave benchmarks...")
+    result_patchweave = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patchweave', '-p'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     result_patchweave.wait()
-    result_patron.wait()
     if result_patchweave.returncode != 0:
         log(ERROR, f"Failed to run sparrow for patchweave.")
         log(ERROR, result_patchweave.stderr.read().decode('utf-8'))
         exit(1)
+    log(INFO, "Running sparrow for patron benchmarks...")
+    result_patron = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patron', '-p'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    result_patron.wait()
     if result_patron.returncode != 0:
         log(ERROR, f"Failed to run sparrow for patron.")
         log(ERROR, result_patron.stderr.read().decode('utf-8'))
@@ -67,16 +70,18 @@ def check_donee(donees):
             return False
     return True
 
-def check_database():
+def check_sparrow():
     global donor_list
     patron_bench_path = os.path.join(config.configuration["BENCHMARK_PATH"], "patron")
     patchweave_bench_path = os.path.join(config.configuration["BENCHMARK_PATH"], "patchweave")
     for file in os.listdir(patron_bench_path):
-        if not os.path.exists(os.path.join(patchweave_bench_path, file, 'bug', 'sparrow-out')):
+        if file.endswith('.sh'):
+            continue
+        if not os.path.exists(os.path.join(patron_bench_path, file, 'bug', 'sparrow-out')):
             if file in expriment_ready_to_go["patron"]:
                 log(ERROR, f"sparrow-out for {file} does not exist in {patron_bench_path}")
                 return False
-        donor_list.append(os.path.join(patchweave_bench_path, file))
+        donor_list.append(os.path.join(patron_bench_path, file))
     for file in os.listdir(patchweave_bench_path):
         if not os.path.exists(os.path.join(patchweave_bench_path, file, 'donor', 'bug', 'sparrow-out')):
             if file in expriment_ready_to_go["patchweave"]:
@@ -84,13 +89,46 @@ def check_database():
                 return False
         donor_list.append(os.path.join(patchweave_bench_path, file, 'donor'))
     return True            
-            
+
+def mk_database():
+    log(WARNING, f"Creating patron-DB from scratch...")
+    os.chdir(config.configuration["PATRON_ROOT_PATH"])
+    cmd = [config.configuration["PATRON_BIN_PATH"], "db"]
+    for donor in donor_list:
+        if donor.endswith('donor'):
+            label = os.path.join(donor, '..', 'label.json')
+            with open(label, 'r') as f:
+                data = json.load(f)
+                true_alarm = data["DONOR"]["TRUE-ALARM"]["ALARM-DIR"][0]
+        else:
+            label = os.path.join(donor, 'label.json')
+            with open(label, 'r') as f:
+                data = json.load(f)
+                true_alarm = data["TRUE-ALARM"]["ALARM-DIR"][0]
+        log(INFO, f"Creating patron-DB for {donor} ...")
+        result = subprocess.Popen(cmd + [donor, true_alarm], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        result.wait()
+        if result.returncode != 0:
+            log(ERROR, f"Failed to create patron-DB for {donor}")
+            log(ERROR, result.stderr.read().decode('utf-8'))
+            exit(1)
+        log(INFO, f"Successfully created patron-DB for {donor}")
+    log(INFO, "Successfully finished making patron-DB.")
+    
+def check_database():
+    if not os.path.exists(os.path.join(config.configuration["PATRON_ROOT_PATH"], 'patron-DB')):
+        log(ERROR, "patron-DB does not exist.")
+        return False
+    return True
+
 def main():
     global level
     level = "PATRON"
     config.setup(level)
+    if not check_sparrow():
+        run_sparrow()
     if not check_database():
-        setup_database()
+        mk_database()
     if not check_donee(config.configuration["DONEE_LIST"]):
         log(ERROR, "DONEE is not ready.")
         exit(1)

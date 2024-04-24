@@ -60,6 +60,8 @@ def check_smake_result(path):
     log(INFO, f"{path} is not empty.")
     return True
 
+
+
 def smake():
     packages = mk_category_dict()
     i_files_dir = os.path.join(PKG_DIR, 'i_files')
