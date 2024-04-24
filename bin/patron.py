@@ -111,17 +111,25 @@ def mk_database():
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     cmd = [config.configuration["PATRON_BIN_PATH"], "db"]
     for donor in donor_list:
+        log(INFO, f"Creating patron-DB for {donor} ...")
         if donor.endswith('donor'):
             label = os.path.join(donor, '..', 'label.json')
             with open(label, 'r') as f:
                 data = json.load(f)
-                true_alarm = data["DONOR"]["TRUE-ALARM"]["ALARM-DIR"][0]
+                try:
+                    true_alarm = data["DONOR"]["TRUE-ALARM"]["ALARM-DIR"][0]
+                except IndexError:
+                    log(ERROR, f"Failed to get true alarm for {donor}")
+                    continue
         else:
             label = os.path.join(donor, 'label.json')
             with open(label, 'r') as f:
                 data = json.load(f)
-                true_alarm = data["TRUE-ALARM"]["ALARM-DIR"][0]
-        log(INFO, f"Creating patron-DB for {donor} ...")
+                try:
+                    true_alarm = data["TRUE-ALARM"]["ALARM-DIR"][0]
+                except IndexError:
+                    log(ERROR, f"Failed to get true alarm for {donor}")
+                    continue
         result = subprocess.Popen(cmd + [donor, true_alarm], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         result.wait()
         if result.returncode != 0:
