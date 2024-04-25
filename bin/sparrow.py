@@ -35,6 +35,7 @@ def sparrow(files):
             success_cnt += 1
         else:
             log(ERROR, f"Failed to analyze {file}.")
+            log(ERROR, f"Check {os.path.join(os.path.dirname(file), 'sparrow_log')} for more information.")
             writer.writerow([file, 'X'])
         tsvfile.flush()
     tsvfile.close()

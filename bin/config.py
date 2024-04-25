@@ -23,6 +23,7 @@ configuration = {
     "COMBINE_ONLY": False,
     "PATRON_ONLY": False,
     "PIPE_MODE": False,
+    "DATABASE_ONLY": False,
     "CSV_FOR_STAT": False,
     "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full", "-no_bo"],
     "USER_SPARROW_OPT": [],
@@ -202,6 +203,10 @@ def setup(level):
     if level == "PATRON":
         configuration["PATRON_ONLY"] = True
         parser.add_argument("-donee", "-d", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
+        parser.add_argument("-database", "-db", action="store_true", default=False, help="construct patron-DB only")
         configuration["ARGS"] = parser.parse_args()
-        configuration["DONEE_LIST"] = configuration["ARGS"].donee
+        if configuration["ARGS"].database:
+            configuration["DATABASE_ONLY"] = True
+        else:
+            configuration["DONEE_LIST"] = configuration["ARGS"].donee
     logger.log(logger.INFO, "Configuration: {}".format(configuration))

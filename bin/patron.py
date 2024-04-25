@@ -109,6 +109,8 @@ def mk_database():
     tsv_file.flush()
     log(WARNING, f"Creating patron-DB from scratch...")
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
+    if os.path.join(config.configuration["PATRON_ROOT_PATH"], 'patron-DB'):
+        subprocess.run(['rm', '-rf', 'patron-DB'])
     cmd = [config.configuration["PATRON_BIN_PATH"], "db"]
     for donor in donor_list:
         log(INFO, f"Creating patron-DB for {donor} ...")
@@ -149,10 +151,17 @@ def check_database():
         return False
     return True
 
+def construct_database():
+        run_sparrow()
+        mk_database()
+
 def main():
     global level
     level = "PATRON"
     config.setup(level)
+    if config.configuration["DATABASE_ONLY"]:
+        construct_database()
+        return    
     if not check_sparrow():
         run_sparrow()
     if not check_database():
