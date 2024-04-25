@@ -6,6 +6,8 @@ import subprocess
 import json
 import csv
 import datetime
+from threading import Thread
+from time import sleep
 
 expriment_ready_to_go = {
     "patron": [
@@ -19,14 +21,18 @@ expriment_ready_to_go = {
     }
 level = ""
 donor_list = []
+jobs_finished = False
+current_job = ""
 
 def run_patron(worklist):
+    global current_job
     tsv_file = open(os.path.join(config.configuration["OUT_DIR"], "patron_{}.tsv".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
     writer = csv.writer(tsv_file, delimiter='\t')
     writer.writerow(["PROJECT", "ALARM_ID", "STATUS"])
     tsv_file.flush()
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     for cmd in worklist:
+        current_job = cmd[2]
         log(INFO, f"Running patron with {cmd}")
         result = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         result.wait()
@@ -152,10 +158,50 @@ def check_database():
     return True
 
 def construct_database():
-        run_sparrow()
-        mk_database()
+    check_sparrow()
+    run_sparrow()
+    mk_database()
 
+def manage_patch_status():
+    global jobs_finished
+    global current_job
+    log(INFO, "Status Manager is Running!")
+    with open(os.path.join(config.configuration["OUT_DIR"], "status.tsv"), 'a') as f:
+        writer = csv.writer(f, delimiter='\t')
+        writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
+        f.flush()
+        while not jobs_finished:
+            if current_job == "":
+                time.sleep(10)
+                continue
+            dir_cache = os.listdir(config.configuration["OUT_DIR"])
+            time.sleep(10)
+            if dir_cache != os.listdir(config.configuration["OUT_DIR"]):
+                new_files = set(os.listdir(config.configuration["OUT_DIR"])) - set(dir_cache)
+                for file in new_files:
+                    if file.endswith('.patch'):
+                        with open(os.path.join(config.configuration["OUT_DIR"], file), 'r') as df:
+                            diff = df.read()
+                            if diff == "":
+                                continue
+                            else:
+                                file_parsed = file.split('.')[0].split('_')
+                                donee_num = file_parsed[1].strip()
+                                for infof in os.listdir(config.configuration["OUT_DIR"]):
+                                    if infof.endswith('.c') and donee_num in infof:
+                                        parsed_info = infof.split('_')[1:]
+                                        tmp_list = parsed_info[0].split('-')
+                                        benchmark = tmp_list[0].strip()
+                                        donor_num = tmp_list[1].strip()
+                                        pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
+                                        writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
+                                        f.flush()
+                                        
+                                        
+                    
+        
 def main():
+    global jobs_finished
     global level
     level = "PATRON"
     config.setup(level)
@@ -169,7 +215,13 @@ def main():
     if not check_donee(config.configuration["DONEE_LIST"]):
         log(ERROR, "DONEE is not ready.")
         exit(1)
+    status_manager = Thread(target=status_manager, args=())
+    status_manager.start()
     run_patron(mk_worklist())
-
+    jobs_finished = True
+    status_manager.join()
+    log(INFO, "All jobs are finished.")
+    log(INFO, "Please check the status.tsv file for the results.")
+    
 if __name__ == '__main__':
     main()
