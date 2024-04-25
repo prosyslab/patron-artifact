@@ -113,7 +113,12 @@ def smake_pipe():
                 writer.writerow([package, 'O', 'X', '-', '-', "combine error"])
                 tsvfile.flush()
                 continue
-            is_success = sparrow.sparrow_pipe([package])
+            is_success = sparrow.sparrow_pipe(package)
+            if not is_success:
+                writer.writerow([package, 'O', 'O', 'X', '-', "sparrow error"])
+                tsvfile.flush()
+                continue
+            writer.writerow([package, 'O', 'O', 'O', 'O', '-'])
             
         
 def smake():

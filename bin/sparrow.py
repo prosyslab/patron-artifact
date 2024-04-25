@@ -49,7 +49,6 @@ def sparrow_pipe(package):
     if not os.path.exists(target_dir):
         log(ERROR, f"{target_dir} does not exist.")
         return False
-    # find all .c files in the subdirectories and its path
     c_files = []
     for root, dirs, files in os.walk(target_dir):
         for file in files:
