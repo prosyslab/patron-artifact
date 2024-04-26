@@ -204,9 +204,10 @@ def setup(level):
         configuration["PATRON_ONLY"] = True
         parser.add_argument("-donee", "-d", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
         parser.add_argument("-database", "-db", action="store_true", default=False, help="construct patron-DB only")
+        parser.add_argument("-process", '-p', type=int, default=1, help="number of threads to run")
         configuration["ARGS"] = parser.parse_args()
         if configuration["ARGS"].database:
             configuration["DATABASE_ONLY"] = True
         else:
-            configuration["DONEE_LIST"] = configuration["ARGS"].donee
+            configuration["DONEE_LIST"] = [ os.path.abspath(don) for don in configuration["ARGS"].donee ]
     logger.log(logger.INFO, "Configuration: {}".format(configuration))

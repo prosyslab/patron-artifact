@@ -11,12 +11,12 @@ from time import sleep
 
 expriment_ready_to_go = {
     "patron": [
-        "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13",
+        "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13",
         "14", "15", "16", "17", "18", "19", "20"
     ],
     "patchweave": [
-        "1", "2-1", "2-2", "3", "4", "5", "6", "7", "8", "9-1", "9-2", "10",
-        "12-1", "12-2", "12-3", "13", "17", "19", "21", "22", "23", "24"
+        "1", "2-1", "3", "4", "6", "7", "8", "9-1", "10",
+        "12-1", "13", "17", "19", "21", "22", "23", "24"
     ]
     }
 level = ""
@@ -31,11 +31,15 @@ def run_patron(worklist):
     writer.writerow(["PROJECT", "ALARM_ID", "STATUS"])
     tsv_file.flush()
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
+    process_cnt = 0
     for cmd in worklist:
         current_job = cmd[2]
         log(INFO, f"Running patron with {cmd}")
         result = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        result.wait()
+        process_cnt += 1
+        if process_cnt <= config.configuration["ARGS"].process:
+            result.wait()
+            process_cnt -= 1
         if result.returncode != 0:
             log(ERROR, f"Failed to run patron with {cmd}")
             log(ERROR, result.stderr.read().decode('utf-8'))
@@ -49,9 +53,13 @@ def run_patron(worklist):
 
 def mk_worklist():
     base_cmd = [config.configuration["PATRON_BIN_PATH"]]
-    out_opt = ["-o", config.configuration["OUT_DIR"]]
     worklist = []
     for donee in config.configuration["DONEE_LIST"]:
+        package = donee.split('/')[-1]
+        sub_out = os.path.join(config.configuration["OUT_DIR"], package)
+        if not os.path.exists(sub_out):
+            os.mkdir(sub_out)
+        out_opt = ["-o", sub_out]
         worklist.append(base_cmd + ['patch', donee] + out_opt)
     return worklist
 
@@ -95,17 +103,17 @@ def check_sparrow():
     for file in os.listdir(patron_bench_path):
         if file.endswith('.sh'):
             continue
-        if not os.path.exists(os.path.join(patron_bench_path, file, 'bug', 'sparrow-out')):
-            if file in expriment_ready_to_go["patron"]:
+        if file in expriment_ready_to_go["patron"]:
+            if not os.path.exists(os.path.join(patron_bench_path, file, 'bug', 'sparrow-out')):
                 log(ERROR, f"sparrow-out for {file} does not exist in {patron_bench_path}")
                 return False
-        donor_list.append(os.path.join(patron_bench_path, file))
+            donor_list.append(os.path.join(patron_bench_path, file))
     for file in os.listdir(patchweave_bench_path):
-        if not os.path.exists(os.path.join(patchweave_bench_path, file, 'donor', 'bug', 'sparrow-out')):
-            if file in expriment_ready_to_go["patchweave"]:
+        if file in expriment_ready_to_go["patchweave"]:
+            if not os.path.exists(os.path.join(patchweave_bench_path, file, 'donor', 'bug', 'sparrow-out')):           
                 log(ERROR, f"sparrow-out for {file} does not exist in {patchweave_bench_path}")
                 return False
-        donor_list.append(os.path.join(patchweave_bench_path, file, 'donor'))
+            donor_list.append(os.path.join(patchweave_bench_path, file, 'donor'))
     return True            
 
 def mk_database():
@@ -197,9 +205,7 @@ def manage_patch_status():
                                         writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                                         f.flush()
                                         
-                                        
-                    
-        
+ 
 def main():
     global jobs_finished
     global level
