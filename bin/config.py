@@ -210,5 +210,17 @@ def setup(level):
         if configuration["ARGS"].database:
             configuration["DATABASE_ONLY"] = True
         else:
-            configuration["DONEE_LIST"] = [ os.path.abspath(don) for don in configuration["ARGS"].donee ]
+            log("INFO", "Configuring target donee files under given directories {}".format(configuration["ARGS"].donee))
+            target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].donee ]
+            donee_list = []
+            for target in target_dirs:
+                if not os.path.exists(target):
+                    logger.log(logger.ERROR, f"{target} does not exist.")
+                    exit(1)
+                for root, _, files in os.walk(target):
+                    for file in files:
+                        if file.endswith(".c"):
+                            donee_list.append(os.path.dirname(os.path.abspath(os.path.join(root, file))), os.path.abspath(os.path.join(root, file)))
+            configuration["DONEE_LIST"] = donee_list
+            log("INFO", "Configured donee files: {}".os.path.basename(format(configuration["DONEE_LIST"])))
     logger.log(logger.INFO, "Configuration: {}".format(configuration))

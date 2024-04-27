@@ -61,10 +61,12 @@ def manage_patch_status(out_dir, current_job, job_cnt):
             else:
                 time.sleep(10)
 
-def run_patron(cmd, job_cnt):
+def run_patron(cmd, path, job_cnt):
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     current_job = os.path.basename(cmd[2])
     sub_out_dir = cmd[-1]
+    with open(os.path.join(sub_out_dir, "donee_path.txt"), 'w') as f:
+        f.write(path)
     status_manager = Thread(target=manage_patch_status, args=(sub_out_dir, current_job, job_cnt))
     status_manager.start()
     log(INFO, f"Running patron with {cmd}")
@@ -75,7 +77,7 @@ def mk_worklist():
     base_cmd = [config.configuration["PATRON_BIN_PATH"]]
     worklist = []
     cnt = 0
-    for donee in config.configuration["DONEE_LIST"]:
+    for donee, path in config.configuration["DONEE_LIST"]:
         package = donee.split('/')[-1]
         sub_out = os.path.join(config.configuration["OUT_DIR"], package)
         db_opt = ["--db", os.path.join(config.configuration["DB_PATH"])]
@@ -85,7 +87,7 @@ def mk_worklist():
             os.mkdir(sub_out + "_" + str(cnt))
             sub_out = sub_out + "_" + str(cnt)
         out_opt = ["-o", sub_out]
-        worklist.append(base_cmd + ['patch', donee] + db_opt + out_opt)
+        worklist.append(base_cmd + ['patch', donee] + db_opt + out_opt, path)
         cnt += 1
     return worklist
 
@@ -109,7 +111,7 @@ def run_sparrow():
         exit(1)
     
 def check_donee(donees):
-    for donee in donees:
+    for donee, path in donees:
         if not os.path.exists(donee):
             log(ERROR, f"{donee} does not exist.")
             return False
@@ -233,9 +235,10 @@ def main():
     PROCS = []
     for i in range(len(worklist)):
         jobs_finished.append(False)
-        log(INFO, f"Worklist: {worklist[i]}")
-        manager, p = run_patron(worklist[i], i)
-        PROCS.append((worklist[i], i, manager, p))
+        work, path = worklist[i]
+        log(INFO, f"Work: {work}")
+        manager, p = run_patron(work, path, i)
+        PROCS.append((work, i, manager, p))
         time.sleep(5)
         work_cnt += 1
         if work_cnt >= config.configuration["ARGS"].process:
