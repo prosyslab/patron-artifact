@@ -220,7 +220,7 @@ def setup(level):
                 for root, _, files in os.walk(target):
                     for file in files:
                         if file.endswith(".c"):
-                            donee_list.append(os.path.dirname(os.path.abspath(os.path.join(root, file))), os.path.abspath(os.path.join(root, file)))
+                            donee_list.append((os.path.dirname(os.path.abspath(os.path.join(root, file))), os.path.abspath(os.path.join(root, file))))
             configuration["DONEE_LIST"] = donee_list
-            logger.log("INFO", "Configured donee files: {}".os.path.basename(format(configuration["DONEE_LIST"])))
+            logger.log("INFO", "Configured donee files: {}".format([os.path.basename(donee) for donee, path in configuration["DONEE_LIST"]]))
     logger.log(logger.INFO, "Configuration: {}".format(configuration))

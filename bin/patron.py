@@ -87,7 +87,7 @@ def mk_worklist():
             os.mkdir(sub_out + "_" + str(cnt))
             sub_out = sub_out + "_" + str(cnt)
         out_opt = ["-o", sub_out]
-        worklist.append(base_cmd + ['patch', donee] + db_opt + out_opt, path)
+        worklist.append((base_cmd + ['patch', donee] + db_opt + out_opt, path))
         cnt += 1
     return worklist
 
@@ -188,7 +188,7 @@ def mk_database():
     tsv_file.close()
     
 def check_database():
-    if not os.path.exists(os.path.join(config.configuration["PATRON_ROOT_PATH"], 'patron-DB')):
+    if not os.path.exists(os.path.join(config.configuration["ROOT_PATH"], 'patron-DB')):
         log(ERROR, "patron-DB does not exist.")
         return False
     return True
@@ -223,9 +223,9 @@ def main():
     if config.configuration["DATABASE_ONLY"]:
         construct_database()
         return    
-    if not check_sparrow():
-        run_sparrow()
     if not check_database():
+        if not check_sparrow():
+            run_sparrow()
         mk_database()
     if not check_donee(config.configuration["DONEE_LIST"]):
         log(ERROR, "DONEE is not ready.")
