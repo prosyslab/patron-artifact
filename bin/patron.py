@@ -23,9 +23,13 @@ expriment_ready_to_go = {
 level = ""
 donor_list = []
 jobs_finished = []
+global_stat = open (os.path.join(config.configuration["OUT_DIR"], "status.tsv"), 'a')
+global_writer = csv.writer(global_stat, delimiter='\t')
+global_writer.writerow([["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"]])
+global_stat.flush()
 
 def manage_patch_status(out_dir, current_job, job_cnt):
-    global jobs_finished
+    global jobs_finished, global_stat, global_writer
     log(INFO, "Status Manager is Running!")
     with open(os.path.join(out_dir, "status.tsv"), 'a') as f:
         writer = csv.writer(f, delimiter='\t')
@@ -57,6 +61,9 @@ def manage_patch_status(out_dir, current_job, job_cnt):
                                             pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
                                             writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                                             f.flush()
+                                            global_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
+                                            global_stat.flush()
+                                            
                                     break
             else:
                 time.sleep(10)
