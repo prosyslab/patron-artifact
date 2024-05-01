@@ -23,7 +23,7 @@ expriment_ready_to_go = {
 level = ""
 donor_list = []
 jobs_finished = []
-global_stat_out = os.path.join(config.configuration["OUT_DIR"], "stats")
+global_stat_out = None
 global_stat_cnt = 0
 global_line_cnt = 0
 global_stat = None
@@ -88,6 +88,8 @@ def run_patron(cmd, path, job_cnt):
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     current_job = os.path.basename(cmd[2])
     sub_out_dir = cmd[-1]
+    if not os.path.exists(sub_out_dir):
+        os.mkdir(sub_out_dir)
     with open(os.path.join(sub_out_dir, "donee_path.txt"), 'w') as f:
         f.write(path)
     status_manager = Thread(target=manage_patch_status, args=(sub_out_dir, current_job, job_cnt))
@@ -104,10 +106,7 @@ def mk_worklist():
         package = donee.split('/')[-1]
         sub_out = os.path.join(config.configuration["OUT_DIR"], package)
         db_opt = ["--db", os.path.join(config.configuration["DB_PATH"])]
-        if not os.path.exists(sub_out):
-            os.mkdir(sub_out)
-        else:
-            os.mkdir(sub_out + "_" + str(cnt))
+        if os.path.exists(sub_out):
             sub_out = sub_out + "_" + str(cnt)
         out_opt = ["-o", sub_out]
         worklist.append((base_cmd + ['patch', donee] + db_opt + out_opt, path))
@@ -240,9 +239,12 @@ def collect_job_results(PROCS, work_cnt):
 
 def main():
     global level
-    global jobs_finished
+    global jobs_finished, global_stat_out
     level = "PATRON"
     config.setup(level)
+    global_stat_out = os.path.join(config.configuration["OUT_DIR"], 'stat')
+    if not os.path.exists(global_stat_out):
+        os.mkdir(global_stat_out)
     if config.configuration["DATABASE_ONLY"]:
         construct_database()
         return
