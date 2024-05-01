@@ -75,7 +75,7 @@ def manage_patch_status(out_dir, current_job, job_cnt):
                                             global_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                                             global_stat.flush()
                                             global_line_cnt += 1
-                                            if global_line_cnt > 100:
+                                            if global_line_cnt > 1000:
                                                 global_stat.close()
                                                 open_global_tsv() 
                                     break

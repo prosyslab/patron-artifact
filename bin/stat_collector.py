@@ -19,22 +19,24 @@ def process_tsvs(dir_path):
     out_f, writer = open_tsv(cnt)
     for root, dirs, files in os.walk(dir_path):
             for file in files:
-                if line_cnt > 100:
-                    out_f.close()
-                    cnt += 1
-                    out_f, writer = open_tsv(cnt)
-                    line_cnt = 0
                 if file == 'status.tsv':
                     full_file_path = os.path.join(root, file)
                     with open(full_file_path, 'r') as f:
-                        lines = f.readlines()[1:]
-                    if len(lines) == 0:
-                        continue
-                    for line in lines:
-                        row = line.strip().split('\t')
-                        writer.writerow(row)
-                        out_f.flush()
-                        line_cnt += 1
+                        while True:
+                            line = f.readline()
+                            if "Donee Name" in line:
+                                continue
+                            if not line:
+                                break
+                            if line_cnt > 1000:
+                                out_f.close()
+                                cnt += 1
+                                out_f, writer = open_tsv(cnt)
+                                line_cnt = 0
+                            row = line.strip().split('\t')
+                            writer.writerow(row)
+                            out_f.flush()
+                            line_cnt += 1
                     print("written {}".format(full_file_path))
     out_f.close()
 
@@ -45,6 +47,8 @@ def process_single_tsv(file_path):
     with open(file_path, 'r') as f:
         while True:
             line = f.readline()
+            if "Donee Name" in line:
+                continue
             if not line:
                 break
             if line_cnt > 100:
