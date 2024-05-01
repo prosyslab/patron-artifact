@@ -23,13 +23,24 @@ expriment_ready_to_go = {
 level = ""
 donor_list = []
 jobs_finished = []
-global_stat = open (os.path.join(config.configuration["OUT_DIR"], "status.tsv"), 'a')
-global_writer = csv.writer(global_stat, delimiter='\t')
-global_writer.writerow([["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"]])
-global_stat.flush()
+global_stat_out = os.path.join(config.configuration["OUT_DIR"], "stats")
+global_stat_cnt = 0
+global_line_cnt = 0
+global_stat = None
+global_writer = None
+def open_global_tsv():
+    global global_stat, global_writer, global_stat_cnt, global_line_cnt
+    global_stat = open(os.path.join(global_stat_out, '{}_combined_stat.tsv'.format(str(global_stat_cnt))), 'a')
+    global_writer = csv.writer(global_stat, delimiter='\t')
+    global_writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
+    global_stat.flush()
+    global_stat_cnt += 1
+    global_line_cnt = 0
+    return f, writer
+
 
 def manage_patch_status(out_dir, current_job, job_cnt):
-    global jobs_finished, global_stat, global_writer
+    global jobs_finished, global_stat, global_writer, global_stat_cnt, global_line_cnt
     log(INFO, "Status Manager is Running!")
     with open(os.path.join(out_dir, "status.tsv"), 'a') as f:
         writer = csv.writer(f, delimiter='\t')
@@ -63,7 +74,10 @@ def manage_patch_status(out_dir, current_job, job_cnt):
                                             f.flush()
                                             global_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                                             global_stat.flush()
-                                            
+                                            global_line_cnt += 1
+                                            if global_line_cnt > 100:
+                                                global_stat.close()
+                                                open_global_tsv() 
                                     break
             else:
                 time.sleep(10)
@@ -240,6 +254,7 @@ def main():
     worklist = mk_worklist()
     work_cnt = 0
     PROCS = []
+    open_global_tsv()
     for i in range(len(worklist)):
         jobs_finished.append(False)
         work, path = worklist[i]
