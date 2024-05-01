@@ -30,13 +30,15 @@ global_stat = None
 global_writer = None
 def open_global_tsv():
     global global_stat, global_writer, global_stat_cnt, global_line_cnt
+    if not os.path.exists(global_stat_out):
+        os.mkdir(global_stat_out)
     global_stat = open(os.path.join(global_stat_out, '{}_combined_stat.tsv'.format(str(global_stat_cnt))), 'a')
     global_writer = csv.writer(global_stat, delimiter='\t')
     global_writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
     global_stat.flush()
     global_stat_cnt += 1
     global_line_cnt = 0
-    return f, writer
+    return
 
 
 def manage_patch_status(out_dir, current_job, job_cnt):
@@ -77,7 +79,7 @@ def manage_patch_status(out_dir, current_job, job_cnt):
                                             global_line_cnt += 1
                                             if global_line_cnt > 1000:
                                                 global_stat.close()
-                                                open_global_tsv() 
+                                                open_global_tsv()
                                     break
             else:
                 time.sleep(10)
@@ -92,7 +94,7 @@ def run_patron(cmd, path, job_cnt):
     status_manager.start()
     log(INFO, f"Running patron with {cmd}")
     return status_manager, subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        
+
 
 def mk_worklist():
     base_cmd = [config.configuration["PATRON_BIN_PATH"]]
@@ -130,7 +132,7 @@ def run_sparrow():
         log(ERROR, f"Failed to run sparrow for patron.")
         log(ERROR, result_patron.stderr.read().decode('utf-8'))
         exit(1)
-    
+
 def check_donee(donees):
     for donee, path in donees:
         if not os.path.exists(donee):
@@ -159,11 +161,11 @@ def check_sparrow():
             donor_list.append(os.path.join(patron_bench_path, file))
     for file in os.listdir(patchweave_bench_path):
         if file in expriment_ready_to_go["patchweave"]:
-            if not os.path.exists(os.path.join(patchweave_bench_path, file, 'donor', 'bug', 'sparrow-out')):           
+            if not os.path.exists(os.path.join(patchweave_bench_path, file, 'donor', 'bug', 'sparrow-out')):
                 log(ERROR, f"sparrow-out for {file} does not exist in {patchweave_bench_path}")
                 return False
             donor_list.append(os.path.join(patchweave_bench_path, file, 'donor'))
-    return True            
+    return True
 
 def mk_database():
     tsv_file = open(os.path.join(config.configuration["OUT_DIR"], "database_{}.tsv".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
@@ -207,7 +209,7 @@ def mk_database():
             writer.writerow([donor.split('/')[-2], donor.split('/')[-1], "O"])
     log(INFO, "Successfully finished making patron-DB.")
     tsv_file.close()
-    
+
 def check_database():
     if not os.path.exists(os.path.join(config.configuration["ROOT_PATH"], 'patron-DB')):
         log(ERROR, "patron-DB does not exist.")
@@ -217,7 +219,7 @@ def check_database():
 def construct_database():
     check_sparrow()
     run_sparrow()
-    mk_database()                      
+    mk_database()
 
 def collect_job_results(PROCS, work_cnt):
     global jobs_finished
@@ -243,7 +245,7 @@ def main():
     config.setup(level)
     if config.configuration["DATABASE_ONLY"]:
         construct_database()
-        return    
+        return
     if not check_database():
         if not check_sparrow():
             run_sparrow()
@@ -275,6 +277,6 @@ def main():
 
     log(INFO, "All jobs are finished.")
     log(INFO, "Please check the status.tsv file for the results.")
-    
+
 if __name__ == '__main__':
     main()
