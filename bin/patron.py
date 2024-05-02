@@ -53,6 +53,7 @@ def manage_patch_status(out_dir, current_job, job_cnt):
         dir_cache = os.listdir(out_dir)
         while not jobs_finished[job_cnt]:
             if len(dir_cache) != len(os.listdir(out_dir)):
+                dir_cache = os.listdir(out_dir)
                 new_files = set(os.listdir(out_dir)) - set(dir_cache)
                 for file in new_files:
                     if file.endswith('.patch'):
@@ -81,6 +82,7 @@ def manage_patch_status(out_dir, current_job, job_cnt):
                                                 global_stat.close()
                                                 open_global_tsv()
                                     break
+                        
             else:
                 time.sleep(10)
 
@@ -259,22 +261,33 @@ def main():
     work_cnt = 0
     PROCS = []
     open_global_tsv()
-    for i in range(len(worklist)):
-        jobs_finished.append(False)
-        work, path = worklist[i]
-        log(INFO, f"Work: {work}")
-        manager, p = run_patron(work, path, i)
-        PROCS.append((work, i, manager, p))
-        time.sleep(5)
-        work_cnt += 1
-        if work_cnt >= config.configuration["ARGS"].process:
-            log(WARNING, "Waiting for the current jobs to finish...")
-        while work_cnt >= config.configuration["ARGS"].process:
+    try:
+        for i in range(len(worklist)):
+            jobs_finished.append(False)
+            work, path = worklist[i]
+            log(INFO, f"Work: {work}")
+            manager, p = run_patron(work, path, i)
+            PROCS.append((work, i, manager, p))
+            time.sleep(5)
+            work_cnt += 1
+            if work_cnt >= config.configuration["ARGS"].process:
+                log(WARNING, "Waiting for the current jobs to finish...")
+            while work_cnt >= config.configuration["ARGS"].process:
+                PROCS, work_cnt = collect_job_results(PROCS, work_cnt)
+                time.sleep(5)
+        while PROCS != []:
             PROCS, work_cnt = collect_job_results(PROCS, work_cnt)
             time.sleep(5)
-    while PROCS != []:
-        PROCS, work_cnt = collect_job_results(PROCS, work_cnt)
-        time.sleep(5)
+    except Exception as e:
+        log(ERROR, f"Exception occurred: {e}")
+        log(ERROR, "Terminating all the jobs...")
+        for p in PROCS:
+            cmd, work_id, m, proc = p
+            proc.terminate()
+            jobs_finished[work_id] = True
+        for p in PROCS:
+            cmd, work_id, m, proc = p
+            m.join()
 
 
     log(INFO, "All jobs are finished.")
