@@ -43,45 +43,57 @@ def open_global_tsv():
 
 def manage_patch_status(out_dir, current_job, job_cnt):
     global jobs_finished, global_stat, global_writer, global_stat_cnt, global_line_cnt
+    patches = []
     log(INFO, "Status Manager is Running!")
     with open(os.path.join(out_dir, "status.tsv"), 'a') as f:
         writer = csv.writer(f, delimiter='\t')
         writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
         f.flush()
         while current_job == "" and not jobs_finished[job_cnt]:
-                time.sleep(10)
-        dir_cache = os.listdir(out_dir)
+                time.sleep(5)
         while not jobs_finished[job_cnt]:
-            if len(dir_cache) != len(os.listdir(out_dir)):
-                dir_cache = os.listdir(out_dir)
-                new_files = set(os.listdir(out_dir)) - set(dir_cache)
-                for file in new_files:
-                    if file.endswith('.patch'):
-                        diff = ""
-                        while diff == "":
-                            with open(os.path.join(out_dir, file), 'r') as df:
-                                diff = df.read()
-                                if diff == "" and not jobs_finished[job_cnt]:
-                                    continue
-                                else:
-                                    file_parsed = file.split('.')[0].split('_')
-                                    donee_num = file_parsed[1].strip()
-                                    for infof in os.listdir(out_dir):
-                                        if infof.endswith('.c') and donee_num in infof:
-                                            parsed_info = infof.split('_')[1:]
-                                            tmp_list = parsed_info[0].split('-')
-                                            benchmark = tmp_list[0].strip()
-                                            donor_num = tmp_list[1].strip()
-                                            pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
-                                            writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
-                                            f.flush()
-                                            global_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
-                                            global_stat.flush()
-                                            global_line_cnt += 1
-                                            if global_line_cnt > 1000:
-                                                global_stat.close()
-                                                open_global_tsv()
-                                    break
+            new_patches = []
+            for file in os.listdir(out_dir):
+                if file.endswith('.patch') and file not in patches and file not in new_patches:
+                    patches.append(file)
+                    new_patches.append(file)
+            if new_patches == []:
+                time.sleep(5)
+                continue
+            for file in new_patches:
+                diff = ""
+                while diff == "":
+                    with open(os.path.join(out_dir, file), 'r') as df:
+                        diff = df.read()
+                        if diff == "" and not jobs_finished[job_cnt]:
+                            continue
+                        elif diff == "" and jobs_finished[job_cnt]:
+                            return
+                        else:
+                            file_parsed = file.split('.')[0].split('_')
+                            donor_num = file_parsed[1].strip()
+                            donee_num = file_parsed[2].strip()
+                            unique_str = '_' + donor_num + '_' + donee_num + '_'
+                            for infof in os.listdir(out_dir):
+                                if infof.endswith('.c') and unique_str in infof and infof.startswith('patch_'):
+                                    parsed_info = infof.split('_')[1:]
+                                    tmp_list = parsed_info[0].split('-')
+                                    if "patron" in tmp_list[0]:
+                                        benchmark = "patron"
+                                        donor_num = tmp_list[1].strip()
+                                    else:
+                                        benchmark = "patchweave"
+                                        donor_num = tmp_list[0].strip()
+                                    pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
+                                    writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
+                                    f.flush()
+                                    global_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
+                                    global_stat.flush()
+                                    global_line_cnt += 1
+                                    if global_line_cnt > 1000:
+                                        global_stat.close()
+                                        open_global_tsv()
+                            break
                         
             else:
                 time.sleep(10)
@@ -97,7 +109,10 @@ def run_patron(cmd, path, job_cnt):
     status_manager = Thread(target=manage_patch_status, args=(sub_out_dir, current_job, job_cnt))
     status_manager.start()
     log(INFO, f"Running patron with {cmd}")
-    return status_manager, subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    # cmd = ' '.join(cmd)
+    return status_manager, subprocess.Popen(cmd)
+
+
 
 
 def mk_worklist():
@@ -235,6 +250,16 @@ def collect_job_results(PROCS, work_cnt):
                 log(ERROR, proc.stderr.read().decode('utf-8'))
             else:
                 log(INFO, f"Successfully ran patron with {cmd}")
+            is_patched = False
+            for file in os.listdir(cmd[-1]):
+                if file.endswith('.patch'):
+                    is_patched = True
+                    break
+            output = subprocess.check_output(['ls', cmd[-1]])
+            output2 = subprocess.check_output(['wc', '-l'], input=output)
+            if int(output2) == 3 or not is_patched:
+                log(INFO, f"Removing package with no generated patches {cmd[-1]}")
+                os.system('rm -rf ' + cmd[-1])
             PROCS.pop(j)
             break
     return PROCS, work_cnt
