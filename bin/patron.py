@@ -6,7 +6,7 @@ import subprocess
 import json
 import csv
 import datetime
-from threading import Thread
+import multiprocessing
 from time import sleep
 import time
 
@@ -22,7 +22,6 @@ expriment_ready_to_go = {
     }
 level = ""
 donor_list = []
-jobs_finished = []
 global_stat_out = None
 global_stat_cnt = 0
 global_line_cnt = 0
@@ -41,18 +40,19 @@ def open_global_tsv():
     return
 
 
-def manage_patch_status(out_dir, current_job, job_cnt):
-    global jobs_finished, global_stat, global_writer, global_stat_cnt, global_line_cnt
+def manage_patch_status(out_dir, current_job, job_cnt, jobs_finished):
+    global global_stat, global_writer, global_stat_cnt, global_line_cnt
     patches = []
     log(INFO, "Status Manager is Running!")
     with open(os.path.join(out_dir, "status.tsv"), 'a') as f:
         writer = csv.writer(f, delimiter='\t')
         writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
         f.flush()
-        while current_job == "" and not jobs_finished[job_cnt]:
-                time.sleep(5)
         while not jobs_finished[job_cnt]:
+            print("manager:", jobs_finished[job_cnt], job_cnt)
             new_patches = []
+            if not os.path.exists(out_dir):
+                break
             for file in os.listdir(out_dir):
                 if file.endswith('.patch') and file not in patches and file not in new_patches:
                     patches.append(file)
@@ -62,19 +62,22 @@ def manage_patch_status(out_dir, current_job, job_cnt):
                 continue
             for file in new_patches:
                 diff = ""
-                while diff == "":
+                while diff == "" and not jobs_finished[job_cnt]:
                     with open(os.path.join(out_dir, file), 'r') as df:
                         diff = df.read()
                         if diff == "" and not jobs_finished[job_cnt]:
                             continue
                         elif diff == "" and jobs_finished[job_cnt]:
-                            return
+                            break
                         else:
                             file_parsed = file.split('.')[0].split('_')
                             donor_num = file_parsed[1].strip()
                             donee_num = file_parsed[2].strip()
                             unique_str = '_' + donor_num + '_' + donee_num + '_'
+                            if not os.path.exists(out_dir):
+                                break
                             for infof in os.listdir(out_dir):
+                                print("3")
                                 if infof.endswith('.c') and unique_str in infof and infof.startswith('patch_'):
                                     parsed_info = infof.split('_')[1:]
                                     tmp_list = parsed_info[0].split('-')
@@ -93,12 +96,18 @@ def manage_patch_status(out_dir, current_job, job_cnt):
                                     if global_line_cnt > 1000:
                                         global_stat.close()
                                         open_global_tsv()
-                            break
-                        
-            else:
-                time.sleep(10)
+    is_patched = False
+    for file in os.listdir(out_dir):
+        if file.endswith('.patch'): 
+            is_patched = True
+            break
+    if not is_patched:
+        log(INFO, f"No patch is generated for {current_job}")
+        log(INFO, f"Removing {out_dir}")
+        subprocess.run(['rm', '-rf', out_dir])
+        
 
-def run_patron(cmd, path, job_cnt):
+def run_patron(cmd, path, job_cnt, jobs_finished):
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     current_job = os.path.basename(cmd[2])
     sub_out_dir = cmd[-1]
@@ -106,10 +115,9 @@ def run_patron(cmd, path, job_cnt):
         os.mkdir(sub_out_dir)
     with open(os.path.join(sub_out_dir, "donee_path.txt"), 'w') as f:
         f.write(path)
-    status_manager = Thread(target=manage_patch_status, args=(sub_out_dir, current_job, job_cnt))
+    status_manager = multiprocessing.Process(target=manage_patch_status, args=(sub_out_dir, current_job, job_cnt, jobs_finished))
     status_manager.start()
     log(INFO, f"Running patron with {cmd}")
-    # cmd = ' '.join(cmd)
     return status_manager, subprocess.Popen(cmd)
 
 
@@ -237,36 +245,29 @@ def construct_database():
     run_sparrow()
     mk_database()
 
-def collect_job_results(PROCS, work_cnt):
-    global jobs_finished
+def collect_job_results(PROCS, work_cnt, jobs_finished):
     for j in range(len(PROCS)):
         cmd, work_id, m, proc = PROCS[j]
-        if proc.poll() is not None:
-            jobs_finished[work_id] = True
-            m.join()
-            work_cnt -= 1
+        if proc.poll() is not None and not jobs_finished[work_id]:
             if proc.returncode != 0:
                 log(ERROR, f"Failed to run patron with {cmd}")
                 log(ERROR, proc.stderr.read().decode('utf-8'))
             else:
                 log(INFO, f"Successfully ran patron with {cmd}")
-            is_patched = False
-            for file in os.listdir(cmd[-1]):
-                if file.endswith('.patch'):
-                    is_patched = True
-                    break
-            output = subprocess.check_output(['ls', cmd[-1]])
-            output2 = subprocess.check_output(['wc', '-l'], input=output)
-            if int(output2) == 3 or not is_patched:
-                log(INFO, f"Removing package with no generated patches {cmd[-1]}")
-                os.system('rm -rf ' + cmd[-1])
-            PROCS.pop(j)
+            jobs_finished[work_id] = True
+            log(INFO, f"Waiting for manager to finish the leftover writings.")
+            if m.is_alive():
+                print("Manager is alive.")
+                print("Collect:", work_id, jobs_finished[work_id])
+                m.join()
+            work_cnt -= 1
+            
             break
     return PROCS, work_cnt
 
 def main():
     global level
-    global jobs_finished, global_stat_out
+    global global_stat_out, global_stat
     level = "PATRON"
     config.setup(level)
     global_stat_out = os.path.join(config.configuration["OUT_DIR"], 'stat')
@@ -286,23 +287,28 @@ def main():
     work_cnt = 0
     PROCS = []
     open_global_tsv()
+    jobs_finished = multiprocessing.Manager().list(range(len(worklist)))
     try:
         for i in range(len(worklist)):
-            jobs_finished.append(False)
+            jobs_finished[i] = False
             work, path = worklist[i]
             log(INFO, f"Work: {work}")
-            manager, p = run_patron(work, path, i)
+            manager, p = run_patron(work, path, i, jobs_finished)
             PROCS.append((work, i, manager, p))
             time.sleep(5)
             work_cnt += 1
             if work_cnt >= config.configuration["ARGS"].process:
                 log(WARNING, "Waiting for the current jobs to finish...")
             while work_cnt >= config.configuration["ARGS"].process:
-                PROCS, work_cnt = collect_job_results(PROCS, work_cnt)
+                PROCS, work_cnt = collect_job_results(PROCS, work_cnt, jobs_finished)
                 time.sleep(5)
-        while PROCS != []:
-            PROCS, work_cnt = collect_job_results(PROCS, work_cnt)
-            time.sleep(5)
+        all_finished = False
+        while not all_finished:
+            PROCS, work_cnt = collect_job_results(PROCS, work_cnt, jobs_finished)
+            if False not in jobs_finished:
+                all_finished = True
+            else:
+                time.sleep(5)
     except Exception as e:
         log(ERROR, f"Exception occurred: {e}")
         log(ERROR, "Terminating all the jobs...")
@@ -312,9 +318,9 @@ def main():
             jobs_finished[work_id] = True
         for p in PROCS:
             cmd, work_id, m, proc = p
-            m.join()
+            m.terminate()
 
-
+    global_stat.close()
     log(INFO, "All jobs are finished.")
     log(INFO, "Please check the status.tsv file for the results.")
 
