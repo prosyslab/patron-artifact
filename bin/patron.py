@@ -49,7 +49,6 @@ def manage_patch_status(out_dir, current_job, job_cnt, jobs_finished):
         writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
         f.flush()
         while not jobs_finished[job_cnt]:
-            print("manager:", jobs_finished[job_cnt], job_cnt)
             new_patches = []
             if not os.path.exists(out_dir):
                 break
@@ -77,7 +76,6 @@ def manage_patch_status(out_dir, current_job, job_cnt, jobs_finished):
                             if not os.path.exists(out_dir):
                                 break
                             for infof in os.listdir(out_dir):
-                                print("3")
                                 if infof.endswith('.c') and unique_str in infof and infof.startswith('patch_'):
                                     parsed_info = infof.split('_')[1:]
                                     tmp_list = parsed_info[0].split('-')
@@ -257,8 +255,6 @@ def collect_job_results(PROCS, work_cnt, jobs_finished):
             jobs_finished[work_id] = True
             log(INFO, f"Waiting for manager to finish the leftover writings.")
             if m.is_alive():
-                print("Manager is alive.")
-                print("Collect:", work_id, jobs_finished[work_id])
                 m.join()
             work_cnt -= 1
             
