@@ -59,7 +59,7 @@ def check_smake_result(path):
     output = status.stdout.decode('utf-8')
     status = subprocess.run(['wc', '-l'], input=output.encode('utf-8'), check=True, capture_output=True)
     output = status.stdout.decode('utf-8').strip()
-    if output == '8':
+    if output == '8' or (output.isdigit() and int(output) < 9):
         log(WARNING, f"{path} is empty.")
         return False
     log(INFO, f"{path} is not empty.")
@@ -105,9 +105,11 @@ def smake_pipe():
             log(INFO, f"building {package} has succeeded")
             is_i_files = check_smake_result(os.path.join(i_files_dir, str(category), package))
             if not is_i_files:
+                log(WARNING, f"{package} has no .i files")
                 writer.writerow([package, 'X', '-', '-', '-', "no .i files"])
                 tsvfile.flush()
                 continue
+            log(INFO, f"{package} has .i files!... continue to next step")
             is_success = combine.combine_pipe([os.path.join(i_files_dir, str(category), package)])
             if not is_success:
                 writer.writerow([package, 'O', 'X', '-', '-', "combine error"])
