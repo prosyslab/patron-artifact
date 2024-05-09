@@ -83,7 +83,7 @@ def run(tups):
             file_name = file_path.split('/')[-1] if '/' in file_path else "."
             if file_name != ".":
                 dir_name = file_path.split('/')[-2]
-            if not re.match(r'^[0-9a-f]{1,3}\.(.*?)\.o\.i$', file_name):
+            if not re.match(r'^[0-9a-f]{1,3}\.(.*?)\.i$', file_name):
                 log(WARNING, f"{file_name} is not in the correct format.")
                 continue
             elif dir_name in dir_stack:
