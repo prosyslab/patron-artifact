@@ -85,7 +85,7 @@ def smake_pipe():
             try:
                 proc = subprocess.Popen([os.path.join(PKG_DIR, 'build-deb.sh'), package, str(category)],
                                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                proc = proc.communicate(timeout=900)
+                out, err = proc.communicate(timeout=900)
             except subprocess.TimeoutExpired:
                 proc.kill()
                 log(ERROR, f"building {package} has timed out")
