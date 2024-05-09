@@ -45,7 +45,11 @@ def manage_patch_status(path, stat_out, out_dir, current_job, job_cnt, jobs_fini
     patches = []
     log(INFO, "Status Manager is Running!")
     with open(os.path.join(out_dir, "status.tsv"), 'a') as f:
-        with open(os.path.join(stat_out, current_job + '_status.tsv'), 'a') as global_stat:
+        stat_file_name = os.path.join(stat_out, current_job + '_status_')
+        file_cnt = 0
+        while os.path.exists(stat_file_name + str(file_cnt) + '.tsv'):
+            file_cnt += 1
+        with open(stat_file_name + str(file_cnt) + '.tsv', 'a') as global_stat:
             writer = csv.writer(f, delimiter='\t')
             writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
             gwriter = csv.writer(global_stat, delimiter='\t')
@@ -71,34 +75,35 @@ def manage_patch_status(path, stat_out, out_dir, current_job, job_cnt, jobs_fini
                 for file in new_patches:
                     diff = ""
                     while diff == "" and not jobs_finished[job_cnt]:
-                        with open(os.path.join(out_dir, file), 'r') as df:
-                            diff = df.read()
-                            if diff == "" and not jobs_finished[job_cnt]:
-                                continue
-                            elif diff == "" and jobs_finished[job_cnt]:
+                        df = open(os.path.join(out_dir, file), 'r')
+                        diff = df.read()
+                        df.close()
+                        if diff == "" and not jobs_finished[job_cnt]:
+                            continue
+                        elif diff == "" and jobs_finished[job_cnt]:
+                            break
+                        else:
+                            file_parsed = file.split('.')[0].split('_')
+                            donor_num = file_parsed[1].strip()
+                            donee_num = file_parsed[2].strip()
+                            unique_str = '_' + donor_num + '_' + donee_num + '_'
+                            if not os.path.exists(out_dir):
                                 break
-                            else:
-                                file_parsed = file.split('.')[0].split('_')
-                                donor_num = file_parsed[1].strip()
-                                donee_num = file_parsed[2].strip()
-                                unique_str = '_' + donor_num + '_' + donee_num + '_'
-                                if not os.path.exists(out_dir):
-                                    break
-                                for infof in os.listdir(out_dir):
-                                    if infof.endswith('.c') and unique_str in infof and infof.startswith('patch_'):
-                                        parsed_info = infof.split('_')[1:]
-                                        tmp_list = parsed_info[0].split('-')
-                                        if "patron" in tmp_list[0]:
-                                            benchmark = "patron"
-                                            donor_num = tmp_list[1].strip()
-                                        else:
-                                            benchmark = "patchweave"
-                                            donor_num = tmp_list[0].strip()
-                                        pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
-                                        writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
-                                        f.flush()
-                                        gwriter.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
-                                        global_stat.flush()
+                            for infof in os.listdir(out_dir):
+                                if infof.endswith('.c') and unique_str in infof and infof.startswith('patch_'):
+                                    parsed_info = infof.split('_')[1:]
+                                    tmp_list = parsed_info[0].split('-')
+                                    if "patron" in tmp_list[0]:
+                                        benchmark = "patron"
+                                        donor_num = tmp_list[1].strip()
+                                    else:
+                                        benchmark = "patchweave"
+                                        donor_num = tmp_list[0].strip()
+                                    pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
+                                    writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
+                                    f.flush()
+                                    gwriter.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
+                                    global_stat.flush()
     is_patched = False
     for file in os.listdir(out_dir):
         if file.endswith('.patch'): 
@@ -106,10 +111,10 @@ def manage_patch_status(path, stat_out, out_dir, current_job, job_cnt, jobs_fini
             break
     if not is_patched:
         log(INFO, f"No patch is generated for {current_job}")
-        log(INFO, f"Removing {out_dir}")
-        subprocess.run(['rm', '-rf', out_dir])
-        log(INFO, f"Removing {os.path.join(stat_out, current_job + '_status.tsv')}")
-        subprocess.run(['rm', os.path.join(stat_out, current_job + '_status.tsv')])
+        # log(INFO, f"Removing {out_dir}")
+        # subprocess.run(['rm', '-rf', out_dir])
+        log(INFO, f"Removing {stat_file_name + str(file_cnt) + '.tsv'}")
+        subprocess.run(['rm', stat_file_name + str(file_cnt) + '.tsv'])
         
 
 def run_patron(stat_out, cmd, path, job_cnt, jobs_finished):

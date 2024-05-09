@@ -27,7 +27,15 @@ def sparrow(files):
     for file in files:
         log(INFO, f"Running sparrow for {file} ...")
         sparrow_log, process = run_sparrow(file)
-        process.wait()
+        try:
+            process.wait(timeout=3600)
+        except subprocess.TimeoutExpired:
+            log(ERROR, f"Timeout for {file}.")
+            process.kill()
+            writer.writerow([file, 'X'])
+            tsvfile.flush()
+            sparrow_log.close()
+            continue
         sparrow_log.close()
         if process.returncode == 0:
             log(INFO, f"{file} is successfully analyzed.")
@@ -37,7 +45,7 @@ def sparrow(files):
             log(ERROR, f"Failed to analyze {file}.")
             log(ERROR, f"Check {os.path.join(os.path.dirname(file), 'sparrow_log')} for more information.")
             writer.writerow([file, 'X'])
-        tsvfile.flush()
+            tsvfile.flush()
     tsvfile.close()
     if success_cnt == 0:
         log(ERROR, f"No file is successfully analyzed.")
