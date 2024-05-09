@@ -28,7 +28,7 @@ def sparrow(files):
         log(INFO, f"Running sparrow for {file} ...")
         sparrow_log, process = run_sparrow(file)
         try:
-            process.wait(timeout=3600)
+            process = process.communicate(timeout=3600)
         except subprocess.TimeoutExpired:
             log(ERROR, f"Timeout for {file}.")
             process.kill()
