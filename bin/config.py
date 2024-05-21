@@ -6,11 +6,14 @@ import datetime
 
 configuration = {
     "ARGS": None,
+    "START_TIME": datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
     "FILE_PATH": os.path.dirname(os.path.realpath(__file__)),
     "ROOT_PATH": os.path.dirname(os.path.dirname(os.path.realpath(__file__))),
     "OUT_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), ".." ,"out"),
+    "PKG_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "pkg"),
     "I_FILES_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "pkg", "i_files"),
-    "ANALYSIS_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "pkg", "analysis-target"),
+    "LIST_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "pkg", "lists"),
+    "ANALYSIS_DIR": "",
     "EXP_ROOT_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment"),
     "SPARROW_BIN_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "sparrow", "bin", "sparrow"),
     "PATRON_ROOT_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "patron"),
@@ -40,10 +43,10 @@ def __get_logger():
     __logger.addHandler(stream_handler)
     if not os.path.isdir(configuration["OUT_DIR"]):
         os.mkdir(configuration["OUT_DIR"])
-    configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], datetime.datetime.now().strftime("%Y%m%d%H%M%S"))
+    configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], 'log_' + configuration["START_TIME"])
     os.mkdir(configuration["OUT_DIR"])
     file_handler = logging.FileHandler(
-        os.path.join(configuration["OUT_DIR"], "log_{}.txt".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))))
+        os.path.join(configuration["OUT_DIR"], "log_{}.txt".format(configuration["START_TIME"])))
     file_handler.setFormatter(formatter)
     __logger.addHandler(file_handler)
     __logger.setLevel(logging.DEBUG)
@@ -137,6 +140,9 @@ def get_sparrow_target_files(dirs):
                     configuration["SPARROW_TARGET_FILES"].append(os.path.abspath(os.path.join(root, file)))
 def setup(level):
     logger.logger = __get_logger()
+    configuration["ANALYSIS_DIR"] = os.path.join(configuration["PKG_DIR"], "analysis_target_" + configuration["START_TIME"])
+    if not os.path.exists(configuration["ANALYSIS_DIR"]):
+        os.mkdir(configuration["ANALYSIS_DIR"])
     parser = argparse.ArgumentParser()
     if level == "TOP":
         parser.add_argument("-build", "-b", nargs="*", default=["None"], help="build the given path for category list(s) of package only (default:all)")
@@ -174,6 +180,9 @@ def setup(level):
             configuration["CRWAL_ONLY"] = True
             configuration["SPARROW_ONLY"] = True
             configuration["COMBINE_ONLY"] = True
+        if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"] and not configuration["PATRON_ONLY"]:
+            configuration["PIPE_MODE"] = True
+            configuration["ARGS"].pipe = [os.path.join(configuration["LIST_DIR"], 'experiment_setup.txt')]
         if configuration["CSV_FOR_STAT"]:
             configuration["CSV_FOR_STAT"] = True
         if configuration["SPARROW_ONLY"]:
