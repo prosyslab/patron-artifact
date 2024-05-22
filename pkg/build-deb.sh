@@ -32,9 +32,7 @@ find_target() {
 }
 
 # remove lock files
-rm /var/lib/apt/lists/lock 
-rm /var/cache/apt/archives/lock
-rm /var/lib/dpkg/lock*
+# rm /var/lib/apt/lists/lock ;rm /var/cache/apt/archives/lock;rm /var/lib/dpkg/lock*
 
 # package reset
 dpkg --configure -a
@@ -73,6 +71,7 @@ fi
 
 
 # 8. install the package
+echo sparrow $OUT_DIR
 mv sparrow $OUT_DIR || error_exit "Error: mv sparrow failed" $SCRIPT_DIR $TMP_DIR
 
 # 9. clean the tmp directory

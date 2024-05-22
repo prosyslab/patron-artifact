@@ -1,3 +1,3 @@
 #!/bin/bash
 
-grep -r "main" * | grep "int argc" 
+grep -r "main" * -1 | grep "int argc"

@@ -53,10 +53,12 @@ def sparrow(files):
     log(INFO, f"{success_cnt} files are successfully analyzed.")
     return True
 
-def sparrow_pipe(package):
+def sparrow_pipe(package, tsvfile, writer):
     target_dir = os.path.join(config.configuration["ANALYSIS_DIR"], package)
     if not os.path.exists(target_dir):
         log(ERROR, f"{target_dir} does not exist.")
+        writer.writerow([package, 'O', 'O', 'X', '-', "dir not found"])
+        tsvfile.flush()
         return False
     c_files = []
     for root, dirs, files in os.walk(target_dir):
@@ -65,6 +67,8 @@ def sparrow_pipe(package):
                 c_files.append(os.path.join(root, file))
     if len(c_files) == 0:
         log(ERROR, f"No .c files found in {target_dir}.")
+        writer.writerow([package, 'O', 'O', 'X', '-', "no .c file found"])
+        tsvfile.flush()
         return False
     log(INFO, f"Found {len(c_files)} .c files in {target_dir}.")
     return sparrow(c_files)

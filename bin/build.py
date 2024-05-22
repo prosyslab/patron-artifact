@@ -62,65 +62,59 @@ def check_smake_result(path):
     if output == '8' or (output.isdigit() and int(output) < 9):
         log(WARNING, f"{path} is empty.")
         return False
-    log(INFO, f"{path} is not empty.")
+    log(INFO, f"{path} is not empty: it is a good sign.")
     return True
 
-def smake_pipe():
-    tsvfile = open(os.path.join(config.configuration['OUT_DIR'], 'pipe_stat_{}.tsv'.format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
-    writer = csv.writer(tsvfile, delimiter='\t')
-    writer.writerow(['Package', 'Build', 'Combine', 'Sparrow','Error Msg'])
-    tsvfile.flush()
-    packages = mk_category_dict()
-    i_files_dir = os.path.join(PKG_DIR, 'i_files')
-    if not os.path.exists(i_files_dir):
-            os.mkdir(i_files_dir)
-    for category in packages.keys():
-        if not os.path.exists(os.path.join(i_files_dir, str(category))):
-            os.mkdir(os.path.join(i_files_dir, str(category)))
-        packages = packages[ str(category) ]
-        os.chdir(PKG_DIR)
-        for package in packages:
-            package = package.strip()
-            log(INFO, f"Building {package} ...")
-            try:
-                proc = subprocess.Popen([os.path.join(PKG_DIR, 'build-deb.sh'), package, str(category)],
-                                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                out, err = proc.communicate(timeout=900)
-            except subprocess.TimeoutExpired:
-                proc.kill()
-                log(ERROR, f"building {package} has timed out")
-                writer.writerow([package, 'X', '-', '-', '-','timeout'])
-                tsvfile.flush()
-            except Exception as e:
-                proc.kill()
-                try:
-                    log(ERROR, f"building {package} has failed")
-                    parsed_errors = e.stderr.decode('utf-8').split('\n')
-                    for error in parsed_errors[-10:]:
-                        log(ERROR, error)
-                    writer.writerow([package, 'X', '-', '-', '-', parsed_errors[-2]])
-                    tsvfile.flush()
-                except Exception as e:
-                    continue
-            log(INFO, f"building {package} has succeeded")
-            is_i_files = check_smake_result(os.path.join(i_files_dir, str(category), package))
-            if not is_i_files:
-                log(WARNING, f"{package} has no .i files")
-                writer.writerow([package, 'X', '-', '-', '-', "no .i files"])
-                tsvfile.flush()
-                continue
-            log(INFO, f"{package} has .i files!... continue to next step")
-            is_success = combine.combine_pipe([os.path.join(i_files_dir, str(category), package)])
-            if not is_success:
-                writer.writerow([package, 'O', 'X', '-', '-', "combine error"])
-                tsvfile.flush()
-                continue
-            is_success = sparrow.sparrow_pipe(package)
-            if not is_success:
-                writer.writerow([package, 'O', 'O', 'X', '-', "sparrow error"])
-                tsvfile.flush()
-                continue
-            writer.writerow([package, 'O', 'O', 'O', 'O', '-'])
+def smake_pipe(category, package, tsvfile, writer, i_files_dir):
+    log(INFO, f"Building {package} ...")
+    BUILD_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "build_logs")
+    if not os.path.exists(BUILD_LOG_PATH):
+        os.mkdir(BUILD_LOG_PATH)
+    proc = None
+    try:
+        proc = subprocess.Popen([os.path.join(PKG_DIR, 'build-deb.sh'), package, str(category)],
+                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        out, err = proc.communicate(timeout=900)
+    except subprocess.TimeoutExpired:
+        if proc != None:
+            proc.kill()
+        log(ERROR, f"building {package} has timed out")
+        writer.writerow([package, 'X', '-', '-', '-','timeout'])
+        tsvfile.flush()
+        with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
+                f.write(out.decode('utf-8'))
+                f.write(err.decode('utf-8'))
+    except Exception as e:
+        log(ERROR, e)
+        if proc != None:
+            proc.kill()
+        try:
+            with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
+                f.write(out.decode('utf-8'))
+                f.write(err.decode('utf-8'))
+            log(ERROR, f"building {package} has failed")
+            parsed_errors = e.stderr.decode('utf-8').split('\n')
+            for error in parsed_errors[-10:]:
+                log(ERROR, error)
+            writer.writerow([package, 'X', '-', '-', '-', parsed_errors[-2]])
+            tsvfile.flush()
+            return False, []
+        except Exception as e:
+            log(ERROR, f"building {package} has failed: Unexpected Exit!!")
+            log(ERROR, e)
+            return False, []
+    with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
+                f.write(out.decode('utf-8'))
+                f.write(err.decode('utf-8'))
+    log(INFO, f"building {package} has succeeded")
+    if not check_smake_result(os.path.join(i_files_dir, str(category), package)):
+        log(WARNING, f"{package} has no .i files")
+        writer.writerow([package, 'X', '-', '-', '-', "no .i files"])
+        tsvfile.flush()
+        return False, []
+    log(INFO, f"{package} has .i files!... continue to next step")
+    next_args = [os.path.join(i_files_dir, str(category), package)]
+    return True, next_args
             
         
 def smake():

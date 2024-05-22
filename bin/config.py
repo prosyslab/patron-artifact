@@ -29,7 +29,7 @@ configuration = {
     "PIPE_MODE": False,
     "DATABASE_ONLY": False,
     "CSV_FOR_STAT": False,
-    "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full", "-no_bo"],
+    "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full", "-no_bo", "-tio", "-pio", "-mio", "-sio", "-dz"],
     "USER_SPARROW_OPT": [],
     "SPARROW_TARGET_FILES": [],
     "DONEE_LIST": []
@@ -43,7 +43,7 @@ def __get_logger():
     __logger.addHandler(stream_handler)
     if not os.path.isdir(configuration["OUT_DIR"]):
         os.mkdir(configuration["OUT_DIR"])
-    configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], 'log_' + configuration["START_TIME"])
+    configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"])
     os.mkdir(configuration["OUT_DIR"])
     file_handler = logging.FileHandler(
         os.path.join(configuration["OUT_DIR"], "log_{}.txt".format(configuration["START_TIME"])))
@@ -180,7 +180,7 @@ def setup(level):
             configuration["CRWAL_ONLY"] = True
             configuration["SPARROW_ONLY"] = True
             configuration["COMBINE_ONLY"] = True
-        if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"] and not configuration["PATRON_ONLY"]:
+        if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"] and not configuration["PATRON_ONLY"] and configuration["ARGS"].pipe == ["all"]:
             configuration["PIPE_MODE"] = True
             configuration["ARGS"].pipe = [os.path.join(configuration["LIST_DIR"], 'experiment_setup.txt')]
         if configuration["CSV_FOR_STAT"]:

@@ -8,9 +8,82 @@ from pathlib import Path
 import csv
 import datetime
 
-def run_combine_pipeline():
-    cmd = ["bash", os.path.join(config.configuration["FILE_PATH"], "combine_pipe.sh")]
+COMBINE_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "combine_logs")
+
+def write_combine_log(log_path, contents):
+    with open(log_path, 'a') as f:
+        f.write(contents)
+        f.write('\n')
+
+def filter_combine_candidate(log_path, candidate, target_path, dir_stack, tsvfile, writer):
+    file_path = candidate.split(':')[0]
+    dir_path = os.path.dirname(os.path.join(target_path, file_path))
+    file_name = file_path.split('/')[-1] if '/' in file_path else "."
+    if file_name != ".":
+        dir_name = file_path.split('/')[-2]
+    if file_name.endswith(','):
+        file_name = "".join(file_name.split('-')[:len(file_name.split('-'))-1])
+    log(INFO, file_name)
+    if not re.match(r'^[0-9a-f]{1,3}\.(.*?)\.i$', file_name):
+        log(WARNING, f"{file_name} is not in the correct format.")
+        write_combine_log(log_path, f"{file_name} is not in the correct format.")
+        return False, "", dir_stack
+    elif dir_name in dir_stack:
+        log(WARNING, f"{dir_name} is already combined. Skipping it.")
+        write_combine_log(log_path, f"{dir_name} is already combined. Skipping it.")
+        return False, "", dir_stack
+    dir_stack.append(dir_name)
+    os.chdir(dir_path)
+    # list all files in the directory and check if it has any file that ends with .ii files, other do not matter.
+    files = os.listdir()
+    ii_files = [f for f in files if f.endswith(".ii")]
+    if len(ii_files) != 0:
+        log(ERROR, f".ii(.cpp) files found in {dir_name}. Skipping it.")
+        write_combine_log(log_path, f".ii(.cpp) files found in {dir_name}. Skipping it.")
+        writer.writerow([category, package, 'X', 'cpp'])
+        tsvfile.flush()
+        return False, "", dir_stack
+    if not find_err_files():
+        dir_stack.remove(dir_name)
+        return False, "", dir_stack
+    return True, dir_name, dir_stack
+    
+def run_grep_to_find_main(target_path, log_path):
+    os.chdir(target_path)
+    command = ["bash", os.path.join(config.configuration["FILE_PATH"], "grep.sh")]
+    log(INFO, f"Running {command}.")
+    write_combine_log(log_path, f"Running {command}.")
     try:
+        result = subprocess.run(command, capture_output=True, check=True)
+        output = result.stdout.decode("utf-8").splitlines()
+        write_combine_log(log_path, result.stdout.decode("utf-8"))
+    except subprocess.CalledProcessError as e:
+        log(ERROR, f"Failed to run {command}.")
+        log(ERROR, e)
+        write_combine_log(log_path, e.stderr.decode("utf-8"))
+        writer.writerow([category, package, 'X', 'grep error'])
+        tsvfile.flush()
+        return False, ""
+    except Exception as e:
+        log(ERROR, f"Failed to run {command}. (unexpected error)")
+        log(ERROR, e)
+        write_combine_log(log_path, e)
+        writer.writerow([category, package, 'X', 'unexpected error'])
+        tsvfile.flush()
+        return False, ""
+    if output == "":
+        log(ERROR, f"main function not found in {package}.")
+        write_combine_log(log_path, "main function not found.")
+        log(WARNING, f"Skipping {package} ...")
+        writer.writerow([category, package, 'X', 'no main'])
+        tsvfile.flush()
+        return False, output
+    return True, output
+
+def run_combine_pipeline():
+    cmd = ["bash", os.path.join(config.configuration["FILE_PATH"], "combine_pipe.sh"), config.configuration["ANALYSIS_DIR"]]
+    try:
+        log(INFO, f"Running {cmd}.")
         result = subprocess.run(cmd, capture_output=True, check=True)
     except subprocess.CalledProcessError as e:
         log(ERROR, f"Failed to run {cmd}.")
@@ -19,12 +92,14 @@ def run_combine_pipeline():
     except Exception as e:
         log(ERROR, f"Failed to run {cmd}. (unexpected error)")
         return False
+    log(INFO, result.stdout.decode("utf-8"))
     return True
     
 
 def find_err_files():
     cmd = ["bash", os.path.join(config.configuration["FILE_PATH"], "find_error_file.sh")]
     try:
+        log(INFO, f"Running {cmd}.")
         reulst = subprocess.run(cmd, capture_output=True, check=True)
     except subprocess.CalledProcessError as e:
         log(ERROR, f"Failed to run {cmd}.")
@@ -37,70 +112,41 @@ def find_err_files():
     
 
 def run(tups):
-    tsvfile = open(os.path.join(config.configuration['OUT_DIR'], 'combine_stat_{}.tsv'.format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
+    global COMBINE_LOG_PATH
+    COMBINE_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "combine_logs")
+    if not os.path.exists(COMBINE_LOG_PATH):
+        os.mkdir(COMBINE_LOG_PATH)
+    if len(tups) == 1:
+        tsvfile = open(os.path.join(COMBINE_LOG_PATH, '{}_combine_stat.tsv'.format(tups[0][1])), 'a')
+    else:
+        tsvfile = open(os.path.join(COMBINE_LOG_PATH, '{}_combine_stat.tsv'.format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
     writer = csv.writer(tsvfile, delimiter='\t')
     writer.writerow(['Category', 'Package',	'Combined', 'Note'])
     tsvfile.flush()
     out_dir = config.configuration["ANALYSIS_DIR"]
     success_cnt = 0
     for category, package in tups:
+        file_stack = []
+        dir_stack = []
         reason = ""
         target_path = os.path.join(config.configuration["I_FILES_DIR"], category, package)
-        log(INFO, f"Combining {package} of {category} category ...")
+        log_path = os.path.join(COMBINE_LOG_PATH, f"{package}_combine_log.txt")
+        log(INFO, f"Beginning to Combine <{package}> of <{category}> category ...")
         if not os.path.exists(target_path):
             log(ERROR, f"{target_path} does not exist.")
             writer.writerow([category, package, 'X', 'not exist'])
             continue
-        os.chdir(target_path)
-        command = ["bash", os.path.join(config.configuration["FILE_PATH"], "grep.sh")]
-        try:
-            result = subprocess.run(command, capture_output=True, check=True)
-            output = result.stdout.decode("utf-8").splitlines()         
-        except subprocess.CalledProcessError as e:
-            log(ERROR, f"Failed to run {command}.")
-            log(ERROR, e.stderr.decode("utf-8"))
-            writer.writerow([category, package, 'X', 'grep error'])
-            tsvfile.flush()
+        is_success, output = run_grep_to_find_main(target_path, log_path)
+        if not is_success:
             continue
-        except Exception as e:
-            log(ERROR, f"Failed to run {command}. (unexpected error)")
-            writer.writerow([category, package, 'X', 'unexpected error'])
-            tsvfile.flush()
-            continue
-            
-        if output == "":
-            log(ERROR, f"main function not found in {package}.")
-            log(WARNING, f"Skipping {package} ...")
-            writer.writerow([category, package, 'X', 'no main'])
-            tsvfile.flush()
-            continue
-        file_stack = []
-        dir_stack = []
         success_cnt = 0
+        log(INFO, f"Found {len(output)} main functions.")
+        write_combine_log(log_path, f"Found {len(output)} main functions.")
         for candidate in output:
-            file_path = candidate.split(':')[0]
-            dir_path = os.path.dirname(os.path.join(target_path, file_path))
-            file_name = file_path.split('/')[-1] if '/' in file_path else "."
-            if file_name != ".":
-                dir_name = file_path.split('/')[-2]
-            if not re.match(r'^[0-9a-f]{1,3}\.(.*?)\.i$', file_name):
-                log(WARNING, f"{file_name} is not in the correct format.")
-                continue
-            elif dir_name in dir_stack:
-                log(WARNING, f"{dir_name} is already combined.")
-                continue
-            dir_stack.append(dir_name)
-            os.chdir(dir_path)
-            # list all files in the directory and check if it has any file that ends with .ii files, other do not matter.
-            files = os.listdir()
-            ii_files = [f for f in files if f.endswith(".ii")]
-            if len(ii_files) != 0:
-                log(ERROR, f".ii files found in {dir_name}.")
-                writer.writerow([category, package, 'X', 'cpp'])
-                tsvfile.flush()
-                continue
-            if not find_err_files():
-                dir_stack.remove(dir_name)
+            write_combine_log(log_path, f"candidates:{candidate}")
+        for candidate in output:
+            is_success, dir_name, dir_stack = filter_combine_candidate(log_path, candidate, target_path, dir_stack, tsvfile, writer)
+            if not is_success:
                 continue
             if not run_combine_pipeline():
                 dir_stack.remove(dir_name)
@@ -120,9 +166,12 @@ def run(tups):
             if dir_name == package:
                 continue
             # check if mv is successful
+            log(INFO, f"Moving {dir_name} to {package_out}.")
             result = subprocess.run(["mv", dir_name, package_out])
             if result.returncode != 0:
                 log(ERROR, f"Failed to move {dir_name} to {package_out}.")
+                log(ERROR, result.stdout)
+                log(ERROR, result.stderr)
                 continue
         writer.writerow([category, package, 'O', "-"])
         log(INFO, f"Combining {package} was successful. {success_cnt} files were combined.")
@@ -154,10 +203,12 @@ def process_top_level_call(dirs):
         tups.append((category, package))
     return tups
 
-def combine_pipe(dirs):
+def combine_pipe(dirs, tsvfile, writer):
     tups = process_top_level_call(dirs)
     if tups == []:
         log(ERROR, "No valid package found.")
+        writer.writerow([package, 'O', 'X', '-', '-', "combine error"])
+        tsvfile.flush()
         return False
     return run(tups)
     
