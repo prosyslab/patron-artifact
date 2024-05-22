@@ -1,10 +1,21 @@
 # patron-artifact
 
-## Experiment 1.
+## Experiment 1 - Accuracy.
+Run the following command to reproduce Experiment 1 and 2 for the patron's performance.
+`./bin/run.py -benchmark`
 
-## Experiment 2.
+more details at [experiment_manual](https://github.com/prosyslab/patron-experiment/blob/master/README.md) 
 
-## Experiment 3.
+## Experiment 2 - Scalability.
+
+## Experiment 3 - Flexibility.
+
+## Experiment 4 - Generalizability.
+Run the following command to reproduce Experiment 4.
+`./bin/run.py -oss`
+
+This will reproduce with the predefined configuration.
+If for the lower level execution, follow the below instructions
 
 ### Get the List of Debian Packages
 We already have run this process and collected the list at `pkg/lists/*.txt`. Each text files refer to the list of packages based on different categories.
@@ -17,6 +28,8 @@ Run the following command to preprocess the packages for Patron
 `./oss_exp.py -pipe <.txt file>`
 
 The `.txt` file is output of the above crawlling step.
+However, `<.txt file> ` can be omitted to reproduce the exact packages used in the paper.
+
 This process includes,
 ```
 1. download the package
@@ -92,7 +105,7 @@ The target dirs are output of above preprocessing.
 `-p` option determines the number of multiprocesses.
 
 ### Generating DB
-We already have database pused in this repository. However, to make a custom database, the following command can be helpful.
+We already have database pushed in this repository. However, to make a custom database, the following command can be helpful.
 `./bin/patron -db`
 
 However, to make a custom database, `patron-experiment/benchmark` has to be updated.

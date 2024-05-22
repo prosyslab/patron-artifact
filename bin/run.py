@@ -3,6 +3,7 @@ import os
 import sys
 import subprocess
 import oss_exp
+import patron
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 BIN_PATH = os.path.dirname(FILE_PATH)
@@ -12,6 +13,14 @@ BENCHMARK_EXP_BIN_PATH = os.path.join(BENCHMARK_EXP_PATH, 'bin')
 BENCHMARK_EXP_SCRIPT_PATH = os.path.join(BENCHMARK_EXP_BIN_PATH, 'experiment.sh')
 OSS_EXPERIMENT = 1
 BENCHMARK_EXPERIMENT = 2
+
+def print_help():
+    print("Usage: ./run.py [-oss | -benchmark | -help]")
+    print("\nOptions:")
+    print("\t-oss: Run OSS experiment(Corresponding to the Experiment 4 in the paper)")
+    print("\t-benchmark: Run benchmark experimentBenchmark Experiment(Experiment 1, 2, 3)")
+    print("\t-help: Display this help message")
+    print("\n\t Checkout README.md for more information on low level executions.")
 
 def openings():
     print('______  ___ ___________ _____ _   _ ')
@@ -25,7 +34,8 @@ def openings():
 
 def oss_experiment():
     print("You have chosen OSS experiment")
-    oss_exp.run_full()
+    oss_exp.run_pipe()
+    patron.main(True)
     
 def benchmark_experiment():
     print("You have chosen benchmark experiment")
@@ -45,11 +55,17 @@ def check_input():
         return OSS_EXPERIMENT
     elif sys.argv[1] == '-benchmark':
         return BENCHMARK_EXPERIMENT
+    elif sys.argv[1] == '-help':
+        print_help()
+        sys.exit(0)
+    else:
+        usage()
+        sys.exit(1)
     
 def choose_experiment():
     target_experiment = check_input()
     if target_experiment == 0:
-        target_experiment = input("Choose the experiment to run: \n\t1. OSS Experiment\n\t2. Benchmark Experiment\nEnter exit to quit")
+        target_experiment = input("Choose the experiment to run: \n\t1. OSS Experiment(Corresponding to the Experiment 4 in the paper)\n\t2. Benchmark Experiment(Experiment 1, 2, 3)\nEnter exit to quit")
         if target_experiment == '1' or target_experiment == 'OSS Experiment':
             return OSS_EXPERIMENT
         elif target_experiment == '2' or target_experiment == 'Benchmark Experiment':

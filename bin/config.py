@@ -10,9 +10,9 @@ configuration = {
     "FILE_PATH": os.path.dirname(os.path.realpath(__file__)),
     "ROOT_PATH": os.path.dirname(os.path.dirname(os.path.realpath(__file__))),
     "OUT_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), ".." ,"out"),
-    "PKG_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "pkg"),
-    "I_FILES_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "pkg", "i_files"),
-    "LIST_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "pkg", "lists"),
+    "PKG_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "package"),
+    "SMAKE_OUT_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "package", "smake_out"),
+    "LIST_DIR": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "package", "debian_lists"),
     "ANALYSIS_DIR": "",
     "EXP_ROOT_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment"),
     "SPARROW_BIN_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "sparrow", "bin", "sparrow"),
@@ -32,10 +32,11 @@ configuration = {
     "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full", "-no_bo", "-tio", "-pio", "-mio", "-sio", "-dz"],
     "USER_SPARROW_OPT": [],
     "SPARROW_TARGET_FILES": [],
-    "DONEE_LIST": []
+    "DONEE_LIST": [],
+    "PROCESS_LIMIT": 10
 }
 
-def __get_logger():
+def __get_logger(level):
     __logger = logging.getLogger("logger")
     formatter = logging.Formatter("[%(levelname)s][%(asctime)s] %(message)s")
     stream_handler = logging.StreamHandler()
@@ -43,7 +44,10 @@ def __get_logger():
     __logger.addHandler(stream_handler)
     if not os.path.isdir(configuration["OUT_DIR"]):
         os.mkdir(configuration["OUT_DIR"])
-    configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"])
+    if level == "TOP":
+        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_pipe')
+    elif level == "PATRON" or "PATRON_PIPE":
+        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_patch')
     os.mkdir(configuration["OUT_DIR"])
     file_handler = logging.FileHandler(
         os.path.join(configuration["OUT_DIR"], "log_{}.txt".format(configuration["START_TIME"])))
@@ -138,12 +142,27 @@ def get_sparrow_target_files(dirs):
             for file in files:
                 if file.endswith(".c"):
                     configuration["SPARROW_TARGET_FILES"].append(os.path.abspath(os.path.join(root, file)))
+
+def get_patron_target_files(target_dirs):
+    donee_list = []
+    for target in target_dirs:
+        if not os.path.exists(target):
+            logger.log(logger.ERROR, f"{target} does not exist.")
+            exit(1)
+        for root, _, files in os.walk(target):
+            for file in files:
+                if file.endswith(".c"):
+                    donee_list.append((os.path.dirname(os.path.abspath(os.path.join(root, file))), os.path.abspath(os.path.join(root, file))))
+    configuration["DONEE_LIST"] = donee_list
+    logger.log("INFO", "Configured donee files: {}".format([os.path.basename(donee) for donee, path in configuration["DONEE_LIST"]]))
+    
 def setup(level):
-    logger.logger = __get_logger()
-    configuration["ANALYSIS_DIR"] = os.path.join(configuration["PKG_DIR"], "analysis_target_" + configuration["START_TIME"])
-    if not os.path.exists(configuration["ANALYSIS_DIR"]):
-        os.mkdir(configuration["ANALYSIS_DIR"])
-    parser = argparse.ArgumentParser()
+    logger.logger = __get_logger(level)
+    if level != "PATRON_PIPE":
+        configuration["ANALYSIS_DIR"] = os.path.join(configuration["PKG_DIR"], "analysis_target_" + configuration["START_TIME"])
+        if not os.path.exists(configuration["ANALYSIS_DIR"]):
+            os.mkdir(configuration["ANALYSIS_DIR"])
+        parser = argparse.ArgumentParser()
     if level == "TOP":
         parser.add_argument("-build", "-b", nargs="*", default=["None"], help="build the given path for category list(s) of package only (default:all)")
         parser.add_argument("-crawl", "-c", action="store_true", default=False, help="crawl the package list from the web only")
@@ -221,15 +240,11 @@ def setup(level):
         else:
             logger.log("INFO", "Configuring target donee files under given directories {}".format(configuration["ARGS"].donee))
             target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].donee ]
-            donee_list = []
-            for target in target_dirs:
-                if not os.path.exists(target):
-                    logger.log(logger.ERROR, f"{target} does not exist.")
-                    exit(1)
-                for root, _, files in os.walk(target):
-                    for file in files:
-                        if file.endswith(".c"):
-                            donee_list.append((os.path.dirname(os.path.abspath(os.path.join(root, file))), os.path.abspath(os.path.join(root, file))))
-            configuration["DONEE_LIST"] = donee_list
-            logger.log("INFO", "Configured donee files: {}".format([os.path.basename(donee) for donee, path in configuration["DONEE_LIST"]]))
+            configuration['PROCESS_LIMIT'] = configuration["ARGS"].process
+            get_patron_target_files(target_dirs)
+    if level == "PATRON_PIPE":
+        configuration["PATRON_ONLY"] = True
+        logger.log("INFO", "Configuring target donee files under given directories {}".format(configuration["ARGS"].donee))
+        target_dirs = [ os.path.abspath(don) for don in configuration["ANALYSIS_DIR"] ]
+        get_patron_target_files(target_dirs)
     logger.log(logger.INFO, "Configuration: {}".format(configuration))

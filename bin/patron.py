@@ -20,90 +20,60 @@ expriment_ready_to_go = {
         "12-1", "13", "17", "19", "21", "22", "24"
     ]
     }
+
 level = ""
 donor_list = []
-global_stat_out = None
-global_stat_cnt = 0
-global_line_cnt = 0
 global_stat = None
 global_writer = None
+stat_out = ""
 
-# def open_global_tsv():
-#     global global_stat, global_writer, global_stat_cnt, global_line_cnt
-#     if not os.path.exists(global_stat_out):
-#         os.mkdir(global_stat_out)
-#     global_stat = open(os.path.join(global_stat_out, '{}_combined_stat.tsv'.format(str(global_stat_cnt))), 'a')
-#     global_writer = csv.writer(global_stat, delimiter='\t')
-#     global_writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
-#     global_stat.flush()
-#     global_stat_cnt += 1
-#     global_line_cnt = 0
-#     return
-
-
-def manage_patch_status(path, stat_out, out_dir, current_job, job_cnt, jobs_finished):
+def write_out_results(path, out_dir, current_job):
     patches = []
-    log(INFO, "Status Manager is Running!")
-    with open(os.path.join(out_dir, "status.tsv"), 'a') as f:
-        stat_file_name = os.path.join(stat_out, current_job + '_status_')
-        file_cnt = 0
-        while os.path.exists(stat_file_name + str(file_cnt) + '.tsv'):
-            file_cnt += 1
-        with open(stat_file_name + str(file_cnt) + '.tsv', 'a') as global_stat:
-            writer = csv.writer(f, delimiter='\t')
-            writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
-            gwriter = csv.writer(global_stat, delimiter='\t')
-            gwriter.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff", path])
-            f.flush()
-            global_stat.flush()
-            while not jobs_finished[job_cnt]:
-                new_patches = []
-                if not os.path.exists(out_dir):
-                    break
-                try:
-                    for file in os.listdir(out_dir):
-                        if file.endswith('.patch') and file not in patches and file not in new_patches:
-                            patches.append(file)
-                            new_patches.append(file)
-                except OSError as e:
-                    log(ERROR, f"Failed to read {out_dir}: {e}")
-                    time.sleep(10)
-                    continue
-                if new_patches == []:
-                    time.sleep(5)
-                    continue
-                for file in new_patches:
-                    diff = ""
-                    while diff == "" and not jobs_finished[job_cnt]:
-                        df = open(os.path.join(out_dir, file), 'r')
-                        diff = df.read()
-                        df.close()
-                        if diff == "" and not jobs_finished[job_cnt]:
-                            continue
-                        elif diff == "" and jobs_finished[job_cnt]:
-                            break
-                        else:
-                            file_parsed = file.split('.')[0].split('_')
-                            donor_num = file_parsed[1].strip()
-                            donee_num = file_parsed[2].strip()
-                            unique_str = '_' + donor_num + '_' + donee_num + '_'
-                            if not os.path.exists(out_dir):
-                                break
-                            for infof in os.listdir(out_dir):
-                                if infof.endswith('.c') and unique_str in infof and infof.startswith('patch_'):
-                                    parsed_info = infof.split('_')[1:]
-                                    tmp_list = parsed_info[0].split('-')
-                                    if "patron" in tmp_list[0]:
-                                        benchmark = "patron"
-                                        donor_num = tmp_list[1].strip()
-                                    else:
-                                        benchmark = "patchweave"
-                                        donor_num = tmp_list[0].strip()
-                                    pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
-                                    writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
-                                    f.flush()
-                                    gwriter.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
-                                    global_stat.flush()
+    log(INFO, "Writing out the results for {}...".format(current_job))
+    stat_file_name = os.path.join(stat_out, current_job + '_status_')
+    file_cnt = 0
+    while os.path.exists(stat_file_name + str(file_cnt) + '.tsv'):
+        file_cnt += 1
+    with open(stat_file_name + str(file_cnt) + '.tsv', 'a') as local_stat:
+        local_writer = csv.writer(f, delimiter='\t')
+        local_writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
+        local_stat.flush()
+        # if not os.path.exists(out_dir):
+        #     break
+        
+        for file in os.listdir(out_dir):
+            if file.endswith('.patch'):
+                patches.append(file)
+    
+        
+        for patch_file in patches:
+            diff = ""
+            # while diff == "" and not jobs_finished[job_cnt]:
+            df = open(os.path.join(out_dir, patch_file), 'r')
+            diff = df.read()
+            df.close()
+
+            file_parsed = file.split('.')[0].split('_')
+            donor_num = file_parsed[1].strip()
+            donee_num = file_parsed[2].strip()
+            unique_str = '_' + donor_num + '_' + donee_num + '_'
+            # if not os.path.exists(out_dir):
+            #     break
+            for infof in os.listdir(out_dir):
+                if infof.endswith('.c') and unique_str in infof and infof.startswith('patch_'):
+                    parsed_info = infof.split('_')[1:]
+                    tmp_list = parsed_info[0].split('-')
+                    if "patron" in tmp_list[0]:
+                        benchmark = "patron"
+                        donor_num = tmp_list[1].strip()
+                    else:
+                        benchmark = "patchweave"
+                        donor_num = tmp_list[0].strip()
+                    pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
+                    local_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
+                    local_stat.flush()
+                    global_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
+                    global_stat.flush()
     is_patched = False
     for file in os.listdir(out_dir):
         if file.endswith('.patch'): 
@@ -111,27 +81,28 @@ def manage_patch_status(path, stat_out, out_dir, current_job, job_cnt, jobs_fini
             break
     if not is_patched:
         log(INFO, f"No patch is generated for {current_job}")
-        # log(INFO, f"Removing {out_dir}")
-        # subprocess.run(['rm', '-rf', out_dir])
-        log(INFO, f"Removing {stat_file_name + str(file_cnt) + '.tsv'}")
-        subprocess.run(['rm', stat_file_name + str(file_cnt) + '.tsv'])
+        # # log(INFO, f"Removing {out_dir}")
+        # # subprocess.run(['rm', '-rf', out_dir])
+        # log(INFO, f"Removing {stat_file_name + str(file_cnt) + '.tsv'}")
+        # subprocess.run(['rm', stat_file_name + str(file_cnt) + '.tsv'])
         
 
-def run_patron(stat_out, cmd, path, job_cnt, jobs_finished):
+def run_patron(cmd, path, job_cnt, jobs_finished):
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     current_job = os.path.basename(cmd[2])
     if not check_donee(cmd[2]):
         log(ERROR, f"{cmd[2]} is not ready.")
-        return None, None
+        return None
     sub_out_dir = cmd[-1]
     if not os.path.exists(sub_out_dir):
         os.mkdir(sub_out_dir)
     with open(os.path.join(sub_out_dir, "donee_path.txt"), 'w') as f:
         f.write(path)
-    status_manager = multiprocessing.Process(target=manage_patch_status, args=(cmd[2], stat_out, sub_out_dir, current_job, job_cnt, jobs_finished))
-    status_manager.start()
+    # status_manager = multiprocessing.Process(target=manage_patch_status, args=(cmd[2], stat_out, sub_out_dir, current_job, job_cnt, jobs_finished))
+    # status_manager.start()
     log(INFO, f"Running patron with {cmd}")
-    return status_manager, subprocess.Popen(cmd)
+    # return status_manager, subprocess.Popen(cmd)
+    return subprocess.Popen(cmd)
 
 
 
@@ -259,7 +230,7 @@ def construct_database():
 
 def collect_job_results(PROCS, work_cnt, jobs_finished):
     for j in range(len(PROCS)):
-        cmd, work_id, m, proc = PROCS[j]
+        cmd, work_id, proc = PROCS[j]
         if proc.poll() is not None and not jobs_finished[work_id]:
             if proc.returncode != 0:
                 log(ERROR, f"Failed to run patron with {cmd}")
@@ -267,18 +238,17 @@ def collect_job_results(PROCS, work_cnt, jobs_finished):
             else:
                 log(INFO, f"Successfully ran patron with {cmd}")
             jobs_finished[work_id] = True
-            log(INFO, f"Waiting for manager to finish the leftover writings.")
-            if m.is_alive():
-                m.join()
             work_cnt -= 1
-            
+            write_out_results(cmd[2], cmd[-1], os.path.basename(cmd[2]))
             break
     return PROCS, work_cnt
 
-def main():
-    global level
-    # global global_stat_out, global_stat
-    level = "PATRON"
+def main(from_top=False):
+    global level, global_stat, global_writer, stat_out
+    if from_top:
+        level = "PATRON_PIPE"
+    else:
+        level = "PATRON"
     config.setup(level)
     stat_out = os.path.join(config.configuration["OUT_DIR"], 'stat')
     if not os.path.exists(stat_out):
@@ -293,22 +263,26 @@ def main():
     worklist = mk_worklist()
     work_cnt = 0
     PROCS = []
-    # open_global_tsv()
+    global_stat = open(os.path.join(stat_out, 'status.tsv'), 'a')
+    global_writer = csv.writer(global_stat, delimiter='\t')
+    global_writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
+    global_stat.flush()
     jobs_finished = multiprocessing.Manager().list(range(len(worklist)))
     try:
         for i in range(len(worklist)):
             jobs_finished[i] = False
             work, path = worklist[i]
             log(INFO, f"Work: {work}")
-            manager, p = run_patron(stat_out, work, path, i, jobs_finished)
-            if manager is None and p is None:
+            p = run_patron(work, path, i, jobs_finished)
+            # if manager is None and p is None:
+            if p is None:
                 continue
-            PROCS.append((work, i, manager, p))
+            PROCS.append((work, i, p))
             time.sleep(5)
             work_cnt += 1
-            if work_cnt >= config.configuration["ARGS"].process:
+            if work_cnt >= config.configuration["PROCESS_LIMIT"]:
                 log(WARNING, "Waiting for the current jobs to finish...")
-            while work_cnt >= config.configuration["ARGS"].process:
+            while work_cnt >= config.configuration["PROCESS_LIMIT"]:
                 PROCS, work_cnt = collect_job_results(PROCS, work_cnt, jobs_finished)
                 time.sleep(5)
         all_finished = False
@@ -322,14 +296,11 @@ def main():
         log(ERROR, f"Exception occurred: {e}")
         log(ERROR, "Terminating all the jobs...")
         for p in PROCS:
-            cmd, work_id, m, proc = p
+            cmd, work_id, proc = p
             proc.terminate()
             jobs_finished[work_id] = True
-        for p in PROCS:
-            cmd, work_id, m, proc = p
-            m.terminate()
 
-    # global_stat.close()
+    global_stat.close()
     log(INFO, "All jobs are finished.")
     log(INFO, "Please check the status.tsv file for the results.")
 

@@ -5,7 +5,7 @@ import re
 
 FILE_PATH = os.path.dirname(os.path.abspath(__file__))
 FILE_DIR = os.path.dirname(FILE_PATH)
-LIST_DIR = os.path.join(FILE_DIR, 'pkg' ,'lists')  
+LIST_DIR = os.path.join(FILE_DIR, 'package' ,'debian_lists')  
 DEBIAN_URL = "https://packages.debian.org/bookworm/"
 
 def get_debian_packages(url):

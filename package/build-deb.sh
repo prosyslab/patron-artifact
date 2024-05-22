@@ -3,13 +3,13 @@
 PKG_NAME=$1
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 if [ -n "$2" ]; then
-  OUT_DIR=$SCRIPT_DIR/i_files/$2/$PKG_NAME
+  OUT_DIR=$SCRIPT_DIR/smake_out/$2/$PKG_NAME
 else
-  OUT_DIR=$SCRIPT_DIR/i_files/$PKG_NAME
+  OUT_DIR=$SCRIPT_DIR/smake_out/$PKG_NAME
 fi
 
 TMP='_tmp'
-TMP_DIR=$SCRIPT_DIR/i_files/$PKG_NAME$TMP
+TMP_DIR=$SCRIPT_DIR/smake_out/$PKG_NAME$TMP
 
 clean() {
   cd $1
@@ -75,4 +75,4 @@ echo sparrow $OUT_DIR
 mv sparrow $OUT_DIR || error_exit "Error: mv sparrow failed" $SCRIPT_DIR $TMP_DIR
 
 # 9. clean the tmp directory
-clean $SCRIPT_DIR/i_files $TMP_DIR
+clean $SCRIPT_DIR/smake_out $TMP_DIR

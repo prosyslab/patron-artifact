@@ -10,8 +10,8 @@ import sparrow
 from logger import log, INFO, ERROR, WARNING
 
 BIN_DIR = os.path.dirname(os.path.realpath(__file__))
-PKG_DIR = os.path.join(os.path.dirname(BIN_DIR), 'pkg')
-LIST_DIR = os.path.join(PKG_DIR, 'lists')
+PKG_DIR = os.path.join(os.path.dirname(BIN_DIR), 'package')
+LIST_DIR = os.path.join(PKG_DIR, 'debian_lists')
 
 def mk_category_dict():
     categories = dict()
@@ -41,6 +41,9 @@ def mk_category_dict():
 
 def crawl():
     log(INFO, "Retrieving the list of Debian packages from web ...")
+    if os.path.exists(LIST_DIR):
+        log(WARNING, "The package list directory already exists. Skip crawling.")
+        return
     status = subprocess.run(
         [sys.executable,
         os.path.join(PKG_DIR, 'debian_crawler.py')],
@@ -48,7 +51,7 @@ def crawl():
     if status.returncode != 0:
         log(ERROR, "Failed to retrieve the list of packages.")
         exit(1)
-    log(INFO, "Package Lists are created at {}.".format(os.path.join(PKG_DIR, 'lists')))
+    log(INFO, "Package Lists are created at {}.".format(os.path.join(PKG_DIR, 'debian_lists')))
 
 def check_smake_result(path):
     if not os.path.exists(path):
@@ -65,7 +68,7 @@ def check_smake_result(path):
     log(INFO, f"{path} is not empty: it is a good sign.")
     return True
 
-def smake_pipe(category, package, tsvfile, writer, i_files_dir):
+def smake_pipe(category, package, tsvfile, writer, smake_out_dir):
     log(INFO, f"Building {package} ...")
     BUILD_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "build_logs")
     if not os.path.exists(BUILD_LOG_PATH):
@@ -107,24 +110,24 @@ def smake_pipe(category, package, tsvfile, writer, i_files_dir):
                 f.write(out.decode('utf-8'))
                 f.write(err.decode('utf-8'))
     log(INFO, f"building {package} has succeeded")
-    if not check_smake_result(os.path.join(i_files_dir, str(category), package)):
+    if not check_smake_result(os.path.join(smake_out_dir, str(category), package)):
         log(WARNING, f"{package} has no .i files")
         writer.writerow([package, 'X', '-', '-', '-', "no .i files"])
         tsvfile.flush()
         return False, []
     log(INFO, f"{package} has .i files!... continue to next step")
-    next_args = [os.path.join(i_files_dir, str(category), package)]
+    next_args = [os.path.join(smake_out_dir, str(category), package)]
     return True, next_args
             
         
 def smake():
     packages = mk_category_dict()
-    i_files_dir = os.path.join(PKG_DIR, 'i_files')
-    if not os.path.exists(i_files_dir):
-        os.mkdir(i_files_dir)
+    smake_out_dir = os.path.join(PKG_DIR, 'smake_out')
+    if not os.path.exists(smake_out_dir):
+        os.mkdir(smake_out_dir)
     for category in packages.keys():
-        if not os.path.exists(os.path.join(i_files_dir, str(category))):
-            os.mkdir(os.path.join(i_files_dir, str(category)))
+        if not os.path.exists(os.path.join(smake_out_dir, str(category))):
+            os.mkdir(os.path.join(smake_out_dir, str(category)))
         packages = packages[ str(category) ]
         tsvfile = open(os.path.join(config.configuration['OUT_DIR'], '{}_build_stat_{}.tsv'.format(category, datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
         writer = csv.writer(tsvfile, delimiter='\t')
@@ -155,9 +158,9 @@ def smake():
                 except Exception as e:
                     continue
             log(INFO, f"building {package} has succeeded")
-            is_i_files = check_smake_result(os.path.join(i_files_dir, str(category), package))
-            is_i_files = 'O' if is_i_files else 'X'
-            writer.writerow([package, 'O', is_i_files, '-'])
+            is_smake_out = check_smake_result(os.path.join(smake_out_dir, str(category), package))
+            is_smake_out = 'O' if is_smake_out else 'X'
+            writer.writerow([package, 'O', is_smake_out, '-'])
             tsvfile.flush()
 def run():
     crawl()

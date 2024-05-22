@@ -18,7 +18,7 @@ ENV SMAKE_OUT=$OUT/smake-out
 # for debian package build
 ENV DEB_BUILD_OPTIONS="nocheck notest"
 RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
-COPY ../pkg $SRC
+COPY ../../patron-artifact $SRC
 
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -37,6 +37,7 @@ RUN tar -C /usr/local -xzf go1.20.linux-amd64.tar.gz
 ENV GOPATH=/go
 RUN GO111MODULE=off /usr/local/go/bin/go get github.com/SRI-CSL/gllvm/cmd/...
 
-# Haechi
+RUN chmod +x $SRC/build_latest.sh
+RUN $SRC/build_latest.sh
 
 WORKDIR $SRC

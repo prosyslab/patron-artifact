@@ -7,6 +7,8 @@ import datetime
 import subprocess
 from logger import log, INFO, ERROR, WARNING
 
+SPARROW_LOG_DIR = os.path.join(config.configuration['OUT_DIR'], 'sparrow_logs')
+
 def run_sparrow(file):
     os.chdir(os.path.dirname(file))
     sparrow_log = open('sparrow_log', 'w')
@@ -18,8 +20,8 @@ def run_sparrow(file):
                                  stdout=sparrow_log,
                                  stderr=subprocess.STDOUT)
 
-def sparrow(files):
-    tsvfile = open(os.path.join(config.configuration['OUT_DIR'], 'sparrow_stat_{}.tsv'.format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
+def sparrow(package, files):
+    tsvfile = open(os.path.join(SPARROW_LOG_DIR, '{}_sparrow_stat.tsv'.format(package)), 'a')
     writer = csv.writer(tsvfile, delimiter='\t')
     writer.writerow(['Package', 'Status'])
     tsvfile.flush()
@@ -54,6 +56,10 @@ def sparrow(files):
     return True
 
 def sparrow_pipe(package, tsvfile, writer):
+    global SPARROW_LOG_DIR
+    SPARROW_LOG_DIR = os.path.join(config.configuration['OUT_DIR'], 'sparrow_logs')
+    if not os.path.exists(SPARROW_LOG_DIR):
+        os.mkdir(SPARROW_LOG_DIR)
     target_dir = os.path.join(config.configuration["ANALYSIS_DIR"], package)
     if not os.path.exists(target_dir):
         log(ERROR, f"{target_dir} does not exist.")
@@ -71,7 +77,7 @@ def sparrow_pipe(package, tsvfile, writer):
         tsvfile.flush()
         return False
     log(INFO, f"Found {len(c_files)} .c files in {target_dir}.")
-    return sparrow(c_files)
+    return sparrow(package, c_files)
                 
                 
 

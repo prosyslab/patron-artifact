@@ -15,7 +15,7 @@ def write_combine_log(log_path, contents):
         f.write(contents)
         f.write('\n')
 
-def filter_combine_candidate(log_path, candidate, target_path, dir_stack, tsvfile, writer):
+def filter_combine_candidate(log_path, candidate, target_path, dir_stack, tsvfile, writer, category, package):
     file_path = candidate.split(':')[0]
     dir_path = os.path.dirname(os.path.join(target_path, file_path))
     file_name = file_path.split('/')[-1] if '/' in file_path else "."
@@ -34,7 +34,6 @@ def filter_combine_candidate(log_path, candidate, target_path, dir_stack, tsvfil
         return False, "", dir_stack
     dir_stack.append(dir_name)
     os.chdir(dir_path)
-    # list all files in the directory and check if it has any file that ends with .ii files, other do not matter.
     files = os.listdir()
     ii_files = [f for f in files if f.endswith(".ii")]
     if len(ii_files) != 0:
@@ -129,7 +128,7 @@ def run(tups):
         file_stack = []
         dir_stack = []
         reason = ""
-        target_path = os.path.join(config.configuration["I_FILES_DIR"], category, package)
+        target_path = os.path.join(config.configuration["SMAKE_OUT_DIR"], category, package)
         log_path = os.path.join(COMBINE_LOG_PATH, f"{package}_combine_log.txt")
         log(INFO, f"Beginning to Combine <{package}> of <{category}> category ...")
         if not os.path.exists(target_path):
@@ -145,7 +144,7 @@ def run(tups):
         for candidate in output:
             write_combine_log(log_path, f"candidates:{candidate}")
         for candidate in output:
-            is_success, dir_name, dir_stack = filter_combine_candidate(log_path, candidate, target_path, dir_stack, tsvfile, writer)
+            is_success, dir_name, dir_stack = filter_combine_candidate(log_path, candidate, target_path, dir_stack, tsvfile, writer, category, package)
             if not is_success:
                 continue
             if not run_combine_pipeline():
@@ -165,7 +164,6 @@ def run(tups):
         for dir_name in dir_stack:
             if dir_name == package:
                 continue
-            # check if mv is successful
             log(INFO, f"Moving {dir_name} to {package_out}.")
             result = subprocess.run(["mv", dir_name, package_out])
             if result.returncode != 0:
