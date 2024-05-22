@@ -38,23 +38,18 @@ def write_out_results(path, out_dir, current_job, is_failed):
         local_writer = csv.writer(local_stat, delimiter='\t')
         local_writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
         local_stat.flush()
-        # if not os.path.exists(out_dir):
-        #     break
         for file in os.listdir(out_dir):
             if file.endswith('.patch'):
                 patches.append(file)
         for patch_file in patches:
             diff = ""
-            # while diff == "" and not jobs_finished[job_cnt]:
             df = open(os.path.join(out_dir, patch_file), 'r')
             diff = df.read()
             df.close()
-            file_parsed = file.split('.')[0].split('_')
+            file_parsed = patch_file.split('.')[0].split('_')
             donor_num = file_parsed[1].strip()
             donee_num = file_parsed[2].strip()
             unique_str = '_' + donor_num + '_' + donee_num + '_'
-            # if not os.path.exists(out_dir):
-            #     break
             for infof in os.listdir(out_dir):
                 if infof.endswith('.c') and unique_str in infof and infof.startswith('patch_'):
                     parsed_info = infof.split('_')[1:]
@@ -83,10 +78,6 @@ def write_out_results(path, out_dir, current_job, is_failed):
             break
     if not is_patched:
         log(INFO, f"No patch is generated for {current_job}")
-        # # log(INFO, f"Removing {out_dir}")
-        # # subprocess.run(['rm', '-rf', out_dir])
-        # log(INFO, f"Removing {stat_file_name + str(file_cnt) + '.tsv'}")
-        # subprocess.run(['rm', stat_file_name + str(file_cnt) + '.tsv'])
         
 
 def run_patron(cmd, path, job_cnt, jobs_finished):
@@ -100,10 +91,7 @@ def run_patron(cmd, path, job_cnt, jobs_finished):
         os.mkdir(sub_out_dir)
     with open(os.path.join(sub_out_dir, "donee_path.txt"), 'w') as f:
         f.write(path)
-    # status_manager = multiprocessing.Process(target=manage_patch_status, args=(cmd[2], stat_out, sub_out_dir, current_job, job_cnt, jobs_finished))
-    # status_manager.start()
     log(INFO, f"Running patron with {cmd}")
-    # return status_manager, subprocess.Popen(cmd)
     return subprocess.Popen(cmd)
 
 
@@ -277,7 +265,6 @@ def main(from_top=False):
             work, path = worklist[i]
             log(INFO, f"Work: {work}")
             p = run_patron(work, path, i, jobs_finished)
-            # if manager is None and p is None:
             if p is None:
                 continue
             PROCS.append((work, i, p))
@@ -296,7 +283,8 @@ def main(from_top=False):
             else:
                 time.sleep(5)   
     except Exception as e:
-        log(ERROR, f"Exception occurred: {e}")
+        log(ERROR, f"Exception occurred:")
+        log(ERROR, e)
         log(ERROR, "Terminating all the jobs...")
         for p in PROCS:
             cmd, work_id, proc = p

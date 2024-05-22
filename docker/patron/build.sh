@@ -1,3 +1,3 @@
 #!/bin/bash -eux
 
-docker build -t prosyslab/patron-experiment .
+docker build -t prosyslab/patron-artifact .

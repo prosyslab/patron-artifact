@@ -158,10 +158,11 @@ def get_patron_target_files(target_dirs):
     
 def setup(level):
     logger.logger = __get_logger(level)
-    if level != "PATRON_PIPE":
+    if level != "PATRON_PIPE" and level != "PATRON":
         configuration["ANALYSIS_DIR"] = os.path.join(configuration["PKG_DIR"], "analysis_target_" + configuration["START_TIME"])
         if not os.path.exists(configuration["ANALYSIS_DIR"]):
             os.mkdir(configuration["ANALYSIS_DIR"])
+    if level != "PATRON_PIPE":
         parser = argparse.ArgumentParser()
     if level == "TOP":
         parser.add_argument("-build", "-b", nargs="*", default=["None"], help="build the given path for category list(s) of package only (default:all)")
