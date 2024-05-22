@@ -27,7 +27,7 @@ global_stat = None
 global_writer = None
 stat_out = ""
 
-def write_out_results(path, out_dir, current_job):
+def write_out_results(path, out_dir, current_job, is_failed):
     patches = []
     log(INFO, "Writing out the results for {}...".format(current_job))
     stat_file_name = os.path.join(stat_out, current_job + '_status_')
@@ -35,24 +35,20 @@ def write_out_results(path, out_dir, current_job):
     while os.path.exists(stat_file_name + str(file_cnt) + '.tsv'):
         file_cnt += 1
     with open(stat_file_name + str(file_cnt) + '.tsv', 'a') as local_stat:
-        local_writer = csv.writer(f, delimiter='\t')
+        local_writer = csv.writer(local_stat, delimiter='\t')
         local_writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
         local_stat.flush()
         # if not os.path.exists(out_dir):
         #     break
-        
         for file in os.listdir(out_dir):
             if file.endswith('.patch'):
                 patches.append(file)
-    
-        
         for patch_file in patches:
             diff = ""
             # while diff == "" and not jobs_finished[job_cnt]:
             df = open(os.path.join(out_dir, patch_file), 'r')
             diff = df.read()
             df.close()
-
             file_parsed = file.split('.')[0].split('_')
             donor_num = file_parsed[1].strip()
             donee_num = file_parsed[2].strip()
@@ -74,6 +70,12 @@ def write_out_results(path, out_dir, current_job):
                     local_stat.flush()
                     global_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     global_stat.flush()
+        if is_failed:
+            msg = '=========PATRON STOPPED DUE TO UNEXPECTED ERROR========='
+            local_writer.writerow([msg, "-", "-", "-", "-", "-", "-"])
+            local_stat.flush()
+            global_writer.writerow([msg, "-", "-", "-", "-", "-", "-"])
+            global_stat.flush()
     is_patched = False
     for file in os.listdir(out_dir):
         if file.endswith('.patch'): 
@@ -234,12 +236,13 @@ def collect_job_results(PROCS, work_cnt, jobs_finished):
         if proc.poll() is not None and not jobs_finished[work_id]:
             if proc.returncode != 0:
                 log(ERROR, f"Failed to run patron with {cmd}")
-                log(ERROR, proc.stderr.read().decode('utf-8'))
+                is_failed = True
             else:
                 log(INFO, f"Successfully ran patron with {cmd}")
+                is_failed = False
             jobs_finished[work_id] = True
             work_cnt -= 1
-            write_out_results(cmd[2], cmd[-1], os.path.basename(cmd[2]))
+            write_out_results(cmd[2], cmd[-1], os.path.basename(cmd[2]), is_failed)
             break
     return PROCS, work_cnt
 
