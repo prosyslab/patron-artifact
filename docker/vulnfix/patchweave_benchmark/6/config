@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/patchweave/6/source/src/appl/imginfo
+cmd=-f <exploit>
+exploit=/home/yuntong/vulnfix/data/patchweave/6/exploit
+fix-location=jp2_cod.c:230
+crash-location=jas_malloc.c:259
+runtime-dir=/home/yuntong/vulnfix/data/patchweave/6/runtime
+source-dir=/home/yuntong/vulnfix/data/patchweave/6/source
+fix-file-path=src/libjasper/jp2/jp2_cod.c
+fix-line=230
+build-cmd=make clean && make 
+# CFLAGS="-static -fsanitize=address,undefined,signed-integer-overflow -g" CXXFLAGS="-static -fsanitize=address,undefined,signed-integer-overflow -g" -j10

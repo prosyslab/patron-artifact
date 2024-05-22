@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/patchweave/23/source/programs/sndfile-convert
+cmd=<exploit> out.wav
+exploit=/home/yuntong/vulnfix/data/patchweave/23/exploit
+fix-location=pcm.c:670
+crash-location=pcm.c:670
+runtime-dir=/home/yuntong/vulnfix/data/patchweave/23/runtime
+source-dir=/home/yuntong/vulnfix/data/patchweave/23/source
+fix-file-path=programs/sndfile-convert.c
+fix-line=670
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" -j10

@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/patchweave/20/source/util/listmp3
+cmd=<exploit>
+exploit=/home/yuntong/vulnfix/data/patchweave/20/exploit
+fix-location=listmp3.c:177
+crash-location=listmp3.c:177
+runtime-dir=/home/yuntong/vulnfix/data/patchweave/20/runtime
+source-dir=/home/yuntong/vulnfix/data/patchweave/20/source
+fix-file-path=util/listmp3.c
+fix-line=177
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" -j10

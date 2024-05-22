@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/patchweave/14/source/src/appl/imginfo
+cmd=-f <exploit>
+exploit=/home/yuntong/vulnfix/data/patchweave/14/exploit
+fix-location=
+crash-location=
+runtime-dir=/home/yuntong/vulnfix/data/patchweave/14/runtime
+source-dir=/home/yuntong/vulnfix/data/patchweave/14/source
+fix-file-path=
+fix-line=
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" -j10

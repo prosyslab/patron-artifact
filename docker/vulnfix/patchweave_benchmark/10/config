@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/patchweave/10/source/src/appl/imginfo
+cmd=-f <exploit>
+exploit=/home/yuntong/vulnfix/data/patchweave/10/exploit
+fix-location=jpc_dec.c:1244
+crash-location=jpc_dec.c:1244
+runtime-dir=/home/yuntong/vulnfix/data/patchweave/10/runtime
+source-dir=/home/yuntong/vulnfix/data/patchweave/10/source
+fix-file-path=src/libjasper/jpc/jpc_dec.c
+fix-line=1244
+build-cmd=make clean && make 
+# CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" -j10

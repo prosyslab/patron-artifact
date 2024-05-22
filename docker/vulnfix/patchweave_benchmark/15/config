@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/patchweave/15/source/bin/opj_dump
+cmd=-f <exploit>
+exploit=/home/yuntong/vulnfix/data/patchweave/15/exploit
+fix-location=image.c:116
+crash-location=image.c:116
+runtime-dir=/home/yuntong/vulnfix/data/patchweave/15/runtime
+source-dir=/home/yuntong/vulnfix/data/patchweave/15/source
+fix-file-path=src/lib/openjp2/image.c
+fix-line=116
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" -j10

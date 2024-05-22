@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/patchweave/13/source/src/appl/imginfo
+cmd=-f <exploit>
+exploit=/home/yuntong/vulnfix/data/patchweave/13/exploit
+fix-location=mif_cod.c:394
+crash-location=mif_cod.c:394
+runtime-dir=/home/yuntong/vulnfix/data/patchweave/13/runtime
+source-dir=/home/yuntong/vulnfix/data/patchweave/13/source
+fix-file-path=src/libjasper/mif/mif_cod.c
+fix-line=394
+build-cmd=make clean && make
+#  CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" -j10

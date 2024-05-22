@@ -15,4 +15,6 @@ git checkout patron
 opam switch sparrow-4.13.1+flambda
 eval $(opam env)
 make
-cd ../..
+cd ../../docker/vulnfix
+rm -rf vulnfix
+git clone https://github.com/yuntongzhang/vulnfix/

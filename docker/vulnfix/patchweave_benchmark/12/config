@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/patchweave/12/source/examples/cwebp
+cmd=<exploit> -o out.webp
+exploit=/home/yuntong/vulnfix/data/patchweave/12/exploit
+fix-location=cwebp.c:539
+crash-location=cwebp.c:539
+runtime-dir=/home/yuntong/vulnfix/data/patchweave/12/runtime
+source-dir=/home/yuntong/vulnfix/data/patchweave/12/source
+fix-file-path=examples/cwebp.c
+fix-line=539
+build-cmd=make clean && make
+# CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" -j10

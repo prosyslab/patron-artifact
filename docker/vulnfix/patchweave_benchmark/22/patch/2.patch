@@ -1,0 +1,10 @@
+--- /home/yuntong/vulnfix/data/patchweave/22/source/tools/fix-file-backup.c	2024-03-27 20:49:33.640081589 +0900
++++ /home/yuntong/vulnfix/data/patchweave/22/source/tools/tiff2ps.c	2024-03-27 20:49:38.620069923 +0900
+@@ -2463,6 +2463,7 @@
+ 				switch (nc) {
+ 				case 4: c = *cp++; PUTHEX(c,fd);
+ 				case 3: c = *cp++; PUTHEX(c,fd);
++    if (!(tf_bytesperrow - cc >= 3)) exit(1);
+ 				case 2: c = *cp++; PUTHEX(c,fd);
+     if (!(( (void *)cp - generic_buffer_base(cp) ) < tf_bytesperrow)) exit(1);
+ 				case 1: c = *cp++; PUTHEX(c,fd);

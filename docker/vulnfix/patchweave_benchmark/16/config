@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/patchweave/16/source/applications/codec/j2k_to_image
+cmd=-i <exploit> -o out.bmp
+exploit=/home/yuntong/vulnfix/data/patchweave/16/exploit
+fix-location=j2k.c:496
+crash-location=j2k.c:496
+runtime-dir=/home/yuntong/vulnfix/data/patchweave/16/runtime
+source-dir=/home/yuntong/vulnfix/data/patchweave/16/source
+fix-file-path=libopenjpeg/j2k.c
+fix-line=496
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" -j10

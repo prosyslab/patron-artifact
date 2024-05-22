@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/patchweave/24/source/src/ziptool
+cmd=<exploit> cat index
+exploit=/home/yuntong/vulnfix/data/patchweave/24/exploit
+fix-location=zip_dirent.c:77
+crash-location=zip_dirent.c:77
+runtime-dir=/home/yuntong/vulnfix/data/patchweave/24/runtime
+source-dir=/home/yuntong/vulnfix/data/patchweave/24/source
+fix-file-path=lib/zip_dirent.c
+fix-line=77
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" -j10

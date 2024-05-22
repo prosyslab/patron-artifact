@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/patchweave/22/source/tools/tiff2ps
+cmd=<exploit>
+exploit=/home/yuntong/vulnfix/data/patchweave/22/exploit
+fix-location=tiff2ps.c:2466
+crash-location=tiff2ps.c:2466
+runtime-dir=/home/yuntong/vulnfix/data/patchweave/22/runtime
+source-dir=/home/yuntong/vulnfix/data/patchweave/22/source
+fix-file-path=tools/tiff2ps.c
+fix-line=2466
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" -j10

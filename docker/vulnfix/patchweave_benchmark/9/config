@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/patchweave/9/source/bin/opj_dump
+cmd=-i <exploit>
+exploit=/home/yuntong/vulnfix/data/patchweave/9/exploit
+fix-location=j2k.c:2108
+crash-location=j2k.c:2108
+runtime-dir=/home/yuntong/vulnfix/data/patchweave/9/runtime
+source-dir=/home/yuntong/vulnfix/data/patchweave/9/source
+fix-file-path=src/lib/openjp2/j2k.c
+fix-line=2108
+build-cmd=rm -rf CMakeCache.txt;rm -rf CMakeFile; cmake -DCMAKE_C_COMPILER=clang -DBUILD_SHARED_LIBS=off -DCMAKE_C_FLAGS="-g -O0 -ftrapv -fsanitize=integer,undefined,address" .;make
+# make clean && make CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" -j10
