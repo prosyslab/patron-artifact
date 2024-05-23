@@ -11,6 +11,10 @@ fi
 TMP='_tmp'
 TMP_DIR=$SCRIPT_DIR/smake_out/$PKG_NAME$TMP
 
+if [ $PKG_NAME == "dvdauthor" ]; then
+  apt-get install magick-dev
+fi
+
 clean() {
   cd $1
   rm -rf $2

@@ -9,6 +9,8 @@ import combine
     
 def run_pipe():
     config.setup("TOP")
+    if not config.configuration["PIPE_MODE"]:
+        return False
     build.crawl()
     tsvfile = open(os.path.join(config.configuration['OUT_DIR'], 'pipe_stat_{}.tsv'.format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
     writer = csv.writer(tsvfile, delimiter='\t')
@@ -36,12 +38,11 @@ def run_pipe():
                 continue
             writer.writerow([package, 'O', 'O', 'O', 'O', '-'])
             tsvfile.flush()
+    return True
             
 def main():
-    if config.configuration["PIPE_MODE"]:
-        run_pipe()
+    if run_pipe():
         return
-    config.setup("TOP")
     if config.configuration["CRWAL_ONLY"]:
         build.crawl()
     if config.configuration["BUILD_ONLY"]:
