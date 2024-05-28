@@ -29,7 +29,7 @@ configuration = {
     "PIPE_MODE": False,
     "DATABASE_ONLY": False,
     "CSV_FOR_STAT": False,
-    "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full", "-no_bo", "-tio", "-pio", "-mio", "-sio", "-dz"],
+    "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full", "-no_bo", "-tio", "-pio", "-mio", "-dz"],
     "USER_SPARROW_OPT": [],
     "SPARROW_TARGET_FILES": [],
     "DONEE_LIST": [],

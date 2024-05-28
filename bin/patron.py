@@ -66,10 +66,10 @@ def write_out_results(path, out_dir, current_job, is_failed):
                     global_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     global_stat.flush()
         if is_failed:
-            msg = '=========PATRON STOPPED DUE TO UNEXPECTED ERROR========='
-            local_writer.writerow([msg, "-", "-", "-", "-", "-", "-"])
+            msg = '----------PATRON STOPPED DUE TO UNEXPECTED ERROR----------'
+            local_writer.writerow([current_job, msg, "-", "-", "-", "-", "-"])
             local_stat.flush()
-            global_writer.writerow([msg, "-", "-", "-", "-", "-", "-"])
+            global_writer.writerow([current_job, msg, "-", "-", "-", "-", "-"])
             global_stat.flush()
     is_patched = False
     for file in os.listdir(out_dir):
@@ -253,6 +253,7 @@ def main(from_top=False):
         mk_database()
     worklist = mk_worklist()
     work_cnt = 0
+    total_work_cnt = 0
     PROCS = []
     global_stat = open(os.path.join(stat_out, 'status.tsv'), 'a')
     global_writer = csv.writer(global_stat, delimiter='\t')
@@ -270,9 +271,12 @@ def main(from_top=False):
             PROCS.append((work, i, p))
             time.sleep(5)
             work_cnt += 1
+            total_work_cnt += 1
             if work_cnt >= config.configuration["PROCESS_LIMIT"]:
+                log(INFO, "{}".format(len(worklist)-total_work_cnt) + " jobs are left.")
                 log(WARNING, "Waiting for the current jobs to finish...")
             while work_cnt >= config.configuration["PROCESS_LIMIT"]:
+                log(INFO, "{}".format(len(worklist)-total_work_cnt) + " jobs are left.")
                 PROCS, work_cnt = collect_job_results(PROCS, work_cnt, jobs_finished)
                 time.sleep(5)
         all_finished = False
