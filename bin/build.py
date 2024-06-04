@@ -84,9 +84,10 @@ def smake_pipe(category, package, tsvfile, writer, smake_out_dir):
         log(ERROR, f"building {package} has timed out")
         writer.writerow([package, 'X', '-', '-', '-','timeout'])
         tsvfile.flush()
-        with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
-                f.write(out.decode('utf-8'))
-                f.write(err.decode('utf-8'))
+        if out != None and err != None:
+                with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
+                    f.write(out.decode('utf-8'))
+                    f.write(err.decode('utf-8'))
     except Exception as e:
         log(ERROR, e)
         if proc != None:
