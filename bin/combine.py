@@ -47,7 +47,7 @@ def filter_combine_candidate(log_path, candidate, target_path, dir_stack, tsvfil
         return False, "", dir_stack
     return True, dir_name, dir_stack
     
-def run_grep_to_find_main(target_path, log_path, tsvfile, writer):
+def run_grep_to_find_main(target_path, log_path, tsvfile, writer, category, package):
     os.chdir(target_path)
     command = ["bash", os.path.join(config.configuration["FILE_PATH"], "grep.sh")]
     log(INFO, f"Running {command}.")
@@ -135,7 +135,7 @@ def run(tups):
             log(ERROR, f"{target_path} does not exist.")
             writer.writerow([category, package, 'X', 'not exist'])
             continue
-        is_success, output = run_grep_to_find_main(target_path, log_path, tsvfile, writer)
+        is_success, output = run_grep_to_find_main(target_path, log_path, tsvfile, writer, category, package)
         if not is_success:
             continue
         success_cnt = 0
