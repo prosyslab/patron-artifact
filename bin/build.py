@@ -7,7 +7,7 @@ import csv
 import config
 import combine
 import sparrow
-from logger import log, INFO, ERROR, WARNING
+from import log, INFO, ERROR, WARNING
 
 BIN_DIR = os.path.dirname(os.path.realpath(__file__))
 PKG_DIR = os.path.join(os.path.dirname(BIN_DIR), 'package')
@@ -68,7 +68,39 @@ def check_smake_result(path):
     log(INFO, f"{path} is not empty: it is a good sign.")
     return True
 
-def smake_pipe(category, package, tsvfile, writer, smake_out_dir):
+def kill_processes():
+    log(INFO, "Building process Timed out! Assuming there is a lock on apt process. Killing the apt process ...")
+    try:
+        ps = subprocess.Popen(['ps', 'aux'], stdout=subprocess.PIPE)
+        grep = subprocess.Popen(['grep', 'apt'], stdin=ps.stdout, stdout=subprocess.PIPE)
+        ps.stdout.close() 
+
+        awk = subprocess.Popen(['awk', '{print $2}'], stdin=grep.stdout, stdout=subprocess.PIPE)
+        grep.stdout.close() 
+
+        process_ids, _ = awk.communicate()
+        process_ids = process_ids.decode('utf-8').split()
+        
+        if not process_ids:
+            log(INFO, "No apt process running.")
+            return False
+
+        kill = subprocess.Popen(['xargs', 'kill', '-9'], stdin=subprocess.PIPE)
+        kill.communicate(input='\n'.join(process_ids).encode('utf-8'))
+
+        if kill.returncode == 0:
+            log(INFO, f"Killed processes: {process_ids}")
+            return True
+        else:
+            log(WARNING, f"Failed to kill apt parocess. Return code: {kill.returncode}")
+            return False
+
+    except Exception as e:
+        log(ERROR, f"An error occurred while killing apt process: {e}")
+        return False
+        
+
+def smake_pipe(category, package, tsvfile, writer, smake_out_dir, tries):
     log(INFO, f"Building {package} ...")
     BUILD_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "build_logs")
     if not os.path.exists(BUILD_LOG_PATH):
@@ -81,9 +113,14 @@ def smake_pipe(category, package, tsvfile, writer, smake_out_dir):
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out, err = proc.communicate(timeout=900)
     except subprocess.TimeoutExpired:
+        log(ERROR, f"building {package} has timed out")
+        if tries < 4 and kill_processes():
+            tries = tries + 1
+            log.INFO(f"Retrying building {package} ... ({tries} time(s))")
+            return smake_pipe(category, package, tsvfile, writer, smake_out_dir, tries)
+        log(ERROR, f"Failed to build {package} after {tries} retries.")
         if proc != None:
             proc.kill()
-        log(ERROR, f"building {package} has timed out")
         writer.writerow([package, 'X', '-', '-', '-','timeout'])
         tsvfile.flush()
         with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
@@ -128,7 +165,7 @@ def smake_pipe(category, package, tsvfile, writer, smake_out_dir):
     return True, next_args
             
         
-def smake():
+def smake(tries):
     packages = mk_category_dict()
     smake_out_dir = os.path.join(PKG_DIR, 'smake_out')
     if not os.path.exists(smake_out_dir):
@@ -150,6 +187,12 @@ def smake():
                                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                 proc = proc.communicate(timeout=900)
             except subprocess.TimeoutExpired:
+                        log(ERROR, f"building {package} has timed out")
+                if tries < 4 and kill_processes():
+                    tries = tries + 1
+                    log.INFO(f"Retrying building {package} ... ({tries} time(s))")
+                    return smake_pipe(category, package, tsvfile, writer, smake_out_dir, tries)
+                log(ERROR, f"Failed to build {package} after {tries} retries.")
                 proc.kill()
                 log(ERROR, f"building {package} has timed out")
                 writer.writerow([package, 'X', '-', 'timeout'])

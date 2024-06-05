@@ -27,7 +27,7 @@ def run_pipe():
         os.chdir(build.PKG_DIR)
         for package in packages:
             package = package.strip()
-            is_success, next_args = build.smake_pipe(str(category), package, tsvfile, writer, smake_out_dir)
+            is_success, next_args = build.smake_pipe(str(category), package, tsvfile, writer, smake_out_dir, 0)
             if not is_success:
                 continue
             is_success = combine.combine_pipe(next_args, tsvfile, writer)
@@ -46,7 +46,7 @@ def main():
     if config.configuration["CRWAL_ONLY"]:
         build.crawl()
     if config.configuration["BUILD_ONLY"]:
-        build.smake()
+        build.smake(0)
     if config.configuration["SPARROW_ONLY"]:
         sparrow.sparrow(config.configuration["SPARROW_TARGET_FILES"])
     if config.configuration["COMBINE_ONLY"]:
