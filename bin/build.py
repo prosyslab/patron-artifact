@@ -74,11 +74,11 @@ def smake_pipe(category, package, tsvfile, writer, smake_out_dir):
     if not os.path.exists(BUILD_LOG_PATH):
         os.mkdir(BUILD_LOG_PATH)
     proc = None
+    out = None
+    err = None
     try:
         proc = subprocess.Popen([os.path.join(PKG_DIR, 'build-deb.sh'), package, str(category)],
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        out = None
-        err = None
         out, err = proc.communicate(timeout=900)
     except subprocess.TimeoutExpired:
         if proc != None:
@@ -86,18 +86,21 @@ def smake_pipe(category, package, tsvfile, writer, smake_out_dir):
         log(ERROR, f"building {package} has timed out")
         writer.writerow([package, 'X', '-', '-', '-','timeout'])
         tsvfile.flush()
-        if out != None and err != None:
-                with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
-                    f.write(out.decode('utf-8'))
-                    f.write(err.decode('utf-8'))
+        with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
+            if out != None:
+                f.write(out.decode('utf-8'))
+            if err != None:
+                f.write(err.decode('utf-8'))
     except Exception as e:
         log(ERROR, e)
         if proc != None:
             proc.kill()
         try:
             with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
-                f.write(out.decode('utf-8'))
-                f.write(err.decode('utf-8'))
+                if out != None:
+                    f.write(out.decode('utf-8'))
+                if err != None:
+                    f.write(err.decode('utf-8'))
             log(ERROR, f"building {package} has failed")
             parsed_errors = e.stderr.decode('utf-8').split('\n')
             for error in parsed_errors[-10:]:
@@ -110,8 +113,10 @@ def smake_pipe(category, package, tsvfile, writer, smake_out_dir):
             log(ERROR, e)
             return False, []
     with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
-                f.write(out.decode('utf-8'))
-                f.write(err.decode('utf-8'))
+        if out != None:
+            f.write(out.decode('utf-8'))
+        if err != None:
+            f.write(err.decode('utf-8'))
     log(INFO, f"building {package} has succeeded")
     if not check_smake_result(os.path.join(smake_out_dir, str(category), package)):
         log(WARNING, f"{package} has no .i files")

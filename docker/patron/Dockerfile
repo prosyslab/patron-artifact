@@ -21,7 +21,7 @@ RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y make git gcc tzdata bear dpkg-dev libtinfo5 wget vim tmux opam
+    apt-get install -y make git gcc tzdata bear dpkg-dev libtinfo5 wget vim tmux opam dune
 
 RUN git clone https://github.com/prosyslab/smake.git
 RUN git clone https://github.com/prosyslab/patron-artifact.git $SRC
