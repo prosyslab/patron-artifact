@@ -6,7 +6,8 @@ import build
 import sparrow
 import config
 import combine
-    
+from import log, INFO, ERROR, WARNING
+
 def run_pipe():
     config.setup("TOP")
     if not config.configuration["PIPE_MODE"]:
@@ -20,12 +21,16 @@ def run_pipe():
     smake_out_dir = os.path.join(build.PKG_DIR, 'smake_out')
     if not os.path.exists(smake_out_dir):
         os.mkdir(smake_out_dir)
+    work_size = len(packages.keys()) * sum([len(packages[str(category)]) for category in packages.keys()])
+    work_cnt = 0
     for category in packages.keys():
         if not os.path.exists(os.path.join(smake_out_dir, str(category))):
             os.mkdir(os.path.join(smake_out_dir, str(category)))
         packages = packages[ str(category) ]
         os.chdir(build.PKG_DIR)
         for package in packages:
+            work_cnt += 1
+            log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
             package = package.strip()
             is_success, next_args = build.smake_pipe(str(category), package, tsvfile, writer, smake_out_dir, 0)
             if not is_success:
