@@ -77,6 +77,8 @@ def smake_pipe(category, package, tsvfile, writer, smake_out_dir):
     try:
         proc = subprocess.Popen([os.path.join(PKG_DIR, 'build-deb.sh'), package, str(category)],
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        out = None
+        err = None
         out, err = proc.communicate(timeout=900)
     except subprocess.TimeoutExpired:
         if proc != None:
