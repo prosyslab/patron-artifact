@@ -1,5 +1,6 @@
 parse () {
     sparrow -il -frontend claml *.i > $1
+    sed -i 's/\bconst\b//g' $1
 }
 
 com () {

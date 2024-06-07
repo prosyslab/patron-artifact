@@ -112,19 +112,20 @@ def mk_worklist():
         cnt += 1
     return worklist
 
-def run_sparrow():
-    log(WARNING, f"Running sparrow to construct databse from scratch...")
+def run_sparrow(patchweave_worklist, patron_worklist, mk_full_db=True):
+    log(WARNING, f"Running sparrow to construct databse ...")
     os.chdir(config.configuration["EXP_ROOT_PATH"])
     log(INFO, "Detailed log will be saved in {}".format(os.path.join(config.configuration["EXP_ROOT_PATH"], 'out')))
     log(INFO, "Running sparrow for patchweave benchmarks...")
-    result_patchweave = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patchweave', '-p'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    # print(patchweave_worklist)
+    result_patchweave = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patchweave', '-p', '-id'] + patchweave_worklist, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     result_patchweave.wait()
     if result_patchweave.returncode != 0:
         log(ERROR, f"Failed to run sparrow for patchweave.")
         log(ERROR, result_patchweave.stderr.read().decode('utf-8'))
         exit(1)
     log(INFO, "Running sparrow for patron benchmarks...")
-    result_patron = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patron', '-p'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    result_patron = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patron', '-p', '-id'] + patron_worklist, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     result_patron.wait()
     if result_patron.returncode != 0:
         log(ERROR, f"Failed to run sparrow for patron.")
@@ -148,21 +149,23 @@ def check_sparrow():
     global donor_list
     patron_bench_path = os.path.join(config.configuration["BENCHMARK_PATH"], "patron")
     patchweave_bench_path = os.path.join(config.configuration["BENCHMARK_PATH"], "patchweave")
+    patchweave_missing_list = []
+    patron_missing_list = []
     for file in os.listdir(patron_bench_path):
         if file.endswith('.sh'):
             continue
         if file in expriment_ready_to_go["patron"]:
             if not os.path.exists(os.path.join(patron_bench_path, file, 'bug', 'sparrow-out')):
                 log(ERROR, f"sparrow-out for {file} does not exist in {patron_bench_path}")
-                return False
+                patron_missing_list.append(str(file))
             donor_list.append(os.path.join(patron_bench_path, file))
     for file in os.listdir(patchweave_bench_path):
         if file in expriment_ready_to_go["patchweave"]:
             if not os.path.exists(os.path.join(patchweave_bench_path, file, 'donor', 'bug', 'sparrow-out')):
                 log(ERROR, f"sparrow-out for {file} does not exist in {patchweave_bench_path}")
-                return False
+                patchweave_missing_list.append(str(file))
             donor_list.append(os.path.join(patchweave_bench_path, file, 'donor'))
-    return True
+    return patchweave_missing_list, patron_missing_list
 
 def mk_database():
     tsv_file = open(os.path.join(config.configuration["OUT_DIR"], "database_{}.tsv".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
@@ -214,8 +217,9 @@ def check_database():
     return True
 
 def construct_database():
-    check_sparrow()
-    run_sparrow()
+    patchweave_works, patron_works = check_sparrow()
+    if len(patchweave_works) > 0 or len(patron_works) > 0:
+        run_sparrow(patchweave_works, patron_works)
     mk_database()
 
 def collect_job_results(PROCS, work_cnt, jobs_finished):
@@ -248,8 +252,9 @@ def main(from_top=False):
         construct_database()
         return
     if not check_database():
-        if not check_sparrow():
-            run_sparrow()
+        patchweave_works, patron_works = check_sparrow()
+        if len(patchweave_works) > 0 or len(patron_works) > 0:
+            run_sparrow(patchweave_works, patron_works)
         mk_database()
     worklist = mk_worklist()
     work_cnt = 0
