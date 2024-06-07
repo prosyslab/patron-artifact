@@ -6,7 +6,7 @@ import build
 import sparrow
 import config
 import combine
-from import log, INFO, ERROR, WARNING
+from logger import log, INFO, ERROR, WARNING
 
 def run_pipe():
     config.setup("TOP")

@@ -7,7 +7,7 @@ import csv
 import config
 import combine
 import sparrow
-from import log, INFO, ERROR, WARNING
+from logger import log, INFO, ERROR, WARNING
 
 BIN_DIR = os.path.dirname(os.path.realpath(__file__))
 PKG_DIR = os.path.join(os.path.dirname(BIN_DIR), 'package')
@@ -187,7 +187,7 @@ def smake(tries):
                                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                 proc = proc.communicate(timeout=900)
             except subprocess.TimeoutExpired:
-                        log(ERROR, f"building {package} has timed out")
+                log(ERROR, f"building {package} has timed out")
                 if tries < 4 and kill_processes():
                     tries = tries + 1
                     log.INFO(f"Retrying building {package} ... ({tries} time(s))")
