@@ -157,7 +157,7 @@ def smake_pipe(category, package, tsvfile, writer, smake_out_dir, tries):
     log(INFO, f"building {package} has succeeded")
     if not check_smake_result(os.path.join(smake_out_dir, str(category), package)):
         log(WARNING, f"{package} has no .i files")
-        writer.writerow([package, 'X', '-', '-', '-', "no .i files"])
+        writer.writerow([package, 'X', '-', '-', '-', "build error, find log at {}".format(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'))])
         tsvfile.flush()
         return False, []
     log(INFO, f"{package} has .i files!... continue to next step")
