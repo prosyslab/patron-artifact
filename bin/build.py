@@ -116,7 +116,7 @@ def smake_pipe(category, package, tsvfile, writer, smake_out_dir, tries):
         log(ERROR, f"building {package} has timed out")
         if tries < 4 and kill_processes():
             tries = tries + 1
-            log.INFO(f"Retrying building {package} ... ({tries} time(s))")
+            log(INFO, f"Retrying building {package} ... ({tries} time(s))")
             return smake_pipe(category, package, tsvfile, writer, smake_out_dir, tries)
         log(ERROR, f"Failed to build {package} after {tries} retries.")
         if proc != None:
