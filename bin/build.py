@@ -150,10 +150,13 @@ def smake_pipe(category, package, tsvfile, writer, smake_out_dir, tries):
             log(ERROR, e)
             return False, []
     with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
-        if out != None:
-            f.write(out.decode('utf-8'))
-        if err != None:
-            f.write(err.decode('utf-8'))
+        try:
+            if out != None:
+                f.write(out.decode('utf-8'))
+            if err != None:
+                f.write(err.decode('utf-8'))
+        except UnicodeDecodeError as e:
+            log(ERROR, "could not write {}, due to decoding".format(package + '_build_log.txt')
     log(INFO, f"building {package} has succeeded")
     if not check_smake_result(os.path.join(smake_out_dir, str(category), package)):
         log(WARNING, f"{package} has no .i files")
