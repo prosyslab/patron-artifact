@@ -1,11 +1,20 @@
+remove_error_prone_i_files() {
+    for file in *.i; do sed -i 's/\bconst\b//g' $file; done
+    for file in *.i; do sed -i 's/(int (char \* ))/(char \*)/g' "$file"; done
+    for file in *.i; do sed -i '/_Float/,/;/d' "$file"; done
+    for file in *.i; do sed -i 's/"[^"]*"/"-"/g' "$file"; done
+}
+
 parse () {
+    remove_error_prone_i_files
     sparrow -il -frontend claml *.i > $1
-    sed -i 's/\bconst\b//g' $1
+    remove_error_prone_i_files
 }
 
 com () {
     local filename="$1"
-    local filename_no_ext="${filename%.*}"  # Extract filename without extension
+    # Extract filename without extension
+    local filename_no_ext="${filename%.*}"  
     local directory="$2/$filename_no_ext"
     # Create the directory if it doesn't exist
     mkdir -p "$directory"
@@ -17,7 +26,6 @@ com () {
 pipe() {
    local dir=$(basename "$(pwd)")
    local filename=$dir.c
-#    err
    parse $filename
    com $filename $1
 }
