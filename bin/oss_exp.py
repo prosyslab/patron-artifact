@@ -6,6 +6,7 @@ import build
 import sparrow
 import config
 import combine
+import count_sparrow_log
 from logger import log, INFO, ERROR, WARNING
 
 def run_pipe():
@@ -43,6 +44,8 @@ def run_pipe():
                 continue
             writer.writerow([package, 'O', 'O', 'O', 'O', '-'])
             tsvfile.flush()
+    tsvfile.close()
+    count_sparrow_log.run(sparrow.SPARROW_LOG_DIR)
     return True
             
 def main():
