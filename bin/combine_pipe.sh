@@ -28,7 +28,7 @@ com () {
     mkdir -p "$directory"
 
     # Move the file to the specified directory
-    mv "$filename" "$directory/"
+    cp "$filename" "$directory/"
 }
 
 pipe() {

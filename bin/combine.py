@@ -83,10 +83,13 @@ def run_combine_pipeline():
     cmd = ["bash", os.path.join(config.configuration["FILE_PATH"], "combine_pipe.sh"), config.configuration["ANALYSIS_DIR"]]
     try:
         log(INFO, f"Running {cmd}.")
-        result = subprocess.run(cmd, capture_output=True, check=True)
+        result = subprocess.run(cmd, capture_output=True, check=True, timeout=900)
     except subprocess.CalledProcessError as e:
         log(ERROR, f"Failed to run {cmd}.")
         log(ERROR, e.stderr.decode("utf-8"))
+        return False
+    except subprocess.TimeoutExpired as e:
+        log(ERROR, f"Failed to run {cmd}. (timeout)")
         return False
     except Exception as e:
         log(ERROR, f"Failed to run {cmd}. (unexpected error)")
@@ -150,6 +153,23 @@ def run(tups):
             if not run_combine_pipeline():
                 dir_stack.remove(dir_name)
                 continue
+            c_files = [f for f in os.listdir(target_path) if f.endswith(".c")]
+            if len(c_files) == 0:
+                log(ERROR, f"No .c file found in {target_path}.")
+                writer.writerow([category, package, 'X', 'no .c'])
+                tsvfile.flush()
+                continue
+            with open(os.path.join(target_path, c_files[0]), 'r') as f:
+                line_cnt = 0
+                for line in f:
+                    line_cnt += 1
+                    if line >= 3:
+                        break
+                if line_cnt < 3:
+                    log(ERROR, f"Combine error on {c_files[0]}.")
+                    writer.writerow([category, package, 'X', 'Combine Error. Check {}'.format(os.path.join(target_dir, "sparrow-out", "log"))])
+                    tsvfile.flush()
+                    continue
             log(INFO, f"Combining {dir_name} was successful.")
             success_cnt += 1
         if success_cnt == 0:
