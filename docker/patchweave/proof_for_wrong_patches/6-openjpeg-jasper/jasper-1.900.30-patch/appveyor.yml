@@ -1,0 +1,30 @@
+# version format
+version: 1.0.{build}
+
+# build worker image (VM template)
+image:
+    - Visual Studio 2015
+    - Visual Studio 2013
+
+# Scripts that are called at the very beginning, before repository cloning.
+init:
+    - git config --global core.autocrlf input
+
+configuration:
+    - Release
+    - Debug
+
+platform:
+    - Win32
+    #- x86
+    #- x64
+
+before_build:
+    - copy src\libjasper\include\jasper\jas_config.h.in src\libjasper\include\jasper\jas_config.h
+
+build:
+  #verbosity: detailed
+  verbosity: minimal
+  project: src/msvc/jasper.sln
+
+#build: disabled
