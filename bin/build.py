@@ -103,6 +103,7 @@ def kill_processes():
 def smake_pipe(category, package, tsvfile, writer, smake_out_dir, tries):
     log(INFO, f"Building {package} ...")
     BUILD_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "build_logs")
+    BUILD_STAT_PATH = os.path.join(BUILD_LOG_PATH, package + '_build_stat.txt')
     if not os.path.exists(BUILD_LOG_PATH):
         os.mkdir(BUILD_LOG_PATH)
     proc = None
