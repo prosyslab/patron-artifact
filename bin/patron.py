@@ -64,7 +64,7 @@ def write_out_results(path, out_dir, current_job, is_failed):
                     idx = i
                     break
             end_time = parse_time(log[idx])
-            tokens = log[idx].split(' '):
+            tokens = log[idx].split(' ')
             for i in range(len(tokens)):
                 if 'for' in tokens[i]:
                     num = tokens[i+1]
@@ -96,7 +96,6 @@ def write_out_results(path, out_dir, current_job, is_failed):
                         current_job = current_job.split('-')[0] + '-' + current_job.split('-')[1]
                     for line in log_data:
                         if current_job + '\'' in line:
-                            if ''
                             break
                     local_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, elapsed, "-", diff])
                     local_stat.flush()
@@ -138,7 +137,7 @@ def mk_worklist():
     for donee, path in config.configuration["DONEE_LIST"]:
         sp = donee.split('/')
         for i in range(len(sp)):
-            if 'analysis_target' in sp[i] 
+            if 'analysis_target' in sp[i]:
                 package = '-'.join(sp[i:])
                 break
         package = donee.split('/')[-1]
