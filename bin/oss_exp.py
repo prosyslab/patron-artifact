@@ -7,6 +7,7 @@ import sparrow
 import config
 import combine
 import count_sparrow_log
+import measure_time
 from logger import log, INFO, ERROR, WARNING
 
 def run_pipe():
@@ -46,6 +47,7 @@ def run_pipe():
             tsvfile.flush()
     tsvfile.close()
     count_sparrow_log.run(sparrow.SPARROW_LOG_DIR)
+    measure_time.run_from_top(config.configuration['OUT_DIR'], measure_time.PIPE_MODE)
     return True
             
 def main():

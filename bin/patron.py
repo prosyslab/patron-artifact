@@ -9,6 +9,7 @@ import datetime
 import multiprocessing
 from time import sleep
 import time
+import measure_time
 
 expriment_ready_to_go = {
     "patron": [
@@ -78,6 +79,7 @@ def write_out_results(path, out_dir, current_job, is_failed):
             break
     if not is_patched:
         log(INFO, f"No patch is generated for {current_job}")
+    measure_time.run_from_top(config.configuration["OUT_DIR"], measure_time.PATCH_MODE)
         
 
 def run_patron(cmd, path, job_cnt, jobs_finished):
