@@ -1,6 +1,17 @@
-(\forall Lval-1766 Lval-1765 Lval-1764 Exp-1899 Exp-1898 Exp-1897.
+(\forall jpc_dec_process_siz-ENTRY jpc_dec_process_siz-19131 jpc_dec_process_siz-19130 jpc_dec_process_siz-19120 jpc_dec_process_siz-19119 Lval-1766 Lval-1765 Lval-1764 Loc-404 Loc-1363 Exp-6027 Exp-4334 Exp-1899 Exp-1898 Exp-1897.
   (ErrTrace file_read-26469 jpc_dec_process_siz-19121) <-
     (Set jpc_dec_process_siz-19121 Lval-1764 Exp-1897),
+    (Set jpc_dec_process_siz-19120 Lval-1766 Exp-6027),
+    (Set jpc_dec_process_siz-19119 Lval-1765 Exp-4334),
     (LvalExp Exp-1899 Lval-1766),
     (LvalExp Exp-1898 Lval-1765),
+    (EvalLv jpc_dec_process_siz-19121 Lval-1766 Loc-404),
+    (EvalLv jpc_dec_process_siz-19121 Lval-1765 Loc-1363),
+    (EvalLv jpc_dec_process_siz-19120 Lval-1766 Loc-404),
+    (EvalLv jpc_dec_process_siz-19119 Lval-1765 Loc-1363),
+    (DUEdge jpc_dec_process_siz-ENTRY jpc_dec_process_siz-19121),
+    (DUEdge jpc_dec_process_siz-19120 jpc_dec_process_siz-19121),
+    (DUEdge jpc_dec_process_siz-19119 jpc_dec_process_siz-19131),
+    (DUEdge jpc_dec_process_siz-19119 jpc_dec_process_siz-19130),
+    (DUEdge jpc_dec_process_siz-19119 jpc_dec_process_siz-19121),
     (BinOpExp Exp-1897 Mult Exp-1898 Exp-1899))
