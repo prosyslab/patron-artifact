@@ -21,6 +21,8 @@ def run_sparrow(file):
                                  stderr=subprocess.STDOUT)
 
 def sparrow(package, files):
+    if not os.path.exists(SPARROW_LOG_DIR):
+        os.mkdir(SPARROW_LOG_DIR)
     tsvfile = open(os.path.join(SPARROW_LOG_DIR, '{}_sparrow_stat.tsv'.format(package)), 'a')
     writer = csv.writer(tsvfile, delimiter='\t')
     writer.writerow(['Package', 'Status'])
@@ -30,7 +32,7 @@ def sparrow(package, files):
         log(INFO, f"Running sparrow for {file} ...")
         sparrow_log, process = run_sparrow(file)
         try:
-            stdout, stderr = process.communicate(timeout=3600)
+            stdout, stderr = process.communicate(timeout=900)
         except subprocess.TimeoutExpired:
             log(ERROR, f"Timeout for {file}.")
             process.kill()
@@ -85,13 +87,19 @@ def main():
     config.setup("SPARROW")
     log(INFO, "You are running sparrow.py script directly.")
     target_files = []
-    for file in config.configuration["ARGS"].files:
-        if not os.path.exists(file):
-            log(ERROR, f"{file} does not exist.")
-            main_usage()
-            exit(1)
-        target_files.append(os.path.abspath(file))
-    sparrow(target_files)
+    if len(config.configuration["ARGS"].files) == 1 and not config.configuration["ARGS"].files[0].endswith('.c'):
+        for root, dirs, files in os.walk(config.configuration["ARGS"].files[0]):
+            for file in files:
+                if file.endswith('.c'):
+                    target_files.append(os.path.abspath(os.path.join(root, file)))
+    else:
+        for file in config.configuration["ARGS"].files:
+            if not os.path.exists(file):
+                log(ERROR, f"{file} does not exist.")
+                main_usage()
+                exit(1)
+            target_files.append(os.path.abspath(file))
+    sparrow("top", target_files)
 
 if __name__ == '__main__':
     main()
