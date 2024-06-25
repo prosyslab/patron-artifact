@@ -26,12 +26,7 @@ donor_list = []
 global_stat = None
 global_writer = None
 stat_out = ""
-def parse_time(line):
-    # parse time from [20240611-06:36:10][INFO] Making facts from 14th alarm all in seconds
-    time_str = line.split('[')[1].split(']')[0]
-    return datetime.datetime.strptime(time_str, '%Y%m%d-%H:%M:%S')
-    
-    
+
 def write_out_results(path, out_dir, current_job, is_failed):
     patches = []
     log(INFO, "Writing out the results for {}...".format(current_job))
@@ -41,41 +36,17 @@ def write_out_results(path, out_dir, current_job, is_failed):
         file_cnt += 1
     with open(stat_file_name + str(file_cnt) + '.tsv', 'a') as local_stat:
         local_writer = csv.writer(local_stat, delimiter='\t')
-        local_writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type", "Time" "Correct?", "Diff"])
+        local_writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
         local_stat.flush()
-        log_data = ""
         for file in os.listdir(out_dir):
             if file.endswith('.patch'):
                 patches.append(file)
-            if file == 'log.txt':
-                log_data = file
         for patch_file in patches:
             diff = ""
             df = open(os.path.join(out_dir, patch_file), 'r')
             diff = df.read()
             df.close()
-            lf = open(os.path.join(out_dir, log_data), 'r')
-            log = lf.readlines()
-            lf.close()
-            without_ext = patch_file.split('.')[0]
-            log_target = without_ext.replace('result_', '').replace('_diff', '')
-            for i in range(len(log)):
-                if log_target in log[i]:
-                    idx = i
-                    break
-            end_time = parse_time(log[idx])
-            tokens = log[idx].split(' ')
-            for i in range(len(tokens)):
-                if 'for' in tokens[i]:
-                    num = tokens[i+1]
-                    break
-            for line in log[:i].reverse():
-                if 'Making facts from ' + num in line:
-                    start_time = parse_time(line)
-                    break
-            elapsed = end_time - start_time
-            elapsed = str(elapsed.total_seconds())
-            file_parsed = without_ext.split('_')
+            file_parsed = patch_file.split('.')[0].split('_')
             donor_num = file_parsed[1].strip()
             donee_num = file_parsed[2].strip()
             unique_str = '_' + donor_num + '_' + donee_num + '_'
@@ -90,22 +61,15 @@ def write_out_results(path, out_dir, current_job, is_failed):
                         benchmark = "patchweave"
                         donor_num = tmp_list[0].strip()
                     pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
-                    if '_' in current_job:
-                        current_job = current_job.split('_')[-2]
-                    if '-' in current_job:
-                        current_job = current_job.split('-')[0] + '-' + current_job.split('-')[1]
-                    for line in log_data:
-                        if current_job + '\'' in line:
-                            break
-                    local_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, elapsed, "-", diff])
+                    local_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     local_stat.flush()
                     global_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, elapsed, "-", diff])
                     global_stat.flush()
         if is_failed:
             msg = '----------PATRON STOPPED DUE TO UNEXPECTED ERROR----------'
-            local_writer.writerow([current_job, msg, "-", "-", "-", "-", "-", "-"])
+            local_writer.writerow([current_job, msg, "-", "-", "-", "-", "-"])
             local_stat.flush()
-            global_writer.writerow([current_job, msg, "-", "-", "-", "-" ,"-", "-"])
+            global_writer.writerow([current_job, msg, "-", "-", "-", "-" ,"-"])
             global_stat.flush()
     is_patched = False
     for file in os.listdir(out_dir):
@@ -135,11 +99,6 @@ def mk_worklist():
     worklist = []
     cnt = 0
     for donee, path in config.configuration["DONEE_LIST"]:
-        sp = donee.split('/')
-        for i in range(len(sp)):
-            if 'analysis_target' in sp[i]:
-                package = '-'.join(sp[i:])
-                break
         package = donee.split('/')[-1]
         sub_out = os.path.join(config.configuration["OUT_DIR"], package)
         db_opt = ["--db", os.path.join(config.configuration["DB_PATH"])]

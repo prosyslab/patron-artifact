@@ -6,8 +6,6 @@ import config
 import datetime
 import subprocess
 from logger import log, INFO, ERROR, WARNING
-from concurrent.futures import ThreadPoolExecutor, as_completed
-import time
 
 SPARROW_LOG_DIR = os.path.join(config.configuration['OUT_DIR'], 'sparrow_logs')
 
@@ -18,46 +16,38 @@ def run_sparrow(file):
         os.system(f'rm -rf {os.path.join(os.path.dirname(file), "sparrow-out")}')
     cmd = [config.configuration["SPARROW_BIN_PATH"], file] + config.configuration["DEFAULT_SPARROW_OPT"] + config.configuration["USER_SPARROW_OPT"]
     log(INFO, f"Running sparrow with {cmd}")
-    start_time = time.time()
-    return start_time, sparrow_log, subprocess.Popen(cmd,
+    return sparrow_log, subprocess.Popen(cmd,
                                  stdout=sparrow_log,
                                  stderr=subprocess.STDOUT)
 
 def sparrow(package, files):
     tsvfile = open(os.path.join(SPARROW_LOG_DIR, '{}_sparrow_stat.tsv'.format(package)), 'a')
     writer = csv.writer(tsvfile, delimiter='\t')
-    writer.writerow(['Package', 'Status', 'Elapsed'])
+    writer.writerow(['Package', 'Status'])
     tsvfile.flush()
     success_cnt = 0
-
-    with ThreadPoolExecutor(max_workers=20) as executor:
-        future_to_file = {executor.submit(run_sparrow, file): file for file in files}
-        
-        for future in as_completed(future_to_file):
-            file = future_to_file[future]
-            try:
-                start, sparrow_log, process = future.result()
-                stdout, stderr = process.communicate(timeout=900)
-                sparrow_log.close()
-                end = time.time()
-                elapsed = str(datetime.timedelta(seconds=end - start))
-                if process.returncode == 0:
-                    log(INFO, f"{file} is successfully analyzed.")
-                    writer.writerow([file, 'O', elapsed])
-                    success_cnt += 1
-                else:
-                    log(ERROR, f"Failed to analyze {file}.")
-                    log(ERROR, f"Check {os.path.join(os.path.dirname(file), 'sparrow_log')} for more information.")
-                    writer.writerow([file, 'X', '-'])
-            except subprocess.TimeoutExpired:
-                log(ERROR, f"Timeout for {file}.")
-                process.kill()
-                writer.writerow([file, 'X', 'TimeOut'])
-            except Exception as e:
-                log(ERROR, f"Exception for {file}: {e}")
-                writer.writerow([file, 'X', 'Exception'])
+    for file in files:
+        log(INFO, f"Running sparrow for {file} ...")
+        sparrow_log, process = run_sparrow(file)
+        try:
+            stdout, stderr = process.communicate(timeout=3600)
+        except subprocess.TimeoutExpired:
+            log(ERROR, f"Timeout for {file}.")
+            process.kill()
+            writer.writerow([file, 'X'])
             tsvfile.flush()
-
+            sparrow_log.close()
+            continue
+        sparrow_log.close()
+        if process.returncode == 0:
+            log(INFO, f"{file} is successfully analyzed.")
+            writer.writerow([file, 'O'])
+            success_cnt += 1
+        else:
+            log(ERROR, f"Failed to analyze {file}.")
+            log(ERROR, f"Check {os.path.join(os.path.dirname(file), 'sparrow_log')} for more information.")
+            writer.writerow([file, 'X'])
+        tsvfile.flush()
     tsvfile.close()
     if success_cnt == 0:
         log(ERROR, f"No file is successfully analyzed.")
