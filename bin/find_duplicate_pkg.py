@@ -44,7 +44,7 @@ def run(package_lists):
                 os.system('rm -rf *')
         except Exception as e:
             os.system('rm -rf '+ tmp_dir)    
-        os.system('cp '+ os.path.join(LIST_DIR, package_list) + ' ORIG_' + os.path.join(OUT_DIR, package_list))
+        os.system('cp '+ os.path.join(LIST_DIR, package_list) + ' ' + os.path.join(LIST_DIR, 'ORIG_' + package_list))
         with open(os.path.join(LIST_DIR, package_list), 'w') as f:
             for package, target_dir in package_map:
                 for package2, target_dir2 in package_map:
