@@ -9,12 +9,7 @@ import combine
 import count_sparrow_log
 import measure_time
 from logger import log, INFO, ERROR, WARNING
-CRWAL_ONLY = 1
-BUILD_ONLY = 2
-COMBINE_ONLY = 3
-SPARROW_ONLY = 4
-PATRON_ONLY = 5
-TOP = 6
+
 '''
 Function that runs build.py->combine.py->sparrow.py->patron.py in a pipeline
 Crawling is not included in the pipeline for convenience.(You can do this with -crawl option)
@@ -22,22 +17,13 @@ If -pipe option is not given when run directly on this file, it exits False
 Otherwise, this is the default mode, either run from run.py or run from main with -pipe option
 In some cases, pipe mode is slower than running each script separately because
 single OS can only run apt source command sequentially.
-Input: None
+*Target debian list should be given with -pipe option, otherwise, it runs on default settings.
+
+Input: Boolean, String (Both arguments indicate from where this function was called)
 Output: Boolean (True: Pipe mode confirmed, False: Pipe mode not confirmed)
 '''
-def run_pipe(from_top=False, level) -> bool:
-    lv_string = "TOP"
-    if level == CRWAL_ONLY:
-        lv_string = "CRAWL"
-    elif level == BUILD_ONLY:
-        lv_string = "BUILD"
-    elif level == COMBINE_ONLY:
-        lv_string = "COMBINE"
-    elif level == SPARROW_ONLY:
-        lv_string = "SPARROW"
-    elif level == PATRON_ONLY:
-        lv_string = "PATRON"
-    config.setup(lv_string)
+def run_pipe(level : str, from_top: bool=False ) -> bool:
+    config.setup(level)
     if not config.configuration["PIPE_MODE"] and not from_top:
         return False
     build.crawl()
@@ -45,7 +31,7 @@ def run_pipe(from_top=False, level) -> bool:
     writer = csv.writer(tsvfile, delimiter='\t')
     writer.writerow(['Package', 'Build', 'Combine', 'Sparrow','Error Msg'])
     tsvfile.flush()
-    packages = build.mk_category_dict()
+    packages = build.mk_smake_worklist()
     smake_out_dir = os.path.join(build.PKG_DIR, 'smake_out')
     if not os.path.exists(smake_out_dir):
         os.mkdir(smake_out_dir)
@@ -64,6 +50,7 @@ def run_pipe(from_top=False, level) -> bool:
             if not is_success:
                 continue
             is_success = combine.combine_pipe(next_args, tsvfile, writer)
+            assert(False)
             if not is_success:
                 continue
             is_success = sparrow.sparrow_pipe(package, tsvfile, writer)
@@ -78,26 +65,28 @@ def run_pipe(from_top=False, level) -> bool:
 
 '''
 main function chooses which procedure will be run based on the CLI arguments
+
 Input: None
 Output: None
 '''
 def main():
+    config.openings()
     if config.configuration["CRWAL_ONLY"]:
-        run_pipe(CRWAL_ONLY)
+        run_pipe("CRWAL")
     if config.configuration["BUILD_ONLY"]:
-        run_pipe(BUILD_ONLY)
+        run_pipe("BUILD")
     if config.configuration["SPARROW_ONLY"]:
-        run_pipe(SPARROW_ONLY)
+        run_pipe("SPARROW")
     if config.configuration["COMBINE_ONLY"]:
-        run_pipe(COMBINE_ONLY)
+        run_pipe("COMBINE")
     if config.configuration["PATRON_ONLY"]:
-        run_pipe(PATRON_ONLY)            
-    if run_pipe(TOP):
+        run_pipe("PATRON")            
+    if run_pipe("TOP"):
         return
     if config.configuration["CRWAL_ONLY"]:
         build.crawl()
     if config.configuration["BUILD_ONLY"]:
-        build.smake(0)
+        build.run()
     if config.configuration["SPARROW_ONLY"]:
         sparrow.sparrow(config.configuration["SPARROW_TARGET_FILES"])
     if config.configuration["COMBINE_ONLY"]:

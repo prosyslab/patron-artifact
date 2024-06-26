@@ -4,6 +4,7 @@ import sys
 import subprocess
 import oss_exp
 import patron
+import config
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 BIN_PATH = os.path.dirname(FILE_PATH)
@@ -24,31 +25,25 @@ def print_help() -> None:
 
 def usage() -> None:
     print("Usage: ./run.py [-oss | -benchmark | -help]")
-
-def openings() -> None:
-    print('______  ___ ___________ _____ _   _ ')
-    print('| ___ \/ _ \_   _| ___ \  _  | \ | |')
-    print('| |_/ / /_\ \| | | |_/ / | | |  \| |')
-    print('|  __/|  _  || | |    /| | | | . ` |')
-    print('| |   | | | || | | |\  \\ \_/ / |\  |')
-    print('\_|   \_| |_/\_/ \_| \_|\___/\_| \_/\n')
-    print('                             v.0.0.1')
-    print('                by prosys lab, KAIST\n')
     
 '''
 Function that runs /bin/oss_exp.py
+Target debian list is default settings if run from here
+Otherwise, consider running from oss.exp.py
 This corresponds to RQ3 in the paper
+
 Input: None
 Output: None
 '''
 def oss_experiment() -> None:
     print("You have chosen OSS experiment")
-    oss_exp.run_pipe(True, oss_exp.TOP)
+    oss_exp.run_pipe("TOP", from_top=True)
     patron.main(True)
     
 '''
 Function that runs /patron-experiment/bin/experiment.sh
 This corresponds to RQ1 and RQ2 in the paper
+
 Input: None
 Output: None
 '''
@@ -63,11 +58,12 @@ def benchmark_experiment() -> None:
 '''
 Function that checks command line arguments
 If nothing is given, it enters user-interaction mode
+
 Input: None
 Output: int (1: OSS Experiment, 2: Benchmark Experiment, 0: Nothing given)
 '''
 def check_cli_input() -> int:
-    if len(sys.argv) != 2:
+    if len(sys.argv) > 2:
         usage()
         sys.exit(1)
     if len(sys.argv) == 1:
@@ -86,6 +82,7 @@ def check_cli_input() -> int:
 '''
 Function that checks command line arguments
 If nothing is given, it enters user-interaction mode
+
 Input: None
 Output: int (1: OSS Experiment, 2: Benchmark Experiment)
 '''
@@ -107,7 +104,7 @@ def choose_experiment() -> int:
         
 
 def main():
-    openings()
+    config.openings()
     experiment = choose_experiment()
     if experiment == OSS_EXPERIMENT:
         oss_experiment()

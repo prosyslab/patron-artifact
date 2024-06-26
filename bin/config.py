@@ -37,6 +37,16 @@ configuration = {
     "DB_NAME": "patron-DB",
 }
 
+def openings() -> None:
+    print('______  ___ ___________ _____ _   _ ')
+    print('| ___ \/ _ \_   _| ___ \  _  | \ | |')
+    print('| |_/ / /_\ \| | | |_/ / | | |  \| |')
+    print('|  __/|  _  || | |    /| | | | . ` |')
+    print('| |   | | | || | | |\  \\ \_/ / |\  |')
+    print('\_|   \_| |_/\_/ \_| \_|\___/\_| \_/\n')
+    print('                             v.0.0.1')
+    print('                by prosys lab, KAIST\n')
+
 def __get_logger(level):
     __logger = logging.getLogger("logger")
     formatter = logging.Formatter("[%(levelname)s][%(asctime)s] %(message)s")
@@ -176,6 +186,7 @@ def setup(level):
     if level != "PATRON_PIPE" and level != "PATRON":
         level = "TOP"
     if level == "TOP":
+        parser.add_argument("-oss", action="store_true", default=False, help="run the OSS experiment")
         parser.add_argument("-build", "-b", nargs="*", default=["None"], help="build the given path for category list(s) of package only (default:all)")
         parser.add_argument("-crawl", "-c", action="store_true", default=False, help="crawl the package list from the web only")
         parser.add_argument("-combine", "-m", nargs="*", default=["None"], help="combine *.i files into .c in the the given directory for packages only (default:all)")
@@ -184,6 +195,8 @@ def setup(level):
         parser.add_argument("-pipe", nargs="*", default=["None"], help="run the sparrow in pipe mode (build->combine->sparrow)")
         parser = parse_sparrow_opt(parser)
         configuration["ARGS"] = parser.parse_args()
+        if configuration["ARGS"].oss:
+            configuration["ARGS"].pipe = ["all"]
         if configuration["ARGS"].pipe == []:
             configuration["ARGS"].pipe = ["all"]
         if configuration["ARGS"].pipe[0] != "None":
@@ -213,7 +226,7 @@ def setup(level):
             configuration["COMBINE_ONLY"] = True
         if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"] and not configuration["PATRON_ONLY"] and configuration["ARGS"].pipe == ["all"]:
             configuration["PIPE_MODE"] = True
-            configuration["ARGS"].pipe = [os.path.join(configuration["LIST_DIR"], 'experiment_setup.txt')]
+            configuration["ARGS"].pipe = [os.path.join(configuration["LIST_DIR"], 'test.txt')]
         if configuration["CSV_FOR_STAT"]:
             configuration["CSV_FOR_STAT"] = True
         if configuration["SPARROW_ONLY"]:

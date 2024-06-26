@@ -7,47 +7,78 @@ import re
 from pathlib import Path
 import csv
 import datetime
+from typing import TextIO
 
 COMBINE_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "combine_logs")
 
-def write_combine_log(log_path, contents):
+
+'''
+Separate logging function to record shell stdout and stderr.
+
+Input: String (log path), String (contents (msg))
+Output: None
+'''
+def write_combine_log(log_path:str, contents:str) -> None:
     with open(log_path, 'a') as f:
         f.write(contents)
         f.write('\n')
+'''
+Function with various filtering strategy
+This function makes sure that the filtered candidate is combinable.
 
-def filter_combine_candidate(log_path, candidate, target_path, dir_stack, tsvfile, writer, category, package):
+Input: String (target path), String (log path), TextIO (tsvfile), csv.writer, String (category), String (package)
+Output: bool (True: success, False: fail), String (file name), list of Strings (path list)
+'''
+def filter_combine_candidate(log_path:str, candidate:str, target_path:str, file_stack:list, tsvfile:TextIO , writer:csv.writer, category:str, package:str) -> tuple[bool, str, list]:
     file_path = candidate.split(':')[0]
-    dir_path = os.path.dirname(os.path.join(target_path, file_path))
-    file_name = file_path.split('/')[-1] if '/' in file_path else "."
-    if file_name != ".":
-        dir_name = file_path.split('/')[-2]
-    if file_name.endswith(','):
-        file_name = "".join(file_name.split('-')[:len(file_name.split('-'))-1])
-    log(INFO, file_name)
-    if not re.match(r'^[0-9a-f]{1,3}\.(.*?)\.i$', file_name):
-        log(WARNING, f"{file_name} is not in the correct format.")
-        write_combine_log(log_path, f"{file_name} is not in the correct format.")
-        return False, "", dir_stack
-    elif dir_name in dir_stack:
-        log(WARNING, f"{dir_name} is already combined. Skipping it.")
-        write_combine_log(log_path, f"{dir_name} is already combined. Skipping it.")
-        return False, "", dir_stack
-    dir_stack.append(dir_name)
-    os.chdir(dir_path)
-    files = os.listdir()
-    ii_files = [f for f in files if f.endswith(".ii")]
-    if len(ii_files) != 0:
-        log(ERROR, f".ii(.cpp) files found in {dir_name}. Skipping it.")
-        write_combine_log(log_path, f".ii(.cpp) files found in {dir_name}. Skipping it.")
-        writer.writerow([category, package, 'X', 'cpp'])
-        tsvfile.flush()
-        return False, "", dir_stack
-    if not find_err_files():
-        dir_stack.remove(dir_name)
-        return False, "", dir_stack
-    return True, dir_name, dir_stack
+    full_path = os.path.dirname(os.path.join(target_path, file_path))
     
-def run_grep_to_find_main(target_path, log_path, tsvfile, writer, category, package):
+    path_split = file_path.split('/')
+    file_name = path_split[-2]
+    path_list = []
+    for i in range(len(path_split) - 1):
+        if path_split[i] == '.libs':
+            path_list = path_split[i+1:-1]
+            break
+    if path_list == []:
+        path_list = path_split[:-1]
+    path_list = [ package ] + path_list
+    log(INFO, 'Attempting to filter {}'.format(file_name))
+    # strat1
+    if 'sparrow' in path_split:
+        log(WARNING, f"{file_path} is not a candidate for combining.(sparrow duplicate)")
+        write_combine_log(log_path, f"{file_path} is not a candidate for combining.(sparrow duplicate)")
+        return False, "", []
+    if not re.match(r'^[0-9a-f]{1,3}\.(.*?)\.i$', path_split[-1]):
+        log(WARNING, f"{path_split[-1]} is not in the correct format.")
+        write_combine_log(log_path, f"{path_split[-1]} is not in the correct format.")
+        return False, "", []
+    elif file_name in file_stack:
+        log(WARNING, f"{file_name} is already combined. Skipping it.")
+        write_combine_log(log_path, f"{file_name} is already combined. Skipping it.")
+        return False, "", []
+    # strat3
+    ii_files = [f for f in os.listdir(full_path) if f.endswith(".ii")]
+    if len(ii_files) != 0:
+        log(ERROR, f".ii(.cpp) files found in {file_name}. Skipping it.")
+        write_combine_log(log_path, f".ii(.cpp) files found in {file_name}. Skipping it.")
+        writer.writerow([category, package, '/'.join(path_list), 'X', 'cpp'])
+        tsvfile.flush()
+        return False, "", []
+    if not find_err_files(full_path):
+        log(WARNING, f"bin/find_error_file.sh failed. This could cause a problem when combining.")
+    return True, file_name, path_list
+
+'''
+Function that runs bin/grep.sh script
+This is to find main functions in each binary
+Some *.i files do not have main functions, and we need to filter them out because Sparrow
+cannot analyze main-less program.
+
+Input: String (target path), String (log path), TextIO (tsvfile), csv.writer, String (category), String (package)
+Output: bool (True: success, False: fail)
+'''
+def run_grep_to_find_main(target_path:str, log_path:str, tsvfile:TextIO, writer:csv.writer, category:str, package:str) -> tuple[bool, str]:
     os.chdir(target_path)
     command = ["bash", os.path.join(config.configuration["FILE_PATH"], "grep.sh")]
     log(INFO, f"Running {command}.")
@@ -60,27 +91,46 @@ def run_grep_to_find_main(target_path, log_path, tsvfile, writer, category, pack
         log(ERROR, f"Failed to run {command}.")
         log(ERROR, e)
         write_combine_log(log_path, e.stderr.decode("utf-8"))
-        writer.writerow([category, package, 'X', 'grep error'])
+        writer.writerow([category, package, 'all', 'X', 'grep error'])
         tsvfile.flush()
         return False, ""
     except Exception as e:
         log(ERROR, f"Failed to run {command}. (unexpected error)")
         log(ERROR, e)
         write_combine_log(log_path, e)
-        writer.writerow([category, package, 'X', 'unexpected error'])
+        writer.writerow([category, package, 'all', 'X', 'unexpected grep error'])
         tsvfile.flush()
         return False, ""
     if output == "":
         log(ERROR, f"main function not found in {package}.")
         write_combine_log(log_path, "main function not found.")
         log(WARNING, f"Skipping {package} ...")
-        writer.writerow([category, package, 'X', 'no main'])
+        writer.writerow([category, package, 'all', 'X', 'grep:no main'])
         tsvfile.flush()
         return False, output
     return True, output
+'''
+Function that runs bin/combine_pipe.sh script
+This script includes 2 main steps:
+1) apply 5 different heuristics to get rid of CIL parsing errors (for example, replace const str assignment to strcpy)
+2) combine *.i files to one .c file using Sparrow -il option
 
-def run_combine_pipeline():
-    cmd = ["bash", os.path.join(config.configuration["FILE_PATH"], "combine_pipe.sh"), config.configuration["ANALYSIS_DIR"]]
+Input: String (original path (at package/smake_out/), String (file name (without extension)), list of Strings (path list to the file)
+Output: bool (True: success, False: fail)
+'''
+def run_combine_pipeline(orig_path:str, file_name:str, path_list:list) -> bool:
+    os.chdir(orig_path)
+    path = config.configuration["ANALYSIS_DIR"]
+    cnt = 0
+    for p in path_list:
+        if cnt == 0:
+            path = os.path.join(path, '_' + p)
+        else:
+            path = os.path.join(path, p)
+        cnt += 1
+        if not os.path.exists(path):
+            os.makedirs(path)
+    cmd = ["bash", os.path.join(config.configuration["FILE_PATH"], "combine_pipe.sh")]
     try:
         log(INFO, f"Running {cmd}.")
         result = subprocess.run(cmd, capture_output=True, check=True, timeout=900)
@@ -97,9 +147,16 @@ def run_combine_pipeline():
     log(INFO, result.stdout.decode("utf-8"))
     return True
     
+'''
+Function that runs bin/find_error_file.sh script
+As one of the filtering strategies, we first run CIL parser via Sparrow to find un-parseable files
 
-def find_err_files():
-    cmd = ["bash", os.path.join(config.configuration["FILE_PATH"], "find_error_file.sh")]
+Input: String (full path of directory where *.i files are)
+Output: bool (True: success, False: fail)
+'''
+def find_err_files(full_path:str) -> bool:
+    os.chdir(full_path)
+    cmd = ["bash", os.path.join(config.configuration["FILE_PATH"], "find_error_file.sh"), full_path]
     try:
         log(INFO, f"Running {cmd}.")
         reulst = subprocess.run(cmd, capture_output=True, check=True)
@@ -112,97 +169,118 @@ def find_err_files():
         return False
     return True
     
+'''
+Function that controls the whole process of combining *.i files into .c files
+This process is needed to generate one Cil file (.c) that can be analyzed by Sparrow
+and diff-computable by Patron.
+This process consists of 3 steps:
+1) Find separate binaries that can be combined (shown as *.i files -> contains linked files for each binary)
+2) Filter all the un-combinable *.i files (.ii is cpp, and some formats are unstable. We put various heuristics to filter them out.)
+3) Combine the binaries into one file using Sparrow -il option (CIL Parser)
+This function is kept unfunctional and long to keep in mind that the filtering strategies are supposed to be in this order.
 
-def run(tups):
+Input: list of tuples (category, package)
+Output: bool (True: success, False: fail)
+'''
+def run(tups: list) -> bool:
     global COMBINE_LOG_PATH
     COMBINE_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "combine_logs")
     if not os.path.exists(COMBINE_LOG_PATH):
         os.mkdir(COMBINE_LOG_PATH)
-    if len(tups) == 1:
-        tsvfile = open(os.path.join(COMBINE_LOG_PATH, '{}_combine_stat.tsv'.format(tups[0][1])), 'a')
-    else:
-        tsvfile = open(os.path.join(COMBINE_LOG_PATH, '{}_combine_stat.tsv'.format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
+    tsvfile = open(os.path.join(COMBINE_LOG_PATH, '{}_combine_stat.tsv'.format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
     writer = csv.writer(tsvfile, delimiter='\t')
-    writer.writerow(['Category', 'Package',	'Combined', 'Note'])
+    writer.writerow(['Category', 'Package', 'File', 'Combined', 'Note'])
     tsvfile.flush()
     out_dir = config.configuration["ANALYSIS_DIR"]
-    success_cnt = 0
+    pkg_success_cnt = 0
     for category, package in tups:
-        file_stack = []
-        dir_stack = []
-        reason = ""
+        file_info = dict()
         target_path = os.path.join(config.configuration["SMAKE_OUT_DIR"], category, package)
         log_path = os.path.join(COMBINE_LOG_PATH, f"{package}_combine_log.txt")
         log(INFO, f"Beginning to Combine <{package}> of <{category}> category ...")
         if not os.path.exists(target_path):
-            log(ERROR, f"{target_path} does not exist.")
-            writer.writerow([category, package, 'X', 'not exist'])
+            log(ERROR, f"{target_path} does not exist. This is because Smake failed")
+            writer.writerow([category, package, 'all', 'X', 'not exist'])
             continue
         is_success, output = run_grep_to_find_main(target_path, log_path, tsvfile, writer, category, package)
         if not is_success:
             continue
         success_cnt = 0
-        log(INFO, f"Found {len(output)} main functions.")
+        file_stack = []
         write_combine_log(log_path, f"Found {len(output)} main functions.")
         for candidate in output:
             write_combine_log(log_path, f"candidates:{candidate}")
-        for candidate in output:
-            is_success, dir_name, dir_stack = filter_combine_candidate(log_path, candidate, target_path, dir_stack, tsvfile, writer, category, package)
-            if not is_success:
-                continue
-            if not run_combine_pipeline():
-                dir_stack.remove(dir_name)
-                continue
-            c_files = [f for f in os.listdir(target_path) if f.endswith(".c")]
-            if len(c_files) == 0:
-                log(ERROR, f"No .c file found in {target_path}.")
-                writer.writerow([category, package, 'X', 'no .c'])
+            is_success, file_name, path_list = filter_combine_candidate(log_path, candidate, target_path, file_stack, tsvfile, writer, category, package)
+            if is_success:
+                file_info[file_name] = (os.path.join(target_path, '/'.join(candidate.split(':')[0].split('/')[:-1])), path_list)
+                file_stack.append(file_name)
+        log(INFO, f"{len(output)} main functions got filtered down to {len(file_stack)} candidates.")
+
+        for file_name, (orig_path, path_list) in file_info.items():
+            if not run_combine_pipeline(orig_path, file_name, path_list):
+                writer.writerow([category, package, '/'.join(path_list), 'X', 'combine error'])
                 tsvfile.flush()
                 continue
-            with open(os.path.join(target_path, c_files[0]), 'r') as f:
+            c_files = [f for f in os.listdir(orig_path) if f.endswith(".c")]
+            if len(c_files) == 0:
+                log(ERROR, f"No .c file found in {orig_path}.")
+                writer.writerow([category, package, '/'.join(path_list), 'X', 'no .c'])
+                tsvfile.flush()
+                continue
+            log(WARNING,f"cp {os.path.join(orig_path, c_files[0])} {os.path.join(config.configuration['ANALYSIS_DIR'], '/'.join(path_list), c_files[0])}")
+            os.system(f"cp {os.path.join(orig_path, c_files[0])} {os.path.join(config.configuration['ANALYSIS_DIR'], '_' + '/'.join(path_list), c_files[0])}")
+            # checking strats
+            cnt = 0
+            for p in path_list:
+                if cnt == 0:
+                    file_path = os.path.join(config.configuration["ANALYSIS_DIR"], '_' + p)
+                else:
+                    file_path = os.path.join(file_path, p)
+                cnt += 1
+                if not os.path.exists(file_path):
+                    os.makedirs(file_path)
+            c_files = [f for f in os.listdir(file_path) if f.endswith(".c")]
+            if len(c_files) == 0:
+                log(ERROR, f"No .c file found in {file_path}.")
+                writer.writerow([category, package, '/'.join(path_list), 'X', 'no .c'])
+                tsvfile.flush()
+                continue
+            with open(os.path.join(file_path, c_files[0]), 'r') as f:
                 line_cnt = 0
                 for line in f:
                     line_cnt += 1
-                    if line >= 3:
+                    if line_cnt >= 3:
                         break
                 if line_cnt < 3:
                     log(ERROR, f"Combine error on {c_files[0]}.")
-                    writer.writerow([category, package, 'X', 'Combine Error. Check {}'.format(os.path.join(target_dir, "sparrow-out", "log"))])
+                    writer.writerow([category, package, '/'.join(path_list), 'X', 'Combine Error. Check {}'.format(log_path)])
                     tsvfile.flush()
                     continue
-            log(INFO, f"Combining {dir_name} was successful.")
+            log(INFO, f"Combining {file_name} was successful.")
+            writer.writerow([category, package, '/'.join(path_list), 'O', "-"])
+            tsvfile.flush()
             success_cnt += 1
         if success_cnt == 0:
-            log(ERROR, f"Failed to combine {package}.")
-            writer.writerow([category, package, 'X', 'no success'])
+            log(ERROR, f"Failed to combine {package}. No combine was successful.")
+            writer.writerow([category, package, 'all', 'X', 'no success'])
             tsvfile.flush()
             continue
-        os.chdir(out_dir)
-        package_out = os.path.join(out_dir, package)
-        if not os.path.exists(package_out):
-            os.makedirs(package_out)
-        for dir_name in dir_stack:
-            if dir_name == package:
-                continue
-            log(INFO, f"Moving {dir_name} to {package_out}.")
-            result = subprocess.run(["mv", dir_name, package_out])
-            if result.returncode != 0:
-                log(ERROR, f"Failed to move {dir_name} to {package_out}.")
-                log(ERROR, result.stdout)
-                log(ERROR, result.stderr)
-                continue
-        writer.writerow([category, package, 'O', "-"])
         log(INFO, f"Combining {package} was successful. {success_cnt} files were combined.")
         tsvfile.flush()
-        success_cnt += 1
+        pkg_success_cnt += 1
     tsvfile.close()
-    if success_cnt == 0:
+    if pkg_success_cnt == 0:
         log(ERROR, "No package was combined.")
         return False
     return True
-        
 
-def process_top_level_call(dirs):
+'''
+Function that controls the calls from top level files (bin/oss_exp.py and bin/run.py)
+
+Input: List of Strings (directories under package/smake_out)
+Output: Tuples of Strings (category, package)
+'''
+def process_top_level_call(dirs:list) -> list:
     if dirs == ["all"]:
         log(ERROR, "Combining all packages is not supported yet.")
         exit(1)
@@ -220,8 +298,14 @@ def process_top_level_call(dirs):
             category = sp[-2]
         tups.append((category, package))
     return tups
+'''
+Function called from -pipe option of bin/run.py
 
-def combine_pipe(dirs, tsvfile, writer):
+Input: List of Strings (directories under package/smake_out)
+TextIO (tsvfile), csv.writer
+Output: bool (True: success, False: fail)
+'''
+def combine_pipe(dirs:list, tsvfile:TextIO, writer:csv.writer) -> bool:
     tups = process_top_level_call(dirs)
     if tups == []:
         log(ERROR, "No valid package found.")
@@ -229,21 +313,15 @@ def combine_pipe(dirs, tsvfile, writer):
         tsvfile.flush()
         return False
     return run(tups)
-    
+
+'''
+Function called from -combine option of bin/oss_exp.py
+This function is not connected with other pipeline procedures
+make sure -combine option is entered with list of paths under package/smake_out
+Otherwise, it won't work
+
+Input: None
+Output: None
+'''
 def oss_main():
     run(process_top_level_call(config.configuration["ARGS"].combine))
-
-def main():
-    config.setup("COMBINE")
-    with open(config.configuration["ARGS"].file, 'r') as f:
-        # file must be in category\tpackage format
-        packages = f.readlines()
-        tups = []
-        for package in packages:
-            package = package.split('\t')
-            package = (package[0].strip(), package[1].strip())
-            tups.append(package)
-    run(tups)
-    
-if __name__ == '__main__':
-    main()

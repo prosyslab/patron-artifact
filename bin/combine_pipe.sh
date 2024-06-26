@@ -19,23 +19,10 @@ parse () {
     remove_error_prone_c_files
 }
 
-com () {
-    local filename="$1"
-    # Extract filename without extension
-    local filename_no_ext="${filename%.*}"  
-    local directory="$2/$filename_no_ext"
-    # Create the directory if it doesn't exist
-    mkdir -p "$directory"
-
-    # Move the file to the specified directory
-    cp "$filename" "$directory/"
-}
-
 pipe() {
    local dir=$(basename "$(pwd)")
    local filename=$dir.c
    parse $filename
-   com $filename $1
 }
 
-pipe $1
+pipe
