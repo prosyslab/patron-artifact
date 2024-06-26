@@ -64,7 +64,7 @@ def write_out_results(path, out_dir, current_job, is_failed):
                     pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
                     local_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     local_stat.flush()
-                    global_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, elapsed, "-", diff])
+                    global_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     global_stat.flush()
         if is_failed:
             msg = '----------PATRON STOPPED DUE TO UNEXPECTED ERROR----------'
@@ -79,7 +79,7 @@ def write_out_results(path, out_dir, current_job, is_failed):
             break
     if not is_patched:
         log(INFO, f"No patch is generated for {current_job}")
-    measure_time.run_from_top(config.configuration["OUT_DIR"], measure_time.PATCH_MODE)
+    # measure_time.run_from_top(config.configuration["OUT_DIR"], measure_time.PATCH_MODE)
         
 
 def run_patron(cmd, path, job_cnt, jobs_finished):
