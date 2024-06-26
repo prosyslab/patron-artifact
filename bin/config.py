@@ -33,7 +33,8 @@ configuration = {
     "USER_SPARROW_OPT": [],
     "SPARROW_TARGET_FILES": [],
     "DONEE_LIST": [],
-    "PROCESS_LIMIT": 10
+    "PROCESS_LIMIT": 10,
+    "DB_NAME": "patron-DB",
 }
 
 def __get_logger(level):
@@ -48,6 +49,14 @@ def __get_logger(level):
         configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_pipe')
     elif level == "PATRON" or "PATRON_PIPE":
         configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_patch')
+    elif level == "SPARROW":
+        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_sparrow')
+    elif level == "COMBINE":
+        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_combine')
+    elif level == "BUILD":
+        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_build')
+    elif level == "CRAWL":
+        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_crawl')
     os.mkdir(configuration["OUT_DIR"])
     file_handler = logging.FileHandler(
         os.path.join(configuration["OUT_DIR"], "log_{}.txt".format(configuration["START_TIME"])))
@@ -164,6 +173,8 @@ def setup(level):
             os.mkdir(configuration["ANALYSIS_DIR"])
     if level != "PATRON_PIPE":
         parser = argparse.ArgumentParser()
+    if level != "PATRON_PIPE" and level != "PATRON":
+        level = "TOP"
     if level == "TOP":
         parser.add_argument("-build", "-b", nargs="*", default=["None"], help="build the given path for category list(s) of package only (default:all)")
         parser.add_argument("-crawl", "-c", action="store_true", default=False, help="crawl the package list from the web only")
@@ -234,10 +245,12 @@ def setup(level):
         configuration["PATRON_ONLY"] = True
         parser.add_argument("-donee", "-d", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
         parser.add_argument("-database", "-db", action="store_true", default=False, help="construct patron-DB only")
+        parser.add_argument("-dbname", "-dn", type=str, default="patron-DB", help="name of the database(default:patron-DB")
         parser.add_argument("-process", '-p', type=int, default=1, help="number of threads to run")
         configuration["ARGS"] = parser.parse_args()
         if configuration["ARGS"].database:
             configuration["DATABASE_ONLY"] = True
+            configuration["DB_Name"] = configuration["ARGS"].dbname 
         else:
             logger.log("INFO", "Configuring target donee files under given directories {}".format(configuration["ARGS"].donee))
             target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].donee ]

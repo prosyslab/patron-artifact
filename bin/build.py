@@ -8,6 +8,7 @@ import config
 import combine
 import sparrow
 from logger import log, INFO, ERROR, WARNING
+import find_duplicate_pkg
 
 BIN_DIR = os.path.dirname(os.path.realpath(__file__))
 PKG_DIR = os.path.join(os.path.dirname(BIN_DIR), 'package')
@@ -38,12 +39,17 @@ def mk_category_dict():
             with open(os.path.join(package), 'r') as f:
                 categories[category_name] = [ line.strip() for line in f.readlines()]
         return categories
-
-def crawl():
-    log(INFO, "Retrieving the list of Debian packages from web ...")
+    
+'''
+Function that runs package/debian_crawler.py
+Check crawl() function for more details
+Input: None
+Output: Boolean (True: Package list is retrieved, False: Package list is not retrieved)
+'''
+def get_package_list_from_web() -> bool:
     if os.path.exists(LIST_DIR):
         log(WARNING, "The package list directory already exists. Skip crawling.")
-        return
+        return False
     status = subprocess.run(
         [sys.executable,
         os.path.join(PKG_DIR, 'debian_crawler.py')],
@@ -51,6 +57,32 @@ def crawl():
     if status.returncode != 0:
         log(ERROR, "Failed to retrieve the list of packages.")
         exit(1)
+    return True
+        
+'''
+Function that crawls the Debian package list from the bookworm and save them based on the project category.
+This function is called when -crawl option is given.
+It has two parts:
+1) Retrieve the list of Debian packages from web and save them in the package/debian_lists directory
+2) Check duplicated packages within each category and remove them
+This is because packages with different web names can actually be the same package.
+This function prematurely exits if the package list directory already exists.
+Delete the directory if you want to crawl again.
+Input: None
+Output: None
+'''
+def crawl() -> None:
+    log(INFO, "Retrieving the list of Debian packages from web ...")
+    if not get_package_list_from_web():
+        return
+    log(INFO, "Packages are retrieved.")
+    log(INFO, "Checking duplicated packages ...")
+    find_duplicate_pkg.run([os.path.join(LIST_DIR, file) for file in os.listdir(LIST_DIR) if file.endswith(".txt")])
+    log(INFO, "Crawling Summary:")
+    for file in os.listdir(os.path.join(PKG_DIR, 'debian_lists')):
+        if file.endswith(".txt"):
+            with open(os.path.join(LIST_DIR, file), 'r') as f:
+                log(INFO, f"{file} has {len(f.readlines())} packages.")
     log(INFO, "Package Lists are created at {}.".format(os.path.join(PKG_DIR, 'debian_lists')))
 
 def check_smake_result(path):

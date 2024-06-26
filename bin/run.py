@@ -14,7 +14,7 @@ BENCHMARK_EXP_SCRIPT_PATH = os.path.join(BENCHMARK_EXP_BIN_PATH, 'experiment.sh'
 OSS_EXPERIMENT = 1
 BENCHMARK_EXPERIMENT = 2
 
-def print_help():
+def print_help() -> None:
     print("Usage: ./run.py [-oss | -benchmark | -help]")
     print("\nOptions:")
     print("\t-oss: Run OSS experiment(Corresponding to the Experiment 4 in the paper)")
@@ -22,7 +22,10 @@ def print_help():
     print("\t-help: Display this help message")
     print("\n\t Checkout README.md for more information on low level executions.")
 
-def openings():
+def usage() -> None:
+    print("Usage: ./run.py [-oss | -benchmark | -help]")
+
+def openings() -> None:
     print('______  ___ ___________ _____ _   _ ')
     print('| ___ \/ _ \_   _| ___ \  _  | \ | |')
     print('| |_/ / /_\ \| | | |_/ / | | |  \| |')
@@ -31,21 +34,39 @@ def openings():
     print('\_|   \_| |_/\_/ \_| \_|\___/\_| \_/\n')
     print('                             v.0.0.1')
     print('                by prosys lab, KAIST\n')
-
-def oss_experiment():
+    
+'''
+Function that runs /bin/oss_exp.py
+This corresponds to RQ3 in the paper
+Input: None
+Output: None
+'''
+def oss_experiment() -> None:
     print("You have chosen OSS experiment")
-    oss_exp.run_pipe()
+    oss_exp.run_pipe(True, oss_exp.TOP)
     patron.main(True)
     
-def benchmark_experiment():
+'''
+Function that runs /patron-experiment/bin/experiment.sh
+This corresponds to RQ1 and RQ2 in the paper
+Input: None
+Output: None
+'''
+def benchmark_experiment() -> None:
     print("You have chosen benchmark experiment")
     if not os.path.exists(BENCHMARK_EXP_SCRIPT_PATH):
         print("Experiment file not found")
         sys.exit(1)
     os.chdir(BENCHMARK_EXP_PATH)
     status = subprocess.run([BENCHMARK_EXP_SCRIPT_PATH])
-
-def check_input():
+    
+'''
+Function that checks command line arguments
+If nothing is given, it enters user-interaction mode
+Input: None
+Output: int (1: OSS Experiment, 2: Benchmark Experiment, 0: Nothing given)
+'''
+def check_cli_input() -> int:
     if len(sys.argv) != 2:
         usage()
         sys.exit(1)
@@ -61,9 +82,15 @@ def check_input():
     else:
         usage()
         sys.exit(1)
-    
-def choose_experiment():
-    target_experiment = check_input()
+        
+'''
+Function that checks command line arguments
+If nothing is given, it enters user-interaction mode
+Input: None
+Output: int (1: OSS Experiment, 2: Benchmark Experiment)
+'''
+def choose_experiment() -> int:
+    target_experiment = check_cli_input()
     if target_experiment == 0:
         target_experiment = input("Choose the experiment to run: \n\t1. OSS Experiment(Corresponding to the Experiment 4 in the paper)\n\t2. Benchmark Experiment(Experiment 1, 2, 3)\nEnter exit to quit")
         if target_experiment == '1' or target_experiment == 'OSS Experiment':
@@ -78,9 +105,6 @@ def choose_experiment():
     else:
         return target_experiment
         
-            
-def usage():
-    print("Usage: ./run.py [-oss | -benchmark | -help]")
 
 def main():
     openings()

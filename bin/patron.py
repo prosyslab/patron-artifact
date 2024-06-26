@@ -207,10 +207,12 @@ def mk_database():
             log(INFO, f"Successfully created patron-DB for {donor}")
             writer.writerow([donor.split('/')[-2], donor.split('/')[-1], "O"])
     log(INFO, "Successfully finished making patron-DB.")
+    log(INFO, "Copying the database to the root directory as {}...".format(config.configuration["DB_NAME"]))
+    os.system('cp -r {} {}'.format(os.path.join(config.configuration["PATRON_ROOT_PATH"], 'patron-DB'), os.path.join(config.configuration["ROOT_PATH"], config.configuration["DB_NAME"])))
     tsv_file.close()
 
 def check_database():
-    if not os.path.exists(os.path.join(config.configuration["ROOT_PATH"], 'patron-DB')):
+    if not os.path.exists(os.path.join(config.configuration["ROOT_PATH"], config.configuration["DB_NAME"])):
         log(ERROR, "patron-DB does not exist.")
         return False
     return True
