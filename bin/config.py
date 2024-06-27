@@ -49,9 +49,26 @@ def openings() -> None:
     print('                             v.0.0.1')
     print('                by prosys lab, KAIST\n')
 
+def patron_exit(stage:str):
+    outpath = ""
+    if stage == "BUILD":
+        outpath = configuration["SMAKE_OUT_DIR"]
+    elif stage == "CRAWL":
+        outpath = configuration["LIST_DIR"]
+    elif stage == "COMBINE":
+        outpath = configuration["ANALYSIS_DIR"]
+    elif stage == "SPARROW":
+        outpath = configuration["ANALYSIS_DIR"]
+    elif stage == "PATRON":
+        outpath = configuration["OUT_DIR"]
+    bad_ending(outpath)
+    
+        
+    
+
 def happy_ending(out_path:str) -> None:
-    print('                                       .''.       ')
-    print('          .''.      .        *''*    :_\/_:     . ')
+    print('                                     .''.       ')
+    print('           .''.      .        *''*    :_\/_:     . ')
     print('      :_\/_:   _\(/_  .:.*_\/_*   : /\ :  .\'.:.\'.')
     print('    .''.: /\ :   ./)\   \':\'* /\ * :  \'..\'.  -=:o:=-')
     print(' :_\/_:\'.:::.    \' *\'\'*    * \'.\'/.\' _\(/_\'.\':\'.\'')
@@ -89,6 +106,8 @@ def __get_logger(level):
         os.mkdir(configuration["OUT_DIR"])
     if level == "TOP":
         configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_pipe')
+    elif level == "FULL":
+        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_full')
     elif level == "PATRON" or "PATRON_PIPE":
         configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_patch')
     elif level == "SPARROW":
@@ -166,47 +185,49 @@ def check_sparrow_opt(level):
         configuration["USER_SPARROW_OPT"].append("-dz")
     if configuration["ARGS"].bo:
         configuration["USER_SPARROW_OPT"].append("-bo")
-    if configuration["SPARROW_ONLY"] and len(configuration["USER_SPARROW_OPT"]) == 0:
-        logger.log(logger.ERROR, "No sparrow option is given. Please provide at least one option.")
-        if level == "TOP":
-            oss_usage()
-        elif level == "SPARROW":
-            sparrow_usage()
-        exit(1)
-    if not configuration["SPARROW_ONLY"] and len(configuration["USER_SPARROW_OPT"]) != 0:
-        logger.log(logger.ERROR, "Sparrow options are given but sparrow is not run.")
-        if level == "TOP":
-            oss_usage()
-        elif level == "SPARROW":
-            sparrow_usage()
-        exit(1)
     return
 
 def get_sparrow_target_files(dirs):
+    ret = []
     if dirs == ["all"]:
         dirs = [configuration["ANALYSIS_DIR"]]
-    for dir in dirs:
-        if not os.path.exists(dir):
-            logger.log(logger.ERROR, f"{dir} does not exist.")
-            exit(1)
-        for root, _, files in os.walk(dir):
+    for d in dirs:
+        if not os.path.exists(d):
+            logger.log(logger.ERROR, f"{d} does not exist.")
+            config.patron_exit("SPARROW")
+        for root, _, files in os.walk(d):
             for file in files:
                 if file.endswith(".c"):
                     configuration["SPARROW_TARGET_FILES"].append(os.path.abspath(os.path.join(root, file)))
+                    ret.append(os.path.abspath(os.path.join(root, file)))
+    return ret
 
 def get_patron_target_files(target_dirs):
     donee_list = []
     for target in target_dirs:
         if not os.path.exists(target):
             logger.log(logger.ERROR, f"{target} does not exist.")
-            exit(1)
+            config.patron_exit("PATRON")
         for root, _, files in os.walk(target):
             for file in files:
                 if file.endswith(".c"):
                     donee_list.append((os.path.dirname(os.path.abspath(os.path.join(root, file))), os.path.abspath(os.path.join(root, file))))
     configuration["DONEE_LIST"] = donee_list
     logger.log("INFO", "Configured donee files: {}".format([os.path.basename(donee) for donee, path in configuration["DONEE_LIST"]]))
-    
+    return donee_list
+
+def config_log(config):
+    logger.log(logger.INFO, "Configuration:")
+    for key, value in config.items():
+        if key == "ARGS":
+            continue
+        if value == ["None"] or value == []:
+            continue
+        if key == "DEFAULT_SPARROW_OPT" and "USER_SPARROW_OPT" != []:
+            continue
+        logger.log(logger.INFO, f"\t{key}: {value}")
+            
+
 def setup(level):
     logger.logger = __get_logger(level)
     if level != "PATRON_PIPE" and level != "PATRON":
@@ -215,9 +236,9 @@ def setup(level):
             os.mkdir(configuration["ANALYSIS_DIR"])
     if level != "PATRON_PIPE":
         parser = argparse.ArgumentParser()
-    if level != "PATRON_PIPE" and level != "PATRON" and level != "SPARROW":
+    if level != "PATRON_PIPE" and level != "PATRON" and level != "SPARROW" and level != "FULL":
         level = "TOP"
-    if level == "TOP":
+    if level == "TOP" or level == "FULL":
         parser.add_argument("-oss", action="store_true", default=False, help="run the OSS experiment")
         parser.add_argument("-build", "-b", nargs="*", default=["None"], help="build the given path for category list(s) of package only (default:all)")
         parser.add_argument("-crawl", "-c", action="store_true", default=False, help="crawl the package list from the web only")
@@ -261,12 +282,13 @@ def setup(level):
             configuration["COMBINE_ONLY"] = True
         if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"] and not configuration["PATRON_ONLY"] and configuration["ARGS"].pipe == ["all"]:
             configuration["PIPE_MODE"] = True
+            # NOTE: change this after experiment is set
             configuration["ARGS"].pipe = [os.path.join(configuration["LIST_DIR"], 'test.txt')]
         if configuration["CSV_FOR_STAT"]:
             configuration["CSV_FOR_STAT"] = True
         if configuration["SPARROW_ONLY"]:
             check_sparrow_opt(level)
-            get_sparrow_target_files(configuration["ARGS"].sparrow)
+            configuration["SPARROW_TARGET_FILES"] = get_sparrow_target_files(configuration["ARGS"].sparrow)
     if level == "SPARROW":
         configuration["SPARROW_ONLY"] = True
         parser.add_argument("-files", "-f", nargs="*", default=["None"], help="run the sparrow for the given file(s) (default:all)")
@@ -277,7 +299,7 @@ def setup(level):
         if configuration["ARGS"].files == ["None"]:
             logger.log(logger.ERROR, "No file is given. Please provide at least one file.")
             sparrow_usage()
-            exit(1)
+            config.patron_exit("SPARROW")
         configuration["SPARROW_TARGET_FILES"] = configuration["ARGS"].files
         check_sparrow_opt(level)
     if level == "COMBINE":
@@ -288,7 +310,7 @@ def setup(level):
         configuration["ANALYSIS_DIR"] = configuration["ARGS"].out
         if configuration["ARGS"].file == "":
             logger.log(logger.ERROR, "No file is given. Please provide a file.")
-            exit(1)
+            config.patron_exit("COMBINE")
     if level == "PATRON":
         configuration["PATRON_ONLY"] = True
         parser.add_argument("-donee", "-d", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
@@ -302,13 +324,16 @@ def setup(level):
             configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
             configuration["DONOR_PATH"] = os.path.abspath(configuration["ARGS"].donorpath)
         else:
-            logger.log("INFO", "Configuring target donee files under given directories {}".format(configuration["ARGS"].donee))
-            target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].donee ]
+            logger.log(logger.INFO, "Configuring target donee files under given directories {}".format(configuration["ARGS"].donee))
+            if configuration["ARGS"].donee == ["None"]:
+                target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].patron ]
+            else:
+                target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].donee ]
             configuration['PROCESS_LIMIT'] = configuration["ARGS"].process
             get_patron_target_files(target_dirs)
-    if level == "PATRON_PIPE":
+    if level == "TOP" and configuration["PATRON_ONLY"]:
         configuration["PATRON_ONLY"] = True
-        logger.log("INFO", "Configuring target donee files under given directories {}".format(configuration["ARGS"].donee))
-        target_dirs = [ os.path.abspath(don) for don in configuration["ANALYSIS_DIR"] ]
+        logger.log(logger.INFO, "Configuring target donee files under given directories {}".format(configuration["ARGS"].patron))
+        target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].patron ]
         get_patron_target_files(target_dirs)
-    logger.log(logger.INFO, "Configuration: {}".format(configuration))
+    config_log(configuration)

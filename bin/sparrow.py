@@ -49,53 +49,40 @@ def sparrow(package:str, files:list) -> bool:
     proc_cnt = 0
     procs = []
     rest_files = copy.deepcopy(files)
-    for i in range(len(files)):
+    i = 0
+    while len(rest_files) > 0 and proc_cnt < config.configuration["PROCESS_LIMIT"]:
         log(INFO, f"Running sparrow for {files[i]} ...")
         sparrow_log, process = run_sparrow(files[i])
         proc_cnt += 1
         procs.append((files[i], process, sparrow_log))
         rest_files.remove(files[i])
-        if proc_cnt > config.configuration["PROCESS_LIMIT"]:
-            break
-    for file, process, sparrow_log in procs:
-        try:
-            stdout, stderr = process.communicate(timeout=900)
-        except subprocess.TimeoutExpired:
-            log(ERROR, f"Timeout for {file}.")
-            process.kill()
-            writer.writerow([file, 'X'])
-            tsvfile.flush()
-            sparrow_log.close()
-            proc_cnt -= 1
-            continue
-        sparrow_log.close()
-        if process.returncode == 0:
-            log(INFO, f"{file} is successfully analyzed.")
-            writer.writerow([file, 'O'])
-            success_cnt += 1
-        else:
-            log(ERROR, f"Failed to analyze {file}.")
-            log(ERROR, f"Check {os.path.join(os.path.dirname(file), 'sparrow_log')} for more information.")
-            writer.writerow([file, 'X'])
-        tsvfile.flush()
-        proc_cnt -= 1
-        while len(rest_files) > 0 and proc_cnt < config.configuration["PROCESS_LIMIT"]:
-            log(INFO, f"Running sparrow for {rest_files[0]} ...")
-            sparrow_log, process = run_sparrow(rest_files[0])
-            proc_cnt += 1
-            procs.append((rest_files[0], process, sparrow_log))
-            rest_files.remove(rest_files[0])
-    for file, process, sparrow_log in procs:
-        process.wait()
-        sparrow_log.close()
-        if process.returncode == 0:
-            log(INFO, f"{file} is successfully analyzed.")
-            writer.writerow([file, 'O'])
-            success_cnt += 1
-        else:
-            log(ERROR, f"Failed to analyze {file}.")
-            log(ERROR, f"Check {os.path.join(os.path.dirname(file), 'sparrow_log')} for more information.")
-            writer.writerow([file, 'X'])
+        i += 1
+        if proc_cnt > config.configuration["PROCESS_LIMIT"] or i >= len(files):
+            for file, process, sparrow_log in procs:
+                try:
+                    stdout, stderr = process.communicate(timeout=900)
+                except subprocess.TimeoutExpired:
+                    log(ERROR, f"Timeout for {file}.")
+                    process.kill()
+                    writer.writerow([file, 'X'])
+                    tsvfile.flush()
+                    sparrow_log.close()
+                    proc_cnt -= 1
+                    continue
+                sparrow_log.close()
+                if process.returncode == 0:
+                    log(INFO, f"{file} is successfully analyzed.")
+                    writer.writerow([file, 'O'])
+                    success_cnt += 1
+                else:
+                    log(ERROR, f"Failed to analyze {file}.")
+                    log(ERROR, f"Check {os.path.join(os.path.dirname(file), 'sparrow_log')} for more information.")
+                    writer.writerow([file, 'X'])
+                tsvfile.flush()
+                proc_cnt -= 1
+                i -= 1
+                procs.remove((file, process, sparrow_log))
+                files.remove(file)
         tsvfile.flush()
     tsvfile.close()
     if success_cnt == 0:
@@ -157,11 +144,16 @@ def main():
     IS_SOLO_SPARROW = True
     config.setup("SPARROW")
     log(INFO, "You are running sparrow.py script directly.")
+    log(INFO, "This script only runs on the first argument of -f option.")
     target_files = []
+    if not os.path.exists(config.configuration["ARGS"].files[0]):
+        log(ERROR, f"{config.configuration['ARGS'].files[0]} does not exist.")
+        config.patron_exit("SPARROW")
     for root, dirs, files in os.walk(config.configuration["ARGS"].files[0]):
         for file in files:
             if file.endswith('.c'):
                 target_files.append(os.path.abspath(os.path.join(root, file)))
+    print(config.configuration["ARGS"].files[0])
     sparrow("top", target_files)
 
 if __name__ == '__main__':

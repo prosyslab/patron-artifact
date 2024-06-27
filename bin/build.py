@@ -58,7 +58,7 @@ def get_package_list_from_web() -> bool:
         check=True, capture_output=True)
     if status.returncode != 0:
         log(ERROR, "Failed to retrieve the list of packages.")
-        exit(1)
+        config.patron_exit("BUILD")
     return True
         
 '''
@@ -75,11 +75,11 @@ Input: None
 Output: None
 '''
 def crawl() -> None:
-    # log(INFO, "Retrieving the list of Debian packages from web ...")
-    # if not get_package_list_from_web():
-    #     return
-    # log(INFO, "Packages are retrieved.")
-    # log(INFO, "Checking duplicated packages ...")
+    log(INFO, "Retrieving the list of Debian packages from web ...")
+    if not get_package_list_from_web():
+        return
+    log(INFO, "Packages are retrieved.")
+    log(INFO, "Checking duplicated packages ...")
     find_duplicate_pkg.run([os.path.join(LIST_DIR, file) for file in os.listdir(LIST_DIR) if file.endswith(".txt")])
     log(INFO, "Crawling Summary:")
     for file in os.listdir(os.path.join(PKG_DIR, 'debian_lists')):

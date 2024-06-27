@@ -37,8 +37,7 @@ Output: None
 '''
 def oss_experiment() -> None:
     print("You have chosen OSS experiment")
-    oss_exp.run_pipe("TOP", from_top=True)
-    patron.main(True)
+    oss_exp.run_full_pipe()
     
 '''
 Function that runs /patron-experiment/bin/experiment.sh

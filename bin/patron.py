@@ -114,14 +114,18 @@ def run_patron(cmd:list, path:str) -> subprocess.Popen:
 '''
 Function that generates cmds
 
-Input: None
+Input: bool (from_top), str (package) -> if from_top is False, package can be ignored
 Output: list (command)
 '''
-def mk_worklist() -> list:
+def mk_worklist(from_top:bool, package:str) -> list:
     base_cmd = [config.configuration["PATRON_BIN_PATH"]]
     worklist = []
     cnt = 0
-    for donee, path in config.configuration["DONEE_LIST"]:
+    if package == []:
+        target_donee = config.configuration["DONEE_LIST"]
+    else:
+        target_donee = config.get_patron_target_files(package)
+    for donee, path in target_donee:
         package = donee.split('/')[-1]
         sub_out = os.path.join(config.configuration["OUT_DIR"], package)
         db_opt = ["--db", os.path.join(config.configuration["DB_PATH"])]
@@ -139,7 +143,7 @@ This function is fitted to make DB out of RQ1, RQ2 benchmark dataset
 Input: list (patchweave_worklist), list (patron_worklist), bool (mk_full_db)
 Output: None (It handles the process itself)
 '''
-def run_sparrow_defualt(patchweave_worklist, patron_worklist, mk_full_db=True):
+def run_sparrow_defualt(patchweave_worklist:list, patron_worklist:list, mk_full_db:bool=True):
     log(WARNING, f"Running sparrow to construct databse ...")
     os.chdir(config.configuration["EXP_ROOT_PATH"])
     log(INFO, "Detailed log will be saved in {}".format(os.path.join(config.configuration["EXP_ROOT_PATH"], 'out')))
@@ -149,14 +153,14 @@ def run_sparrow_defualt(patchweave_worklist, patron_worklist, mk_full_db=True):
     if result_patchweave.returncode != 0:
         log(ERROR, f"Failed to run sparrow for patchweave.")
         log(ERROR, result_patchweave.stderr.read().decode('utf-8'))
-        exit(1)
+        config.patron_exit("PATRON")
     log(INFO, "Running sparrow for patron benchmarks...")
     result_patron = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patron', '-p', '-id'] + patron_worklist, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     result_patron.wait()
     if result_patron.returncode != 0:
         log(ERROR, f"Failed to run sparrow for patron.")
         log(ERROR, result_patron.stderr.read().decode('utf-8'))
-        exit(1)
+        config.patron_exit("PATRON")
 
 '''
 Function that creates Sparrow CMD for custom DB construction
@@ -164,7 +168,7 @@ Function that creates Sparrow CMD for custom DB construction
 Input: str (label_path), str (curr_path)
 Output: list (str)(command)
 '''
-def mk_sparrow_cmd(label_path, curr_path):
+def mk_sparrow_cmd(label_path:str, curr_path:str) -> list:
     with open(label_path, 'r') as f:
         data = json.load(f)
     bug_type = data["TYPE"].lower()
@@ -216,7 +220,8 @@ def run_sparrow(missing_list:list) -> None:
         cmd = mk_sparrow_cmd(os.path.join(path, '..', 'label.json'), path)
         work_list.append(cmd)
     rest = copy.deepcopy(work_list)
-    for i in range(len(work_list)):
+    i = 0
+    while run_cnt < config.configuration["PROCESS_LIMIT"] and len(rest) > 0:
         log(INFO, f"Running sparrow for {work_list[i]} ...")
         os.chdir(os.path.dirname(work_list[i][1]))
         sparrow_log = open('sparrow_log', 'w')
@@ -224,37 +229,25 @@ def run_sparrow(missing_list:list) -> None:
         proc_list.append((work_list[i], proc, sparrow_log))
         rest.remove(work_list[i])
         run_cnt += 1
-        if run_cnt >= config.configuration["PROCESS_LIMIT"]:
-            break
-    for cmd, proc, sparrow_log in proc_list:
-        try:
-            stdout, stderr = proc.communicate(timeout=900)
-        except subprocess.TimeoutExpired:
-            log(ERROR, f"Timeout for {cmd}")
-            proc.terminate()
-            sparrow_log.close()
-            run_cnt -= 1
-        sparrow_log.close()
-        if proc.returncode != 0:
-            log(ERROR, f"Failed to run sparrow for {cmd}")
-        else:
-            log(INFO, f"Successfully ran sparrow for {cmd}")
-        run_cnt -= 1
-        while run_cnt < config.configuration["PROCESS_LIMIT"] and len(rest) > 0:
-            log(INFO, f"Running sparrow for {rest[0]} ...")
-            os.chdir(os.path.dirname(rest[0][1]))
-            sparrow_log = open('sparrow_log', 'w')
-            proc = subprocess.Popen(rest[0], stdout=sparrow_log, stderr=subprocess.STDOUT)
-            proc_list.append((rest[0], proc, sparrow_log))
-            rest.remove(rest[0])
-            run_cnt += 1
-    for cmd, proc, sparrow_log in proc_list:
-        proc.wait()
-        sparrow_log.close()
-        if proc.returncode != 0:
-            log(ERROR, f"Failed to run sparrow for {cmd}")
-        else:
-            log(INFO, f"Successfully ran sparrow for {cmd}")
+        i += 1
+        if run_cnt >= config.configuration["PROCESS_LIMIT"] or i >= len(work_list):
+            for cmd, proc, sparrow_log in proc_list:
+                try:
+                    stdout, stderr = proc.communicate(timeout=900)
+                except subprocess.TimeoutExpired:
+                    log(ERROR, f"Timeout for {cmd}")
+                    proc.terminate()
+                    sparrow_log.close()
+                    run_cnt -= 1
+                sparrow_log.close()
+                if proc.returncode != 0:
+                    log(ERROR, f"Failed to run sparrow for {cmd}")
+                else:
+                    log(INFO, f"Successfully ran sparrow for {cmd}")
+                run_cnt -= 1
+                i -= 1
+                proc_list.remove((cmd, proc, sparrow_log))
+                work_list.remove(cmd)
     log(INFO, "Successfully finished running sparrow.")
         
 '''
@@ -436,15 +429,16 @@ patron.py has two different procedures
 1) Constructing database from scratch
 2) Running Patron with the constructed database
 It can be run from four different sources
-1) oss_exp.py -patron
+1) oss_exp.py -patron <analysis_target_dir>
 2) oss_exp.py -fullpipe
 2) run.py -oss
-3) patron.py -db /path/to/db -d /path/to/donee -p number_of_processes
+3) patron.py -db /path/to/db -d /path/to/donee -p <number_of_processes>
 
-Input: Optional (bool) -> to check where this program is run from
-Output: list (PROCS), int (work_cnt) -> updated
+Input: Optional (bool) -> to check where this program is run from, 
+Optional (str) -> to specify the package name if run pipe
+Output: None
 '''
-def main(from_top=False):
+def main(from_top:bool=False, package:list=[]) -> None:
     global level, global_stat, global_writer, stat_out
     if not from_top:
         config.setup(level)
@@ -460,7 +454,7 @@ def main(from_top=False):
         if len(patchweave_works) > 0 or len(patron_works) > 0:
             run_sparrow(patchweave_works, patron_works)
         mk_database()
-    worklist = mk_worklist()
+    worklist = mk_worklist(from_top, package)
     work_cnt = 0
     total_work_cnt = 0
     PROCS = []

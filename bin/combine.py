@@ -183,7 +183,7 @@ Here, the package top directory name has _(underscore) prefix to avoid conflict 
 Input: list of tuples (category, package)
 Output: bool (True: success, False: fail) and list of Strings (success packages)
 '''
-def run(tups: list) -> bool:
+def run(tups: list) -> tuple[bool, list]:
     global COMBINE_LOG_PATH
     success_packages = []
     COMBINE_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "combine_logs")
@@ -274,7 +274,7 @@ def run(tups: list) -> bool:
     tsvfile.close()
     if pkg_success_cnt == 0:
         log(ERROR, "No package was combined.")
-        return False, ""
+        return False, []
     success_packages_ = []
     for package in success_packages:
         success_packages_.append('_' + package)
@@ -289,7 +289,7 @@ Output: Tuples of Strings (category, package)
 def process_top_level_call(dirs:list) -> list:
     if dirs == ["all"]:
         log(ERROR, "Combining all packages is not supported yet.")
-        exit(1)
+        config.patron_exit("COMBINE")
     tups = []
     for dir_path in dirs:
         if not os.path.exists(os.path.abspath(dir_path)):
@@ -309,25 +309,25 @@ Function called from -pipe option of bin/oss_exp.py
 
 Input: List of Strings (directories under package/smake_out)
 TextIO (tsvfile), csv.writer
-Output: bool (True: success, False: fail)
+Output: tuple[bool, list] (True: success, False: fail), list of Strings (success packages)
 '''
-def combine_pipe(dirs:list, tsvfile:TextIO, writer:csv.writer) -> bool:
+def combine_pipe(dirs:list, tsvfile:TextIO, writer:csv.writer) -> tuple[bool, list]:
     tups = process_top_level_call(dirs)
     if tups == []:
         log(ERROR, "No valid package found.")
         writer.writerow([package, 'O', 'X', '-', '-', "combine error"])
         tsvfile.flush()
-        return False
+        return False, []
     return run(tups)
 
 '''
-Function called from -combine option of bin/run.py
+Function called from -combine option of bin/oss_exp.py
 This function is not connected with other pipeline procedures
 make sure -combine option is entered with list of paths under package/smake_out
 Otherwise, it won't work
 
 Input: None
-Output: None
+Output: tuple[bool, list] (True: success, False: fail), list of Strings (success packages)
 '''
-def oss_main():
-    run(process_top_level_call(config.configuration["ARGS"].combine))
+def oss_main() -> tuple[bool, list]:
+    return run(process_top_level_call(config.configuration["ARGS"].combine)) 
