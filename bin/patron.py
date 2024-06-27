@@ -10,6 +10,7 @@ import multiprocessing
 from time import sleep
 import time
 import measure_time
+import copy
 
 expriment_ready_to_go = {
     "patron": [
@@ -22,13 +23,22 @@ expriment_ready_to_go = {
     ]
     }
 
-level = ""
+level = "PATRON"
 donor_list = []
 global_stat = None
 global_writer = None
 stat_out = ""
 
-def write_out_results(path, out_dir, current_job, is_failed):
+
+'''
+Function that writes out the combined patch results
+The results are written as .tsv file at out/combined_results directory
+copy the .tsv files to Google Sheet for easier analysis
+
+Input: str (output directory), str (current job(the donee file name)), bool (is failed)
+Output: None
+'''
+def write_out_results(out_dir:str, current_job:str, is_failed:bool) -> None:
     patches = []
     log(INFO, "Writing out the results for {}...".format(current_job))
     stat_file_name = os.path.join(stat_out, current_job + '_status_')
@@ -81,8 +91,13 @@ def write_out_results(path, out_dir, current_job, is_failed):
         log(INFO, f"No patch is generated for {current_job}")
     # measure_time.run_from_top(config.configuration["OUT_DIR"], measure_time.PATCH_MODE)
         
+'''
+Function that runs Patron backend engine
 
-def run_patron(cmd, path, job_cnt, jobs_finished):
+Input: list (command), str (path for output path)
+Output: subprocess.Popen
+'''
+def run_patron(cmd:list, path:str) -> subprocess.Popen:
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     current_job = os.path.basename(cmd[2])
     if not check_donee(cmd[2]):
@@ -96,7 +111,13 @@ def run_patron(cmd, path, job_cnt, jobs_finished):
     log(INFO, f"Running patron with {cmd}")
     return subprocess.Popen(cmd)
 
-def mk_worklist():
+'''
+Function that generates cmds
+
+Input: None
+Output: list (command)
+'''
+def mk_worklist() -> list:
     base_cmd = [config.configuration["PATRON_BIN_PATH"]]
     worklist = []
     cnt = 0
@@ -111,12 +132,18 @@ def mk_worklist():
         cnt += 1
     return worklist
 
-def run_sparrow(patchweave_worklist, patron_worklist, mk_full_db=True):
+'''
+Function that runs Sparrow to get the analysis results, which is pre-requisite for DB construction
+This function is fitted to make DB out of RQ1, RQ2 benchmark dataset
+
+Input: list (patchweave_worklist), list (patron_worklist), bool (mk_full_db)
+Output: None (It handles the process itself)
+'''
+def run_sparrow_defualt(patchweave_worklist, patron_worklist, mk_full_db=True):
     log(WARNING, f"Running sparrow to construct databse ...")
     os.chdir(config.configuration["EXP_ROOT_PATH"])
     log(INFO, "Detailed log will be saved in {}".format(os.path.join(config.configuration["EXP_ROOT_PATH"], 'out')))
     log(INFO, "Running sparrow for patchweave benchmarks...")
-    # print(patchweave_worklist)
     result_patchweave = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patchweave', '-p', '-id'] + patchweave_worklist, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     result_patchweave.wait()
     if result_patchweave.returncode != 0:
@@ -131,7 +158,113 @@ def run_sparrow(patchweave_worklist, patron_worklist, mk_full_db=True):
         log(ERROR, result_patron.stderr.read().decode('utf-8'))
         exit(1)
 
-def check_donee(donee):
+'''
+Function that creates Sparrow CMD for custom DB construction
+
+Input: str (label_path), str (curr_path)
+Output: list (str)(command)
+'''
+def mk_sparrow_cmd(label_path, curr_path):
+    with open(label_path, 'r') as f:
+        data = json.load(f)
+    bug_type = data["TYPE"].lower()
+    bug_flag = [ "-" + bug_type ]
+    loc_flag = [ "-target_loc", data["TRUE-ALARM"]['ALARM-LOC'][0] ]
+    default_flags = ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full"]
+    if bug_type != "bo":
+        default_flags.append("-no_bo")
+    target = ""
+    for file in os.listdir(curr_path):
+        if file.endswith('.c') and 'cil_' in file:
+            target = file
+            break
+    if target == "":
+        log(ERROR, f"Target file not found in {curr_path}")
+        return []
+    cmd = [config.configuration["SPARROW_BIN_PATH"], target] + default_flags + bug_flag + loc_flag
+    return cmd
+
+'''
+Function that runs Sparrow to get the analysis results, which is pre-requisite for DB construction
+This function is for custom DB construction
+Donor programs must be under the specific directory structrue
+For example, if donor programs are under /path/to/donor, the directory structure must be like:
+/path/to/donor
+        |-- 1
+        |   |- bug
+        |   |   `- program.c
+        |   `- patch
+        |       `- program.c
+        |-- 2
+        |   |- bug
+        |   ...
+        ...
+        `-- ...
+        
+Input: list (paths of programs that are not analyzed by Sparrow)
+Output: None (It handles the process itself)
+'''
+def run_sparrow(missing_list:list) -> None:
+    log(WARNING, f"Running sparrow to construct databse ...")
+    work_list = []
+    proc_list = []
+    rest = []
+    run_cnt = 0
+    for path in missing_list:
+        if os.path.exists(os.path.join(os.path.dirname(file), 'sparrow-out')):
+            os.system(f'rm -rf {os.path.join(os.path.dirname(file), "sparrow-out")}')
+        cmd = mk_sparrow_cmd(os.path.join(path, '..', 'label.json'), path)
+        work_list.append(cmd)
+    rest = copy.deepcopy(work_list)
+    for i in range(len(work_list)):
+        log(INFO, f"Running sparrow for {work_list[i]} ...")
+        os.chdir(os.path.dirname(work_list[i][1]))
+        sparrow_log = open('sparrow_log', 'w')
+        proc = subprocess.Popen(work_list[i], stdout=sparrow_log, stderr=subprocess.STDOUT)
+        proc_list.append((work_list[i], proc, sparrow_log))
+        rest.remove(work_list[i])
+        run_cnt += 1
+        if run_cnt >= config.configuration["PROCESS_LIMIT"]:
+            break
+    for cmd, proc, sparrow_log in proc_list:
+        try:
+            stdout, stderr = proc.communicate(timeout=900)
+        except subprocess.TimeoutExpired:
+            log(ERROR, f"Timeout for {cmd}")
+            proc.terminate()
+            sparrow_log.close()
+            run_cnt -= 1
+        sparrow_log.close()
+        if proc.returncode != 0:
+            log(ERROR, f"Failed to run sparrow for {cmd}")
+        else:
+            log(INFO, f"Successfully ran sparrow for {cmd}")
+        run_cnt -= 1
+        while run_cnt < config.configuration["PROCESS_LIMIT"] and len(rest) > 0:
+            log(INFO, f"Running sparrow for {rest[0]} ...")
+            os.chdir(os.path.dirname(rest[0][1]))
+            sparrow_log = open('sparrow_log', 'w')
+            proc = subprocess.Popen(rest[0], stdout=sparrow_log, stderr=subprocess.STDOUT)
+            proc_list.append((rest[0], proc, sparrow_log))
+            rest.remove(rest[0])
+            run_cnt += 1
+    for cmd, proc, sparrow_log in proc_list:
+        proc.wait()
+        sparrow_log.close()
+        if proc.returncode != 0:
+            log(ERROR, f"Failed to run sparrow for {cmd}")
+        else:
+            log(INFO, f"Successfully ran sparrow for {cmd}")
+    log(INFO, "Successfully finished running sparrow.")
+        
+'''
+This function inistially made to check to ensure that the donee file is analyzed by Sparrow before Patron
+However, maybe useless because this is already done by previous steps
+
+Input: str (donee)
+Output: bool (True: donee is ready, False: donee is not ready)
+'''
+def check_donee(donee) -> bool:
     if not os.path.exists(donee):
         log(ERROR, f"{donee} does not exist.")
         return False
@@ -144,7 +277,15 @@ def check_donee(donee):
         return False
     return True
 
-def check_sparrow():
+'''
+Function that check the analysis results, which is pre-requisite for DB construction
+This function is for our benchmark dataset
+Since, patchweave dataset and patron dataset have different directory structure, this function is needed
+        
+Input: None
+Output: list (patchweave_missing_list), list (patron_missing_list)
+'''
+def check_sparrow_default() -> list:
     global donor_list
     patron_bench_path = os.path.join(config.configuration["BENCHMARK_PATH"], "patron")
     patchweave_bench_path = os.path.join(config.configuration["BENCHMARK_PATH"], "patchweave")
@@ -155,26 +296,54 @@ def check_sparrow():
             continue
         if file in expriment_ready_to_go["patron"]:
             if not os.path.exists(os.path.join(patron_bench_path, file, 'bug', 'sparrow-out')):
-                log(ERROR, f"sparrow-out for {file} does not exist in {patron_bench_path}")
+                log(WARNING, f"sparrow-out for {file} does not exist in {patron_bench_path}")
                 patron_missing_list.append(str(file))
             donor_list.append(os.path.join(patron_bench_path, file))
     for file in os.listdir(patchweave_bench_path):
         if file in expriment_ready_to_go["patchweave"]:
             if not os.path.exists(os.path.join(patchweave_bench_path, file, 'donor', 'bug', 'sparrow-out')):
-                log(ERROR, f"sparrow-out for {file} does not exist in {patchweave_bench_path}")
+                log(WARNING, f"sparrow-out for {file} does not exist in {patchweave_bench_path}")
                 patchweave_missing_list.append(str(file))
             donor_list.append(os.path.join(patchweave_bench_path, file, 'donor'))
     return patchweave_missing_list, patron_missing_list
 
+'''
+Function that check the analysis results, which is pre-requisite for DB construction
+This function is for custom DB construction and for custom Donor programs
+Please make sure to have donor program structure as the description in run_sparrow function
+or README.md
+        
+Input: None
+Output: list (missing_list)
+'''
+def check_sparrow() -> list:
+    global donor_list
+    missing_list = []
+    donors = [ os.path.join(config.configuration["DONOR_PATH"], f) for f in os.listdir(config.configuration["DONOR_PATH"]) ]
+    for donor in donors:
+        target = os.path.join(donor, 'bug')
+        if not os.path.exists(os.path.join(target, 'sparrow-out')):
+            log(WARNING, f"sparrow-out for {donor} does not exist.")
+            missing_list.append(target)
+        donor_list.append(donor)
+    return missing_list
+
+'''
+Function that makes database from scratch
+
+Input: None (Path details are stored in config.py)
+Output: None
+'''
 def mk_database():
     tsv_file = open(os.path.join(config.configuration["OUT_DIR"], "database_{}.tsv".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
     writer = csv.writer(tsv_file, delimiter='\t')
     writer.writerow(["BENCHMARK", "ID", "STATUS"])
     tsv_file.flush()
-    log(WARNING, f"Creating patron-DB from scratch...")
+    log(WARNING, "Creating {} from scratch...".format(config.configuration["DB_PATH"]))
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
-    if os.path.join(config.configuration["PATRON_ROOT_PATH"], 'patron-DB'):
-        subprocess.run(['rm', '-rf', 'patron-DB'])
+    db_name = os.path.basename(config.configuration["DB_PATH"])
+    if os.path.exists(os.path.join(config.configuration["PATRON_ROOT_PATH"], db_name)):
+        subprocess.run(['rm', '-rf', db_name])
     cmd = [config.configuration["PATRON_BIN_PATH"], "db"]
     for donor in donor_list:
         log(INFO, f"Creating patron-DB for {donor} ...")
@@ -199,30 +368,53 @@ def mk_database():
         result = subprocess.Popen(cmd + [donor, true_alarm], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         result.wait()
         if result.returncode != 0:
-            log(ERROR, f"Failed to create patron-DB for {donor}")
+            log(ERROR, f"Failed to create DB for {donor}")
             log(ERROR, result.stderr.read().decode('utf-8'))
             writer.writerow([donor.split('/')[-2], donor.split('/')[-1], "X"])
             tsv_file.flush()
         else:
-            log(INFO, f"Successfully created patron-DB for {donor}")
+            log(INFO, f"Successfully created DB for {donor}")
             writer.writerow([donor.split('/')[-2], donor.split('/')[-1], "O"])
-    log(INFO, "Successfully finished making patron-DB.")
-    log(INFO, "Copying the database to the root directory as {}...".format(config.configuration["DB_NAME"]))
-    os.system('cp -r {} {}'.format(os.path.join(config.configuration["PATRON_ROOT_PATH"], 'patron-DB'), os.path.join(config.configuration["ROOT_PATH"], config.configuration["DB_NAME"])))
+    log(INFO, "Successfully finished making DB.")
+    log(INFO, "Copying the database to the root directory as {}...".format(os.path.basename(config.configuration["DB_PATH"])))
+    os.system('cp -r {} {}'.format(os.path.join(config.configuration["PATRON_ROOT_PATH"], os.path.basename(config.configuration["DB_PATH"])), os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.configuration["DB_PATH"]))))
     tsv_file.close()
 
-def check_database():
-    if not os.path.exists(os.path.join(config.configuration["ROOT_PATH"], config.configuration["DB_NAME"])):
-        log(ERROR, "patron-DB does not exist.")
+'''
+Function that checks if the target database exists
+
+Input: None
+Output: bool (True: database exists, False: database does not exist)
+'''
+def check_database() -> bool:
+    if not os.path.exists(os.path.join(config.configuration["DB_PATH"])):
+        log(ERROR, "{} does not exist.".format(config.configuration["DB_PATH"]))
         return False
     return True
 
-def construct_database():
-    patchweave_works, patron_works = check_sparrow()
-    if len(patchweave_works) > 0 or len(patron_works) > 0:
-        run_sparrow(patchweave_works, patron_works)
+'''
+High level function that makes database from scratch
+
+Input: None (Path details are stored in config.py)
+Output: None
+'''
+def construct_database() -> None:
+    log(INFO, 'Checking If all donors in {} are analyzed by Sparrow...'.format(config.configuration["DONOR_PATH"]))
+    if config.configuration["DONOR_PATH"] == "benchmark":
+        patchweave_works, patron_works = check_sparrow_default()
+        if len(patchweave_works) > 0 or len(patron_works) > 0:
+            run_sparrow_defualt(patchweave_works, patron_works)
+    else:
+        works = check_sparrow()
+        run_sparrow(works)
     mk_database()
 
+'''
+This function collects the patch results from each job directory everytime each process finishes
+
+Input: list (PROCS)[command, process_id, Popen], int (work_cnt), list (boolean list to track which process is finished)
+Output: list (PROCS), int (work_cnt) -> updated
+'''
 def collect_job_results(PROCS, work_cnt, jobs_finished):
     for j in range(len(PROCS)):
         cmd, work_id, proc = PROCS[j]
@@ -235,21 +427,32 @@ def collect_job_results(PROCS, work_cnt, jobs_finished):
                 is_failed = False
             jobs_finished[work_id] = True
             work_cnt -= 1
-            write_out_results(cmd[2], cmd[-1], os.path.basename(cmd[2]), is_failed)
+            write_out_results(cmd[-1], os.path.basename(cmd[2]), is_failed)
             break
     return PROCS, work_cnt
 
+'''
+patron.py has two different procedures
+1) Constructing database from scratch
+2) Running Patron with the constructed database
+It can be run from four different sources
+1) oss_exp.py -patron
+2) oss_exp.py -fullpipe
+2) run.py -oss
+3) patron.py -db /path/to/db -d /path/to/donee -p number_of_processes
+
+Input: Optional (bool) -> to check where this program is run from
+Output: list (PROCS), int (work_cnt) -> updated
+'''
 def main(from_top=False):
     global level, global_stat, global_writer, stat_out
-    if from_top:
-        level = "PATRON_PIPE"
-    else:
-        level = "PATRON"
-    config.setup(level)
-    stat_out = os.path.join(config.configuration["OUT_DIR"], 'stat')
+    if not from_top:
+        config.setup(level)
+    stat_out = os.path.join(config.configuration["OUT_DIR"], 'results_combined')
     if not os.path.exists(stat_out):
         os.mkdir(stat_out)
     if config.configuration["DATABASE_ONLY"]:
+        log(INFO, 'Entering Database-Only mode...')
         construct_database()
         return
     if not check_database():
@@ -271,7 +474,7 @@ def main(from_top=False):
             jobs_finished[i] = False
             work, path = worklist[i]
             log(INFO, f"Work: {work}")
-            p = run_patron(work, path, i, jobs_finished)
+            p = run_patron(work, path)
             if p is None:
                 continue
             PROCS.append((work, i, p))
@@ -306,4 +509,5 @@ def main(from_top=False):
     log(INFO, "Please check the status.tsv file for the results.")
 
 if __name__ == '__main__':
+    print('YOU ARE RUNNING PATRON.PY AS A SCRIPT DIRECTLY.')
     main()

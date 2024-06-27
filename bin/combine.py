@@ -178,12 +178,14 @@ This process consists of 3 steps:
 2) Filter all the un-combinable *.i files (.ii is cpp, and some formats are unstable. We put various heuristics to filter them out.)
 3) Combine the binaries into one file using Sparrow -il option (CIL Parser)
 This function is kept unfunctional and long to keep in mind that the filtering strategies are supposed to be in this order.
+Here, the package top directory name has _(underscore) prefix to avoid conflict with the original package name.
 
 Input: list of tuples (category, package)
-Output: bool (True: success, False: fail)
+Output: bool (True: success, False: fail) and list of Strings (success packages)
 '''
 def run(tups: list) -> bool:
     global COMBINE_LOG_PATH
+    success_packages = []
     COMBINE_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "combine_logs")
     if not os.path.exists(COMBINE_LOG_PATH):
         os.mkdir(COMBINE_LOG_PATH)
@@ -266,13 +268,17 @@ def run(tups: list) -> bool:
             tsvfile.flush()
             continue
         log(INFO, f"Combining {package} was successful. {success_cnt} files were combined.")
+        success_packages.append(package)
         tsvfile.flush()
         pkg_success_cnt += 1
     tsvfile.close()
     if pkg_success_cnt == 0:
         log(ERROR, "No package was combined.")
-        return False
-    return True
+        return False, ""
+    success_packages_ = []
+    for package in success_packages:
+        success_packages_.append('_' + package)
+    return True, success_packages_
 
 '''
 Function that controls the calls from top level files (bin/oss_exp.py and bin/run.py)
@@ -299,7 +305,7 @@ def process_top_level_call(dirs:list) -> list:
         tups.append((category, package))
     return tups
 '''
-Function called from -pipe option of bin/run.py
+Function called from -pipe option of bin/oss_exp.py
 
 Input: List of Strings (directories under package/smake_out)
 TextIO (tsvfile), csv.writer
@@ -315,7 +321,7 @@ def combine_pipe(dirs:list, tsvfile:TextIO, writer:csv.writer) -> bool:
     return run(tups)
 
 '''
-Function called from -combine option of bin/oss_exp.py
+Function called from -combine option of bin/run.py
 This function is not connected with other pipeline procedures
 make sure -combine option is entered with list of paths under package/smake_out
 Otherwise, it won't work

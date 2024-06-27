@@ -4,6 +4,7 @@ import datetime
 import csv
 import build
 import sparrow
+import patron
 import config
 import combine
 import count_sparrow_log
@@ -16,7 +17,21 @@ SPARROW_ONLY = 4
 PATRON_ONLY = 5
 TOP = 6
 '''
-Function that runs build.py->combine.py->sparrow.py->patron.py in a pipeline
+Function that runs build.py->combine.py->sparrow.py->patron.py in a pipeline.
+If you want to reproduce the experimental results, you can use this function.
+However, to experiment on various debian software packages, 
+This mode is not recommended because there exists a bottleneck in the apt source command.
+Since this mode does everything in a single process, it does not need an input arg.
+
+Input: None
+Output: Boolean (True: success, False: fail)
+'''
+def run_full_pipe() -> bool:
+    pass
+
+'''
+Function that runs build.py->combine.py->sparrow.py in a pipeline.
+The purpose of the pipeline is to keep the analysis results, because analysis is an expensive process.
 Crawling is not included in the pipeline for convenience.(You can do this with -crawl option)
 If -pipe option is not given when run directly on this file, it exits False
 Otherwise, this is the default mode, either run from run.py or run from main with -pipe option
@@ -66,7 +81,7 @@ def run_pipe(level, from_top=False) -> bool:
             is_success = combine.combine_pipe(next_args, tsvfile, writer)
             if not is_success:
                 continue
-            is_success = sparrow.sparrow_pipe(package, tsvfile, writer)
+            is_success = sparrow.sparrow_pipe(pkgs[0], tsvfile, writer)
             if not is_success:
                 continue
             writer.writerow([package, 'O', 'O', 'O', 'O', '-'])
@@ -75,7 +90,6 @@ def run_pipe(level, from_top=False) -> bool:
     count_sparrow_log.run(sparrow.SPARROW_LOG_DIR)
     measure_time.run_from_top(config.configuration['OUT_DIR'], measure_time.PIPE_MODE)
     return True
-
 '''
 main function chooses which procedure will be run based on the CLI arguments
 Input: None
@@ -102,8 +116,10 @@ def main():
         sparrow.sparrow(config.configuration["SPARROW_TARGET_FILES"])
     if config.configuration["COMBINE_ONLY"]:
         combine.oss_main()
+    if config.configuration["SPARROW_ONLY"]:
+        sparrow.sparrow("oss", config.configuration["SPARROW_TARGET_FILES"])
     if config.configuration["PATRON_ONLY"]:
-        patron.run(True)
+        patron.main(True)
     return
     
     

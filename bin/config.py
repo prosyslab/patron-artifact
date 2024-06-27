@@ -29,12 +29,14 @@ configuration = {
     "PIPE_MODE": False,
     "DATABASE_ONLY": False,
     "CSV_FOR_STAT": False,
-    "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full", "-no_bo", "-tio", "-pio", "-mio", "-dz"],
+    "DEFAULT_SPARROW_OPT": ["-no_bo", "-tio", "-pio", "-mio", "-dz"],
     "USER_SPARROW_OPT": [],
+    "ADDITIONAL_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full"],
     "SPARROW_TARGET_FILES": [],
     "DONEE_LIST": [],
-    "PROCESS_LIMIT": 10,
-    "DB_NAME": "patron-DB",
+    "PROCESS_LIMIT": 20,
+    "DB_PATH": os.path.abspath("benchmark-DB"),
+    "DONOR_PATH": "benchmark",
 }
 
 def openings() -> None:
@@ -47,6 +49,36 @@ def openings() -> None:
     print('                             v.0.0.1')
     print('                by prosys lab, KAIST\n')
 
+def happy_ending(out_path:str) -> None:
+    print('                                       .''.       ')
+    print('          .''.      .        *''*    :_\/_:     . ')
+    print('      :_\/_:   _\(/_  .:.*_\/_*   : /\ :  .\'.:.\'.')
+    print('    .''.: /\ :   ./)\   \':\'* /\ * :  \'..\'.  -=:o:=-')
+    print(' :_\/_:\'.:::.    \' *\'\'*    * \'.\'/.\' _\(/_\'.\':\'.\'')
+    print(' : /\ : :::::     *_\/_*     -= o =-  /)\    \'  *')
+    print('  \'..\'  \':::\'     * /\ *     .\'/.\\\'.   \'')
+    print('      *            *..*         :')
+    print('        *')
+    print('        *')
+    print('ALL DONE! THANK YOU FOR YOUR PATIENCE!')
+    print('PLEASE CHECK THE {} FOR THE RESULTS!'.format(out_path))
+
+def bad_ending(out_path:str) -> None:
+    print('⠀⠀⠀⠀⠀⢻⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀   ⠀⢠⠇')
+    print('⠀⠀⠀⠀⠀⠀⣣⠀⠀⠀⠀⠀⠀⠀⠙⠛⠁⠀⠀⠀⠀⠀⠈⠛⠁⡰⠃⠀')
+    print('⠀⠀⠀⠀⢠⠞⠋⢳⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠜⠁⠀⠀')
+    print('⠀⠀⠀⣰⠋⠀⠀⠀⢷⠙⠲⢤⣀⡀⠀⠀⠀⠀⠴⠴⣆⠴⠚⠁⠀⠀⠀⠀')
+    print('⠀⠀⣰⠃⠀⠀⠀⠀⠘⡇⠀⣀⣀⡉⠙⠒⠒⠒⡎⠉⠀⠀⠀⠀⠀⠀⠀⠀')
+    print('⠀⢠⠃⠀⠀⢶⠀⠀⠀⢳⠋⠁⠀⠙⢳⡠⠖⠚⠑⠲⡀⠀⠀⠀⠀⠀⠀⠀')
+    print('⠀⡎⠀⠀⠀⠘⣆⠀⠀⠈⢧⣀⣠⠔⡺⣧⠀⡴⡖⠦⠟⢣⠀⠀⠀⠀⠀⠀')
+    print('⢸⠀⠀⠀⠀⠀⢈⡷⣄⡀⠀⠀⠀⠀⠉⢹⣾⠁⠁⠀⣠⠎⠀⠀⠀⠀⠀⠀')
+    print('⠈⠀⠀⠀⠀⠀⡼⠆⠀⠉⢉⡝⠓⠦⠤⢾⠈⠓⠖⠚⢹⠀⠀⠀⠀⠀⠀⠀')
+    print('⢰⡀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⠀⠀⢸⠀⠀⠀⠀⡏⠀⠀⠀⠀⠀⠀⠀')
+    print('⠀⠳⡀⠀⠀⠀⠀⠀⠀⣀⢾⠀⠀⠀⠀⣾⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀')
+    print('⠀⠀⠈⠐⠢⠤⠤⠔⠚⠁⠘⣆⠀⠀⢠⠋⢧⣀⣀⡼⠀⠀⠀⠀⠀⠀⠀⠀')
+    print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠈⠁⠀⠀⠀⠁⠀')
+    print('SOMETHING WENT WRONG... PLEASE CHECK THE {} FOR THE RESULTS!'.format(out_path))
+    
 def __get_logger(level):
     __logger = logging.getLogger("logger")
     formatter = logging.Formatter("[%(levelname)s][%(asctime)s] %(message)s")
@@ -183,7 +215,7 @@ def setup(level):
             os.mkdir(configuration["ANALYSIS_DIR"])
     if level != "PATRON_PIPE":
         parser = argparse.ArgumentParser()
-    if level != "PATRON_PIPE" and level != "PATRON":
+    if level != "PATRON_PIPE" and level != "PATRON" and level != "SPARROW":
         level = "TOP"
     if level == "TOP":
         parser.add_argument("-oss", action="store_true", default=False, help="run the OSS experiment")
@@ -192,9 +224,12 @@ def setup(level):
         parser.add_argument("-combine", "-m", nargs="*", default=["None"], help="combine *.i files into .c in the the given directory for packages only (default:all)")
         parser.add_argument("-sparrow", "-s", nargs="*", default=["None"], help="run the sparrow for the given directory(ies) (default:all)")
         parser.add_argument("-patron", "-p", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
+        parser.add_argument("-donorpath", "-dp", type=str, default="benchmark", help="path to the donor parograms(default:benchmark")
+        parser.add_argument("-dbpath", "-dbp", type=str, default="benchmark-DB", help="path to the DB directory(default:benchmark-DB")
         parser.add_argument("-pipe", nargs="*", default=["None"], help="run the sparrow in pipe mode (build->combine->sparrow)")
         parser = parse_sparrow_opt(parser)
         configuration["ARGS"] = parser.parse_args()
+        configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
         if configuration["ARGS"].oss:
             configuration["ARGS"].pipe = ["all"]
         if configuration["ARGS"].pipe == []:
@@ -258,12 +293,14 @@ def setup(level):
         configuration["PATRON_ONLY"] = True
         parser.add_argument("-donee", "-d", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
         parser.add_argument("-database", "-db", action="store_true", default=False, help="construct patron-DB only")
-        parser.add_argument("-dbname", "-dn", type=str, default="patron-DB", help="name of the database(default:patron-DB")
-        parser.add_argument("-process", '-p', type=int, default=1, help="number of threads to run")
+        parser.add_argument("-donorpath", "-dp", type=str, default="benchmark", help="path to the donor parograms(default:benchmark")
+        parser.add_argument("-dbpath", "-dbp", type=str, default="benchmark-DB", help="path to the database directory(default:benchmark-DB")
+        parser.add_argument("-process", '-p', type=int, default=20, help="number of threads to run")
         configuration["ARGS"] = parser.parse_args()
         if configuration["ARGS"].database:
             configuration["DATABASE_ONLY"] = True
-            configuration["DB_Name"] = configuration["ARGS"].dbname 
+            configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
+            configuration["DONOR_PATH"] = os.path.abspath(configuration["ARGS"].donorpath)
         else:
             logger.log("INFO", "Configuring target donee files under given directories {}".format(configuration["ARGS"].donee))
             target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].donee ]
