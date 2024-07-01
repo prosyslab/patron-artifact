@@ -192,7 +192,6 @@ def smake_sep(tries:int) -> None:
         writer = csv.writer(tsvfile, delimiter='\t')
         writer.writerow(['Package', 'Build', 'Combine', 'Sparrow','Error Msg'])
         tsvfile.flush()
-        tsvfile.flush()
         os.chdir(PKG_DIR)
         for package in packages:
             package = package.strip()
