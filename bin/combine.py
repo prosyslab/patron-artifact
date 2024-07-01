@@ -317,7 +317,7 @@ def combine_pipe(dirs:list, tsvfile:TextIO, writer:csv.writer) -> tuple[bool, li
     tups = process_top_level_call(dirs)
     if tups == []:
         log(ERROR, "No valid package found.")
-        writer.writerow([package, 'O', 'X', '-', '-', "combine error"])
+        writer.writerow([str(dirs), 'O', 'X', '-', '-', "combine error"])
         tsvfile.flush()
         return False, []
     return run(tups)
