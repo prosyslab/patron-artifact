@@ -28,9 +28,10 @@ def mk_smake_worklist() -> dict:
     else:
         packages = config.configuration["ARGS"].build
     if packages[0] == "all" and len(packages) == 1:
+        # TODO: change this later
         packages = [os.path.join(LIST_DIR, 'test.txt')]
     else:
-        packages = [os.path.join(LIST_DIR, os.path.basename(package)) for package in packages]
+        packages = [os.path.abspath(package) for package in packages]
     log(INFO, "Building selected package categories {} (default:experiment_setup.txt)".format(packages))
     for package in packages:
         category_name = os.path.basename(package).split('.')[0]
