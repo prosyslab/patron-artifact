@@ -34,6 +34,8 @@ def filter_combine_candidate(log_path:str, candidate:str, target_path:str, file_
     full_path = os.path.dirname(os.path.join(target_path, file_path))
     
     path_split = file_path.split('/')
+    if len(path_split) <= 1:
+        return False, "", []
     file_name = path_split[-2]
     path_list = []
     for i in range(len(path_split) - 1):

@@ -47,8 +47,8 @@ def run_full_pipe():
             writer.writerow([package, 'O', 'O', 'O', 'O', 'O', '-'])
             tsvfile.flush()
     tsvfile.close()
-    count_sparrow_log.run(sparrow.SPARROW_LOG_DIR)
-    measure_time.run_from_top(config.configuration['OUT_DIR'], measure_time.PIPE_MODE)
+    # count_sparrow_log.run(sparrow.SPARROW_LOG_DIR)
+    # measure_time.run_from_top(config.configuration['OUT_DIR'], measure_time.PIPE_MODE)
     return True
 
 '''
@@ -99,8 +99,8 @@ def run_pipe(level : str, from_top: bool=False ) -> bool:
             writer.writerow([package, 'O', 'O', 'O', 'O', '-'])
             tsvfile.flush()
     tsvfile.close()
-    count_sparrow_log.run(sparrow.SPARROW_LOG_DIR)
-    measure_time.run_from_top(config.configuration['OUT_DIR'], measure_time.PIPE_MODE)
+    # count_sparrow_log.run(sparrow.SPARROW_LOG_DIR)
+    # measure_time.run_from_top(config.configuration['OUT_DIR'], measure_time.PIPE_MODE)
     return True
 
 '''

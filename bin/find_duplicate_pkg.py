@@ -3,8 +3,29 @@ import sys
 import os
 import subprocess
 import csv
+from logger import log, INFO, ERROR, WARNING
 
 FILE_PATH = os.path.dirname(os.path.abspath(__file__))
+
+def recursive_search(package_map):
+    remove_list = []
+    is_clean = True
+    for i in range(len(package_map)):
+        package, target_dir = package_map[i]
+        for j in range(i+1, len(package_map)):
+            package2, target_dir2 = package_map[j]
+            if target_dir == target_dir2:
+                log(INFO, f"Found duplicate package: {package} and {package2}")
+                remove_list.append((package2, target_dir2))
+                is_clean = False
+        if remove_list != []:
+            break
+    for package, target_dir in remove_list:
+        package_map.remove((package, target_dir))
+    if is_clean:
+        return package_map
+    return recursive_search(package_map)
+
 '''
 Function that checks duplicate packages in the package list
 It follows the following steps:
@@ -19,20 +40,24 @@ def run(package_lists):
     OUT_DIR = os.path.join(FILE_PATH, '..', 'out')
     LIST_DIR = os.path.join(FILE_PATH, '..', 'package', "debian_lists")
     for package_list in package_lists:
-        with open(os.path.join(LIST_DIR, package_list), 'r') as f:
+        with open(package_list, 'r') as f:
             packages = f.readlines()
         package_map = []
-        try:
-            packages = [x.strip() for x in packages]
-            tmp_dir = os.path.join(FILE_PATH, 'tmp_dir')
-            if os.path.exists(tmp_dir):
-                os.system('rm -rf '+ tmp_dir)
-            os.mkdir(tmp_dir)    
-            os.chdir(tmp_dir)
-            for package in packages:
+        packages = [x.strip() for x in packages]
+        tmp_dir = os.path.join(FILE_PATH, 'tmp_dir')
+        if os.path.exists(tmp_dir):
+            os.system('rm -rf '+ tmp_dir)
+        os.mkdir(tmp_dir)    
+        os.chdir(tmp_dir)
+        for package in packages:
+            try:
                 proc = subprocess.run(['apt', 'source', package], cwd=tmp_dir, check=True)
                 if proc.returncode != 0:
-                    print(f"Failed to run apt source for {package}.")
+                    log(ERROR, f"Failed to run apt source for {package}.")
+                    if proc.stdout:
+                        log(ERROR, proc.stdout)
+                    if proc.stderr:
+                        log(ERROR, proc.stderr)
                     continue
                 ls = os.listdir()
                 target_dir = None
@@ -40,19 +65,25 @@ def run(package_lists):
                     if os.path.isdir(l):
                         target_dir = l
                         break
+                if target_dir is None:
+                    log(ERROR, f"Failed to find source directory for {package}.")
+                    continue
+                log(INFO, f"{package}\t{target_dir}")
                 package_map.append((package, target_dir))
                 os.system('rm -rf *')
-        except Exception as e:
-            os.system('rm -rf '+ tmp_dir)    
-        os.system('cp '+ os.path.join(LIST_DIR, package_list) + ' ' + os.path.join(LIST_DIR, 'ORIG_' + package_list))
-        with open(os.path.join(LIST_DIR, package_list), 'w') as f:
-            for package, target_dir in package_map:
-                for package2, target_dir2 in package_map:
-                    if target_dir == target_dir2:
-                        package_map.remove((package2, target_dir2))
+                log(INFO, f"Finished apt source for {package}.")
+            except Exception as e:
+                log(ERROR, e)
+                os.chdir(tmp_dir)
+                os.system('rm -rf *')
+                continue
+        # os.system('cp '+ package_list + ' ' + package_list.replace('.txt', '_old.txt'))
+        with open(package_list, 'w') as f:
+            package_map = recursive_search(package_map)
             for package, target_dir in package_map:
                 f.write(f"{package}\n")
-            
+
+# TODO: use config.setup
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python find_duplicate_pkg.py <package_list1.txt> <package_list2> <package_list3> ...")
