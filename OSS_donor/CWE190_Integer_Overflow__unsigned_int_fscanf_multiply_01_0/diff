@@ -1,0 +1,28 @@
+1570c1570
+< #line 28
+---
+> #line 62
+1572,1576c1572,1584
+<     {
+< #line 31
+<     result = data * 2U;
+< #line 32
+<     printUnsignedLine(result);
+---
+> #line 65
+>     if (data < 2147483647U) {
+>       {
+> #line 67
+>       result = data * 2U;
+> #line 68
+>       printUnsignedLine(result);
+>       }
+>     } else {
+>       {
+> #line 72
+>       printLine("data value is too large to perform arithmetic safely.");
+>       }
+1594c1602
+<   printLine("Calling bad()...");
+---
+>   printLine("Calling bad()...\220");

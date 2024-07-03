@@ -1,0 +1,189 @@
+{
+  "nodes": {
+    "CWE369_Divide_by_Zero__float_fscanf_01_bad-11": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:30"
+    },
+    "CWE369_Divide_by_Zero__float_fscanf_01_bad-10": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:34"
+    },
+    "CWE369_Divide_by_Zero__float_fscanf_01_bad-9": {
+      "cmd": [ "call", null, "@printIntLine", "(result)" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:34"
+    },
+    "CWE369_Divide_by_Zero__float_fscanf_01_bad-8": {
+      "cmd": [ "set", "result", "(int )(100./((double )data))" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:33"
+    },
+    "CWE369_Divide_by_Zero__float_fscanf_01_bad-7": {
+      "cmd": [ "call", null, "@fscanf", "(@stdin, \\\"%f\\\", &data)" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:30"
+    },
+    "CWE369_Divide_by_Zero__float_fscanf_01_bad-6": {
+      "cmd": [ "set", "data", "0.f" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:28"
+    },
+    "CWE369_Divide_by_Zero__float_fscanf_01_bad-5": {
+      "cmd": [ "return", null ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:36"
+    },
+    "CWE369_Divide_by_Zero__float_fscanf_01_bad-EXIT": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:24"
+    },
+    "CWE369_Divide_by_Zero__float_fscanf_01_bad-ENTRY": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:24"
+    },
+    "_G_-30": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:92"
+    },
+    "_G_-29": {
+      "cmd": [ "call", null, "@main", "()" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:92"
+    },
+    "_G_-28": {
+      "cmd": [ "falloc", "@main", "main" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:92"
+    },
+    "_G_-27": {
+      "cmd": [
+        "falloc", "@CWE369_Divide_by_Zero__float_fscanf_01_bad",
+        "CWE369_Divide_by_Zero__float_fscanf_01_bad"
+      ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:24"
+    },
+    "_G_-EXIT": { "cmd": [ "skip", "" ], "loc": ":-1" },
+    "_G_-ENTRY": { "cmd": [ "skip", "" ], "loc": ":-1" },
+    "main-26": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:92"
+    },
+    "main-25": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:92"
+    },
+    "main-24": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:95"
+    },
+    "main-23": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:95"
+    },
+    "main-22": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:102"
+    },
+    "main-21": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:103"
+    },
+    "main-20": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:104"
+    },
+    "main-19": {
+      "cmd": [ "call", null, "@printLine", "(\\\"Finished bad()\\\")" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:104"
+    },
+    "main-18": {
+      "cmd": [
+        "call", null, "@CWE369_Divide_by_Zero__float_fscanf_01_bad", "()"
+      ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:103"
+    },
+    "main-17": {
+      "cmd": [
+        "call", null, "@printLine",
+        "(\\\"Calling bad()...\\\\260\\\\271\\\\214\\\\275\\\\263U\\\")"
+      ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:102"
+    },
+    "main-16": {
+      "cmd": [ "call", null, "@srand", "((unsigned int )__cil_tmp3)" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:95"
+    },
+    "main-15": {
+      "cmd": [ "call", "__cil_tmp3", "@time", "((time_t *)((void *)0))" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:95"
+    },
+    "main-14": {
+      "cmd": [ "call", null, "@sparrow_opt", "(@optind, @optarg)" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:92"
+    },
+    "main-13": {
+      "cmd": [ "call", null, "@sparrow_arg", "(argc, argv)" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:92"
+    },
+    "main-12": {
+      "cmd": [ "return", "0" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:106"
+    },
+    "main-EXIT": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:92"
+    },
+    "main-ENTRY": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE369_Divide_by_Zero__float_fscanf_01.c:92"
+    }
+  },
+  "edges": [
+    [
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-11",
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-8"
+    ],
+    [
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-10",
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-5"
+    ],
+    [
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-9",
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-10"
+    ],
+    [
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-8",
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-9"
+    ],
+    [
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-7",
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-11"
+    ],
+    [
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-6",
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-7"
+    ],
+    [
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-5",
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-EXIT"
+    ],
+    [
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-ENTRY",
+      "CWE369_Divide_by_Zero__float_fscanf_01_bad-6"
+    ],
+    [ "_G_-30", "_G_-EXIT" ],
+    [ "_G_-29", "_G_-30" ],
+    [ "_G_-28", "_G_-29" ],
+    [ "_G_-27", "_G_-28" ],
+    [ "_G_-ENTRY", "_G_-27" ],
+    [ "main-26", "main-14" ],
+    [ "main-25", "main-15" ],
+    [ "main-24", "main-16" ],
+    [ "main-23", "main-17" ],
+    [ "main-22", "main-18" ],
+    [ "main-21", "main-19" ],
+    [ "main-20", "main-12" ],
+    [ "main-19", "main-20" ],
+    [ "main-18", "main-21" ],
+    [ "main-17", "main-22" ],
+    [ "main-16", "main-23" ],
+    [ "main-15", "main-24" ],
+    [ "main-14", "main-25" ],
+    [ "main-13", "main-26" ],
+    [ "main-12", "main-EXIT" ],
+    [ "main-ENTRY", "main-13" ]
+  ]
+}

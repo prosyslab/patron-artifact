@@ -1,0 +1,49 @@
+2471a2472,2473
+>   int __cil_tmp5 ;
+>   double __cil_tmp6 ;
+2486c2488
+< #line 37
+---
+> #line 82
+2491c2493
+< #line 41
+---
+> #line 86
+2496,2499c2498,2529
+< #line 46
+<   result = data * data;
+< #line 47
+<   printIntLine(result);
+---
+> #line 90
+>   __cil_tmp6 = sqrt((double )2147483647);
+>   }
+>   {
+> #line 90
+>   __cil_tmp5 = abs(data);
+>   }
+> #line 90
+>   if (data > (-0x7FFFFFFF-1)) {
+> #line 90
+>     if ((long )__cil_tmp5 < (long )__cil_tmp6) {
+>       {
+> #line 92
+>       result = data * data;
+> #line 93
+>       printIntLine(result);
+>       }
+>     } else {
+>       {
+>       {
+> #line 97
+>       printLine("data value is too large to perform arithmetic safely.");
+>       }
+>       }
+>     }
+>   } else {
+>     {
+>     {
+> #line 97
+>     printLine("data value is too large to perform arithmetic safely.");
+>     }
+>     }

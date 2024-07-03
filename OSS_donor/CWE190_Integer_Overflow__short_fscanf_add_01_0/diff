@@ -1,0 +1,24 @@
+1569,1572c1569,1582
+< #line 30
+<   result = (short )((int )data + 1);
+< #line 31
+<   printIntLine((int )result);
+---
+>   }
+> #line 61
+>   if ((int )data < 32767) {
+>     {
+> #line 63
+>     result = (short )((int )data + 1);
+> #line 64
+>     printIntLine((int )result);
+>     }
+>   } else {
+>     {
+> #line 68
+>     printLine("data value is too large to perform arithmetic safely.");
+>     }
+1589c1599
+<   printLine("Calling bad()...\360\326\374\262!V");
+---
+>   printLine("Calling bad()...\220");

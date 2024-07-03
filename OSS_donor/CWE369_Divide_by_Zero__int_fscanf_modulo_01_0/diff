@@ -1,0 +1,20 @@
+1568,1569c1568,1579
+< #line 30
+<   printIntLine(100 % data);
+---
+>   }
+> #line 58
+>   if (data != 0) {
+>     {
+> #line 60
+>     printIntLine(100 % data);
+>     }
+>   } else {
+>     {
+> #line 64
+>     printLine("This would result in a divide by zero");
+>     }
+1586c1596
+<   printLine("Calling bad()...\260\205\\#ZU");
+---
+>   printLine("Calling bad()...\220");

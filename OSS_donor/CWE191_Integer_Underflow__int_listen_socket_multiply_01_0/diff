@@ -1,0 +1,140 @@
+2578c2578
+< #line 69
+---
+> #line 172
+2581c2581
+< #line 70
+---
+> #line 173
+2583c2583
+< #line 72
+---
+> #line 175
+2587c2587
+< #line 74
+---
+> #line 177
+2589c2589
+< #line 75
+---
+> #line 178
+2591c2591
+< #line 76
+---
+> #line 179
+2593c2593
+< #line 77
+---
+> #line 180
+2595c2595
+< #line 78
+---
+> #line 181
+2598c2598
+< #line 78
+---
+> #line 181
+2600c2600
+< #line 80
+---
+> #line 183
+2604c2604
+< #line 82
+---
+> #line 185
+2607c2607
+< #line 82
+---
+> #line 185
+2609c2609
+< #line 84
+---
+> #line 187
+2613c2613
+< #line 86
+---
+> #line 189
+2616c2616
+< #line 87
+---
+> #line 190
+2618c2618
+< #line 89
+---
+> #line 192
+2622c2622
+< #line 92
+---
+> #line 195
+2625c2625
+< #line 92
+---
+> #line 195
+2628c2628
+< #line 93
+---
+> #line 196
+2630c2630
+< #line 95
+---
+> #line 198
+2633c2633
+< #line 93
+---
+> #line 196
+2635c2635
+< #line 95
+---
+> #line 198
+2639c2639
+< #line 98
+---
+> #line 201
+2641c2641
+< #line 100
+---
+> #line 203
+2649c2649
+< #line 103
+---
+> #line 206
+2652c2652
+< #line 105
+---
+> #line 208
+2656c2656
+< #line 107
+---
+> #line 210
+2659c2659
+< #line 109
+---
+> #line 212
+2663c2663
+< #line 118
+---
+> #line 221
+2665,2669c2665,2677
+<     {
+< #line 121
+<     result = data * 2;
+< #line 122
+<     printIntLine(result);
+---
+> #line 224
+>     if (data > -1073741824) {
+>       {
+> #line 226
+>       result = data * 2;
+> #line 227
+>       printIntLine(result);
+>       }
+>     } else {
+>       {
+> #line 231
+>       printLine("data value is too small to perform multiplication.");
+>       }
+2687c2695
+<   printLine("Calling bad()...\300\261\024L:V");
+---
+>   printLine("Calling bad()...\220");

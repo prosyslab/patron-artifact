@@ -1,0 +1,216 @@
+{
+  "nodes": {
+    "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-15": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:28"
+    },
+    "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-14": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:33"
+    },
+    "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-13": {
+      "cmd": [ "call", null, "@printLongLongLine", "(result)" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:33"
+    },
+    "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-12": {
+      "cmd": [ "set", "result", "data*2L" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:32"
+    },
+    "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-11": {
+      "cmd": [ "call", null, "@fscanf", "(@stdin, \\\"%ld\\\", &data)" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:28"
+    },
+    "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-10": {
+      "cmd": [ "set", "data", "(int64_t )0LL" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:26"
+    },
+    "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-9": {
+      "cmd": [ "assume", true, "data<0L" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:29"
+    },
+    "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-8": {
+      "cmd": [ "assume", false, "!(data<0L)" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:29"
+    },
+    "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-7": {
+      "cmd": [ "return", null ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:36"
+    },
+    "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-3": {
+      "cmd": [ "skip", "Branch" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:29"
+    },
+    "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-EXIT": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:23"
+    },
+    "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-ENTRY": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:23"
+    },
+    "_G_-33": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:93"
+    },
+    "_G_-32": {
+      "cmd": [ "call", null, "@main", "()" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:93"
+    },
+    "_G_-31": {
+      "cmd": [ "falloc", "@main", "main" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:93"
+    },
+    "_G_-30": {
+      "cmd": [
+        "falloc",
+        "@CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad",
+        "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad"
+      ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:23"
+    },
+    "_G_-EXIT": { "cmd": [ "skip", "" ], "loc": ":-1" },
+    "_G_-ENTRY": { "cmd": [ "skip", "" ], "loc": ":-1" },
+    "main-29": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:93"
+    },
+    "main-28": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:93"
+    },
+    "main-27": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:96"
+    },
+    "main-26": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:96"
+    },
+    "main-25": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:103"
+    },
+    "main-24": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:104"
+    },
+    "main-23": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:105"
+    },
+    "main-22": {
+      "cmd": [ "call", null, "@printLine", "(\\\"Finished bad()\\\")" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:105"
+    },
+    "main-21": {
+      "cmd": [
+        "call", null,
+        "@CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad", "()"
+      ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:104"
+    },
+    "main-20": {
+      "cmd": [ "call", null, "@printLine", "(\\\"Calling bad()...\\\")" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:103"
+    },
+    "main-19": {
+      "cmd": [ "call", null, "@srand", "((unsigned int )__cil_tmp3)" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:96"
+    },
+    "main-18": {
+      "cmd": [ "call", "__cil_tmp3", "@time", "((time_t *)((void *)0))" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:96"
+    },
+    "main-17": {
+      "cmd": [ "call", null, "@sparrow_opt", "(@optind, @optarg)" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:93"
+    },
+    "main-16": {
+      "cmd": [ "call", null, "@sparrow_arg", "(argc, argv)" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:93"
+    },
+    "main-14": {
+      "cmd": [ "return", "0" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:107"
+    },
+    "main-EXIT": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:93"
+    },
+    "main-ENTRY": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01.c:93"
+    }
+  },
+  "edges": [
+    [
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-15",
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-3"
+    ],
+    [
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-14",
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-7"
+    ],
+    [
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-13",
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-14"
+    ],
+    [
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-12",
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-13"
+    ],
+    [
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-11",
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-15"
+    ],
+    [
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-10",
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-11"
+    ],
+    [
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-9",
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-12"
+    ],
+    [
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-8",
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-7"
+    ],
+    [
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-7",
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-EXIT"
+    ],
+    [
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-3",
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-9"
+    ],
+    [
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-3",
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-8"
+    ],
+    [
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-ENTRY",
+      "CWE191_Integer_Underflow__int64_t_fscanf_multiply_01_bad-10"
+    ],
+    [ "_G_-33", "_G_-EXIT" ],
+    [ "_G_-32", "_G_-33" ],
+    [ "_G_-31", "_G_-32" ],
+    [ "_G_-30", "_G_-31" ],
+    [ "_G_-ENTRY", "_G_-30" ],
+    [ "main-29", "main-17" ],
+    [ "main-28", "main-18" ],
+    [ "main-27", "main-19" ],
+    [ "main-26", "main-20" ],
+    [ "main-25", "main-21" ],
+    [ "main-24", "main-22" ],
+    [ "main-23", "main-14" ],
+    [ "main-22", "main-23" ],
+    [ "main-21", "main-24" ],
+    [ "main-20", "main-25" ],
+    [ "main-19", "main-26" ],
+    [ "main-18", "main-27" ],
+    [ "main-17", "main-28" ],
+    [ "main-16", "main-29" ],
+    [ "main-14", "main-EXIT" ],
+    [ "main-ENTRY", "main-16" ]
+  ]
+}

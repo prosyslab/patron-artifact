@@ -1,0 +1,157 @@
+3471a3472,3473
+>   int __cil_tmp14 ;
+>   double __cil_tmp15 ;
+3486c3488
+< #line 71
+---
+> #line 172
+3489c3491
+< #line 72
+---
+> #line 173
+3491c3493
+< #line 74
+---
+> #line 175
+3495c3497
+< #line 76
+---
+> #line 177
+3497c3499
+< #line 77
+---
+> #line 178
+3499c3501
+< #line 78
+---
+> #line 179
+3501c3503
+< #line 79
+---
+> #line 180
+3503c3505
+< #line 80
+---
+> #line 181
+3506c3508
+< #line 80
+---
+> #line 181
+3508c3510
+< #line 82
+---
+> #line 183
+3512c3514
+< #line 84
+---
+> #line 185
+3515c3517
+< #line 84
+---
+> #line 185
+3517c3519
+< #line 86
+---
+> #line 187
+3521c3523
+< #line 88
+---
+> #line 189
+3524c3526
+< #line 89
+---
+> #line 190
+3526c3528
+< #line 91
+---
+> #line 192
+3530c3532
+< #line 94
+---
+> #line 195
+3533c3535
+< #line 94
+---
+> #line 195
+3536c3538
+< #line 95
+---
+> #line 196
+3538c3540
+< #line 97
+---
+> #line 198
+3541c3543
+< #line 95
+---
+> #line 196
+3543c3545
+< #line 97
+---
+> #line 198
+3547c3549
+< #line 100
+---
+> #line 201
+3549c3551
+< #line 102
+---
+> #line 203
+3557c3559
+< #line 105
+---
+> #line 206
+3560c3562
+< #line 107
+---
+> #line 208
+3564c3566
+< #line 109
+---
+> #line 210
+3567c3569
+< #line 111
+---
+> #line 212
+3572,3575c3574,3605
+< #line 122
+<   result = data * data;
+< #line 123
+<   printIntLine(result);
+---
+> #line 222
+>   __cil_tmp15 = sqrt((double )2147483647);
+>   }
+>   {
+> #line 222
+>   __cil_tmp14 = abs(data);
+>   }
+> #line 222
+>   if (data > (-0x7FFFFFFF-1)) {
+> #line 222
+>     if ((long )__cil_tmp14 < (long )__cil_tmp15) {
+>       {
+> #line 224
+>       result = data * data;
+> #line 225
+>       printIntLine(result);
+>       }
+>     } else {
+>       {
+>       {
+> #line 229
+>       printLine("data value is too large to perform arithmetic safely.");
+>       }
+>       }
+>     }
+>   } else {
+>     {
+>     {
+> #line 229
+>     printLine("data value is too large to perform arithmetic safely.");
+>     }
+>     }
+3592c3622
+<   printLine("Calling bad()...`\353J\240\034V");
+---
+>   printLine("Calling bad()...\220");

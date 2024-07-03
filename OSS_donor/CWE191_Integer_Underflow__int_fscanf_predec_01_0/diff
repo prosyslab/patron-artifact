@@ -1,0 +1,28 @@
+1569,1574c1569,1584
+< #line 31
+<   data --;
+< #line 32
+<   result = data;
+< #line 33
+<   printIntLine(result);
+---
+>   }
+> #line 66
+>   if (data > (-0x7FFFFFFF-1)) {
+>     {
+> #line 68
+>     data --;
+> #line 69
+>     result = data;
+> #line 70
+>     printIntLine(result);
+>     }
+>   } else {
+>     {
+> #line 74
+>     printLine("data value is too large to perform arithmetic safely.");
+>     }
+1591c1601
+<   printLine("Calling bad()...\360\211\340]RV");
+---
+>   printLine("Calling bad()...\220");

@@ -1,0 +1,190 @@
+{
+  "nodes": {
+    "CWE190_Integer_Overflow__char_fscanf_add_01_bad-11": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:27"
+    },
+    "CWE190_Integer_Overflow__char_fscanf_add_01_bad-10": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:31"
+    },
+    "CWE190_Integer_Overflow__char_fscanf_add_01_bad-9": {
+      "cmd": [ "call", null, "@printHexCharLine", "(result)" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:31"
+    },
+    "CWE190_Integer_Overflow__char_fscanf_add_01_bad-8": {
+      "cmd": [ "set", "result", "(char )(((int )data)+1)" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:30"
+    },
+    "CWE190_Integer_Overflow__char_fscanf_add_01_bad-7": {
+      "cmd": [ "call", null, "@fscanf", "(@stdin, \\\"%c\\\", &data)" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:27"
+    },
+    "CWE190_Integer_Overflow__char_fscanf_add_01_bad-6": {
+      "cmd": [ "set", "data", "(char )\\' \\'" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:25"
+    },
+    "CWE190_Integer_Overflow__char_fscanf_add_01_bad-5": {
+      "cmd": [ "return", null ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:33"
+    },
+    "CWE190_Integer_Overflow__char_fscanf_add_01_bad-EXIT": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:22"
+    },
+    "CWE190_Integer_Overflow__char_fscanf_add_01_bad-ENTRY": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:22"
+    },
+    "_G_-30": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:87"
+    },
+    "_G_-29": {
+      "cmd": [ "call", null, "@main", "()" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:87"
+    },
+    "_G_-28": {
+      "cmd": [ "falloc", "@main", "main" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:87"
+    },
+    "_G_-27": {
+      "cmd": [
+        "falloc", "@CWE190_Integer_Overflow__char_fscanf_add_01_bad",
+        "CWE190_Integer_Overflow__char_fscanf_add_01_bad"
+      ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:22"
+    },
+    "_G_-EXIT": { "cmd": [ "skip", "" ], "loc": ":-1" },
+    "_G_-ENTRY": { "cmd": [ "skip", "" ], "loc": ":-1" },
+    "main-26": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:87"
+    },
+    "main-25": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:87"
+    },
+    "main-24": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:90"
+    },
+    "main-23": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:90"
+    },
+    "main-22": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:97"
+    },
+    "main-21": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:98"
+    },
+    "main-20": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:99"
+    },
+    "main-19": {
+      "cmd": [ "call", null, "@printLine", "(\\\"Finished bad()\\\")" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:99"
+    },
+    "main-18": {
+      "cmd": [
+        "call", null, "@CWE190_Integer_Overflow__char_fscanf_add_01_bad",
+        "()"
+      ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:98"
+    },
+    "main-17": {
+      "cmd": [
+        "call", null, "@printLine",
+        "(\\\"Calling bad()...\\\\300\\\\206\\\\006;\\\\205U\\\")"
+      ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:97"
+    },
+    "main-16": {
+      "cmd": [ "call", null, "@srand", "((unsigned int )__cil_tmp3)" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:90"
+    },
+    "main-15": {
+      "cmd": [ "call", "__cil_tmp3", "@time", "((time_t *)((void *)0))" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:90"
+    },
+    "main-14": {
+      "cmd": [ "call", null, "@sparrow_opt", "(@optind, @optarg)" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:87"
+    },
+    "main-13": {
+      "cmd": [ "call", null, "@sparrow_arg", "(argc, argv)" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:87"
+    },
+    "main-12": {
+      "cmd": [ "return", "0" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:101"
+    },
+    "main-EXIT": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:87"
+    },
+    "main-ENTRY": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE190_Integer_Overflow__char_fscanf_add_01.c:87"
+    }
+  },
+  "edges": [
+    [
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-11",
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-8"
+    ],
+    [
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-10",
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-5"
+    ],
+    [
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-9",
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-10"
+    ],
+    [
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-8",
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-9"
+    ],
+    [
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-7",
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-11"
+    ],
+    [
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-6",
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-7"
+    ],
+    [
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-5",
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-EXIT"
+    ],
+    [
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-ENTRY",
+      "CWE190_Integer_Overflow__char_fscanf_add_01_bad-6"
+    ],
+    [ "_G_-30", "_G_-EXIT" ],
+    [ "_G_-29", "_G_-30" ],
+    [ "_G_-28", "_G_-29" ],
+    [ "_G_-27", "_G_-28" ],
+    [ "_G_-ENTRY", "_G_-27" ],
+    [ "main-26", "main-14" ],
+    [ "main-25", "main-15" ],
+    [ "main-24", "main-16" ],
+    [ "main-23", "main-17" ],
+    [ "main-22", "main-18" ],
+    [ "main-21", "main-19" ],
+    [ "main-20", "main-12" ],
+    [ "main-19", "main-20" ],
+    [ "main-18", "main-21" ],
+    [ "main-17", "main-22" ],
+    [ "main-16", "main-23" ],
+    [ "main-15", "main-24" ],
+    [ "main-14", "main-25" ],
+    [ "main-13", "main-26" ],
+    [ "main-12", "main-EXIT" ],
+    [ "main-ENTRY", "main-13" ]
+  ]
+}

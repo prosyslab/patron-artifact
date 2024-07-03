@@ -407,7 +407,8 @@ def construct_database() -> None:
             run_sparrow_defualt(patchweave_works, patron_works)
     else:
         works = check_sparrow()
-        run_sparrow(works)
+        if len(works) > 0:
+            run_sparrow(works)
     mk_database()
 
 '''

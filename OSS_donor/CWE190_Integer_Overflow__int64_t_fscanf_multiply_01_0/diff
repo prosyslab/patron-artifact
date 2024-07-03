@@ -1,0 +1,28 @@
+1595c1595
+< #line 29
+---
+> #line 63
+1597,1601c1597,1609
+<     {
+< #line 32
+<     result = data * 2L;
+< #line 33
+<     printLongLongLine(result);
+---
+> #line 66
+>     if ((long long )data < 0LL) {
+>       {
+> #line 68
+>       result = data * 2L;
+> #line 69
+>       printLongLongLine(result);
+>       }
+>     } else {
+>       {
+> #line 73
+>       printLine("data value is too large to perform arithmetic safely.");
+>       }
+1619c1627
+<   printLine("Calling bad()...\320\224\355b%V");
+---
+>   printLine("Calling bad()...\220");

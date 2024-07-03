@@ -1,0 +1,28 @@
+1570c1570
+< #line 29
+---
+> #line 65
+1572,1576c1572,1584
+<     {
+< #line 32
+<     result = data * 2;
+< #line 33
+<     printIntLine(result);
+---
+> #line 68
+>     if (data > -1073741824) {
+>       {
+> #line 70
+>       result = data * 2;
+> #line 71
+>       printIntLine(result);
+>       }
+>     } else {
+>       {
+> #line 75
+>       printLine("data value is too small to perform multiplication.");
+>       }
+1594c1602
+<   printLine("Calling bad()... \033\213\002BV");
+---
+>   printLine("Calling bad()...\220");

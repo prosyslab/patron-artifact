@@ -1,0 +1,218 @@
+{
+  "nodes": {
+    "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-15": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:28"
+    },
+    "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-14": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:33"
+    },
+    "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-13": {
+      "cmd": [ "call", null, "@printIntLine", "(result)" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:33"
+    },
+    "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-12": {
+      "cmd": [ "set", "result", "data*2" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:32"
+    },
+    "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-11": {
+      "cmd": [ "call", null, "@fscanf", "(@stdin, \\\"%d\\\", &data)" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:28"
+    },
+    "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-10": {
+      "cmd": [ "set", "data", "0" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:26"
+    },
+    "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-9": {
+      "cmd": [ "assume", true, "data>0" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:29"
+    },
+    "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-8": {
+      "cmd": [ "assume", false, "!(data>0)" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:29"
+    },
+    "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-7": {
+      "cmd": [ "return", null ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:36"
+    },
+    "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-3": {
+      "cmd": [ "skip", "Branch" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:29"
+    },
+    "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-EXIT": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:22"
+    },
+    "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-ENTRY": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:22"
+    },
+    "_G_-33": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:95"
+    },
+    "_G_-32": {
+      "cmd": [ "call", null, "@main", "()" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:95"
+    },
+    "_G_-31": {
+      "cmd": [ "falloc", "@main", "main" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:95"
+    },
+    "_G_-30": {
+      "cmd": [
+        "falloc", "@CWE190_Integer_Overflow__int_fscanf_multiply_01_bad",
+        "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad"
+      ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:22"
+    },
+    "_G_-EXIT": { "cmd": [ "skip", "" ], "loc": ":-1" },
+    "_G_-ENTRY": { "cmd": [ "skip", "" ], "loc": ":-1" },
+    "main-29": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:95"
+    },
+    "main-28": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:95"
+    },
+    "main-27": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:98"
+    },
+    "main-26": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:98"
+    },
+    "main-25": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:105"
+    },
+    "main-24": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:106"
+    },
+    "main-23": {
+      "cmd": [ "skip", "ReturnNode" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:107"
+    },
+    "main-22": {
+      "cmd": [ "call", null, "@printLine", "(\\\"Finished bad()\\\")" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:107"
+    },
+    "main-21": {
+      "cmd": [
+        "call", null, "@CWE190_Integer_Overflow__int_fscanf_multiply_01_bad",
+        "()"
+      ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:106"
+    },
+    "main-20": {
+      "cmd": [
+        "call", null, "@printLine",
+        "(\\\"Calling bad()...\\\\200\\\\272\\\\227YzU\\\")"
+      ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:105"
+    },
+    "main-19": {
+      "cmd": [ "call", null, "@srand", "((unsigned int )__cil_tmp3)" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:98"
+    },
+    "main-18": {
+      "cmd": [ "call", "__cil_tmp3", "@time", "((time_t *)((void *)0))" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:98"
+    },
+    "main-17": {
+      "cmd": [ "call", null, "@sparrow_opt", "(@optind, @optarg)" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:95"
+    },
+    "main-16": {
+      "cmd": [ "call", null, "@sparrow_arg", "(argc, argv)" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:95"
+    },
+    "main-14": {
+      "cmd": [ "return", "0" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:109"
+    },
+    "main-EXIT": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:95"
+    },
+    "main-ENTRY": {
+      "cmd": [ "skip", "" ],
+      "loc": "CWE190_Integer_Overflow__int_fscanf_multiply_01.c:95"
+    }
+  },
+  "edges": [
+    [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-15",
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-3"
+    ],
+    [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-14",
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-7"
+    ],
+    [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-13",
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-14"
+    ],
+    [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-12",
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-13"
+    ],
+    [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-11",
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-15"
+    ],
+    [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-10",
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-11"
+    ],
+    [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-9",
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-12"
+    ],
+    [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-8",
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-7"
+    ],
+    [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-7",
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-EXIT"
+    ],
+    [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-3",
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-9"
+    ],
+    [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-3",
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-8"
+    ],
+    [
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-ENTRY",
+      "CWE190_Integer_Overflow__int_fscanf_multiply_01_bad-10"
+    ],
+    [ "_G_-33", "_G_-EXIT" ],
+    [ "_G_-32", "_G_-33" ],
+    [ "_G_-31", "_G_-32" ],
+    [ "_G_-30", "_G_-31" ],
+    [ "_G_-ENTRY", "_G_-30" ],
+    [ "main-29", "main-17" ],
+    [ "main-28", "main-18" ],
+    [ "main-27", "main-19" ],
+    [ "main-26", "main-20" ],
+    [ "main-25", "main-21" ],
+    [ "main-24", "main-22" ],
+    [ "main-23", "main-14" ],
+    [ "main-22", "main-23" ],
+    [ "main-21", "main-24" ],
+    [ "main-20", "main-25" ],
+    [ "main-19", "main-26" ],
+    [ "main-18", "main-27" ],
+    [ "main-17", "main-28" ],
+    [ "main-16", "main-29" ],
+    [ "main-14", "main-EXIT" ],
+    [ "main-ENTRY", "main-16" ]
+  ]
+}

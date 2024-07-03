@@ -1,0 +1,36 @@
+2471a2472
+>   double __cil_tmp5 ;
+2484c2485
+< #line 37
+---
+> #line 82
+2486c2487
+< #line 37
+---
+> #line 82
+2491c2492
+< #line 41
+---
+> #line 86
+2496,2499c2497,2512
+< #line 46
+<   result = (int )(100. / (double )data);
+< #line 47
+<   printIntLine(result);
+---
+> #line 90
+>   __cil_tmp5 = fabs((double )data);
+>   }
+> #line 90
+>   if (__cil_tmp5 > 1e-06) {
+>     {
+> #line 92
+>     result = (int )(100. / (double )data);
+> #line 93
+>     printIntLine(result);
+>     }
+>   } else {
+>     {
+> #line 97
+>     printLine("This would result in a divide by zero");
+>     }
