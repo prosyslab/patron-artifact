@@ -359,13 +359,23 @@ def mk_database():
                     continue
         else:
             label = os.path.join(donor, 'label.json')
-            with open(label, 'r') as f:
-                data = json.load(f)
-                try:
-                    true_alarm = data["TRUE-ALARM"]["ALARM-DIR"][0]
-                except IndexError:
+            try:
+                with open(label, 'r') as f:
+                    data = json.load(f)
+                    try:
+                        true_alarm = data["TRUE-ALARM"]["ALARM-DIR"][0]
+                    except IndexError:
+                        log(ERROR, f"Failed to get true alarm for {donor}")
+                        continue
+            except FileNotFoundError:
+                alarm_dir = os.path.join(donor, 'bug', 'sparrow-out', 'taint', 'datalog')
+                ls = os.listdir(alarm_dir)
+                if len(ls) != 2:
                     log(ERROR, f"Failed to get true alarm for {donor}")
                     continue
+                for f in ls:
+                    if f != 'Alarm.map':
+                        true_alarm = f
         result = subprocess.Popen(cmd + [donor, true_alarm], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         result.wait()
         if result.returncode != 0:
