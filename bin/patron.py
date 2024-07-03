@@ -28,7 +28,7 @@ donor_list = []
 global_stat = None
 global_writer = None
 stat_out = ""
-
+time_record = dict()
 
 '''
 Function that writes out the combined patch results
@@ -38,7 +38,12 @@ copy the .tsv files to Google Sheet for easier analysis
 Input: str (output directory), str (current job(the donee file name)), bool (is failed)
 Output: None
 '''
-def write_out_results(out_dir:str, current_job:str, is_failed:bool) -> None:
+def write_out_results(out_dir:str, current_job:str, is_failed:bool, time:str) -> None:
+    time_tsv_path = os.path.join(config.configuration["OUT_DIR"], 'time.tsv')
+    with open(time_tsv_path, 'a') as time_tsv:
+        time_writer = csv.writer(time_tsv, delimiter='\t')
+        time_writer.writerow([current_job, time])
+        time_tsv.flush()
     patches = []
     log(INFO, "Writing out the results for {}...".format(current_job))
     stat_file_name = os.path.join(stat_out, current_job + '_status_')
@@ -98,6 +103,7 @@ Input: list (command), str (path for output path)
 Output: subprocess.Popen
 '''
 def run_patron(cmd:list, path:str) -> subprocess.Popen:
+    global time_record
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     current_job = os.path.basename(cmd[2])
     if not check_donee(cmd[2]):
@@ -109,6 +115,8 @@ def run_patron(cmd:list, path:str) -> subprocess.Popen:
     with open(os.path.join(sub_out_dir, "donee_path.txt"), 'w') as f:
         f.write(path)
     log(INFO, f"Running patron with {cmd}")
+    # get current time
+    time_record[cmd] = time.time()
     return subprocess.Popen(cmd)
 
 '''
@@ -409,6 +417,7 @@ Input: list (PROCS)[command, process_id, Popen], int (work_cnt), list (boolean l
 Output: list (PROCS), int (work_cnt) -> updated
 '''
 def collect_job_results(PROCS, work_cnt, jobs_finished):
+    global time_record
     for j in range(len(PROCS)):
         cmd, work_id, proc = PROCS[j]
         if proc.poll() is not None and not jobs_finished[work_id]:
@@ -418,9 +427,13 @@ def collect_job_results(PROCS, work_cnt, jobs_finished):
             else:
                 log(INFO, f"Successfully ran patron with {cmd}")
                 is_failed = False
+                end_time = time.time()
+                start_time = time_record[cmd]
+                elapsed_time = end_time - start_time
+                time_in_str_insec = str(datetime.timedelta(seconds=elapsed_time))
             jobs_finished[work_id] = True
             work_cnt -= 1
-            write_out_results(cmd[-1], os.path.basename(cmd[2]), is_failed)
+            write_out_results(cmd[-1], os.path.basename(cmd[2]), is_failed, time_in_str_insec)
             break
     return PROCS, work_cnt
 
