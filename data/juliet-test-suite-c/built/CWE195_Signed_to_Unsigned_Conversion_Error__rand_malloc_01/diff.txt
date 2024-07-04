@@ -1,0 +1,34 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE195_Signed_to_Unsigned_Conversion_Error__rand_malloc_01_bad()
+---
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__rand_malloc_01.c"
+> static void goodG2B()
+2823c2821
+<     data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+---
+>     data = 100-1;
+2831c2829
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__rand_malloc_01.c" 3 4
+---
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__rand_malloc_01.c" 3 4
+2833c2831
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__rand_malloc_01.c"
+---
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__rand_malloc_01.c"
+2841a2840,2844
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__rand_malloc_01_good()
+> {
+>     goodG2B();
+> }
+2851a2855,2857
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__rand_malloc_01_good();
+>     printLine("Finished good()");
+2857,2859d2862
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__rand_malloc_01_bad();
+<     printLine("Finished bad()");

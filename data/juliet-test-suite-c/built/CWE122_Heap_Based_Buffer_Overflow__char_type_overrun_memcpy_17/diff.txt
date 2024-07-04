@@ -1,0 +1,40 @@
+3253,3256c3253,3254
+< 
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17_bad()
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17.c"
+> static void good1()
+3258,3259c3256,3257
+<     int j;
+<     for(j = 0; j < 1; j++)
+---
+>     int k;
+>     for(k = 0; k < 1; k++)
+3264c3262
+< # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17.c" 3 4
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17.c" 3 4
+3266c3264
+< # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17.c"
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17.c"
+3272c3270
+<             memcpy(structCharVoid->charFirst, "0123456789abcdef0123456789abcde", sizeof(*structCharVoid));
+---
+>             memcpy(structCharVoid->charFirst, "0123456789abcdef0123456789abcde", sizeof(structCharVoid->charFirst));
+3279a3278,3282
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17_good()
+> {
+>     good1();
+> }
+3289a3293,3295
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17_good();
+>     printLine("Finished good()");
+3295,3297d3300
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_17_bad();
+<     printLine("Finished bad()");

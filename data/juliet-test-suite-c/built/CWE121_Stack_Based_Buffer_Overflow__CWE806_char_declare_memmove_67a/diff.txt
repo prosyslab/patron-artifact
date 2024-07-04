@@ -1,0 +1,35 @@
+3246a3247,3248
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_67a.c"
+> void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_67b_goodG2BSink(CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_67_structType myStruct);
+3248,3253c3250
+< 
+< 
+< 
+< void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_67b_badSink(CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_67_structType myStruct);
+< 
+< void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_67_bad()
+---
+> static void goodG2B()
+3260,3261c3257,3258
+<     memset(data, 'A', 100-1);
+<     data[100-1] = '\0';
+---
+>     memset(data, 'A', 50-1);
+>     data[50-1] = '\0';
+3263c3260,3265
+<     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_67b_badSink(myStruct);
+---
+>     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_67b_goodG2BSink(myStruct);
+> }
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_67_good()
+> {
+>     goodG2B();
+3274a3277,3279
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_67_good();
+>     printLine("Finished good()");
+3280,3282d3284
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_memmove_67_bad();
+<     printLine("Finished bad()");

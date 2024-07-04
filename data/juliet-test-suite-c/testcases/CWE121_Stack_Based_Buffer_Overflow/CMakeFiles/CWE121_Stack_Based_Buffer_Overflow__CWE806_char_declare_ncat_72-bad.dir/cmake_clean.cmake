@@ -1,0 +1,13 @@
+file(REMOVE_RECURSE
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE121/bad/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncat_72-bad"
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE121/bad/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncat_72-bad.pdb"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncat_72-bad.dir/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncat_72a.cpp.o"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncat_72-bad.dir/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncat_72a.cpp.o.d"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncat_72-bad.dir/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncat_72b.cpp.o"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncat_72-bad.dir/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncat_72b.cpp.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_ncat_72-bad.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

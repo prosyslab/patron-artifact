@@ -1,0 +1,37 @@
+2817,2820c2817,2818
+< 
+< 
+< 
+< static void badSink()
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__rand_strncpy_45.c"
+> static void goodG2BSink()
+2822c2820
+<     short data = CWE194_Unexpected_Sign_Extension__rand_strncpy_45_badData;
+---
+>     short data = CWE194_Unexpected_Sign_Extension__rand_strncpy_45_goodG2BData;
+2839c2837
+< void CWE194_Unexpected_Sign_Extension__rand_strncpy_45_bad()
+---
+> static void goodG2B()
+2845,2847c2843,2850
+<     data = (short)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+<     CWE194_Unexpected_Sign_Extension__rand_strncpy_45_badData = data;
+<     badSink();
+---
+>     data = 100-1;
+>     CWE194_Unexpected_Sign_Extension__rand_strncpy_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+> 
+> void CWE194_Unexpected_Sign_Extension__rand_strncpy_45_good()
+> {
+>     goodG2B();
+2858a2862,2864
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__rand_strncpy_45_good();
+>     printLine("Finished good()");
+2864,2866d2869
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__rand_strncpy_45_bad();
+<     printLine("Finished bad()");

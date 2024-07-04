@@ -1,0 +1,27 @@
+2819,2822c2819,2820
+< 
+< 
+< 
+< void CWE127_Buffer_Underread__CWE839_rand_67b_badSink(CWE127_Buffer_Underread__CWE839_rand_67_structType myStruct)
+---
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__CWE839_rand_67b.c"
+> void CWE127_Buffer_Underread__CWE839_rand_67b_goodG2BSink(CWE127_Buffer_Underread__CWE839_rand_67_structType myStruct)
+2835a2834,2851
+>         }
+>     }
+> }
+> 
+> 
+> void CWE127_Buffer_Underread__CWE839_rand_67b_goodB2GSink(CWE127_Buffer_Underread__CWE839_rand_67_structType myStruct)
+> {
+>     int data = myStruct.structFirst;
+>     {
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

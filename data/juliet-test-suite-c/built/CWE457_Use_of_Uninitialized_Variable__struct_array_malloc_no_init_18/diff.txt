@@ -1,0 +1,74 @@
+2813a2814,2825
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_no_init_18.c"
+> static void goodB2G()
+> {
+>     twoIntsStruct * data;
+>     data = (twoIntsStruct *)malloc(10*sizeof(twoIntsStruct));
+>     if (data == 
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_no_init_18.c" 3 4
+>                ((void *)0)
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_no_init_18.c"
+>                    ) {exit(-1);}
+>     goto source;
+> source:
+2814a2827,2829
+>     ;
+>     goto sink;
+> sink:
+2815a2831,2847
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+>             data[i].intOne = i;
+>             data[i].intTwo = i;
+>         }
+>     }
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+>             printIntLine(data[i].intOne);
+>             printIntLine(data[i].intTwo);
+>         }
+>     }
+> }
+2817c2849,2850
+< void CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_no_init_18_bad()
+---
+> 
+> static void goodG2B()
+2822c2855
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_no_init_18.c" 3 4
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_no_init_18.c" 3 4
+2824c2857
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_no_init_18.c"
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_no_init_18.c"
+2829c2862,2869
+<     ;
+---
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+>             data[i].intOne = i;
+>             data[i].intTwo = i;
+>         }
+>     }
+2841a2882,2887
+> 
+> void CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_no_init_18_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2851a2898,2900
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_no_init_18_good();
+>     printLine("Finished good()");
+2857,2859d2905
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_no_init_18_bad();
+<     printLine("Finished bad()");

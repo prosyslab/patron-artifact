@@ -1,0 +1,35 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< static short badSource(short data)
+---
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__rand_strncpy_42.c"
+> static short goodG2BSource(short data)
+2820c2818
+<     data = (short)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+---
+>     data = 100-1;
+2824c2822,2823
+< void CWE194_Unexpected_Sign_Extension__rand_strncpy_42_bad()
+---
+> 
+> static void goodG2B()
+2829c2828
+<     data = badSource(data);
+---
+>     data = goodG2BSource(data);
+2844a2844,2848
+> 
+> void CWE194_Unexpected_Sign_Extension__rand_strncpy_42_good()
+> {
+>     goodG2B();
+> }
+2854a2859,2861
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__rand_strncpy_42_good();
+>     printLine("Finished good()");
+2860,2862d2866
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__rand_strncpy_42_bad();
+<     printLine("Finished bad()");

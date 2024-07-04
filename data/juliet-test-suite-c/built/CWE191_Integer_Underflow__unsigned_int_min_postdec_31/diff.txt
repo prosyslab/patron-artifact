@@ -1,0 +1,48 @@
+2813a2814,2818
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__unsigned_int_min_postdec_31.c"
+> static void goodG2B()
+> {
+>     unsigned int data;
+>     data = 0;
+2814a2820,2831
+>     data = -2;
+>     {
+>         unsigned int dataCopy = data;
+>         unsigned int data = dataCopy;
+>         {
+> 
+>             data--;
+>             unsigned int result = data;
+>             printUnsignedLine(result);
+>         }
+>     }
+> }
+2817c2834
+< void CWE191_Integer_Underflow__unsigned_int_min_postdec_31_bad()
+---
+> static void goodB2G()
+2826d2842
+<         {
+2827a2844,2845
+>         if (data > 0)
+>         {
+2831a2850,2853
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2833a2856,2861
+> 
+> void CWE191_Integer_Underflow__unsigned_int_min_postdec_31_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2843a2872,2874
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__unsigned_int_min_postdec_31_good();
+>     printLine("Finished good()");
+2849,2851d2879
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__unsigned_int_min_postdec_31_bad();
+<     printLine("Finished bad()");

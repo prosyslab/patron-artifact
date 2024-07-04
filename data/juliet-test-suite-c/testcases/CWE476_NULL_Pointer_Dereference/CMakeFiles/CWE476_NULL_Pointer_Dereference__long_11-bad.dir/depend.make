@@ -1,0 +1,2 @@
+# Empty dependencies file for CWE476_NULL_Pointer_Dereference__long_11-bad.
+# This may be replaced when dependencies are built.

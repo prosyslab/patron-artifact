@@ -1,0 +1,13 @@
+file(REMOVE_RECURSE
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE789/good/CWE789_Uncontrolled_Mem_Alloc__malloc_char_connect_socket_61-good"
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE789/good/CWE789_Uncontrolled_Mem_Alloc__malloc_char_connect_socket_61-good.pdb"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_connect_socket_61-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_connect_socket_61a.c.o"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_connect_socket_61-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_connect_socket_61a.c.o.d"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_connect_socket_61-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_connect_socket_61b.c.o"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_connect_socket_61-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_connect_socket_61b.c.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_connect_socket_61-good.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

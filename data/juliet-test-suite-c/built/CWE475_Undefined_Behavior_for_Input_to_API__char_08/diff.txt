@@ -1,0 +1,44 @@
+3254a3255,3268
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE475_Undefined_Behavior_for_Input_to_API/CWE475_Undefined_Behavior_for_Input_to_API__char_08.c"
+> static void good1()
+> {
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             char dataBuffer[100] = "";
+>             char * data = dataBuffer;
+>             strcpy(data, "abcdefghijklmnopqrstuvwxyz");
+3255a3270,3274
+>             memmove(data + 6, data + 4, 10*sizeof(char));
+>             printLine(data);
+>         }
+>     }
+> }
+3258c3277
+< void CWE475_Undefined_Behavior_for_Input_to_API__char_08_bad()
+---
+> static void good2()
+3267c3286
+<             memcpy(data + 6, data + 4, 10*sizeof(char));
+---
+>             memmove(data + 6, data + 4, 10*sizeof(char));
+3271a3291,3296
+> 
+> void CWE475_Undefined_Behavior_for_Input_to_API__char_08_good()
+> {
+>     good1();
+>     good2();
+> }
+3281a3307,3309
+>     printLine("Calling good()...");
+>     CWE475_Undefined_Behavior_for_Input_to_API__char_08_good();
+>     printLine("Finished good()");
+3287,3289d3314
+<     printLine("Calling bad()...");
+<     CWE475_Undefined_Behavior_for_Input_to_API__char_08_bad();
+<     printLine("Finished bad()");

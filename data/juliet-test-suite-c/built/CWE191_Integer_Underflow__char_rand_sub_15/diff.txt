@@ -1,0 +1,137 @@
+2813a2814,2821
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_rand_sub_15.c"
+> static void goodB2G1()
+> {
+>     char data;
+>     data = ' ';
+>     switch(6)
+>     {
+>     case 6:
+2814a2823,2825
+>         data = (char)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>         break;
+>     default:
+2815a2827,2836
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(8)
+>     {
+>     case 7:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+2817c2838,2856
+< void CWE191_Integer_Underflow__char_rand_sub_15_bad()
+---
+>         if (data > 
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_rand_sub_15.c" 3 4
+>                   (-0x7f - 1)
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_rand_sub_15.c"
+>                           )
+>         {
+>             char result = data - 1;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform subtraction.");
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2834a2874,2946
+> 
+>         if (data > 
+> # 114 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_rand_sub_15.c" 3 4
+>                   (-0x7f - 1)
+> # 114 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_rand_sub_15.c"
+>                           )
+>         {
+>             char result = data - 1;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform subtraction.");
+>         }
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     char data;
+>     data = ' ';
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         data = -2;
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>     {
+> 
+>         char result = data - 1;
+>         printHexCharLine(result);
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     char data;
+>     data = ' ';
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = -2;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+2846a2959,2966
+> 
+> void CWE191_Integer_Underflow__char_rand_sub_15_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2856a2977,2979
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__char_rand_sub_15_good();
+>     printLine("Finished good()");
+2862,2864d2984
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__char_rand_sub_15_bad();
+<     printLine("Finished bad()");

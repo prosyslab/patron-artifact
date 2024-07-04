@@ -1,0 +1,181 @@
+2813a2814,2817
+> # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c"
+> static void goodB2G1()
+> {
+>     int data;
+2814a2819,2824
+>     data = -1;
+>     switch(6)
+>     {
+>     case 6:
+>     {
+>         char inputBuffer[(3 * sizeof(data) + 2)] = "";
+2815a2826,2835
+>         if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+> # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c" 3 4
+>                                                stdin
+> # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c"
+>                                                     ) != 
+> # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c" 3 4
+>                                                          ((void *)0)
+> # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c"
+>                                                              )
+>         {
+2816a2837,2845
+>             data = atoi(inputBuffer);
+>         }
+>         else
+>         {
+>             printLine("fgets() failed.");
+>         }
+>     }
+>     break;
+>     default:
+2817a2847,2852
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(8)
+>     {
+>     case 7:
+2819c2854,2874
+< void CWE127_Buffer_Underread__CWE839_fgets_15_bad()
+---
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+>     {
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");
+>         }
+>     }
+>     break;
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2831c2886
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c" 3 4
+---
+> # 142 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c" 3 4
+2833c2888
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c"
+---
+> # 142 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c"
+2835c2890
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c" 3 4
+---
+> # 142 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c" 3 4
+2837c2892
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c"
+---
+> # 142 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_15.c"
+2859a2915,2997
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");
+>         }
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+> 
+>         data = 7;
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>     {
+>         int buffer[10] = { 0 };
+> 
+> 
+>         if (data < 10)
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is too big.");
+>         }
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = -1;
+>     switch(6)
+>     {
+>     case 6:
+> 
+> 
+>         data = 7;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>     {
+>         int buffer[10] = { 0 };
+> 
+2876a3015,3022
+> 
+> void CWE127_Buffer_Underread__CWE839_fgets_15_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2886a3033,3035
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__CWE839_fgets_15_good();
+>     printLine("Finished good()");
+2892,2894d3040
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__CWE839_fgets_15_bad();
+<     printLine("Finished bad()");

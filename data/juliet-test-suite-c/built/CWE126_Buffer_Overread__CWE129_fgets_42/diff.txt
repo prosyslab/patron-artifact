@@ -1,0 +1,81 @@
+2813a2814,2816
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_42.c"
+> static int goodG2BSource(int data)
+> {
+2815a2819,2821
+>     data = 7;
+>     return data;
+> }
+2816a2823,2830
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = -1;
+>     data = goodG2BSource(data);
+>     {
+>         int buffer[10] = { 0 };
+2819c2833,2845
+< static int badSource(int data)
+---
+>         if (data >= 0)
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is negative");
+>         }
+>     }
+> }
+> 
+> 
+> static int goodB2GSource(int data)
+2825c2851
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_42.c" 3 4
+---
+> # 103 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_42.c" 3 4
+2827c2853
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_42.c"
+---
+> # 103 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_42.c"
+2829c2855
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_42.c" 3 4
+---
+> # 103 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_42.c" 3 4
+2831c2857
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_42.c"
+---
+> # 103 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_42.c"
+2845c2871
+< void CWE126_Buffer_Overread__CWE129_fgets_42_bad()
+---
+> static void goodB2G()
+2850c2876
+<     data = badSource(data);
+---
+>     data = goodB2GSource(data);
+2854,2855c2880
+< 
+<         if (data >= 0)
+---
+>         if (data >= 0 && data < (10))
+2861c2886
+<             printLine("ERROR: Array index is negative");
+---
+>             printLine("ERROR: Array index is out-of-bounds");
+2864a2890,2895
+> 
+> void CWE126_Buffer_Overread__CWE129_fgets_42_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2874a2906,2908
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__CWE129_fgets_42_good();
+>     printLine("Finished good()");
+2880,2882d2913
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__CWE129_fgets_42_bad();
+<     printLine("Finished bad()");

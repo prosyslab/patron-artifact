@@ -1,0 +1,34 @@
+2820,2823c2820,2821
+< 
+< 
+< 
+< void CWE194_Unexpected_Sign_Extension__negative_malloc_34_bad()
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__negative_malloc_34.c"
+> static void goodG2B()
+2830c2828
+<     data = -1;
+---
+>     data = 100-1;
+2841c2839
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__negative_malloc_34.c" 3 4
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__negative_malloc_34.c" 3 4
+2843c2841
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__negative_malloc_34.c"
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__negative_malloc_34.c"
+2852a2851,2855
+> 
+> void CWE194_Unexpected_Sign_Extension__negative_malloc_34_good()
+> {
+>     goodG2B();
+> }
+2862a2866,2868
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__negative_malloc_34_good();
+>     printLine("Finished good()");
+2868,2870d2873
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__negative_malloc_34_bad();
+<     printLine("Finished bad()");

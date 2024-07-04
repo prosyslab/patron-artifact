@@ -1,0 +1,2 @@
+# Empty dependencies file for CWE690_NULL_Deref_From_Return__char_malloc_02-good.
+# This may be replaced when dependencies are built.

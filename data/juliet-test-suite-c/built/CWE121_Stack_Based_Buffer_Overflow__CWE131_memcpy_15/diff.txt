@@ -1,0 +1,81 @@
+2813a2814,2843
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c"
+> static void goodG2B1()
+> {
+>     int * data;
+>     data = 
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c" 3 4
+>           ((void *)0)
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c"
+>               ;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         data = (int *)
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c" 3 4
+>                      __builtin_alloca (
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c"
+>                      10*sizeof(int)
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c" 3 4
+>                      )
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c"
+>                                            ;
+>         break;
+>     }
+>     {
+>         int source[10] = {0};
+2814a2845,2848
+>         memcpy(data, source, 10*sizeof(int));
+>         printIntLine(data[0]);
+>     }
+> }
+2817c2851
+< void CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15_bad()
+---
+> static void goodG2B2()
+2821c2855
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c" 3 4
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c" 3 4
+2823c2857
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c"
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c"
+2830c2864
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c" 3 4
+---
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c" 3 4
+2832,2834c2866,2868
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c"
+<                      10
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c" 3 4
+---
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c"
+>                      10*sizeof(int)
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c" 3 4
+2836,2837c2870,2871
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c"
+<                                ;
+---
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15.c"
+>                                            ;
+2850a2885,2890
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2860a2901,2903
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15_good();
+>     printLine("Finished good()");
+2866,2868d2908
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_15_bad();
+<     printLine("Finished bad()");

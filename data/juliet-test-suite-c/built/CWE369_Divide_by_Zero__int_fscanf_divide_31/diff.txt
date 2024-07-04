@@ -1,0 +1,55 @@
+2813a2814,2817
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fscanf_divide_31.c"
+> static void goodG2B()
+> {
+>     int data;
+2814a2819
+>     data = -1;
+2815a2821,2824
+>     data = 7;
+>     {
+>         int dataCopy = data;
+>         int data = dataCopy;
+2817c2826,2831
+< void CWE369_Divide_by_Zero__int_fscanf_divide_31_bad()
+---
+>         printIntLine(100 / data);
+>     }
+> }
+> 
+> 
+> static void goodB2G()
+2824c2838
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fscanf_divide_31.c" 3 4
+---
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fscanf_divide_31.c" 3 4
+2826c2840
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fscanf_divide_31.c"
+---
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fscanf_divide_31.c"
+2832c2846,2853
+<         printIntLine(100 / data);
+---
+>         if( data != 0 )
+>         {
+>             printIntLine(100 / data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+2834a2856,2861
+> 
+> void CWE369_Divide_by_Zero__int_fscanf_divide_31_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2844a2872,2874
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_fscanf_divide_31_good();
+>     printLine("Finished good()");
+2850,2852d2879
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_fscanf_divide_31_bad();
+<     printLine("Finished bad()");

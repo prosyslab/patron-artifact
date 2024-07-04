@@ -1,0 +1,59 @@
+3240a3241
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_15.c"
+3241a3243,3248
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_15.c"
+> static void good1()
+> {
+>     switch(5)
+>     {
+>     case 6:
+3242a3250,3253
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+>     {
+3244a3256,3257
+>         char dataBuffer[100] = "";
+>         char * data = dataBuffer;
+3245a3259,3270
+>         if (sscanf("string", "%99s\0", data) == 
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_15.c" 3 4
+>                                                  (-1)
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_15.c"
+>                                                     )
+>         {
+>             printLine("sscanf failed!");
+>         }
+>     }
+>     break;
+>     }
+> }
+3248,3249c3273
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_15.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_15_bad()
+---
+> static void good2()
+3260,3261c3284,3288
+< 
+<         if (sscanf("string", "%99s\0", data) == 0)
+---
+>         if (sscanf("string", "%99s\0", data) == 
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_15.c" 3 4
+>                                                  (-1)
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_15.c"
+>                                                     )
+3272a3300,3305
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_15_good()
+> {
+>     good1();
+>     good2();
+> }
+3282a3316,3318
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_15_good();
+>     printLine("Finished good()");
+3288,3290d3323
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_15_bad();
+<     printLine("Finished bad()");

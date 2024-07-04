@@ -1,0 +1,52 @@
+3239a3240
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_66a.c"
+3240a3242,3243
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_66a.c"
+> void CWE476_NULL_Pointer_Dereference__char_66b_goodG2BSink(char * dataArray[]);
+3241a3245,3248
+> static void goodG2B()
+> {
+>     char * data;
+>     char * dataArray[5];
+3242a3250,3253
+>     data = "Good";
+>     dataArray[2] = data;
+>     CWE476_NULL_Pointer_Dereference__char_66b_goodG2BSink(dataArray);
+> }
+3245,3246c3256
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_66a.c"
+< void CWE476_NULL_Pointer_Dereference__char_66b_badSink(char * dataArray[]);
+---
+> void CWE476_NULL_Pointer_Dereference__char_66b_goodB2GSink(char * dataArray[]);
+3248c3258
+< void CWE476_NULL_Pointer_Dereference__char_66_bad()
+---
+> static void goodB2G()
+3254c3264
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_66a.c" 3 4
+---
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_66a.c" 3 4
+3256c3266
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_66a.c"
+---
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_66a.c"
+3258d3267
+< 
+3260c3269,3275
+<     CWE476_NULL_Pointer_Dereference__char_66b_badSink(dataArray);
+---
+>     CWE476_NULL_Pointer_Dereference__char_66b_goodB2GSink(dataArray);
+> }
+> 
+> void CWE476_NULL_Pointer_Dereference__char_66_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3271a3287,3289
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__char_66_good();
+>     printLine("Finished good()");
+3277,3279d3294
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__char_66_bad();
+<     printLine("Finished bad()");

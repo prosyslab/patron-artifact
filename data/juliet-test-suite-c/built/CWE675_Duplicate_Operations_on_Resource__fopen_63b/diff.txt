@@ -1,0 +1,17 @@
+2813a2814,2817
+> # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_63b.c"
+> void CWE675_Duplicate_Operations_on_Resource__fopen_63b_goodG2BSink(FILE * * dataPtr)
+> {
+>     FILE * data = *dataPtr;
+2814a2819,2820
+>     fclose(data);
+> }
+2817c2823
+< void CWE675_Duplicate_Operations_on_Resource__fopen_63b_badSink(FILE * * dataPtr)
+---
+> void CWE675_Duplicate_Operations_on_Resource__fopen_63b_goodB2GSink(FILE * * dataPtr)
+2821c2827,2828
+<     fclose(data);
+---
+> 
+>     ;

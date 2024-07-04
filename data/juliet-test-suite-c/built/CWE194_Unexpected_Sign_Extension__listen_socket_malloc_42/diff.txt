@@ -1,0 +1,155 @@
+4900c4900
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+---
+> # 153 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+4902,4903c4902,4903
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+< static short badSource(short data)
+---
+> # 153 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+> static short goodG2BSource(short data)
+4905,4923d4904
+<     {
+< 
+< 
+< 
+< 
+<         int recvResult;
+<         int tempInt;
+<         struct sockaddr_in service;
+<         int listenSocket = -1;
+<         int acceptSocket = -1;
+<         char inputBuffer[8];
+<         do
+<         {
+< 
+< 
+< 
+< 
+< 
+< 
+4925,5015c4906
+<             listenSocket = socket(
+< # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c" 3 4
+<                                  2
+< # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+<                                         , 
+< # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c" 3 4
+<                                           SOCK_STREAM
+< # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+<                                                      , 
+< # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c" 3 4
+<                                                        IPPROTO_TCP
+< # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+<                                                                   );
+<             if (listenSocket == -1)
+<             {
+<                 break;
+<             }
+<             memset(&service, 0, sizeof(service));
+<             service.sin_family = 
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c" 3 4
+<                                 2
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+<                                        ;
+<             service.sin_addr.s_addr = 
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c" 3 4
+<                                      ((in_addr_t) 0x00000000)
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+<                                                ;
+<             service.sin_port = htons(27015);
+<             if (bind(listenSocket, (struct sockaddr*)&service, sizeof(service)) == -1)
+<             {
+<                 break;
+<             }
+<             if (listen(listenSocket, 5) == -1)
+<             {
+<                 break;
+<             }
+<             acceptSocket = accept(listenSocket, 
+< # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c" 3 4
+<                                                ((void *)0)
+< # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+<                                                    , 
+< # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c" 3 4
+<                                                      ((void *)0)
+< # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+<                                                          );
+<             if (acceptSocket == -1)
+<             {
+<                 break;
+<             }
+< 
+<             recvResult = recv(acceptSocket, inputBuffer, 8 - 1, 0);
+< 
+<             if (recvResult == -1 || recvResult == 0)
+<             {
+<                 break;
+<             }
+< 
+<             inputBuffer[recvResult] = '\0';
+< 
+< 
+<             tempInt = atoi(inputBuffer);
+<             if (tempInt > 0x7fff || tempInt < 
+< # 100 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c" 3 4
+<                                                (-0x7fff - 1)
+< # 100 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+<                                                        )
+<             {
+<                 data = -1;
+<             }
+<             else
+<             {
+<                 data = tempInt;
+<             }
+<         }
+<         while (0);
+<         if (listenSocket != -1)
+<         {
+<             close(listenSocket);
+<         }
+<         if (acceptSocket != -1)
+<         {
+<             close(acceptSocket);
+<         }
+< 
+< 
+< 
+< 
+< 
+< 
+<     }
+---
+>     data = 100-1;
+5019c4910,4911
+< void CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42_bad()
+---
+> 
+> static void goodG2B()
+5024c4916
+<     data = badSource(data);
+---
+>     data = goodG2BSource(data);
+5032c4924
+< # 140 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c" 3 4
+---
+> # 173 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c" 3 4
+5034c4926
+< # 140 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+---
+> # 173 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42.c"
+5042a4935,4939
+> 
+> void CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42_good()
+> {
+>     goodG2B();
+> }
+5052a4950,4952
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42_good();
+>     printLine("Finished good()");
+5058,5060d4957
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__listen_socket_malloc_42_bad();
+<     printLine("Finished bad()");

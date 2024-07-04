@@ -1,0 +1,32 @@
+2816a2817,2818
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__negative_memmove_68a.c"
+> void CWE195_Signed_to_Unsigned_Conversion_Error__negative_memmove_68b_goodG2BSink();
+2819,2823c2821
+< 
+< 
+< void CWE195_Signed_to_Unsigned_Conversion_Error__negative_memmove_68b_badSink();
+< 
+< void CWE195_Signed_to_Unsigned_Conversion_Error__negative_memmove_68_bad()
+---
+> static void goodG2B()
+2829,2831c2827,2834
+<     data = -1;
+<     CWE195_Signed_to_Unsigned_Conversion_Error__negative_memmove_68_badData = data;
+<     CWE195_Signed_to_Unsigned_Conversion_Error__negative_memmove_68b_badSink();
+---
+>     data = 100-1;
+>     CWE195_Signed_to_Unsigned_Conversion_Error__negative_memmove_68_goodG2BData = data;
+>     CWE195_Signed_to_Unsigned_Conversion_Error__negative_memmove_68b_goodG2BSink();
+> }
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__negative_memmove_68_good()
+> {
+>     goodG2B();
+2842a2846,2848
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__negative_memmove_68_good();
+>     printLine("Finished good()");
+2848,2850d2853
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__negative_memmove_68_bad();
+<     printLine("Finished bad()");

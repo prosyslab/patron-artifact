@@ -1,0 +1,53 @@
+2863a2864,2868
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_08.c"
+> static void good1()
+> {
+>     if(staticReturnsFalse())
+>     {
+2864a2870,2884
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if(helperGood() == 
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_08.c" 3 4
+>                           ((void *)0)
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_08.c"
+>                               )
+>         {
+>             printLine("Got a NULL");
+>         }
+>     }
+> }
+2867c2887
+< void CWE480_Use_of_Incorrect_Operator__basic_08_bad()
+---
+> static void good2()
+2872,2876c2892,2896
+<         if(helperBad == 
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_08.c" 3 4
+<                        ((void *)0)
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_08.c"
+<                            )
+---
+>         if(helperGood() == 
+> # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_08.c" 3 4
+>                           ((void *)0)
+> # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_08.c"
+>                               )
+2881a2902,2907
+> 
+> void CWE480_Use_of_Incorrect_Operator__basic_08_good()
+> {
+>     good1();
+>     good2();
+> }
+2891a2918,2920
+>     printLine("Calling good()...");
+>     CWE480_Use_of_Incorrect_Operator__basic_08_good();
+>     printLine("Finished good()");
+2897,2899d2925
+<     printLine("Calling bad()...");
+<     CWE480_Use_of_Incorrect_Operator__basic_08_bad();
+<     printLine("Finished bad()");

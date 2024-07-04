@@ -1,0 +1,27 @@
+2813a2814,2818
+> # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_rand_add_66b.c"
+> void CWE190_Integer_Overflow__char_rand_add_66b_goodG2BSink(char dataArray[])
+> {
+>     char data = dataArray[2];
+>     {
+2814a2820,2823
+>         char result = data + 1;
+>         printHexCharLine(result);
+>     }
+> }
+2817c2826
+< void CWE190_Integer_Overflow__char_rand_add_66b_badSink(char dataArray[])
+---
+> void CWE190_Integer_Overflow__char_rand_add_66b_goodB2GSink(char dataArray[])
+2819d2827
+< 
+2821d2828
+<     {
+2822a2830,2831
+>     if (data < 0x7f)
+>     {
+2824a2834,2837
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");

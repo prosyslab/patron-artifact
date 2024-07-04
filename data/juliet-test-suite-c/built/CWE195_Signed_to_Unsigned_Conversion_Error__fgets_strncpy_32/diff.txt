@@ -1,0 +1,48 @@
+2814,2819c2814,2815
+< 
+< 
+< 
+< 
+< 
+< void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_32_bad()
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_32.c"
+> static void goodG2B()
+2828,2840d2823
+<         {
+<             char inputBuffer[(3 * sizeof(data) + 2)] = "";
+< 
+<             if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_32.c" 3 4
+<                                                    stdin
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_32.c"
+<                                                         ) != 
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_32.c" 3 4
+<                                                              ((void *)0)
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_32.c"
+<                                                                  )
+<             {
+2842,2848c2825
+<                 data = atoi(inputBuffer);
+<             }
+<             else
+<             {
+<                 printLine("fgets() failed.");
+<             }
+<         }
+---
+>         data = 100-1;
+2868a2846,2850
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_32_good()
+> {
+>     goodG2B();
+> }
+2878a2861,2863
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_32_good();
+>     printLine("Finished good()");
+2884,2886d2868
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_32_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,52 @@
+2821,2824c2821,2822
+< 
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67b_badSink(CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67_structType myStruct)
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67b.c"
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67b_goodG2BSink(CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67_structType myStruct)
+2831c2829
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67b.c" 3 4
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67b.c" 3 4
+2833c2831
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67b.c"
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67b.c"
+2853a2852,2886
+>         }
+>         free(buffer);
+>     }
+> }
+> 
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67b_goodB2GSink(CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67_structType myStruct)
+> {
+>     int data = myStruct.structFirst;
+>     {
+>         int i;
+>         int * buffer = (int *)malloc(10 * sizeof(int));
+>         if (buffer == 
+> # 103 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67b.c" 3 4
+>                      ((void *)0)
+> # 103 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_67b.c"
+>                          ) {exit(-1);}
+> 
+>         for (i = 0; i < 10; i++)
+>         {
+>             buffer[i] = 0;
+>         }
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

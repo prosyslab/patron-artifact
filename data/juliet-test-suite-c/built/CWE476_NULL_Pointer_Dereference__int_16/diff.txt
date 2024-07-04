@@ -1,0 +1,67 @@
+3239a3240
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_16.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_16.c"
+< void CWE476_NULL_Pointer_Dereference__int_16_bad()
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_16.c"
+> static void goodB2G()
+3252c3250
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_16.c" 3 4
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_16.c" 3 4
+3254c3252
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_16.c"
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_16.c"
+3260a3259,3290
+>         if (data != 
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_16.c" 3 4
+>                    ((void *)0)
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_16.c"
+>                        )
+>         {
+>             printIntLine(*data);
+>         }
+>         else
+>         {
+>             printLine("data is NULL");
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     int * data;
+>     int tmpData = 5;
+>     while(1)
+>     {
+> 
+>         {
+>             data = &tmpData;
+>         }
+>         break;
+>     }
+>     while(1)
+>     {
+> 
+3264a3295,3300
+> 
+> void CWE476_NULL_Pointer_Dereference__int_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+3274a3311,3313
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__int_16_good();
+>     printLine("Finished good()");
+3280,3282d3318
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__int_16_bad();
+<     printLine("Finished bad()");

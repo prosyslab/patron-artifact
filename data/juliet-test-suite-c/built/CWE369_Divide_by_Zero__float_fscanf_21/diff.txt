@@ -1,0 +1,122 @@
+3731a3732
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_21.c"
+3732a3734,3737
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_21.c"
+> static int goodB2G1Static = 0;
+> static int goodB2G2Static = 0;
+> static int goodG2BStatic = 0;
+3734a3740,3766
+> static void goodB2G1Sink(float data)
+> {
+>     if(goodB2G1Static)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if(fabs(data) > 0.000001)
+>         {
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+> 
+> static void goodB2G1()
+> {
+>     float data;
+> 
+>     data = 0.0F;
+3735a3768,3775
+>     fscanf (
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_21.c" 3 4
+>            stdin
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_21.c"
+>                 , "%f", &data);
+>     goodB2G1Static = 0;
+>     goodB2G1Sink(data);
+> }
+3737,3738d3776
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_21.c"
+< static int badStatic = 0;
+3740c3778
+< static void badSink(float data)
+---
+> static void goodB2G2Sink(float data)
+3742c3780
+<     if(badStatic)
+---
+>     if(goodB2G2Static)
+3744d3781
+<         {
+3745a3783,3784
+>         if(fabs(data) > 0.000001)
+>         {
+3748a3788,3791
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+3752c3795
+< void CWE369_Divide_by_Zero__float_fscanf_21_bad()
+---
+> static void goodB2G2()
+3759c3802
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_21.c" 3 4
+---
+> # 117 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_21.c" 3 4
+3761c3804
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_21.c"
+---
+> # 117 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_21.c"
+3763,3764c3806,3838
+<     badStatic = 1;
+<     badSink(data);
+---
+>     goodB2G2Static = 1;
+>     goodB2G2Sink(data);
+> }
+> 
+> 
+> static void goodG2BSink(float data)
+> {
+>     if(goodG2BStatic)
+>     {
+>         {
+> 
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     float data;
+> 
+>     data = 0.0F;
+> 
+>     data = 2.0F;
+>     goodG2BStatic = 1;
+>     goodG2BSink(data);
+> }
+> 
+> void CWE369_Divide_by_Zero__float_fscanf_21_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B();
+3775a3850,3852
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__float_fscanf_21_good();
+>     printLine("Finished good()");
+3781,3783d3857
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__float_fscanf_21_bad();
+<     printLine("Finished bad()");

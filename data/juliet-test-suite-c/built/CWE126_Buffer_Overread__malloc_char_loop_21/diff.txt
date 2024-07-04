@@ -1,0 +1,120 @@
+3239a3240
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c"
+3240a3242,3244
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c"
+> static int goodG2B1Static = 0;
+> static int goodG2B2Static = 0;
+3242a3247,3250
+> static char * goodG2B1Source(char * data)
+> {
+>     if(goodG2B1Static)
+>     {
+3243a3252,3255
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3245,3246c3257,3267
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c"
+< static int badStatic = 0;
+---
+>         data = (char *)malloc(100*sizeof(char));
+>         if (data == 
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c" 3 4
+>                    ((void *)0)
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c"
+>                        ) {exit(-1);}
+>         memset(data, 'A', 100-1);
+>         data[100-1] = '\0';
+>     }
+>     return data;
+> }
+3248c3269
+< static char * badSource(char * data)
+---
+> static void goodG2B1()
+3250c3271,3278
+<     if(badStatic)
+---
+>     char * data;
+>     data = 
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c" 3 4
+>           ((void *)0)
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c"
+>               ;
+>     goodG2B1Static = 0;
+>     data = goodG2B1Source(data);
+3251a3280,3284
+>         size_t i, destLen;
+>         char dest[100];
+>         memset(dest, 'C', 100-1);
+>         dest[100-1] = '\0';
+>         destLen = strlen(dest);
+3253c3286,3303
+<         data = (char *)malloc(50*sizeof(char));
+---
+> 
+>         for (i = 0; i < destLen; i++)
+>         {
+>             dest[i] = data[i];
+>         }
+>         dest[100-1] = '\0';
+>         printLine(dest);
+>         free(data);
+>     }
+> }
+> 
+> 
+> static char * goodG2B2Source(char * data)
+> {
+>     if(goodG2B2Static)
+>     {
+> 
+>         data = (char *)malloc(100*sizeof(char));
+3255c3305
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c" 3 4
+---
+> # 121 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c" 3 4
+3257c3307
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c"
+---
+> # 121 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c"
+3259,3260c3309,3310
+<         memset(data, 'A', 50-1);
+<         data[50-1] = '\0';
+---
+>         memset(data, 'A', 100-1);
+>         data[100-1] = '\0';
+3265c3315
+< void CWE126_Buffer_Overread__malloc_char_loop_21_bad()
+---
+> static void goodG2B2()
+3269c3319
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c" 3 4
+---
+> # 131 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c" 3 4
+3271c3321
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c"
+---
+> # 131 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_21.c"
+3273,3274c3323,3324
+<     badStatic = 1;
+<     data = badSource(data);
+---
+>     goodG2B2Static = 1;
+>     data = goodG2B2Source(data);
+3291a3342,3347
+> 
+> void CWE126_Buffer_Overread__malloc_char_loop_21_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3301a3358,3360
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__malloc_char_loop_21_good();
+>     printLine("Finished good()");
+3307,3309d3365
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__malloc_char_loop_21_bad();
+<     printLine("Finished bad()");

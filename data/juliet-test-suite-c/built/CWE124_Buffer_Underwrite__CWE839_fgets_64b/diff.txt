@@ -1,0 +1,41 @@
+2813a2814,2816
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fgets_64b.c"
+> void CWE124_Buffer_Underwrite__CWE839_fgets_64b_goodG2BSink(void * dataVoidPtr)
+> {
+2814a2818
+>     int * dataPtr = (int *)dataVoidPtr;
+2815a2820,2823
+>     int data = (*dataPtr);
+>     {
+>         int i;
+>         int buffer[10] = { 0 };
+2817a2826,2828
+>         if (data < 10)
+>         {
+>             buffer[data] = 1;
+2819c2830,2843
+< void CWE124_Buffer_Underwrite__CWE839_fgets_64b_badSink(void * dataVoidPtr)
+---
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is negative.");
+>         }
+>     }
+> }
+> 
+> 
+> void CWE124_Buffer_Underwrite__CWE839_fgets_64b_goodB2GSink(void * dataVoidPtr)
+2829,2830c2853
+< 
+<         if (data < 10)
+---
+>         if (data >= 0 && data < (10))
+2841c2864
+<             printLine("ERROR: Array index is negative.");
+---
+>             printLine("ERROR: Array index is out-of-bounds");

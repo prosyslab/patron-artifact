@@ -1,0 +1,105 @@
+3731a3732
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_rand_square_10.c"
+3732a3734,3750
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_rand_square_10.c"
+> static void goodB2G1()
+> {
+>     char data;
+>     data = ' ';
+>     if(globalTrue)
+>     {
+> 
+>         data = (char)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>     }
+>     if(globalFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3733a3752,3762
+>         if (abs((long)data) <= (long)sqrt((double)0x7f))
+>         {
+>             char result = data * data;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+3736,3737c3765
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_rand_square_10.c"
+< void CWE190_Integer_Overflow__char_rand_square_10_bad()
+---
+> static void goodB2G2()
+3747a3776,3805
+> 
+>         if (abs((long)data) <= (long)sqrt((double)0x7f))
+>         {
+>             char result = data * data;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     char data;
+>     data = ' ';
+>     if(globalFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2;
+>     }
+>     if(globalTrue)
+>     {
+3754a3813,3840
+> 
+> 
+> static void goodG2B2()
+> {
+>     char data;
+>     data = ' ';
+>     if(globalTrue)
+>     {
+> 
+>         data = 2;
+>     }
+>     if(globalTrue)
+>     {
+>         {
+> 
+>             char result = data * data;
+>             printHexCharLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__char_rand_square_10_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3764a3851,3853
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_rand_square_10_good();
+>     printLine("Finished good()");
+3770,3772d3858
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_rand_square_10_bad();
+<     printLine("Finished bad()");

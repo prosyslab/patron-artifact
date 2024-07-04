@@ -1,0 +1,100 @@
+2813a2814,2816
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_21.c"
+> static int goodG2B1Static = 0;
+> static int goodG2B2Static = 0;
+2815a2819,2827
+> static short goodG2B1Source(short data)
+> {
+>     if(goodG2B1Static)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2816a2829,2832
+>         data = 100-1;
+>     }
+>     return data;
+> }
+2817a2834,2847
+> static void goodG2B1()
+> {
+>     short data;
+> 
+>     data = 0;
+>     goodG2B1Static = 0;
+>     data = goodG2B1Source(data);
+>     {
+>         char source[100];
+>         char dest[100] = "";
+>         memset(source, 'A', 100-1);
+>         source[100-1] = '\0';
+>         if (data < 100)
+>         {
+2819a2850,2855
+>             strncpy(dest, source, data);
+>             dest[data] = '\0';
+>         }
+>         printLine(dest);
+>     }
+> }
+2821d2856
+< static int badStatic = 0;
+2823c2858
+< static short badSource(short data)
+---
+> static short goodG2B2Source(short data)
+2825c2860
+<     if(badStatic)
+---
+>     if(goodG2B2Static)
+2827,2828d2861
+<         {
+<             char inputBuffer[8] = "";
+2830,2847c2863
+<             if (fgets(inputBuffer, 8, 
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_21.c" 3 4
+<                                                    stdin
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_21.c"
+<                                                         ) != 
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_21.c" 3 4
+<                                                              ((void *)0)
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_21.c"
+<                                                                  )
+<             {
+< 
+<                 data = (short)atoi(inputBuffer);
+<             }
+<             else
+<             {
+<                 printLine("fgets() failed.");
+<             }
+<         }
+---
+>         data = 100-1;
+2852c2868
+< void CWE194_Unexpected_Sign_Extension__fgets_strncpy_21_bad()
+---
+> static void goodG2B2()
+2857,2858c2873,2874
+<     badStatic = 1;
+<     data = badSource(data);
+---
+>     goodG2B2Static = 1;
+>     data = goodG2B2Source(data);
+2873a2890,2895
+> 
+> void CWE194_Unexpected_Sign_Extension__fgets_strncpy_21_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2883a2906,2908
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__fgets_strncpy_21_good();
+>     printLine("Finished good()");
+2889,2891d2913
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__fgets_strncpy_21_bad();
+<     printLine("Finished bad()");

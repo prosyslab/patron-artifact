@@ -1,0 +1,76 @@
+3239a3240
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_44.c"
+3240a3242,3247
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_44.c"
+> static void goodG2BSink(int * data)
+> {
+> 
+>     printIntLine(*data);
+> }
+3241a3249,3253
+> static void goodG2B()
+> {
+>     int * data;
+>     int tmpData = 5;
+>     void (*funcPtr) (int *) = goodG2BSink;
+3242a3255,3259
+>     {
+>         data = &tmpData;
+>     }
+>     funcPtr(data);
+> }
+3244,3245c3261,3262
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_44.c"
+< static void badSink(int * data)
+---
+> 
+> static void goodB2GSink(int * data)
+3248c3265,3276
+<     printIntLine(*data);
+---
+>     if (data != 
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_44.c" 3 4
+>                ((void *)0)
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_44.c"
+>                    )
+>     {
+>         printIntLine(*data);
+>     }
+>     else
+>     {
+>         printLine("data is NULL");
+>     }
+3251c3279
+< void CWE476_NULL_Pointer_Dereference__int_44_bad()
+---
+> static void goodB2G()
+3254,3255c3282
+< 
+<     void (*funcPtr) (int *) = badSink;
+---
+>     void (*funcPtr) (int *) = goodB2GSink;
+3258c3285
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_44.c" 3 4
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_44.c" 3 4
+3260c3287
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_44.c"
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int_44.c"
+3262d3288
+< 
+3264a3291,3296
+> 
+> void CWE476_NULL_Pointer_Dereference__int_44_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3274a3307,3309
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__int_44_good();
+>     printLine("Finished good()");
+3280,3282d3314
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__int_44_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,54 @@
+2814,2819c2814,2815
+< 
+< 
+< 
+< 
+< 
+< void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41_badSink(int data)
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41.c"
+> void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41_goodG2BSink(int data)
+2837c2833,2834
+< void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41_bad()
+---
+> 
+> static void goodG2B()
+2842,2843d2838
+<     {
+<         char inputBuffer[(3 * sizeof(data) + 2)] = "";
+2845,2854c2840,2842
+<         if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41.c" 3 4
+<                                                stdin
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41.c"
+<                                                     ) != 
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41.c" 3 4
+<                                                          ((void *)0)
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41.c"
+<                                                              )
+<         {
+---
+>     data = 100-1;
+>     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41_goodG2BSink(data);
+> }
+2856,2863c2844,2846
+<             data = atoi(inputBuffer);
+<         }
+<         else
+<         {
+<             printLine("fgets() failed.");
+<         }
+<     }
+<     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41_badSink(data);
+---
+> void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41_good()
+> {
+>     goodG2B();
+2874a2858,2860
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41_good();
+>     printLine("Finished good()");
+2880,2882d2865
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_41_bad();
+<     printLine("Finished bad()");

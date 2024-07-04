@@ -1,0 +1,82 @@
+3254a3255,3270
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_08.c"
+> static void goodB2G1()
+> {
+>     double data;
+>     if(staticReturnsTrue())
+>     {
+> 
+>         ;
+>     }
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3255a3272,3275
+>         data = 5.0;
+>         printDoubleLine(data);
+>     }
+> }
+3258c3278
+< void CWE457_Use_of_Uninitialized_Variable__double_08_bad()
+---
+> static void goodB2G2()
+3268a3289
+>         data = 5.0;
+3271a3293,3337
+> 
+> 
+> static void goodG2B1()
+> {
+>     double data;
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 5.0;
+>     }
+>     if(staticReturnsTrue())
+>     {
+> 
+>         printDoubleLine(data);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     double data;
+>     if(staticReturnsTrue())
+>     {
+> 
+>         data = 5.0;
+>     }
+>     if(staticReturnsTrue())
+>     {
+> 
+>         printDoubleLine(data);
+>     }
+> }
+> 
+> void CWE457_Use_of_Uninitialized_Variable__double_08_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3281a3348,3350
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__double_08_good();
+>     printLine("Finished good()");
+3287,3289d3355
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__double_08_bad();
+<     printLine("Finished bad()");

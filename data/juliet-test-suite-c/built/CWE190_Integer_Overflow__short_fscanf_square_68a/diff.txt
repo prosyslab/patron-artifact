@@ -1,0 +1,48 @@
+3737a3738,3740
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s04/CWE190_Integer_Overflow__short_fscanf_square_68a.c"
+> void CWE190_Integer_Overflow__short_fscanf_square_68b_goodG2BSink();
+> void CWE190_Integer_Overflow__short_fscanf_square_68b_goodB2GSink();
+3739a3743,3746
+> static void goodG2B()
+> {
+>     short data;
+>     data = 0;
+3740a3748,3751
+>     data = 2;
+>     CWE190_Integer_Overflow__short_fscanf_square_68_goodG2BData = data;
+>     CWE190_Integer_Overflow__short_fscanf_square_68b_goodG2BSink();
+> }
+3742d3752
+< void CWE190_Integer_Overflow__short_fscanf_square_68b_badSink();
+3744c3754
+< void CWE190_Integer_Overflow__short_fscanf_square_68_bad()
+---
+> static void goodB2G()
+3750c3760
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s04/CWE190_Integer_Overflow__short_fscanf_square_68a.c" 3 4
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s04/CWE190_Integer_Overflow__short_fscanf_square_68a.c" 3 4
+3752c3762
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s04/CWE190_Integer_Overflow__short_fscanf_square_68a.c"
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s04/CWE190_Integer_Overflow__short_fscanf_square_68a.c"
+3754,3755c3764,3771
+<     CWE190_Integer_Overflow__short_fscanf_square_68_badData = data;
+<     CWE190_Integer_Overflow__short_fscanf_square_68b_badSink();
+---
+>     CWE190_Integer_Overflow__short_fscanf_square_68_goodB2GData = data;
+>     CWE190_Integer_Overflow__short_fscanf_square_68b_goodB2GSink();
+> }
+> 
+> void CWE190_Integer_Overflow__short_fscanf_square_68_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3766a3783,3785
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__short_fscanf_square_68_good();
+>     printLine("Finished good()");
+3772,3774d3790
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__short_fscanf_square_68_bad();
+<     printLine("Finished bad()");

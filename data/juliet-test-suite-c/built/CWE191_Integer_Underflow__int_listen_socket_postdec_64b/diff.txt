@@ -1,0 +1,35 @@
+4900c4900
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int_listen_socket_postdec_64b.c"
+---
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int_listen_socket_postdec_64b.c"
+4902,4903c4902,4903
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int_listen_socket_postdec_64b.c"
+< void CWE191_Integer_Underflow__int_listen_socket_postdec_64b_badSink(void * dataVoidPtr)
+---
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int_listen_socket_postdec_64b.c"
+> void CWE191_Integer_Underflow__int_listen_socket_postdec_64b_goodG2BSink(void * dataVoidPtr)
+4913a4914,4937
+>     }
+> }
+> 
+> 
+> void CWE191_Integer_Underflow__int_listen_socket_postdec_64b_goodB2GSink(void * dataVoidPtr)
+> {
+> 
+>     int * dataPtr = (int *)dataVoidPtr;
+> 
+>     int data = (*dataPtr);
+> 
+>     if (data > 
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int_listen_socket_postdec_64b.c" 3 4
+>               (-0x7fffffff - 1)
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int_listen_socket_postdec_64b.c"
+>                      )
+>     {
+>         data--;
+>         int result = data;
+>         printIntLine(result);
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");

@@ -1,0 +1,59 @@
+2813a2814,2817
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22b.c"
+> extern int CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G1Global;
+> extern int CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G2Global;
+> extern int CWE127_Buffer_Underread__CWE839_connect_socket_22_goodG2BGlobal;
+2815a2820,2850
+> void CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G1Sink(int data)
+> {
+>     if(CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G1Global)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             int buffer[10] = { 0 };
+> 
+>             if (data >= 0 && data < (10))
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> void CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G2Sink(int data)
+> {
+>     if(CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G2Global)
+>     {
+>         {
+>             int buffer[10] = { 0 };
+2816a2852,2862
+>             if (data >= 0 && data < (10))
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>     }
+> }
+2818d2863
+< extern int CWE127_Buffer_Underread__CWE839_connect_socket_22_badGlobal;
+2820c2865
+< void CWE127_Buffer_Underread__CWE839_connect_socket_22_badSink(int data)
+---
+> void CWE127_Buffer_Underread__CWE839_connect_socket_22_goodG2BSink(int data)
+2822c2867
+<     if(CWE127_Buffer_Underread__CWE839_connect_socket_22_badGlobal)
+---
+>     if(CWE127_Buffer_Underread__CWE839_connect_socket_22_goodG2BGlobal)

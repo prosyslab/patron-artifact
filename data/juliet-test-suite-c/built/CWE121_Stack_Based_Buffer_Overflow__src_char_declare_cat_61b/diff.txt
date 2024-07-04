@@ -1,0 +1,17 @@
+3239a3240
+> # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s08/CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_61b.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s08/CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_61b.c"
+< char * CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_61b_badSource(char * data)
+---
+> # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s08/CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_61b.c"
+> char * CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_61b_goodG2BSource(char * data)
+3248,3249c3246,3247
+<     memset(data, 'A', 100-1);
+<     data[100-1] = '\0';
+---
+>     memset(data, 'A', 50-1);
+>     data[50-1] = '\0';

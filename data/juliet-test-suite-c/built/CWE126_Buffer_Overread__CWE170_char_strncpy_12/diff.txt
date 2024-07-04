@@ -1,0 +1,29 @@
+3239a3240
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE170_char_strncpy_12.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 22 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE170_char_strncpy_12.c"
+< void CWE126_Buffer_Overread__CWE170_char_strncpy_12_bad()
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE170_char_strncpy_12.c"
+> static void good1()
+3257c3255
+< 
+---
+>             dest[99] = '\0';
+3275a3274,3278
+> 
+> void CWE126_Buffer_Overread__CWE170_char_strncpy_12_good()
+> {
+>     good1();
+> }
+3285a3289,3291
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__CWE170_char_strncpy_12_good();
+>     printLine("Finished good()");
+3291,3293d3296
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__CWE170_char_strncpy_12_bad();
+<     printLine("Finished bad()");

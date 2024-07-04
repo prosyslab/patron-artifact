@@ -1,0 +1,28 @@
+3731a3732
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_63b.c"
+3732a3734,3738
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_63b.c"
+> void CWE369_Divide_by_Zero__float_zero_63b_goodG2BSink(float * dataPtr)
+> {
+>     float data = *dataPtr;
+>     {
+3733a3740,3743
+>         int result = (int)(100.0 / data);
+>         printIntLine(result);
+>     }
+> }
+3736,3737c3746
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_63b.c"
+< void CWE369_Divide_by_Zero__float_zero_63b_badSink(float * dataPtr)
+---
+> void CWE369_Divide_by_Zero__float_zero_63b_goodB2GSink(float * dataPtr)
+3740d3748
+<     {
+3741a3750,3751
+>     if(fabs(data) > 0.000001)
+>     {
+3743a3754,3757
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");

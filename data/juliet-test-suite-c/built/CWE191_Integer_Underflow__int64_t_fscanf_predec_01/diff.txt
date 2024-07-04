@@ -1,0 +1,64 @@
+2861a2862,2866
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int64_t_fscanf_predec_01.c"
+> static void goodG2B()
+> {
+>     int64_t data;
+>     data = 0LL;
+2862a2868,2869
+>     data = -2;
+>     {
+2863a2871,2875
+>         --data;
+>         int64_t result = data;
+>         printLongLongLine(result);
+>     }
+> }
+2865c2877,2878
+< void CWE191_Integer_Underflow__int64_t_fscanf_predec_01_bad()
+---
+> 
+> static void goodB2G()
+2871c2884
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int64_t_fscanf_predec_01.c" 3 4
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int64_t_fscanf_predec_01.c" 3 4
+2873c2886
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int64_t_fscanf_predec_01.c"
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int64_t_fscanf_predec_01.c"
+2875c2888
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int64_t_fscanf_predec_01.c" 3 4
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int64_t_fscanf_predec_01.c" 3 4
+2877c2890
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int64_t_fscanf_predec_01.c"
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int64_t_fscanf_predec_01.c"
+2879d2891
+<     {
+2880a2893,2898
+>     if (data > 
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int64_t_fscanf_predec_01.c" 3 4
+>               (-0x7fffffffffffffffLL - 1LL)
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int64_t_fscanf_predec_01.c"
+>                        )
+>     {
+2884a2903,2912
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+> }
+> 
+> void CWE191_Integer_Underflow__int64_t_fscanf_predec_01_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2895a2924,2926
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int64_t_fscanf_predec_01_good();
+>     printLine("Finished good()");
+2901,2903d2931
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int64_t_fscanf_predec_01_bad();
+<     printLine("Finished bad()");

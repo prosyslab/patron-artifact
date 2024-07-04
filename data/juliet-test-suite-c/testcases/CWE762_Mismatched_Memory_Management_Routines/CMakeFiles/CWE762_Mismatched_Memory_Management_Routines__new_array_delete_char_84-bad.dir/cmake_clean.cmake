@@ -1,0 +1,17 @@
+file(REMOVE_RECURSE
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE762/bad/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84-bad"
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE762/bad/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84-bad.pdb"
+  "CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84-bad.dir/s04/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84_bad.cpp.o"
+  "CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84-bad.dir/s04/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84_bad.cpp.o.d"
+  "CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84-bad.dir/s04/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84_goodB2G.cpp.o"
+  "CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84-bad.dir/s04/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84_goodB2G.cpp.o.d"
+  "CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84-bad.dir/s04/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84_goodG2B.cpp.o"
+  "CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84-bad.dir/s04/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84_goodG2B.cpp.o.d"
+  "CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84-bad.dir/s04/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84a.cpp.o"
+  "CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84-bad.dir/s04/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84a.cpp.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_84-bad.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

@@ -1,0 +1,97 @@
+2814,2819c2814,2815
+< 
+< 
+< 
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16_bad()
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c"
+> static void goodB2G()
+2830c2826
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c" 3 4
+---
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c" 3 4
+2832c2828
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c"
+---
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c"
+2834c2830
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c" 3 4
+---
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c" 3 4
+2836c2832
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c"
+---
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c"
+2855c2851,2899
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c" 3 4
+---
+> # 110 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c" 3 4
+>                          ((void *)0)
+> # 110 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c"
+>                              ) {exit(-1);}
+> 
+>             for (i = 0; i < 10; i++)
+>             {
+>                 buffer[i] = 0;
+>             }
+> 
+>             if (data >= 0 && data < (10))
+>             {
+>                 buffer[data] = 1;
+> 
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>             free(buffer);
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = -1;
+>     while(1)
+>     {
+> 
+> 
+>         data = 7;
+>         break;
+>     }
+>     while(1)
+>     {
+>         {
+>             int i;
+>             int * buffer = (int *)malloc(10 * sizeof(int));
+>             if (buffer == 
+> # 154 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c" 3 4
+2857c2901
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c"
+---
+> # 154 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16.c"
+2883a2928,2933
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2893a2944,2946
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16_good();
+>     printLine("Finished good()");
+2899,2901d2951
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_16_bad();
+<     printLine("Finished bad()");

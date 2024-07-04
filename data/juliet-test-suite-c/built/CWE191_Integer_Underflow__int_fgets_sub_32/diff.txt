@@ -1,0 +1,73 @@
+2813a2814,2819
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_32.c"
+> static void goodG2B()
+> {
+>     int data;
+>     int *dataPtr1 = &data;
+>     int *dataPtr2 = &data;
+2814a2821,2823
+>     data = 0;
+>     {
+>         int data = *dataPtr1;
+2815a2825,2830
+>         data = -2;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         int data = *dataPtr2;
+>         {
+2816a2832,2836
+>             int result = data - 1;
+>             printIntLine(result);
+>         }
+>     }
+> }
+2819c2839
+< void CWE191_Integer_Underflow__int_fgets_sub_32_bad()
+---
+> static void goodB2G()
+2832c2852
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_32.c" 3 4
+---
+> # 99 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_32.c" 3 4
+2834c2854
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_32.c"
+---
+> # 99 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_32.c"
+2836c2856
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_32.c" 3 4
+---
+> # 99 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_32.c" 3 4
+2838c2858
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_32.c"
+---
+> # 99 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_32.c"
+2853d2872
+<         {
+2854a2874,2879
+>         if (data > 
+> # 114 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_32.c" 3 4
+>                   (-0x7fffffff - 1)
+> # 114 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_32.c"
+>                          )
+>         {
+2857a2883,2886
+>         else
+>         {
+>             printLine("data value is too large to perform subtraction.");
+>         }
+2859a2889,2894
+> 
+> void CWE191_Integer_Underflow__int_fgets_sub_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2869a2905,2907
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_fgets_sub_32_good();
+>     printLine("Finished good()");
+2875,2877d2912
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_fgets_sub_32_bad();
+<     printLine("Finished bad()");

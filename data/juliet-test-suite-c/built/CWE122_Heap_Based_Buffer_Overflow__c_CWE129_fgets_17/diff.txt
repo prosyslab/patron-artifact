@@ -1,0 +1,101 @@
+2814,2819c2814,2815
+< 
+< 
+< 
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17_bad()
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c"
+> static void goodB2G()
+2821c2817
+<     int i,j;
+---
+>     int i,k;
+2831c2827
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c" 3 4
+---
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c" 3 4
+2833c2829
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c"
+---
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c"
+2835c2831
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c" 3 4
+---
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c" 3 4
+2837c2833
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c"
+---
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c"
+2848a2845,2891
+>     for(k = 0; k < 1; k++)
+>     {
+>         {
+>             int i;
+>             int * buffer = (int *)malloc(10 * sizeof(int));
+>             if (buffer == 
+> # 109 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c" 3 4
+>                          ((void *)0)
+> # 109 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c"
+>                              ) {exit(-1);}
+> 
+>             for (i = 0; i < 10; i++)
+>             {
+>                 buffer[i] = 0;
+>             }
+> 
+>             if (data >= 0 && data < (10))
+>             {
+>                 buffer[data] = 1;
+> 
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>             free(buffer);
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     int h,j;
+>     int data;
+> 
+>     data = -1;
+>     for(h = 0; h < 1; h++)
+>     {
+> 
+> 
+>         data = 7;
+>     }
+2855c2898
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c" 3 4
+---
+> # 152 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c" 3 4
+2857c2900
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c"
+---
+> # 152 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17.c"
+2882a2926,2931
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2892a2942,2944
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17_good();
+>     printLine("Finished good()");
+2898,2900d2949
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_17_bad();
+<     printLine("Finished bad()");

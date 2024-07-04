@@ -1,0 +1,53 @@
+3249a3250,3259
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_04.c"
+> static void good1()
+> {
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3250a3261,3270
+>         if (fwrite((char *)"string", sizeof(char), strlen("string"), 
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_04.c" 3 4
+>                                                                     stdout
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_04.c"
+>                                                                           ) != strlen("string"))
+>         {
+>             printLine("fwrite failed!");
+>         }
+>     }
+> }
+3253c3273
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_04_bad()
+---
+> static void good2()
+3258d3277
+< 
+3260c3279
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_04.c" 3 4
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_04.c" 3 4
+3262,3263c3281,3282
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_04.c"
+<                                                                           ) < 0)
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_04.c"
+>                                                                           ) != strlen("string"))
+3268a3288,3293
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_04_good()
+> {
+>     good1();
+>     good2();
+> }
+3278a3304,3306
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_04_good();
+>     printLine("Finished good()");
+3284,3286d3311
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_04_bad();
+<     printLine("Finished bad()");

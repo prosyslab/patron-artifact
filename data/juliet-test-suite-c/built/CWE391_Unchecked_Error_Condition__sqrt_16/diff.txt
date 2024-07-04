@@ -1,0 +1,45 @@
+3761a3762
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_16.c"
+3763,3767c3764,3765
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_16.c"
+< void CWE391_Unchecked_Error_Condition__sqrt_16_bad()
+---
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_16.c"
+> static void good1()
+3772a3771,3775
+>             
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_16.c" 3 4
+>            (*__errno_location ()) 
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_16.c"
+>                  = 0;
+3774a3778,3790
+>             if (
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_16.c" 3 4
+>                (*__errno_location ()) 
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_16.c"
+>                      == 
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_16.c" 3 4
+>                         33
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_16.c"
+>                             )
+>             {
+>                 printLine("sqrt() failed");
+>                 exit(1);
+>             }
+3779a3796,3800
+> 
+> void CWE391_Unchecked_Error_Condition__sqrt_16_good()
+> {
+>     good1();
+> }
+3789a3811,3813
+>     printLine("Calling good()...");
+>     CWE391_Unchecked_Error_Condition__sqrt_16_good();
+>     printLine("Finished good()");
+3795,3797d3818
+<     printLine("Calling bad()...");
+<     CWE391_Unchecked_Error_Condition__sqrt_16_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,75 @@
+2817a2818,2822
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_min_sub_45.c"
+> static void goodG2BSink()
+> {
+>     int64_t data = CWE191_Integer_Underflow__int64_t_min_sub_45_goodG2BData;
+>     {
+2818a2824,2827
+>         int64_t result = data - 1;
+>         printLongLongLine(result);
+>     }
+> }
+2819a2829,2832
+> static void goodG2B()
+> {
+>     int64_t data;
+>     data = 0LL;
+2821c2834,2840
+< static void badSink()
+---
+>     data = -2;
+>     CWE191_Integer_Underflow__int64_t_min_sub_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+> 
+> 
+> static void goodB2GSink()
+2823,2824c2842
+<     int64_t data = CWE191_Integer_Underflow__int64_t_min_sub_45_badData;
+<     {
+---
+>     int64_t data = CWE191_Integer_Underflow__int64_t_min_sub_45_goodB2GData;
+2825a2844,2849
+>     if (data > 
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_min_sub_45.c" 3 4
+>               (-0x7fffffffffffffffLL - 1LL)
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_min_sub_45.c"
+>                        )
+>     {
+2828a2853,2856
+>     else
+>     {
+>         printLine("data value is too large to perform subtraction.");
+>     }
+2831c2859
+< void CWE191_Integer_Underflow__int64_t_min_sub_45_bad()
+---
+> static void goodB2G()
+2837c2865
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_min_sub_45.c" 3 4
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_min_sub_45.c" 3 4
+2839c2867
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_min_sub_45.c"
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_min_sub_45.c"
+2841,2842c2869,2876
+<     CWE191_Integer_Underflow__int64_t_min_sub_45_badData = data;
+<     badSink();
+---
+>     CWE191_Integer_Underflow__int64_t_min_sub_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE191_Integer_Underflow__int64_t_min_sub_45_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2853a2888,2890
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int64_t_min_sub_45_good();
+>     printLine("Finished good()");
+2859,2861d2895
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int64_t_min_sub_45_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,18 @@
+3240a3241
+> # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_61b.c"
+3241a3243,3245
+> # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_61b.c"
+> size_t CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_61b_goodG2BSource(size_t data)
+> {
+3242a3247,3249
+>     data = 20;
+>     return data;
+> }
+3245,3249c3252
+< 
+< 
+< 
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_61b.c"
+< size_t CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_61b_badSource(size_t data)
+---
+> size_t CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_61b_goodB2GSource(size_t data)

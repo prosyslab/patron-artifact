@@ -1,0 +1,37 @@
+4906,4909c4906,4907
+< 
+< 
+< 
+< void CWE121_Stack_Based_Buffer_Overflow__CWE129_listen_socket_68b_badSink()
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_listen_socket_68b.c"
+> void CWE121_Stack_Based_Buffer_Overflow__CWE129_listen_socket_68b_goodG2BSink()
+4911c4909
+<     int data = CWE121_Stack_Based_Buffer_Overflow__CWE129_listen_socket_68_badData;
+---
+>     int data = CWE121_Stack_Based_Buffer_Overflow__CWE129_listen_socket_68_goodG2BData;
+4928a4927,4950
+>         }
+>     }
+> }
+> 
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE129_listen_socket_68b_goodB2GSink()
+> {
+>     int data = CWE121_Stack_Based_Buffer_Overflow__CWE129_listen_socket_68_goodB2GData;
+>     {
+>         int i;
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

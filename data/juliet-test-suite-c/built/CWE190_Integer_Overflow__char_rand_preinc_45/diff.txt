@@ -1,0 +1,63 @@
+2817a2818,2833
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__char_rand_preinc_45.c"
+> static void goodG2BSink()
+> {
+>     char data = CWE190_Integer_Overflow__char_rand_preinc_45_goodG2BData;
+>     {
+> 
+>         ++data;
+>         char result = data;
+>         printHexCharLine(result);
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     char data;
+>     data = ' ';
+2818a2835,2838
+>     data = 2;
+>     CWE190_Integer_Overflow__char_rand_preinc_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+2821c2841
+< static void badSink()
+---
+> static void goodB2GSink()
+2823,2824c2843
+<     char data = CWE190_Integer_Overflow__char_rand_preinc_45_badData;
+<     {
+---
+>     char data = CWE190_Integer_Overflow__char_rand_preinc_45_goodB2GData;
+2825a2845,2846
+>     if (data < 0x7f)
+>     {
+2829a2851,2854
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+2832c2857
+< void CWE190_Integer_Overflow__char_rand_preinc_45_bad()
+---
+> static void goodB2G()
+2838,2839c2863,2870
+<     CWE190_Integer_Overflow__char_rand_preinc_45_badData = data;
+<     badSink();
+---
+>     CWE190_Integer_Overflow__char_rand_preinc_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE190_Integer_Overflow__char_rand_preinc_45_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2850a2882,2884
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_rand_preinc_45_good();
+>     printLine("Finished good()");
+2856,2858d2889
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_rand_preinc_45_bad();
+<     printLine("Finished bad()");

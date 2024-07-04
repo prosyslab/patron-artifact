@@ -1,0 +1,61 @@
+2813a2814,2817
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_listen_socket_multiply_22b.c"
+> extern int CWE190_Integer_Overflow__int_listen_socket_multiply_22_goodB2G1Global;
+> extern int CWE190_Integer_Overflow__int_listen_socket_multiply_22_goodB2G2Global;
+> extern int CWE190_Integer_Overflow__int_listen_socket_multiply_22_goodG2BGlobal;
+2815a2820,2851
+> void CWE190_Integer_Overflow__int_listen_socket_multiply_22_goodB2G1Sink(int data)
+> {
+>     if(CWE190_Integer_Overflow__int_listen_socket_multiply_22_goodB2G1Global)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         if(data > 0)
+>         {
+> 
+>             if (data < (0x7fffffff/2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> void CWE190_Integer_Overflow__int_listen_socket_multiply_22_goodB2G2Sink(int data)
+> {
+>     if(CWE190_Integer_Overflow__int_listen_socket_multiply_22_goodB2G2Global)
+>     {
+>         if(data > 0)
+>         {
+2816a2853,2864
+>             if (data < (0x7fffffff/2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+>         }
+>     }
+> }
+2818d2865
+< extern int CWE190_Integer_Overflow__int_listen_socket_multiply_22_badGlobal;
+2820c2867
+< void CWE190_Integer_Overflow__int_listen_socket_multiply_22_badSink(int data)
+---
+> void CWE190_Integer_Overflow__int_listen_socket_multiply_22_goodG2BSink(int data)
+2822c2869
+<     if(CWE190_Integer_Overflow__int_listen_socket_multiply_22_badGlobal)
+---
+>     if(CWE190_Integer_Overflow__int_listen_socket_multiply_22_goodG2BGlobal)

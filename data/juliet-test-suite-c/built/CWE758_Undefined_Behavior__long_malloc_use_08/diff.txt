@@ -1,0 +1,69 @@
+2826a2827,2831
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_malloc_use_08.c"
+> static void good1()
+> {
+>     if(staticReturnsFalse())
+>     {
+2827a2833,2854
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             long data;
+>             long * pointer = (long *)malloc(sizeof(long));
+>             if (pointer == 
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_malloc_use_08.c" 3 4
+>                           ((void *)0)
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_malloc_use_08.c"
+>                               ) {exit(-1);}
+>             data = 5L;
+>             *pointer = data;
+>             {
+>                 long data = *pointer;
+>                 printLongLine(data);
+>             }
+>             free(pointer);
+>         }
+>     }
+> }
+2830c2857
+< void CWE758_Undefined_Behavior__long_malloc_use_08_bad()
+---
+> static void good2()
+2834a2862
+>             long data;
+2837c2865
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_malloc_use_08.c" 3 4
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_malloc_use_08.c" 3 4
+2839c2867
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_malloc_use_08.c"
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_malloc_use_08.c"
+2841c2869,2874
+<             long data = *pointer;
+---
+>             data = 5L;
+>             *pointer = data;
+>             {
+>                 long data = *pointer;
+>                 printLongLine(data);
+>             }
+2843d2875
+<             printLongLine(data);
+2846a2879,2884
+> 
+> void CWE758_Undefined_Behavior__long_malloc_use_08_good()
+> {
+>     good1();
+>     good2();
+> }
+2856a2895,2897
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__long_malloc_use_08_good();
+>     printLine("Finished good()");
+2862,2864d2902
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__long_malloc_use_08_bad();
+<     printLine("Finished bad()");

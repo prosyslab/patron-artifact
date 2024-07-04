@@ -1,0 +1,106 @@
+2819a2820,2831
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_05.c"
+> static void goodB2G1()
+> {
+>     FILE * data;
+>     data = 
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_05.c" 3 4
+>           ((void *)0)
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_05.c"
+>               ;
+>     if(staticTrue)
+>     {
+>         data = fopen("BadSource_fopen.txt", "w+");
+2820a2833,2841
+>         fclose(data);
+>     }
+>     if(staticFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2823c2844,2849
+< void CWE675_Duplicate_Operations_on_Resource__fopen_05_bad()
+---
+>         ;
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2827c2853
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_05.c" 3 4
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_05.c" 3 4
+2829c2855
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_05.c"
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_05.c"
+2839a2866,2913
+> 
+>         ;
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     FILE * data;
+>     data = 
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_05.c" 3 4
+>           ((void *)0)
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_05.c"
+>               ;
+>     if(staticFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = fopen("GoodSource_fopen.txt", "w+");
+>     }
+>     if(staticTrue)
+>     {
+> 
+>         fclose(data);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     FILE * data;
+>     data = 
+> # 118 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_05.c" 3 4
+>           ((void *)0)
+> # 118 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_05.c"
+>               ;
+>     if(staticTrue)
+>     {
+> 
+>         data = fopen("GoodSource_fopen.txt", "w+");
+>     }
+>     if(staticTrue)
+>     {
+> 
+2842a2917,2924
+> 
+> void CWE675_Duplicate_Operations_on_Resource__fopen_05_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2852a2935,2937
+>     printLine("Calling good()...");
+>     CWE675_Duplicate_Operations_on_Resource__fopen_05_good();
+>     printLine("Finished good()");
+2858,2860d2942
+<     printLine("Calling bad()...");
+<     CWE675_Duplicate_Operations_on_Resource__fopen_05_bad();
+<     printLine("Finished bad()");

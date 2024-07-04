@@ -1,0 +1,45 @@
+3239a3240
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_loop_18.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_loop_18.c"
+< void CWE124_Buffer_Underwrite__malloc_char_loop_18_bad()
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_loop_18.c"
+> static void goodG2B()
+3249c3247
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_loop_18.c" 3 4
+---
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_loop_18.c" 3 4
+3251c3249
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_loop_18.c"
+---
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_loop_18.c"
+3258c3256
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_loop_18.c" 3 4
+---
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_loop_18.c" 3 4
+3260c3258
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_loop_18.c"
+---
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_loop_18.c"
+3265c3263
+<         data = dataBuffer - 8;
+---
+>         data = dataBuffer;
+3283a3282,3286
+> 
+> void CWE124_Buffer_Underwrite__malloc_char_loop_18_good()
+> {
+>     goodG2B();
+> }
+3293a3297,3299
+>     printLine("Calling good()...");
+>     CWE124_Buffer_Underwrite__malloc_char_loop_18_good();
+>     printLine("Finished good()");
+3299,3301d3304
+<     printLine("Calling bad()...");
+<     CWE124_Buffer_Underwrite__malloc_char_loop_18_bad();
+<     printLine("Finished bad()");

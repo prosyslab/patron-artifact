@@ -1,0 +1,42 @@
+3253,3256c3253,3254
+< 
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12_bad()
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12.c"
+> static void good1()
+3263c3261
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12.c" 3 4
+---
+> # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12.c" 3 4
+3265c3263
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12.c"
+---
+> # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12.c"
+3271c3269
+<             memcpy(structCharVoid->charFirst, "0123456789abcdef0123456789abcde", sizeof(*structCharVoid));
+---
+>             memcpy(structCharVoid->charFirst, "0123456789abcdef0123456789abcde", sizeof(structCharVoid->charFirst));
+3283c3281
+< # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12.c" 3 4
+---
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12.c" 3 4
+3285c3283
+< # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12.c"
+---
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12.c"
+3298a3297,3301
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12_good()
+> {
+>     good1();
+> }
+3308a3312,3314
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12_good();
+>     printLine("Finished good()");
+3314,3316d3319
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memcpy_12_bad();
+<     printLine("Finished bad()");

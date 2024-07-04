@@ -1,0 +1,57 @@
+2814,2819c2814,2815
+< 
+< 
+< 
+< 
+< 
+< static int badSource(int data)
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memcpy_42.c"
+> static int goodG2BSource(int data)
+2821,2833d2816
+<     {
+<         char inputBuffer[(3 * sizeof(data) + 2)] = "";
+< 
+<         if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memcpy_42.c" 3 4
+<                                                stdin
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memcpy_42.c"
+<                                                     ) != 
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memcpy_42.c" 3 4
+<                                                          ((void *)0)
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memcpy_42.c"
+<                                                              )
+<         {
+2835,2841c2818
+<             data = atoi(inputBuffer);
+<         }
+<         else
+<         {
+<             printLine("fgets() failed.");
+<         }
+<     }
+---
+>     data = 100-1;
+2845c2822,2823
+< void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memcpy_42_bad()
+---
+> 
+> static void goodG2B()
+2850c2828
+<     data = badSource(data);
+---
+>     data = goodG2BSource(data);
+2865a2844,2848
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memcpy_42_good()
+> {
+>     goodG2B();
+> }
+2875a2859,2861
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memcpy_42_good();
+>     printLine("Finished good()");
+2881,2883d2866
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memcpy_42_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,164 @@
+2813a2814,2837
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13.c"
+> static void goodB2G1()
+> {
+>     twoIntsStruct * data;
+>     data = (twoIntsStruct *)malloc(10*sizeof(twoIntsStruct));
+>     if (data == 
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13.c" 3 4
+>                ((void *)0)
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13.c"
+>                    ) {exit(-1);}
+>     if(GLOBAL_CONST_FIVE==5)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<(10/2); i++)
+>             {
+>                 data[i].intOne = i;
+>                 data[i].intTwo = i;
+>             }
+>         }
+>     }
+>     if(GLOBAL_CONST_FIVE!=5)
+>     {
+2814a2839,2861
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i].intOne = i;
+>                 data[i].intTwo = i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printIntLine(data[i].intOne);
+>                 printIntLine(data[i].intTwo);
+>             }
+>         }
+>     }
+> }
+2817c2864
+< void CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13_bad()
+---
+> static void goodB2G2()
+2822c2869
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13.c" 3 4
+---
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13.c" 3 4
+2824c2871
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13.c"
+---
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13.c"
+2844a2892,2899
+>                 data[i].intOne = i;
+>                 data[i].intTwo = i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+2850a2906,2990
+> 
+> 
+> static void goodG2B1()
+> {
+>     twoIntsStruct * data;
+>     data = (twoIntsStruct *)malloc(10*sizeof(twoIntsStruct));
+>     if (data == 
+> # 147 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13.c" 3 4
+>                ((void *)0)
+> # 147 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13.c"
+>                    ) {exit(-1);}
+>     if(GLOBAL_CONST_FIVE!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i].intOne = i;
+>                 data[i].intTwo = i;
+>             }
+>         }
+>     }
+>     if(GLOBAL_CONST_FIVE==5)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printIntLine(data[i].intOne);
+>                 printIntLine(data[i].intTwo);
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     twoIntsStruct * data;
+>     data = (twoIntsStruct *)malloc(10*sizeof(twoIntsStruct));
+>     if (data == 
+> # 184 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13.c" 3 4
+>                ((void *)0)
+> # 184 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13.c"
+>                    ) {exit(-1);}
+>     if(GLOBAL_CONST_FIVE==5)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i].intOne = i;
+>                 data[i].intTwo = i;
+>             }
+>         }
+>     }
+>     if(GLOBAL_CONST_FIVE==5)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printIntLine(data[i].intOne);
+>                 printIntLine(data[i].intTwo);
+>             }
+>         }
+>     }
+> }
+> 
+> void CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2860a3001,3003
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13_good();
+>     printLine("Finished good()");
+2866,2868d3008
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_13_bad();
+<     printLine("Finished bad()");

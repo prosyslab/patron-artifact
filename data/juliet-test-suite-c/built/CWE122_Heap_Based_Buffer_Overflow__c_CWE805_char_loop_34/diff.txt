@@ -1,0 +1,42 @@
+3248,3251c3248,3249
+< 
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34_bad()
+---
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34.c"
+> static void goodG2B()
+3256c3254
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34.c" 3 4
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34.c" 3 4
+3258c3256
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34.c"
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34.c"
+3261c3259
+<     data = (char *)malloc(50*sizeof(char));
+---
+>     data = (char *)malloc(100*sizeof(char));
+3263c3261
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34.c" 3 4
+---
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34.c" 3 4
+3265c3263
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34.c"
+---
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34.c"
+3286a3285,3289
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34_good()
+> {
+>     goodG2B();
+> }
+3296a3300,3302
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34_good();
+>     printLine("Finished good()");
+3302,3304d3307
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_34_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,84 @@
+3250a3251,3260
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c"
+> static void goodG2B()
+> {
+>     void * data;
+>     CWE121_Stack_Based_Buffer_Overflow__CWE135_34_unionType myUnion;
+>     data = 
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c" 3 4
+>           ((void *)0)
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c"
+>               ;
+3251a3262,3282
+>     data = (void *)"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+>     myUnion.unionFirst = data;
+>     {
+>         void * data = myUnion.unionSecond;
+>         {
+> 
+>             size_t dataLen = strlen((char *)data);
+>             void * dest = (void *)
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c" 3 4
+>                                  __builtin_alloca (
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c"
+>                                  (dataLen+1) * 1
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c" 3 4
+>                                  )
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c"
+>                                                         ;
+>             (void)strcpy(dest, data);
+>             printLine((char *)dest);
+>         }
+>     }
+> }
+3254c3285
+< void CWE121_Stack_Based_Buffer_Overflow__CWE135_34_bad()
+---
+> static void goodB2G()
+3259c3290
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c" 3 4
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c" 3 4
+3261c3292
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c"
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c"
+3270c3301
+<             size_t dataLen = strlen((char *)data);
+---
+>             size_t dataLen = wcslen((wchar_t *)data);
+3272c3303
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c" 3 4
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c" 3 4
+3274c3305
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c"
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c"
+3276c3307
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c" 3 4
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c" 3 4
+3278c3309
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c"
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_34.c"
+3281c3312
+<             printLine((char *)dest);
+---
+>             printWLine((wchar_t *)dest);
+3284a3316,3321
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE135_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3294a3332,3334
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE135_34_good();
+>     printLine("Finished good()");
+3300,3302d3339
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE135_34_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,52 @@
+2818a2819,2820
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_67a.c"
+> void CWE675_Duplicate_Operations_on_Resource__fopen_67b_goodG2BSink(CWE675_Duplicate_Operations_on_Resource__fopen_67_structType myStruct);
+2819a2822,2830
+> static void goodG2B()
+> {
+>     FILE * data;
+>     CWE675_Duplicate_Operations_on_Resource__fopen_67_structType myStruct;
+>     data = 
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_67a.c" 3 4
+>           ((void *)0)
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_67a.c"
+>               ;
+2820a2832,2835
+>     data = fopen("GoodSource_fopen.txt", "w+");
+>     myStruct.structFirst = data;
+>     CWE675_Duplicate_Operations_on_Resource__fopen_67b_goodG2BSink(myStruct);
+> }
+2823c2838
+< void CWE675_Duplicate_Operations_on_Resource__fopen_67b_badSink(CWE675_Duplicate_Operations_on_Resource__fopen_67_structType myStruct);
+---
+> void CWE675_Duplicate_Operations_on_Resource__fopen_67b_goodB2GSink(CWE675_Duplicate_Operations_on_Resource__fopen_67_structType myStruct);
+2825c2840
+< void CWE675_Duplicate_Operations_on_Resource__fopen_67_bad()
+---
+> static void goodB2G()
+2830c2845
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_67a.c" 3 4
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_67a.c" 3 4
+2832c2847
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_67a.c"
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_67a.c"
+2838c2853,2859
+<     CWE675_Duplicate_Operations_on_Resource__fopen_67b_badSink(myStruct);
+---
+>     CWE675_Duplicate_Operations_on_Resource__fopen_67b_goodB2GSink(myStruct);
+> }
+> 
+> void CWE675_Duplicate_Operations_on_Resource__fopen_67_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2849a2871,2873
+>     printLine("Calling good()...");
+>     CWE675_Duplicate_Operations_on_Resource__fopen_67_good();
+>     printLine("Finished good()");
+2855,2857d2878
+<     printLine("Calling bad()...");
+<     CWE675_Duplicate_Operations_on_Resource__fopen_67_bad();
+<     printLine("Finished bad()");

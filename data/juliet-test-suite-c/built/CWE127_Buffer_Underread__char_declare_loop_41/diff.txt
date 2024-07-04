@@ -1,0 +1,35 @@
+3239a3240
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_declare_loop_41.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_declare_loop_41.c"
+< void CWE127_Buffer_Underread__char_declare_loop_41_badSink(char * data)
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_declare_loop_41.c"
+> void CWE127_Buffer_Underread__char_declare_loop_41_goodG2BSink(char * data)
+3263c3261,3262
+< void CWE127_Buffer_Underread__char_declare_loop_41_bad()
+---
+> 
+> static void goodG2B()
+3270,3271c3269,3275
+<     data = dataBuffer - 8;
+<     CWE127_Buffer_Underread__char_declare_loop_41_badSink(data);
+---
+>     data = dataBuffer;
+>     CWE127_Buffer_Underread__char_declare_loop_41_goodG2BSink(data);
+> }
+> 
+> void CWE127_Buffer_Underread__char_declare_loop_41_good()
+> {
+>     goodG2B();
+3282a3287,3289
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__char_declare_loop_41_good();
+>     printLine("Finished good()");
+3288,3290d3294
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__char_declare_loop_41_bad();
+<     printLine("Finished bad()");

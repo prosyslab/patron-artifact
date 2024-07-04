@@ -1,0 +1,60 @@
+3245,3248c3245,3246
+< 
+< 
+< 
+< static void badSink()
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_malloc_45.c"
+> static void goodB2GSink()
+3250c3248
+<     twoIntsStruct * data = CWE690_NULL_Deref_From_Return__struct_malloc_45_badData;
+---
+>     twoIntsStruct * data = CWE690_NULL_Deref_From_Return__struct_malloc_45_goodB2GData;
+3252,3255c3250,3260
+<     data[0].intOne = 1;
+<     data[0].intTwo = 1;
+<     printStructLine(&data[0]);
+<     free(data);
+---
+>     if (data != 
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_malloc_45.c" 3 4
+>                ((void *)0)
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_malloc_45.c"
+>                    )
+>     {
+>         data[0].intOne = 1;
+>         data[0].intTwo = 1;
+>         printStructLine(&data[0]);
+>         free(data);
+>     }
+3258c3263
+< void CWE690_NULL_Deref_From_Return__struct_malloc_45_bad()
+---
+> static void goodB2G()
+3262c3267
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_malloc_45.c" 3 4
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_malloc_45.c" 3 4
+3264c3269
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_malloc_45.c"
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_malloc_45.c"
+3268,3269c3273,3279
+<     CWE690_NULL_Deref_From_Return__struct_malloc_45_badData = data;
+<     badSink();
+---
+>     CWE690_NULL_Deref_From_Return__struct_malloc_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE690_NULL_Deref_From_Return__struct_malloc_45_good()
+> {
+>     goodB2G();
+3280a3291,3293
+>     printLine("Calling good()...");
+>     CWE690_NULL_Deref_From_Return__struct_malloc_45_good();
+>     printLine("Finished good()");
+3286,3288d3298
+<     printLine("Calling bad()...");
+<     CWE690_NULL_Deref_From_Return__struct_malloc_45_bad();
+<     printLine("Finished bad()");

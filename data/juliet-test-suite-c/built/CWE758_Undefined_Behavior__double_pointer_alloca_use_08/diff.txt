@@ -1,0 +1,92 @@
+2826a2827,2847
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c"
+> static void good1()
+> {
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             double * data;
+>             double * * pointer = (double * *)
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c" 3 4
+>                                             __builtin_alloca (
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c"
+>                                             sizeof(double *)
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c" 3 4
+>                                             )
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c"
+>                                                                     ;
+2827a2849,2863
+>             data = (double *)malloc(sizeof(double));
+>             if (data == 
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c" 3 4
+>                        ((void *)0)
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c"
+>                            ) {exit(-1);}
+>             *data = 5.0;
+>             *pointer = data;
+>             {
+>                 double * data = *pointer;
+>                 printDoubleLine(*data);
+>             }
+>         }
+>     }
+> }
+2830c2866
+< void CWE758_Undefined_Behavior__double_pointer_alloca_use_08_bad()
+---
+> static void good2()
+2834a2871
+>             double * data;
+2836c2873
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c" 3 4
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c" 3 4
+2838c2875
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c"
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c"
+2840c2877
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c" 3 4
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c" 3 4
+2842c2879
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c"
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c"
+2844,2845c2881,2893
+<             double * data = *pointer;
+<             printDoubleLine(*data);
+---
+> 
+>             data = (double *)malloc(sizeof(double));
+>             if (data == 
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c" 3 4
+>                        ((void *)0)
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_alloca_use_08.c"
+>                            ) {exit(-1);}
+>             *data = 5.0;
+>             *pointer = data;
+>             {
+>                 double * data = *pointer;
+>                 printDoubleLine(*data);
+>             }
+2848a2897,2902
+> 
+> void CWE758_Undefined_Behavior__double_pointer_alloca_use_08_good()
+> {
+>     good1();
+>     good2();
+> }
+2858a2913,2915
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__double_pointer_alloca_use_08_good();
+>     printLine("Finished good()");
+2864,2866d2920
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__double_pointer_alloca_use_08_bad();
+<     printLine("Finished bad()");

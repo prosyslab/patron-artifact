@@ -1,0 +1,49 @@
+3738a3739,3740
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_square_67a.c"
+> void CWE190_Integer_Overflow__int_fscanf_square_67b_goodG2BSink(CWE190_Integer_Overflow__int_fscanf_square_67_structType myStruct);
+3739a3742,3747
+> static void goodG2B()
+> {
+>     int data;
+>     CWE190_Integer_Overflow__int_fscanf_square_67_structType myStruct;
+> 
+>     data = 0;
+3740a3749,3752
+>     data = 2;
+>     myStruct.structFirst = data;
+>     CWE190_Integer_Overflow__int_fscanf_square_67b_goodG2BSink(myStruct);
+> }
+3743c3755
+< void CWE190_Integer_Overflow__int_fscanf_square_67b_badSink(CWE190_Integer_Overflow__int_fscanf_square_67_structType myStruct);
+---
+> void CWE190_Integer_Overflow__int_fscanf_square_67b_goodB2GSink(CWE190_Integer_Overflow__int_fscanf_square_67_structType myStruct);
+3745c3757
+< void CWE190_Integer_Overflow__int_fscanf_square_67_bad()
+---
+> static void goodB2G()
+3753c3765
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_square_67a.c" 3 4
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_square_67a.c" 3 4
+3755c3767
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_square_67a.c"
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_square_67a.c"
+3758c3770,3776
+<     CWE190_Integer_Overflow__int_fscanf_square_67b_badSink(myStruct);
+---
+>     CWE190_Integer_Overflow__int_fscanf_square_67b_goodB2GSink(myStruct);
+> }
+> 
+> void CWE190_Integer_Overflow__int_fscanf_square_67_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3769a3788,3790
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_fscanf_square_67_good();
+>     printLine("Finished good()");
+3775,3777d3795
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_fscanf_square_67_bad();
+<     printLine("Finished bad()");

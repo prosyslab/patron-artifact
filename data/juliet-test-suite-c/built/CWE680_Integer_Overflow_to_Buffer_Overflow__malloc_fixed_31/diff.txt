@@ -1,0 +1,36 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_31_bad()
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_31.c"
+> static void goodG2B()
+2823,2825c2821
+<     data = 0x7fffffff / 2 + 2;
+< 
+< 
+---
+>     data = 20;
+2836c2832
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_31.c" 3 4
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_31.c" 3 4
+2838c2834
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_31.c"
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_31.c"
+2848a2845,2849
+> 
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_31_good()
+> {
+>     goodG2B();
+> }
+2858a2860,2862
+>     printLine("Calling good()...");
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_31_good();
+>     printLine("Finished good()");
+2864,2866d2867
+<     printLine("Calling bad()...");
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_31_bad();
+<     printLine("Finished bad()");

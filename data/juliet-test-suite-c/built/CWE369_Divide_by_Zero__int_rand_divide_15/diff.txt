@@ -1,0 +1,127 @@
+2813a2814,2817
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_rand_divide_15.c"
+> static void goodB2G1()
+> {
+>     int data;
+2814a2819,2822
+>     data = -1;
+>     switch(6)
+>     {
+>     case 6:
+2815a2824,2826
+>         data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>         break;
+>     default:
+2817c2828,2852
+< void CWE369_Divide_by_Zero__int_rand_divide_15_bad()
+---
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(8)
+>     {
+>     case 7:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         if( data != 0 )
+>         {
+>             printIntLine(100 / data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2836a2872,2938
+>         if( data != 0 )
+>         {
+>             printIntLine(100 / data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         data = 7;
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+> 
+>         printIntLine(100 / data);
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = -1;
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = 7;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+> 
+2844a2947,2954
+> 
+> void CWE369_Divide_by_Zero__int_rand_divide_15_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2854a2965,2967
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_rand_divide_15_good();
+>     printLine("Finished good()");
+2860,2862d2972
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_rand_divide_15_bad();
+<     printLine("Finished bad()");

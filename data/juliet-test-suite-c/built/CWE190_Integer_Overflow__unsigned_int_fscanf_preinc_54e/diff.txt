@@ -1,0 +1,29 @@
+2813a2814,2817
+> # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__unsigned_int_fscanf_preinc_54e.c"
+> void CWE190_Integer_Overflow__unsigned_int_fscanf_preinc_54e_goodG2BSink(unsigned int data)
+> {
+>     {
+2814a2819,2823
+>         ++data;
+>         unsigned int result = data;
+>         printUnsignedLine(result);
+>     }
+> }
+2817c2826
+< void CWE190_Integer_Overflow__unsigned_int_fscanf_preinc_54e_badSink(unsigned int data)
+---
+> void CWE190_Integer_Overflow__unsigned_int_fscanf_preinc_54e_goodB2GSink(unsigned int data)
+2819d2827
+<     {
+2820a2829,2834
+>     if (data < 
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__unsigned_int_fscanf_preinc_54e.c" 3 4
+>               (0x7fffffff * 2U + 1U)
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__unsigned_int_fscanf_preinc_54e.c"
+>                       )
+>     {
+2823a2838,2841
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");

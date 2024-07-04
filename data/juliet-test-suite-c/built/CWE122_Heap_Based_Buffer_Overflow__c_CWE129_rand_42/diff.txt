@@ -1,0 +1,91 @@
+2813a2814,2842
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_42.c"
+> static int goodG2BSource(int data)
+> {
+> 
+> 
+>     data = 7;
+>     return data;
+> }
+> 
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = -1;
+>     data = goodG2BSource(data);
+>     {
+>         int i;
+>         int * buffer = (int *)malloc(10 * sizeof(int));
+>         if (buffer == 
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_42.c" 3 4
+>                      ((void *)0)
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_42.c"
+>                          ) {exit(-1);}
+> 
+>         for (i = 0; i < 10; i++)
+>         {
+>             buffer[i] = 0;
+>         }
+> 
+2814a2844,2859
+>         if (data >= 0)
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is negative.");
+>         }
+>         free(buffer);
+>     }
+> }
+2817c2862
+< static int badSource(int data)
+---
+> static int goodB2GSource(int data)
+2824c2869
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_42_bad()
+---
+> static void goodB2G()
+2829c2874
+<     data = badSource(data);
+---
+>     data = goodB2GSource(data);
+2834c2879
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_42.c" 3 4
+---
+> # 127 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_42.c" 3 4
+2836c2881
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_42.c"
+---
+> # 127 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_42.c"
+2844,2845c2889
+< 
+<         if (data >= 0)
+---
+>         if (data >= 0 && data < (10))
+2856c2900
+<             printLine("ERROR: Array index is negative.");
+---
+>             printLine("ERROR: Array index is out-of-bounds");
+2860a2905,2910
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_42_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2870a2921,2923
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_42_good();
+>     printLine("Finished good()");
+2876,2878d2928
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_42_bad();
+<     printLine("Finished bad()");

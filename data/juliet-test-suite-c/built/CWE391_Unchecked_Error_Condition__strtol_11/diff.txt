@@ -1,0 +1,92 @@
+2845a2846
+> # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c"
+2846a2848,2852
+> # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c"
+> static void good1()
+> {
+>     if(globalReturnsFalse())
+>     {
+2847a2854,2869
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             long longNumber;
+>             
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c" 3 4
+>            (*__errno_location ()) 
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c"
+>                  = 0;
+>             longNumber = strtol("0xfffffffff", 
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c" 3 4
+>                                               ((void *)0)
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c"
+>                                                   , 0);
+2848a2871,2887
+>             if (
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c" 3 4
+>                (*__errno_location ()) 
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c"
+>                      == 
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c" 3 4
+>                         34
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c"
+>                               )
+>             {
+>                 printLine("strtol() failed");
+>                 exit(1);
+>             }
+>             printf("%li\n", longNumber);
+>         }
+>     }
+> }
+2850,2851c2889,2890
+< # 22 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c"
+< void CWE391_Unchecked_Error_Condition__strtol_11_bad()
+---
+> 
+> static void good2()
+2856a2896,2900
+>             
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c" 3 4
+>            (*__errno_location ()) 
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c"
+>                  = 0;
+2858c2902
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c" 3 4
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c" 3 4
+2860c2904
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c"
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c"
+2862a2907,2919
+>             if (
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c" 3 4
+>                (*__errno_location ()) 
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c"
+>                      == 
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c" 3 4
+>                         34
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_11.c"
+>                               )
+>             {
+>                 printLine("strtol() failed");
+>                 exit(1);
+>             }
+2866a2924,2929
+> 
+> void CWE391_Unchecked_Error_Condition__strtol_11_good()
+> {
+>     good1();
+>     good2();
+> }
+2876a2940,2942
+>     printLine("Calling good()...");
+>     CWE391_Unchecked_Error_Condition__strtol_11_good();
+>     printLine("Finished good()");
+2882,2884d2947
+<     printLine("Calling bad()...");
+<     CWE391_Unchecked_Error_Condition__strtol_11_bad();
+<     printLine("Finished bad()");

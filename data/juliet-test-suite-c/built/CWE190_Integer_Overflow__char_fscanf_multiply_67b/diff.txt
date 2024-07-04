@@ -1,0 +1,29 @@
+2818a2819,2824
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_67b.c"
+> void CWE190_Integer_Overflow__char_fscanf_multiply_67b_goodG2BSink(CWE190_Integer_Overflow__char_fscanf_multiply_67_structType myStruct)
+> {
+>     char data = myStruct.structFirst;
+>     if(data > 0)
+>     {
+2819a2826,2829
+>         char result = data * 2;
+>         printHexCharLine(result);
+>     }
+> }
+2822c2832
+< void CWE190_Integer_Overflow__char_fscanf_multiply_67b_badSink(CWE190_Integer_Overflow__char_fscanf_multiply_67_structType myStruct)
+---
+> void CWE190_Integer_Overflow__char_fscanf_multiply_67b_goodB2GSink(CWE190_Integer_Overflow__char_fscanf_multiply_67_structType myStruct)
+2828,2829c2838,2846
+<         char result = data * 2;
+<         printHexCharLine(result);
+---
+>         if (data < (0x7f/2))
+>         {
+>             char result = data * 2;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }

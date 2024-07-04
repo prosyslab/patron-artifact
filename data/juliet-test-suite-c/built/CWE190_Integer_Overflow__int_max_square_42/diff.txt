@@ -1,0 +1,64 @@
+3731a3732
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_square_42.c"
+3732a3734,3736
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_square_42.c"
+> static int goodG2BSource(int data)
+> {
+3733a3738,3740
+>     data = 2;
+>     return data;
+> }
+3734a3742,3744
+> static void goodG2B()
+> {
+>     int data;
+3736,3737c3746,3756
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_square_42.c"
+< static int badSource(int data)
+---
+>     data = 0;
+>     data = goodG2BSource(data);
+>     {
+> 
+>         int result = data * data;
+>         printIntLine(result);
+>     }
+> }
+> 
+> 
+> static int goodB2GSource(int data)
+3744c3763
+< void CWE190_Integer_Overflow__int_max_square_42_bad()
+---
+> static void goodB2G()
+3749,3750c3768
+<     data = badSource(data);
+<     {
+---
+>     data = goodB2GSource(data);
+3751a3770,3775
+>     if (data > 
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_square_42.c" 3 4
+>               (-0x7fffffff - 1) 
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_square_42.c"
+>                       && abs(data) < (long)sqrt((double)0x7fffffff))
+>     {
+3754a3779,3788
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__int_max_square_42_good()
+> {
+>     goodB2G();
+>     goodG2B();
+3765a3800,3802
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_max_square_42_good();
+>     printLine("Finished good()");
+3771,3773d3807
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_max_square_42_bad();
+<     printLine("Finished bad()");

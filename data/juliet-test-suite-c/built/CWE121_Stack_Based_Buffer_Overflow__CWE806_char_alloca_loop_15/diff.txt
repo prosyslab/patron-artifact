@@ -1,0 +1,84 @@
+3239a3240
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c"
+3240a3242,3271
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c"
+> static void goodG2B1()
+> {
+>     char * data;
+>     char * dataBuffer = (char *)
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c" 3 4
+>                                __builtin_alloca (
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c"
+>                                100*sizeof(char)
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c" 3 4
+>                                )
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c"
+>                                                        ;
+>     data = dataBuffer;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         memset(data, 'A', 50-1);
+>         data[50-1] = '\0';
+>         break;
+>     }
+>     {
+>         char dest[50] = "";
+>         size_t i, dataLen;
+>         dataLen = strlen(data);
+3241a3273,3280
+>         for (i = 0; i < dataLen; i++)
+>         {
+>             dest[i] = data[i];
+>         }
+>         dest[50-1] = '\0';
+>         printLine(data);
+>     }
+> }
+3244,3245c3283
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c"
+< void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15_bad()
+---
+> static void goodG2B2()
+3249c3287
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c" 3 4
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c" 3 4
+3251c3289
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c"
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c"
+3253c3291
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c" 3 4
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c" 3 4
+3255c3293
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c"
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15.c"
+3262,3263c3300,3301
+<         memset(data, 'A', 100-1);
+<         data[100-1] = '\0';
+---
+>         memset(data, 'A', 50-1);
+>         data[50-1] = '\0';
+3282a3321,3326
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3292a3337,3339
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15_good();
+>     printLine("Finished good()");
+3298,3300d3344
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_15_bad();
+<     printLine("Finished bad()");

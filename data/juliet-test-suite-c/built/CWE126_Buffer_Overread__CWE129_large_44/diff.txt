@@ -1,0 +1,62 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< static void badSink(int data)
+---
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_large_44.c"
+> static void goodG2BSink(int data)
+2834c2832
+< void CWE126_Buffer_Overread__CWE129_large_44_bad()
+---
+> static void goodG2B()
+2836a2835,2838
+>     void (*funcPtr) (int) = goodG2BSink;
+> 
+>     data = -1;
+> 
+2838c2840,2864
+<     void (*funcPtr) (int) = badSink;
+---
+>     data = 7;
+>     funcPtr(data);
+> }
+> 
+> 
+> static void goodB2GSink(int data)
+> {
+>     {
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");
+>         }
+>     }
+> }
+> 
+> static void goodB2G()
+> {
+>     int data;
+>     void (*funcPtr) (int) = goodB2GSink;
+2843d2868
+< 
+2845a2871,2876
+> 
+> void CWE126_Buffer_Overread__CWE129_large_44_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2855a2887,2889
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__CWE129_large_44_good();
+>     printLine("Finished good()");
+2861,2863d2894
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__CWE129_large_44_bad();
+<     printLine("Finished bad()");

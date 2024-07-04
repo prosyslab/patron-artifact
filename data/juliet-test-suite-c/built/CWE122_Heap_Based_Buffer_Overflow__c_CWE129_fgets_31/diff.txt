@@ -1,0 +1,96 @@
+2813a2814,2819
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c"
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = -1;
+2815a2822,2843
+>     data = 7;
+>     {
+>         int dataCopy = data;
+>         int data = dataCopy;
+>         {
+>             int i;
+>             int * buffer = (int *)malloc(10 * sizeof(int));
+>             if (buffer == 
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c" 3 4
+>                          ((void *)0)
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c"
+>                              ) {exit(-1);}
+> 
+>             for (i = 0; i < 10; i++)
+>             {
+>                 buffer[i] = 0;
+>             }
+> 
+> 
+>             if (data >= 0)
+>             {
+>                 buffer[data] = 1;
+2816a2845,2857
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is negative.");
+>             }
+>             free(buffer);
+>         }
+>     }
+> }
+2819c2860
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31_bad()
+---
+> static void goodB2G()
+2828c2869
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c" 3 4
+---
+> # 128 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c" 3 4
+2830c2871
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c"
+---
+> # 128 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c"
+2832c2873
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c" 3 4
+---
+> # 128 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c" 3 4
+2834c2875
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c"
+---
+> # 128 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c"
+2852c2893
+< # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c" 3 4
+---
+> # 144 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c" 3 4
+2854c2895
+< # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c"
+---
+> # 144 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31.c"
+2862,2863c2903
+< 
+<             if (data >= 0)
+---
+>             if (data >= 0 && data < (10))
+2874c2914
+<                 printLine("ERROR: Array index is negative.");
+---
+>                 printLine("ERROR: Array index is out-of-bounds");
+2879a2920,2925
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2889a2936,2938
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31_good();
+>     printLine("Finished good()");
+2895,2897d2943
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_31_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,46 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE476_NULL_Pointer_Dereference__binary_if_17_bad()
+---
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_17.c"
+> static void good1()
+2819,2820c2817,2818
+<     int j;
+<     for(j = 0; j < 1; j++)
+---
+>     int k;
+>     for(k = 0; k < 1; k++)
+2824c2822
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_17.c" 3 4
+---
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_17.c" 3 4
+2826c2824
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_17.c"
+---
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_17.c"
+2831c2829
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_17.c" 3 4
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_17.c" 3 4
+2833,2834c2831,2832
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_17.c"
+<                                             ) & (twoIntsStructPointer->intOne == 5))
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_17.c"
+>                                             ) && (twoIntsStructPointer->intOne == 5))
+2840a2839,2843
+> 
+> void CWE476_NULL_Pointer_Dereference__binary_if_17_good()
+> {
+>     good1();
+> }
+2850a2854,2856
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__binary_if_17_good();
+>     printLine("Finished good()");
+2856,2858d2861
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__binary_if_17_bad();
+<     printLine("Finished bad()");

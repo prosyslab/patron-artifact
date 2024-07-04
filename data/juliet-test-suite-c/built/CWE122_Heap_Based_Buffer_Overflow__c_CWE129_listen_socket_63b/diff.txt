@@ -1,0 +1,54 @@
+4900c4900
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b.c"
+---
+> # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b.c"
+4902,4903c4902,4903
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b.c"
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b_badSink(int * dataPtr)
+---
+> # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b.c"
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b_goodG2BSink(int * dataPtr)
+4910c4910
+< # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b.c" 3 4
+---
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b.c" 3 4
+4912c4912
+< # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b.c"
+---
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b.c"
+4932a4933,4967
+>         }
+>         free(buffer);
+>     }
+> }
+> 
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b_goodB2GSink(int * dataPtr)
+> {
+>     int data = *dataPtr;
+>     {
+>         int i;
+>         int * buffer = (int *)malloc(10 * sizeof(int));
+>         if (buffer == 
+> # 118 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b.c" 3 4
+>                      ((void *)0)
+> # 118 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_63b.c"
+>                          ) {exit(-1);}
+> 
+>         for (i = 0; i < 10; i++)
+>         {
+>             buffer[i] = 0;
+>         }
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

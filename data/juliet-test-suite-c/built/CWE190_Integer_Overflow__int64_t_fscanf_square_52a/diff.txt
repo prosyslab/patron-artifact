@@ -1,0 +1,57 @@
+3772a3773
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_52a.c"
+3773a3775,3776
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_52a.c"
+> void CWE190_Integer_Overflow__int64_t_fscanf_square_52b_goodG2BSink(int64_t data);
+3774a3778,3781
+> static void goodG2B()
+> {
+>     int64_t data;
+>     data = 0LL;
+3775a3783,3785
+>     data = 2;
+>     CWE190_Integer_Overflow__int64_t_fscanf_square_52b_goodG2BSink(data);
+> }
+3778,3779c3788
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_52a.c"
+< void CWE190_Integer_Overflow__int64_t_fscanf_square_52b_badSink(int64_t data);
+---
+> void CWE190_Integer_Overflow__int64_t_fscanf_square_52b_goodB2GSink(int64_t data);
+3781c3790
+< void CWE190_Integer_Overflow__int64_t_fscanf_square_52_bad()
+---
+> static void goodB2G()
+3787c3796
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_52a.c" 3 4
+---
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_52a.c" 3 4
+3789c3798
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_52a.c"
+---
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_52a.c"
+3791c3800
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_52a.c" 3 4
+---
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_52a.c" 3 4
+3793c3802
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_52a.c"
+---
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_52a.c"
+3795c3804,3810
+<     CWE190_Integer_Overflow__int64_t_fscanf_square_52b_badSink(data);
+---
+>     CWE190_Integer_Overflow__int64_t_fscanf_square_52b_goodB2GSink(data);
+> }
+> 
+> void CWE190_Integer_Overflow__int64_t_fscanf_square_52_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3806a3822,3824
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_fscanf_square_52_good();
+>     printLine("Finished good()");
+3812,3814d3829
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_fscanf_square_52_bad();
+<     printLine("Finished bad()");

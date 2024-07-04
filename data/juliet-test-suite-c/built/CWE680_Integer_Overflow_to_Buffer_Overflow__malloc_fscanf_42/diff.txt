@@ -1,0 +1,47 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< static int badSource(int data)
+---
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_42.c"
+> static int goodG2BSource(int data)
+2820,2824c2818
+<     fscanf(
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_42.c" 3 4
+<           stdin
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_42.c"
+<                , "%d", &data);
+---
+>     data = 20;
+2828c2822,2823
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_42_bad()
+---
+> 
+> static void goodG2B()
+2833c2828
+<     data = badSource(data);
+---
+>     data = goodG2BSource(data);
+2841c2836
+< # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_42.c" 3 4
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_42.c" 3 4
+2843c2838
+< # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_42.c"
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_42.c"
+2852a2848,2852
+> 
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_42_good()
+> {
+>     goodG2B();
+> }
+2862a2863,2865
+>     printLine("Calling good()...");
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_42_good();
+>     printLine("Finished good()");
+2868,2870d2870
+<     printLine("Calling bad()...");
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_42_bad();
+<     printLine("Finished bad()");

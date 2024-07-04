@@ -1,0 +1,57 @@
+3241c3241
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_11.c"
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_11.c"
+3243,3244c3243,3244
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_11.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_11_bad()
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_11.c"
+> static void good1()
+3246c3246,3251
+<     if(globalReturnsTrue())
+---
+>     if(globalReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+3253a3259,3266
+>             if (snprintf(data,100-strlen("string")-1, "%s\n", "string") < 0)
+>             {
+>                 printLine("snprintf failed!");
+>             }
+>         }
+>     }
+> }
+> 
+3255c3268,3278
+<             if (snprintf(data,100-strlen("string")-1, "%s\n", "string") == 0)
+---
+> static void good2()
+> {
+>     if(globalReturnsTrue())
+>     {
+>         {
+> 
+> 
+>             char dataBuffer[100] = "";
+>             char * data = dataBuffer;
+> 
+>             if (snprintf(data,100-strlen("string")-1, "%s\n", "string") < 0)
+3261a3285,3290
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_11_good()
+> {
+>     good1();
+>     good2();
+> }
+3271a3301,3303
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_11_good();
+>     printLine("Finished good()");
+3277,3279d3308
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_11_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,73 @@
+3731a3732
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_16.c"
+3733,3739c3734,3735
+< 
+< 
+< 
+< 
+< 
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_16.c"
+< void CWE369_Divide_by_Zero__float_fgets_16_bad()
+---
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_16.c"
+> static void goodB2G()
+3750c3746
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_16.c" 3 4
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_16.c" 3 4
+3752c3748
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_16.c"
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_16.c"
+3754c3750
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_16.c" 3 4
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_16.c" 3 4
+3756c3752
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_16.c"
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_16.c"
+3770a3767,3794
+> 
+>         if(fabs(data) > 0.000001)
+>         {
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     float data;
+> 
+>     data = 0.0F;
+>     while(1)
+>     {
+> 
+>         data = 2.0F;
+>         break;
+>     }
+>     while(1)
+>     {
+3778a3803,3808
+> 
+> void CWE369_Divide_by_Zero__float_fgets_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+3788a3819,3821
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__float_fgets_16_good();
+>     printLine("Finished good()");
+3794,3796d3826
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__float_fgets_16_bad();
+<     printLine("Finished bad()");

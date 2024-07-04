@@ -1,0 +1,70 @@
+3239a3240
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__long_17.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__long_17.c"
+< void CWE476_NULL_Pointer_Dereference__long_17_bad()
+---
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__long_17.c"
+> static void goodB2G()
+3247c3245
+<     int i,j;
+---
+>     int i,k;
+3253c3251
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__long_17.c" 3 4
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__long_17.c" 3 4
+3255c3253
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__long_17.c"
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__long_17.c"
+3257a3256,3286
+>     for(k = 0; k < 1; k++)
+>     {
+> 
+>         if (data != 
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__long_17.c" 3 4
+>                    ((void *)0)
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__long_17.c"
+>                        )
+>         {
+>             printLongLine(*data);
+>         }
+>         else
+>         {
+>             printLine("data is NULL");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     int h,j;
+>     long * data;
+>     long tmpData = 5L;
+>     for(h = 0; h < 1; h++)
+>     {
+> 
+>         {
+>             data = &tmpData;
+>         }
+>     }
+3263a3293,3298
+> 
+> void CWE476_NULL_Pointer_Dereference__long_17_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+3273a3309,3311
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__long_17_good();
+>     printLine("Finished good()");
+3279,3281d3316
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__long_17_bad();
+<     printLine("Finished bad()");

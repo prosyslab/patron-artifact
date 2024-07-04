@@ -1,0 +1,54 @@
+3240a3241
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_15.c"
+3241a3243,3248
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_15.c"
+> static void good1()
+> {
+>     switch(5)
+>     {
+>     case 6:
+3242a3250,3252
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+3243a3254,3264
+>         if (putchar((int)'A') == 
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_15.c" 3 4
+>                                 (-1)
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_15.c"
+>                                    )
+>         {
+>             printLine("putchar failed!");
+>         }
+>         break;
+>     }
+> }
+3246,3247c3267
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_15.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_15_bad()
+---
+> static void good2()
+3253,3254c3273,3277
+< 
+<         if (putchar((int)'A') == 0)
+---
+>         if (putchar((int)'A') == 
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_15.c" 3 4
+>                                 (-1)
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_15.c"
+>                                    )
+3264a3288,3293
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_15_good()
+> {
+>     good1();
+>     good2();
+> }
+3274a3304,3306
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_15_good();
+>     printLine("Finished good()");
+3280,3282d3311
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_15_bad();
+<     printLine("Finished bad()");

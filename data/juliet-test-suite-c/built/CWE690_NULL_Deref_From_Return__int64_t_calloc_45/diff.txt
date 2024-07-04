@@ -1,0 +1,58 @@
+3245,3248c3245,3246
+< 
+< 
+< 
+< static void badSink()
+---
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_calloc_45.c"
+> static void goodB2GSink()
+3250c3248
+<     int64_t * data = CWE690_NULL_Deref_From_Return__int64_t_calloc_45_badData;
+---
+>     int64_t * data = CWE690_NULL_Deref_From_Return__int64_t_calloc_45_goodB2GData;
+3252,3254c3250,3259
+<     data[0] = 5LL;
+<     printLongLongLine(data[0]);
+<     free(data);
+---
+>     if (data != 
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_calloc_45.c" 3 4
+>                ((void *)0)
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_calloc_45.c"
+>                    )
+>     {
+>         data[0] = 5LL;
+>         printLongLongLine(data[0]);
+>         free(data);
+>     }
+3257c3262
+< void CWE690_NULL_Deref_From_Return__int64_t_calloc_45_bad()
+---
+> static void goodB2G()
+3261c3266
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_calloc_45.c" 3 4
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_calloc_45.c" 3 4
+3263c3268
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_calloc_45.c"
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_calloc_45.c"
+3267,3268c3272,3278
+<     CWE690_NULL_Deref_From_Return__int64_t_calloc_45_badData = data;
+<     badSink();
+---
+>     CWE690_NULL_Deref_From_Return__int64_t_calloc_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE690_NULL_Deref_From_Return__int64_t_calloc_45_good()
+> {
+>     goodB2G();
+3279a3290,3292
+>     printLine("Calling good()...");
+>     CWE690_NULL_Deref_From_Return__int64_t_calloc_45_good();
+>     printLine("Finished good()");
+3285,3287d3297
+<     printLine("Calling bad()...");
+<     CWE690_NULL_Deref_From_Return__int64_t_calloc_45_bad();
+<     printLine("Finished bad()");

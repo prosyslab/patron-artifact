@@ -1,0 +1,80 @@
+2813a2814,2825
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c"
+> static void goodG2B1()
+> {
+>     int64_t * data;
+>     data = 
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c" 3 4
+>           ((void *)0)
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c"
+>               ;
+>     switch(5)
+>     {
+>     case 6:
+2814a2827,2829
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+2815a2831,2852
+>         data = (int64_t *)malloc(100*sizeof(int64_t));
+>         if (data == 
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c" 3 4
+>                    ((void *)0)
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c"
+>                        ) {exit(-1);}
+>         break;
+>     }
+>     {
+>         int64_t source[100] = {0};
+>         {
+>             size_t i;
+> 
+>             for (i = 0; i < 100; i++)
+>             {
+>                 data[i] = source[i];
+>             }
+>             printLongLongLine(data[0]);
+>             free(data);
+>         }
+>     }
+> }
+2817c2854,2855
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15_bad()
+---
+> 
+> static void goodG2B2()
+2821c2859
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c" 3 4
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c" 3 4
+2823c2861
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c"
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c"
+2829c2867
+<         data = (int64_t *)malloc(50*sizeof(int64_t));
+---
+>         data = (int64_t *)malloc(100*sizeof(int64_t));
+2831c2869
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c" 3 4
+---
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c" 3 4
+2833c2871
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c"
+---
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15.c"
+2854a2893,2898
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2864a2909,2911
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15_good();
+>     printLine("Finished good()");
+2870,2872d2916
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_loop_15_bad();
+<     printLine("Finished bad()");

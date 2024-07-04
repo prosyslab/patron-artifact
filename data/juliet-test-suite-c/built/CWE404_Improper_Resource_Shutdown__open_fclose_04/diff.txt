@@ -1,0 +1,94 @@
+4062a4063,4088
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+> static void goodB2G1()
+> {
+>     int data;
+> 
+>     data = -1;
+> 
+>     data = open("BadSource_open.txt", 
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c" 3 4
+>                                      02
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+>                                            |
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c" 3 4
+>                                             0100
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+>                                                    , 
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c" 3 4
+>                                                      0400
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+>                                                             |
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c" 3 4
+>                                                              0200
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+>                                                                      );
+>     if(STATIC_CONST_FALSE)
+>     {
+4063a4090,4100
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         if (data != -1)
+>         {
+> 
+>             close(data);
+>         }
+>     }
+> }
+4066c4103
+< void CWE404_Improper_Resource_Shutdown__open_fclose_04_bad()
+---
+> static void goodB2G2()
+4073c4110
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c" 3 4
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c" 3 4
+4075c4112
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+4077c4114
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c" 3 4
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c" 3 4
+4079c4116
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+4081c4118
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c" 3 4
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c" 3 4
+4083c4120
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+4085c4122
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c" 3 4
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c" 3 4
+4087c4124
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_04.c"
+4094c4131
+<             fclose((FILE *)data);
+---
+>             close(data);
+4097a4135,4140
+> 
+> void CWE404_Improper_Resource_Shutdown__open_fclose_04_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+> }
+4107a4151,4153
+>     printLine("Calling good()...");
+>     CWE404_Improper_Resource_Shutdown__open_fclose_04_good();
+>     printLine("Finished good()");
+4113,4115d4158
+<     printLine("Calling bad()...");
+<     CWE404_Improper_Resource_Shutdown__open_fclose_04_bad();
+<     printLine("Finished bad()");

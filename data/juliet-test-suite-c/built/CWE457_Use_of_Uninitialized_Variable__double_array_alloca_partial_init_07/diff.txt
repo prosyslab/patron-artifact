@@ -1,0 +1,174 @@
+2818a2819,2833
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c"
+> static void goodB2G1()
+> {
+>     double * data;
+>     data = (double *)
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c" 3 4
+>                     __builtin_alloca (
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c"
+>                     10*sizeof(double)
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c" 3 4
+>                     )
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c"
+>                                              ;
+>     if(staticFive==5)
+>     {
+2819a2835,2844
+>         {
+>             int i;
+>             for(i=0; i<(10/2); i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+>     }
+>     if(staticFive!=5)
+>     {
+2820a2846,2849
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2822c2851,2869
+< void CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07_bad()
+---
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printDoubleLine(data[i]);
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2826c2873
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c" 3 4
+---
+> # 104 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c" 3 4
+2828c2875
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c"
+---
+> # 104 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c"
+2830c2877
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c" 3 4
+---
+> # 104 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c" 3 4
+2832c2879
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c"
+---
+> # 104 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c"
+2851a2899,2947
+>                 data[i] = (double)i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printDoubleLine(data[i]);
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     double * data;
+>     data = (double *)
+> # 140 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c" 3 4
+>                     __builtin_alloca (
+> # 140 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c"
+>                     10*sizeof(double)
+> # 140 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c" 3 4
+>                     )
+> # 140 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c"
+>                                              ;
+>     if(staticFive!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+>     }
+>     if(staticFive==5)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+2856a2953,2997
+> 
+> 
+> static void goodG2B2()
+> {
+>     double * data;
+>     data = (double *)
+> # 174 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c" 3 4
+>                     __builtin_alloca (
+> # 174 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c"
+>                     10*sizeof(double)
+> # 174 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c" 3 4
+>                     )
+> # 174 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07.c"
+>                                              ;
+>     if(staticFive==5)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+>     }
+>     if(staticFive==5)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printDoubleLine(data[i]);
+>             }
+>         }
+>     }
+> }
+> 
+> void CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2866a3008,3010
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07_good();
+>     printLine("Finished good()");
+2872,2874d3015
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_07_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,60 @@
+2813a2814,2815
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_multiply_61a.c"
+> unsigned int CWE190_Integer_Overflow__unsigned_int_rand_multiply_61b_goodG2BSource(unsigned int data);
+2814a2817,2823
+> static void goodG2B()
+> {
+>     unsigned int data;
+>     data = 0;
+>     data = CWE190_Integer_Overflow__unsigned_int_rand_multiply_61b_goodG2BSource(data);
+>     if(data > 0)
+>     {
+2815a2825,2828
+>         unsigned int result = data * 2;
+>         printUnsignedLine(result);
+>     }
+> }
+2818c2831
+< unsigned int CWE190_Integer_Overflow__unsigned_int_rand_multiply_61b_badSource(unsigned int data);
+---
+> unsigned int CWE190_Integer_Overflow__unsigned_int_rand_multiply_61b_goodB2GSource(unsigned int data);
+2820c2833
+< void CWE190_Integer_Overflow__unsigned_int_rand_multiply_61_bad()
+---
+> static void goodB2G()
+2824c2837
+<     data = CWE190_Integer_Overflow__unsigned_int_rand_multiply_61b_badSource(data);
+---
+>     data = CWE190_Integer_Overflow__unsigned_int_rand_multiply_61b_goodB2GSource(data);
+2828,2829c2841,2853
+<         unsigned int result = data * 2;
+<         printUnsignedLine(result);
+---
+>         if (data < (
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_multiply_61a.c" 3 4
+>                    (0x7fffffff * 2U + 1U)
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_multiply_61a.c"
+>                            /2))
+>         {
+>             unsigned int result = data * 2;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2831a2856,2861
+> 
+> void CWE190_Integer_Overflow__unsigned_int_rand_multiply_61_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2841a2872,2874
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__unsigned_int_rand_multiply_61_good();
+>     printLine("Finished good()");
+2847,2849d2879
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__unsigned_int_rand_multiply_61_bad();
+<     printLine("Finished bad()");

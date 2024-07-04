@@ -1,0 +1,81 @@
+3239a3240
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s08/CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_21.c"
+3240a3242,3244
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s08/CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_21.c"
+> static int goodG2B1Static = 0;
+> static int goodG2B2Static = 0;
+3242a3247,3250
+> static char * goodG2B1Source(char * data)
+> {
+>     if(goodG2B1Static)
+>     {
+3243a3252,3255
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3245,3246c3257,3261
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s08/CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_21.c"
+< static int badStatic = 0;
+---
+>         memset(data, 'A', 50-1);
+>         data[50-1] = '\0';
+>     }
+>     return data;
+> }
+3248c3263
+< static char * badSource(char * data)
+---
+> static void goodG2B1()
+3250c3265,3269
+<     if(badStatic)
+---
+>     char * data;
+>     char dataBuffer[100];
+>     data = dataBuffer;
+>     goodG2B1Static = 0;
+>     data = goodG2B1Source(data);
+3251a3271
+>         char dest[50] = "";
+3253,3254c3273,3285
+<         memset(data, 'A', 100-1);
+<         data[100-1] = '\0';
+---
+>         strcat(dest, data);
+>         printLine(data);
+>     }
+> }
+> 
+> 
+> static char * goodG2B2Source(char * data)
+> {
+>     if(goodG2B2Static)
+>     {
+> 
+>         memset(data, 'A', 50-1);
+>         data[50-1] = '\0';
+3259c3290
+< void CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_21_bad()
+---
+> static void goodG2B2()
+3264,3265c3295,3296
+<     badStatic = 1;
+<     data = badSource(data);
+---
+>     goodG2B2Static = 1;
+>     data = goodG2B2Source(data);
+3272a3304,3309
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_21_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3282a3320,3322
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_21_good();
+>     printLine("Finished good()");
+3288,3290d3327
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cat_21_bad();
+<     printLine("Finished bad()");

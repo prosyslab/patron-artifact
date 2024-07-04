@@ -1,0 +1,198 @@
+3241c3241
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+---
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+3243,3244c3243,3246
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+< static int badStatic = 0;
+---
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+> static int goodB2G1Static = 0;
+> static int goodB2G2Static = 0;
+> static int goodG2BStatic = 0;
+3246c3248,3249
+< static void badSink(size_t data)
+---
+> 
+> static void goodB2G1Sink(size_t data)
+3248c3251,3256
+<     if(badStatic)
+---
+>     if(goodB2G1Static)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+3255c3263
+<             if (data > strlen("hello"))
+---
+>             if (data > strlen("hello") && data < 100)
+3259c3267
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+---
+> # 108 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+3261c3269
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+---
+> # 108 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+3270c3278
+<                 printLine("Input is less than the length of the source string");
+---
+>                 printLine("Input is less than the length of the source string or too large");
+3276c3284
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21_bad()
+---
+> static void goodB2G1()
+3285c3293
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+---
+> # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+3287c3295
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+---
+> # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+3289c3297
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+---
+> # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+3291c3299
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+---
+> # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+3296c3304
+< # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+---
+> # 133 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+3298c3306
+< # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+---
+> # 133 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+3306,3307c3314,3429
+<     badStatic = 1;
+<     badSink(data);
+---
+>     goodB2G1Static = 0;
+>     goodB2G1Sink(data);
+> }
+> 
+> 
+> static void goodB2G2Sink(size_t data)
+> {
+>     if(goodB2G2Static)
+>     {
+>         {
+>             char * myString;
+> 
+> 
+> 
+>             if (data > strlen("hello") && data < 100)
+>             {
+>                 myString = (char *)malloc(data*sizeof(char));
+>                 if (myString == 
+> # 157 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+>                                ((void *)0)
+> # 157 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+>                                    ) {exit(-1);}
+> 
+>                 strcpy(myString, "hello");
+>                 printLine(myString);
+>                 free(myString);
+>             }
+>             else
+>             {
+>                 printLine("Input is less than the length of the source string or too large");
+>             }
+>         }
+>     }
+> }
+> 
+> static void goodB2G2()
+> {
+>     size_t data;
+> 
+>     data = 0;
+>     {
+>         char inputBuffer[(3 * sizeof(data) + 2)] = "";
+> 
+>         if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+> # 179 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+>                                                stdin
+> # 179 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+>                                                     ) != 
+> # 179 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+>                                                          ((void *)0)
+> # 179 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+>                                                              )
+>         {
+> 
+>             data = strtoul(inputBuffer, 
+> # 182 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+>                                        ((void *)0)
+> # 182 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+>                                            , 0);
+>         }
+>         else
+>         {
+>             printLine("fgets() failed.");
+>         }
+>     }
+>     goodB2G2Static = 1;
+>     goodB2G2Sink(data);
+> }
+> 
+> 
+> static void goodG2BSink(size_t data)
+> {
+>     if(goodG2BStatic)
+>     {
+>         {
+>             char * myString;
+> 
+> 
+> 
+>             if (data > strlen("hello"))
+>             {
+>                 myString = (char *)malloc(data*sizeof(char));
+>                 if (myString == 
+> # 206 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c" 3 4
+>                                ((void *)0)
+> # 206 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21.c"
+>                                    ) {exit(-1);}
+> 
+>                 strcpy(myString, "hello");
+>                 printLine(myString);
+>                 free(myString);
+>             }
+>             else
+>             {
+>                 printLine("Input is less than the length of the source string");
+>             }
+>         }
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     size_t data;
+> 
+>     data = 0;
+> 
+>     data = 20;
+>     goodG2BStatic = 1;
+>     goodG2BSink(data);
+> }
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B();
+3318a3441,3443
+>     printLine("Calling good()...");
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21_good();
+>     printLine("Finished good()");
+3324,3326d3448
+<     printLine("Calling bad()...");
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_21_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,25 @@
+3740a3741,3745
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_67b.c"
+> void CWE369_Divide_by_Zero__float_fgets_67b_goodG2BSink(CWE369_Divide_by_Zero__float_fgets_67_structType myStruct)
+> {
+>     float data = myStruct.structFirst;
+>     {
+3741a3747,3750
+>         int result = (int)(100.0 / data);
+>         printIntLine(result);
+>     }
+> }
+3744c3753
+< void CWE369_Divide_by_Zero__float_fgets_67b_badSink(CWE369_Divide_by_Zero__float_fgets_67_structType myStruct)
+---
+> void CWE369_Divide_by_Zero__float_fgets_67b_goodB2GSink(CWE369_Divide_by_Zero__float_fgets_67_structType myStruct)
+3747d3755
+<     {
+3748a3757,3758
+>     if(fabs(data) > 0.000001)
+>     {
+3750a3761,3764
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");

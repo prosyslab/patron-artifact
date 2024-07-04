@@ -1,0 +1,72 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_17_bad()
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_17.c"
+> static void goodB2G()
+2819c2817
+<     int i,j;
+---
+>     int i,k;
+2827c2825
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_17.c" 3 4
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_17.c" 3 4
+2829c2827
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_17.c"
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_17.c"
+2831a2830,2865
+>     for(k = 0; k < 1; k++)
+>     {
+>         {
+>             int i;
+>             int buffer[10] = { 0 };
+> 
+>             if (data >= 0 && data < (10))
+>             {
+>                 buffer[data] = 1;
+> 
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     int h,j;
+>     int data;
+> 
+>     data = -1;
+>     for(h = 0; h < 1; h++)
+>     {
+> 
+> 
+>         data = 7;
+>     }
+2854a2889,2894
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_17_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2864a2905,2907
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_17_good();
+>     printLine("Finished good()");
+2870,2872d2912
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_17_bad();
+<     printLine("Finished bad()");

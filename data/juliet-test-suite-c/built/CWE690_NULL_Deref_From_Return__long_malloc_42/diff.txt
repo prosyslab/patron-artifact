@@ -1,0 +1,56 @@
+3239a3240
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_42.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_42.c"
+< static long * badSource(long * data)
+---
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_42.c"
+> static long * goodB2GSource(long * data)
+3252c3250,3251
+< void CWE690_NULL_Deref_From_Return__long_malloc_42_bad()
+---
+> 
+> static void goodB2G()
+3256c3255
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_42.c" 3 4
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_42.c" 3 4
+3258c3257
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_42.c"
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_42.c"
+3260c3259
+<     data = badSource(data);
+---
+>     data = goodB2GSource(data);
+3262,3264c3261,3275
+<     data[0] = 5L;
+<     printLongLine(data[0]);
+<     free(data);
+---
+>     if (data != 
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_42.c" 3 4
+>                ((void *)0)
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_42.c"
+>                    )
+>     {
+>         data[0] = 5L;
+>         printLongLine(data[0]);
+>         free(data);
+>     }
+> }
+> 
+> void CWE690_NULL_Deref_From_Return__long_malloc_42_good()
+> {
+>     goodB2G();
+3275a3287,3289
+>     printLine("Calling good()...");
+>     CWE690_NULL_Deref_From_Return__long_malloc_42_good();
+>     printLine("Finished good()");
+3281,3283d3294
+<     printLine("Calling bad()...");
+<     CWE690_NULL_Deref_From_Return__long_malloc_42_bad();
+<     printLine("Finished bad()");

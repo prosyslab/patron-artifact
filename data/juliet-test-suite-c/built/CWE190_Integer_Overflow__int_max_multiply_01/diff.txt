@@ -1,0 +1,48 @@
+2813a2814,2819
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_multiply_01.c"
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = 0;
+2814a2821,2828
+>     data = 2;
+>     if(data > 0)
+>     {
+> 
+>         int result = data * 2;
+>         printIntLine(result);
+>     }
+> }
+2817c2831
+< void CWE190_Integer_Overflow__int_max_multiply_01_bad()
+---
+> static void goodB2G()
+2827,2828c2841,2849
+<         int result = data * 2;
+<         printIntLine(result);
+---
+>         if (data < (0x7fffffff/2))
+>         {
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2830a2852,2857
+> 
+> void CWE190_Integer_Overflow__int_max_multiply_01_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2840a2868,2870
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_max_multiply_01_good();
+>     printLine("Finished good()");
+2846,2848d2875
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_max_multiply_01_bad();
+<     printLine("Finished bad()");

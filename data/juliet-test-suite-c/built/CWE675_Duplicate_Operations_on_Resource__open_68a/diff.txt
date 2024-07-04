@@ -1,0 +1,88 @@
+4060a4061,4063
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+> void CWE675_Duplicate_Operations_on_Resource__open_68b_goodG2BSink();
+> void CWE675_Duplicate_Operations_on_Resource__open_68b_goodB2GSink();
+4062a4066,4069
+> static void goodG2B()
+> {
+>     int data;
+>     data = -1;
+4063a4071,4090
+>     data = open("GoodSource_open.txt", 
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c" 3 4
+>                                       02
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+>                                             |
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c" 3 4
+>                                              0100
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+>                                                     , 
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c" 3 4
+>                                                       0400
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+>                                                              |
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c" 3 4
+>                                                               0200
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+>                                                                       );
+>     CWE675_Duplicate_Operations_on_Resource__open_68_goodG2BData = data;
+>     CWE675_Duplicate_Operations_on_Resource__open_68b_goodG2BSink();
+> }
+4065d4091
+< void CWE675_Duplicate_Operations_on_Resource__open_68b_badSink();
+4067c4093
+< void CWE675_Duplicate_Operations_on_Resource__open_68_bad()
+---
+> static void goodB2G()
+4072c4098
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c" 3 4
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c" 3 4
+4074c4100
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+4076c4102
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c" 3 4
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c" 3 4
+4078c4104
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+4080c4106
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c" 3 4
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c" 3 4
+4082c4108
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+4084c4110
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c" 3 4
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c" 3 4
+4086c4112
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_68a.c"
+4090,4091c4116,4123
+<     CWE675_Duplicate_Operations_on_Resource__open_68_badData = data;
+<     CWE675_Duplicate_Operations_on_Resource__open_68b_badSink();
+---
+>     CWE675_Duplicate_Operations_on_Resource__open_68_goodB2GData = data;
+>     CWE675_Duplicate_Operations_on_Resource__open_68b_goodB2GSink();
+> }
+> 
+> void CWE675_Duplicate_Operations_on_Resource__open_68_good()
+> {
+>     goodG2B();
+>     goodB2G();
+4102a4135,4137
+>     printLine("Calling good()...");
+>     CWE675_Duplicate_Operations_on_Resource__open_68_good();
+>     printLine("Finished good()");
+4108,4110d4142
+<     printLine("Calling bad()...");
+<     CWE675_Duplicate_Operations_on_Resource__open_68_bad();
+<     printLine("Finished bad()");

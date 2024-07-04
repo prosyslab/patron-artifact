@@ -1,0 +1,76 @@
+2829a2830,2837
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_08.c"
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(staticReturnsFalse())
+>     {
+2830a2839,2842
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2831a2844,2852
+>         data = 100-1;
+>     }
+>     {
+>         char source[100];
+>         char dest[100] = "";
+>         memset(source, 'A', 100-1);
+>         source[100-1] = '\0';
+>         if (data < 100)
+>         {
+2833c2854,2863
+< void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_08_bad()
+---
+> 
+>             strncpy(dest, source, data);
+>             dest[data] = '\0';
+>         }
+>         printLine(dest);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+2840,2841d2869
+<         {
+<             char inputBuffer[(3 * sizeof(data) + 2)] = "";
+2843,2860c2871
+<             if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+< # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_08.c" 3 4
+<                                                    stdin
+< # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_08.c"
+<                                                         ) != 
+< # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_08.c" 3 4
+<                                                              ((void *)0)
+< # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_08.c"
+<                                                                  )
+<             {
+< 
+<                 data = atoi(inputBuffer);
+<             }
+<             else
+<             {
+<                 printLine("fgets() failed.");
+<             }
+<         }
+---
+>         data = 100-1;
+2876a2888,2893
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_08_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2886a2904,2906
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_08_good();
+>     printLine("Finished good()");
+2892,2894d2911
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_08_bad();
+<     printLine("Finished bad()");

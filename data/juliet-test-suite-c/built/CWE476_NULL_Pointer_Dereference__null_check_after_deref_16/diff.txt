@@ -1,0 +1,41 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE476_NULL_Pointer_Dereference__null_check_after_deref_16_bad()
+---
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_16.c"
+> static void good1()
+2823c2821
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_16.c" 3 4
+---
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_16.c" 3 4
+2825c2823
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_16.c"
+---
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_16.c"
+2831,2838c2829
+<             if (intPointer != 
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_16.c" 3 4
+<                              ((void *)0)
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_16.c"
+<                                  )
+<             {
+<                 *intPointer = 10;
+<             }
+---
+>             *intPointer = 10;
+2843a2835,2839
+> 
+> void CWE476_NULL_Pointer_Dereference__null_check_after_deref_16_good()
+> {
+>     good1();
+> }
+2853a2850,2852
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__null_check_after_deref_16_good();
+>     printLine("Finished good()");
+2859,2861d2857
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__null_check_after_deref_16_bad();
+<     printLine("Finished bad()");

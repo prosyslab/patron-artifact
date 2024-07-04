@@ -1,0 +1,64 @@
+2827a2828,2835
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s05/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_08.c"
+> static void goodG2B1()
+> {
+>     twoIntsStruct * data;
+>     twoIntsStruct dataBadBuffer[50];
+>     twoIntsStruct dataGoodBuffer[100];
+>     if(staticReturnsFalse())
+>     {
+2828a2837,2840
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2829a2842,2847
+>         data = dataGoodBuffer;
+>     }
+>     {
+>         twoIntsStruct source[100];
+>         {
+>             size_t i;
+2831c2849,2868
+< void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_08_bad()
+---
+>             for (i = 0; i < 100; i++)
+>             {
+>                 source[i].intOne = 0;
+>                 source[i].intTwo = 0;
+>             }
+>         }
+>         {
+>             size_t i;
+> 
+>             for (i = 0; i < 100; i++)
+>             {
+>                 data[i] = source[i];
+>             }
+>             printStructLine(&data[0]);
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+2839,2840c2876
+< 
+<         data = dataBadBuffer;
+---
+>         data = dataGoodBuffer;
+2863a2900,2905
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_08_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2873a2916,2918
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_08_good();
+>     printLine("Finished good()");
+2879,2881d2923
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_08_bad();
+<     printLine("Finished bad()");

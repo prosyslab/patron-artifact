@@ -1,0 +1,113 @@
+4048c4048
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+4050,4051c4050,4051
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+< void CWE367_TOC_TOU__stat_13_bad()
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+> static void good1()
+4053c4053,4058
+<     if(GLOBAL_CONST_FIVE==5)
+---
+>     if(GLOBAL_CONST_FIVE!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+4057d4061
+<             struct stat statBuffer;
+4060c4064
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c" 3 4
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c" 3 4
+4062c4066
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+4064c4068
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c" 3 4
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c" 3 4
+4066c4070
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+4078c4082,4091
+<             if (stat(filename, &statBuffer) == -1)
+---
+>             fileDesc = open(filename, 
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c" 3 4
+>                                       02
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+>                                             );
+>             if (fileDesc == -1)
+>             {
+>                 exit(1);
+>             }
+>             if (write(fileDesc, "Good Sink...", strlen("Good Sink...")) == -1)
+4081a4095,4129
+>             if (fileDesc != -1)
+>             {
+>                 close(fileDesc);
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void good2()
+> {
+>     if(GLOBAL_CONST_FIVE==5)
+>     {
+>         {
+>             char filename[100] = "";
+>             int fileDesc = -1;
+>             if (fgets(filename, 100, 
+> # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c" 3 4
+>                                     stdin
+> # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+>                                          ) == 
+> # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c" 3 4
+>                                               ((void *)0)
+> # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+>                                                   )
+>             {
+>                 printLine("fgets() failed");
+> 
+>                 filename[0] = '\0';
+>             }
+>             if (strlen(filename) > 0)
+>             {
+>                 filename[strlen(filename)-1] = '\0';
+>             }
+> 
+4083c4131
+< # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c" 3 4
+---
+> # 141 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c" 3 4
+4085c4133
+< # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+---
+> # 141 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_13.c"
+4091c4139
+<             if (write(fileDesc, "Bad Sink...", strlen("Bad Sink...")) == -1)
+---
+>             if (write(fileDesc, "Good Sink...", strlen("Good Sink...")) == -1)
+4101a4150,4155
+> 
+> void CWE367_TOC_TOU__stat_13_good()
+> {
+>     good1();
+>     good2();
+> }
+4111a4166,4168
+>     printLine("Calling good()...");
+>     CWE367_TOC_TOU__stat_13_good();
+>     printLine("Finished good()");
+4117,4119d4173
+<     printLine("Calling bad()...");
+<     CWE367_TOC_TOU__stat_13_bad();
+<     printLine("Finished bad()");

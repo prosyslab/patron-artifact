@@ -1,0 +1,48 @@
+2813a2814,2817
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int_rand_predec_01.c"
+> static void goodG2B()
+> {
+>     int data;
+2814a2819,2828
+>     data = 0;
+> 
+>     data = -2;
+>     {
+> 
+>         --data;
+>         int result = data;
+>         printIntLine(result);
+>     }
+> }
+2817c2831
+< void CWE191_Integer_Underflow__int_rand_predec_01_bad()
+---
+> static void goodB2G()
+2824d2837
+<     {
+2825a2839,2844
+>     if (data > 
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int_rand_predec_01.c" 3 4
+>               (-0x7fffffff - 1)
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int_rand_predec_01.c"
+>                      )
+>     {
+2829a2849,2858
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+> }
+> 
+> void CWE191_Integer_Underflow__int_rand_predec_01_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2840a2870,2872
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_rand_predec_01_good();
+>     printLine("Finished good()");
+2846,2848d2877
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_rand_predec_01_bad();
+<     printLine("Finished bad()");

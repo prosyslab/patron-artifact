@@ -1,0 +1,151 @@
+4906,4909c4906,4907
+< 
+< 
+< 
+< static void badSink()
+---
+> # 162 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+> static void goodG2BSink()
+4911c4909
+<     int data = CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45_badData;
+---
+>     int data = CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45_goodG2BData;
+4916c4914
+< # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+---
+> # 168 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+4918c4916
+< # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+---
+> # 168 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+4944c4942,4989
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45_bad()
+---
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = -1;
+> 
+> 
+>     data = 7;
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+> 
+> 
+> static void goodB2GSink()
+> {
+>     int data = CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45_goodB2GData;
+>     {
+>         int i;
+>         int * buffer = (int *)malloc(10 * sizeof(int));
+>         if (buffer == 
+> # 212 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+>                      ((void *)0)
+> # 212 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+>                          ) {exit(-1);}
+> 
+>         for (i = 0; i < 10; i++)
+>         {
+>             buffer[i] = 0;
+>         }
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");
+>         }
+>         free(buffer);
+>     }
+> }
+> 
+> static void goodB2G()
+4961c5006
+< # 104 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+---
+> # 261 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+4963c5008
+< # 104 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+---
+> # 261 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+4965c5010
+< # 104 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+---
+> # 261 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+4967c5012
+< # 104 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+---
+> # 261 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+4969c5014
+< # 104 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+---
+> # 261 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+4971c5016
+< # 104 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+---
+> # 261 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+4973c5018
+< # 104 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+---
+> # 261 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+4981c5026
+< # 110 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+---
+> # 267 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+4983c5028
+< # 110 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+---
+> # 267 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+4986c5031
+< # 111 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+---
+> # 268 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+4988c5033
+< # 111 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+---
+> # 268 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+5000c5045
+< # 121 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+---
+> # 278 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+5002c5047
+< # 121 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+---
+> # 278 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+5004c5049
+< # 121 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+---
+> # 278 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c" 3 4
+5006c5051
+< # 121 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+---
+> # 278 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45.c"
+5039,5040c5084,5091
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45_badData = data;
+<     badSink();
+---
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45_good()
+> {
+>     goodG2B();
+>     goodB2G();
+5051a5103,5105
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45_good();
+>     printLine("Finished good()");
+5057,5059d5110
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_listen_socket_45_bad();
+<     printLine("Finished bad()");

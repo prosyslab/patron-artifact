@@ -1,0 +1,50 @@
+3244a3245,3249
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_puts_07.c"
+> static void good1()
+> {
+>     if(staticFive!=5)
+>     {
+3245a3251,3265
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if (puts("string") == 
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_puts_07.c" 3 4
+>                              (-1)
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_puts_07.c"
+>                                 )
+>         {
+>             printLine("puts failed!");
+>         }
+>     }
+> }
+3248c3268
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_puts_07_bad()
+---
+> static void good2()
+3253,3254c3273,3277
+< 
+<         if (puts("string") == 0)
+---
+>         if (puts("string") == 
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_puts_07.c" 3 4
+>                              (-1)
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_puts_07.c"
+>                                 )
+3259a3283,3288
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_puts_07_good()
+> {
+>     good1();
+>     good2();
+> }
+3269a3299,3301
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_puts_07_good();
+>     printLine("Finished good()");
+3275,3277d3306
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_puts_07_bad();
+<     printLine("Finished bad()");

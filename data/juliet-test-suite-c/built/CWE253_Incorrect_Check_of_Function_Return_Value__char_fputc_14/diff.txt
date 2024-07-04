@@ -1,0 +1,64 @@
+3240a3241
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c"
+3241a3243,3247
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c"
+> static void good1()
+> {
+>     if(globalFive!=5)
+>     {
+3242a3249,3252
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3243a3254,3267
+>         if (fputc((int)'A', 
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c" 3 4
+>                            stdout
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c"
+>                                  ) == 
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c" 3 4
+>                                       (-1)
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c"
+>                                          )
+>         {
+>             printLine("fputc failed!");
+>         }
+>     }
+> }
+3246,3247c3270
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14_bad()
+---
+> static void good2()
+3252d3274
+< 
+3254c3276
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c" 3 4
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c" 3 4
+3256,3257c3278,3283
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c"
+<                                  ) == 0)
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c"
+>                                  ) == 
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c" 3 4
+>                                       (-1)
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14.c"
+>                                          )
+3262a3289,3294
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14_good()
+> {
+>     good1();
+>     good2();
+> }
+3272a3305,3307
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14_good();
+>     printLine("Finished good()");
+3278,3280d3312
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_fputc_14_bad();
+<     printLine("Finished bad()");

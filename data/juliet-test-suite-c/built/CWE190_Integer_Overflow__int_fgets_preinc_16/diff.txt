@@ -1,0 +1,71 @@
+2814,2819c2814,2815
+< 
+< 
+< 
+< 
+< 
+< void CWE190_Integer_Overflow__int_fgets_preinc_16_bad()
+---
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_16.c"
+> static void goodB2G()
+2830c2826
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_16.c" 3 4
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_16.c" 3 4
+2832c2828
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_16.c"
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_16.c"
+2834c2830
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_16.c" 3 4
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_16.c" 3 4
+2836c2832
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_16.c"
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_16.c"
+2850a2847,2875
+> 
+>         if (data < 0x7fffffff)
+>         {
+>             ++data;
+>             int result = data;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = 0;
+>     while(1)
+>     {
+> 
+>         data = 2;
+>         break;
+>     }
+>     while(1)
+>     {
+2859a2885,2890
+> 
+> void CWE190_Integer_Overflow__int_fgets_preinc_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2869a2901,2903
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_fgets_preinc_16_good();
+>     printLine("Finished good()");
+2875,2877d2908
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_fgets_preinc_16_bad();
+<     printLine("Finished bad()");

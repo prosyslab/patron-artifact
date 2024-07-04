@@ -1,0 +1,33 @@
+2813a2814,2819
+> # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_66b.c"
+> void CWE190_Integer_Overflow__int_fgets_multiply_66b_goodG2BSink(int dataArray[])
+> {
+>     int data = dataArray[2];
+>     if(data > 0)
+>     {
+2814a2821,2824
+>         int result = data * 2;
+>         printIntLine(result);
+>     }
+> }
+2817,2819c2827
+< 
+< 
+< void CWE190_Integer_Overflow__int_fgets_multiply_66b_badSink(int dataArray[])
+---
+> void CWE190_Integer_Overflow__int_fgets_multiply_66b_goodB2GSink(int dataArray[])
+2821d2828
+< 
+2826,2827c2833,2841
+<         int result = data * 2;
+<         printIntLine(result);
+---
+>         if (data < (0x7fffffff/2))
+>         {
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }

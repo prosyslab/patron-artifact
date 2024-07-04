@@ -1,0 +1,25 @@
+3247,3250c3247,3248
+< 
+< 
+< 
+< void CWE690_NULL_Deref_From_Return__struct_calloc_67b_badSink(CWE690_NULL_Deref_From_Return__struct_calloc_67_structType myStruct)
+---
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_67b.c"
+> void CWE690_NULL_Deref_From_Return__struct_calloc_67b_goodB2GSink(CWE690_NULL_Deref_From_Return__struct_calloc_67_structType myStruct)
+3254,3257c3252,3262
+<     data[0].intOne = 1;
+<     data[0].intTwo = 1;
+<     printStructLine(&data[0]);
+<     free(data);
+---
+>     if (data != 
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_67b.c" 3 4
+>                ((void *)0)
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_67b.c"
+>                    )
+>     {
+>         data[0].intOne = 1;
+>         data[0].intTwo = 1;
+>         printStructLine(&data[0]);
+>         free(data);
+>     }

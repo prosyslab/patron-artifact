@@ -1,0 +1,59 @@
+2820,2823c2820,2821
+< 
+< 
+< 
+< void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34_bad()
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c"
+> static void goodG2B()
+2828c2826
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c" 3 4
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c" 3 4
+2830c2828
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c"
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c"
+2832c2830
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c" 3 4
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c" 3 4
+2834c2832
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c"
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c"
+2837c2835
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c" 3 4
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c" 3 4
+2839c2837
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c"
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c"
+2841c2839
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c" 3 4
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c" 3 4
+2843c2841
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c"
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34.c"
+2846,2847c2844
+< 
+<     data = dataBadBuffer;
+---
+>     data = dataGoodBuffer;
+2867a2865,2869
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34_good()
+> {
+>     goodG2B();
+> }
+2877a2880,2882
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34_good();
+>     printLine("Finished good()");
+2883,2885d2887
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_memcpy_34_bad();
+<     printLine("Finished bad()");

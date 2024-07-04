@@ -1,0 +1,49 @@
+2814,2820c2814,2815
+< 
+< 
+< 
+< 
+< 
+< 
+< void CWE194_Unexpected_Sign_Extension__fgets_strncpy_18_bad()
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_18.c"
+> static void goodG2B()
+2827,2839d2821
+<     {
+<         char inputBuffer[8] = "";
+< 
+<         if (fgets(inputBuffer, 8, 
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_18.c" 3 4
+<                                                stdin
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_18.c"
+<                                                     ) != 
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_18.c" 3 4
+<                                                          ((void *)0)
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_18.c"
+<                                                              )
+<         {
+2841,2847c2823
+<             data = (short)atoi(inputBuffer);
+<         }
+<         else
+<         {
+<             printLine("fgets() failed.");
+<         }
+<     }
+---
+>     data = 100-1;
+2862a2839,2843
+> 
+> void CWE194_Unexpected_Sign_Extension__fgets_strncpy_18_good()
+> {
+>     goodG2B();
+> }
+2872a2854,2856
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__fgets_strncpy_18_good();
+>     printLine("Finished good()");
+2878,2880d2861
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__fgets_strncpy_18_bad();
+<     printLine("Finished bad()");

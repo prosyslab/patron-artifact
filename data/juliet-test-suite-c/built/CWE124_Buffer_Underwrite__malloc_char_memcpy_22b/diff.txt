@@ -1,0 +1,54 @@
+3239a3240
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memcpy_22b.c"
+3240a3242,3244
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memcpy_22b.c"
+> extern int CWE124_Buffer_Underwrite__malloc_char_memcpy_22_goodG2B1Global;
+> extern int CWE124_Buffer_Underwrite__malloc_char_memcpy_22_goodG2B2Global;
+3242a3247,3264
+> char * CWE124_Buffer_Underwrite__malloc_char_memcpy_22_goodG2B1Source(char * data)
+> {
+>     if(CWE124_Buffer_Underwrite__malloc_char_memcpy_22_goodG2B1Global)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             char * dataBuffer = (char *)malloc(100*sizeof(char));
+>             if (dataBuffer == 
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memcpy_22b.c" 3 4
+>                              ((void *)0)
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memcpy_22b.c"
+>                                  ) {exit(-1);}
+>             memset(dataBuffer, 'A', 100-1);
+>             dataBuffer[100-1] = '\0';
+3243a3266,3270
+>             data = dataBuffer;
+>         }
+>     }
+>     return data;
+> }
+3245,3246d3271
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memcpy_22b.c"
+< extern int CWE124_Buffer_Underwrite__malloc_char_memcpy_22_badGlobal;
+3248c3273
+< char * CWE124_Buffer_Underwrite__malloc_char_memcpy_22_badSource(char * data)
+---
+> char * CWE124_Buffer_Underwrite__malloc_char_memcpy_22_goodG2B2Source(char * data)
+3250c3275
+<     if(CWE124_Buffer_Underwrite__malloc_char_memcpy_22_badGlobal)
+---
+>     if(CWE124_Buffer_Underwrite__malloc_char_memcpy_22_goodG2B2Global)
+3255c3280
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memcpy_22b.c" 3 4
+---
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memcpy_22b.c" 3 4
+3257c3282
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memcpy_22b.c"
+---
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memcpy_22b.c"
+3262c3287
+<             data = dataBuffer - 8;
+---
+>             data = dataBuffer;

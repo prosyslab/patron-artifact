@@ -1,0 +1,151 @@
+5325c5325
+< # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+---
+> # 159 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+5327,5328c5327,5370
+< # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32_bad()
+---
+> # 159 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+> static void goodG2B()
+> {
+>     size_t data;
+>     size_t *dataPtr1 = &data;
+>     size_t *dataPtr2 = &data;
+> 
+>     data = 0;
+>     {
+>         size_t data = *dataPtr1;
+> 
+>         data = 20;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         size_t data = *dataPtr2;
+>         {
+>             char * myString;
+> 
+> 
+> 
+>             if (data > strlen("hello"))
+>             {
+>                 myString = (char *)malloc(data*sizeof(char));
+>                 if (myString == 
+> # 182 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+>                                ((void *)0)
+> # 182 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+>                                    ) {exit(-1);}
+> 
+>                 strcpy(myString, "hello");
+>                 printLine(myString);
+>                 free(myString);
+>             }
+>             else
+>             {
+>                 printLine("Input is less than the length of the source string");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G()
+5349c5391
+< # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+---
+> # 226 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+5351c5393
+< # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+---
+> # 226 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+5353c5395
+< # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+---
+> # 226 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+5355c5397
+< # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+---
+> # 226 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+5357c5399
+< # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+---
+> # 226 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+5359c5401
+< # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+---
+> # 226 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+5361c5403
+< # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+---
+> # 226 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+5369c5411
+< # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+---
+> # 232 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+5371c5413
+< # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+---
+> # 232 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+5374c5416
+< # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+---
+> # 233 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+5376c5418
+< # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+---
+> # 233 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+5388c5430
+< # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+---
+> # 243 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+5390c5432
+< # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+---
+> # 243 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+5392c5434
+< # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+---
+> # 243 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+5394c5436
+< # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+---
+> # 243 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+5410c5452
+< # 110 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+---
+> # 257 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+5412c5454
+< # 110 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+---
+> # 257 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+5440c5482
+<             if (data > strlen("hello"))
+---
+>             if (data > strlen("hello") && data < 100)
+5444c5486
+< # 140 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+---
+> # 287 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c" 3 4
+5446c5488
+< # 140 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+---
+> # 287 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32.c"
+5455c5497
+<                 printLine("Input is less than the length of the source string");
+---
+>                 printLine("Input is less than the length of the source string or too large");
+5459a5502,5507
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+5469a5518,5520
+>     printLine("Calling good()...");
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32_good();
+>     printLine("Finished good()");
+5475,5477d5525
+<     printLine("Calling bad()...");
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_32_bad();
+<     printLine("Finished bad()");

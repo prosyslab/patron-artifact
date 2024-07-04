@@ -1,0 +1,70 @@
+2813a2814,2819
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_41.c"
+> static void goodG2BSink(int data)
+> {
+> 
+>     printIntLine(100 / data);
+> }
+2814a2821,2823
+> static void goodG2B()
+> {
+>     int data;
+2815a2825
+>     data = -1;
+2816a2827,2829
+>     data = 7;
+>     goodG2BSink(data);
+> }
+2819c2832
+< static void badSink(int data)
+---
+> static void goodB2GSink(int data)
+2822c2835,2842
+<     printIntLine(100 / data);
+---
+>     if( data != 0 )
+>     {
+>         printIntLine(100 / data);
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");
+>     }
+2825c2845
+< void CWE369_Divide_by_Zero__int_fgets_divide_41_bad()
+---
+> static void goodB2G()
+2834c2854
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_41.c" 3 4
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_41.c" 3 4
+2836c2856
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_41.c"
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_41.c"
+2838c2858
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_41.c" 3 4
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_41.c" 3 4
+2840c2860
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_41.c"
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_41.c"
+2851c2871,2877
+<     badSink(data);
+---
+>     goodB2GSink(data);
+> }
+> 
+> void CWE369_Divide_by_Zero__int_fgets_divide_41_good()
+> {
+>     goodB2G();
+>     goodG2B();
+2862a2889,2891
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_fgets_divide_41_good();
+>     printLine("Finished good()");
+2868,2870d2896
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_fgets_divide_41_bad();
+<     printLine("Finished bad()");

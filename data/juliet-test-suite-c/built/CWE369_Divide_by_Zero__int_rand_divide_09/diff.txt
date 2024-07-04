@@ -1,0 +1,100 @@
+2813a2814,2831
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_rand_divide_09.c"
+> static void goodB2G1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(GLOBAL_CONST_TRUE)
+>     {
+> 
+>         data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>     }
+>     if(GLOBAL_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2814a2833,2842
+>         if( data != 0 )
+>         {
+>             printIntLine(100 / data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+2817c2845
+< void CWE369_Divide_by_Zero__int_rand_divide_09_bad()
+---
+> static void goodB2G2()
+2829a2858,2887
+>         if( data != 0 )
+>         {
+>             printIntLine(100 / data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(GLOBAL_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 7;
+>     }
+>     if(GLOBAL_CONST_TRUE)
+>     {
+> 
+2832a2891,2916
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(GLOBAL_CONST_TRUE)
+>     {
+> 
+>         data = 7;
+>     }
+>     if(GLOBAL_CONST_TRUE)
+>     {
+> 
+>         printIntLine(100 / data);
+>     }
+> }
+> 
+> void CWE369_Divide_by_Zero__int_rand_divide_09_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2842a2927,2929
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_rand_divide_09_good();
+>     printLine("Finished good()");
+2848,2850d2934
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_rand_divide_09_bad();
+<     printLine("Finished bad()");

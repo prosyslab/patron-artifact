@@ -1,0 +1,63 @@
+3247a3248,3270
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_07.c"
+> static void goodG2B1()
+> {
+>     char * data;
+>     data = (char *)malloc(100*sizeof(char));
+>     if (data == 
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_07.c" 3 4
+>                ((void *)0)
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_07.c"
+>                    ) {exit(-1);}
+>     if(staticFive!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         memset(data, 'A', 50-1);
+>         data[50-1] = '\0';
+>     }
+>     {
+>         char dest[50] = "";
+3248a3272,3276
+>         strcpy(dest, data);
+>         printLine(data);
+>         free(data);
+>     }
+> }
+3251c3279
+< void CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_07_bad()
+---
+> static void goodG2B2()
+3256c3284
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_07.c" 3 4
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_07.c" 3 4
+3258c3286
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_07.c"
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_07.c"
+3263,3264c3291,3292
+<         memset(data, 'A', 100-1);
+<         data[100-1] = '\0';
+---
+>         memset(data, 'A', 50-1);
+>         data[50-1] = '\0';
+3273a3302,3307
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_07_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3283a3318,3320
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_07_good();
+>     printLine("Finished good()");
+3289,3291d3325
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_src_char_cpy_07_bad();
+<     printLine("Finished bad()");

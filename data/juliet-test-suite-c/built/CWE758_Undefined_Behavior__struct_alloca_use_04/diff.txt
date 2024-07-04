@@ -1,0 +1,83 @@
+2819a2820,2824
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c"
+> static void good1()
+> {
+>     if(STATIC_CONST_FALSE)
+>     {
+2820a2826,2851
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             twoIntsStruct data;
+>             twoIntsStruct * pointer = (twoIntsStruct *)
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c" 3 4
+>                                                       __builtin_alloca (
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c"
+>                                                       sizeof(twoIntsStruct)
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c" 3 4
+>                                                       )
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c"
+>                                                                                    ;
+>             data.intOne = 1;
+>             data.intTwo = 2;
+>             *pointer = data;
+>             {
+>                 twoIntsStruct data = *pointer;
+>                 printIntLine(data.intOne);
+>                 printIntLine(data.intTwo);
+>             }
+>         }
+>     }
+> }
+2823c2854
+< void CWE758_Undefined_Behavior__struct_alloca_use_04_bad()
+---
+> static void good2()
+2827a2859
+>             twoIntsStruct data;
+2829c2861
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c" 3 4
+---
+> # 75 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c" 3 4
+2831c2863
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c"
+---
+> # 75 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c"
+2833c2865
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c" 3 4
+---
+> # 75 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c" 3 4
+2835c2867
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c"
+---
+> # 75 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_04.c"
+2837,2839c2869,2876
+<             twoIntsStruct data = *pointer;
+<             printIntLine(data.intOne);
+<             printIntLine(data.intTwo);
+---
+>             data.intOne = 1;
+>             data.intTwo = 2;
+>             *pointer = data;
+>             {
+>                 twoIntsStruct data = *pointer;
+>                 printIntLine(data.intOne);
+>                 printIntLine(data.intTwo);
+>             }
+2842a2880,2885
+> 
+> void CWE758_Undefined_Behavior__struct_alloca_use_04_good()
+> {
+>     good1();
+>     good2();
+> }
+2852a2896,2898
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__struct_alloca_use_04_good();
+>     printLine("Finished good()");
+2858,2860d2903
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__struct_alloca_use_04_bad();
+<     printLine("Finished bad()");

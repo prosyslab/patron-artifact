@@ -1,0 +1,127 @@
+3239a3240
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c"
+3240a3242,3261
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c"
+> static void goodB2G1()
+> {
+>     twoIntsStruct * data;
+>     if(GLOBAL_CONST_TRUE)
+>     {
+> 
+>         data = 
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c" 3 4
+>               ((void *)0)
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c"
+>                   ;
+>     }
+>     if(GLOBAL_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3241a3263,3276
+>         if (data != 
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c" 3 4
+>                    ((void *)0)
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c"
+>                        )
+>         {
+>             printIntLine(data->intOne);
+>         }
+>         else
+>         {
+>             printLine("data is NULL");
+>         }
+>     }
+> }
+3244,3245c3279
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c"
+< void CWE476_NULL_Pointer_Dereference__struct_09_bad()
+---
+> static void goodB2G2()
+3252c3286
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c" 3 4
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c" 3 4
+3254c3288
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c"
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c"
+3259a3294,3330
+>         if (data != 
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c" 3 4
+>                    ((void *)0)
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_09.c"
+>                        )
+>         {
+>             printIntLine(data->intOne);
+>         }
+>         else
+>         {
+>             printLine("data is NULL");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     twoIntsStruct * data;
+>     twoIntsStruct tmpData;
+>     if(GLOBAL_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         {
+>             tmpData.intOne = 0;
+>             tmpData.intTwo = 0;
+>             data = &tmpData;
+>         }
+>     }
+>     if(GLOBAL_CONST_TRUE)
+>     {
+> 
+3262a3334,3362
+> 
+> 
+> static void goodG2B2()
+> {
+>     twoIntsStruct * data;
+>     twoIntsStruct tmpData;
+>     if(GLOBAL_CONST_TRUE)
+>     {
+> 
+>         {
+>             tmpData.intOne = 0;
+>             tmpData.intTwo = 0;
+>             data = &tmpData;
+>         }
+>     }
+>     if(GLOBAL_CONST_TRUE)
+>     {
+> 
+>         printIntLine(data->intOne);
+>     }
+> }
+> 
+> void CWE476_NULL_Pointer_Dereference__struct_09_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3272a3373,3375
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__struct_09_good();
+>     printLine("Finished good()");
+3278,3280d3380
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__struct_09_bad();
+<     printLine("Finished bad()");

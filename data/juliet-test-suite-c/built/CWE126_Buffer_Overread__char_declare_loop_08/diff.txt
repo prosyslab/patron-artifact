@@ -1,0 +1,60 @@
+3255a3256,3281
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__char_declare_loop_08.c"
+> static void goodG2B1()
+> {
+>     char * data;
+>     char dataBadBuffer[50];
+>     char dataGoodBuffer[100];
+>     memset(dataBadBuffer, 'A', 50-1);
+>     dataBadBuffer[50-1] = '\0';
+>     memset(dataGoodBuffer, 'A', 100-1);
+>     dataGoodBuffer[100-1] = '\0';
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = dataGoodBuffer;
+>     }
+>     {
+>         size_t i, destLen;
+>         char dest[100];
+>         memset(dest, 'C', 100-1);
+>         dest[100-1] = '\0';
+>         destLen = strlen(dest);
+3257a3284,3292
+>         for (i = 0; i < destLen; i++)
+>         {
+>             dest[i] = data[i];
+>         }
+>         dest[100-1] = '\0';
+>         printLine(dest);
+>     }
+> }
+> 
+3259c3294
+< void CWE126_Buffer_Overread__char_declare_loop_08_bad()
+---
+> static void goodG2B2()
+3271c3306
+<         data = dataBadBuffer;
+---
+>         data = dataGoodBuffer;
+3288a3324,3329
+> 
+> void CWE126_Buffer_Overread__char_declare_loop_08_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3298a3340,3342
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__char_declare_loop_08_good();
+>     printLine("Finished good()");
+3304,3306d3347
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__char_declare_loop_08_bad();
+<     printLine("Finished bad()");

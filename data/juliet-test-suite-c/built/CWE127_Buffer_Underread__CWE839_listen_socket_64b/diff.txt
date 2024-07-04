@@ -1,0 +1,32 @@
+4900c4900
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_64b.c"
+---
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_64b.c"
+4902,4903c4902,4903
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_64b.c"
+< void CWE127_Buffer_Underread__CWE839_listen_socket_64b_badSink(void * dataVoidPtr)
+---
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_64b.c"
+> void CWE127_Buffer_Underread__CWE839_listen_socket_64b_goodG2BSink(void * dataVoidPtr)
+4919a4920,4940
+>         }
+>     }
+> }
+> 
+> 
+> void CWE127_Buffer_Underread__CWE839_listen_socket_64b_goodB2GSink(void * dataVoidPtr)
+> {
+> 
+>     int * dataPtr = (int *)dataVoidPtr;
+> 
+>     int data = (*dataPtr);
+>     {
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

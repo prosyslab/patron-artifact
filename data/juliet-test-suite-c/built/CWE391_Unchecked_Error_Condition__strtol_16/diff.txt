@@ -1,0 +1,53 @@
+2845a2846
+> # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c"
+2847,2851c2848,2849
+< 
+< 
+< 
+< # 22 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c"
+< void CWE391_Unchecked_Error_Condition__strtol_16_bad()
+---
+> # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c"
+> static void good1()
+2856a2855,2859
+>             
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c" 3 4
+>            (*__errno_location ()) 
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c"
+>                  = 0;
+2858c2861
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c" 3 4
+---
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c" 3 4
+2860c2863
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c"
+---
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c"
+2862a2866,2878
+>             if (
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c" 3 4
+>                (*__errno_location ()) 
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c"
+>                      == 
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c" 3 4
+>                         34
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__strtol_16.c"
+>                               )
+>             {
+>                 printLine("strtol() failed");
+>                 exit(1);
+>             }
+2867a2884,2888
+> 
+> void CWE391_Unchecked_Error_Condition__strtol_16_good()
+> {
+>     good1();
+> }
+2877a2899,2901
+>     printLine("Calling good()...");
+>     CWE391_Unchecked_Error_Condition__strtol_16_good();
+>     printLine("Finished good()");
+2883,2885d2906
+<     printLine("Calling bad()...");
+<     CWE391_Unchecked_Error_Condition__strtol_16_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,169 @@
+4900c4900
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+---
+> # 119 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+4902,4903c4902,4905
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+< int CWE127_Buffer_Underread__CWE839_connect_socket_22_badGlobal = 0;
+---
+> # 119 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+> int CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G1Global = 0;
+> int CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G2Global = 0;
+> int CWE127_Buffer_Underread__CWE839_connect_socket_22_goodG2BGlobal = 0;
+4905d4906
+< void CWE127_Buffer_Underread__CWE839_connect_socket_22_badSink(int data);
+4907c4908,4987
+< void CWE127_Buffer_Underread__CWE839_connect_socket_22_bad()
+---
+> void CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G1Sink(int data);
+> 
+> static void goodB2G1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     {
+> 
+> 
+> 
+> 
+>         int recvResult;
+>         struct sockaddr_in service;
+>         int connectSocket = -1;
+>         char inputBuffer[(3 * sizeof(data) + 2)];
+>         do
+>         {
+> # 150 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+>             connectSocket = socket(
+> # 150 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c" 3 4
+>                                   2
+> # 150 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+>                                          , 
+> # 150 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c" 3 4
+>                                            SOCK_STREAM
+> # 150 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+>                                                       , 
+> # 150 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c" 3 4
+>                                                         IPPROTO_TCP
+> # 150 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+>                                                                    );
+>             if (connectSocket == -1)
+>             {
+>                 break;
+>             }
+>             memset(&service, 0, sizeof(service));
+>             service.sin_family = 
+> # 156 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c" 3 4
+>                                 2
+> # 156 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+>                                        ;
+>             service.sin_addr.s_addr = inet_addr("127.0.0.1");
+>             service.sin_port = htons(27015);
+>             if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == -1)
+>             {
+>                 break;
+>             }
+> 
+> 
+>             recvResult = recv(connectSocket, inputBuffer, (3 * sizeof(data) + 2) - 1, 0);
+>             if (recvResult == -1 || recvResult == 0)
+>             {
+>                 break;
+>             }
+> 
+>             inputBuffer[recvResult] = '\0';
+> 
+>             data = atoi(inputBuffer);
+>         }
+>         while (0);
+>         if (connectSocket != -1)
+>         {
+>             close(connectSocket);
+>         }
+> 
+> 
+> 
+> 
+> 
+> 
+>     }
+>     CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G1Global = 0;
+>     CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G1Sink(data);
+> }
+> 
+> 
+> void CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G2Sink(int data);
+> 
+> static void goodB2G2()
+4923c5003
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+---
+> # 218 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+4925c5005
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c" 3 4
+---
+> # 218 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c" 3 4
+4927c5007
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+---
+> # 218 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+4929c5009
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c" 3 4
+---
+> # 218 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c" 3 4
+4931c5011
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+---
+> # 218 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+4933c5013
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c" 3 4
+---
+> # 218 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c" 3 4
+4935c5015
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+---
+> # 218 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+4943c5023
+< # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c" 3 4
+---
+> # 224 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c" 3 4
+4945c5025
+< # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+---
+> # 224 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_22a.c"
+4977,4978c5057,5080
+<     CWE127_Buffer_Underread__CWE839_connect_socket_22_badGlobal = 1;
+<     CWE127_Buffer_Underread__CWE839_connect_socket_22_badSink(data);
+---
+>     CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G2Global = 1;
+>     CWE127_Buffer_Underread__CWE839_connect_socket_22_goodB2G2Sink(data);
+> }
+> 
+> 
+> void CWE127_Buffer_Underread__CWE839_connect_socket_22_goodG2BSink(int data);
+> 
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = -1;
+> 
+> 
+>     data = 7;
+>     CWE127_Buffer_Underread__CWE839_connect_socket_22_goodG2BGlobal = 1;
+>     CWE127_Buffer_Underread__CWE839_connect_socket_22_goodG2BSink(data);
+> }
+> 
+> void CWE127_Buffer_Underread__CWE839_connect_socket_22_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B();
+4989a5092,5094
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__CWE839_connect_socket_22_good();
+>     printLine("Finished good()");
+4995,4997d5099
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__CWE839_connect_socket_22_bad();
+<     printLine("Finished bad()");

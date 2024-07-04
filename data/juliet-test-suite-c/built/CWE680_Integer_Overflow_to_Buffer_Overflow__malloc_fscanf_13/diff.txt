@@ -1,0 +1,72 @@
+2813a2814,2817
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13.c"
+> static void goodG2B1()
+> {
+>     int data;
+2814a2819,2821
+>     data = -1;
+>     if(GLOBAL_CONST_FIVE!=5)
+>     {
+2815a2823,2826
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2817c2828,2851
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13_bad()
+---
+>         data = 20;
+>     }
+>     {
+>         size_t i;
+>         int *intPointer;
+> 
+> 
+>         intPointer = (int*)malloc(data * sizeof(int));
+>         if (intPointer == 
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13.c" 3 4
+>                          ((void *)0)
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13.c"
+>                              ) {exit(-1);}
+>         for (i = 0; i < (size_t)data; i++)
+>         {
+>             intPointer[i] = 0;
+>         }
+>         printIntLine(intPointer[0]);
+>         free(intPointer);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+2825,2829c2859
+<         fscanf(
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13.c" 3 4
+<               stdin
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13.c"
+<                    , "%d", &data);
+---
+>         data = 20;
+2838c2868
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13.c" 3 4
+---
+> # 100 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13.c" 3 4
+2840c2870
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13.c"
+---
+> # 100 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13.c"
+2849a2880,2885
+> 
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2859a2896,2898
+>     printLine("Calling good()...");
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13_good();
+>     printLine("Finished good()");
+2865,2867d2903
+<     printLine("Calling bad()...");
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_13_bad();
+<     printLine("Finished bad()");

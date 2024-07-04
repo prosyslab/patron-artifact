@@ -1,0 +1,87 @@
+2865a2866,2881
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_fscanf_multiply_45.c"
+> static void goodG2BSink()
+> {
+>     int64_t data = CWE191_Integer_Underflow__int64_t_fscanf_multiply_45_goodG2BData;
+>     if(data < 0)
+>     {
+> 
+>         int64_t result = data * 2;
+>         printLongLongLine(result);
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     int64_t data;
+>     data = 0LL;
+2866a2883,2886
+>     data = -2;
+>     CWE191_Integer_Underflow__int64_t_fscanf_multiply_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+2869c2889
+< static void badSink()
+---
+> static void goodB2GSink()
+2871c2891
+<     int64_t data = CWE191_Integer_Underflow__int64_t_fscanf_multiply_45_badData;
+---
+>     int64_t data = CWE191_Integer_Underflow__int64_t_fscanf_multiply_45_goodB2GData;
+2875,2876c2895,2907
+<         int64_t result = data * 2;
+<         printLongLongLine(result);
+---
+>         if (data > (
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_fscanf_multiply_45.c" 3 4
+>                    (-0x7fffffffffffffffLL - 1LL)
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_fscanf_multiply_45.c"
+>                             /2))
+>         {
+>             int64_t result = data * 2;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too small to perform multiplication.");
+>         }
+2880c2911
+< void CWE191_Integer_Underflow__int64_t_fscanf_multiply_45_bad()
+---
+> static void goodB2G()
+2886c2917
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_fscanf_multiply_45.c" 3 4
+---
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_fscanf_multiply_45.c" 3 4
+2888c2919
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_fscanf_multiply_45.c"
+---
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_fscanf_multiply_45.c"
+2890c2921
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_fscanf_multiply_45.c" 3 4
+---
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_fscanf_multiply_45.c" 3 4
+2892c2923
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_fscanf_multiply_45.c"
+---
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__int64_t_fscanf_multiply_45.c"
+2894,2895c2925,2932
+<     CWE191_Integer_Underflow__int64_t_fscanf_multiply_45_badData = data;
+<     badSink();
+---
+>     CWE191_Integer_Underflow__int64_t_fscanf_multiply_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE191_Integer_Underflow__int64_t_fscanf_multiply_45_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2906a2944,2946
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int64_t_fscanf_multiply_45_good();
+>     printLine("Finished good()");
+2912,2914d2951
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int64_t_fscanf_multiply_45_bad();
+<     printLine("Finished bad()");

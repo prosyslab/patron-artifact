@@ -1,0 +1,67 @@
+3239a3240
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_32.c"
+3240a3242,3258
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_32.c"
+> static void goodG2B()
+> {
+>     int64_t * data;
+>     int64_t tmpData = 5LL;
+>     int64_t * *dataPtr1 = &data;
+>     int64_t * *dataPtr2 = &data;
+>     {
+>         int64_t * data = *dataPtr1;
+> 
+>         {
+>             data = &tmpData;
+>         }
+>         *dataPtr1 = data;
+>     }
+>     {
+>         int64_t * data = *dataPtr2;
+3241a3260,3262
+>         printLongLongLine(*data);
+>     }
+> }
+3244,3245c3265
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_32.c"
+< void CWE476_NULL_Pointer_Dereference__int64_t_32_bad()
+---
+> static void goodB2G()
+3254c3274
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_32.c" 3 4
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_32.c" 3 4
+3256c3276
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_32.c"
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_32.c"
+3263c3283,3294
+<         printLongLongLine(*data);
+---
+>         if (data != 
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_32.c" 3 4
+>                    ((void *)0)
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_32.c"
+>                        )
+>         {
+>             printLongLongLine(*data);
+>         }
+>         else
+>         {
+>             printLine("data is NULL");
+>         }
+3265a3297,3302
+> 
+> void CWE476_NULL_Pointer_Dereference__int64_t_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3275a3313,3315
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__int64_t_32_good();
+>     printLine("Finished good()");
+3281,3283d3320
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__int64_t_32_bad();
+<     printLine("Finished bad()");

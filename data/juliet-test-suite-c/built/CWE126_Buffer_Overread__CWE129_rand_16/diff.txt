@@ -1,0 +1,55 @@
+2813a2814,2817
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_rand_16.c"
+> static void goodB2G()
+> {
+>     int data;
+2814a2819,2821
+>     data = -1;
+>     while(1)
+>     {
+2815a2823,2829
+>         data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>         break;
+>     }
+>     while(1)
+>     {
+>         {
+>             int buffer[10] = { 0 };
+2817c2831,2845
+< void CWE126_Buffer_Overread__CWE129_rand_16_bad()
+---
+>             if (data >= 0 && data < (10))
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+2825c2853,2854
+<         data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+---
+> 
+>         data = 7;
+2845a2875,2880
+> 
+> void CWE126_Buffer_Overread__CWE129_rand_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2855a2891,2893
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__CWE129_rand_16_good();
+>     printLine("Finished good()");
+2861,2863d2898
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__CWE129_rand_16_bad();
+<     printLine("Finished bad()");

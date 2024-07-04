@@ -1,0 +1,63 @@
+3239a3240
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22a.c"
+3240a3242,3244
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22a.c"
+> int CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_goodB2G1Global = 0;
+> int CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_goodB2G2Global = 0;
+3242a3247
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_goodB2G1Sink(char * data);
+3243a3249,3258
+> static void goodB2G1()
+> {
+>     char * data;
+>     data = (char *)malloc(100*sizeof(char));
+>     if (data == 
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22a.c" 3 4
+>                ((void *)0)
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22a.c"
+>                    ) {exit(-1);}
+>     data[0] = '\0';
+3244a3260,3263
+>     strcpy(data, "Fixed String");
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_goodB2G1Global = 0;
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_goodB2G1Sink(data);
+> }
+3247,3250c3266
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22a.c"
+< int CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_badGlobal = 0;
+< 
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_badSink(char * data);
+---
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_goodB2G2Sink(char * data);
+3252c3268
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_bad()
+---
+> static void goodB2G2()
+3257c3273
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22a.c" 3 4
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22a.c" 3 4
+3259c3275
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22a.c"
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22a.c"
+3264,3265c3280,3287
+<     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_badGlobal = 1;
+<     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_badSink(data);
+---
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_goodB2G2Global = 1;
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_goodB2G2Sink(data);
+> }
+> 
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+3276a3299,3301
+>     printLine("Calling good()...");
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_good();
+>     printLine("Finished good()");
+3282,3284d3306
+<     printLine("Calling bad()...");
+<     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_22_bad();
+<     printLine("Finished bad()");

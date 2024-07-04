@@ -1,0 +1,112 @@
+3239a3240
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__char_pointer_15.c"
+3240a3242,3248
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__char_pointer_15.c"
+> static void goodB2G1()
+> {
+>     char * data;
+>     switch(6)
+>     {
+>     case 6:
+3241a3250,3259
+>         ;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(8)
+>     {
+>     case 7:
+3242a3261,3263
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+3244,3245c3265,3272
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__char_pointer_15.c"
+< void CWE457_Use_of_Uninitialized_Variable__char_pointer_15_bad()
+---
+>         data = "string";
+>         printLine(data);
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+3262a3290
+>         data = "string";
+3270a3299,3362
+> 
+> 
+> static void goodG2B1()
+> {
+>     char * data;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         data = "string";
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+> 
+>         printLine(data);
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     char * data;
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = "string";
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+> 
+>         printLine(data);
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> void CWE457_Use_of_Uninitialized_Variable__char_pointer_15_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3280a3373,3375
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__char_pointer_15_good();
+>     printLine("Finished good()");
+3286,3288d3380
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__char_pointer_15_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,131 @@
+2819a2820,2827
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fscanf_04.c"
+> static void goodB2G1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(STATIC_CONST_TRUE)
+>     {
+2820a2829,2855
+>         fscanf(
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fscanf_04.c" 3 4
+>               stdin
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fscanf_04.c"
+>                    , "%d", &data);
+>     }
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             int buffer[10] = { 0 };
+> 
+>             if (data >= 0 && data < (10))
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>     }
+> }
+2823c2858
+< void CWE126_Buffer_Overread__CWE129_fscanf_04_bad()
+---
+> static void goodB2G2()
+2832c2867
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fscanf_04.c" 3 4
+---
+> # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fscanf_04.c" 3 4
+2834c2869
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fscanf_04.c"
+---
+> # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fscanf_04.c"
+2841a2877,2940
+>             if (data >= 0 && data < (10))
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+> 
+>         data = 7;
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+>         {
+>             int buffer[10] = { 0 };
+> 
+> 
+>             if (data >= 0)
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is negative");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(STATIC_CONST_TRUE)
+>     {
+> 
+> 
+>         data = 7;
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+>         {
+>             int buffer[10] = { 0 };
+> 
+2853a2953,2960
+> 
+> void CWE126_Buffer_Overread__CWE129_fscanf_04_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2863a2971,2973
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__CWE129_fscanf_04_good();
+>     printLine("Finished good()");
+2869,2871d2978
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__CWE129_fscanf_04_bad();
+<     printLine("Finished bad()");

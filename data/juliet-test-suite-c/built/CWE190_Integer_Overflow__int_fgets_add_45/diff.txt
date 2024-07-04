@@ -1,0 +1,79 @@
+2819a2820,2833
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_45.c"
+> static void goodG2BSink()
+> {
+>     int data = CWE190_Integer_Overflow__int_fgets_add_45_goodG2BData;
+>     {
+> 
+>         int result = data + 1;
+>         printIntLine(result);
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     int data;
+2820a2835,2840
+>     data = 0;
+> 
+>     data = 2;
+>     CWE190_Integer_Overflow__int_fgets_add_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+2823c2843
+< static void badSink()
+---
+> static void goodB2GSink()
+2825,2826c2845
+<     int data = CWE190_Integer_Overflow__int_fgets_add_45_badData;
+<     {
+---
+>     int data = CWE190_Integer_Overflow__int_fgets_add_45_goodB2GData;
+2827a2847,2848
+>     if (data < 0x7fffffff)
+>     {
+2830a2852,2855
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+2833c2858
+< void CWE190_Integer_Overflow__int_fgets_add_45_bad()
+---
+> static void goodB2G()
+2842c2867
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_45.c" 3 4
+---
+> # 110 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_45.c" 3 4
+2844c2869
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_45.c"
+---
+> # 110 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_45.c"
+2846c2871
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_45.c" 3 4
+---
+> # 110 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_45.c" 3 4
+2848c2873
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_45.c"
+---
+> # 110 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_45.c"
+2859,2860c2884,2891
+<     CWE190_Integer_Overflow__int_fgets_add_45_badData = data;
+<     badSink();
+---
+>     CWE190_Integer_Overflow__int_fgets_add_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE190_Integer_Overflow__int_fgets_add_45_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2871a2903,2905
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_fgets_add_45_good();
+>     printLine("Finished good()");
+2877,2879d2910
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_fgets_add_45_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,74 @@
+2813a2814,2829
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_multiply_42.c"
+> static int goodG2BSource(int data)
+> {
+> 
+>     data = -2;
+>     return data;
+> }
+> 
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = 0;
+>     data = goodG2BSource(data);
+>     if(data < 0)
+>     {
+2814a2831,2834
+>         int result = data * 2;
+>         printIntLine(result);
+>     }
+> }
+2817c2837
+< static int badSource(int data)
+---
+> static int goodB2GSource(int data)
+2821c2841
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_multiply_42.c" 3 4
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_multiply_42.c" 3 4
+2823c2843
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_multiply_42.c"
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_multiply_42.c"
+2828c2848
+< void CWE191_Integer_Underflow__int_fscanf_multiply_42_bad()
+---
+> static void goodB2G()
+2833c2853
+<     data = badSource(data);
+---
+>     data = goodB2GSource(data);
+2837,2838c2857,2869
+<         int result = data * 2;
+<         printIntLine(result);
+---
+>         if (data > (
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_multiply_42.c" 3 4
+>                    (-0x7fffffff - 1)
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_multiply_42.c"
+>                           /2))
+>         {
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too small to perform multiplication.");
+>         }
+2840a2872,2877
+> 
+> void CWE191_Integer_Underflow__int_fscanf_multiply_42_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2850a2888,2890
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_fscanf_multiply_42_good();
+>     printLine("Finished good()");
+2856,2858d2895
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_fscanf_multiply_42_bad();
+<     printLine("Finished bad()");

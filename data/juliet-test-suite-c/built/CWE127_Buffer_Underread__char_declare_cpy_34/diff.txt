@@ -1,0 +1,26 @@
+3248,3251c3248,3249
+< 
+< 
+< 
+< void CWE127_Buffer_Underread__char_declare_cpy_34_bad()
+---
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_declare_cpy_34.c"
+> static void goodG2B()
+3259c3257
+<     data = dataBuffer - 8;
+---
+>     data = dataBuffer;
+3272a3271,3275
+> 
+> void CWE127_Buffer_Underread__char_declare_cpy_34_good()
+> {
+>     goodG2B();
+> }
+3282a3286,3288
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__char_declare_cpy_34_good();
+>     printLine("Finished good()");
+3288,3290d3293
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__char_declare_cpy_34_bad();
+<     printLine("Finished bad()");

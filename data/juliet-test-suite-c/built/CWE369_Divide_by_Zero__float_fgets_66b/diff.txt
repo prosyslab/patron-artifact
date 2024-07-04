@@ -1,0 +1,32 @@
+3731a3732
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_66b.c"
+3732a3734,3738
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_66b.c"
+> void CWE369_Divide_by_Zero__float_fgets_66b_goodG2BSink(float dataArray[])
+> {
+>     float data = dataArray[2];
+>     {
+3733a3740,3743
+>         int result = (int)(100.0 / data);
+>         printIntLine(result);
+>     }
+> }
+3736,3739c3746
+< 
+< 
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_66b.c"
+< void CWE369_Divide_by_Zero__float_fgets_66b_badSink(float dataArray[])
+---
+> void CWE369_Divide_by_Zero__float_fgets_66b_goodB2GSink(float dataArray[])
+3741d3747
+< 
+3743d3748
+<     {
+3744a3750,3751
+>     if(fabs(data) > 0.000001)
+>     {
+3746a3754,3757
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");

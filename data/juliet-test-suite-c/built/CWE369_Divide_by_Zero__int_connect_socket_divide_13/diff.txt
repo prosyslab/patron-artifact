@@ -1,0 +1,205 @@
+4900c4900
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+---
+> # 120 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+4902,4903c4902,4903
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+< void CWE369_Divide_by_Zero__int_connect_socket_divide_13_bad()
+---
+> # 120 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+> static void goodB2G1()
+4921c4921
+< # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+---
+> # 146 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+4923c4923
+< # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c" 3 4
+---
+> # 146 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c" 3 4
+4925c4925
+< # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+---
+> # 146 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+4927c4927
+< # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c" 3 4
+---
+> # 146 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c" 3 4
+4929c4929
+< # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+---
+> # 146 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+4931c4931
+< # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c" 3 4
+---
+> # 146 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c" 3 4
+4933c4933
+< # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+---
+> # 146 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+4941c4941
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c" 3 4
+---
+> # 152 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c" 3 4
+4943c4943
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+---
+> # 152 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+4975a4976,5098
+>     if(GLOBAL_CONST_FIVE!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if( data != 0 )
+>         {
+>             printIntLine(100 / data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(GLOBAL_CONST_FIVE==5)
+>     {
+>         {
+> 
+> 
+> 
+> 
+>             int recvResult;
+>             struct sockaddr_in service;
+>             int connectSocket = -1;
+>             char inputBuffer[(3 * sizeof(data) + 2)];
+>             do
+>             {
+> # 230 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+>                 connectSocket = socket(
+> # 230 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c" 3 4
+>                                       2
+> # 230 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+>                                              , 
+> # 230 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c" 3 4
+>                                                SOCK_STREAM
+> # 230 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+>                                                           , 
+> # 230 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c" 3 4
+>                                                             IPPROTO_TCP
+> # 230 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+>                                                                        );
+>                 if (connectSocket == -1)
+>                 {
+>                     break;
+>                 }
+>                 memset(&service, 0, sizeof(service));
+>                 service.sin_family = 
+> # 236 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c" 3 4
+>                                     2
+> # 236 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_13.c"
+>                                            ;
+>                 service.sin_addr.s_addr = inet_addr("127.0.0.1");
+>                 service.sin_port = htons(27015);
+>                 if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == -1)
+>                 {
+>                     break;
+>                 }
+> 
+> 
+>                 recvResult = recv(connectSocket, inputBuffer, (3 * sizeof(data) + 2) - 1, 0);
+>                 if (recvResult == -1 || recvResult == 0)
+>                 {
+>                     break;
+>                 }
+> 
+>                 inputBuffer[recvResult] = '\0';
+> 
+>                 data = atoi(inputBuffer);
+>             }
+>             while (0);
+>             if (connectSocket != -1)
+>             {
+>                 close(connectSocket);
+>             }
+> 
+> 
+> 
+> 
+> 
+> 
+>         }
+>     }
+>     if(GLOBAL_CONST_FIVE==5)
+>     {
+> 
+>         if( data != 0 )
+>         {
+>             printIntLine(100 / data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(GLOBAL_CONST_FIVE!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 7;
+>     }
+4981a5105,5130
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(GLOBAL_CONST_FIVE==5)
+>     {
+> 
+>         data = 7;
+>     }
+>     if(GLOBAL_CONST_FIVE==5)
+>     {
+> 
+>         printIntLine(100 / data);
+>     }
+> }
+> 
+> void CWE369_Divide_by_Zero__int_connect_socket_divide_13_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+4991a5141,5143
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_connect_socket_divide_13_good();
+>     printLine("Finished good()");
+4997,4999d5148
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_connect_socket_divide_13_bad();
+<     printLine("Finished bad()");

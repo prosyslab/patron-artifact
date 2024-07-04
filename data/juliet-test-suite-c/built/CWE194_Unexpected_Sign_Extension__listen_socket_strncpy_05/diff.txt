@@ -1,0 +1,165 @@
+4905,4908c4905,4906
+< 
+< 
+< 
+< void CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05_bad()
+---
+> # 159 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c"
+> static void goodG2B1()
+4913c4911
+<     if(staticTrue)
+---
+>     if(staticFalse)
+4915,4932d4912
+<         {
+< 
+< 
+< 
+< 
+<             int recvResult;
+<             int tempInt;
+<             struct sockaddr_in service;
+<             int listenSocket = -1;
+<             int acceptSocket = -1;
+<             char inputBuffer[8];
+<             do
+<             {
+< 
+< 
+< 
+< 
+< 
+4933a4914,4917
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+4935,5018c4919,4927
+<                 listenSocket = socket(
+< # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c" 3 4
+<                                      2
+< # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c"
+<                                             , 
+< # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c" 3 4
+<                                               SOCK_STREAM
+< # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c"
+<                                                          , 
+< # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c" 3 4
+<                                                            IPPROTO_TCP
+< # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c"
+<                                                                       );
+<                 if (listenSocket == -1)
+<                 {
+<                     break;
+<                 }
+<                 memset(&service, 0, sizeof(service));
+<                 service.sin_family = 
+< # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c" 3 4
+<                                     2
+< # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c"
+<                                            ;
+<                 service.sin_addr.s_addr = 
+< # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c" 3 4
+<                                          ((in_addr_t) 0x00000000)
+< # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c"
+<                                                    ;
+<                 service.sin_port = htons(27015);
+<                 if (bind(listenSocket, (struct sockaddr*)&service, sizeof(service)) == -1)
+<                 {
+<                     break;
+<                 }
+<                 if (listen(listenSocket, 5) == -1)
+<                 {
+<                     break;
+<                 }
+<                 acceptSocket = accept(listenSocket, 
+< # 95 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c" 3 4
+<                                                    ((void *)0)
+< # 95 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c"
+<                                                        , 
+< # 95 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c" 3 4
+<                                                          ((void *)0)
+< # 95 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c"
+<                                                              );
+<                 if (acceptSocket == -1)
+<                 {
+<                     break;
+<                 }
+< 
+<                 recvResult = recv(acceptSocket, inputBuffer, 8 - 1, 0);
+< 
+<                 if (recvResult == -1 || recvResult == 0)
+<                 {
+<                     break;
+<                 }
+< 
+<                 inputBuffer[recvResult] = '\0';
+< 
+< 
+<                 tempInt = atoi(inputBuffer);
+<                 if (tempInt > 0x7fff || tempInt < 
+< # 112 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c" 3 4
+<                                                    (-0x7fff - 1)
+< # 112 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05.c"
+<                                                            )
+<                 {
+<                     data = -1;
+<                 }
+<                 else
+<                 {
+<                     data = tempInt;
+<                 }
+<             }
+<             while (0);
+<             if (listenSocket != -1)
+<             {
+<                 close(listenSocket);
+<             }
+<             if (acceptSocket != -1)
+<             {
+<                 close(acceptSocket);
+<             }
+---
+>         data = 100-1;
+>     }
+>     {
+>         char source[100];
+>         char dest[100] = "";
+>         memset(source, 'A', 100-1);
+>         source[100-1] = '\0';
+>         if (data < 100)
+>         {
+5020a4930,4935
+>             strncpy(dest, source, data);
+>             dest[data] = '\0';
+>         }
+>         printLine(dest);
+>     }
+> }
+5022a4938,4940
+> static void goodG2B2()
+> {
+>     short data;
+5023a4942,4944
+>     data = 0;
+>     if(staticTrue)
+>     {
+5025c4946
+<         }
+---
+>         data = 100-1;
+5041a4963,4968
+> 
+> void CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+5051a4979,4981
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05_good();
+>     printLine("Finished good()");
+5057,5059d4986
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__listen_socket_strncpy_05_bad();
+<     printLine("Finished bad()");

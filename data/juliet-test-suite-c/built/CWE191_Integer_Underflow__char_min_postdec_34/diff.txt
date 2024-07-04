@@ -1,0 +1,61 @@
+2819a2820,2825
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_34.c"
+> static void goodG2B()
+> {
+>     char data;
+>     CWE191_Integer_Underflow__char_min_postdec_34_unionType myUnion;
+>     data = ' ';
+2820a2827,2838
+>     data = -2;
+>     myUnion.unionFirst = data;
+>     {
+>         char data = myUnion.unionSecond;
+>         {
+> 
+>             data--;
+>             char result = data;
+>             printHexCharLine(result);
+>         }
+>     }
+> }
+2823c2841
+< void CWE191_Integer_Underflow__char_min_postdec_34_bad()
+---
+> static void goodB2G()
+2830c2848
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_34.c" 3 4
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_34.c" 3 4
+2832c2850
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_34.c"
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_34.c"
+2837d2854
+<         {
+2838a2856,2861
+>         if (data > 
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_34.c" 3 4
+>                   (-0x7f - 1)
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_34.c"
+>                           )
+>         {
+2842a2866,2869
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2844a2872,2877
+> 
+> void CWE191_Integer_Underflow__char_min_postdec_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2854a2888,2890
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__char_min_postdec_34_good();
+>     printLine("Finished good()");
+2860,2862d2895
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__char_min_postdec_34_bad();
+<     printLine("Finished bad()");

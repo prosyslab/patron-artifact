@@ -1,0 +1,28 @@
+2817a2818,2822
+> # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_add_68b.c"
+> void CWE190_Integer_Overflow__int_fscanf_add_68b_goodG2BSink()
+> {
+>     int data = CWE190_Integer_Overflow__int_fscanf_add_68_goodG2BData;
+>     {
+2818a2824,2827
+>         int result = data + 1;
+>         printIntLine(result);
+>     }
+> }
+2821c2830
+< void CWE190_Integer_Overflow__int_fscanf_add_68b_badSink()
+---
+> void CWE190_Integer_Overflow__int_fscanf_add_68b_goodB2GSink()
+2823,2824c2832
+<     int data = CWE190_Integer_Overflow__int_fscanf_add_68_badData;
+<     {
+---
+>     int data = CWE190_Integer_Overflow__int_fscanf_add_68_goodB2GData;
+2825a2834,2835
+>     if (data < 0x7fffffff)
+>     {
+2827a2838,2841
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");

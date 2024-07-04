@@ -1,0 +1,35 @@
+2818a2819,2820
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_67a.c"
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_67b_goodG2BSink(CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_67_structType myStruct);
+2820,2825c2822
+< 
+< 
+< 
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_67b_badSink(CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_67_structType myStruct);
+< 
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_67_bad()
+---
+> static void goodG2B()
+2832,2834c2829
+<     data = 0x7fffffff / 2 + 2;
+< 
+< 
+---
+>     data = 20;
+2836c2831,2836
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_67b_badSink(myStruct);
+---
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_67b_goodG2BSink(myStruct);
+> }
+> 
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_67_good()
+> {
+>     goodG2B();
+2847a2848,2850
+>     printLine("Calling good()...");
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_67_good();
+>     printLine("Finished good()");
+2853,2855d2855
+<     printLine("Calling bad()...");
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_67_bad();
+<     printLine("Finished bad()");

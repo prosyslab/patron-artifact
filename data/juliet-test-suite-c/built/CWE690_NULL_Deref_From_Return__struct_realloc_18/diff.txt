@@ -1,0 +1,49 @@
+3239a3240
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_18.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_18.c"
+< void CWE690_NULL_Deref_From_Return__struct_realloc_18_bad()
+---
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_18.c"
+> static void goodB2G()
+3249c3247
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_18.c" 3 4
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_18.c" 3 4
+3251c3249
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_18.c"
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_18.c"
+3258,3261c3256,3271
+<     data[0].intOne = 1;
+<     data[0].intTwo = 1;
+<     printStructLine(&data[0]);
+<     free(data);
+---
+>     if (data != 
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_18.c" 3 4
+>                ((void *)0)
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_18.c"
+>                    )
+>     {
+>         data[0].intOne = 1;
+>         data[0].intTwo = 1;
+>         printStructLine(&data[0]);
+>         free(data);
+>     }
+> }
+> 
+> void CWE690_NULL_Deref_From_Return__struct_realloc_18_good()
+> {
+>     goodB2G();
+3272a3283,3285
+>     printLine("Calling good()...");
+>     CWE690_NULL_Deref_From_Return__struct_realloc_18_good();
+>     printLine("Finished good()");
+3278,3280d3290
+<     printLine("Calling bad()...");
+<     CWE690_NULL_Deref_From_Return__struct_realloc_18_bad();
+<     printLine("Finished bad()");

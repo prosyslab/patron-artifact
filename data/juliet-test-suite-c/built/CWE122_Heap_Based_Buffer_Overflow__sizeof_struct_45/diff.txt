@@ -1,0 +1,56 @@
+2817,2820c2817,2818
+< 
+< 
+< 
+< static void badSink()
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45.c"
+> static void goodG2BSink()
+2822c2820
+<     twoIntsStruct * data = CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45_badData;
+---
+>     twoIntsStruct * data = CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45_goodG2BData;
+2828c2826
+< void CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45_bad()
+---
+> static void goodG2B()
+2833c2831
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45.c" 3 4
+---
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45.c" 3 4
+2835c2833
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45.c"
+---
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45.c"
+2838,2839c2836
+< 
+<     data = (twoIntsStruct *)malloc(sizeof(data));
+---
+>     data = (twoIntsStruct *)malloc(sizeof(*data));
+2841c2838
+< # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45.c" 3 4
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45.c" 3 4
+2843c2840
+< # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45.c"
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45.c"
+2847,2848c2844,2850
+<     CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45_badData = data;
+<     badSink();
+---
+>     CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45_good()
+> {
+>     goodG2B();
+2859a2862,2864
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45_good();
+>     printLine("Finished good()");
+2865,2867d2869
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_45_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,37 @@
+2820,2823c2820,2821
+< 
+< 
+< 
+< void CWE124_Buffer_Underwrite__CWE839_fgets_68b_badSink()
+---
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fgets_68b.c"
+> void CWE124_Buffer_Underwrite__CWE839_fgets_68b_goodG2BSink()
+2825c2823
+<     int data = CWE124_Buffer_Underwrite__CWE839_fgets_68_badData;
+---
+>     int data = CWE124_Buffer_Underwrite__CWE839_fgets_68_goodG2BData;
+2842a2841,2864
+>         }
+>     }
+> }
+> 
+> 
+> void CWE124_Buffer_Underwrite__CWE839_fgets_68b_goodB2GSink()
+> {
+>     int data = CWE124_Buffer_Underwrite__CWE839_fgets_68_goodB2GData;
+>     {
+>         int i;
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

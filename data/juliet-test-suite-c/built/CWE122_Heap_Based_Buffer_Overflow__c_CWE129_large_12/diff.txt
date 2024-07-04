@@ -1,0 +1,134 @@
+2813a2814,2839
+> # 104 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c"
+> static void goodB2G()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(globalReturnsTrueOrFalse())
+>     {
+> 
+>         data = 10;
+>     }
+>     else
+>     {
+> 
+>         data = 10;
+>     }
+>     if(globalReturnsTrueOrFalse())
+>     {
+>         {
+>             int i;
+>             int * buffer = (int *)malloc(10 * sizeof(int));
+>             if (buffer == 
+> # 124 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c" 3 4
+>                          ((void *)0)
+> # 124 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c"
+>                              ) {exit(-1);}
+2814a2841,2844
+>             for (i = 0; i < 10; i++)
+>             {
+>                 buffer[i] = 0;
+>             }
+2815a2846,2848
+>             if (data >= 0 && data < (10))
+>             {
+>                 buffer[data] = 1;
+2817c2850,2899
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12_bad()
+---
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>             free(buffer);
+>         }
+>     }
+>     else
+>     {
+>         {
+>             int i;
+>             int * buffer = (int *)malloc(10 * sizeof(int));
+>             if (buffer == 
+> # 152 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c" 3 4
+>                          ((void *)0)
+> # 152 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c"
+>                              ) {exit(-1);}
+> 
+>             for (i = 0; i < 10; i++)
+>             {
+>                 buffer[i] = 0;
+>             }
+> 
+>             if (data >= 0 && data < (10))
+>             {
+>                 buffer[data] = 1;
+> 
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>             free(buffer);
+>         }
+>     }
+> }
+> 
+> 
+> 
+> 
+> static void goodG2B()
+2825c2907,2908
+<         data = 10;
+---
+> 
+>         data = 7;
+2839c2922
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c" 3 4
+---
+> # 202 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c" 3 4
+2841c2924
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c"
+---
+> # 202 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c"
+2872c2955
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c" 3 4
+---
+> # 231 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c" 3 4
+2874c2957
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c"
+---
+> # 231 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12.c"
+2882c2965,2966
+<             if (data >= 0 && data < (10))
+---
+> 
+>             if (data >= 0)
+2893c2977
+<                 printLine("ERROR: Array index is out-of-bounds");
+---
+>                 printLine("ERROR: Array index is negative.");
+2898a2983,2988
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2908a2999,3001
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12_good();
+>     printLine("Finished good()");
+2914,2916d3006
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_large_12_bad();
+<     printLine("Finished bad()");

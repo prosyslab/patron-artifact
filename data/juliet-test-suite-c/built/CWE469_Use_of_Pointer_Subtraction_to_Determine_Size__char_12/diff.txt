@@ -1,0 +1,49 @@
+3239a3240
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12.c"
+3241,3247c3242,3243
+< 
+< 
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12.c"
+< void CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12_bad()
+---
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12.c"
+> static void good1()
+3253d3248
+<             char string2[] = "abc/opqrstu";
+3258c3253
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12.c" 3 4
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12.c" 3 4
+3260c3255
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12.c"
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12.c"
+3266c3261
+<             indexOfSlashInString1 = (size_t)(slashInString1 - string2);
+---
+>             indexOfSlashInString1 = (size_t)(slashInString1 - string1);
+3279c3274
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12.c" 3 4
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12.c" 3 4
+3281c3276
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12.c"
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12.c"
+3292a3288,3292
+> 
+> void CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12_good()
+> {
+>     good1();
+> }
+3302a3303,3305
+>     printLine("Calling good()...");
+>     CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12_good();
+>     printLine("Finished good()");
+3308,3310d3310
+<     printLine("Calling bad()...");
+<     CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_12_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,61 @@
+2813a2814,2817
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__char_rand_predec_22a.c"
+> int CWE191_Integer_Underflow__char_rand_predec_22_goodB2G1Global = 0;
+> int CWE191_Integer_Underflow__char_rand_predec_22_goodB2G2Global = 0;
+> int CWE191_Integer_Underflow__char_rand_predec_22_goodG2BGlobal = 0;
+2815a2820
+> void CWE191_Integer_Underflow__char_rand_predec_22_goodB2G1Sink(char data);
+2816a2822,2825
+> static void goodB2G1()
+> {
+>     char data;
+>     data = ' ';
+2818c2827,2830
+< int CWE191_Integer_Underflow__char_rand_predec_22_badGlobal = 0;
+---
+>     data = (char)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>     CWE191_Integer_Underflow__char_rand_predec_22_goodB2G1Global = 0;
+>     CWE191_Integer_Underflow__char_rand_predec_22_goodB2G1Sink(data);
+> }
+2820d2831
+< void CWE191_Integer_Underflow__char_rand_predec_22_badSink(char data);
+2822c2833,2835
+< void CWE191_Integer_Underflow__char_rand_predec_22_bad()
+---
+> void CWE191_Integer_Underflow__char_rand_predec_22_goodB2G2Sink(char data);
+> 
+> static void goodB2G2()
+2828,2829c2841,2862
+<     CWE191_Integer_Underflow__char_rand_predec_22_badGlobal = 1;
+<     CWE191_Integer_Underflow__char_rand_predec_22_badSink(data);
+---
+>     CWE191_Integer_Underflow__char_rand_predec_22_goodB2G2Global = 1;
+>     CWE191_Integer_Underflow__char_rand_predec_22_goodB2G2Sink(data);
+> }
+> 
+> 
+> void CWE191_Integer_Underflow__char_rand_predec_22_goodG2BSink(char data);
+> 
+> static void goodG2B()
+> {
+>     char data;
+>     data = ' ';
+> 
+>     data = -2;
+>     CWE191_Integer_Underflow__char_rand_predec_22_goodG2BGlobal = 1;
+>     CWE191_Integer_Underflow__char_rand_predec_22_goodG2BSink(data);
+> }
+> 
+> void CWE191_Integer_Underflow__char_rand_predec_22_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B();
+2840a2874,2876
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__char_rand_predec_22_good();
+>     printLine("Finished good()");
+2846,2848d2881
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__char_rand_predec_22_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,38 @@
+2817a2818,2819
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__fopen_68a.c"
+> void CWE690_NULL_Deref_From_Return__fopen_68b_goodB2GSink();
+2820,2824c2822
+< 
+< 
+< void CWE690_NULL_Deref_From_Return__fopen_68b_badSink();
+< 
+< void CWE690_NULL_Deref_From_Return__fopen_68_bad()
+---
+> static void goodB2G()
+2829c2827
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__fopen_68a.c" 3 4
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__fopen_68a.c" 3 4
+2831c2829
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__fopen_68a.c"
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__fopen_68a.c"
+2835,2836c2833,2839
+<     CWE690_NULL_Deref_From_Return__fopen_68_badDataForBadSink = data;
+<     CWE690_NULL_Deref_From_Return__fopen_68b_badSink();
+---
+>     CWE690_NULL_Deref_From_Return__fopen_68_badDataForGoodSink = data;
+>     CWE690_NULL_Deref_From_Return__fopen_68b_goodB2GSink();
+> }
+> 
+> void CWE690_NULL_Deref_From_Return__fopen_68_good()
+> {
+>     goodB2G();
+2847a2851,2853
+>     printLine("Calling good()...");
+>     CWE690_NULL_Deref_From_Return__fopen_68_good();
+>     printLine("Finished good()");
+2853,2855d2858
+<     printLine("Calling bad()...");
+<     CWE690_NULL_Deref_From_Return__fopen_68_bad();
+<     printLine("Finished bad()");

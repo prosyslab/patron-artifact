@@ -1,0 +1,93 @@
+4900c4900
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+---
+> # 123 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+4902,4903c4902,4924
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+< void CWE369_Divide_by_Zero__int_connect_socket_modulo_32_bad()
+---
+> # 123 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+> static void goodG2B()
+> {
+>     int data;
+>     int *dataPtr1 = &data;
+>     int *dataPtr2 = &data;
+> 
+>     data = -1;
+>     {
+>         int data = *dataPtr1;
+> 
+>         data = 7;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         int data = *dataPtr2;
+> 
+>         printIntLine(100 % data);
+>     }
+> }
+> 
+> 
+> static void goodB2G()
+4923c4944
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+---
+> # 172 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+4925c4946
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c" 3 4
+---
+> # 172 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c" 3 4
+4927c4948
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+---
+> # 172 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+4929c4950
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c" 3 4
+---
+> # 172 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c" 3 4
+4931c4952
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+---
+> # 172 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+4933c4954
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c" 3 4
+---
+> # 172 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c" 3 4
+4935c4956
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+---
+> # 172 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+4943c4964
+< # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c" 3 4
+---
+> # 178 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c" 3 4
+4945c4966
+< # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+---
+> # 178 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_modulo_32.c"
+4982c5003,5010
+<         printIntLine(100 % data);
+---
+>         if( data != 0 )
+>         {
+>             printIntLine(100 % data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+4984a5013,5018
+> 
+> void CWE369_Divide_by_Zero__int_connect_socket_modulo_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+4994a5029,5031
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_connect_socket_modulo_32_good();
+>     printLine("Finished good()");
+5000,5002d5036
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_connect_socket_modulo_32_bad();
+<     printLine("Finished bad()");

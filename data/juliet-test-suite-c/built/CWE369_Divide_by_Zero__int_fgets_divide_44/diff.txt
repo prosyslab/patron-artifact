@@ -1,0 +1,75 @@
+2813a2814,2816
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_44.c"
+> static void goodG2BSink(int data)
+> {
+2814a2818,2824
+>     printIntLine(100 / data);
+> }
+> 
+> static void goodG2B()
+> {
+>     int data;
+>     void (*funcPtr) (int) = goodG2BSink;
+2815a2826
+>     data = -1;
+2816a2828,2830
+>     data = 7;
+>     funcPtr(data);
+> }
+2819c2833
+< static void badSink(int data)
+---
+> static void goodB2GSink(int data)
+2822c2836,2843
+<     printIntLine(100 / data);
+---
+>     if( data != 0 )
+>     {
+>         printIntLine(100 / data);
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");
+>     }
+2825c2846
+< void CWE369_Divide_by_Zero__int_fgets_divide_44_bad()
+---
+> static void goodB2G()
+2828,2829c2849
+< 
+<     void (*funcPtr) (int) = badSink;
+---
+>     void (*funcPtr) (int) = goodB2GSink;
+2836c2856
+< # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_44.c" 3 4
+---
+> # 99 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_44.c" 3 4
+2838c2858
+< # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_44.c"
+---
+> # 99 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_44.c"
+2840c2860
+< # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_44.c" 3 4
+---
+> # 99 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_44.c" 3 4
+2842c2862
+< # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_44.c"
+---
+> # 99 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_divide_44.c"
+2853d2872
+< 
+2855a2875,2880
+> 
+> void CWE369_Divide_by_Zero__int_fgets_divide_44_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2865a2891,2893
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_fgets_divide_44_good();
+>     printLine("Finished good()");
+2871,2873d2898
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_fgets_divide_44_bad();
+<     printLine("Finished bad()");

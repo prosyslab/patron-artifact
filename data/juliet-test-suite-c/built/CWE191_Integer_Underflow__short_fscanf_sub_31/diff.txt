@@ -1,0 +1,59 @@
+2813a2814,2824
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_fscanf_sub_31.c"
+> static void goodG2B()
+> {
+>     short data;
+>     data = 0;
+> 
+>     data = -2;
+>     {
+>         short dataCopy = data;
+>         short data = dataCopy;
+>         {
+2814a2826,2830
+>             short result = data - 1;
+>             printIntLine(result);
+>         }
+>     }
+> }
+2817c2833
+< void CWE191_Integer_Underflow__short_fscanf_sub_31_bad()
+---
+> static void goodB2G()
+2823c2839
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_fscanf_sub_31.c" 3 4
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_fscanf_sub_31.c" 3 4
+2825c2841
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_fscanf_sub_31.c"
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_fscanf_sub_31.c"
+2830d2845
+<         {
+2831a2847,2852
+>         if (data > 
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_fscanf_sub_31.c" 3 4
+>                   (-0x7fff - 1)
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_fscanf_sub_31.c"
+>                           )
+>         {
+2834a2856,2859
+>         else
+>         {
+>             printLine("data value is too large to perform subtraction.");
+>         }
+2836a2862,2867
+> 
+> void CWE191_Integer_Underflow__short_fscanf_sub_31_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2846a2878,2880
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__short_fscanf_sub_31_good();
+>     printLine("Finished good()");
+2852,2854d2885
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__short_fscanf_sub_31_bad();
+<     printLine("Finished bad()");

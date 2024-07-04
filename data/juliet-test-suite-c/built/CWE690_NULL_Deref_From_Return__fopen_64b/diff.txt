@@ -1,0 +1,19 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE690_NULL_Deref_From_Return__fopen_64b_badSink(void * dataVoidPtr)
+---
+> # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__fopen_64b.c"
+> void CWE690_NULL_Deref_From_Return__fopen_64b_goodB2GSink(void * dataVoidPtr)
+2824c2822,2829
+<     fclose(data);
+---
+>     if (data != 
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__fopen_64b.c" 3 4
+>                ((void *)0)
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__fopen_64b.c"
+>                    )
+>     {
+>         fclose(data);
+>     }

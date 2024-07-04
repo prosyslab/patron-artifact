@@ -1,0 +1,15 @@
+3239a3240
+> # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_ncat_61b.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_ncat_61b.c"
+< char * CWE665_Improper_Initialization__char_ncat_61b_badSource(char * data)
+---
+> # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_ncat_61b.c"
+> char * CWE665_Improper_Initialization__char_ncat_61b_goodG2BSource(char * data)
+3248c3246
+<     ;
+---
+>     data[0] = '\0';

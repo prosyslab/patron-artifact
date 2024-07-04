@@ -1,0 +1,54 @@
+2850a2851,2860
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_15.c"
+> static void good1()
+> {
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+2851a2862,2872
+>         if(helperGood() == 
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_15.c" 3 4
+>                           ((void *)0)
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_15.c"
+>                               )
+>         {
+>             printLine("Got a NULL");
+>         }
+>         break;
+>     }
+> }
+2854c2875
+< void CWE480_Use_of_Incorrect_Operator__basic_15_bad()
+---
+> static void good2()
+2860,2864c2881,2885
+<         if(helperBad == 
+< # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_15.c" 3 4
+<                        ((void *)0)
+< # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_15.c"
+<                            )
+---
+>         if(helperGood() == 
+> # 97 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_15.c" 3 4
+>                           ((void *)0)
+> # 97 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_15.c"
+>                               )
+2874a2896,2901
+> 
+> void CWE480_Use_of_Incorrect_Operator__basic_15_good()
+> {
+>     good1();
+>     good2();
+> }
+2884a2912,2914
+>     printLine("Calling good()...");
+>     CWE480_Use_of_Incorrect_Operator__basic_15_good();
+>     printLine("Finished good()");
+2890,2892d2919
+<     printLine("Calling bad()...");
+<     CWE480_Use_of_Incorrect_Operator__basic_15_bad();
+<     printLine("Finished bad()");

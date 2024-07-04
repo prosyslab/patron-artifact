@@ -1,0 +1,110 @@
+2813a2814,2820
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s04/CWE190_Integer_Overflow__short_max_multiply_03.c"
+> static void goodB2G1()
+> {
+>     short data;
+>     data = 0;
+>     if(5==5)
+>     {
+2814a2822,2825
+>         data = 0x7fff;
+>     }
+>     if(5!=5)
+>     {
+2815a2827,2832
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         if(data > 0)
+>         {
+2817c2834,2848
+< void CWE190_Integer_Overflow__short_max_multiply_03_bad()
+---
+>             if (data < (0x7fff/2))
+>             {
+>                 short result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2830a2862,2894
+>             if (data < (0x7fff/2))
+>             {
+>                 short result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     short data;
+>     data = 0;
+>     if(5!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2;
+>     }
+>     if(5==5)
+>     {
+>         if(data > 0)
+>         {
+> 
+2835a2900,2928
+> 
+> 
+> static void goodG2B2()
+> {
+>     short data;
+>     data = 0;
+>     if(5==5)
+>     {
+> 
+>         data = 2;
+>     }
+>     if(5==5)
+>     {
+>         if(data > 0)
+>         {
+> 
+>             short result = data * 2;
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__short_max_multiply_03_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2845a2939,2941
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__short_max_multiply_03_good();
+>     printLine("Finished good()");
+2851,2853d2946
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__short_max_multiply_03_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,48 @@
+2818a2819,2820
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_67a.c"
+> void CWE190_Integer_Overflow__char_fscanf_multiply_67b_goodG2BSink(CWE190_Integer_Overflow__char_fscanf_multiply_67_structType myStruct);
+2819a2822,2826
+> static void goodG2B()
+> {
+>     char data;
+>     CWE190_Integer_Overflow__char_fscanf_multiply_67_structType myStruct;
+>     data = ' ';
+2820a2828,2831
+>     data = 2;
+>     myStruct.structFirst = data;
+>     CWE190_Integer_Overflow__char_fscanf_multiply_67b_goodG2BSink(myStruct);
+> }
+2823c2834
+< void CWE190_Integer_Overflow__char_fscanf_multiply_67b_badSink(CWE190_Integer_Overflow__char_fscanf_multiply_67_structType myStruct);
+---
+> void CWE190_Integer_Overflow__char_fscanf_multiply_67b_goodB2GSink(CWE190_Integer_Overflow__char_fscanf_multiply_67_structType myStruct);
+2825c2836
+< void CWE190_Integer_Overflow__char_fscanf_multiply_67_bad()
+---
+> static void goodB2G()
+2832c2843
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_67a.c" 3 4
+---
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_67a.c" 3 4
+2834c2845
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_67a.c"
+---
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_67a.c"
+2837c2848,2854
+<     CWE190_Integer_Overflow__char_fscanf_multiply_67b_badSink(myStruct);
+---
+>     CWE190_Integer_Overflow__char_fscanf_multiply_67b_goodB2GSink(myStruct);
+> }
+> 
+> void CWE190_Integer_Overflow__char_fscanf_multiply_67_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2848a2866,2868
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_fscanf_multiply_67_good();
+>     printLine("Finished good()");
+2854,2856d2873
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_fscanf_multiply_67_bad();
+<     printLine("Finished bad()");

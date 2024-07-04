@@ -1,0 +1,72 @@
+2813a2814,2840
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c"
+> static void goodG2B1()
+> {
+>     twoIntsStruct * data;
+> 
+>     data = 
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c" 3 4
+>           ((void *)0)
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c"
+>               ;
+>     if(GLOBAL_CONST_FIVE!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = (twoIntsStruct *)malloc(sizeof(*data));
+>         if (data == 
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c" 3 4
+>                    ((void *)0)
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c"
+>                        ) {exit(-1);}
+>         data->intOne = 1;
+>         data->intTwo = 2;
+>     }
+2814a2842,2844
+>     printStructLine(data);
+>     free(data);
+> }
+2817c2847
+< void CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13_bad()
+---
+> static void goodG2B2()
+2822c2852
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c" 3 4
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c" 3 4
+2824c2854
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c"
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c"
+2829,2830c2859
+< 
+<         data = (twoIntsStruct *)malloc(sizeof(data));
+---
+>         data = (twoIntsStruct *)malloc(sizeof(*data));
+2832c2861
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c" 3 4
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c" 3 4
+2834c2863
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c"
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13.c"
+2842a2872,2877
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2852a2888,2890
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13_good();
+>     printLine("Finished good()");
+2858,2860d2895
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_13_bad();
+<     printLine("Finished bad()");

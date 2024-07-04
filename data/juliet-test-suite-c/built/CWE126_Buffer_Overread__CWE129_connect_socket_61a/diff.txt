@@ -1,0 +1,56 @@
+4900c4900
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_61a.c"
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_61a.c"
+4902,4903c4902,4903
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_61a.c"
+< int CWE126_Buffer_Overread__CWE129_connect_socket_61b_badSource(int data);
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_61a.c"
+> int CWE126_Buffer_Overread__CWE129_connect_socket_61b_goodG2BSource(int data);
+4905c4905
+< void CWE126_Buffer_Overread__CWE129_connect_socket_61_bad()
+---
+> static void goodG2B()
+4910c4910
+<     data = CWE126_Buffer_Overread__CWE129_connect_socket_61b_badSource(data);
+---
+>     data = CWE126_Buffer_Overread__CWE129_connect_socket_61b_goodG2BSource(data);
+4924a4925,4953
+> 
+> 
+> int CWE126_Buffer_Overread__CWE129_connect_socket_61b_goodB2GSource(int data);
+> 
+> static void goodB2G()
+> {
+>     int data;
+> 
+>     data = -1;
+>     data = CWE126_Buffer_Overread__CWE129_connect_socket_61b_goodB2GSource(data);
+>     {
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");
+>         }
+>     }
+> }
+> 
+> void CWE126_Buffer_Overread__CWE129_connect_socket_61_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+4934a4964,4966
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__CWE129_connect_socket_61_good();
+>     printLine("Finished good()");
+4940,4942d4971
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__CWE129_connect_socket_61_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,135 @@
+2813a2814,2826
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_max_postinc_15.c"
+> static void goodB2G1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = 0x7fffffff;
+>         break;
+>     default:
+2814a2828,2833
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(8)
+>     {
+>     case 7:
+2815a2835,2837
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+2817c2839,2854
+< void CWE190_Integer_Overflow__int_max_postinc_15_bad()
+---
+>         if (data < 0x7fffffff)
+>         {
+>             data++;
+>             int result = data;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2835a2873,2945
+> 
+>         if (data < 0x7fffffff)
+>         {
+>             data++;
+>             int result = data;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         data = 2;
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>     {
+> 
+>         data++;
+>         int result = data;
+>         printIntLine(result);
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = 0;
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = 2;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+2848a2959,2966
+> 
+> void CWE190_Integer_Overflow__int_max_postinc_15_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2858a2977,2979
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_max_postinc_15_good();
+>     printLine("Finished good()");
+2864,2866d2984
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_max_postinc_15_bad();
+<     printLine("Finished bad()");

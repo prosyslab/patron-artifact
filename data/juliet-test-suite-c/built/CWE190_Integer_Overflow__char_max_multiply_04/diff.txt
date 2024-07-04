@@ -1,0 +1,110 @@
+2819a2820,2826
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_max_multiply_04.c"
+> static void goodB2G1()
+> {
+>     char data;
+>     data = ' ';
+>     if(STATIC_CONST_TRUE)
+>     {
+2820a2828,2831
+>         data = 0x7f;
+>     }
+>     if(STATIC_CONST_FALSE)
+>     {
+2821a2833,2838
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         if(data > 0)
+>         {
+2823c2840,2854
+< void CWE190_Integer_Overflow__char_max_multiply_04_bad()
+---
+>             if (data < (0x7f/2))
+>             {
+>                 char result = data * 2;
+>                 printHexCharLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2836a2868,2900
+>             if (data < (0x7f/2))
+>             {
+>                 char result = data * 2;
+>                 printHexCharLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     char data;
+>     data = ' ';
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2;
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+>         if(data > 0)
+>         {
+> 
+2841a2906,2934
+> 
+> 
+> static void goodG2B2()
+> {
+>     char data;
+>     data = ' ';
+>     if(STATIC_CONST_TRUE)
+>     {
+> 
+>         data = 2;
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+>         if(data > 0)
+>         {
+> 
+>             char result = data * 2;
+>             printHexCharLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__char_max_multiply_04_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2851a2945,2947
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_max_multiply_04_good();
+>     printLine("Finished good()");
+2857,2859d2952
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_max_multiply_04_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,23 @@
+2818a2819,2822
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fscanf_divide_67b.c"
+> void CWE369_Divide_by_Zero__int_fscanf_divide_67b_goodG2BSink(CWE369_Divide_by_Zero__int_fscanf_divide_67_structType myStruct)
+> {
+>     int data = myStruct.structFirst;
+2819a2824,2825
+>     printIntLine(100 / data);
+> }
+2822c2828
+< void CWE369_Divide_by_Zero__int_fscanf_divide_67b_badSink(CWE369_Divide_by_Zero__int_fscanf_divide_67_structType myStruct)
+---
+> void CWE369_Divide_by_Zero__int_fscanf_divide_67b_goodB2GSink(CWE369_Divide_by_Zero__int_fscanf_divide_67_structType myStruct)
+2826c2832,2839
+<     printIntLine(100 / data);
+---
+>     if( data != 0 )
+>     {
+>         printIntLine(100 / data);
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");
+>     }

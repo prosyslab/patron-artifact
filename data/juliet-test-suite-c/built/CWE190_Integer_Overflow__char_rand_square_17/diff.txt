@@ -1,0 +1,60 @@
+3731a3732
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_rand_square_17.c"
+3732a3734,3741
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_rand_square_17.c"
+> static void goodB2G()
+> {
+>     int i,k;
+>     char data;
+>     data = ' ';
+>     for(i = 0; i < 1; i++)
+>     {
+3733a3743,3758
+>         data = (char)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>     }
+>     for(k = 0; k < 1; k++)
+>     {
+> 
+>         if (abs((long)data) <= (long)sqrt((double)0x7f))
+>         {
+>             char result = data * data;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+3736,3737c3761
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_rand_square_17.c"
+< void CWE190_Integer_Overflow__char_rand_square_17_bad()
+---
+> static void goodG2B()
+3739c3763
+<     int i,j;
+---
+>     int h,j;
+3742c3766
+<     for(i = 0; i < 1; i++)
+---
+>     for(h = 0; h < 1; h++)
+3745c3769
+<         data = (char)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+---
+>         data = 2;
+3755a3780,3785
+> 
+> void CWE190_Integer_Overflow__char_rand_square_17_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+3765a3796,3798
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_rand_square_17_good();
+>     printLine("Finished good()");
+3771,3773d3803
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_rand_square_17_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,107 @@
+3243a3244,3271
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c"
+> static void goodB2G1()
+> {
+>     char * data;
+>     data = (char *)malloc(100*sizeof(char));
+>     if (data == 
+> # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c" 3 4
+>                ((void *)0)
+> # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c"
+>                    ) {exit(-1);}
+>     data[0] = '\0';
+>     {
+> 
+>         size_t dataLen = strlen(data);
+>         char * environment = getenv("ADD");
+> 
+>         if (environment != 
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c" 3 4
+>                           ((void *)0)
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c"
+>                               )
+>         {
+> 
+>             strncat(data+dataLen, environment, 100-dataLen-1);
+>         }
+>     }
+>     if(STATIC_CONST_FIVE!=5)
+>     {
+3244a3273,3291
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             size_t i;
+> 
+>             for (i=0; i < strlen(data); i++)
+>             {
+>                 if (data[i] == 'S')
+>                 {
+>                     printLine("We have a match!");
+>                     break;
+>                 }
+>             }
+>             free(data);
+>         }
+>     }
+> }
+3247c3294
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06_bad()
+---
+> static void goodB2G2()
+3252c3299
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c" 3 4
+---
+> # 121 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c" 3 4
+3254c3301
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c"
+---
+> # 121 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c"
+3263c3310
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c" 3 4
+---
+> # 128 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c" 3 4
+3265c3312
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c"
+---
+> # 128 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06.c"
+3274,3276d3320
+< 
+< 
+<         for (; *data != '\0'; data++)
+3278c3322,3324
+<             if (*data == 'S')
+---
+>             size_t i;
+> 
+>             for (i=0; i < strlen(data); i++)
+3280,3281c3326,3330
+<                 printLine("We have a match!");
+<                 break;
+---
+>                 if (data[i] == 'S')
+>                 {
+>                     printLine("We have a match!");
+>                     break;
+>                 }
+3282a3332
+>             free(data);
+3284d3333
+<         free(data);
+3286a3336,3341
+> 
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+> }
+3296a3352,3354
+>     printLine("Calling good()...");
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06_good();
+>     printLine("Finished good()");
+3302,3304d3359
+<     printLine("Calling bad()...");
+<     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_06_bad();
+<     printLine("Finished bad()");

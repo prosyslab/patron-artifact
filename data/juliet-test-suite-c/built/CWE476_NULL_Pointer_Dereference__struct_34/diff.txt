@@ -1,0 +1,62 @@
+3247a3248,3262
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_34.c"
+> static void goodG2B()
+> {
+>     twoIntsStruct * data;
+>     twoIntsStruct tmpData;
+>     CWE476_NULL_Pointer_Dereference__struct_34_unionType myUnion;
+> 
+>     {
+>         tmpData.intOne = 0;
+>         tmpData.intTwo = 0;
+>         data = &tmpData;
+>     }
+>     myUnion.unionFirst = data;
+>     {
+>         twoIntsStruct * data = myUnion.unionSecond;
+3248a3264,3266
+>         printIntLine(data->intOne);
+>     }
+> }
+3251c3269
+< void CWE476_NULL_Pointer_Dereference__struct_34_bad()
+---
+> static void goodB2G()
+3257c3275
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_34.c" 3 4
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_34.c" 3 4
+3259c3277
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_34.c"
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_34.c"
+3265c3283,3294
+<         printIntLine(data->intOne);
+---
+>         if (data != 
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_34.c" 3 4
+>                    ((void *)0)
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_34.c"
+>                        )
+>         {
+>             printIntLine(data->intOne);
+>         }
+>         else
+>         {
+>             printLine("data is NULL");
+>         }
+3267a3297,3302
+> 
+> void CWE476_NULL_Pointer_Dereference__struct_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3277a3313,3315
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__struct_34_good();
+>     printLine("Finished good()");
+3283,3285d3320
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__struct_34_bad();
+<     printLine("Finished bad()");

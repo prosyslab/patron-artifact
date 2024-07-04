@@ -1,0 +1,82 @@
+3246a3247,3262
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_07.c"
+> static void goodB2G1()
+> {
+>     int data;
+>     if(staticFive==5)
+>     {
+> 
+>         ;
+>     }
+>     if(staticFive!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3247a3264,3267
+>         data = 5;
+>         printIntLine(data);
+>     }
+> }
+3250c3270
+< void CWE457_Use_of_Uninitialized_Variable__int_07_bad()
+---
+> static void goodB2G2()
+3260a3281
+>         data = 5;
+3263a3285,3329
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+>     if(staticFive!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 5;
+>     }
+>     if(staticFive==5)
+>     {
+> 
+>         printIntLine(data);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+>     if(staticFive==5)
+>     {
+> 
+>         data = 5;
+>     }
+>     if(staticFive==5)
+>     {
+> 
+>         printIntLine(data);
+>     }
+> }
+> 
+> void CWE457_Use_of_Uninitialized_Variable__int_07_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3273a3340,3342
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__int_07_good();
+>     printLine("Finished good()");
+3279,3281d3347
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__int_07_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,27 @@
+2821,2824c2821,2822
+< 
+< 
+< 
+< void CWE126_Buffer_Overread__CWE129_fgets_67b_badSink(CWE126_Buffer_Overread__CWE129_fgets_67_structType myStruct)
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_67b.c"
+> void CWE126_Buffer_Overread__CWE129_fgets_67b_goodG2BSink(CWE126_Buffer_Overread__CWE129_fgets_67_structType myStruct)
+2837a2836,2853
+>         }
+>     }
+> }
+> 
+> 
+> void CWE126_Buffer_Overread__CWE129_fgets_67b_goodB2GSink(CWE126_Buffer_Overread__CWE129_fgets_67_structType myStruct)
+> {
+>     int data = myStruct.structFirst;
+>     {
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

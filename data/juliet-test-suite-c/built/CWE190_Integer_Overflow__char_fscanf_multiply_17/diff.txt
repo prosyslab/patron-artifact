@@ -1,0 +1,65 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE190_Integer_Overflow__char_fscanf_multiply_17_bad()
+---
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_17.c"
+> static void goodB2G()
+2819c2817
+<     int i,j;
+---
+>     int i,k;
+2826c2824
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_17.c" 3 4
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_17.c" 3 4
+2828c2826
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_17.c"
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_17.c"
+2830a2829,2857
+>     for(k = 0; k < 1; k++)
+>     {
+>         if(data > 0)
+>         {
+> 
+>             if (data < (0x7f/2))
+>             {
+>                 char result = data * 2;
+>                 printHexCharLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     int h,j;
+>     char data;
+>     data = ' ';
+>     for(h = 0; h < 1; h++)
+>     {
+> 
+>         data = 2;
+>     }
+2840a2868,2873
+> 
+> void CWE190_Integer_Overflow__char_fscanf_multiply_17_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2850a2884,2886
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_fscanf_multiply_17_good();
+>     printLine("Finished good()");
+2856,2858d2891
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_fscanf_multiply_17_bad();
+<     printLine("Finished bad()");

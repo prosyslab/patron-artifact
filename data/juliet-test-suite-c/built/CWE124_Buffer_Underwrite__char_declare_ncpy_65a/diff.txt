@@ -1,0 +1,39 @@
+3239a3240
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_declare_ncpy_65a.c"
+3240a3242,3243
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_declare_ncpy_65a.c"
+> void CWE124_Buffer_Underwrite__char_declare_ncpy_65b_goodG2BSink(char * data);
+3242,3248c3245
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_declare_ncpy_65a.c"
+< void CWE124_Buffer_Underwrite__char_declare_ncpy_65b_badSink(char * data);
+< 
+< void CWE124_Buffer_Underwrite__char_declare_ncpy_65_bad()
+---
+> static void goodG2B()
+3251,3252c3248
+< 
+<     void (*funcPtr) (char *) = CWE124_Buffer_Underwrite__char_declare_ncpy_65b_badSink;
+---
+>     void (*funcPtr) (char *) = CWE124_Buffer_Underwrite__char_declare_ncpy_65b_goodG2BSink;
+3257,3258c3253
+<     data = dataBuffer - 8;
+< 
+---
+>     data = dataBuffer;
+3260a3256,3260
+> 
+> void CWE124_Buffer_Underwrite__char_declare_ncpy_65_good()
+> {
+>     goodG2B();
+> }
+3270a3271,3273
+>     printLine("Calling good()...");
+>     CWE124_Buffer_Underwrite__char_declare_ncpy_65_good();
+>     printLine("Finished good()");
+3276,3278d3278
+<     printLine("Calling bad()...");
+<     CWE124_Buffer_Underwrite__char_declare_ncpy_65_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,57 @@
+3739a3740,3742
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_68a.c"
+> void CWE369_Divide_by_Zero__float_fgets_68b_goodG2BSink();
+> void CWE369_Divide_by_Zero__float_fgets_68b_goodB2GSink();
+3741a3745,3749
+> static void goodG2B()
+> {
+>     float data;
+> 
+>     data = 0.0F;
+3742a3751,3754
+>     data = 2.0F;
+>     CWE369_Divide_by_Zero__float_fgets_68_goodG2BData = data;
+>     CWE369_Divide_by_Zero__float_fgets_68b_goodG2BSink();
+> }
+3744d3755
+< void CWE369_Divide_by_Zero__float_fgets_68b_badSink();
+3746c3757
+< void CWE369_Divide_by_Zero__float_fgets_68_bad()
+---
+> static void goodB2G()
+3755c3766
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_68a.c" 3 4
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_68a.c" 3 4
+3757c3768
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_68a.c"
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_68a.c"
+3759c3770
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_68a.c" 3 4
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_68a.c" 3 4
+3761c3772
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_68a.c"
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_68a.c"
+3772,3773c3783,3790
+<     CWE369_Divide_by_Zero__float_fgets_68_badData = data;
+<     CWE369_Divide_by_Zero__float_fgets_68b_badSink();
+---
+>     CWE369_Divide_by_Zero__float_fgets_68_goodB2GData = data;
+>     CWE369_Divide_by_Zero__float_fgets_68b_goodB2GSink();
+> }
+> 
+> void CWE369_Divide_by_Zero__float_fgets_68_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3784a3802,3804
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__float_fgets_68_good();
+>     printLine("Finished good()");
+3790,3792d3809
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__float_fgets_68_bad();
+<     printLine("Finished bad()");

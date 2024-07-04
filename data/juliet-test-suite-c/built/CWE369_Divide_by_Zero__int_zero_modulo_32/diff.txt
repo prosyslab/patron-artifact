@@ -1,0 +1,51 @@
+2813a2814,2829
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_zero_modulo_32.c"
+> static void goodG2B()
+> {
+>     int data;
+>     int *dataPtr1 = &data;
+>     int *dataPtr2 = &data;
+> 
+>     data = -1;
+>     {
+>         int data = *dataPtr1;
+> 
+>         data = 7;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         int data = *dataPtr2;
+2814a2831,2833
+>         printIntLine(100 % data);
+>     }
+> }
+2817c2836
+< void CWE369_Divide_by_Zero__int_zero_modulo_32_bad()
+---
+> static void goodB2G()
+2833c2852,2859
+<         printIntLine(100 % data);
+---
+>         if( data != 0 )
+>         {
+>             printIntLine(100 % data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+2835a2862,2867
+> 
+> void CWE369_Divide_by_Zero__int_zero_modulo_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2845a2878,2880
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_zero_modulo_32_good();
+>     printLine("Finished good()");
+2851,2853d2885
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_zero_modulo_32_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,53 @@
+5330a5331,5347
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68b.c"
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68b_goodG2BSink()
+> {
+>     size_t data = CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68_goodG2BData;
+>     {
+>         char * myString;
+> 
+> 
+> 
+>         if (data > strlen("hello"))
+>         {
+>             myString = (char *)malloc(data*sizeof(char));
+>             if (myString == 
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68b.c" 3 4
+>                            ((void *)0)
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68b.c"
+>                                ) {exit(-1);}
+5331a5349,5358
+>             strcpy(myString, "hello");
+>             printLine(myString);
+>             free(myString);
+>         }
+>         else
+>         {
+>             printLine("Input is less than the length of the source string");
+>         }
+>     }
+> }
+5334c5361
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68b_badSink()
+---
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68b_goodB2GSink()
+5336c5363
+<     size_t data = CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68_badData;
+---
+>     size_t data = CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68_goodB2GData;
+5342c5369
+<         if (data > strlen("hello"))
+---
+>         if (data > strlen("hello") && data < 100)
+5346c5373
+< # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68b.c" 3 4
+---
+> # 119 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68b.c" 3 4
+5348c5375
+< # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68b.c"
+---
+> # 119 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_68b.c"
+5357c5384
+<             printLine("Input is less than the length of the source string");
+---
+>             printLine("Input is less than the length of the source string or too large");

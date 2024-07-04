@@ -1,0 +1,109 @@
+2813a2814,2816
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c"
+> static int goodG2B1Static = 0;
+> static int goodG2B2Static = 0;
+2815a2819,2822
+> static twoIntsStruct * goodG2B1Source(twoIntsStruct * data)
+> {
+>     if(goodG2B1Static)
+>     {
+2816a2824,2827
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2818c2829,2837
+< static int badStatic = 0;
+---
+>         data = (twoIntsStruct *)malloc(100*sizeof(twoIntsStruct));
+>         if (data == 
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c" 3 4
+>                    ((void *)0)
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c"
+>                        ) {exit(-1);}
+>     }
+>     return data;
+> }
+2820c2839
+< static twoIntsStruct * badSource(twoIntsStruct * data)
+---
+> static void goodG2B1()
+2822c2841,2848
+<     if(badStatic)
+---
+>     twoIntsStruct * data;
+>     data = 
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c" 3 4
+>           ((void *)0)
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c"
+>               ;
+>     goodG2B1Static = 0;
+>     data = goodG2B1Source(data);
+2823a2850,2852
+>         twoIntsStruct source[100];
+>         {
+>             size_t i;
+2825c2854,2873
+<         data = (twoIntsStruct *)malloc(50*sizeof(twoIntsStruct));
+---
+>             for (i = 0; i < 100; i++)
+>             {
+>                 source[i].intOne = 0;
+>                 source[i].intTwo = 0;
+>             }
+>         }
+> 
+>         memcpy(data, source, 100*sizeof(twoIntsStruct));
+>         printStructLine(&data[0]);
+>         free(data);
+>     }
+> }
+> 
+> 
+> static twoIntsStruct * goodG2B2Source(twoIntsStruct * data)
+> {
+>     if(goodG2B2Static)
+>     {
+> 
+>         data = (twoIntsStruct *)malloc(100*sizeof(twoIntsStruct));
+2827c2875
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c" 3 4
+---
+> # 115 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c" 3 4
+2829c2877
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c"
+---
+> # 115 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c"
+2835c2883
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21_bad()
+---
+> static void goodG2B2()
+2839c2887
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c" 3 4
+---
+> # 123 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c" 3 4
+2841c2889
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c"
+---
+> # 123 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21.c"
+2843,2844c2891,2892
+<     badStatic = 1;
+<     data = badSource(data);
+---
+>     goodG2B2Static = 1;
+>     data = goodG2B2Source(data);
+2861a2910,2915
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2871a2926,2928
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21_good();
+>     printLine("Finished good()");
+2877,2879d2933
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memcpy_21_bad();
+<     printLine("Finished bad()");

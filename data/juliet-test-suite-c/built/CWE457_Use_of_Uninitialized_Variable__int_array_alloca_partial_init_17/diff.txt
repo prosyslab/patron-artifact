@@ -1,0 +1,93 @@
+2813a2814,2829
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c"
+> static void goodB2G()
+> {
+>     int i,k;
+>     int * data;
+>     data = (int *)
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c" 3 4
+>                  __builtin_alloca (
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c"
+>                  10*sizeof(int)
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c" 3 4
+>                  )
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c"
+>                                        ;
+>     for(i = 0; i < 1; i++)
+>     {
+2814a2831,2840
+>         {
+>             int i;
+>             for(i=0; i<(10/2); i++)
+>             {
+>                 data[i] = i;
+>             }
+>         }
+>     }
+>     for(k = 0; k < 1; k++)
+>     {
+2815a2842,2857
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printIntLine(data[i]);
+>             }
+>         }
+>     }
+> }
+2817c2859,2860
+< void CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17_bad()
+---
+> 
+> static void goodG2B()
+2819c2862
+<     int i,j;
+---
+>     int h,j;
+2822c2865
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c" 3 4
+---
+> # 97 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c" 3 4
+2824c2867
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c"
+---
+> # 97 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c"
+2826c2869
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c" 3 4
+---
+> # 97 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c" 3 4
+2828c2871
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c"
+---
+> # 97 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17.c"
+2830c2873
+<     for(i = 0; i < 1; i++)
+---
+>     for(h = 0; h < 1; h++)
+2835c2878
+<             for(i=0; i<(10/2); i++)
+---
+>             for(i=0; i<10; i++)
+2852a2896,2901
+> 
+> void CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2862a2912,2914
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17_good();
+>     printLine("Finished good()");
+2868,2870d2919
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_17_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,27 @@
+4907,4910c4907,4908
+< 
+< 
+< 
+< void CWE127_Buffer_Underread__CWE839_connect_socket_67b_badSink(CWE127_Buffer_Underread__CWE839_connect_socket_67_structType myStruct)
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_connect_socket_67b.c"
+> void CWE127_Buffer_Underread__CWE839_connect_socket_67b_goodG2BSink(CWE127_Buffer_Underread__CWE839_connect_socket_67_structType myStruct)
+4923a4922,4939
+>         }
+>     }
+> }
+> 
+> 
+> void CWE127_Buffer_Underread__CWE839_connect_socket_67b_goodB2GSink(CWE127_Buffer_Underread__CWE839_connect_socket_67_structType myStruct)
+> {
+>     int data = myStruct.structFirst;
+>     {
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

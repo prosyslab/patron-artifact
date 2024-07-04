@@ -1,0 +1,57 @@
+2813a2814,2817
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22b.c"
+> extern int CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22_goodB2G1Global;
+> extern int CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22_goodB2G2Global;
+> extern int CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22_goodG2BGlobal;
+2815a2820,2847
+> void CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22_goodB2G1Sink(unsigned int data)
+> {
+>     if(CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22_goodB2G1Global)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if (data > 0)
+>         {
+>             --data;
+>             unsigned int result = data;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> void CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22_goodB2G2Sink(unsigned int data)
+> {
+>     if(CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22_goodB2G2Global)
+>     {
+2816a2849,2860
+>         if (data > 0)
+>         {
+>             --data;
+>             unsigned int result = data;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+2818d2861
+< extern int CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22_badGlobal;
+2820c2863
+< void CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22_badSink(unsigned int data)
+---
+> void CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22_goodG2BSink(unsigned int data)
+2822c2865
+<     if(CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22_badGlobal)
+---
+>     if(CWE191_Integer_Underflow__unsigned_int_fscanf_predec_22_goodG2BGlobal)

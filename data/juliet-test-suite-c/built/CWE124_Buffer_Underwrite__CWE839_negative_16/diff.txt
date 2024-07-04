@@ -1,0 +1,61 @@
+2813a2814,2817
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__CWE839_negative_16.c"
+> static void goodB2G()
+> {
+>     int data;
+2814a2819,2830
+>     data = -1;
+>     while(1)
+>     {
+> 
+>         data = -5;
+>         break;
+>     }
+>     while(1)
+>     {
+>         {
+>             int i;
+>             int buffer[10] = { 0 };
+2815a2832,2834
+>             if (data >= 0 && data < (10))
+>             {
+>                 buffer[data] = 1;
+2817c2836,2851
+< void CWE124_Buffer_Underwrite__CWE839_negative_16_bad()
+---
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+2825c2859,2860
+<         data = -5;
+---
+> 
+>         data = 7;
+2851a2887,2892
+> 
+> void CWE124_Buffer_Underwrite__CWE839_negative_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2861a2903,2905
+>     printLine("Calling good()...");
+>     CWE124_Buffer_Underwrite__CWE839_negative_16_good();
+>     printLine("Finished good()");
+2867,2869d2910
+<     printLine("Calling bad()...");
+<     CWE124_Buffer_Underwrite__CWE839_negative_16_bad();
+<     printLine("Finished bad()");

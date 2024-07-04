@@ -1,0 +1,28 @@
+3239a3240
+> # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_53d.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_53d.c"
+< void CWE690_NULL_Deref_From_Return__struct_calloc_53d_badSink(twoIntsStruct * data)
+---
+> # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_53d.c"
+> void CWE690_NULL_Deref_From_Return__struct_calloc_53d_goodB2GSink(twoIntsStruct * data)
+3248,3251c3246,3256
+<     data[0].intOne = 1;
+<     data[0].intTwo = 1;
+<     printStructLine(&data[0]);
+<     free(data);
+---
+>     if (data != 
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_53d.c" 3 4
+>                ((void *)0)
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_53d.c"
+>                    )
+>     {
+>         data[0].intOne = 1;
+>         data[0].intTwo = 1;
+>         printStructLine(&data[0]);
+>         free(data);
+>     }

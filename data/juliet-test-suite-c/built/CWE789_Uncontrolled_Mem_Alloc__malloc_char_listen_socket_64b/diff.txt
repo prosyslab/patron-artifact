@@ -1,0 +1,51 @@
+5325c5325
+< # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b.c"
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b.c"
+5327,5328c5327,5328
+< # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b.c"
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b_badSink(void * dataVoidPtr)
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b.c"
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b_goodG2BSink(void * dataVoidPtr)
+5343c5343
+< # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b.c" 3 4
+---
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b.c" 3 4
+5345c5345
+< # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b.c"
+---
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b.c"
+5354a5355,5386
+>         }
+>     }
+> }
+> 
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b_goodB2GSink(void * dataVoidPtr)
+> {
+> 
+>     size_t * dataPtr = (size_t *)dataVoidPtr;
+> 
+>     size_t data = (*dataPtr);
+>     {
+>         char * myString;
+> 
+> 
+> 
+>         if (data > strlen("hello") && data < 100)
+>         {
+>             myString = (char *)malloc(data*sizeof(char));
+>             if (myString == 
+> # 124 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b.c" 3 4
+>                            ((void *)0)
+> # 124 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_64b.c"
+>                                ) {exit(-1);}
+> 
+>             strcpy(myString, "hello");
+>             printLine(myString);
+>             free(myString);
+>         }
+>         else
+>         {
+>             printLine("Input is less than the length of the source string or too large");

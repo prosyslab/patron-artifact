@@ -1,0 +1,47 @@
+3245,3248c3245,3246
+< 
+< 
+< 
+< static void badSink()
+---
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45.c"
+> static void goodG2BSink()
+3250c3248
+<     char * data = CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45_badData;
+---
+>     char * data = CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45_goodG2BData;
+3266c3264
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45_bad()
+---
+> static void goodG2B()
+3271c3269
+< # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45.c" 3 4
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45.c" 3 4
+3273c3271
+< # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45.c"
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45.c"
+3276,3279c3274,3282
+<     memset(data, 'A', 100-1);
+<     data[100-1] = '\0';
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45_badData = data;
+<     badSink();
+---
+>     memset(data, 'A', 50-1);
+>     data[50-1] = '\0';
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45_good()
+> {
+>     goodG2B();
+3290a3294,3296
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45_good();
+>     printLine("Finished good()");
+3296,3298d3301
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_loop_45_bad();
+<     printLine("Finished bad()");

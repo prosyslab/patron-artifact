@@ -1,0 +1,45 @@
+3239a3240
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memmove_16.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memmove_16.c"
+< void CWE127_Buffer_Underread__char_alloca_memmove_16_bad()
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memmove_16.c"
+> static void goodG2B()
+3249c3247
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memmove_16.c" 3 4
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memmove_16.c" 3 4
+3251c3249
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memmove_16.c"
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memmove_16.c"
+3253c3251
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memmove_16.c" 3 4
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memmove_16.c" 3 4
+3255c3253
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memmove_16.c"
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memmove_16.c"
+3262c3260
+<         data = dataBuffer - 8;
+---
+>         data = dataBuffer;
+3275a3274,3278
+> 
+> void CWE127_Buffer_Underread__char_alloca_memmove_16_good()
+> {
+>     goodG2B();
+> }
+3285a3289,3291
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__char_alloca_memmove_16_good();
+>     printLine("Finished good()");
+3291,3293d3296
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__char_alloca_memmove_16_bad();
+<     printLine("Finished bad()");

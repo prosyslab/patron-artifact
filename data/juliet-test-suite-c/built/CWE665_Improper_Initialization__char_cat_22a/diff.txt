@@ -1,0 +1,57 @@
+3239a3240
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_cat_22a.c"
+3240a3242,3244
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_cat_22a.c"
+> int CWE665_Improper_Initialization__char_cat_22_goodG2B1Global = 0;
+> int CWE665_Improper_Initialization__char_cat_22_goodG2B2Global = 0;
+3242a3247
+> char * CWE665_Improper_Initialization__char_cat_22_goodG2B1Source(char * data);
+3243a3249,3259
+> static void goodG2B1()
+> {
+>     char * data;
+>     char dataBuffer[100];
+>     data = dataBuffer;
+>     CWE665_Improper_Initialization__char_cat_22_goodG2B1Global = 0;
+>     data = CWE665_Improper_Initialization__char_cat_22_goodG2B1Source(data);
+>     {
+>         char source[100];
+>         memset(source, 'C', 100-1);
+>         source[100-1] = '\0';
+3245,3246c3261,3264
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_cat_22a.c"
+< int CWE665_Improper_Initialization__char_cat_22_badGlobal = 0;
+---
+>         strcat(data, source);
+>         printLine(data);
+>     }
+> }
+3248d3265
+< char * CWE665_Improper_Initialization__char_cat_22_badSource(char * data);
+3250c3267,3269
+< void CWE665_Improper_Initialization__char_cat_22_bad()
+---
+> char * CWE665_Improper_Initialization__char_cat_22_goodG2B2Source(char * data);
+> 
+> static void goodG2B2()
+3255,3256c3274,3275
+<     CWE665_Improper_Initialization__char_cat_22_badGlobal = 1;
+<     data = CWE665_Improper_Initialization__char_cat_22_badSource(data);
+---
+>     CWE665_Improper_Initialization__char_cat_22_goodG2B2Global = 1;
+>     data = CWE665_Improper_Initialization__char_cat_22_goodG2B2Source(data);
+3265a3285,3290
+> 
+> void CWE665_Improper_Initialization__char_cat_22_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3275a3301,3303
+>     printLine("Calling good()...");
+>     CWE665_Improper_Initialization__char_cat_22_good();
+>     printLine("Finished good()");
+3281,3283d3308
+<     printLine("Calling bad()...");
+<     CWE665_Improper_Initialization__char_cat_22_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,81 @@
+3239a3240
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c"
+3240a3242,3259
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c"
+> static void goodG2B1()
+> {
+>     char * data;
+>     char * dataBuffer = (char *)
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c" 3 4
+>                                __builtin_alloca (
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c"
+>                                100*sizeof(char)
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c" 3 4
+>                                )
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c"
+>                                                        ;
+>     memset(dataBuffer, 'A', 100-1);
+>     dataBuffer[100-1] = '\0';
+>     switch(5)
+>     {
+>     case 6:
+3241a3261,3263
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+3242a3265,3271
+>         data = dataBuffer;
+>         break;
+>     }
+>     {
+>         char dest[100];
+>         memset(dest, 'C', 100-1);
+>         dest[100-1] = '\0';
+3244,3245c3273,3281
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c"
+< void CWE127_Buffer_Underread__char_alloca_memcpy_15_bad()
+---
+>         memcpy(dest, data, 100*sizeof(char));
+> 
+>         dest[100-1] = '\0';
+>         printLine(dest);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+3249c3285
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c" 3 4
+---
+> # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c" 3 4
+3251c3287
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c"
+---
+> # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c"
+3253c3289
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c" 3 4
+---
+> # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c" 3 4
+3255c3291
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c"
+---
+> # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_15.c"
+3263c3299
+<         data = dataBuffer - 8;
+---
+>         data = dataBuffer;
+3280a3317,3322
+> 
+> void CWE127_Buffer_Underread__char_alloca_memcpy_15_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3290a3333,3335
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__char_alloca_memcpy_15_good();
+>     printLine("Finished good()");
+3296,3298d3340
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__char_alloca_memcpy_15_bad();
+<     printLine("Finished bad()");

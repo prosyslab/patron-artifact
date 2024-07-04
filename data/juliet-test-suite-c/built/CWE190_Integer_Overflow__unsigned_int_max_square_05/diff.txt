@@ -1,0 +1,123 @@
+3739a3740,3746
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_05.c"
+> static void goodB2G1()
+> {
+>     unsigned int data;
+>     data = 0;
+>     if(staticTrue)
+>     {
+3740a3748,3755
+>         data = 
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_05.c" 3 4
+>               (0x7fffffff * 2U + 1U)
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_05.c"
+>                       ;
+>     }
+>     if(staticFalse)
+>     {
+3741a3757,3760
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3743c3762,3779
+< void CWE190_Integer_Overflow__unsigned_int_max_square_05_bad()
+---
+>         if (abs((long)data) < (long)sqrt((double)
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_05.c" 3 4
+>                                                 (0x7fffffff * 2U + 1U)
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_05.c"
+>                                                         ))
+>         {
+>             unsigned int result = data * data;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+3751c3787
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_05.c" 3 4
+---
+> # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_05.c" 3 4
+3753c3789
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_05.c"
+---
+> # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_05.c"
+3757a3794,3847
+> 
+>         if (abs((long)data) < (long)sqrt((double)
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_05.c" 3 4
+>                                                 (0x7fffffff * 2U + 1U)
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_05.c"
+>                                                         ))
+>         {
+>             unsigned int result = data * data;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     unsigned int data;
+>     data = 0;
+>     if(staticFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2;
+>     }
+>     if(staticTrue)
+>     {
+>         {
+> 
+>             unsigned int result = data * data;
+>             printUnsignedLine(result);
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     unsigned int data;
+>     data = 0;
+>     if(staticTrue)
+>     {
+> 
+>         data = 2;
+>     }
+>     if(staticTrue)
+>     {
+3764a3855,3862
+> 
+> void CWE190_Integer_Overflow__unsigned_int_max_square_05_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3774a3873,3875
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__unsigned_int_max_square_05_good();
+>     printLine("Finished good()");
+3780,3782d3880
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__unsigned_int_max_square_05_bad();
+<     printLine("Finished bad()");

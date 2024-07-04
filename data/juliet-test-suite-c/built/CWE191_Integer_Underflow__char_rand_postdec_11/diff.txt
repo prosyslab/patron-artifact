@@ -1,0 +1,114 @@
+2813a2814,2820
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_rand_postdec_11.c"
+> static void goodB2G1()
+> {
+>     char data;
+>     data = ' ';
+>     if(globalReturnsTrue())
+>     {
+2814a2822,2825
+>         data = (char)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>     }
+>     if(globalReturnsFalse())
+>     {
+2815a2827,2830
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2817c2832,2850
+< void CWE191_Integer_Underflow__char_rand_postdec_11_bad()
+---
+>         if (data > 
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_rand_postdec_11.c" 3 4
+>                   (-0x7f - 1)
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_rand_postdec_11.c"
+>                           )
+>         {
+>             data--;
+>             char result = data;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2827a2861,2895
+> 
+>         if (data > 
+> # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_rand_postdec_11.c" 3 4
+>                   (-0x7f - 1)
+> # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_rand_postdec_11.c"
+>                           )
+>         {
+>             data--;
+>             char result = data;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     char data;
+>     data = ' ';
+>     if(globalReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = -2;
+>     }
+>     if(globalReturnsTrue())
+>     {
+2835a2904,2932
+> 
+> 
+> static void goodG2B2()
+> {
+>     char data;
+>     data = ' ';
+>     if(globalReturnsTrue())
+>     {
+> 
+>         data = -2;
+>     }
+>     if(globalReturnsTrue())
+>     {
+>         {
+> 
+>             data--;
+>             char result = data;
+>             printHexCharLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE191_Integer_Underflow__char_rand_postdec_11_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2845a2943,2945
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__char_rand_postdec_11_good();
+>     printLine("Finished good()");
+2851,2853d2950
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__char_rand_postdec_11_bad();
+<     printLine("Finished bad()");

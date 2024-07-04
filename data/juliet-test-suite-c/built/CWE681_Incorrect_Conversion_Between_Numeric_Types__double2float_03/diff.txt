@@ -1,0 +1,92 @@
+2816a2817,2830
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c"
+> static void good1()
+> {
+>     if(5!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             char inputBuffer[256];
+>             double doubleNumber = 0;
+> 
+2821c2835,2866
+< void CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03_bad()
+---
+>             if (fgets(inputBuffer, 256, 
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c" 3 4
+>                                                    stdin
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c"
+>                                                         ) != 
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c" 3 4
+>                                                              ((void *)0)
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c"
+>                                                                  )
+>             {
+> 
+>                 doubleNumber = atof(inputBuffer);
+>             }
+>             else
+>             {
+>                 printLine("fgets() failed.");
+>             }
+> 
+>             if (doubleNumber > 3.40282346638528859811704183484516925e+38F || doubleNumber < 1.17549435082228750796873653722224568e-38F)
+>             {
+>                 printLine("Value is too small or large to be represented as a float");
+>             }
+>             else
+>             {
+>                 printFloatLine((float)doubleNumber);
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void good2()
+2834c2879
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c" 3 4
+---
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c" 3 4
+2836c2881
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c"
+---
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c"
+2838c2883
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c" 3 4
+---
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c" 3 4
+2840c2885
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c"
+---
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03.c"
+2851c2896,2903
+<             printFloatLine((float)doubleNumber);
+---
+>             if (doubleNumber > 3.40282346638528859811704183484516925e+38F || doubleNumber < 1.17549435082228750796873653722224568e-38F)
+>             {
+>                 printLine("Value is too small or large to be represented as a float");
+>             }
+>             else
+>             {
+>                 printFloatLine((float)doubleNumber);
+>             }
+2854a2907,2912
+> 
+> void CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03_good()
+> {
+>     good1();
+>     good2();
+> }
+2864a2923,2925
+>     printLine("Calling good()...");
+>     CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03_good();
+>     printLine("Finished good()");
+2870,2872d2930
+<     printLine("Calling bad()...");
+<     CWE681_Incorrect_Conversion_Between_Numeric_Types__double2float_03_bad();
+<     printLine("Finished bad()");

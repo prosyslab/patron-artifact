@@ -1,0 +1,137 @@
+2819a2820,2823
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_large_04.c"
+> static void goodB2G1()
+> {
+>     int data;
+2820a2825,2857
+>     data = -1;
+>     if(STATIC_CONST_TRUE)
+>     {
+> 
+>         data = 10;
+>     }
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             int i;
+>             int buffer[10] = { 0 };
+> 
+>             if (data >= 0 && data < (10))
+>             {
+>                 buffer[data] = 1;
+> 
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>     }
+> }
+2823c2860
+< void CWE121_Stack_Based_Buffer_Overflow__CWE129_large_04_bad()
+---
+> static void goodB2G2()
+2838a2876,2951
+>             if (data >= 0 && data < (10))
+>             {
+>                 buffer[data] = 1;
+> 
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+> 
+>         data = 7;
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+>         {
+>             int i;
+>             int buffer[10] = { 0 };
+> 
+> 
+>             if (data >= 0)
+>             {
+>                 buffer[data] = 1;
+> 
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is negative.");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(STATIC_CONST_TRUE)
+>     {
+> 
+> 
+>         data = 7;
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+>         {
+>             int i;
+>             int buffer[10] = { 0 };
+> 
+2855a2969,2976
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE129_large_04_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2865a2987,2989
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE129_large_04_good();
+>     printLine("Finished good()");
+2871,2873d2994
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE129_large_04_bad();
+<     printLine("Finished bad()");

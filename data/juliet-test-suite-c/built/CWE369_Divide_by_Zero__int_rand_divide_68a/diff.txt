@@ -1,0 +1,41 @@
+2817a2818,2820
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_rand_divide_68a.c"
+> void CWE369_Divide_by_Zero__int_rand_divide_68b_goodG2BSink();
+> void CWE369_Divide_by_Zero__int_rand_divide_68b_goodB2GSink();
+2819a2823,2827
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = -1;
+2820a2829,2832
+>     data = 7;
+>     CWE369_Divide_by_Zero__int_rand_divide_68_goodG2BData = data;
+>     CWE369_Divide_by_Zero__int_rand_divide_68b_goodG2BSink();
+> }
+2822d2833
+< void CWE369_Divide_by_Zero__int_rand_divide_68b_badSink();
+2824c2835
+< void CWE369_Divide_by_Zero__int_rand_divide_68_bad()
+---
+> static void goodB2G()
+2831,2832c2842,2849
+<     CWE369_Divide_by_Zero__int_rand_divide_68_badData = data;
+<     CWE369_Divide_by_Zero__int_rand_divide_68b_badSink();
+---
+>     CWE369_Divide_by_Zero__int_rand_divide_68_goodB2GData = data;
+>     CWE369_Divide_by_Zero__int_rand_divide_68b_goodB2GSink();
+> }
+> 
+> void CWE369_Divide_by_Zero__int_rand_divide_68_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2843a2861,2863
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_rand_divide_68_good();
+>     printLine("Finished good()");
+2849,2851d2868
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_rand_divide_68_bad();
+<     printLine("Finished bad()");

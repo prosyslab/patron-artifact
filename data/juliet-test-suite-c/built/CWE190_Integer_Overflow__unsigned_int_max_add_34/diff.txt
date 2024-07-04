@@ -1,0 +1,60 @@
+2819a2820,2825
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_add_34.c"
+> static void goodG2B()
+> {
+>     unsigned int data;
+>     CWE190_Integer_Overflow__unsigned_int_max_add_34_unionType myUnion;
+>     data = 0;
+2820a2827,2837
+>     data = 2;
+>     myUnion.unionFirst = data;
+>     {
+>         unsigned int data = myUnion.unionSecond;
+>         {
+> 
+>             unsigned int result = data + 1;
+>             printUnsignedLine(result);
+>         }
+>     }
+> }
+2823c2840
+< void CWE190_Integer_Overflow__unsigned_int_max_add_34_bad()
+---
+> static void goodB2G()
+2830c2847
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_add_34.c" 3 4
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_add_34.c" 3 4
+2832c2849
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_add_34.c"
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_add_34.c"
+2837d2853
+<         {
+2838a2855,2860
+>         if (data < 
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_add_34.c" 3 4
+>                   (0x7fffffff * 2U + 1U)
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_add_34.c"
+>                           )
+>         {
+2841a2864,2867
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2843a2870,2875
+> 
+> void CWE190_Integer_Overflow__unsigned_int_max_add_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2853a2886,2888
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__unsigned_int_max_add_34_good();
+>     printLine("Finished good()");
+2859,2861d2893
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__unsigned_int_max_add_34_bad();
+<     printLine("Finished bad()");

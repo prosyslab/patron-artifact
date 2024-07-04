@@ -1,0 +1,67 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE675_Duplicate_Operations_on_Resource__freopen_17_bad()
+---
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_17.c"
+> static void goodB2G()
+2819c2817
+<     int i,j;
+---
+>     int i,k;
+2822c2820
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_17.c" 3 4
+---
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_17.c" 3 4
+2824c2822
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_17.c"
+---
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_17.c"
+2829c2827
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_17.c" 3 4
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_17.c" 3 4
+2831c2829
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_17.c"
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_17.c"
+2835a2834,2856
+>     for(k = 0; k < 1; k++)
+>     {
+> 
+> 
+>         ;
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     int h,j;
+>     FILE * data;
+>     data = 
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_17.c" 3 4
+>           ((void *)0)
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_17.c"
+>               ;
+>     for(h = 0; h < 1; h++)
+>     {
+> 
+>         data = fopen("GoodSource_fopen.txt", "w+");
+>     }
+2841a2863,2868
+> 
+> void CWE675_Duplicate_Operations_on_Resource__freopen_17_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2851a2879,2881
+>     printLine("Calling good()...");
+>     CWE675_Duplicate_Operations_on_Resource__freopen_17_good();
+>     printLine("Finished good()");
+2857,2859d2886
+<     printLine("Calling bad()...");
+<     CWE675_Duplicate_Operations_on_Resource__freopen_17_bad();
+<     printLine("Finished bad()");

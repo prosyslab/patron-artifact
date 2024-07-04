@@ -1,0 +1,35 @@
+3239a3240
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE475_Undefined_Behavior_for_Input_to_API/CWE475_Undefined_Behavior_for_Input_to_API__char_17.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 22 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE475_Undefined_Behavior_for_Input_to_API/CWE475_Undefined_Behavior_for_Input_to_API__char_17.c"
+< void CWE475_Undefined_Behavior_for_Input_to_API__char_17_bad()
+---
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE475_Undefined_Behavior_for_Input_to_API/CWE475_Undefined_Behavior_for_Input_to_API__char_17.c"
+> static void good1()
+3247,3248c3245,3246
+<     int j;
+<     for(j = 0; j < 1; j++)
+---
+>     int k;
+>     for(k = 0; k < 1; k++)
+3255c3253
+<             memcpy(data + 6, data + 4, 10*sizeof(char));
+---
+>             memmove(data + 6, data + 4, 10*sizeof(char));
+3259a3258,3262
+> 
+> void CWE475_Undefined_Behavior_for_Input_to_API__char_17_good()
+> {
+>     good1();
+> }
+3269a3273,3275
+>     printLine("Calling good()...");
+>     CWE475_Undefined_Behavior_for_Input_to_API__char_17_good();
+>     printLine("Finished good()");
+3275,3277d3280
+<     printLine("Calling bad()...");
+<     CWE475_Undefined_Behavior_for_Input_to_API__char_17_bad();
+<     printLine("Finished bad()");

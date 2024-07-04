@@ -1,0 +1,48 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< static void badSink(short data)
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_malloc_44.c"
+> static void goodG2BSink(short data)
+2826c2824
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_malloc_44.c" 3 4
+---
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_malloc_44.c" 3 4
+2828c2826
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_malloc_44.c"
+---
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_malloc_44.c"
+2838c2836
+< void CWE194_Unexpected_Sign_Extension__fscanf_malloc_44_bad()
+---
+> static void goodG2B()
+2841,2842c2839
+< 
+<     void (*funcPtr) (short) = badSink;
+---
+>     void (*funcPtr) (short) = goodG2BSink;
+2846,2851c2843
+<     fscanf (
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_malloc_44.c" 3 4
+<            stdin
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_malloc_44.c"
+<                 , "%hd", &data);
+< 
+---
+>     data = 100-1;
+2853a2846,2850
+> 
+> void CWE194_Unexpected_Sign_Extension__fscanf_malloc_44_good()
+> {
+>     goodG2B();
+> }
+2863a2861,2863
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__fscanf_malloc_44_good();
+>     printLine("Finished good()");
+2869,2871d2868
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__fscanf_malloc_44_bad();
+<     printLine("Finished bad()");

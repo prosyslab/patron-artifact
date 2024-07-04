@@ -1,0 +1,86 @@
+2819a2820,2839
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06.c"
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(STATIC_CONST_FIVE!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 100-1;
+>     }
+> 
+>     if (data < 100)
+>     {
+> 
+2820a2841,2853
+>         char * dataBuffer = (char *)malloc(data);
+>         if (dataBuffer == 
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06.c" 3 4
+>                          ((void *)0)
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06.c"
+>                              ) {exit(-1);}
+> 
+>         memset(dataBuffer, 'A', data-1);
+>         dataBuffer[data-1] = '\0';
+>         printLine(dataBuffer);
+>         free(dataBuffer);
+>     }
+> }
+2823c2856
+< void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06_bad()
+---
+> static void goodG2B2()
+2830,2831d2862
+<         {
+<             char inputBuffer[(3 * sizeof(data) + 2)] = "";
+2833,2850c2864
+<             if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06.c" 3 4
+<                                                    stdin
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06.c"
+<                                                         ) != 
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06.c" 3 4
+<                                                              ((void *)0)
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06.c"
+<                                                                  )
+<             {
+< 
+<                 data = atoi(inputBuffer);
+<             }
+<             else
+<             {
+<                 printLine("fgets() failed.");
+<             }
+<         }
+---
+>         data = 100-1;
+2859c2873
+< # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06.c" 3 4
+---
+> # 115 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06.c" 3 4
+2861c2875
+< # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06.c"
+---
+> # 115 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06.c"
+2869a2884,2889
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2879a2900,2902
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06_good();
+>     printLine("Finished good()");
+2885,2887d2907
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_malloc_06_bad();
+<     printLine("Finished bad()");

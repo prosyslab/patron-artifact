@@ -1,0 +1,148 @@
+2813a2814,2834
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c"
+> static void goodB2G1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(GLOBAL_CONST_TRUE)
+>     {
+>         {
+>             char inputBuffer[(3 * sizeof(data) + 2)] = "";
+> 
+>             if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c" 3 4
+>                                                    stdin
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c"
+>                                                         ) != 
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c" 3 4
+>                                                              ((void *)0)
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c"
+>                                                                  )
+>             {
+2814a2836,2845
+>                 data = atoi(inputBuffer);
+>             }
+>             else
+>             {
+>                 printLine("fgets() failed.");
+>             }
+>         }
+>     }
+>     if(GLOBAL_CONST_FALSE)
+>     {
+2815a2847,2850
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2816a2852,2866
+>         if (data > 
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c" 3 4
+>                   (-0x7fffffff - 1)
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c"
+>                          )
+>         {
+>             int result = data - 1;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform subtraction.");
+>         }
+>     }
+> }
+2819c2869
+< void CWE191_Integer_Underflow__int_fgets_sub_09_bad()
+---
+> static void goodB2G2()
+2830c2880
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c" 3 4
+---
+> # 112 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c" 3 4
+2832c2882
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c"
+---
+> # 112 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c"
+2834c2884
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c" 3 4
+---
+> # 112 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c" 3 4
+2836c2886
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c"
+---
+> # 112 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c"
+2849a2900,2934
+> 
+>         if (data > 
+> # 126 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c" 3 4
+>                   (-0x7fffffff - 1)
+> # 126 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_09.c"
+>                          )
+>         {
+>             int result = data - 1;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform subtraction.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(GLOBAL_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = -2;
+>     }
+>     if(GLOBAL_CONST_TRUE)
+>     {
+2856a2942,2970
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(GLOBAL_CONST_TRUE)
+>     {
+> 
+>         data = -2;
+>     }
+>     if(GLOBAL_CONST_TRUE)
+>     {
+>         {
+> 
+>             int result = data - 1;
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE191_Integer_Underflow__int_fgets_sub_09_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2866a2981,2983
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_fgets_sub_09_good();
+>     printLine("Finished good()");
+2872,2874d2988
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_fgets_sub_09_bad();
+<     printLine("Finished bad()");

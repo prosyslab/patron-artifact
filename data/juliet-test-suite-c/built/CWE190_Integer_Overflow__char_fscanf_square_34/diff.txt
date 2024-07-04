@@ -1,0 +1,56 @@
+3739a3740,3745
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_34.c"
+> static void goodG2B()
+> {
+>     char data;
+>     CWE190_Integer_Overflow__char_fscanf_square_34_unionType myUnion;
+>     data = ' ';
+3740a3747,3757
+>     data = 2;
+>     myUnion.unionFirst = data;
+>     {
+>         char data = myUnion.unionSecond;
+>         {
+> 
+>             char result = data * data;
+>             printHexCharLine(result);
+>         }
+>     }
+> }
+3743c3760
+< void CWE190_Integer_Overflow__char_fscanf_square_34_bad()
+---
+> static void goodB2G()
+3750c3767
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_34.c" 3 4
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_34.c" 3 4
+3752c3769
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_34.c"
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_34.c"
+3757d3773
+<         {
+3758a3775,3776
+>         if (abs((long)data) <= (long)sqrt((double)0x7f))
+>         {
+3761a3780,3783
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+3763a3786,3791
+> 
+> void CWE190_Integer_Overflow__char_fscanf_square_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3773a3802,3804
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_fscanf_square_34_good();
+>     printLine("Finished good()");
+3779,3781d3809
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_fscanf_square_34_bad();
+<     printLine("Finished bad()");

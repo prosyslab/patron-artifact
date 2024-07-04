@@ -1,0 +1,63 @@
+2813a2814,2823
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_01.c"
+> static void goodG2B()
+> {
+>     double * data;
+>     data = (double *)malloc(10*sizeof(double));
+>     if (data == 
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_01.c" 3 4
+>                ((void *)0)
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_01.c"
+>                    ) {exit(-1);}
+2814a2825,2840
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+>             data[i] = (double)i;
+>         }
+>     }
+> 
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+>             printDoubleLine(data[i]);
+>         }
+>     }
+> }
+2817c2843
+< void CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_01_bad()
+---
+> static void goodB2G()
+2822c2848
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_01.c" 3 4
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_01.c" 3 4
+2824c2850
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_01.c"
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_01.c"
+2832a2859,2865
+>             data[i] = (double)i;
+>         }
+>     }
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+2836a2870,2875
+> 
+> void CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_01_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2846a2886,2888
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_01_good();
+>     printLine("Finished good()");
+2852,2854d2893
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_01_bad();
+<     printLine("Finished bad()");

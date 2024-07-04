@@ -1,0 +1,62 @@
+2813a2814,2819
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_multiply_32.c"
+> static void goodG2B()
+> {
+>     int data;
+>     int *dataPtr1 = &data;
+>     int *dataPtr2 = &data;
+2814a2821,2823
+>     data = 0;
+>     {
+>         int data = *dataPtr1;
+2815a2825,2831
+>         data = -2;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         int data = *dataPtr2;
+>         if(data < 0)
+>         {
+2817c2833,2840
+< void CWE191_Integer_Underflow__int_rand_multiply_32_bad()
+---
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G()
+2835,2836c2858,2870
+<             int result = data * 2;
+<             printIntLine(result);
+---
+>             if (data > (
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_multiply_32.c" 3 4
+>                        (-0x7fffffff - 1)
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_multiply_32.c"
+>                               /2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+2839a2874,2879
+> 
+> void CWE191_Integer_Underflow__int_rand_multiply_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2849a2890,2892
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_rand_multiply_32_good();
+>     printLine("Finished good()");
+2855,2857d2897
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_rand_multiply_32_bad();
+<     printLine("Finished bad()");

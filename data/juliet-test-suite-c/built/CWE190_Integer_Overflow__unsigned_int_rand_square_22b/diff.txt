@@ -1,0 +1,66 @@
+3731a3732
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_22b.c"
+3732a3734,3737
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_22b.c"
+> extern int CWE190_Integer_Overflow__unsigned_int_rand_square_22_goodB2G1Global;
+> extern int CWE190_Integer_Overflow__unsigned_int_rand_square_22_goodB2G2Global;
+> extern int CWE190_Integer_Overflow__unsigned_int_rand_square_22_goodG2BGlobal;
+3734a3740,3770
+> void CWE190_Integer_Overflow__unsigned_int_rand_square_22_goodB2G1Sink(unsigned int data)
+> {
+>     if(CWE190_Integer_Overflow__unsigned_int_rand_square_22_goodB2G1Global)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if (abs((long)data) < (long)sqrt((double)
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_22b.c" 3 4
+>                                                 (0x7fffffff * 2U + 1U)
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_22b.c"
+>                                                         ))
+>         {
+>             unsigned int result = data * data;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> void CWE190_Integer_Overflow__unsigned_int_rand_square_22_goodB2G2Sink(unsigned int data)
+> {
+>     if(CWE190_Integer_Overflow__unsigned_int_rand_square_22_goodB2G2Global)
+>     {
+3735a3772,3786
+>         if (abs((long)data) < (long)sqrt((double)
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_22b.c" 3 4
+>                                                 (0x7fffffff * 2U + 1U)
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_22b.c"
+>                                                         ))
+>         {
+>             unsigned int result = data * data;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+3737,3738d3787
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_22b.c"
+< extern int CWE190_Integer_Overflow__unsigned_int_rand_square_22_badGlobal;
+3740c3789
+< void CWE190_Integer_Overflow__unsigned_int_rand_square_22_badSink(unsigned int data)
+---
+> void CWE190_Integer_Overflow__unsigned_int_rand_square_22_goodG2BSink(unsigned int data)
+3742c3791
+<     if(CWE190_Integer_Overflow__unsigned_int_rand_square_22_badGlobal)
+---
+>     if(CWE190_Integer_Overflow__unsigned_int_rand_square_22_goodG2BGlobal)

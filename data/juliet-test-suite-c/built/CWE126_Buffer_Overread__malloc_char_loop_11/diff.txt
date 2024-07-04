@@ -1,0 +1,93 @@
+3239a3240
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c"
+3240a3242,3252
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c"
+> static void goodG2B1()
+> {
+>     char * data;
+>     data = 
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c" 3 4
+>           ((void *)0)
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c"
+>               ;
+>     if(globalReturnsFalse())
+>     {
+3241a3254,3257
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3242a3259,3284
+>         data = (char *)malloc(100*sizeof(char));
+>         if (data == 
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c" 3 4
+>                    ((void *)0)
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c"
+>                        ) {exit(-1);}
+>         memset(data, 'A', 100-1);
+>         data[100-1] = '\0';
+>     }
+>     {
+>         size_t i, destLen;
+>         char dest[100];
+>         memset(dest, 'C', 100-1);
+>         dest[100-1] = '\0';
+>         destLen = strlen(dest);
+> 
+> 
+>         for (i = 0; i < destLen; i++)
+>         {
+>             dest[i] = data[i];
+>         }
+>         dest[100-1] = '\0';
+>         printLine(dest);
+>         free(data);
+>     }
+> }
+3244,3245c3286,3287
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c"
+< void CWE126_Buffer_Overread__malloc_char_loop_11_bad()
+---
+> 
+> static void goodG2B2()
+3249c3291
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c" 3 4
+---
+> # 97 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c" 3 4
+3251c3293
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c"
+---
+> # 97 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c"
+3256c3298
+<         data = (char *)malloc(50*sizeof(char));
+---
+>         data = (char *)malloc(100*sizeof(char));
+3258c3300
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c" 3 4
+---
+> # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c" 3 4
+3260c3302
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c"
+---
+> # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_11.c"
+3262,3263c3304,3305
+<         memset(data, 'A', 50-1);
+<         data[50-1] = '\0';
+---
+>         memset(data, 'A', 100-1);
+>         data[100-1] = '\0';
+3281a3324,3329
+> 
+> void CWE126_Buffer_Overread__malloc_char_loop_11_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3291a3340,3342
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__malloc_char_loop_11_good();
+>     printLine("Finished good()");
+3297,3299d3347
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__malloc_char_loop_11_bad();
+<     printLine("Finished bad()");

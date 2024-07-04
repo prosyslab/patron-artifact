@@ -1,0 +1,38 @@
+3240c3240
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s07/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_snprintf_17.c"
+---
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s07/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_snprintf_17.c"
+3242,3243c3242,3243
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s07/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_snprintf_17.c"
+< void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_snprintf_17_bad()
+---
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s07/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_snprintf_17.c"
+> static void goodG2B()
+3245c3245
+<     int i;
+---
+>     int h;
+3249c3249
+<     for(i = 0; i < 1; i++)
+---
+>     for(h = 0; h < 1; h++)
+3252,3253c3252,3253
+<         memset(data, 'A', 100-1);
+<         data[100-1] = '\0';
+---
+>         memset(data, 'A', 50-1);
+>         data[50-1] = '\0';
+3261a3262,3266
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_snprintf_17_good()
+> {
+>     goodG2B();
+> }
+3271a3277,3279
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_snprintf_17_good();
+>     printLine("Finished good()");
+3277,3279d3284
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_snprintf_17_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,42 @@
+2818a2819,2820
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67a.c"
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67b_goodG2BSink(CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67_structType myStruct);
+2819a2822,2825
+> static void goodG2B()
+> {
+>     int data;
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67_structType myStruct;
+2820a2827
+>     data = -1;
+2823c2830,2833
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67b_badSink(CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67_structType myStruct);
+---
+>     data = 7;
+>     myStruct.structFirst = data;
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67b_goodG2BSink(myStruct);
+> }
+2825c2835,2838
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67_bad()
+---
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67b_goodB2GSink(CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67_structType myStruct);
+> 
+> static void goodB2G()
+2834c2847,2853
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67b_badSink(myStruct);
+---
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67b_goodB2GSink(myStruct);
+> }
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2845a2865,2867
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67_good();
+>     printLine("Finished good()");
+2851,2853d2872
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE129_rand_67_bad();
+<     printLine("Finished bad()");

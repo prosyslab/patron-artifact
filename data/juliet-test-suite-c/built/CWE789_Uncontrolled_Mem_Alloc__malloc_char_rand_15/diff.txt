@@ -1,0 +1,185 @@
+3240a3241
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c"
+3241a3243,3246
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c"
+> static void goodB2G1()
+> {
+>     size_t data;
+3242a3248,3251
+>     data = 0;
+>     switch(6)
+>     {
+>     case 6:
+3243a3253,3268
+>         data = rand();
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(8)
+>     {
+>     case 7:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+>     {
+>         char * myString;
+3246a3272,3279
+>         if (data > strlen("hello") && data < 100)
+>         {
+>             myString = (char *)malloc(data*sizeof(char));
+>             if (myString == 
+> # 110 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c" 3 4
+>                            ((void *)0)
+> # 110 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c"
+>                                ) {exit(-1);}
+3248,3249c3281,3295
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c"
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15_bad()
+---
+>             strcpy(myString, "hello");
+>             printLine(myString);
+>             free(myString);
+>         }
+>         else
+>         {
+>             printLine("Input is less than the length of the source string or too large");
+>         }
+>     }
+>     break;
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+3272a3319,3420
+>         if (data > strlen("hello") && data < 100)
+>         {
+>             myString = (char *)malloc(data*sizeof(char));
+>             if (myString == 
+> # 153 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c" 3 4
+>                            ((void *)0)
+> # 153 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c"
+>                                ) {exit(-1);}
+> 
+>             strcpy(myString, "hello");
+>             printLine(myString);
+>             free(myString);
+>         }
+>         else
+>         {
+>             printLine("Input is less than the length of the source string or too large");
+>         }
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     size_t data;
+> 
+>     data = 0;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         data = 20;
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>     {
+>         char * myString;
+> 
+> 
+> 
+>         if (data > strlen("hello"))
+>         {
+>             myString = (char *)malloc(data*sizeof(char));
+>             if (myString == 
+> # 200 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c" 3 4
+>                            ((void *)0)
+> # 200 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c"
+>                                ) {exit(-1);}
+> 
+>             strcpy(myString, "hello");
+>             printLine(myString);
+>             free(myString);
+>         }
+>         else
+>         {
+>             printLine("Input is less than the length of the source string");
+>         }
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     size_t data;
+> 
+>     data = 0;
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = 20;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>     {
+>         char * myString;
+> 
+> 
+> 
+3277c3425
+< # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c" 3 4
+---
+> # 247 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c" 3 4
+3279c3427
+< # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c"
+---
+> # 247 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15.c"
+3297a3446,3453
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3307a3464,3466
+>     printLine("Calling good()...");
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15_good();
+>     printLine("Finished good()");
+3313,3315d3471
+<     printLine("Calling bad()...");
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_15_bad();
+<     printLine("Finished bad()");

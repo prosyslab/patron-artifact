@@ -1,0 +1,43 @@
+2813a2814,2815
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_multiply_66a.c"
+> void CWE190_Integer_Overflow__int_max_multiply_66b_goodG2BSink(int dataArray[]);
+2814a2817,2820
+> static void goodG2B()
+> {
+>     int data;
+>     int dataArray[5];
+2815a2822
+>     data = 0;
+2816a2824,2827
+>     data = 2;
+>     dataArray[2] = data;
+>     CWE190_Integer_Overflow__int_max_multiply_66b_goodG2BSink(dataArray);
+> }
+2818d2828
+< void CWE190_Integer_Overflow__int_max_multiply_66b_badSink(int dataArray[]);
+2820c2830,2832
+< void CWE190_Integer_Overflow__int_max_multiply_66_bad()
+---
+> void CWE190_Integer_Overflow__int_max_multiply_66b_goodB2GSink(int dataArray[]);
+> 
+> static void goodB2G()
+2828d2839
+< 
+2830c2841,2847
+<     CWE190_Integer_Overflow__int_max_multiply_66b_badSink(dataArray);
+---
+>     CWE190_Integer_Overflow__int_max_multiply_66b_goodB2GSink(dataArray);
+> }
+> 
+> void CWE190_Integer_Overflow__int_max_multiply_66_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2841a2859,2861
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_max_multiply_66_good();
+>     printLine("Finished good()");
+2847,2849d2866
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_max_multiply_66_bad();
+<     printLine("Finished bad()");

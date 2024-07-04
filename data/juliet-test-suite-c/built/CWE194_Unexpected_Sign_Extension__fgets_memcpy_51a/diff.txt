@@ -1,0 +1,53 @@
+2813a2814,2815
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_memcpy_51a.c"
+> void CWE194_Unexpected_Sign_Extension__fgets_memcpy_51b_goodG2BSink(short data);
+2816,2823c2818
+< 
+< 
+< 
+< 
+< 
+< void CWE194_Unexpected_Sign_Extension__fgets_memcpy_51b_badSink(short data);
+< 
+< void CWE194_Unexpected_Sign_Extension__fgets_memcpy_51_bad()
+---
+> static void goodG2B()
+2828,2829d2822
+<     {
+<         char inputBuffer[8] = "";
+2831,2849c2824,2830
+<         if (fgets(inputBuffer, 8, 
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_memcpy_51a.c" 3 4
+<                                                stdin
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_memcpy_51a.c"
+<                                                     ) != 
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_memcpy_51a.c" 3 4
+<                                                          ((void *)0)
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_memcpy_51a.c"
+<                                                              )
+<         {
+< 
+<             data = (short)atoi(inputBuffer);
+<         }
+<         else
+<         {
+<             printLine("fgets() failed.");
+<         }
+<     }
+<     CWE194_Unexpected_Sign_Extension__fgets_memcpy_51b_badSink(data);
+---
+>     data = 100-1;
+>     CWE194_Unexpected_Sign_Extension__fgets_memcpy_51b_goodG2BSink(data);
+> }
+> 
+> void CWE194_Unexpected_Sign_Extension__fgets_memcpy_51_good()
+> {
+>     goodG2B();
+2860a2842,2844
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__fgets_memcpy_51_good();
+>     printLine("Finished good()");
+2866,2868d2849
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__fgets_memcpy_51_bad();
+<     printLine("Finished bad()");

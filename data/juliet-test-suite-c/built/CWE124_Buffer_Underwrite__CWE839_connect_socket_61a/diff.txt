@@ -1,0 +1,62 @@
+4900c4900
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_connect_socket_61a.c"
+---
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_connect_socket_61a.c"
+4902,4903c4902,4903
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_connect_socket_61a.c"
+< int CWE124_Buffer_Underwrite__CWE839_connect_socket_61b_badSource(int data);
+---
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_connect_socket_61a.c"
+> int CWE124_Buffer_Underwrite__CWE839_connect_socket_61b_goodG2BSource(int data);
+4905c4905
+< void CWE124_Buffer_Underwrite__CWE839_connect_socket_61_bad()
+---
+> static void goodG2B()
+4910c4910
+<     data = CWE124_Buffer_Underwrite__CWE839_connect_socket_61b_badSource(data);
+---
+>     data = CWE124_Buffer_Underwrite__CWE839_connect_socket_61b_goodG2BSource(data);
+4930a4931,4965
+> 
+> 
+> int CWE124_Buffer_Underwrite__CWE839_connect_socket_61b_goodB2GSource(int data);
+> 
+> static void goodB2G()
+> {
+>     int data;
+> 
+>     data = -1;
+>     data = CWE124_Buffer_Underwrite__CWE839_connect_socket_61b_goodB2GSource(data);
+>     {
+>         int i;
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");
+>         }
+>     }
+> }
+> 
+> void CWE124_Buffer_Underwrite__CWE839_connect_socket_61_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+4940a4976,4978
+>     printLine("Calling good()...");
+>     CWE124_Buffer_Underwrite__CWE839_connect_socket_61_good();
+>     printLine("Finished good()");
+4946,4948d4983
+<     printLine("Calling bad()...");
+<     CWE124_Buffer_Underwrite__CWE839_connect_socket_61_bad();
+<     printLine("Finished bad()");

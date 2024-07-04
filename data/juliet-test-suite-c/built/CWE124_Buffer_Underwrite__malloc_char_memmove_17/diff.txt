@@ -1,0 +1,53 @@
+3239a3240
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memmove_17.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memmove_17.c"
+< void CWE124_Buffer_Underwrite__malloc_char_memmove_17_bad()
+---
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memmove_17.c"
+> static void goodG2B()
+3247c3245
+<     int i;
+---
+>     int h;
+3250c3248
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memmove_17.c" 3 4
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memmove_17.c" 3 4
+3252c3250
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memmove_17.c"
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memmove_17.c"
+3254c3252
+<     for(i = 0; i < 1; i++)
+---
+>     for(h = 0; h < 1; h++)
+3259c3257
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memmove_17.c" 3 4
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memmove_17.c" 3 4
+3261c3259
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memmove_17.c"
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__malloc_char_memmove_17.c"
+3266c3264
+<             data = dataBuffer - 8;
+---
+>             data = dataBuffer;
+3281a3280,3284
+> 
+> void CWE124_Buffer_Underwrite__malloc_char_memmove_17_good()
+> {
+>     goodG2B();
+> }
+3291a3295,3297
+>     printLine("Calling good()...");
+>     CWE124_Buffer_Underwrite__malloc_char_memmove_17_good();
+>     printLine("Finished good()");
+3297,3299d3302
+<     printLine("Calling bad()...");
+<     CWE124_Buffer_Underwrite__malloc_char_memmove_17_bad();
+<     printLine("Finished bad()");

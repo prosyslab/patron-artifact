@@ -1,0 +1,48 @@
+3239a3240
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE170_char_memcpy_14.c"
+3240a3242,3246
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE170_char_memcpy_14.c"
+> static void good1()
+> {
+>     if(globalFive!=5)
+>     {
+3241a3248,3262
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             char data[150], dest[100];
+> 
+>             memset(data, 'A', 149);
+>             data[149] = '\0';
+>             memcpy(dest, data, 99*sizeof(char));
+>             dest[99] = '\0';
+>             printLine(dest);
+>         }
+>     }
+> }
+3244,3245c3265
+< # 22 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE170_char_memcpy_14.c"
+< void CWE126_Buffer_Overread__CWE170_char_memcpy_14_bad()
+---
+> static void good2()
+3255c3275
+< 
+---
+>             dest[99] = '\0';
+3259a3280,3285
+> 
+> void CWE126_Buffer_Overread__CWE170_char_memcpy_14_good()
+> {
+>     good1();
+>     good2();
+> }
+3269a3296,3298
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__CWE170_char_memcpy_14_good();
+>     printLine("Finished good()");
+3275,3277d3303
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__CWE170_char_memcpy_14_bad();
+<     printLine("Finished bad()");

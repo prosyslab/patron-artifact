@@ -1,0 +1,42 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18_bad()
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18.c"
+> static void goodG2B()
+2821c2819
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18.c" 3 4
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18.c" 3 4
+2823c2821
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18.c"
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18.c"
+2828c2826
+<     data = (twoIntsStruct *)malloc(50*sizeof(twoIntsStruct));
+---
+>     data = (twoIntsStruct *)malloc(100*sizeof(twoIntsStruct));
+2830c2828
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18.c" 3 4
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18.c" 3 4
+2832c2830
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18.c"
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18.c"
+2856a2855,2859
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18_good()
+> {
+>     goodG2B();
+> }
+2866a2870,2872
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18_good();
+>     printLine("Finished good()");
+2872,2874d2877
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_loop_18_bad();
+<     printLine("Finished bad()");

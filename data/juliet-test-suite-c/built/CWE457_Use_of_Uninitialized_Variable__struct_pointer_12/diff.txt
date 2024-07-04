@@ -1,0 +1,98 @@
+3239a3240
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c"
+< void CWE457_Use_of_Uninitialized_Variable__struct_pointer_12_bad()
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c"
+> static void goodB2G()
+3255a3254,3258
+>         ;
+>     }
+>     if(globalReturnsTrueOrFalse())
+>     {
+> 
+3259c3262
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c" 3 4
+---
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c" 3 4
+3261c3264
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c"
+---
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c"
+3264a3268,3269
+>         printIntLine(data->intOne);
+>         printIntLine(data->intTwo);
+3266c3271
+<     if(globalReturnsTrueOrFalse())
+---
+>     else
+3268a3274,3282
+> 
+>         data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));
+>         if (data == 
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c" 3 4
+>                    ((void *)0)
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c"
+>                        ) {exit(-1);}
+>         data->intOne = 5;
+>         data->intTwo = 6;
+3271a3286,3306
+> }
+> 
+> 
+> 
+> 
+> static void goodG2B()
+> {
+>     twoIntsStruct * data;
+>     if(globalReturnsTrueOrFalse())
+>     {
+> 
+> 
+>         data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));
+>         if (data == 
+> # 115 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c" 3 4
+>                    ((void *)0)
+> # 115 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c"
+>                        ) {exit(-1);}
+>         data->intOne = 5;
+>         data->intTwo = 6;
+>     }
+3278c3313
+< # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c" 3 4
+---
+> # 124 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c" 3 4
+3280c3315
+< # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c"
+---
+> # 124 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_pointer_12.c"
+3283a3319,3328
+>     }
+>     if(globalReturnsTrueOrFalse())
+>     {
+> 
+>         printIntLine(data->intOne);
+>         printIntLine(data->intTwo);
+>     }
+>     else
+>     {
+> 
+3287a3333,3338
+> 
+> void CWE457_Use_of_Uninitialized_Variable__struct_pointer_12_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+3297a3349,3351
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__struct_pointer_12_good();
+>     printLine("Finished good()");
+3303,3305d3356
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__struct_pointer_12_bad();
+<     printLine("Finished bad()");

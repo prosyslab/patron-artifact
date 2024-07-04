@@ -1,0 +1,175 @@
+2813a2814,2817
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fscanf_15.c"
+> static void goodB2G1()
+> {
+>     int data;
+2814a2819,2862
+>     data = -1;
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         fscanf(
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fscanf_15.c" 3 4
+>               stdin
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fscanf_15.c"
+>                    , "%d", &data);
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(8)
+>     {
+>     case 7:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+>     {
+>         int i;
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");
+>         }
+>     }
+>     break;
+>     }
+> }
+2817c2865
+< void CWE124_Buffer_Underwrite__CWE839_fscanf_15_bad()
+---
+> static void goodB2G2()
+2827c2875
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fscanf_15.c" 3 4
+---
+> # 128 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fscanf_15.c" 3 4
+2829c2877
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fscanf_15.c"
+---
+> # 128 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fscanf_15.c"
+2843a2892,2986
+>         if (data >= 0 && data < (10))
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");
+>         }
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+> 
+>         data = 7;
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>     {
+>         int i;
+>         int buffer[10] = { 0 };
+> 
+> 
+>         if (data < 10)
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is negative.");
+>         }
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = -1;
+>     switch(6)
+>     {
+>     case 6:
+> 
+> 
+>         data = 7;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>     {
+>         int i;
+>         int buffer[10] = { 0 };
+> 
+2865a3009,3016
+> 
+> void CWE124_Buffer_Underwrite__CWE839_fscanf_15_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2875a3027,3029
+>     printLine("Calling good()...");
+>     CWE124_Buffer_Underwrite__CWE839_fscanf_15_good();
+>     printLine("Finished good()");
+2881,2883d3034
+<     printLine("Calling bad()...");
+<     CWE124_Buffer_Underwrite__CWE839_fscanf_15_bad();
+<     printLine("Finished bad()");

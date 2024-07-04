@@ -1,0 +1,59 @@
+2813a2814,2828
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_max_multiply_41.c"
+> static void goodG2BSink(int64_t data)
+> {
+>     if(data > 0)
+>     {
+> 
+>         int64_t result = data * 2;
+>         printLongLongLine(result);
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     int64_t data;
+>     data = 0LL;
+2814a2830,2832
+>     data = 2;
+>     goodG2BSink(data);
+> }
+2817c2835
+< static void badSink(int64_t data)
+---
+> static void goodB2GSink(int64_t data)
+2822,2823c2840,2848
+<         int64_t result = data * 2;
+<         printLongLongLine(result);
+---
+>         if (data < (0x7fffffffffffffffLL/2))
+>         {
+>             int64_t result = data * 2;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2827c2852
+< void CWE190_Integer_Overflow__int64_t_max_multiply_41_bad()
+---
+> static void goodB2G()
+2833c2858,2864
+<     badSink(data);
+---
+>     goodB2GSink(data);
+> }
+> 
+> void CWE190_Integer_Overflow__int64_t_max_multiply_41_good()
+> {
+>     goodB2G();
+>     goodG2B();
+2844a2876,2878
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_max_multiply_41_good();
+>     printLine("Finished good()");
+2850,2852d2883
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_max_multiply_41_bad();
+<     printLine("Finished bad()");

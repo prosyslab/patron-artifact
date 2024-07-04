@@ -1,0 +1,66 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< static void badSink(int data)
+---
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fscanf_41.c"
+> static void goodG2BSink(int data)
+2834c2832,2860
+< void CWE127_Buffer_Underread__CWE839_fscanf_41_bad()
+---
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = -1;
+> 
+> 
+>     data = 7;
+>     goodG2BSink(data);
+> }
+> 
+> 
+> static void goodB2GSink(int data)
+> {
+>     {
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");
+>         }
+>     }
+> }
+> 
+> static void goodB2G()
+2841c2867
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fscanf_41.c" 3 4
+---
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fscanf_41.c" 3 4
+2843c2869
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fscanf_41.c"
+---
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fscanf_41.c"
+2845c2871,2877
+<     badSink(data);
+---
+>     goodB2GSink(data);
+> }
+> 
+> void CWE127_Buffer_Underread__CWE839_fscanf_41_good()
+> {
+>     goodB2G();
+>     goodG2B();
+2856a2889,2891
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__CWE839_fscanf_41_good();
+>     printLine("Finished good()");
+2862,2864d2896
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__CWE839_fscanf_41_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,66 @@
+2813a2814,2822
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_sub_44.c"
+> static void goodG2BSink(int data)
+> {
+>     {
+> 
+>         int result = data - 1;
+>         printIntLine(result);
+>     }
+> }
+2814a2824,2827
+> static void goodG2B()
+> {
+>     int data;
+>     void (*funcPtr) (int) = goodG2BSink;
+2815a2829
+>     data = 0;
+2817c2831,2836
+< static void badSink(int data)
+---
+>     data = -2;
+>     funcPtr(data);
+> }
+> 
+> 
+> static void goodB2GSink(int data)
+2819d2837
+<     {
+2820a2839,2844
+>     if (data > 
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_sub_44.c" 3 4
+>               (-0x7fffffff - 1)
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_sub_44.c"
+>                      )
+>     {
+2823a2848,2851
+>     else
+>     {
+>         printLine("data value is too large to perform subtraction.");
+>     }
+2826c2854
+< void CWE191_Integer_Underflow__int_rand_sub_44_bad()
+---
+> static void goodB2G()
+2829,2830c2857
+< 
+<     void (*funcPtr) (int) = badSink;
+---
+>     void (*funcPtr) (int) = goodB2GSink;
+2835d2861
+< 
+2837a2864,2869
+> 
+> void CWE191_Integer_Underflow__int_rand_sub_44_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2847a2880,2882
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_rand_sub_44_good();
+>     printLine("Finished good()");
+2853,2855d2887
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_rand_sub_44_bad();
+<     printLine("Finished bad()");

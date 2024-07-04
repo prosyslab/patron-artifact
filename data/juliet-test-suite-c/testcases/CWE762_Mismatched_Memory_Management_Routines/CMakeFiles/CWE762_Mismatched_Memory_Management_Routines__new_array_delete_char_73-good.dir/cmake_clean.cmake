@@ -1,0 +1,13 @@
+file(REMOVE_RECURSE
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE762/good/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_73-good"
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE762/good/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_73-good.pdb"
+  "CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_73-good.dir/s04/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_73a.cpp.o"
+  "CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_73-good.dir/s04/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_73a.cpp.o.d"
+  "CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_73-good.dir/s04/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_73b.cpp.o"
+  "CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_73-good.dir/s04/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_73b.cpp.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/CWE762_Mismatched_Memory_Management_Routines__new_array_delete_char_73-good.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

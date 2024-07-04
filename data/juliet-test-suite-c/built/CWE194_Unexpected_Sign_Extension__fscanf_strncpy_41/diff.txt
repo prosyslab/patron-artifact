@@ -1,0 +1,36 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE194_Unexpected_Sign_Extension__fscanf_strncpy_41_badSink(short data)
+---
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_strncpy_41.c"
+> void CWE194_Unexpected_Sign_Extension__fscanf_strncpy_41_goodG2BSink(short data)
+2835c2833,2834
+< void CWE194_Unexpected_Sign_Extension__fscanf_strncpy_41_bad()
+---
+> 
+> static void goodG2B()
+2841,2846c2840,2846
+<     fscanf (
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_strncpy_41.c" 3 4
+<            stdin
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_strncpy_41.c"
+<                 , "%hd", &data);
+<     CWE194_Unexpected_Sign_Extension__fscanf_strncpy_41_badSink(data);
+---
+>     data = 100-1;
+>     CWE194_Unexpected_Sign_Extension__fscanf_strncpy_41_goodG2BSink(data);
+> }
+> 
+> void CWE194_Unexpected_Sign_Extension__fscanf_strncpy_41_good()
+> {
+>     goodG2B();
+2857a2858,2860
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__fscanf_strncpy_41_good();
+>     printLine("Finished good()");
+2863,2865d2865
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__fscanf_strncpy_41_bad();
+<     printLine("Finished bad()");

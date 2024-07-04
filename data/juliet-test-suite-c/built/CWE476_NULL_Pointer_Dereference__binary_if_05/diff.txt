@@ -1,0 +1,67 @@
+2819a2820,2824
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c"
+> static void good1()
+> {
+>     if(staticFalse)
+>     {
+2820a2826,2835
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             twoIntsStruct *twoIntsStructPointer = 
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c" 3 4
+>                                                  ((void *)0)
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c"
+>                                                      ;
+2823c2838,2851
+< void CWE476_NULL_Pointer_Dereference__binary_if_05_bad()
+---
+>             if ((twoIntsStructPointer != 
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c" 3 4
+>                                         ((void *)0)
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c"
+>                                             ) && (twoIntsStructPointer->intOne == 5))
+>             {
+>                 printLine("intOne == 5");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void good2()
+2829c2857
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c" 3 4
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c" 3 4
+2831c2859
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c"
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c"
+2836c2864
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c" 3 4
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c" 3 4
+2838,2839c2866,2867
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c"
+<                                             ) & (twoIntsStructPointer->intOne == 5))
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c"
+>                                             ) && (twoIntsStructPointer->intOne == 5))
+2845a2874,2879
+> 
+> void CWE476_NULL_Pointer_Dereference__binary_if_05_good()
+> {
+>     good1();
+>     good2();
+> }
+2855a2890,2892
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__binary_if_05_good();
+>     printLine("Finished good()");
+2861,2863d2897
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__binary_if_05_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,126 @@
+2867a2868,2874
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c"
+> static void goodB2G1()
+> {
+>     int64_t data;
+>     data = 0LL;
+>     if(staticTrue)
+>     {
+2868a2876,2904
+>         fscanf (
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c" 3 4
+>                stdin
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c"
+>                     , "%" 
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c" 3 4
+>                           "l" "d"
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c"
+>                                 , &data);
+>     }
+>     if(staticFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if (data < 0x7fffffffffffffffLL)
+>         {
+>             int64_t result = data + 1;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+2871c2907
+< void CWE190_Integer_Overflow__int64_t_fscanf_add_05_bad()
+---
+> static void goodB2G2()
+2879c2915
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c" 3 4
+---
+> # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c" 3 4
+2881c2917
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c"
+---
+> # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c"
+2883c2919
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c" 3 4
+---
+> # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c" 3 4
+2885c2921
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c"
+---
+> # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_05.c"
+2889a2926,2955
+> 
+>         if (data < 0x7fffffffffffffffLL)
+>         {
+>             int64_t result = data + 1;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int64_t data;
+>     data = 0LL;
+>     if(staticFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2;
+>     }
+>     if(staticTrue)
+>     {
+2896a2963,2990
+> 
+> 
+> static void goodG2B2()
+> {
+>     int64_t data;
+>     data = 0LL;
+>     if(staticTrue)
+>     {
+> 
+>         data = 2;
+>     }
+>     if(staticTrue)
+>     {
+>         {
+> 
+>             int64_t result = data + 1;
+>             printLongLongLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__int64_t_fscanf_add_05_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2906a3001,3003
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_fscanf_add_05_good();
+>     printLine("Finished good()");
+2912,2914d3008
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_fscanf_add_05_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,33 @@
+2817a2818,2823
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_max_multiply_68b.c"
+> void CWE190_Integer_Overflow__char_max_multiply_68b_goodG2BSink()
+> {
+>     char data = CWE190_Integer_Overflow__char_max_multiply_68_goodG2BData;
+>     if(data > 0)
+>     {
+2818a2825,2828
+>         char result = data * 2;
+>         printHexCharLine(result);
+>     }
+> }
+2821c2831
+< void CWE190_Integer_Overflow__char_max_multiply_68b_badSink()
+---
+> void CWE190_Integer_Overflow__char_max_multiply_68b_goodB2GSink()
+2823c2833
+<     char data = CWE190_Integer_Overflow__char_max_multiply_68_badData;
+---
+>     char data = CWE190_Integer_Overflow__char_max_multiply_68_goodB2GData;
+2827,2828c2837,2845
+<         char result = data * 2;
+<         printHexCharLine(result);
+---
+>         if (data < (0x7f/2))
+>         {
+>             char result = data * 2;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }

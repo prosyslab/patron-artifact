@@ -1,0 +1,43 @@
+3240a3241
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63a.c"
+3241a3243,3244
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63a.c"
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63b_goodG2BSink(size_t * data);
+3242a3246,3248
+> static void goodG2B()
+> {
+>     size_t data;
+3243a3250
+>     data = 0;
+3244a3252,3254
+>     data = 20;
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63b_goodG2BSink(&data);
+> }
+3246a3257
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63b_goodB2GSink(size_t * data);
+3248,3252c3259
+< 
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63a.c"
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63b_badSink(size_t * dataPtr);
+< 
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63_bad()
+---
+> static void goodB2G()
+3259c3266,3272
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63b_badSink(&data);
+---
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63b_goodB2GSink(&data);
+> }
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3270a3284,3286
+>     printLine("Calling good()...");
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63_good();
+>     printLine("Finished good()");
+3276,3278d3291
+<     printLine("Calling bad()...");
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_rand_63_bad();
+<     printLine("Finished bad()");

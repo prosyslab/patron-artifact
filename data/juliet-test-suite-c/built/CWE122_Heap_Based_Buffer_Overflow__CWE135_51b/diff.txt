@@ -1,0 +1,41 @@
+3239a3240
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_51b.c"
+3240a3242,3245
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_51b.c"
+> void CWE122_Heap_Based_Buffer_Overflow__CWE135_51b_goodG2BSink(void * data)
+> {
+>     {
+3241a3247,3258
+>         size_t dataLen = strlen((char *)data);
+>         void * dest = (void *)calloc(dataLen+1, 1);
+>         if (dest == 
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_51b.c" 3 4
+>                    ((void *)0)
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_51b.c"
+>                        ) {exit(-1);}
+>         (void)strcpy(dest, data);
+>         printLine((char *)dest);
+>         free(dest);
+>     }
+> }
+3244,3245c3261
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_51b.c"
+< void CWE122_Heap_Based_Buffer_Overflow__CWE135_51b_badSink(void * data)
+---
+> void CWE122_Heap_Based_Buffer_Overflow__CWE135_51b_goodB2GSink(void * data)
+3249c3265
+<         size_t dataLen = strlen((char *)data);
+---
+>         size_t dataLen = wcslen((wchar_t *)data);
+3252c3268
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_51b.c" 3 4
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_51b.c" 3 4
+3254c3270
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_51b.c"
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_51b.c"
+3257c3273
+<         printLine((char *)dest);
+---
+>         printWLine((wchar_t *)dest);

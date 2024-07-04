@@ -1,0 +1,39 @@
+2813a2814,2815
+> # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_rand_postinc_52a.c"
+> void CWE190_Integer_Overflow__int_rand_postinc_52b_goodG2BSink(int data);
+2814a2817,2821
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = 0;
+2815a2823,2825
+>     data = 2;
+>     CWE190_Integer_Overflow__int_rand_postinc_52b_goodG2BSink(data);
+> }
+2818c2828
+< void CWE190_Integer_Overflow__int_rand_postinc_52b_badSink(int data);
+---
+> void CWE190_Integer_Overflow__int_rand_postinc_52b_goodB2GSink(int data);
+2820c2830
+< void CWE190_Integer_Overflow__int_rand_postinc_52_bad()
+---
+> static void goodB2G()
+2827c2837,2843
+<     CWE190_Integer_Overflow__int_rand_postinc_52b_badSink(data);
+---
+>     CWE190_Integer_Overflow__int_rand_postinc_52b_goodB2GSink(data);
+> }
+> 
+> void CWE190_Integer_Overflow__int_rand_postinc_52_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2838a2855,2857
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_rand_postinc_52_good();
+>     printLine("Finished good()");
+2844,2846d2862
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_rand_postinc_52_bad();
+<     printLine("Finished bad()");

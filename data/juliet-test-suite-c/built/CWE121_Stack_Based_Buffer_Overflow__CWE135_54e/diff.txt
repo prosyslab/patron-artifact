@@ -1,0 +1,54 @@
+3239a3240
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c"
+3240a3242,3245
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c"
+> void CWE121_Stack_Based_Buffer_Overflow__CWE135_54e_goodG2BSink(void * data)
+> {
+>     {
+3241a3247,3260
+>         size_t dataLen = strlen((char *)data);
+>         void * dest = (void *)
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c" 3 4
+>                              __builtin_alloca (
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c"
+>                              (dataLen+1) * 1
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c" 3 4
+>                              )
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c"
+>                                                     ;
+>         (void)strcpy(dest, data);
+>         printLine((char *)dest);
+>     }
+> }
+3244,3248c3263
+< 
+< 
+< 
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c"
+< void CWE121_Stack_Based_Buffer_Overflow__CWE135_54e_badSink(void * data)
+---
+> void CWE121_Stack_Based_Buffer_Overflow__CWE135_54e_goodB2GSink(void * data)
+3252c3267
+<         size_t dataLen = strlen((char *)data);
+---
+>         size_t dataLen = wcslen((wchar_t *)data);
+3254c3269
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c" 3 4
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c" 3 4
+3256c3271
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c"
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c"
+3258c3273
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c" 3 4
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c" 3 4
+3260c3275
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c"
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE135_54e.c"
+3263c3278
+<         printLine((char *)dest);
+---
+>         printWLine((wchar_t *)dest);

@@ -1,0 +1,51 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE758_Undefined_Behavior__int64_t_malloc_use_12_bad()
+---
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_12.c"
+> static void good1()
+2821a2820
+>             int64_t data;
+2824c2823
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_12.c" 3 4
+---
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_12.c" 3 4
+2826c2825
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_12.c"
+---
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_12.c"
+2828c2827,2832
+<             int64_t data = *pointer;
+---
+>             data = 5LL;
+>             *pointer = data;
+>             {
+>                 int64_t data = *pointer;
+>                 printLongLongLine(data);
+>             }
+2830d2833
+<             printLongLongLine(data);
+2839c2842
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_12.c" 3 4
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_12.c" 3 4
+2841c2844
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_12.c"
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_12.c"
+2852a2856,2860
+> 
+> void CWE758_Undefined_Behavior__int64_t_malloc_use_12_good()
+> {
+>     good1();
+> }
+2862a2871,2873
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__int64_t_malloc_use_12_good();
+>     printLine("Finished good()");
+2868,2870d2878
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__int64_t_malloc_use_12_bad();
+<     printLine("Finished bad()");

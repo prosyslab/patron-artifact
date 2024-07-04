@@ -1,0 +1,59 @@
+4048c4048
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c"
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c"
+4050,4051c4050,4051
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c"
+< void CWE367_TOC_TOU__stat_01_bad()
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c"
+> static void good1()
+4055d4054
+<         struct stat statBuffer;
+4058c4057
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c" 3 4
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c" 3 4
+4060c4059
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c"
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c"
+4062c4061
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c" 3 4
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c" 3 4
+4064c4063
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c"
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c"
+4076,4079d4074
+<         if (stat(filename, &statBuffer) == -1)
+<         {
+<             exit(1);
+<         }
+4081c4076
+< # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c" 3 4
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c" 3 4
+4083c4078
+< # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c"
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__stat_01.c"
+4089c4084
+<         if (write(fileDesc, "Bad Sink...", strlen("Bad Sink...")) == -1)
+---
+>         if (write(fileDesc, "Good Sink...", strlen("Good Sink...")) == -1)
+4098a4094,4098
+> 
+> void CWE367_TOC_TOU__stat_01_good()
+> {
+>     good1();
+> }
+4108a4109,4111
+>     printLine("Calling good()...");
+>     CWE367_TOC_TOU__stat_01_good();
+>     printLine("Finished good()");
+4114,4116d4116
+<     printLine("Calling bad()...");
+<     CWE367_TOC_TOU__stat_01_bad();
+<     printLine("Finished bad()");

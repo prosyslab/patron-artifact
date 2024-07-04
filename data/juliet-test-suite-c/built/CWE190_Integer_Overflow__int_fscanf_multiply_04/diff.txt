@@ -1,0 +1,124 @@
+2819a2820,2843
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_multiply_04.c"
+> static void goodB2G1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(STATIC_CONST_TRUE)
+>     {
+> 
+>         fscanf(
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_multiply_04.c" 3 4
+>               stdin
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_multiply_04.c"
+>                    , "%d", &data);
+>     }
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         if(data > 0)
+>         {
+2820a2845,2856
+>             if (data < (0x7fffffff/2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+>         }
+>     }
+> }
+2823c2859
+< void CWE190_Integer_Overflow__int_fscanf_multiply_04_bad()
+---
+> static void goodB2G2()
+2832c2868
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_multiply_04.c" 3 4
+---
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_multiply_04.c" 3 4
+2834c2870
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_multiply_04.c"
+---
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_multiply_04.c"
+2841a2878,2911
+>             if (data < (0x7fffffff/2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2;
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+>         if(data > 0)
+>         {
+> 
+2846a2917,2946
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(STATIC_CONST_TRUE)
+>     {
+> 
+>         data = 2;
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+>         if(data > 0)
+>         {
+> 
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__int_fscanf_multiply_04_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2856a2957,2959
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_fscanf_multiply_04_good();
+>     printLine("Finished good()");
+2862,2864d2964
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_fscanf_multiply_04_bad();
+<     printLine("Finished bad()");

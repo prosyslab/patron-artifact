@@ -1,0 +1,53 @@
+3239a3240
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__malloc_char_loop_41.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__malloc_char_loop_41.c"
+< void CWE127_Buffer_Underread__malloc_char_loop_41_badSink(char * data)
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__malloc_char_loop_41.c"
+> void CWE127_Buffer_Underread__malloc_char_loop_41_goodG2BSink(char * data)
+3265c3263,3264
+< void CWE127_Buffer_Underread__malloc_char_loop_41_bad()
+---
+> 
+> static void goodG2B()
+3269c3268
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__malloc_char_loop_41.c" 3 4
+---
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__malloc_char_loop_41.c" 3 4
+3271c3270
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__malloc_char_loop_41.c"
+---
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__malloc_char_loop_41.c"
+3276c3275
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__malloc_char_loop_41.c" 3 4
+---
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__malloc_char_loop_41.c" 3 4
+3278c3277
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__malloc_char_loop_41.c"
+---
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__malloc_char_loop_41.c"
+3283c3282
+<         data = dataBuffer - 8;
+---
+>         data = dataBuffer;
+3285c3284,3289
+<     CWE127_Buffer_Underread__malloc_char_loop_41_badSink(data);
+---
+>     CWE127_Buffer_Underread__malloc_char_loop_41_goodG2BSink(data);
+> }
+> 
+> void CWE127_Buffer_Underread__malloc_char_loop_41_good()
+> {
+>     goodG2B();
+3296a3301,3303
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__malloc_char_loop_41_good();
+>     printLine("Finished good()");
+3302,3304d3308
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__malloc_char_loop_41_bad();
+<     printLine("Finished bad()");

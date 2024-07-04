@@ -1,0 +1,26 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_12_bad()
+---
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_12.c"
+> static void goodG2B()
+2825c2823
+<         data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+---
+>         data = 100-1;
+2846a2845,2849
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_12_good()
+> {
+>     goodG2B();
+> }
+2856a2860,2862
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_12_good();
+>     printLine("Finished good()");
+2862,2864d2867
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_12_bad();
+<     printLine("Finished bad()");

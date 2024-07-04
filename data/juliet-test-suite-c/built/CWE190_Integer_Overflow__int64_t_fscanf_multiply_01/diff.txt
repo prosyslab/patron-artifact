@@ -1,0 +1,63 @@
+2861a2862,2866
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_01.c"
+> static void goodG2B()
+> {
+>     int64_t data;
+>     data = 0LL;
+2862a2868,2875
+>     data = 2;
+>     if(data > 0)
+>     {
+> 
+>         int64_t result = data * 2;
+>         printLongLongLine(result);
+>     }
+> }
+2865c2878
+< void CWE190_Integer_Overflow__int64_t_fscanf_multiply_01_bad()
+---
+> static void goodB2G()
+2871c2884
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_01.c" 3 4
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_01.c" 3 4
+2873c2886
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_01.c"
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_01.c"
+2875c2888
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_01.c" 3 4
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_01.c" 3 4
+2877c2890
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_01.c"
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_01.c"
+2882,2883c2895,2903
+<         int64_t result = data * 2;
+<         printLongLongLine(result);
+---
+>         if (data < (0x7fffffffffffffffLL/2))
+>         {
+>             int64_t result = data * 2;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2885a2906,2911
+> 
+> void CWE190_Integer_Overflow__int64_t_fscanf_multiply_01_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2895a2922,2924
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_fscanf_multiply_01_good();
+>     printLine("Finished good()");
+2901,2903d2929
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_fscanf_multiply_01_bad();
+<     printLine("Finished bad()");

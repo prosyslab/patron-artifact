@@ -1,0 +1,50 @@
+2816a2817,2818
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68a.c"
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68b_goodG2BSink();
+2819,2823c2821
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68b_badSink();
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68_bad()
+---
+> static void goodG2B()
+2827c2825
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68a.c" 3 4
+---
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68a.c" 3 4
+2829c2827
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68a.c"
+---
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68a.c"
+2832c2830
+<     data = (int *)malloc(50*sizeof(int));
+---
+>     data = (int *)malloc(100*sizeof(int));
+2834c2832
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68a.c" 3 4
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68a.c" 3 4
+2836c2834
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68a.c"
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68a.c"
+2838,2839c2836,2842
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68_badData = data;
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68b_badSink();
+---
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68_goodG2BData = data;
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68b_goodG2BSink();
+> }
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68_good()
+> {
+>     goodG2B();
+2850a2854,2856
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68_good();
+>     printLine("Finished good()");
+2856,2858d2861
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int_memcpy_68_bad();
+<     printLine("Finished bad()");

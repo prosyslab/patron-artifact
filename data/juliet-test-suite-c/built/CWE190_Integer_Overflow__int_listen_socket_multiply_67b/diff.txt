@@ -1,0 +1,29 @@
+4906a4907,4912
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_listen_socket_multiply_67b.c"
+> void CWE190_Integer_Overflow__int_listen_socket_multiply_67b_goodG2BSink(CWE190_Integer_Overflow__int_listen_socket_multiply_67_structType myStruct)
+> {
+>     int data = myStruct.structFirst;
+>     if(data > 0)
+>     {
+4907a4914,4917
+>         int result = data * 2;
+>         printIntLine(result);
+>     }
+> }
+4910c4920
+< void CWE190_Integer_Overflow__int_listen_socket_multiply_67b_badSink(CWE190_Integer_Overflow__int_listen_socket_multiply_67_structType myStruct)
+---
+> void CWE190_Integer_Overflow__int_listen_socket_multiply_67b_goodB2GSink(CWE190_Integer_Overflow__int_listen_socket_multiply_67_structType myStruct)
+4916,4917c4926,4934
+<         int result = data * 2;
+<         printIntLine(result);
+---
+>         if (data < (0x7fffffff/2))
+>         {
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }

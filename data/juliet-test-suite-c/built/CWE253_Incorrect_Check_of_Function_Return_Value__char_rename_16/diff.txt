@@ -1,0 +1,29 @@
+3241c3241
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_16.c"
+---
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_16.c"
+3243,3244c3243,3244
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_16.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_16_bad()
+---
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_16.c"
+> static void good1()
+3249,3250c3249
+< 
+<         if (rename("oldbadfilename.txt", "newbadfilename.txt") == 0)
+---
+>         if (rename("oldgoodfilename.txt", "newgoodfilename.txt") != 0)
+3256a3256,3260
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_16_good()
+> {
+>     good1();
+> }
+3266a3271,3273
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_16_good();
+>     printLine("Finished good()");
+3272,3274d3278
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_16_bad();
+<     printLine("Finished bad()");

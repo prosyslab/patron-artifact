@@ -1,0 +1,50 @@
+2813a2814,2826
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_rand_add_16.c"
+> static void goodB2G()
+> {
+>     int64_t data;
+>     data = 0LL;
+>     while(1)
+>     {
+> 
+>         data = (int64_t)((int64_t)(rand() & 1 ? (((uint64_t)rand()<<60) ^ ((uint64_t)rand()<<45) ^ ((uint64_t)rand()<<30) ^ ((uint64_t)rand()<<15) ^ rand()) : -(((uint64_t)rand()<<60) ^ ((uint64_t)rand()<<45) ^ ((uint64_t)rand()<<30) ^ ((uint64_t)rand()<<15) ^ rand()) - 1));
+>         break;
+>     }
+>     while(1)
+>     {
+2814a2828,2839
+>         if (data < 0x7fffffffffffffffLL)
+>         {
+>             int64_t result = data + 1;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>         break;
+>     }
+> }
+2817c2842
+< void CWE190_Integer_Overflow__int64_t_rand_add_16_bad()
+---
+> static void goodG2B()
+2824c2849
+<         data = (int64_t)((int64_t)(rand() & 1 ? (((uint64_t)rand()<<60) ^ ((uint64_t)rand()<<45) ^ ((uint64_t)rand()<<30) ^ ((uint64_t)rand()<<15) ^ rand()) : -(((uint64_t)rand()<<60) ^ ((uint64_t)rand()<<45) ^ ((uint64_t)rand()<<30) ^ ((uint64_t)rand()<<15) ^ rand()) - 1));
+---
+>         data = 2;
+2836a2862,2867
+> 
+> void CWE190_Integer_Overflow__int64_t_rand_add_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2846a2878,2880
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_rand_add_16_good();
+>     printLine("Finished good()");
+2852,2854d2885
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_rand_add_16_bad();
+<     printLine("Finished bad()");

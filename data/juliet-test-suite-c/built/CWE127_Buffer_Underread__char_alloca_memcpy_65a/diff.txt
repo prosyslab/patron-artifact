@@ -1,0 +1,55 @@
+3239a3240
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_65a.c"
+3240a3242,3243
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_65a.c"
+> void CWE127_Buffer_Underread__char_alloca_memcpy_65b_goodG2BSink(char * data);
+3242,3248c3245
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_65a.c"
+< void CWE127_Buffer_Underread__char_alloca_memcpy_65b_badSink(char * data);
+< 
+< void CWE127_Buffer_Underread__char_alloca_memcpy_65_bad()
+---
+> static void goodG2B()
+3251,3252c3248
+< 
+<     void (*funcPtr) (char *) = CWE127_Buffer_Underread__char_alloca_memcpy_65b_badSink;
+---
+>     void (*funcPtr) (char *) = CWE127_Buffer_Underread__char_alloca_memcpy_65b_goodG2BSink;
+3254c3250
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_65a.c" 3 4
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_65a.c" 3 4
+3256c3252
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_65a.c"
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_65a.c"
+3258c3254
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_65a.c" 3 4
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_65a.c" 3 4
+3260c3256
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_65a.c"
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_memcpy_65a.c"
+3265,3266c3261
+<     data = dataBuffer - 8;
+< 
+---
+>     data = dataBuffer;
+3268a3264,3268
+> 
+> void CWE127_Buffer_Underread__char_alloca_memcpy_65_good()
+> {
+>     goodG2B();
+> }
+3278a3279,3281
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__char_alloca_memcpy_65_good();
+>     printLine("Finished good()");
+3284,3286d3286
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__char_alloca_memcpy_65_bad();
+<     printLine("Finished bad()");

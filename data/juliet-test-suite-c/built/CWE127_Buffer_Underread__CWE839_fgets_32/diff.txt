@@ -1,0 +1,76 @@
+2813a2814,2823
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_32.c"
+> static void goodG2B()
+> {
+>     int data;
+>     int *dataPtr1 = &data;
+>     int *dataPtr2 = &data;
+> 
+>     data = -1;
+>     {
+>         int data = *dataPtr1;
+2815a2826,2832
+>         data = 7;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         int data = *dataPtr2;
+>         {
+>             int buffer[10] = { 0 };
+2817a2835,2846
+>             if (data < 10)
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is too big.");
+>             }
+>         }
+>     }
+> }
+> 
+2819c2848
+< void CWE127_Buffer_Underread__CWE839_fgets_32_bad()
+---
+> static void goodB2G()
+2832c2861
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_32.c" 3 4
+---
+> # 116 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_32.c" 3 4
+2834c2863
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_32.c"
+---
+> # 116 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_32.c"
+2836c2865
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_32.c" 3 4
+---
+> # 116 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_32.c" 3 4
+2838c2867
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_32.c"
+---
+> # 116 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_32.c"
+2856,2857c2885
+< 
+<             if (data < 10)
+---
+>             if (data >= 0 && data < (10))
+2863c2891
+<                 printLine("ERROR: Array index is too big.");
+---
+>                 printLine("ERROR: Array index is out-of-bounds");
+2867a2896,2901
+> 
+> void CWE127_Buffer_Underread__CWE839_fgets_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2877a2912,2914
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__CWE839_fgets_32_good();
+>     printLine("Finished good()");
+2883,2885d2919
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__CWE839_fgets_32_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,28 @@
+3772a3773
+> # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_rand_square_63b.c"
+3773a3775,3779
+> # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_rand_square_63b.c"
+> void CWE190_Integer_Overflow__int64_t_rand_square_63b_goodG2BSink(int64_t * dataPtr)
+> {
+>     int64_t data = *dataPtr;
+>     {
+3774a3781,3784
+>         int64_t result = data * data;
+>         printLongLongLine(result);
+>     }
+> }
+3777,3778c3787
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_rand_square_63b.c"
+< void CWE190_Integer_Overflow__int64_t_rand_square_63b_badSink(int64_t * dataPtr)
+---
+> void CWE190_Integer_Overflow__int64_t_rand_square_63b_goodB2GSink(int64_t * dataPtr)
+3781d3789
+<     {
+3782a3791,3792
+>     if (imaxabs((intmax_t)data) <= sqrtl(0x7fffffffffffffffLL))
+>     {
+3784a3795,3798
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");

@@ -1,0 +1,53 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< static void badSink(twoIntsStruct * data)
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44.c"
+> static void goodG2BSink(twoIntsStruct * data)
+2837c2835
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44_bad()
+---
+> static void goodG2B()
+2840,2841c2838
+< 
+<     void (*funcPtr) (twoIntsStruct *) = badSink;
+---
+>     void (*funcPtr) (twoIntsStruct *) = goodG2BSink;
+2843c2840
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44.c" 3 4
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44.c" 3 4
+2845c2842
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44.c"
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44.c"
+2848c2845
+<     data = (twoIntsStruct *)malloc(50*sizeof(twoIntsStruct));
+---
+>     data = (twoIntsStruct *)malloc(100*sizeof(twoIntsStruct));
+2850c2847
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44.c" 3 4
+---
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44.c" 3 4
+2852c2849
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44.c"
+---
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44.c"
+2854d2850
+< 
+2856a2853,2857
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44_good()
+> {
+>     goodG2B();
+> }
+2866a2868,2870
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44_good();
+>     printLine("Finished good()");
+2872,2874d2875
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_struct_memmove_44_bad();
+<     printLine("Finished bad()");

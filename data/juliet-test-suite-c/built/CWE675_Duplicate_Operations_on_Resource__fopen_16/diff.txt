@@ -1,0 +1,58 @@
+2813a2814,2825
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_16.c"
+> static void goodB2G()
+> {
+>     FILE * data;
+>     data = 
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_16.c" 3 4
+>           ((void *)0)
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_16.c"
+>               ;
+>     while(1)
+>     {
+>         data = fopen("BadSource_fopen.txt", "w+");
+2814a2827,2837
+>         fclose(data);
+>         break;
+>     }
+>     while(1)
+>     {
+> 
+> 
+>         ;
+>         break;
+>     }
+> }
+2817c2840
+< void CWE675_Duplicate_Operations_on_Resource__fopen_16_bad()
+---
+> static void goodG2B()
+2821c2844
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_16.c" 3 4
+---
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_16.c" 3 4
+2823c2846
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_16.c"
+---
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_16.c"
+2827d2849
+<         data = fopen("BadSource_fopen.txt", "w+");
+2829c2851
+<         fclose(data);
+---
+>         data = fopen("GoodSource_fopen.txt", "w+");
+2838a2861,2866
+> 
+> void CWE675_Duplicate_Operations_on_Resource__fopen_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2848a2877,2879
+>     printLine("Calling good()...");
+>     CWE675_Duplicate_Operations_on_Resource__fopen_16_good();
+>     printLine("Finished good()");
+2854,2856d2884
+<     printLine("Calling bad()...");
+<     CWE675_Duplicate_Operations_on_Resource__fopen_16_bad();
+<     printLine("Finished bad()");

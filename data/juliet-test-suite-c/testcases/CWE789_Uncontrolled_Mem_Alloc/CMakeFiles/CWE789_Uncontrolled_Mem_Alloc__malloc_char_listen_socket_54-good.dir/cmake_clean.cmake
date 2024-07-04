@@ -1,0 +1,19 @@
+file(REMOVE_RECURSE
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE789/good/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good"
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE789/good/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good.pdb"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54a.c.o"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54a.c.o.d"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54b.c.o"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54b.c.o.d"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54c.c.o"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54c.c.o.d"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54d.c.o"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54d.c.o.d"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54e.c.o"
+  "CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good.dir/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54e.c.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/CWE789_Uncontrolled_Mem_Alloc__malloc_char_listen_socket_54-good.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

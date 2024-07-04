@@ -1,0 +1,112 @@
+2817a2818,2841
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+> static void goodG2B1()
+> {
+>     twoIntsStruct * data;
+>     twoIntsStruct * dataBadBuffer = (twoIntsStruct *)
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c" 3 4
+>                                                     __builtin_alloca (
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+>                                                     50*sizeof(twoIntsStruct)
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c" 3 4
+>                                                     )
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+>                                                                                     ;
+>     twoIntsStruct * dataGoodBuffer = (twoIntsStruct *)
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c" 3 4
+>                                                      __builtin_alloca (
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+>                                                      100*sizeof(twoIntsStruct)
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c" 3 4
+>                                                      )
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+>                                                                                       ;
+>     if(STATIC_CONST_FIVE!=5)
+>     {
+2818a2843,2846
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2819a2848,2853
+>         data = dataGoodBuffer;
+>     }
+>     {
+>         twoIntsStruct source[100];
+>         {
+>             size_t i;
+2821c2855,2874
+< void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06_bad()
+---
+>             for (i = 0; i < 100; i++)
+>             {
+>                 source[i].intOne = 0;
+>                 source[i].intTwo = 0;
+>             }
+>         }
+>         {
+>             size_t i;
+> 
+>             for (i = 0; i < 100; i++)
+>             {
+>                 data[i] = source[i];
+>             }
+>             printStructLine(&data[0]);
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+2825c2878
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c" 3 4
+---
+> # 106 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c" 3 4
+2827c2880
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+---
+> # 106 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+2829c2882
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c" 3 4
+---
+> # 106 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c" 3 4
+2831c2884
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+---
+> # 106 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+2834c2887
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c" 3 4
+---
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c" 3 4
+2836c2889
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+---
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+2838c2891
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c" 3 4
+---
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c" 3 4
+2840c2893
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+---
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06.c"
+2845,2846c2898
+< 
+<         data = dataBadBuffer;
+---
+>         data = dataGoodBuffer;
+2869a2922,2927
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2879a2938,2940
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06_good();
+>     printLine("Finished good()");
+2885,2887d2945
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_alloca_loop_06_bad();
+<     printLine("Finished bad()");

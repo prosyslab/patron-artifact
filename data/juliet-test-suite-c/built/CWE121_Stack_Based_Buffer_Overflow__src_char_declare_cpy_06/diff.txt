@@ -1,0 +1,51 @@
+3245a3246,3253
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s09/CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cpy_06.c"
+> static void goodG2B1()
+> {
+>     char * data;
+>     char dataBuffer[100];
+>     data = dataBuffer;
+>     if(STATIC_CONST_FIVE!=5)
+>     {
+3246a3255,3258
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3247a3260,3264
+>         memset(data, 'A', 50-1);
+>         data[50-1] = '\0';
+>     }
+>     {
+>         char dest[50] = "";
+3249c3266,3272
+< void CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cpy_06_bad()
+---
+>         strcpy(dest, data);
+>         printLine(data);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+3257,3258c3280,3281
+<         memset(data, 'A', 100-1);
+<         data[100-1] = '\0';
+---
+>         memset(data, 'A', 50-1);
+>         data[50-1] = '\0';
+3266a3290,3295
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cpy_06_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3276a3306,3308
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cpy_06_good();
+>     printLine("Finished good()");
+3282,3284d3313
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__src_char_declare_cpy_06_bad();
+<     printLine("Finished bad()");

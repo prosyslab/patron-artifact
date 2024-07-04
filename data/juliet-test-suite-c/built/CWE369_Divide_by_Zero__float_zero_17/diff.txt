@@ -1,0 +1,62 @@
+3731a3732
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_17.c"
+3732a3734,3738
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_17.c"
+> static void goodB2G()
+> {
+>     int i,k;
+>     float data;
+3733a3740,3742
+>     data = 0.0F;
+>     for(i = 0; i < 1; i++)
+>     {
+3734a3744,3747
+>         data = 0.0F;
+>     }
+>     for(k = 0; k < 1; k++)
+>     {
+3736,3737c3749,3762
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_17.c"
+< void CWE369_Divide_by_Zero__float_zero_17_bad()
+---
+>         if(fabs(data) > 0.000001)
+>         {
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+3739c3764
+<     int i,j;
+---
+>     int h,j;
+3743c3768
+<     for(i = 0; i < 1; i++)
+---
+>     for(h = 0; h < 1; h++)
+3746c3771
+<         data = 0.0F;
+---
+>         data = 2.0F;
+3756a3782,3787
+> 
+> void CWE369_Divide_by_Zero__float_zero_17_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+3766a3798,3800
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__float_zero_17_good();
+>     printLine("Finished good()");
+3772,3774d3805
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__float_zero_17_bad();
+<     printLine("Finished bad()");

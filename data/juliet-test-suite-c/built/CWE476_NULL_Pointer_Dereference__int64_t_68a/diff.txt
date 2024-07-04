@@ -1,0 +1,50 @@
+3245a3246,3248
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_68a.c"
+> void CWE476_NULL_Pointer_Dereference__int64_t_68b_goodG2BSink();
+> void CWE476_NULL_Pointer_Dereference__int64_t_68b_goodB2GSink();
+3247a3251,3254
+> static void goodG2B()
+> {
+>     int64_t * data;
+>     int64_t tmpData = 5LL;
+3248a3256,3261
+>     {
+>         data = &tmpData;
+>     }
+>     CWE476_NULL_Pointer_Dereference__int64_t_68_goodG2BData = data;
+>     CWE476_NULL_Pointer_Dereference__int64_t_68b_goodG2BSink();
+> }
+3250d3262
+< void CWE476_NULL_Pointer_Dereference__int64_t_68b_badSink();
+3252c3264
+< void CWE476_NULL_Pointer_Dereference__int64_t_68_bad()
+---
+> static void goodB2G()
+3257c3269
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_68a.c" 3 4
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_68a.c" 3 4
+3259c3271
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_68a.c"
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__int64_t_68a.c"
+3261,3262c3273,3280
+<     CWE476_NULL_Pointer_Dereference__int64_t_68_badData = data;
+<     CWE476_NULL_Pointer_Dereference__int64_t_68b_badSink();
+---
+>     CWE476_NULL_Pointer_Dereference__int64_t_68_goodB2GData = data;
+>     CWE476_NULL_Pointer_Dereference__int64_t_68b_goodB2GSink();
+> }
+> 
+> void CWE476_NULL_Pointer_Dereference__int64_t_68_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3273a3292,3294
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__int64_t_68_good();
+>     printLine("Finished good()");
+3279,3281d3299
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__int64_t_68_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,34 @@
+3253,3256c3253,3254
+< 
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_01_bad()
+---
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_01.c"
+> static void good1()
+3261c3259
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_01.c" 3 4
+---
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_01.c" 3 4
+3263c3261
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_01.c"
+---
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_01.c"
+3269c3267
+<         memmove(structCharVoid->charFirst, "0123456789abcdef0123456789abcde", sizeof(*structCharVoid));
+---
+>         memmove(structCharVoid->charFirst, "0123456789abcdef0123456789abcde", sizeof(structCharVoid->charFirst));
+3274a3273,3277
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_01_good()
+> {
+>     good1();
+> }
+3284a3288,3290
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_01_good();
+>     printLine("Finished good()");
+3290,3292d3295
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__char_type_overrun_memmove_01_bad();
+<     printLine("Finished bad()");

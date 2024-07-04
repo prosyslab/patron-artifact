@@ -1,0 +1,153 @@
+3239a3240
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c"
+3240a3242,3267
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c"
+> static void goodB2G1()
+> {
+>     twoIntsStruct * data;
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = 
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c" 3 4
+>               ((void *)0)
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c"
+>                   ;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(8)
+>     {
+>     case 7:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+3241a3269,3283
+>         if (data != 
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c" 3 4
+>                    ((void *)0)
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c"
+>                        )
+>         {
+>             printIntLine(data->intOne);
+>         }
+>         else
+>         {
+>             printLine("data is NULL");
+>         }
+>         break;
+>     }
+> }
+3244,3245c3286
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c"
+< void CWE476_NULL_Pointer_Dereference__struct_15_bad()
+---
+> static void goodB2G2()
+3253c3294
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c" 3 4
+---
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c" 3 4
+3255c3296
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c"
+---
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c"
+3266a3308,3351
+>         if (data != 
+> # 109 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c" 3 4
+>                    ((void *)0)
+> # 109 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_15.c"
+>                        )
+>         {
+>             printIntLine(data->intOne);
+>         }
+>         else
+>         {
+>             printLine("data is NULL");
+>         }
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     twoIntsStruct * data;
+>     twoIntsStruct tmpData;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>     {
+>         tmpData.intOne = 0;
+>         tmpData.intTwo = 0;
+>         data = &tmpData;
+>     }
+>     break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+> 
+3274a3360,3400
+> 
+> 
+> static void goodG2B2()
+> {
+>     twoIntsStruct * data;
+>     twoIntsStruct tmpData;
+>     switch(6)
+>     {
+>     case 6:
+> 
+>     {
+>         tmpData.intOne = 0;
+>         tmpData.intTwo = 0;
+>         data = &tmpData;
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+> 
+>         printIntLine(data->intOne);
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> void CWE476_NULL_Pointer_Dereference__struct_15_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3284a3411,3413
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__struct_15_good();
+>     printLine("Finished good()");
+3290,3292d3418
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__struct_15_bad();
+<     printLine("Finished bad()");

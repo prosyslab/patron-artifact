@@ -1,0 +1,115 @@
+4048c4048
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+4050,4051c4050,4051
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+< void CWE367_TOC_TOU__access_11_bad()
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+> static void good1()
+4053c4053,4058
+<     if(globalReturnsTrue())
+---
+>     if(globalReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+4059c4064
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c" 3 4
+---
+> # 100 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c" 3 4
+4061c4066
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+---
+> # 100 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+4063c4068
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c" 3 4
+---
+> # 100 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c" 3 4
+4065c4070
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+---
+> # 100 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+4077,4081c4082,4091
+<             if (access(filename, 
+< # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c" 3 4
+<                                 2
+< # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+<                                     ) == -1)
+---
+>             fileDesc = open(filename, 
+> # 111 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c" 3 4
+>                                       02
+> # 111 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+>                                             );
+>             if (fileDesc == -1)
+>             {
+>                 exit(1);
+>             }
+>             if (write(fileDesc, "Good Sink...", strlen("Good Sink...")) == -1)
+4084a4095,4129
+>             if (fileDesc != -1)
+>             {
+>                 close(fileDesc);
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void good2()
+> {
+>     if(globalReturnsTrue())
+>     {
+>         {
+>             char filename[100] = "";
+>             int fileDesc = -1;
+>             if (fgets(filename, 100, 
+> # 136 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c" 3 4
+>                                     stdin
+> # 136 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+>                                          ) == 
+> # 136 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c" 3 4
+>                                               ((void *)0)
+> # 136 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+>                                                   )
+>             {
+>                 printLine("fgets() failed");
+> 
+>                 filename[0] = '\0';
+>             }
+>             if (strlen(filename) > 0)
+>             {
+>                 filename[strlen(filename)-1] = '\0';
+>             }
+> 
+4086c4131
+< # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c" 3 4
+---
+> # 147 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c" 3 4
+4088c4133
+< # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+---
+> # 147 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_11.c"
+4094c4139
+<             if (write(fileDesc, "Bad Sink...", strlen("Bad Sink...")) == -1)
+---
+>             if (write(fileDesc, "Good Sink...", strlen("Good Sink...")) == -1)
+4104a4150,4155
+> 
+> void CWE367_TOC_TOU__access_11_good()
+> {
+>     good1();
+>     good2();
+> }
+4114a4166,4168
+>     printLine("Calling good()...");
+>     CWE367_TOC_TOU__access_11_good();
+>     printLine("Finished good()");
+4120,4122d4173
+<     printLine("Calling bad()...");
+<     CWE367_TOC_TOU__access_11_bad();
+<     printLine("Finished bad()");

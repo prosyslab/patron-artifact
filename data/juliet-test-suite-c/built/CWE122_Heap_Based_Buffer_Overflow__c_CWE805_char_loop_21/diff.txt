@@ -1,0 +1,109 @@
+3239a3240
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c"
+3240a3242,3244
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c"
+> static int goodG2B1Static = 0;
+> static int goodG2B2Static = 0;
+3242a3247,3282
+> static char * goodG2B1Source(char * data)
+> {
+>     if(goodG2B1Static)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = (char *)malloc(100*sizeof(char));
+>         if (data == 
+> # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c" 3 4
+>                    ((void *)0)
+> # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c"
+>                        ) {exit(-1);}
+>         data[0] = '\0';
+>     }
+>     return data;
+> }
+> 
+> static void goodG2B1()
+> {
+>     char * data;
+>     data = 
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c" 3 4
+>           ((void *)0)
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c"
+>               ;
+>     goodG2B1Static = 0;
+>     data = goodG2B1Source(data);
+>     {
+>         size_t i;
+>         char source[100];
+>         memset(source, 'C', 100-1);
+>         source[100-1] = '\0';
+3243a3284,3292
+>         for (i = 0; i < 100; i++)
+>         {
+>             data[i] = source[i];
+>         }
+>         data[100-1] = '\0';
+>         printLine(data);
+>         free(data);
+>     }
+> }
+3245,3246d3293
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c"
+< static int badStatic = 0;
+3248c3295
+< static char * badSource(char * data)
+---
+> static char * goodG2B2Source(char * data)
+3250c3297
+<     if(badStatic)
+---
+>     if(goodG2B2Static)
+3253c3300
+<         data = (char *)malloc(50*sizeof(char));
+---
+>         data = (char *)malloc(100*sizeof(char));
+3255c3302
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c" 3 4
+---
+> # 115 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c" 3 4
+3257c3304
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c"
+---
+> # 115 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c"
+3264c3311
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21_bad()
+---
+> static void goodG2B2()
+3268c3315
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c" 3 4
+---
+> # 124 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c" 3 4
+3270c3317
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c"
+---
+> # 124 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21.c"
+3272,3273c3319,3320
+<     badStatic = 1;
+<     data = badSource(data);
+---
+>     goodG2B2Static = 1;
+>     data = goodG2B2Source(data);
+3288a3336,3341
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3298a3352,3354
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21_good();
+>     printLine("Finished good()");
+3304,3306d3359
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_loop_21_bad();
+<     printLine("Finished bad()");

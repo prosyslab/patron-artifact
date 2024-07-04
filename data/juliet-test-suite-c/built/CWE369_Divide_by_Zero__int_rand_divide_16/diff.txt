@@ -1,0 +1,51 @@
+2813a2814,2817
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_rand_divide_16.c"
+> static void goodB2G()
+> {
+>     int data;
+2814a2819,2821
+>     data = -1;
+>     while(1)
+>     {
+2815a2823,2827
+>         data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>         break;
+>     }
+>     while(1)
+>     {
+2817c2829,2842
+< void CWE369_Divide_by_Zero__int_rand_divide_16_bad()
+---
+>         if( data != 0 )
+>         {
+>             printIntLine(100 / data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+2825c2850
+<         data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+---
+>         data = 7;
+2834a2860,2865
+> 
+> void CWE369_Divide_by_Zero__int_rand_divide_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2844a2876,2878
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_rand_divide_16_good();
+>     printLine("Finished good()");
+2850,2852d2883
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_rand_divide_16_bad();
+<     printLine("Finished bad()");

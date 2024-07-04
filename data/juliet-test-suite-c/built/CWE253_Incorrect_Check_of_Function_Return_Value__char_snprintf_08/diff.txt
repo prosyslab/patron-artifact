@@ -1,0 +1,48 @@
+3252a3253,3267
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_08.c"
+> static void good1()
+> {
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+> 
+> 
+>             char dataBuffer[100] = "";
+>             char * data = dataBuffer;
+3253a3269,3275
+>             if (snprintf(data,100-strlen("string")-1, "%s\n", "string") < 0)
+>             {
+>                 printLine("snprintf failed!");
+>             }
+>         }
+>     }
+> }
+3256c3278
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_08_bad()
+---
+> static void good2()
+3266,3267c3288
+< 
+<             if (snprintf(data,100-strlen("string")-1, "%s\n", "string") == 0)
+---
+>             if (snprintf(data,100-strlen("string")-1, "%s\n", "string") < 0)
+3273a3295,3300
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_08_good()
+> {
+>     good1();
+>     good2();
+> }
+3283a3311,3313
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_08_good();
+>     printLine("Finished good()");
+3289,3291d3318
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_snprintf_08_bad();
+<     printLine("Finished bad()");

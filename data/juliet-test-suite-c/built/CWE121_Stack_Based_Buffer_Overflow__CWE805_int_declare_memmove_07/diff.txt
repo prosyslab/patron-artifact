@@ -1,0 +1,48 @@
+2819a2820,2837
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_int_declare_memmove_07.c"
+> static void goodG2B1()
+> {
+>     int * data;
+>     int dataBadBuffer[50];
+>     int dataGoodBuffer[100];
+>     if(staticFive!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = dataGoodBuffer;
+>     }
+>     {
+>         int source[100] = {0};
+2820a2839,2842
+>         memmove(data, source, 100*sizeof(int));
+>         printIntLine(data[0]);
+>     }
+> }
+2823c2845
+< void CWE121_Stack_Based_Buffer_Overflow__CWE805_int_declare_memmove_07_bad()
+---
+> static void goodG2B2()
+2831,2832c2853
+< 
+<         data = dataBadBuffer;
+---
+>         data = dataGoodBuffer;
+2840a2862,2867
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE805_int_declare_memmove_07_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2850a2878,2880
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE805_int_declare_memmove_07_good();
+>     printLine("Finished good()");
+2856,2858d2885
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE805_int_declare_memmove_07_bad();
+<     printLine("Finished bad()");

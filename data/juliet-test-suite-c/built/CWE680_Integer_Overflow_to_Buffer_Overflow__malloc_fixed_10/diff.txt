@@ -1,0 +1,69 @@
+2813a2814,2826
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_10.c"
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(globalFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2814a2828,2832
+>         data = 20;
+>     }
+>     {
+>         size_t i;
+>         int *intPointer;
+2817c2835,2851
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_10_bad()
+---
+>         intPointer = (int*)malloc(data * sizeof(int));
+>         if (intPointer == 
+> # 75 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_10.c" 3 4
+>                          ((void *)0)
+> # 75 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_10.c"
+>                              ) {exit(-1);}
+>         for (i = 0; i < (size_t)data; i++)
+>         {
+>             intPointer[i] = 0;
+>         }
+>         printIntLine(intPointer[0]);
+>         free(intPointer);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+2825,2827c2859
+<         data = 0x7fffffff / 2 + 2;
+< 
+< 
+---
+>         data = 20;
+2836c2868
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_10.c" 3 4
+---
+> # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_10.c" 3 4
+2838c2870
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_10.c"
+---
+> # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_10.c"
+2847a2880,2885
+> 
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_10_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2857a2896,2898
+>     printLine("Calling good()...");
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_10_good();
+>     printLine("Finished good()");
+2863,2865d2903
+<     printLine("Calling bad()...");
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fixed_10_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,29 @@
+3241c3241
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_01.c"
+---
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_01.c"
+3243,3244c3243,3244
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_01.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_01_bad()
+---
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_01.c"
+> static void good1()
+3247,3248c3247
+< 
+<     if (remove("removemebad.txt") == 0)
+---
+>     if (remove("removemegood.txt") != 0)
+3252a3252,3256
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_01_good()
+> {
+>     good1();
+> }
+3262a3267,3269
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_01_good();
+>     printLine("Finished good()");
+3268,3270d3274
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_01_bad();
+<     printLine("Finished bad()");

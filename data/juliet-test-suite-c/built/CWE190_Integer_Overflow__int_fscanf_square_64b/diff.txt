@@ -1,0 +1,36 @@
+3731a3732
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_square_64b.c"
+3732a3734,3736
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_square_64b.c"
+> void CWE190_Integer_Overflow__int_fscanf_square_64b_goodG2BSink(void * dataVoidPtr)
+> {
+3733a3738
+>     int * dataPtr = (int *)dataVoidPtr;
+3734a3740,3741
+>     int data = (*dataPtr);
+>     {
+3736,3737c3743,3749
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_square_64b.c"
+< void CWE190_Integer_Overflow__int_fscanf_square_64b_badSink(void * dataVoidPtr)
+---
+>         int result = data * data;
+>         printIntLine(result);
+>     }
+> }
+> 
+> 
+> void CWE190_Integer_Overflow__int_fscanf_square_64b_goodB2GSink(void * dataVoidPtr)
+3743d3754
+<     {
+3744a3756,3761
+>     if (data > 
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_square_64b.c" 3 4
+>               (-0x7fffffff - 1) 
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_square_64b.c"
+>                       && abs(data) < (long)sqrt((double)0x7fffffff))
+>     {
+3746a3764,3767
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");

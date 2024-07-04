@@ -1,0 +1,28 @@
+4900c4900
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_66b.c"
+---
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_66b.c"
+4902,4903c4902,4903
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_66b.c"
+< void CWE369_Divide_by_Zero__int_connect_socket_divide_66b_badSink(int dataArray[])
+---
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_66b.c"
+> void CWE369_Divide_by_Zero__int_connect_socket_divide_66b_goodG2BSink(int dataArray[])
+4905d4904
+< 
+4908a4908,4922
+> }
+> 
+> 
+> void CWE369_Divide_by_Zero__int_connect_socket_divide_66b_goodB2GSink(int dataArray[])
+> {
+>     int data = dataArray[2];
+> 
+>     if( data != 0 )
+>     {
+>         printIntLine(100 / data);
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");
+>     }

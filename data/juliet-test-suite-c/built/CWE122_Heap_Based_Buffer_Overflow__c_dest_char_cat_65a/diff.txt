@@ -1,0 +1,56 @@
+3239a3240
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65a.c"
+3240a3242,3243
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65a.c"
+> void CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65b_goodG2BSink(char * data);
+3242,3248c3245
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65a.c"
+< void CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65b_badSink(char * data);
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65_bad()
+---
+> static void goodG2B()
+3251,3252c3248
+< 
+<     void (*funcPtr) (char *) = CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65b_badSink;
+---
+>     void (*funcPtr) (char *) = CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65b_goodG2BSink;
+3254c3250
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65a.c" 3 4
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65a.c" 3 4
+3256c3252
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65a.c"
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65a.c"
+3259c3255
+<     data = (char *)malloc(50*sizeof(char));
+---
+>     data = (char *)malloc(100*sizeof(char));
+3261c3257
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65a.c" 3 4
+---
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65a.c" 3 4
+3263c3259
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65a.c"
+---
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65a.c"
+3266d3261
+< 
+3268a3264,3268
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65_good()
+> {
+>     goodG2B();
+> }
+3278a3279,3281
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65_good();
+>     printLine("Finished good()");
+3284,3286d3286
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_65_bad();
+<     printLine("Finished bad()");

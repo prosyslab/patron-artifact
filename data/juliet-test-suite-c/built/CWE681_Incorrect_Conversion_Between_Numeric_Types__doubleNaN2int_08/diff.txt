@@ -1,0 +1,94 @@
+3747a3748,3761
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c"
+> static void good1()
+> {
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             char inputBuffer[256];
+>             double doubleNumber = 0;
+> 
+3751c3765,3797
+< void CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08_bad()
+---
+>             if (fgets(inputBuffer, 256, 
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c" 3 4
+>                                                    stdin
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c"
+>                                                         ) != 
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c" 3 4
+>                                                              ((void *)0)
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c"
+>                                                                  )
+>             {
+> 
+>                 doubleNumber = atof(inputBuffer);
+>             }
+>             else
+>             {
+>                 printLine("fgets() failed.");
+>             }
+> 
+> 
+>             if (doubleNumber < 0)
+>             {
+>                 printLine("Value is negative");
+>             }
+>             else
+>             {
+>                 printIntLine((int)(sqrt(doubleNumber)));
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void good2()
+3763c3809
+< # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c" 3 4
+---
+> # 118 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c" 3 4
+3765c3811
+< # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c"
+---
+> # 118 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c"
+3767c3813
+< # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c" 3 4
+---
+> # 118 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c" 3 4
+3769c3815
+< # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c"
+---
+> # 118 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE681_Incorrect_Conversion_Between_Numeric_Types/CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08.c"
+3780c3826,3834
+<             printIntLine((int)(sqrt(doubleNumber)));
+---
+> 
+>             if (doubleNumber < 0)
+>             {
+>                 printLine("Value is negative");
+>             }
+>             else
+>             {
+>                 printIntLine((int)(sqrt(doubleNumber)));
+>             }
+3783a3838,3843
+> 
+> void CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08_good()
+> {
+>     good1();
+>     good2();
+> }
+3793a3854,3856
+>     printLine("Calling good()...");
+>     CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08_good();
+>     printLine("Finished good()");
+3799,3801d3861
+<     printLine("Calling bad()...");
+<     CWE681_Incorrect_Conversion_Between_Numeric_Types__doubleNaN2int_08_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,84 @@
+2813a2814,2818
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_44.c"
+> static void goodG2BSink(int data)
+> {
+>     {
+>         int buffer[10] = { 0 };
+2815a2821,2830
+>         if (data < 10)
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is too big.");
+>         }
+>     }
+> }
+2816a2832,2837
+> static void goodG2B()
+> {
+>     int data;
+>     void (*funcPtr) (int) = goodG2BSink;
+> 
+>     data = -1;
+2819c2840,2845
+< static void badSink(int data)
+---
+>     data = 7;
+>     funcPtr(data);
+> }
+> 
+> 
+> static void goodB2GSink(int data)
+2824,2825c2850
+< 
+<         if (data < 10)
+---
+>         if (data >= 0 && data < (10))
+2831c2856
+<             printLine("ERROR: Array index is too big.");
+---
+>             printLine("ERROR: Array index is out-of-bounds");
+2836c2861
+< void CWE127_Buffer_Underread__CWE839_fgets_44_bad()
+---
+> static void goodB2G()
+2839,2840c2864
+< 
+<     void (*funcPtr) (int) = badSink;
+---
+>     void (*funcPtr) (int) = goodB2GSink;
+2847c2871
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_44.c" 3 4
+---
+> # 125 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_44.c" 3 4
+2849c2873
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_44.c"
+---
+> # 125 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_44.c"
+2851c2875
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_44.c" 3 4
+---
+> # 125 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_44.c" 3 4
+2853c2877
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_44.c"
+---
+> # 125 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fgets_44.c"
+2864d2887
+< 
+2866a2890,2895
+> 
+> void CWE127_Buffer_Underread__CWE839_fgets_44_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2876a2906,2908
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__CWE839_fgets_44_good();
+>     printLine("Finished good()");
+2882,2884d2913
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__CWE839_fgets_44_bad();
+<     printLine("Finished bad()");

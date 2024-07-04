@@ -1,0 +1,2 @@
+# Empty dependencies file for CWE762_Mismatched_Memory_Management_Routines__delete_class_calloc_45-bad.
+# This may be replaced when dependencies are built.

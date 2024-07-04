@@ -1,0 +1,57 @@
+2819a2820,2822
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_68a.c"
+> void CWE190_Integer_Overflow__int_fgets_preinc_68b_goodG2BSink();
+> void CWE190_Integer_Overflow__int_fgets_preinc_68b_goodB2GSink();
+2821a2825,2829
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = 0;
+2822a2831,2834
+>     data = 2;
+>     CWE190_Integer_Overflow__int_fgets_preinc_68_goodG2BData = data;
+>     CWE190_Integer_Overflow__int_fgets_preinc_68b_goodG2BSink();
+> }
+2824d2835
+< void CWE190_Integer_Overflow__int_fgets_preinc_68b_badSink();
+2826c2837
+< void CWE190_Integer_Overflow__int_fgets_preinc_68_bad()
+---
+> static void goodB2G()
+2835c2846
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_68a.c" 3 4
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_68a.c" 3 4
+2837c2848
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_68a.c"
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_68a.c"
+2839c2850
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_68a.c" 3 4
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_68a.c" 3 4
+2841c2852
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_68a.c"
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_fgets_preinc_68a.c"
+2852,2853c2863,2870
+<     CWE190_Integer_Overflow__int_fgets_preinc_68_badData = data;
+<     CWE190_Integer_Overflow__int_fgets_preinc_68b_badSink();
+---
+>     CWE190_Integer_Overflow__int_fgets_preinc_68_goodB2GData = data;
+>     CWE190_Integer_Overflow__int_fgets_preinc_68b_goodB2GSink();
+> }
+> 
+> void CWE190_Integer_Overflow__int_fgets_preinc_68_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2864a2882,2884
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_fgets_preinc_68_good();
+>     printLine("Finished good()");
+2870,2872d2889
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_fgets_preinc_68_bad();
+<     printLine("Finished bad()");

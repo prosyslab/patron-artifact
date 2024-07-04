@@ -1,0 +1,45 @@
+3239a3240
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_32.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_32.c"
+< void CWE124_Buffer_Underwrite__char_alloca_cpy_32_bad()
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_32.c"
+> static void goodG2B()
+3251c3249
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_32.c" 3 4
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_32.c" 3 4
+3253c3251
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_32.c"
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_32.c"
+3255c3253
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_32.c" 3 4
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_32.c" 3 4
+3257c3255
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_32.c"
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_32.c"
+3264c3262
+<         data = dataBuffer - 8;
+---
+>         data = dataBuffer;
+3278a3277,3281
+> 
+> void CWE124_Buffer_Underwrite__char_alloca_cpy_32_good()
+> {
+>     goodG2B();
+> }
+3288a3292,3294
+>     printLine("Calling good()...");
+>     CWE124_Buffer_Underwrite__char_alloca_cpy_32_good();
+>     printLine("Finished good()");
+3294,3296d3299
+<     printLine("Calling bad()...");
+<     CWE124_Buffer_Underwrite__char_alloca_cpy_32_bad();
+<     printLine("Finished bad()");

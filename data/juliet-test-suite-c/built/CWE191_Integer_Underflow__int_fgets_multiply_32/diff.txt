@@ -1,0 +1,77 @@
+2813a2814,2819
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_32.c"
+> static void goodG2B()
+> {
+>     int data;
+>     int *dataPtr1 = &data;
+>     int *dataPtr2 = &data;
+2814a2821,2823
+>     data = 0;
+>     {
+>         int data = *dataPtr1;
+2815a2825,2831
+>         data = -2;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         int data = *dataPtr2;
+>         if(data < 0)
+>         {
+2816a2833,2837
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>     }
+> }
+2819c2840
+< void CWE191_Integer_Underflow__int_fgets_multiply_32_bad()
+---
+> static void goodB2G()
+2832c2853
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_32.c" 3 4
+---
+> # 101 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_32.c" 3 4
+2834c2855
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_32.c"
+---
+> # 101 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_32.c"
+2836c2857
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_32.c" 3 4
+---
+> # 101 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_32.c" 3 4
+2838c2859
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_32.c"
+---
+> # 101 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_32.c"
+2856,2857c2877,2889
+<             int result = data * 2;
+<             printIntLine(result);
+---
+>             if (data > (
+> # 118 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_32.c" 3 4
+>                        (-0x7fffffff - 1)
+> # 118 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_32.c"
+>                               /2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+2860a2893,2898
+> 
+> void CWE191_Integer_Underflow__int_fgets_multiply_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2870a2909,2911
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_fgets_multiply_32_good();
+>     printLine("Finished good()");
+2876,2878d2916
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_fgets_multiply_32_bad();
+<     printLine("Finished bad()");

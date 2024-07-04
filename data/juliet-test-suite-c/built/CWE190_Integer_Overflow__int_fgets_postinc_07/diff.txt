@@ -1,0 +1,143 @@
+2820a2821,2852
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c"
+> static void goodB2G1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(staticFive==5)
+>     {
+>         {
+>             char inputBuffer[(3 * sizeof(data) + 2)] = "";
+> 
+>             if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c" 3 4
+>                                                    stdin
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c"
+>                                                         ) != 
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c" 3 4
+>                                                              ((void *)0)
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c"
+>                                                                  )
+>             {
+> 
+>                 data = atoi(inputBuffer);
+>             }
+>             else
+>             {
+>                 printLine("fgets() failed.");
+>             }
+>         }
+>     }
+>     if(staticFive!=5)
+>     {
+2821a2854,2870
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if (data < 0x7fffffff)
+>         {
+>             data++;
+>             int result = data;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+2824c2873
+< void CWE190_Integer_Overflow__int_fgets_postinc_07_bad()
+---
+> static void goodB2G2()
+2835c2884
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c" 3 4
+---
+> # 119 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c" 3 4
+2837c2886
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c"
+---
+> # 119 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c"
+2839c2888
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c" 3 4
+---
+> # 119 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c" 3 4
+2841c2890
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c"
+---
+> # 119 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_fgets_postinc_07.c"
+2854a2904,2957
+> 
+>         if (data < 0x7fffffff)
+>         {
+>             data++;
+>             int result = data;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(staticFive!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2;
+>     }
+>     if(staticFive==5)
+>     {
+>         {
+> 
+>             data++;
+>             int result = data;
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(staticFive==5)
+>     {
+> 
+>         data = 2;
+>     }
+>     if(staticFive==5)
+>     {
+2862a2966,2973
+> 
+> void CWE190_Integer_Overflow__int_fgets_postinc_07_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2872a2984,2986
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_fgets_postinc_07_good();
+>     printLine("Finished good()");
+2878,2880d2991
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_fgets_postinc_07_bad();
+<     printLine("Finished bad()");

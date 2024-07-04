@@ -1,0 +1,56 @@
+2820a2821,2824
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__rand_strncpy_04.c"
+> static void goodG2B1()
+> {
+>     short data;
+2821a2826,2828
+>     data = 0;
+>     if(STATIC_CONST_FALSE)
+>     {
+2822a2830,2833
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2824c2835,2854
+< void CWE194_Unexpected_Sign_Extension__rand_strncpy_04_bad()
+---
+>         data = 100-1;
+>     }
+>     {
+>         char source[100];
+>         char dest[100] = "";
+>         memset(source, 'A', 100-1);
+>         source[100-1] = '\0';
+>         if (data < 100)
+>         {
+> 
+> 
+>             strncpy(dest, source, data);
+>             dest[data] = '\0';
+>         }
+>         printLine(dest);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+2832c2862
+<         data = (short)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+---
+>         data = 100-1;
+2848a2879,2884
+> 
+> void CWE194_Unexpected_Sign_Extension__rand_strncpy_04_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2858a2895,2897
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__rand_strncpy_04_good();
+>     printLine("Finished good()");
+2864,2866d2902
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__rand_strncpy_04_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,65 @@
+2820,2823c2820,2821
+< 
+< 
+< 
+< static void badSink()
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_45.c"
+> static void goodG2BSink()
+2825c2823
+<     short data = CWE194_Unexpected_Sign_Extension__fgets_malloc_45_badData;
+---
+>     short data = CWE194_Unexpected_Sign_Extension__fgets_malloc_45_goodG2BData;
+2833c2831
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_45.c" 3 4
+---
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_45.c" 3 4
+2835c2833
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_45.c"
+---
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_45.c"
+2845c2843
+< void CWE194_Unexpected_Sign_Extension__fgets_malloc_45_bad()
+---
+> static void goodG2B()
+2850,2851d2847
+<     {
+<         char inputBuffer[8] = "";
+2853,2872c2849,2856
+<         if (fgets(inputBuffer, 8, 
+< # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_45.c" 3 4
+<                                                stdin
+< # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_45.c"
+<                                                     ) != 
+< # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_45.c" 3 4
+<                                                          ((void *)0)
+< # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_45.c"
+<                                                              )
+<         {
+< 
+<             data = (short)atoi(inputBuffer);
+<         }
+<         else
+<         {
+<             printLine("fgets() failed.");
+<         }
+<     }
+<     CWE194_Unexpected_Sign_Extension__fgets_malloc_45_badData = data;
+<     badSink();
+---
+>     data = 100-1;
+>     CWE194_Unexpected_Sign_Extension__fgets_malloc_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+> 
+> void CWE194_Unexpected_Sign_Extension__fgets_malloc_45_good()
+> {
+>     goodG2B();
+2883a2868,2870
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__fgets_malloc_45_good();
+>     printLine("Finished good()");
+2889,2891d2875
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__fgets_malloc_45_bad();
+<     printLine("Finished bad()");

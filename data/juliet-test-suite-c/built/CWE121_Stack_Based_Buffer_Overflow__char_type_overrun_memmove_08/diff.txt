@@ -1,0 +1,48 @@
+3266a3267,3271
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memmove_08.c"
+> static void good1()
+> {
+>     if(staticReturnsFalse())
+>     {
+3267a3273,3279
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             charVoid structCharVoid;
+>             structCharVoid.voidSecond = (void *)"0123456789abcdef0123456789abcde";
+3268a3281
+>             printLine((char *)structCharVoid.voidSecond);
+3270c3283,3292
+< void CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memmove_08_bad()
+---
+>             memmove(structCharVoid.charFirst, "0123456789abcdef0123456789abcde", sizeof(structCharVoid.charFirst));
+>             structCharVoid.charFirst[(sizeof(structCharVoid.charFirst)/sizeof(char))-1] = '\0';
+>             printLine((char *)structCharVoid.charFirst);
+>             printLine((char *)structCharVoid.voidSecond);
+>         }
+>     }
+> }
+> 
+> 
+> static void good2()
+3280c3302
+<             memmove(structCharVoid.charFirst, "0123456789abcdef0123456789abcde", sizeof(structCharVoid));
+---
+>             memmove(structCharVoid.charFirst, "0123456789abcdef0123456789abcde", sizeof(structCharVoid.charFirst));
+3286a3309,3314
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memmove_08_good()
+> {
+>     good1();
+>     good2();
+> }
+3296a3325,3327
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memmove_08_good();
+>     printLine("Finished good()");
+3302,3304d3332
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memmove_08_bad();
+<     printLine("Finished bad()");

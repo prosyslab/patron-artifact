@@ -1,0 +1,57 @@
+2820,2823c2820,2821
+< 
+< 
+< 
+< static void badSink()
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_memmove_45.c"
+> static void goodG2BSink()
+2825c2823
+<     short data = CWE194_Unexpected_Sign_Extension__fgets_memmove_45_badData;
+---
+>     short data = CWE194_Unexpected_Sign_Extension__fgets_memmove_45_goodG2BData;
+2842c2840
+< void CWE194_Unexpected_Sign_Extension__fgets_memmove_45_bad()
+---
+> static void goodG2B()
+2847,2848d2844
+<     {
+<         char inputBuffer[8] = "";
+2850,2859c2846,2849
+<         if (fgets(inputBuffer, 8, 
+< # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_memmove_45.c" 3 4
+<                                                stdin
+< # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_memmove_45.c"
+<                                                     ) != 
+< # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_memmove_45.c" 3 4
+<                                                          ((void *)0)
+< # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_memmove_45.c"
+<                                                              )
+<         {
+---
+>     data = 100-1;
+>     CWE194_Unexpected_Sign_Extension__fgets_memmove_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+2861,2869c2851,2853
+<             data = (short)atoi(inputBuffer);
+<         }
+<         else
+<         {
+<             printLine("fgets() failed.");
+<         }
+<     }
+<     CWE194_Unexpected_Sign_Extension__fgets_memmove_45_badData = data;
+<     badSink();
+---
+> void CWE194_Unexpected_Sign_Extension__fgets_memmove_45_good()
+> {
+>     goodG2B();
+2880a2865,2867
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__fgets_memmove_45_good();
+>     printLine("Finished good()");
+2886,2888d2872
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__fgets_memmove_45_bad();
+<     printLine("Finished bad()");

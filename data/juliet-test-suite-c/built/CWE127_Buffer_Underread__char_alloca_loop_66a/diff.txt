@@ -1,0 +1,53 @@
+3239a3240
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_loop_66a.c"
+3240a3242,3243
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_loop_66a.c"
+> void CWE127_Buffer_Underread__char_alloca_loop_66b_goodG2BSink(char * dataArray[]);
+3242,3248c3245
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_loop_66a.c"
+< void CWE127_Buffer_Underread__char_alloca_loop_66b_badSink(char * dataArray[]);
+< 
+< void CWE127_Buffer_Underread__char_alloca_loop_66_bad()
+---
+> static void goodG2B()
+3253c3250
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_loop_66a.c" 3 4
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_loop_66a.c" 3 4
+3255c3252
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_loop_66a.c"
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_loop_66a.c"
+3257c3254
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_loop_66a.c" 3 4
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_loop_66a.c" 3 4
+3259c3256
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_loop_66a.c"
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_loop_66a.c"
+3264,3265c3261
+<     data = dataBuffer - 8;
+< 
+---
+>     data = dataBuffer;
+3267c3263,3268
+<     CWE127_Buffer_Underread__char_alloca_loop_66b_badSink(dataArray);
+---
+>     CWE127_Buffer_Underread__char_alloca_loop_66b_goodG2BSink(dataArray);
+> }
+> 
+> void CWE127_Buffer_Underread__char_alloca_loop_66_good()
+> {
+>     goodG2B();
+3278a3280,3282
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__char_alloca_loop_66_good();
+>     printLine("Finished good()");
+3284,3286d3287
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__char_alloca_loop_66_bad();
+<     printLine("Finished bad()");

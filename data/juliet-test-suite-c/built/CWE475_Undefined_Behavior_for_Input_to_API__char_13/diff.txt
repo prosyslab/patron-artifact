@@ -1,0 +1,47 @@
+3239a3240
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE475_Undefined_Behavior_for_Input_to_API/CWE475_Undefined_Behavior_for_Input_to_API__char_13.c"
+3240a3242,3255
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE475_Undefined_Behavior_for_Input_to_API/CWE475_Undefined_Behavior_for_Input_to_API__char_13.c"
+> static void good1()
+> {
+>     if(GLOBAL_CONST_FIVE!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             char dataBuffer[100] = "";
+>             char * data = dataBuffer;
+>             strcpy(data, "abcdefghijklmnopqrstuvwxyz");
+3241a3257,3261
+>             memmove(data + 6, data + 4, 10*sizeof(char));
+>             printLine(data);
+>         }
+>     }
+> }
+3244,3245c3264
+< # 22 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE475_Undefined_Behavior_for_Input_to_API/CWE475_Undefined_Behavior_for_Input_to_API__char_13.c"
+< void CWE475_Undefined_Behavior_for_Input_to_API__char_13_bad()
+---
+> static void good2()
+3254c3273
+<             memcpy(data + 6, data + 4, 10*sizeof(char));
+---
+>             memmove(data + 6, data + 4, 10*sizeof(char));
+3258a3278,3283
+> 
+> void CWE475_Undefined_Behavior_for_Input_to_API__char_13_good()
+> {
+>     good1();
+>     good2();
+> }
+3268a3294,3296
+>     printLine("Calling good()...");
+>     CWE475_Undefined_Behavior_for_Input_to_API__char_13_good();
+>     printLine("Finished good()");
+3274,3276d3301
+<     printLine("Calling bad()...");
+<     CWE475_Undefined_Behavior_for_Input_to_API__char_13_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,25 @@
+2820a2821,2825
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_67b.c"
+> void CWE190_Integer_Overflow__int_fgets_add_67b_goodG2BSink(CWE190_Integer_Overflow__int_fgets_add_67_structType myStruct)
+> {
+>     int data = myStruct.structFirst;
+>     {
+2821a2827,2830
+>         int result = data + 1;
+>         printIntLine(result);
+>     }
+> }
+2824c2833
+< void CWE190_Integer_Overflow__int_fgets_add_67b_badSink(CWE190_Integer_Overflow__int_fgets_add_67_structType myStruct)
+---
+> void CWE190_Integer_Overflow__int_fgets_add_67b_goodB2GSink(CWE190_Integer_Overflow__int_fgets_add_67_structType myStruct)
+2827d2835
+<     {
+2828a2837,2838
+>     if (data < 0x7fffffff)
+>     {
+2830a2841,2844
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");

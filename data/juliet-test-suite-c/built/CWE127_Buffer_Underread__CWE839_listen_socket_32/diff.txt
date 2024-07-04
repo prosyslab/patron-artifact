@@ -1,0 +1,127 @@
+4900c4900
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+---
+> # 147 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+4902,4903c4902,4936
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+< void CWE127_Buffer_Underread__CWE839_listen_socket_32_bad()
+---
+> # 147 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+> static void goodG2B()
+> {
+>     int data;
+>     int *dataPtr1 = &data;
+>     int *dataPtr2 = &data;
+> 
+>     data = -1;
+>     {
+>         int data = *dataPtr1;
+> 
+> 
+>         data = 7;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         int data = *dataPtr2;
+>         {
+>             int buffer[10] = { 0 };
+> 
+> 
+>             if (data < 10)
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is too big.");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G()
+4924c4957
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+---
+> # 209 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+4926c4959
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+---
+> # 209 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+4928c4961
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+---
+> # 209 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+4930c4963
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+---
+> # 209 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+4932c4965
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+---
+> # 209 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+4934c4967
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+---
+> # 209 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+4936c4969
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+---
+> # 209 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+4944c4977
+< # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+---
+> # 215 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+4946c4979
+< # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+---
+> # 215 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+4949c4982
+< # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+---
+> # 216 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+4951c4984
+< # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+---
+> # 216 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+4963c4996
+< # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+---
+> # 226 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+4965c4998
+< # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+---
+> # 226 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+4967c5000
+< # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+---
+> # 226 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c" 3 4
+4969c5002
+< # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+---
+> # 226 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_32.c"
+5009,5010c5042
+< 
+<             if (data < 10)
+---
+>             if (data >= 0 && data < (10))
+5016c5048
+<                 printLine("ERROR: Array index is too big.");
+---
+>                 printLine("ERROR: Array index is out-of-bounds");
+5020a5053,5058
+> 
+> void CWE127_Buffer_Underread__CWE839_listen_socket_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+5030a5069,5071
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__CWE839_listen_socket_32_good();
+>     printLine("Finished good()");
+5036,5038d5076
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__CWE839_listen_socket_32_bad();
+<     printLine("Finished bad()");

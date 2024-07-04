@@ -1,0 +1,32 @@
+2813a2814,2818
+> # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_min_multiply_53d.c"
+> void CWE191_Integer_Underflow__char_min_multiply_53d_goodG2BSink(char data)
+> {
+>     if(data < 0)
+>     {
+2814a2820,2823
+>         char result = data * 2;
+>         printHexCharLine(result);
+>     }
+> }
+2817c2826
+< void CWE191_Integer_Underflow__char_min_multiply_53d_badSink(char data)
+---
+> void CWE191_Integer_Underflow__char_min_multiply_53d_goodB2GSink(char data)
+2822,2823c2831,2843
+<         char result = data * 2;
+<         printHexCharLine(result);
+---
+>         if (data > (
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_min_multiply_53d.c" 3 4
+>                    (-0x7f - 1)
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_min_multiply_53d.c"
+>                            /2))
+>         {
+>             char result = data * 2;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too small to perform multiplication.");
+>         }

@@ -1,0 +1,26 @@
+5816c5816
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_connect_socket_65b.c"
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_connect_socket_65b.c"
+5818,5819c5818,5819
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_connect_socket_65b.c"
+< void CWE369_Divide_by_Zero__float_connect_socket_65b_badSink(float data)
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_connect_socket_65b.c"
+> void CWE369_Divide_by_Zero__float_connect_socket_65b_goodG2BSink(float data)
+5824a5825,5839
+>     }
+> }
+> 
+> 
+> void CWE369_Divide_by_Zero__float_connect_socket_65b_goodB2GSink(float data)
+> {
+> 
+>     if(fabs(data) > 0.000001)
+>     {
+>         int result = (int)(100.0 / data);
+>         printIntLine(result);
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");

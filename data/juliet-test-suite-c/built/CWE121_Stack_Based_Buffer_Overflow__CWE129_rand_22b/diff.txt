@@ -1,0 +1,71 @@
+2813a2814,2817
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22b.c"
+> extern int CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22_goodB2G1Global;
+> extern int CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22_goodB2G2Global;
+> extern int CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22_goodG2BGlobal;
+2815a2820,2861
+> void CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22_goodB2G1Sink(int data)
+> {
+>     if(CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22_goodB2G1Global)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             int i;
+>             int buffer[10] = { 0 };
+> 
+>             if (data >= 0 && data < (10))
+>             {
+>                 buffer[data] = 1;
+> 
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22_goodB2G2Sink(int data)
+> {
+>     if(CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22_goodB2G2Global)
+>     {
+>         {
+>             int i;
+>             int buffer[10] = { 0 };
+> 
+>             if (data >= 0 && data < (10))
+>             {
+>                 buffer[data] = 1;
+2816a2863,2874
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>     }
+> }
+2818d2875
+< extern int CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22_badGlobal;
+2820c2877
+< void CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22_badSink(int data)
+---
+> void CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22_goodG2BSink(int data)
+2822c2879
+<     if(CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22_badGlobal)
+---
+>     if(CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_22_goodG2BGlobal)

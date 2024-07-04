@@ -1,0 +1,56 @@
+3255a3256,3282
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_declare_loop_08.c"
+> static void goodG2B1()
+> {
+>     char * data;
+>     char dataBuffer[100];
+>     memset(dataBuffer, 'A', 100-1);
+>     dataBuffer[100-1] = '\0';
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = dataBuffer;
+>     }
+>     {
+>         size_t i;
+>         char source[100];
+>         memset(source, 'C', 100-1);
+>         source[100-1] = '\0';
+> 
+>         for (i = 0; i < 100; i++)
+>         {
+>             data[i] = source[i];
+>         }
+3256a3284,3287
+>         data[100-1] = '\0';
+>         printLine(data);
+>     }
+> }
+3259c3290
+< void CWE124_Buffer_Underwrite__char_declare_loop_08_bad()
+---
+> static void goodG2B2()
+3268c3299
+<         data = dataBuffer - 8;
+---
+>         data = dataBuffer;
+3284a3316,3321
+> 
+> void CWE124_Buffer_Underwrite__char_declare_loop_08_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3294a3332,3334
+>     printLine("Calling good()...");
+>     CWE124_Buffer_Underwrite__char_declare_loop_08_good();
+>     printLine("Finished good()");
+3300,3302d3339
+<     printLine("Calling bad()...");
+<     CWE124_Buffer_Underwrite__char_declare_loop_08_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,57 @@
+2813a2814,2820
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_rand_multiply_16.c"
+> static void goodB2G()
+> {
+>     short data;
+>     data = 0;
+>     while(1)
+>     {
+2814a2822,2846
+>         data = (short)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>         break;
+>     }
+>     while(1)
+>     {
+>         if(data < 0)
+>         {
+> 
+>             if (data > (
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_rand_multiply_16.c" 3 4
+>                        (-0x7fff - 1)
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_rand_multiply_16.c"
+>                                /2))
+>             {
+>                 short result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+>         }
+>         break;
+>     }
+> }
+2817c2849
+< void CWE191_Integer_Underflow__short_rand_multiply_16_bad()
+---
+> static void goodG2B()
+2824c2856
+<         data = (short)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+---
+>         data = -2;
+2837a2870,2875
+> 
+> void CWE191_Integer_Underflow__short_rand_multiply_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2847a2886,2888
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__short_rand_multiply_16_good();
+>     printLine("Finished good()");
+2853,2855d2893
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__short_rand_multiply_16_bad();
+<     printLine("Finished bad()");

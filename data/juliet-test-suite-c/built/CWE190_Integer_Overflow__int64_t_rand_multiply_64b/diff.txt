@@ -1,0 +1,33 @@
+2813a2814,2816
+> # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_rand_multiply_64b.c"
+> void CWE190_Integer_Overflow__int64_t_rand_multiply_64b_goodG2BSink(void * dataVoidPtr)
+> {
+2814a2818
+>     int64_t * dataPtr = (int64_t *)dataVoidPtr;
+2815a2820,2822
+>     int64_t data = (*dataPtr);
+>     if(data > 0)
+>     {
+2817c2824,2830
+< void CWE190_Integer_Overflow__int64_t_rand_multiply_64b_badSink(void * dataVoidPtr)
+---
+>         int64_t result = data * 2;
+>         printLongLongLine(result);
+>     }
+> }
+> 
+> 
+> void CWE190_Integer_Overflow__int64_t_rand_multiply_64b_goodB2GSink(void * dataVoidPtr)
+2826,2827c2839,2847
+<         int64_t result = data * 2;
+<         printLongLongLine(result);
+---
+>         if (data < (0x7fffffffffffffffLL/2))
+>         {
+>             int64_t result = data * 2;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }

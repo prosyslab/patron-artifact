@@ -1,0 +1,141 @@
+3741a3742,3745
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c"
+> static void goodB2G1()
+> {
+>     float data;
+3742a3747,3751
+>     data = 0.0F;
+>     if(STATIC_CONST_TRUE)
+>     {
+>         {
+>             char inputBuffer[20];
+3743a3753,3762
+>             if (fgets(inputBuffer, 20, 
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c" 3 4
+>                                                    stdin
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c"
+>                                                         ) != 
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c" 3 4
+>                                                              ((void *)0)
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c"
+>                                                                  )
+>             {
+3745c3764,3793
+< void CWE369_Divide_by_Zero__float_fgets_04_bad()
+---
+>                 data = (float)atof(inputBuffer);
+>             }
+>             else
+>             {
+>                 printLine("fgets() failed.");
+>             }
+>         }
+>     }
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if(fabs(data) > 0.000001)
+>         {
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+3756c3804
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c" 3 4
+---
+> # 120 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c" 3 4
+3758c3806
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c"
+---
+> # 120 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c"
+3760c3808
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c" 3 4
+---
+> # 120 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c" 3 4
+3762c3810
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c"
+---
+> # 120 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_04.c"
+3775a3824,3875
+> 
+>         if(fabs(data) > 0.000001)
+>         {
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     float data;
+> 
+>     data = 0.0F;
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2.0F;
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+>         {
+> 
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     float data;
+> 
+>     data = 0.0F;
+>     if(STATIC_CONST_TRUE)
+>     {
+> 
+>         data = 2.0F;
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+3782a3883,3890
+> 
+> void CWE369_Divide_by_Zero__float_fgets_04_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3792a3901,3903
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__float_fgets_04_good();
+>     printLine("Finished good()");
+3798,3800d3908
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__float_fgets_04_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,53 @@
+3245,3248c3245,3246
+< 
+< 
+< 
+< static void badSink()
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_cpy_45.c"
+> static void goodG2BSink()
+3250c3248
+<     char * data = CWE127_Buffer_Underread__char_alloca_cpy_45_badData;
+---
+>     char * data = CWE127_Buffer_Underread__char_alloca_cpy_45_goodG2BData;
+3261c3259
+< void CWE127_Buffer_Underread__char_alloca_cpy_45_bad()
+---
+> static void goodG2B()
+3265c3263
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_cpy_45.c" 3 4
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_cpy_45.c" 3 4
+3267c3265
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_cpy_45.c"
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_cpy_45.c"
+3269c3267
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_cpy_45.c" 3 4
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_cpy_45.c" 3 4
+3271c3269
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_cpy_45.c"
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_alloca_cpy_45.c"
+3276,3278c3274,3281
+<     data = dataBuffer - 8;
+<     CWE127_Buffer_Underread__char_alloca_cpy_45_badData = data;
+<     badSink();
+---
+>     data = dataBuffer;
+>     CWE127_Buffer_Underread__char_alloca_cpy_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+> 
+> void CWE127_Buffer_Underread__char_alloca_cpy_45_good()
+> {
+>     goodG2B();
+3289a3293,3295
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__char_alloca_cpy_45_good();
+>     printLine("Finished good()");
+3295,3297d3300
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__char_alloca_cpy_45_bad();
+<     printLine("Finished bad()");

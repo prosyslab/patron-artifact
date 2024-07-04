@@ -1,0 +1,62 @@
+2817a2818,2828
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_zero_divide_45.c"
+> static void goodG2BSink()
+> {
+>     int data = CWE369_Divide_by_Zero__int_zero_divide_45_goodG2BData;
+> 
+>     printIntLine(100 / data);
+> }
+> 
+> static void goodG2B()
+> {
+>     int data;
+2818a2830,2835
+>     data = -1;
+> 
+>     data = 7;
+>     CWE369_Divide_by_Zero__int_zero_divide_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+2821c2838
+< static void badSink()
+---
+> static void goodB2GSink()
+2823c2840
+<     int data = CWE369_Divide_by_Zero__int_zero_divide_45_badData;
+---
+>     int data = CWE369_Divide_by_Zero__int_zero_divide_45_goodB2GData;
+2825c2842,2849
+<     printIntLine(100 / data);
+---
+>     if( data != 0 )
+>     {
+>         printIntLine(100 / data);
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");
+>     }
+2828c2852
+< void CWE369_Divide_by_Zero__int_zero_divide_45_bad()
+---
+> static void goodB2G()
+2835,2836c2859,2866
+<     CWE369_Divide_by_Zero__int_zero_divide_45_badData = data;
+<     badSink();
+---
+>     CWE369_Divide_by_Zero__int_zero_divide_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE369_Divide_by_Zero__int_zero_divide_45_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2847a2878,2880
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_zero_divide_45_good();
+>     printLine("Finished good()");
+2853,2855d2885
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_zero_divide_45_bad();
+<     printLine("Finished bad()");

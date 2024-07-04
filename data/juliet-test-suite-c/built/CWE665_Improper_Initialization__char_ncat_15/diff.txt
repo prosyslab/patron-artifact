@@ -1,0 +1,55 @@
+3239a3240
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_ncat_15.c"
+3240a3242,3264
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_ncat_15.c"
+> static void goodG2B1()
+> {
+>     char * data;
+>     char dataBuffer[100];
+>     data = dataBuffer;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         data[0] = '\0';
+>         break;
+>     }
+>     {
+>         size_t sourceLen;
+>         char source[100];
+>         memset(source, 'C', 100-1);
+>         source[100-1] = '\0';
+>         sourceLen = strlen(source);
+3241a3266,3269
+>         strncat(data, source, sourceLen);
+>         printLine(data);
+>     }
+> }
+3244,3245c3272
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_ncat_15.c"
+< void CWE665_Improper_Initialization__char_ncat_15_bad()
+---
+> static void goodG2B2()
+3254c3281
+<         ;
+---
+>         data[0] = '\0';
+3271a3299,3304
+> 
+> void CWE665_Improper_Initialization__char_ncat_15_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3281a3315,3317
+>     printLine("Calling good()...");
+>     CWE665_Improper_Initialization__char_ncat_15_good();
+>     printLine("Finished good()");
+3287,3289d3322
+<     printLine("Calling bad()...");
+<     CWE665_Improper_Initialization__char_ncat_15_bad();
+<     printLine("Finished bad()");

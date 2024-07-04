@@ -1,0 +1,55 @@
+3240c3240
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c"
+---
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c"
+3242,3243c3242,3243
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c"
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64b_badSink(void * dataVoidPtr);
+---
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c"
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64b_goodB2GSink(void * dataVoidPtr);
+3245c3245
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64_bad()
+---
+> static void goodB2G()
+3250c3250
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c" 3 4
+---
+> # 75 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c" 3 4
+3252c3252
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c"
+---
+> # 75 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c"
+3264c3264
+< # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c" 3 4
+---
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c" 3 4
+3266c3266
+< # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c"
+---
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c"
+3271c3271
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c" 3 4
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c" 3 4
+3273c3273
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c"
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64a.c"
+3284c3284,3289
+<     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64b_badSink(&data);
+---
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64b_goodB2GSink(&data);
+> }
+> 
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64_good()
+> {
+>     goodB2G();
+3295a3301,3303
+>     printLine("Calling good()...");
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64_good();
+>     printLine("Finished good()");
+3301,3303d3308
+<     printLine("Calling bad()...");
+<     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_64_bad();
+<     printLine("Finished bad()");

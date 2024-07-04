@@ -1,0 +1,95 @@
+3240a3241,3248
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c"
+> 
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c"
+> static void goodG2BSink(size_t data)
+> {
+>     {
+>         char * myString;
+> 
+3242a3251,3269
+>         if (data > strlen("hello"))
+>         {
+>             myString = (char *)malloc(data*sizeof(char));
+>             if (myString == 
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c" 3 4
+>                            ((void *)0)
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c"
+>                                ) {exit(-1);}
+> 
+>             strcpy(myString, "hello");
+>             printLine(myString);
+>             free(myString);
+>         }
+>         else
+>         {
+>             printLine("Input is less than the length of the source string");
+>         }
+>     }
+> }
+3243a3271,3274
+> static void goodG2B()
+> {
+>     size_t data;
+>     void (*funcPtr) (size_t) = goodG2BSink;
+3244a3276
+>     data = 0;
+3245a3278,3280
+>     data = 20;
+>     funcPtr(data);
+> }
+3248,3249c3283
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c"
+< static void badSink(size_t data)
+---
+> static void goodB2GSink(size_t data)
+3256c3290
+<         if (data > strlen("hello"))
+---
+>         if (data > strlen("hello") && data < 100)
+3260c3294
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c" 3 4
+---
+> # 114 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c" 3 4
+3262c3296
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c"
+---
+> # 114 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c"
+3271c3305
+<             printLine("Input is less than the length of the source string");
+---
+>             printLine("Input is less than the length of the source string or too large");
+3276c3310
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44_bad()
+---
+> static void goodB2G()
+3279,3280c3313
+< 
+<     void (*funcPtr) (size_t) = badSink;
+---
+>     void (*funcPtr) (size_t) = goodB2GSink;
+3285c3318
+< # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c" 3 4
+---
+> # 134 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c" 3 4
+3287c3320
+< # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c"
+---
+> # 134 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44.c"
+3289d3321
+< 
+3291a3324,3329
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3301a3340,3342
+>     printLine("Calling good()...");
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44_good();
+>     printLine("Finished good()");
+3307,3309d3347
+<     printLine("Calling bad()...");
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_44_bad();
+<     printLine("Finished bad()");

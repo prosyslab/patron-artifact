@@ -1,0 +1,90 @@
+2813a2814,2819
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_15.c"
+> static void good1()
+> {
+>     switch(5)
+>     {
+>     case 6:
+2814a2821,2831
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+>     {
+>         twoIntsStruct * data;
+>         twoIntsStruct * * pointer = (twoIntsStruct * *)malloc(sizeof(twoIntsStruct *));
+>         if (pointer == 
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_15.c" 3 4
+>                       ((void *)0)
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_15.c"
+>                           ) {exit(-1);}
+2815a2833,2851
+>         data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));
+>         if (data == 
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_15.c" 3 4
+>                    ((void *)0)
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_15.c"
+>                        ) {exit(-1);}
+>         data->intOne = 5;
+>         data->intTwo = 6;
+>         *pointer = data;
+>         {
+>             twoIntsStruct * data = *pointer;
+>             printIntLine(data->intOne);
+>             printIntLine(data->intTwo);
+>         }
+>         free(pointer);
+>     }
+>     break;
+>     }
+> }
+2817c2853,2854
+< void CWE758_Undefined_Behavior__struct_pointer_malloc_use_15_bad()
+---
+> 
+> static void good2()
+2822a2860
+>         twoIntsStruct * data;
+2825c2863
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_15.c" 3 4
+---
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_15.c" 3 4
+2827c2865
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_15.c"
+---
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_15.c"
+2829c2867,2881
+<         twoIntsStruct * data = *pointer;
+---
+> 
+>         data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));
+>         if (data == 
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_15.c" 3 4
+>                    ((void *)0)
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_pointer_malloc_use_15.c"
+>                        ) {exit(-1);}
+>         data->intOne = 5;
+>         data->intTwo = 6;
+>         *pointer = data;
+>         {
+>             twoIntsStruct * data = *pointer;
+>             printIntLine(data->intOne);
+>             printIntLine(data->intTwo);
+>         }
+2831,2832d2882
+<         printIntLine(data->intOne);
+<         printIntLine(data->intTwo);
+2840a2891,2896
+> 
+> void CWE758_Undefined_Behavior__struct_pointer_malloc_use_15_good()
+> {
+>     good1();
+>     good2();
+> }
+2850a2907,2909
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__struct_pointer_malloc_use_15_good();
+>     printLine("Finished good()");
+2856,2858d2914
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__struct_pointer_malloc_use_15_bad();
+<     printLine("Finished bad()");

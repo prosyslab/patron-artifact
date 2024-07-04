@@ -1,0 +1,31 @@
+3247,3250c3247,3248
+< 
+< 
+< 
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_67b_badSink(CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_67_structType myStruct)
+---
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_67b.c"
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_67b_goodB2GSink(CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_file_67_structType myStruct)
+3253,3255d3250
+< 
+< 
+<     for (; *data != '\0'; data++)
+3257c3252,3254
+<         if (*data == 'S')
+---
+>         size_t i;
+> 
+>         for (i=0; i < strlen(data); i++)
+3259,3260c3256,3260
+<             printLine("We have a match!");
+<             break;
+---
+>             if (data[i] == 'S')
+>             {
+>                 printLine("We have a match!");
+>                 break;
+>             }
+3261a3262
+>         free(data);
+3263d3263
+<     free(data);

@@ -1,0 +1,30 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE194_Unexpected_Sign_Extension__fscanf_strncpy_18_bad()
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_strncpy_18.c"
+> static void goodG2B()
+2825,2829c2823
+<     fscanf (
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_strncpy_18.c" 3 4
+<            stdin
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_strncpy_18.c"
+<                 , "%hd", &data);
+---
+>     data = 100-1;
+2844a2839,2843
+> 
+> void CWE194_Unexpected_Sign_Extension__fscanf_strncpy_18_good()
+> {
+>     goodG2B();
+> }
+2854a2854,2856
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__fscanf_strncpy_18_good();
+>     printLine("Finished good()");
+2860,2862d2861
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__fscanf_strncpy_18_bad();
+<     printLine("Finished bad()");

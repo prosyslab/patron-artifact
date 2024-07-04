@@ -1,0 +1,114 @@
+3731a3732
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c"
+3733,3739c3734,3735
+< 
+< 
+< 
+< 
+< 
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c"
+< void CWE369_Divide_by_Zero__float_fgets_12_bad()
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c"
+> static void goodB2G()
+3750c3746
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c" 3 4
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c" 3 4
+3752c3748
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c"
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c"
+3754c3750
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c" 3 4
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c" 3 4
+3756c3752
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c"
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c"
+3769a3766,3767
+>         {
+>             char inputBuffer[20];
+3771c3769,3786
+<         data = 2.0F;
+---
+>             if (fgets(inputBuffer, 20, 
+> # 108 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c" 3 4
+>                                                    stdin
+> # 108 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c"
+>                                                         ) != 
+> # 108 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c" 3 4
+>                                                              ((void *)0)
+> # 108 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_12.c"
+>                                                                  )
+>             {
+> 
+>                 data = (float)atof(inputBuffer);
+>             }
+>             else
+>             {
+>                 printLine("fgets() failed.");
+>             }
+>         }
+3775d3789
+<         {
+3776a3791,3792
+>         if(fabs(data) > 0.000001)
+>         {
+3779a3796,3799
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+3794a3815,3856
+> 
+> 
+> 
+> 
+> static void goodG2B()
+> {
+>     float data;
+> 
+>     data = 0.0F;
+>     if(globalReturnsTrueOrFalse())
+>     {
+> 
+>         data = 2.0F;
+>     }
+>     else
+>     {
+> 
+>         data = 2.0F;
+>     }
+>     if(globalReturnsTrueOrFalse())
+>     {
+>         {
+> 
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>     }
+>     else
+>     {
+>         {
+> 
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE369_Divide_by_Zero__float_fgets_12_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+3804a3867,3869
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__float_fgets_12_good();
+>     printLine("Finished good()");
+3810,3812d3874
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__float_fgets_12_bad();
+<     printLine("Finished bad()");

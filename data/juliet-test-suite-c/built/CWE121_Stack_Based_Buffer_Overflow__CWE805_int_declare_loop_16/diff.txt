@@ -1,0 +1,27 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE121_Stack_Based_Buffer_Overflow__CWE805_int_declare_loop_16_bad()
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_int_declare_loop_16.c"
+> static void goodG2B()
+2825,2826c2823
+< 
+<         data = dataBadBuffer;
+---
+>         data = dataGoodBuffer;
+2841a2839,2843
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE805_int_declare_loop_16_good()
+> {
+>     goodG2B();
+> }
+2851a2854,2856
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE805_int_declare_loop_16_good();
+>     printLine("Finished good()");
+2857,2859d2861
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE805_int_declare_loop_16_bad();
+<     printLine("Finished bad()");

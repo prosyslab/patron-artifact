@@ -1,0 +1,29 @@
+4900c4900
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_63b.c"
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_63b.c"
+4902,4903c4902,4903
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_63b.c"
+< void CWE126_Buffer_Overread__CWE129_connect_socket_63b_badSink(int * dataPtr)
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_63b.c"
+> void CWE126_Buffer_Overread__CWE129_connect_socket_63b_goodG2BSink(int * dataPtr)
+4916a4917,4934
+>         }
+>     }
+> }
+> 
+> 
+> void CWE126_Buffer_Overread__CWE129_connect_socket_63b_goodB2GSink(int * dataPtr)
+> {
+>     int data = *dataPtr;
+>     {
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

@@ -1,0 +1,56 @@
+2813a2814,2815
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int_min_predec_61a.c"
+> int CWE191_Integer_Underflow__int_min_predec_61b_goodG2BSource(int data);
+2814a2817,2819
+> static void goodG2B()
+> {
+>     int data;
+2815a2821,2823
+>     data = 0;
+>     data = CWE191_Integer_Underflow__int_min_predec_61b_goodG2BSource(data);
+>     {
+2816a2825,2829
+>         --data;
+>         int result = data;
+>         printIntLine(result);
+>     }
+> }
+2818d2830
+< int CWE191_Integer_Underflow__int_min_predec_61b_badSource(int data);
+2820c2832,2834
+< void CWE191_Integer_Underflow__int_min_predec_61_bad()
+---
+> int CWE191_Integer_Underflow__int_min_predec_61b_goodB2GSource(int data);
+> 
+> static void goodB2G()
+2825,2826c2839
+<     data = CWE191_Integer_Underflow__int_min_predec_61b_badSource(data);
+<     {
+---
+>     data = CWE191_Integer_Underflow__int_min_predec_61b_goodB2GSource(data);
+2827a2841,2846
+>     if (data > 
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int_min_predec_61a.c" 3 4
+>               (-0x7fffffff - 1)
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int_min_predec_61a.c"
+>                      )
+>     {
+2831a2851,2860
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+> }
+> 
+> void CWE191_Integer_Underflow__int_min_predec_61_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2842a2872,2874
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_min_predec_61_good();
+>     printLine("Finished good()");
+2848,2850d2879
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_min_predec_61_bad();
+<     printLine("Finished bad()");

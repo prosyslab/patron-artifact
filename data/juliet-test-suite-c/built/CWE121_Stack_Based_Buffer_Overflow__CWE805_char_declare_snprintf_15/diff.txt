@@ -1,0 +1,61 @@
+3240c3240
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_snprintf_15.c"
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_snprintf_15.c"
+3242,3243c3242,3243
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_snprintf_15.c"
+< void CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_snprintf_15_bad()
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_snprintf_15.c"
+> static void goodG2B1()
+3248c3248
+<     switch(6)
+---
+>     switch(5)
+3251a3252,3254
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+3253c3256,3280
+<         data = dataBadBuffer;
+---
+>         data = dataGoodBuffer;
+>         data[0] = '\0';
+>         break;
+>     }
+>     {
+>         char source[100];
+>         memset(source, 'C', 100-1);
+>         source[100-1] = '\0';
+> 
+>         snprintf(data, 100, "%s", source);
+>         printLine(data);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     char * data;
+>     char dataBadBuffer[50];
+>     char dataGoodBuffer[100];
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = dataGoodBuffer;
+3269a3297,3302
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_snprintf_15_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3279a3313,3315
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_snprintf_15_good();
+>     printLine("Finished good()");
+3285,3287d3320
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE805_char_declare_snprintf_15_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,85 @@
+3239a3240
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c"
+3240a3242,3244
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c"
+> int CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_goodG2B1Global = 0;
+> int CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_goodG2B2Global = 0;
+3242a3247
+> char * CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_goodG2B1Source(char * data);
+3243a3249,3276
+> static void goodG2B1()
+> {
+>     char * data;
+>     char * dataBuffer = (char *)
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c" 3 4
+>                                __builtin_alloca (
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c"
+>                                100*sizeof(char)
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c" 3 4
+>                                )
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c"
+>                                                        ;
+>     data = dataBuffer;
+>     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_goodG2B1Global = 0;
+>     data = CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_goodG2B1Source(data);
+>     {
+>         char dest[50] = "";
+>         size_t i, dataLen;
+>         dataLen = strlen(data);
+> 
+>         for (i = 0; i < dataLen; i++)
+>         {
+>             dest[i] = data[i];
+>         }
+>         dest[50-1] = '\0';
+>         printLine(data);
+>     }
+> }
+3245,3246d3277
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c"
+< int CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_badGlobal = 0;
+3248c3279
+< char * CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_badSource(char * data);
+---
+> char * CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_goodG2B2Source(char * data);
+3250c3281
+< void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_bad()
+---
+> static void goodG2B2()
+3254c3285
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c" 3 4
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c" 3 4
+3256c3287
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c"
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c"
+3258c3289
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c" 3 4
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c" 3 4
+3260c3291
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c"
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22a.c"
+3263,3264c3294,3295
+<     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_badGlobal = 1;
+<     data = CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_badSource(data);
+---
+>     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_goodG2B2Global = 1;
+>     data = CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_goodG2B2Source(data);
+3277a3309,3314
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3287a3325,3327
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_good();
+>     printLine("Finished good()");
+3293,3295d3332
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_alloca_loop_22_bad();
+<     printLine("Finished bad()");

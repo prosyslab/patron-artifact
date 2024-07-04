@@ -1,0 +1,17 @@
+3239a3240
+> # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__char_pointer_63b.c"
+3240a3242,3245
+> # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__char_pointer_63b.c"
+> void CWE457_Use_of_Uninitialized_Variable__char_pointer_63b_goodG2BSink(char * * dataPtr)
+> {
+>     char * data = *dataPtr;
+3241a3247,3248
+>     printLine(data);
+> }
+3244,3245c3251
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__char_pointer_63b.c"
+< void CWE457_Use_of_Uninitialized_Variable__char_pointer_63b_badSink(char * * dataPtr)
+---
+> void CWE457_Use_of_Uninitialized_Variable__char_pointer_63b_goodB2GSink(char * * dataPtr)
+3248a3255
+>     data = "string";

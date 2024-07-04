@@ -1,0 +1,46 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_17_bad()
+---
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_17.c"
+> static void goodG2B()
+2819c2817
+<     int i;
+---
+>     int h;
+2823c2821
+<     for(i = 0; i < 1; i++)
+---
+>     for(h = 0; h < 1; h++)
+2826,2830c2824
+<         fscanf(
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_17.c" 3 4
+<               stdin
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_17.c"
+<                    , "%d", &data);
+---
+>         data = 20;
+2839c2833
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_17.c" 3 4
+---
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_17.c" 3 4
+2841c2835
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_17.c"
+---
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_17.c"
+2850a2845,2849
+> 
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_17_good()
+> {
+>     goodG2B();
+> }
+2860a2860,2862
+>     printLine("Calling good()...");
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_17_good();
+>     printLine("Finished good()");
+2866,2868d2867
+<     printLine("Calling bad()...");
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_17_bad();
+<     printLine("Finished bad()");

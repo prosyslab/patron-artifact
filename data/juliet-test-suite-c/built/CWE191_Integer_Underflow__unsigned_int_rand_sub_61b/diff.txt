@@ -1,0 +1,12 @@
+2813a2814,2816
+> # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__unsigned_int_rand_sub_61b.c"
+> unsigned int CWE191_Integer_Underflow__unsigned_int_rand_sub_61b_goodG2BSource(unsigned int data)
+> {
+2814a2818,2820
+>     data = -2;
+>     return data;
+> }
+2817c2823
+< unsigned int CWE191_Integer_Underflow__unsigned_int_rand_sub_61b_badSource(unsigned int data)
+---
+> unsigned int CWE191_Integer_Underflow__unsigned_int_rand_sub_61b_goodB2GSource(unsigned int data)

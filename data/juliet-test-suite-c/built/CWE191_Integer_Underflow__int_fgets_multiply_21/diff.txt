@@ -1,0 +1,158 @@
+2813a2814,2817
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c"
+> static int goodB2G1Static = 0;
+> static int goodB2G2Static = 0;
+> static int goodG2BStatic = 0;
+2815a2820,2830
+> static void goodB2G1Sink(int data)
+> {
+>     if(goodB2G1Static)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         if(data < 0)
+>         {
+2816a2832,2847
+>             if (data > (
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c" 3 4
+>                        (-0x7fffffff - 1)
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c"
+>                               /2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+>         }
+>     }
+> }
+2817a2849,2851
+> static void goodB2G1()
+> {
+>     int data;
+2818a2853,2855
+>     data = 0;
+>     {
+>         char inputBuffer[(3 * sizeof(data) + 2)] = "";
+2820c2857,2866
+< static int badStatic = 0;
+---
+>         if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c" 3 4
+>                                                stdin
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c"
+>                                                     ) != 
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c" 3 4
+>                                                          ((void *)0)
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c"
+>                                                              )
+>         {
+2822c2868,2880
+< static void badSink(int data)
+---
+>             data = atoi(inputBuffer);
+>         }
+>         else
+>         {
+>             printLine("fgets() failed.");
+>         }
+>     }
+>     goodB2G1Static = 0;
+>     goodB2G1Sink(data);
+> }
+> 
+> 
+> static void goodB2G2Sink(int data)
+2824c2882
+<     if(badStatic)
+---
+>     if(goodB2G2Static)
+2829,2830c2887,2899
+<             int result = data * 2;
+<             printIntLine(result);
+---
+>             if (data > (
+> # 127 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c" 3 4
+>                        (-0x7fffffff - 1)
+> # 127 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c"
+>                               /2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+2835c2904
+< void CWE191_Integer_Underflow__int_fgets_multiply_21_bad()
+---
+> static void goodB2G2()
+2844c2913
+< # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c" 3 4
+---
+> # 148 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c" 3 4
+2846c2915
+< # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c"
+---
+> # 148 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c"
+2848c2917
+< # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c" 3 4
+---
+> # 148 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c" 3 4
+2850c2919
+< # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c"
+---
+> # 148 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_21.c"
+2861,2862c2930,2963
+<     badStatic = 1;
+<     badSink(data);
+---
+>     goodB2G2Static = 1;
+>     goodB2G2Sink(data);
+> }
+> 
+> 
+> static void goodG2BSink(int data)
+> {
+>     if(goodG2BStatic)
+>     {
+>         if(data < 0)
+>         {
+> 
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = 0;
+> 
+>     data = -2;
+>     goodG2BStatic = 1;
+>     goodG2BSink(data);
+> }
+> 
+> void CWE191_Integer_Underflow__int_fgets_multiply_21_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B();
+2873a2975,2977
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_fgets_multiply_21_good();
+>     printLine("Finished good()");
+2879,2881d2982
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_fgets_multiply_21_bad();
+<     printLine("Finished bad()");

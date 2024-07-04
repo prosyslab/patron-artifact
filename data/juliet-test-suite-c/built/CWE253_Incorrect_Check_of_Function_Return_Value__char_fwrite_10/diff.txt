@@ -1,0 +1,56 @@
+3240a3241
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10.c"
+3241a3243,3247
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10.c"
+> static void good1()
+> {
+>     if(globalFalse)
+>     {
+3242a3249,3252
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3243a3254,3263
+>         if (fwrite((char *)"string", sizeof(char), strlen("string"), 
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10.c" 3 4
+>                                                                     stdout
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10.c"
+>                                                                           ) != strlen("string"))
+>         {
+>             printLine("fwrite failed!");
+>         }
+>     }
+> }
+3246,3247c3266
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10_bad()
+---
+> static void good2()
+3252d3270
+< 
+3254c3272
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10.c" 3 4
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10.c" 3 4
+3256,3257c3274,3275
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10.c"
+<                                                                           ) < 0)
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10.c"
+>                                                                           ) != strlen("string"))
+3262a3281,3286
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10_good()
+> {
+>     good1();
+>     good2();
+> }
+3272a3297,3299
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10_good();
+>     printLine("Finished good()");
+3278,3280d3304
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_fwrite_10_bad();
+<     printLine("Finished bad()");

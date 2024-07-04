@@ -1,0 +1,69 @@
+2813a2814,2817
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_22b.c"
+> extern int CWE191_Integer_Underflow__int_fgets_multiply_22_goodB2G1Global;
+> extern int CWE191_Integer_Underflow__int_fgets_multiply_22_goodB2G2Global;
+> extern int CWE191_Integer_Underflow__int_fgets_multiply_22_goodG2BGlobal;
+2815a2820,2855
+> void CWE191_Integer_Underflow__int_fgets_multiply_22_goodB2G1Sink(int data)
+> {
+>     if(CWE191_Integer_Underflow__int_fgets_multiply_22_goodB2G1Global)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         if(data < 0)
+>         {
+> 
+>             if (data > (
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_22b.c" 3 4
+>                        (-0x7fffffff - 1)
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_22b.c"
+>                               /2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> void CWE191_Integer_Underflow__int_fgets_multiply_22_goodB2G2Sink(int data)
+> {
+>     if(CWE191_Integer_Underflow__int_fgets_multiply_22_goodB2G2Global)
+>     {
+>         if(data < 0)
+>         {
+2816a2857,2872
+>             if (data > (
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_22b.c" 3 4
+>                        (-0x7fffffff - 1)
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_multiply_22b.c"
+>                               /2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+>         }
+>     }
+> }
+2818d2873
+< extern int CWE191_Integer_Underflow__int_fgets_multiply_22_badGlobal;
+2820c2875
+< void CWE191_Integer_Underflow__int_fgets_multiply_22_badSink(int data)
+---
+> void CWE191_Integer_Underflow__int_fgets_multiply_22_goodG2BSink(int data)
+2822c2877
+<     if(CWE191_Integer_Underflow__int_fgets_multiply_22_badGlobal)
+---
+>     if(CWE191_Integer_Underflow__int_fgets_multiply_22_goodG2BGlobal)

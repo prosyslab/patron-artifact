@@ -1,0 +1,17 @@
+2818a2819,2822
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_67b.c"
+> void CWE675_Duplicate_Operations_on_Resource__fopen_67b_goodG2BSink(CWE675_Duplicate_Operations_on_Resource__fopen_67_structType myStruct)
+> {
+>     FILE * data = myStruct.structFirst;
+2819a2824,2825
+>     fclose(data);
+> }
+2822c2828
+< void CWE675_Duplicate_Operations_on_Resource__fopen_67b_badSink(CWE675_Duplicate_Operations_on_Resource__fopen_67_structType myStruct)
+---
+> void CWE675_Duplicate_Operations_on_Resource__fopen_67b_goodB2GSink(CWE675_Duplicate_Operations_on_Resource__fopen_67_structType myStruct)
+2826c2832,2833
+<     fclose(data);
+---
+> 
+>     ;

@@ -1,0 +1,63 @@
+3239a3240
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_12.c"
+3240a3242,3272
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_12.c"
+> static void goodB2G()
+> {
+>     twoIntsStruct data;
+>     if(globalReturnsTrueOrFalse())
+>     {
+> 
+>         ;
+>     }
+>     else
+>     {
+> 
+>         ;
+>     }
+>     if(globalReturnsTrueOrFalse())
+>     {
+> 
+>         data.intOne = 1;
+>         data.intTwo = 2;
+>         printIntLine(data.intOne);
+>         printIntLine(data.intTwo);
+>     }
+>     else
+>     {
+> 
+>         data.intOne = 1;
+>         data.intTwo = 2;
+>         printIntLine(data.intOne);
+>         printIntLine(data.intTwo);
+>     }
+> }
+3244,3245c3276,3277
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_12.c"
+< void CWE457_Use_of_Uninitialized_Variable__struct_12_bad()
+---
+> 
+> static void goodG2B()
+3251c3283,3284
+<         ;
+---
+>         data.intOne = 1;
+>         data.intTwo = 2;
+3268,3269d3300
+<         data.intOne = 1;
+<         data.intTwo = 2;
+3273a3305,3310
+> 
+> void CWE457_Use_of_Uninitialized_Variable__struct_12_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+3283a3321,3323
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__struct_12_good();
+>     printLine("Finished good()");
+3289,3291d3328
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__struct_12_bad();
+<     printLine("Finished bad()");

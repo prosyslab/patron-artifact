@@ -1,0 +1,53 @@
+3245,3248c3245,3246
+< 
+< 
+< 
+< static void badSink()
+---
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_ncpy_45.c"
+> static void goodG2BSink()
+3250c3248
+<     char * data = CWE124_Buffer_Underwrite__char_alloca_ncpy_45_badData;
+---
+>     char * data = CWE124_Buffer_Underwrite__char_alloca_ncpy_45_goodG2BData;
+3263c3261
+< void CWE124_Buffer_Underwrite__char_alloca_ncpy_45_bad()
+---
+> static void goodG2B()
+3267c3265
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_ncpy_45.c" 3 4
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_ncpy_45.c" 3 4
+3269c3267
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_ncpy_45.c"
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_ncpy_45.c"
+3271c3269
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_ncpy_45.c" 3 4
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_ncpy_45.c" 3 4
+3273c3271
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_ncpy_45.c"
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_ncpy_45.c"
+3278,3280c3276,3283
+<     data = dataBuffer - 8;
+<     CWE124_Buffer_Underwrite__char_alloca_ncpy_45_badData = data;
+<     badSink();
+---
+>     data = dataBuffer;
+>     CWE124_Buffer_Underwrite__char_alloca_ncpy_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+> 
+> void CWE124_Buffer_Underwrite__char_alloca_ncpy_45_good()
+> {
+>     goodG2B();
+3291a3295,3297
+>     printLine("Calling good()...");
+>     CWE124_Buffer_Underwrite__char_alloca_ncpy_45_good();
+>     printLine("Finished good()");
+3297,3299d3302
+<     printLine("Calling bad()...");
+<     CWE124_Buffer_Underwrite__char_alloca_ncpy_45_bad();
+<     printLine("Finished bad()");

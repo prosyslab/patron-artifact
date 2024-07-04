@@ -1,0 +1,74 @@
+2813a2814,2816
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fscanf_42.c"
+> static int goodG2BSource(int data)
+> {
+2815a2819,2821
+>     data = 7;
+>     return data;
+> }
+2817c2823,2845
+< static int badSource(int data)
+---
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = -1;
+>     data = goodG2BSource(data);
+>     {
+>         int buffer[10] = { 0 };
+> 
+> 
+>         if (data >= 0)
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is negative");
+>         }
+>     }
+> }
+> 
+> 
+> static int goodB2GSource(int data)
+2821c2849
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fscanf_42.c" 3 4
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fscanf_42.c" 3 4
+2823c2851
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fscanf_42.c"
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fscanf_42.c"
+2828c2856
+< void CWE126_Buffer_Overread__CWE129_fscanf_42_bad()
+---
+> static void goodB2G()
+2833c2861
+<     data = badSource(data);
+---
+>     data = goodB2GSource(data);
+2837,2838c2865
+< 
+<         if (data >= 0)
+---
+>         if (data >= 0 && data < (10))
+2844c2871
+<             printLine("ERROR: Array index is negative");
+---
+>             printLine("ERROR: Array index is out-of-bounds");
+2847a2875,2880
+> 
+> void CWE126_Buffer_Overread__CWE129_fscanf_42_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2857a2891,2893
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__CWE129_fscanf_42_good();
+>     printLine("Finished good()");
+2863,2865d2898
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__CWE129_fscanf_42_bad();
+<     printLine("Finished bad()");

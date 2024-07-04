@@ -1,0 +1,48 @@
+2813a2814,2820
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__char_max_preinc_18.c"
+> static void goodB2G()
+> {
+>     char data;
+>     data = ' ';
+>     goto source;
+> source:
+2814a2822,2824
+>     data = 0x7f;
+>     goto sink;
+> sink:
+2815a2826,2836
+>     if (data < 0x7f)
+>     {
+>         ++data;
+>         char result = data;
+>         printHexCharLine(result);
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+> }
+2817c2838,2839
+< void CWE190_Integer_Overflow__char_max_preinc_18_bad()
+---
+> 
+> static void goodG2B()
+2824c2846
+<     data = 0x7f;
+---
+>     data = 2;
+2833a2856,2861
+> 
+> void CWE190_Integer_Overflow__char_max_preinc_18_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2843a2872,2874
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_max_preinc_18_good();
+>     printLine("Finished good()");
+2849,2851d2879
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_max_preinc_18_bad();
+<     printLine("Finished bad()");

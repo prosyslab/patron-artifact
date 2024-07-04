@@ -1,0 +1,67 @@
+3256a3257,3267
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08.c"
+> static void good1()
+> {
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+3258a3270,3288
+>             char dataBuffer[100] = "";
+>             char * data = dataBuffer;
+> 
+>             if (fscanf(
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08.c" 3 4
+>                       stdin
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08.c"
+>                            , "%99s\0", data) == 
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08.c" 3 4
+>                                                 (-1)
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08.c"
+>                                                    )
+>             {
+>                 printLine("fscanf failed!");
+>             }
+>         }
+>     }
+> }
+> 
+3260c3290
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08_bad()
+---
+> static void good2()
+3270d3299
+< 
+3272c3301
+< # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08.c" 3 4
+---
+> # 95 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08.c" 3 4
+3274,3275c3303,3308
+< # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08.c"
+<                            , "%99s\0", data) == 0)
+---
+> # 95 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08.c"
+>                            , "%99s\0", data) == 
+> # 95 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08.c" 3 4
+>                                                 (-1)
+> # 95 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08.c"
+>                                                    )
+3281a3315,3320
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08_good()
+> {
+>     good1();
+>     good2();
+> }
+3291a3331,3333
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08_good();
+>     printLine("Finished good()");
+3297,3299d3338
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_08_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,86 @@
+2813a2814,2817
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_10.c"
+> static void goodG2B1()
+> {
+>     short data;
+2814a2819,2821
+>     data = 0;
+>     if(globalFalse)
+>     {
+2815a2823,2826
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2816a2828,2829
+>         data = 100-1;
+>     }
+2817a2831,2832
+>     if (data < 100)
+>     {
+2820c2835,2850
+< void CWE194_Unexpected_Sign_Extension__fgets_malloc_10_bad()
+---
+>         char * dataBuffer = (char *)malloc(data);
+>         if (dataBuffer == 
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_10.c" 3 4
+>                          ((void *)0)
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_10.c"
+>                              ) {exit(-1);}
+> 
+>         memset(dataBuffer, 'A', data-1);
+>         dataBuffer[data-1] = '\0';
+>         printLine(dataBuffer);
+>         free(dataBuffer);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+2827,2828d2856
+<         {
+<             char inputBuffer[8] = "";
+2830,2847c2858
+<             if (fgets(inputBuffer, 8, 
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_10.c" 3 4
+<                                                    stdin
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_10.c"
+<                                                         ) != 
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_10.c" 3 4
+<                                                              ((void *)0)
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_10.c"
+<                                                                  )
+<             {
+< 
+<                 data = (short)atoi(inputBuffer);
+<             }
+<             else
+<             {
+<                 printLine("fgets() failed.");
+<             }
+<         }
+---
+>         data = 100-1;
+2856c2867
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_10.c" 3 4
+---
+> # 112 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_10.c" 3 4
+2858c2869
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_10.c"
+---
+> # 112 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_10.c"
+2866a2878,2883
+> 
+> void CWE194_Unexpected_Sign_Extension__fgets_malloc_10_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2876a2894,2896
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__fgets_malloc_10_good();
+>     printLine("Finished good()");
+2882,2884d2901
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__fgets_malloc_10_bad();
+<     printLine("Finished bad()");

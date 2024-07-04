@@ -1,0 +1,136 @@
+2820a2821,2824
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c"
+> static void goodB2G1()
+> {
+>     int data;
+2821a2826,2830
+>     data = -1;
+>     if(STATIC_CONST_FIVE==5)
+>     {
+>         {
+>             char inputBuffer[(3 * sizeof(data) + 2)] = "";
+2822a2832,2841
+>             if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c" 3 4
+>                                                    stdin
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c"
+>                                                         ) != 
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c" 3 4
+>                                                              ((void *)0)
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c"
+>                                                                  )
+>             {
+2824c2843,2871
+< void CWE369_Divide_by_Zero__int_fgets_modulo_06_bad()
+---
+>                 data = atoi(inputBuffer);
+>             }
+>             else
+>             {
+>                 printLine("fgets() failed.");
+>             }
+>         }
+>     }
+>     if(STATIC_CONST_FIVE!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if( data != 0 )
+>         {
+>             printIntLine(100 % data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2835c2882
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c" 3 4
+---
+> # 113 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c" 3 4
+2837c2884
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c"
+---
+> # 113 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c"
+2839c2886
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c" 3 4
+---
+> # 113 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c" 3 4
+2841c2888
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c"
+---
+> # 113 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_fgets_modulo_06.c"
+2855a2903,2932
+>         if( data != 0 )
+>         {
+>             printIntLine(100 % data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(STATIC_CONST_FIVE!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 7;
+>     }
+>     if(STATIC_CONST_FIVE==5)
+>     {
+> 
+2858a2936,2961
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(STATIC_CONST_FIVE==5)
+>     {
+> 
+>         data = 7;
+>     }
+>     if(STATIC_CONST_FIVE==5)
+>     {
+> 
+>         printIntLine(100 % data);
+>     }
+> }
+> 
+> void CWE369_Divide_by_Zero__int_fgets_modulo_06_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2868a2972,2974
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_fgets_modulo_06_good();
+>     printLine("Finished good()");
+2874,2876d2979
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_fgets_modulo_06_bad();
+<     printLine("Finished bad()");

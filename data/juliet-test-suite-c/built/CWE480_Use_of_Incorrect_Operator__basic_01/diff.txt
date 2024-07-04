@@ -1,0 +1,34 @@
+2851,2854c2851,2852
+< 
+< 
+< 
+< void CWE480_Use_of_Incorrect_Operator__basic_01_bad()
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_01.c"
+> static void good1()
+2857,2861c2855,2859
+<     if(helperBad == 
+< # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_01.c" 3 4
+<                    ((void *)0)
+< # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_01.c"
+<                        )
+---
+>     if(helperGood() == 
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_01.c" 3 4
+>                       ((void *)0)
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE480_Use_of_Incorrect_Operator/CWE480_Use_of_Incorrect_Operator__basic_01.c"
+>                           )
+2865a2864,2868
+> 
+> void CWE480_Use_of_Incorrect_Operator__basic_01_good()
+> {
+>     good1();
+> }
+2875a2879,2881
+>     printLine("Calling good()...");
+>     CWE480_Use_of_Incorrect_Operator__basic_01_good();
+>     printLine("Finished good()");
+2881,2883d2886
+<     printLine("Calling bad()...");
+<     CWE480_Use_of_Incorrect_Operator__basic_01_bad();
+<     printLine("Finished bad()");

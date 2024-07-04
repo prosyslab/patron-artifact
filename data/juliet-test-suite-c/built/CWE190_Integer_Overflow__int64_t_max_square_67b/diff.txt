@@ -1,0 +1,25 @@
+3779a3780,3784
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_max_square_67b.c"
+> void CWE190_Integer_Overflow__int64_t_max_square_67b_goodG2BSink(CWE190_Integer_Overflow__int64_t_max_square_67_structType myStruct)
+> {
+>     int64_t data = myStruct.structFirst;
+>     {
+3780a3786,3789
+>         int64_t result = data * data;
+>         printLongLongLine(result);
+>     }
+> }
+3783c3792
+< void CWE190_Integer_Overflow__int64_t_max_square_67b_badSink(CWE190_Integer_Overflow__int64_t_max_square_67_structType myStruct)
+---
+> void CWE190_Integer_Overflow__int64_t_max_square_67b_goodB2GSink(CWE190_Integer_Overflow__int64_t_max_square_67_structType myStruct)
+3786d3794
+<     {
+3787a3796,3797
+>     if (imaxabs((intmax_t)data) <= sqrtl(0x7fffffffffffffffLL))
+>     {
+3789a3800,3803
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");

@@ -1,0 +1,78 @@
+2818a2819,2823
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c"
+> static void good1()
+> {
+>     if(STATIC_CONST_FIVE!=5)
+>     {
+2819a2825,2848
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             char * data;
+>             char * * pointer = (char * *)
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c" 3 4
+>                                         __builtin_alloca (
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c"
+>                                         sizeof(char *)
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c" 3 4
+>                                         )
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c"
+>                                                               ;
+>             data = "string";
+>             *pointer = data;
+>             {
+>                 char * data = *pointer;
+>                 printLine(data);
+>             }
+>         }
+>     }
+> }
+2822c2851
+< void CWE758_Undefined_Behavior__char_pointer_alloca_use_06_bad()
+---
+> static void good2()
+2826a2856
+>             char * data;
+2828c2858
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c" 3 4
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c" 3 4
+2830c2860
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c"
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c"
+2832c2862
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c" 3 4
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c" 3 4
+2834c2864
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c"
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_pointer_alloca_use_06.c"
+2836,2837c2866,2871
+<             char * data = *pointer;
+<             printLine(data);
+---
+>             data = "string";
+>             *pointer = data;
+>             {
+>                 char * data = *pointer;
+>                 printLine(data);
+>             }
+2840a2875,2880
+> 
+> void CWE758_Undefined_Behavior__char_pointer_alloca_use_06_good()
+> {
+>     good1();
+>     good2();
+> }
+2850a2891,2893
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__char_pointer_alloca_use_06_good();
+>     printLine("Finished good()");
+2856,2858d2898
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__char_pointer_alloca_use_06_bad();
+<     printLine("Finished bad()");

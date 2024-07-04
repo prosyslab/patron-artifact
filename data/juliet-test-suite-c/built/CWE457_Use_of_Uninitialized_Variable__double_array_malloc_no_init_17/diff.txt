@@ -1,0 +1,81 @@
+2813a2814,2826
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_17.c"
+> static void goodB2G()
+> {
+>     int i,k;
+>     double * data;
+>     data = (double *)malloc(10*sizeof(double));
+>     if (data == 
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_17.c" 3 4
+>                ((void *)0)
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_17.c"
+>                    ) {exit(-1);}
+>     for(i = 0; i < 1; i++)
+>     {
+2814a2828,2848
+>         ;
+>     }
+>     for(k = 0; k < 1; k++)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printDoubleLine(data[i]);
+>             }
+>         }
+>     }
+> }
+2817c2851
+< void CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_17_bad()
+---
+> static void goodG2B()
+2819c2853
+<     int i,j;
+---
+>     int h,j;
+2823c2857
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_17.c" 3 4
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_17.c" 3 4
+2825c2859
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_17.c"
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_17.c"
+2827c2861
+<     for(i = 0; i < 1; i++)
+---
+>     for(h = 0; h < 1; h++)
+2830c2864,2870
+<         ;
+---
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+2843a2884,2889
+> 
+> void CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_17_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2853a2900,2902
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_17_good();
+>     printLine("Finished good()");
+2859,2861d2907
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__double_array_malloc_no_init_17_bad();
+<     printLine("Finished bad()");

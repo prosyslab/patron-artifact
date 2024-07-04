@@ -1,0 +1,37 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< static void badSink(twoIntsStruct * data)
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s05/CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_44.c"
+> static void goodG2BSink(twoIntsStruct * data)
+2842c2840
+< void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_44_bad()
+---
+> static void goodG2B()
+2845,2846c2843
+< 
+<     void (*funcPtr) (twoIntsStruct *) = badSink;
+---
+>     void (*funcPtr) (twoIntsStruct *) = goodG2BSink;
+2850,2852c2847
+< 
+<     data = dataBadBuffer;
+< 
+---
+>     data = dataGoodBuffer;
+2854a2850,2854
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_44_good()
+> {
+>     goodG2B();
+> }
+2864a2865,2867
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_44_good();
+>     printLine("Finished good()");
+2870,2872d2872
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE805_struct_declare_loop_44_bad();
+<     printLine("Finished bad()");

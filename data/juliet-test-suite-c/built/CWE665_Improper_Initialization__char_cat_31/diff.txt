@@ -1,0 +1,29 @@
+3239a3240
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_cat_31.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_cat_31.c"
+< void CWE665_Improper_Initialization__char_cat_31_bad()
+---
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_cat_31.c"
+> static void goodG2B()
+3251c3249
+<     ;
+---
+>     data[0] = '\0';
+3264a3263,3267
+> 
+> void CWE665_Improper_Initialization__char_cat_31_good()
+> {
+>     goodG2B();
+> }
+3274a3278,3280
+>     printLine("Calling good()...");
+>     CWE665_Improper_Initialization__char_cat_31_good();
+>     printLine("Finished good()");
+3280,3282d3285
+<     printLine("Calling bad()...");
+<     CWE665_Improper_Initialization__char_cat_31_bad();
+<     printLine("Finished bad()");

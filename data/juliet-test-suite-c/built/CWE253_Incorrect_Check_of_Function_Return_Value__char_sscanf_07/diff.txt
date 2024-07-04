@@ -1,0 +1,56 @@
+3250a3251,3265
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_07.c"
+> static void good1()
+> {
+>     if(staticFive!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+> 
+> 
+>             char dataBuffer[100] = "";
+>             char * data = dataBuffer;
+3251a3267,3277
+>             if (sscanf("string", "%99s\0", data) == 
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_07.c" 3 4
+>                                                      (-1)
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_07.c"
+>                                                         )
+>             {
+>                 printLine("sscanf failed!");
+>             }
+>         }
+>     }
+> }
+3254c3280
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_07_bad()
+---
+> static void good2()
+3264,3265c3290,3294
+< 
+<             if (sscanf("string", "%99s\0", data) == 0)
+---
+>             if (sscanf("string", "%99s\0", data) == 
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_07.c" 3 4
+>                                                      (-1)
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_07.c"
+>                                                         )
+3271a3301,3306
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_07_good()
+> {
+>     good1();
+>     good2();
+> }
+3281a3317,3319
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_07_good();
+>     printLine("Finished good()");
+3287,3289d3324
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_sscanf_07_bad();
+<     printLine("Finished bad()");

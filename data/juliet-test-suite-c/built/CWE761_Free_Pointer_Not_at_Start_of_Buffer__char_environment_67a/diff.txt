@@ -1,0 +1,45 @@
+3246a3247,3248
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67a.c"
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67b_goodB2GSink(CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67_structType myStruct);
+3248,3253c3250
+< 
+< 
+< 
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67b_badSink(CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67_structType myStruct);
+< 
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67_bad()
+---
+> static void goodB2G()
+3259c3256
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67a.c" 3 4
+---
+> # 75 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67a.c" 3 4
+3261c3258
+< # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67a.c"
+---
+> # 75 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67a.c"
+3270c3267
+< # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67a.c" 3 4
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67a.c" 3 4
+3272c3269
+< # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67a.c"
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67a.c"
+3280c3277,3282
+<     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67b_badSink(myStruct);
+---
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67b_goodB2GSink(myStruct);
+> }
+> 
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67_good()
+> {
+>     goodB2G();
+3291a3294,3296
+>     printLine("Calling good()...");
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67_good();
+>     printLine("Finished good()");
+3297,3299d3301
+<     printLine("Calling bad()...");
+<     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_67_bad();
+<     printLine("Finished bad()");

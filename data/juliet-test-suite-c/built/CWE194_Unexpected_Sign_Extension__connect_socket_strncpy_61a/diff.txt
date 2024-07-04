@@ -1,0 +1,32 @@
+4900c4900
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_strncpy_61a.c"
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_strncpy_61a.c"
+4902,4903c4902,4903
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_strncpy_61a.c"
+< short CWE194_Unexpected_Sign_Extension__connect_socket_strncpy_61b_badSource(short data);
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_strncpy_61a.c"
+> short CWE194_Unexpected_Sign_Extension__connect_socket_strncpy_61b_goodG2BSource(short data);
+4905c4905
+< void CWE194_Unexpected_Sign_Extension__connect_socket_strncpy_61_bad()
+---
+> static void goodG2B()
+4910c4910
+<     data = CWE194_Unexpected_Sign_Extension__connect_socket_strncpy_61b_badSource(data);
+---
+>     data = CWE194_Unexpected_Sign_Extension__connect_socket_strncpy_61b_goodG2BSource(data);
+4925a4926,4930
+> 
+> void CWE194_Unexpected_Sign_Extension__connect_socket_strncpy_61_good()
+> {
+>     goodG2B();
+> }
+4935a4941,4943
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__connect_socket_strncpy_61_good();
+>     printLine("Finished good()");
+4941,4943d4948
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__connect_socket_strncpy_61_bad();
+<     printLine("Finished bad()");

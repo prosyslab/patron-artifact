@@ -1,0 +1,67 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE191_Integer_Underflow__int64_t_min_postdec_17_bad()
+---
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int64_t_min_postdec_17.c"
+> static void goodB2G()
+2819c2817
+<     int i,j;
+---
+>     int i,k;
+2826c2824
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int64_t_min_postdec_17.c" 3 4
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int64_t_min_postdec_17.c" 3 4
+2828c2826
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int64_t_min_postdec_17.c"
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int64_t_min_postdec_17.c"
+2830a2829,2859
+>     for(k = 0; k < 1; k++)
+>     {
+> 
+>         if (data > 
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int64_t_min_postdec_17.c" 3 4
+>                   (-0x7fffffffffffffffLL - 1LL)
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__int64_t_min_postdec_17.c"
+>                            )
+>         {
+>             data--;
+>             int64_t result = data;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     int h,j;
+>     int64_t data;
+>     data = 0LL;
+>     for(h = 0; h < 1; h++)
+>     {
+> 
+>         data = -2;
+>     }
+2840a2870,2875
+> 
+> void CWE191_Integer_Underflow__int64_t_min_postdec_17_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2850a2886,2888
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int64_t_min_postdec_17_good();
+>     printLine("Finished good()");
+2856,2858d2893
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int64_t_min_postdec_17_bad();
+<     printLine("Finished bad()");

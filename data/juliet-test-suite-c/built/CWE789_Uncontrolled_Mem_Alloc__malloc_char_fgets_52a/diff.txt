@@ -1,0 +1,69 @@
+3241c3241
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c"
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c"
+3243,3244c3243,3244
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c"
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52b_badSink(size_t data);
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c"
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52b_goodG2BSink(size_t data);
+3246c3246,3259
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52_bad()
+---
+> static void goodG2B()
+> {
+>     size_t data;
+> 
+>     data = 0;
+> 
+>     data = 20;
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52b_goodG2BSink(data);
+> }
+> 
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52b_goodB2GSink(size_t data);
+> 
+> static void goodB2G()
+3255c3268
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c" 3 4
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c" 3 4
+3257c3270
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c"
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c"
+3259c3272
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c" 3 4
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c" 3 4
+3261c3274
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c"
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c"
+3266c3279
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c" 3 4
+---
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c" 3 4
+3268c3281
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c"
+---
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52a.c"
+3276c3289,3295
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52b_badSink(data);
+---
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52b_goodB2GSink(data);
+> }
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3287a3307,3309
+>     printLine("Calling good()...");
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52_good();
+>     printLine("Finished good()");
+3293,3295d3314
+<     printLine("Calling bad()...");
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_52_bad();
+<     printLine("Finished bad()");

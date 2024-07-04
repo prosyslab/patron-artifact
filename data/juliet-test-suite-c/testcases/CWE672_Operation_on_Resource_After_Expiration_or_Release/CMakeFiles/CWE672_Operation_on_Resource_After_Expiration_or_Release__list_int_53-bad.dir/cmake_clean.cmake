@@ -1,0 +1,17 @@
+file(REMOVE_RECURSE
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE672/bad/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53-bad"
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE672/bad/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53-bad.pdb"
+  "CMakeFiles/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53-bad.dir/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53a.cpp.o"
+  "CMakeFiles/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53-bad.dir/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53a.cpp.o.d"
+  "CMakeFiles/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53-bad.dir/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53b.cpp.o"
+  "CMakeFiles/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53-bad.dir/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53b.cpp.o.d"
+  "CMakeFiles/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53-bad.dir/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53c.cpp.o"
+  "CMakeFiles/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53-bad.dir/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53c.cpp.o.d"
+  "CMakeFiles/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53-bad.dir/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53d.cpp.o"
+  "CMakeFiles/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53-bad.dir/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53d.cpp.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/CWE672_Operation_on_Resource_After_Expiration_or_Release__list_int_53-bad.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

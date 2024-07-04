@@ -1,0 +1,29 @@
+2820a2821,2825
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_67b.c"
+> void CWE191_Integer_Underflow__int_fgets_sub_67b_goodG2BSink(CWE191_Integer_Underflow__int_fgets_sub_67_structType myStruct)
+> {
+>     int data = myStruct.structFirst;
+>     {
+2821a2827,2830
+>         int result = data - 1;
+>         printIntLine(result);
+>     }
+> }
+2824c2833
+< void CWE191_Integer_Underflow__int_fgets_sub_67b_badSink(CWE191_Integer_Underflow__int_fgets_sub_67_structType myStruct)
+---
+> void CWE191_Integer_Underflow__int_fgets_sub_67b_goodB2GSink(CWE191_Integer_Underflow__int_fgets_sub_67_structType myStruct)
+2827d2835
+<     {
+2828a2837,2842
+>     if (data > 
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_67b.c" 3 4
+>               (-0x7fffffff - 1)
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_67b.c"
+>                      )
+>     {
+2830a2845,2848
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform subtraction.");

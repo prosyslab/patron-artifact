@@ -1,0 +1,39 @@
+3245,3248c3245,3246
+< 
+< 
+< 
+< static void badSink()
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_45.c"
+> static void goodG2BSink()
+3250c3248
+<     char * data = CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_45_badData;
+---
+>     char * data = CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_45_goodG2BData;
+3265c3263
+< void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_45_bad()
+---
+> static void goodG2B()
+3271,3274c3269,3277
+<     memset(data, 'A', 100-1);
+<     data[100-1] = '\0';
+<     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_45_badData = data;
+<     badSink();
+---
+>     memset(data, 'A', 50-1);
+>     data[50-1] = '\0';
+>     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_45_good()
+> {
+>     goodG2B();
+3285a3289,3291
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_45_good();
+>     printLine("Finished good()");
+3291,3293d3296
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_45_bad();
+<     printLine("Finished bad()");

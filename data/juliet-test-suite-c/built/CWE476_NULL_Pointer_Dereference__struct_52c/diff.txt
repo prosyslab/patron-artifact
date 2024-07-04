@@ -1,0 +1,29 @@
+3239a3240
+> # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_52c.c"
+3240a3242,3244
+> # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_52c.c"
+> void CWE476_NULL_Pointer_Dereference__struct_52c_goodG2BSink(twoIntsStruct * data)
+> {
+3241a3246,3247
+>     printIntLine(data->intOne);
+> }
+3244,3245c3250
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_52c.c"
+< void CWE476_NULL_Pointer_Dereference__struct_52c_badSink(twoIntsStruct * data)
+---
+> void CWE476_NULL_Pointer_Dereference__struct_52c_goodB2GSink(twoIntsStruct * data)
+3248c3253,3264
+<     printIntLine(data->intOne);
+---
+>     if (data != 
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_52c.c" 3 4
+>                ((void *)0)
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__struct_52c.c"
+>                    )
+>     {
+>         printIntLine(data->intOne);
+>     }
+>     else
+>     {
+>         printLine("data is NULL");
+>     }

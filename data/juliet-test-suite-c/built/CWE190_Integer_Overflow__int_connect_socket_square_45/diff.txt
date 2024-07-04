@@ -1,0 +1,103 @@
+5821a5822,5835
+> # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c"
+> static void goodG2BSink()
+> {
+>     int data = CWE190_Integer_Overflow__int_connect_socket_square_45_goodG2BData;
+>     {
+> 
+>         int result = data * data;
+>         printIntLine(result);
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     int data;
+5822a5837,5842
+>     data = 0;
+> 
+>     data = 2;
+>     CWE190_Integer_Overflow__int_connect_socket_square_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+5825c5845
+< static void badSink()
+---
+> static void goodB2GSink()
+5827,5828c5847
+<     int data = CWE190_Integer_Overflow__int_connect_socket_square_45_badData;
+<     {
+---
+>     int data = CWE190_Integer_Overflow__int_connect_socket_square_45_goodB2GData;
+5829a5849,5854
+>     if (data > 
+> # 156 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c" 3 4
+>               (-0x7fffffff - 1) 
+> # 156 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c"
+>                       && abs(data) < (long)sqrt((double)0x7fffffff))
+>     {
+5832a5858,5861
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+5835c5864
+< void CWE190_Integer_Overflow__int_connect_socket_square_45_bad()
+---
+> static void goodB2G()
+5851c5880
+< # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c"
+---
+> # 191 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c"
+5853c5882
+< # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c" 3 4
+---
+> # 191 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c" 3 4
+5855c5884
+< # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c"
+---
+> # 191 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c"
+5857c5886
+< # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c" 3 4
+---
+> # 191 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c" 3 4
+5859c5888
+< # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c"
+---
+> # 191 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c"
+5861c5890
+< # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c" 3 4
+---
+> # 191 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c" 3 4
+5863c5892
+< # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c"
+---
+> # 191 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c"
+5871c5900
+< # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c" 3 4
+---
+> # 197 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c" 3 4
+5873c5902
+< # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c"
+---
+> # 197 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_connect_socket_square_45.c"
+5905,5906c5934,5941
+<     CWE190_Integer_Overflow__int_connect_socket_square_45_badData = data;
+<     badSink();
+---
+>     CWE190_Integer_Overflow__int_connect_socket_square_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE190_Integer_Overflow__int_connect_socket_square_45_good()
+> {
+>     goodG2B();
+>     goodB2G();
+5917a5953,5955
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_connect_socket_square_45_good();
+>     printLine("Finished good()");
+5923,5925d5960
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_connect_socket_square_45_bad();
+<     printLine("Finished bad()");

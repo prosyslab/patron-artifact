@@ -1,0 +1,77 @@
+2817a2818,2823
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_multiply_45.c"
+> static void goodG2BSink()
+> {
+>     int data = CWE190_Integer_Overflow__int_fscanf_multiply_45_goodG2BData;
+>     if(data > 0)
+>     {
+2818a2825,2828
+>         int result = data * 2;
+>         printIntLine(result);
+>     }
+> }
+2819a2830,2832
+> static void goodG2B()
+> {
+>     int data;
+2821c2834,2842
+< static void badSink()
+---
+>     data = 0;
+> 
+>     data = 2;
+>     CWE190_Integer_Overflow__int_fscanf_multiply_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+> 
+> 
+> static void goodB2GSink()
+2823c2844
+<     int data = CWE190_Integer_Overflow__int_fscanf_multiply_45_badData;
+---
+>     int data = CWE190_Integer_Overflow__int_fscanf_multiply_45_goodB2GData;
+2827,2828c2848,2856
+<         int result = data * 2;
+<         printIntLine(result);
+---
+>         if (data < (0x7fffffff/2))
+>         {
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2832c2860
+< void CWE190_Integer_Overflow__int_fscanf_multiply_45_bad()
+---
+> static void goodB2G()
+2839c2867
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_multiply_45.c" 3 4
+---
+> # 100 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_multiply_45.c" 3 4
+2841c2869
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_multiply_45.c"
+---
+> # 100 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_multiply_45.c"
+2843,2844c2871,2878
+<     CWE190_Integer_Overflow__int_fscanf_multiply_45_badData = data;
+<     badSink();
+---
+>     CWE190_Integer_Overflow__int_fscanf_multiply_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE190_Integer_Overflow__int_fscanf_multiply_45_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2855a2890,2892
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_fscanf_multiply_45_good();
+>     printLine("Finished good()");
+2861,2863d2897
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_fscanf_multiply_45_bad();
+<     printLine("Finished bad()");

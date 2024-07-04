@@ -1,0 +1,62 @@
+2814,2819c2814,2815
+< 
+< 
+< 
+< 
+< 
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41_badSink(int data)
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41.c"
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41_goodG2BSink(int data)
+2828c2824
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41.c" 3 4
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41.c" 3 4
+2830c2826
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41.c"
+---
+> # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41.c"
+2841c2837,2838
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41_bad()
+---
+> 
+> static void goodG2B()
+2846,2847d2842
+<     {
+<         char inputBuffer[(3 * sizeof(data) + 2)] = "";
+2849,2858c2844,2846
+<         if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41.c" 3 4
+<                                                stdin
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41.c"
+<                                                     ) != 
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41.c" 3 4
+<                                                          ((void *)0)
+< # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41.c"
+<                                                              )
+<         {
+---
+>     data = 20;
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41_goodG2BSink(data);
+> }
+2860,2867c2848,2850
+<             data = atoi(inputBuffer);
+<         }
+<         else
+<         {
+<             printLine("fgets() failed.");
+<         }
+<     }
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41_badSink(data);
+---
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41_good()
+> {
+>     goodG2B();
+2878a2862,2864
+>     printLine("Calling good()...");
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41_good();
+>     printLine("Finished good()");
+2884,2886d2869
+<     printLine("Calling bad()...");
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_41_bad();
+<     printLine("Finished bad()");

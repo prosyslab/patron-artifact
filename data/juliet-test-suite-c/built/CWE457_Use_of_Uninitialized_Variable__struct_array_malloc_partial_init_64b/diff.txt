@@ -1,0 +1,31 @@
+2813a2814,2820
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_64b.c"
+> void CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_64b_goodG2BSink(void * dataVoidPtr)
+> {
+> 
+>     twoIntsStruct * * dataPtr = (twoIntsStruct * *)dataVoidPtr;
+> 
+>     twoIntsStruct * data = (*dataPtr);
+2814a2822,2830
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+>             printIntLine(data[i].intOne);
+>             printIntLine(data[i].intTwo);
+>         }
+>     }
+> }
+2817c2833
+< void CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_64b_badSink(void * dataVoidPtr)
+---
+> void CWE457_Use_of_Uninitialized_Variable__struct_array_malloc_partial_init_64b_goodB2GSink(void * dataVoidPtr)
+2823a2840,2847
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+>             data[i].intOne = i;
+>             data[i].intTwo = i;
+>         }
+>     }

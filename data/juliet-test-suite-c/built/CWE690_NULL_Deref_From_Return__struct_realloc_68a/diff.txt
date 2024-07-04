@@ -1,0 +1,38 @@
+3245a3246,3247
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_68a.c"
+> void CWE690_NULL_Deref_From_Return__struct_realloc_68b_goodB2GSink();
+3248,3252c3250
+< 
+< 
+< void CWE690_NULL_Deref_From_Return__struct_realloc_68b_badSink();
+< 
+< void CWE690_NULL_Deref_From_Return__struct_realloc_68_bad()
+---
+> static void goodB2G()
+3256c3254
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_68a.c" 3 4
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_68a.c" 3 4
+3258c3256
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_68a.c"
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_realloc_68a.c"
+3262,3263c3260,3266
+<     CWE690_NULL_Deref_From_Return__struct_realloc_68_badDataForBadSink = data;
+<     CWE690_NULL_Deref_From_Return__struct_realloc_68b_badSink();
+---
+>     CWE690_NULL_Deref_From_Return__struct_realloc_68_badDataForGoodSink = data;
+>     CWE690_NULL_Deref_From_Return__struct_realloc_68b_goodB2GSink();
+> }
+> 
+> void CWE690_NULL_Deref_From_Return__struct_realloc_68_good()
+> {
+>     goodB2G();
+3274a3278,3280
+>     printLine("Calling good()...");
+>     CWE690_NULL_Deref_From_Return__struct_realloc_68_good();
+>     printLine("Finished good()");
+3280,3282d3285
+<     printLine("Calling bad()...");
+<     CWE690_NULL_Deref_From_Return__struct_realloc_68_bad();
+<     printLine("Finished bad()");

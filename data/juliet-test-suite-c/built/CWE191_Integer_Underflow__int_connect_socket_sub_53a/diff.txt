@@ -1,0 +1,81 @@
+4900c4900
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+---
+> # 116 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+4902,4903c4902,4903
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+< void CWE191_Integer_Underflow__int_connect_socket_sub_53b_badSink(int data);
+---
+> # 116 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+> void CWE191_Integer_Underflow__int_connect_socket_sub_53b_goodG2BSink(int data);
+4905c4905,4918
+< void CWE191_Integer_Underflow__int_connect_socket_sub_53_bad()
+---
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = 0;
+> 
+>     data = -2;
+>     CWE191_Integer_Underflow__int_connect_socket_sub_53b_goodG2BSink(data);
+> }
+> 
+> 
+> void CWE191_Integer_Underflow__int_connect_socket_sub_53b_goodB2GSink(int data);
+> 
+> static void goodB2G()
+4921c4934
+< # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+---
+> # 155 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+4923c4936
+< # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c" 3 4
+---
+> # 155 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c" 3 4
+4925c4938
+< # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+---
+> # 155 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+4927c4940
+< # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c" 3 4
+---
+> # 155 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c" 3 4
+4929c4942
+< # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+---
+> # 155 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+4931c4944
+< # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c" 3 4
+---
+> # 155 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c" 3 4
+4933c4946
+< # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+---
+> # 155 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+4941c4954
+< # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c" 3 4
+---
+> # 161 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c" 3 4
+4943c4956
+< # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+---
+> # 161 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_sub_53a.c"
+4975c4988,4994
+<     CWE191_Integer_Underflow__int_connect_socket_sub_53b_badSink(data);
+---
+>     CWE191_Integer_Underflow__int_connect_socket_sub_53b_goodB2GSink(data);
+> }
+> 
+> void CWE191_Integer_Underflow__int_connect_socket_sub_53_good()
+> {
+>     goodG2B();
+>     goodB2G();
+4986a5006,5008
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_connect_socket_sub_53_good();
+>     printLine("Finished good()");
+4992,4994d5013
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_connect_socket_sub_53_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,47 @@
+3239a3240
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_ncat_17.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_ncat_17.c"
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_ncat_17_bad()
+---
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_ncat_17.c"
+> static void goodG2B()
+3247c3245
+<     int i;
+---
+>     int h;
+3251c3249
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_ncat_17.c" 3 4
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_ncat_17.c" 3 4
+3253c3251
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_ncat_17.c"
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_ncat_17.c"
+3255c3253
+<     for(i = 0; i < 1; i++)
+---
+>     for(h = 0; h < 1; h++)
+3258,3259c3256,3257
+<         memset(data, 'A', 100-1);
+<         data[100-1] = '\0';
+---
+>         memset(data, 'A', 50-1);
+>         data[50-1] = '\0';
+3269a3268,3272
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_ncat_17_good()
+> {
+>     goodG2B();
+> }
+3279a3283,3285
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_ncat_17_good();
+>     printLine("Finished good()");
+3285,3287d3290
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_ncat_17_bad();
+<     printLine("Finished bad()");

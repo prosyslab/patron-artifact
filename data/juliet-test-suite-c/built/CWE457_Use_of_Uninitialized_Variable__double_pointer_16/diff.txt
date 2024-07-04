@@ -1,0 +1,59 @@
+3239a3240
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_16.c"
+3240a3242,3253
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_16.c"
+> static void goodB2G()
+> {
+>     double * data;
+>     while(1)
+>     {
+> 
+>         ;
+>         break;
+>     }
+>     while(1)
+>     {
+3242a3256,3267
+>         data = (double *)malloc(sizeof(double));
+>         if (data == 
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_16.c" 3 4
+>                    ((void *)0)
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_16.c"
+>                        ) {exit(-1);}
+>         *data = 5.0;
+>         printDoubleLine(*data);
+>         break;
+>     }
+> }
+> 
+3244,3245c3269
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_16.c"
+< void CWE457_Use_of_Uninitialized_Variable__double_pointer_16_bad()
+---
+> static void goodG2B()
+3251c3275,3282
+<         ;
+---
+> 
+>         data = (double *)malloc(sizeof(double));
+>         if (data == 
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_16.c" 3 4
+>                    ((void *)0)
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_16.c"
+>                        ) {exit(-1);}
+>         *data = 5.0;
+3260a3292,3297
+> 
+> void CWE457_Use_of_Uninitialized_Variable__double_pointer_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+3270a3308,3310
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__double_pointer_16_good();
+>     printLine("Finished good()");
+3276,3278d3315
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__double_pointer_16_bad();
+<     printLine("Finished bad()");

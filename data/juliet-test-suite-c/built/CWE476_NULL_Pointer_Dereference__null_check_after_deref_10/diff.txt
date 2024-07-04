@@ -1,0 +1,64 @@
+2813a2814,2832
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_10.c"
+> static void good1()
+> {
+>     if(globalFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             int *intPointer = 
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_10.c" 3 4
+>                              ((void *)0)
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_10.c"
+>                                  ;
+>             intPointer = (int *)malloc(sizeof(int));
+>             *intPointer = 5;
+>             printIntLine(*intPointer);
+2814a2834,2838
+>             *intPointer = 10;
+>             printIntLine(*intPointer);
+>         }
+>     }
+> }
+2817c2841
+< void CWE476_NULL_Pointer_Dereference__null_check_after_deref_10_bad()
+---
+> static void good2()
+2823c2847
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_10.c" 3 4
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_10.c" 3 4
+2825c2849
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_10.c"
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_10.c"
+2831,2838c2855
+<             if (intPointer != 
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_10.c" 3 4
+<                              ((void *)0)
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__null_check_after_deref_10.c"
+<                                  )
+<             {
+<                 *intPointer = 10;
+<             }
+---
+>             *intPointer = 10;
+2842a2860,2865
+> 
+> void CWE476_NULL_Pointer_Dereference__null_check_after_deref_10_good()
+> {
+>     good1();
+>     good2();
+> }
+2852a2876,2878
+>     printLine("Calling good()...");
+>     CWE476_NULL_Pointer_Dereference__null_check_after_deref_10_good();
+>     printLine("Finished good()");
+2858,2860d2883
+<     printLine("Calling bad()...");
+<     CWE476_NULL_Pointer_Dereference__null_check_after_deref_10_bad();
+<     printLine("Finished bad()");

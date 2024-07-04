@@ -1,0 +1,118 @@
+2813a2814,2817
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_multiply_21.c"
+> static int goodB2G1Static = 0;
+> static int goodB2G2Static = 0;
+> static int goodG2BStatic = 0;
+2815a2820,2859
+> static void goodB2G1Sink(int data)
+> {
+>     if(goodB2G1Static)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         if(data < 0)
+>         {
+> 
+>             if (data > (
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_multiply_21.c" 3 4
+>                        (-0x7fffffff - 1)
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_multiply_21.c"
+>                               /2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+>         }
+>     }
+> }
+> 
+> static void goodB2G1()
+> {
+>     int data;
+> 
+>     data = 0;
+> 
+>     data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>     goodB2G1Static = 0;
+>     goodB2G1Sink(data);
+> }
+> 
+2816a2861,2894
+> static void goodB2G2Sink(int data)
+> {
+>     if(goodB2G2Static)
+>     {
+>         if(data < 0)
+>         {
+> 
+>             if (data > (
+> # 103 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_multiply_21.c" 3 4
+>                        (-0x7fffffff - 1)
+> # 103 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_multiply_21.c"
+>                               /2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+>         }
+>     }
+> }
+> 
+> static void goodB2G2()
+> {
+>     int data;
+> 
+>     data = 0;
+> 
+>     data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>     goodB2G2Static = 1;
+>     goodB2G2Sink(data);
+> }
+2818d2895
+< static int badStatic = 0;
+2820c2897
+< static void badSink(int data)
+---
+> static void goodG2BSink(int data)
+2822c2899
+<     if(badStatic)
+---
+>     if(goodG2BStatic)
+2833c2910
+< void CWE191_Integer_Underflow__int_rand_multiply_21_bad()
+---
+> static void goodG2B()
+2839,2841c2916,2925
+<     data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+<     badStatic = 1;
+<     badSink(data);
+---
+>     data = -2;
+>     goodG2BStatic = 1;
+>     goodG2BSink(data);
+> }
+> 
+> void CWE191_Integer_Underflow__int_rand_multiply_21_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B();
+2852a2937,2939
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_rand_multiply_21_good();
+>     printLine("Finished good()");
+2858,2860d2944
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_rand_multiply_21_bad();
+<     printLine("Finished bad()");

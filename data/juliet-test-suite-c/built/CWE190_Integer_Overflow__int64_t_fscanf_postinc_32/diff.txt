@@ -1,0 +1,69 @@
+2861a2862,2877
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int64_t_fscanf_postinc_32.c"
+> static void goodG2B()
+> {
+>     int64_t data;
+>     int64_t *dataPtr1 = &data;
+>     int64_t *dataPtr2 = &data;
+>     data = 0LL;
+>     {
+>         int64_t data = *dataPtr1;
+> 
+>         data = 2;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         int64_t data = *dataPtr2;
+>         {
+2862a2879,2884
+>             data++;
+>             int64_t result = data;
+>             printLongLongLine(result);
+>         }
+>     }
+> }
+2865c2887
+< void CWE190_Integer_Overflow__int64_t_fscanf_postinc_32_bad()
+---
+> static void goodB2G()
+2875c2897
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int64_t_fscanf_postinc_32.c" 3 4
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int64_t_fscanf_postinc_32.c" 3 4
+2877c2899
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int64_t_fscanf_postinc_32.c"
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int64_t_fscanf_postinc_32.c"
+2879c2901
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int64_t_fscanf_postinc_32.c" 3 4
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int64_t_fscanf_postinc_32.c" 3 4
+2881c2903
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int64_t_fscanf_postinc_32.c"
+---
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int64_t_fscanf_postinc_32.c"
+2887d2908
+<         {
+2888a2910,2911
+>         if (data < 0x7fffffffffffffffLL)
+>         {
+2892a2916,2919
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2894a2922,2927
+> 
+> void CWE190_Integer_Overflow__int64_t_fscanf_postinc_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2904a2938,2940
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_fscanf_postinc_32_good();
+>     printLine("Finished good()");
+2910,2912d2945
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_fscanf_postinc_32_bad();
+<     printLine("Finished bad()");

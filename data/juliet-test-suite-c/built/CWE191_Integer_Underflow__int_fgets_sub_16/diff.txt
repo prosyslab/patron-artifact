@@ -1,0 +1,74 @@
+2814,2819c2814,2815
+< 
+< 
+< 
+< 
+< 
+< void CWE191_Integer_Underflow__int_fgets_sub_16_bad()
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_16.c"
+> static void goodB2G()
+2830c2826
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_16.c" 3 4
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_16.c" 3 4
+2832c2828
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_16.c"
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_16.c"
+2834c2830
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_16.c" 3 4
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_16.c" 3 4
+2836c2832
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_16.c"
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_16.c"
+2850a2847,2878
+> 
+>         if (data > 
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_16.c" 3 4
+>                   (-0x7fffffff - 1)
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_16.c"
+>                          )
+>         {
+>             int result = data - 1;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform subtraction.");
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = 0;
+>     while(1)
+>     {
+> 
+>         data = -2;
+>         break;
+>     }
+>     while(1)
+>     {
+2858a2887,2892
+> 
+> void CWE191_Integer_Underflow__int_fgets_sub_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2868a2903,2905
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_fgets_sub_16_good();
+>     printLine("Finished good()");
+2874,2876d2910
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_fgets_sub_16_bad();
+<     printLine("Finished bad()");

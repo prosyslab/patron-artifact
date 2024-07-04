@@ -1,0 +1,55 @@
+4900c4900
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_connect_socket_preinc_61a.c"
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_connect_socket_preinc_61a.c"
+4902,4903c4902,4903
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_connect_socket_preinc_61a.c"
+< int CWE190_Integer_Overflow__int_connect_socket_preinc_61b_badSource(int data);
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__int_connect_socket_preinc_61a.c"
+> int CWE190_Integer_Overflow__int_connect_socket_preinc_61b_goodG2BSource(int data);
+4905c4905
+< void CWE190_Integer_Overflow__int_connect_socket_preinc_61_bad()
+---
+> static void goodG2B()
+4910c4910
+<     data = CWE190_Integer_Overflow__int_connect_socket_preinc_61b_badSource(data);
+---
+>     data = CWE190_Integer_Overflow__int_connect_socket_preinc_61b_goodG2BSource(data);
+4917a4918,4945
+> 
+> 
+> int CWE190_Integer_Overflow__int_connect_socket_preinc_61b_goodB2GSource(int data);
+> 
+> static void goodB2G()
+> {
+>     int data;
+> 
+>     data = 0;
+>     data = CWE190_Integer_Overflow__int_connect_socket_preinc_61b_goodB2GSource(data);
+> 
+>     if (data < 0x7fffffff)
+>     {
+>         ++data;
+>         int result = data;
+>         printIntLine(result);
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__int_connect_socket_preinc_61_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+4927a4956,4958
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_connect_socket_preinc_61_good();
+>     printLine("Finished good()");
+4933,4935d4963
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_connect_socket_preinc_61_bad();
+<     printLine("Finished bad()");

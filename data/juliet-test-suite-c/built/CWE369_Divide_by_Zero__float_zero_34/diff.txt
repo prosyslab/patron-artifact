@@ -1,0 +1,49 @@
+3739a3740,3744
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_34.c"
+> static void goodG2B()
+> {
+>     float data;
+>     CWE369_Divide_by_Zero__float_zero_34_unionType myUnion;
+3740a3746,3758
+>     data = 0.0F;
+> 
+>     data = 2.0F;
+>     myUnion.unionFirst = data;
+>     {
+>         float data = myUnion.unionSecond;
+>         {
+> 
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>     }
+> }
+3743c3761
+< void CWE369_Divide_by_Zero__float_zero_34_bad()
+---
+> static void goodB2G()
+3754d3771
+<         {
+3755a3773,3774
+>         if(fabs(data) > 0.000001)
+>         {
+3758a3778,3781
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+3760a3784,3789
+> 
+> void CWE369_Divide_by_Zero__float_zero_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3770a3800,3802
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__float_zero_34_good();
+>     printLine("Finished good()");
+3776,3778d3807
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__float_zero_34_bad();
+<     printLine("Finished bad()");

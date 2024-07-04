@@ -1,0 +1,173 @@
+2813a2814,2845
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c"
+> static void goodB2G1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     switch(6)
+>     {
+>     case 6:
+>     {
+>         char inputBuffer[(3 * sizeof(data) + 2)] = "";
+> 
+>         if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c" 3 4
+>                                                stdin
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c"
+>                                                     ) != 
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c" 3 4
+>                                                          ((void *)0)
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c"
+>                                                              )
+>         {
+> 
+>             data = atoi(inputBuffer);
+>         }
+>         else
+>         {
+>             printLine("fgets() failed.");
+>         }
+>     }
+>     break;
+>     default:
+2814a2847,2852
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(8)
+>     {
+>     case 7:
+2815a2854,2858
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+>         if(data > 0)
+>         {
+2816a2860,2872
+>             if (data < (0x7fffffff/2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+>         }
+>         break;
+>     }
+> }
+2819c2875
+< void CWE190_Integer_Overflow__int_fgets_multiply_15_bad()
+---
+> static void goodB2G2()
+2831c2887
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c" 3 4
+---
+> # 136 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c" 3 4
+2833c2889
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c"
+---
+> # 136 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c"
+2835c2891
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c" 3 4
+---
+> # 136 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c" 3 4
+2837c2893
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c"
+---
+> # 136 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_15.c"
+2859a2916,2990
+>             if (data < (0x7fffffff/2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+>         }
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         data = 2;
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>         if(data > 0)
+>         {
+> 
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = 0;
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = 2;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>         if(data > 0)
+>         {
+> 
+2869a3001,3008
+> 
+> void CWE190_Integer_Overflow__int_fgets_multiply_15_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2879a3019,3021
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_fgets_multiply_15_good();
+>     printLine("Finished good()");
+2885,2887d3026
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_fgets_multiply_15_bad();
+<     printLine("Finished bad()");

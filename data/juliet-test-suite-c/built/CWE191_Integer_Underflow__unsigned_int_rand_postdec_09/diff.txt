@@ -1,0 +1,106 @@
+2813a2814,2820
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__unsigned_int_rand_postdec_09.c"
+> static void goodB2G1()
+> {
+>     unsigned int data;
+>     data = 0;
+>     if(GLOBAL_CONST_TRUE)
+>     {
+2814a2822,2825
+>         data = (unsigned int)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>     }
+>     if(GLOBAL_CONST_FALSE)
+>     {
+2815a2827,2830
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2817c2832,2846
+< void CWE191_Integer_Underflow__unsigned_int_rand_postdec_09_bad()
+---
+>         if (data > 0)
+>         {
+>             data--;
+>             unsigned int result = data;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2827a2857,2887
+> 
+>         if (data > 0)
+>         {
+>             data--;
+>             unsigned int result = data;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     unsigned int data;
+>     data = 0;
+>     if(GLOBAL_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = -2;
+>     }
+>     if(GLOBAL_CONST_TRUE)
+>     {
+2835a2896,2924
+> 
+> 
+> static void goodG2B2()
+> {
+>     unsigned int data;
+>     data = 0;
+>     if(GLOBAL_CONST_TRUE)
+>     {
+> 
+>         data = -2;
+>     }
+>     if(GLOBAL_CONST_TRUE)
+>     {
+>         {
+> 
+>             data--;
+>             unsigned int result = data;
+>             printUnsignedLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE191_Integer_Underflow__unsigned_int_rand_postdec_09_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2845a2935,2937
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__unsigned_int_rand_postdec_09_good();
+>     printLine("Finished good()");
+2851,2853d2942
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__unsigned_int_rand_postdec_09_bad();
+<     printLine("Finished bad()");

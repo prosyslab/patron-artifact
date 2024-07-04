@@ -1,0 +1,28 @@
+2813a2814,2817
+> # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_sub_54e.c"
+> void CWE191_Integer_Underflow__int_rand_sub_54e_goodG2BSink(int data)
+> {
+>     {
+2814a2819,2822
+>         int result = data - 1;
+>         printIntLine(result);
+>     }
+> }
+2817c2825
+< void CWE191_Integer_Underflow__int_rand_sub_54e_badSink(int data)
+---
+> void CWE191_Integer_Underflow__int_rand_sub_54e_goodB2GSink(int data)
+2819d2826
+<     {
+2820a2828,2833
+>     if (data > 
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_sub_54e.c" 3 4
+>               (-0x7fffffff - 1)
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_sub_54e.c"
+>                      )
+>     {
+2822a2836,2839
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform subtraction.");

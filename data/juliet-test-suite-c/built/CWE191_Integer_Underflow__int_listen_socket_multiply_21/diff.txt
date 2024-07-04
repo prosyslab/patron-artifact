@@ -1,0 +1,277 @@
+4900c4900
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+---
+> # 143 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+4902,4903c4902,4905
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+< static int badStatic = 0;
+---
+> # 143 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+> static int goodB2G1Static = 0;
+> static int goodB2G2Static = 0;
+> static int goodG2BStatic = 0;
+4905c4907,4908
+< static void badSink(int data)
+---
+> 
+> static void goodB2G1Sink(int data)
+4907c4910,4915
+<     if(badStatic)
+---
+>     if(goodB2G1Static)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+4912,4913c4920,4932
+<             int result = data * 2;
+<             printIntLine(result);
+---
+>             if (data > (
+> # 160 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+>                        (-0x7fffffff - 1)
+> # 160 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+>                               /2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+4918c4937
+< void CWE191_Integer_Underflow__int_listen_socket_multiply_21_bad()
+---
+> static void goodB2G1()
+4935c4954
+< # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+---
+> # 198 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+4937c4956
+< # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+---
+> # 198 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+4939c4958
+< # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+---
+> # 198 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+4941c4960
+< # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+---
+> # 198 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+4943c4962
+< # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+---
+> # 198 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+4945c4964
+< # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+---
+> # 198 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+4947c4966
+< # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+---
+> # 198 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+4955c4974
+< # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+---
+> # 204 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+4957c4976
+< # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+---
+> # 204 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+4960c4979
+< # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+---
+> # 205 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+4962c4981
+< # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+---
+> # 205 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+4974c4993
+< # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+---
+> # 215 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+4976c4995
+< # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+---
+> # 215 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+4978c4997
+< # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+---
+> # 215 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+4980c4999
+< # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+---
+> # 215 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+5013,5014c5032,5189
+<     badStatic = 1;
+<     badSink(data);
+---
+>     goodB2G1Static = 0;
+>     goodB2G1Sink(data);
+> }
+> 
+> 
+> static void goodB2G2Sink(int data)
+> {
+>     if(goodB2G2Static)
+>     {
+>         if(data < 0)
+>         {
+> 
+>             if (data > (
+> # 259 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+>                        (-0x7fffffff - 1)
+> # 259 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+>                               /2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+>         }
+>     }
+> }
+> 
+> static void goodB2G2()
+> {
+>     int data;
+> 
+>     data = 0;
+>     {
+> 
+> 
+> 
+> 
+>         int recvResult;
+>         struct sockaddr_in service;
+>         int listenSocket = -1;
+>         int acceptSocket = -1;
+>         char inputBuffer[(3 * sizeof(data) + 2)];
+>         do
+>         {
+> # 297 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+>             listenSocket = socket(
+> # 297 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+>                                  2
+> # 297 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+>                                         , 
+> # 297 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+>                                           SOCK_STREAM
+> # 297 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+>                                                      , 
+> # 297 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+>                                                        IPPROTO_TCP
+> # 297 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+>                                                                   );
+>             if (listenSocket == -1)
+>             {
+>                 break;
+>             }
+>             memset(&service, 0, sizeof(service));
+>             service.sin_family = 
+> # 303 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+>                                 2
+> # 303 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+>                                        ;
+>             service.sin_addr.s_addr = 
+> # 304 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+>                                      ((in_addr_t) 0x00000000)
+> # 304 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+>                                                ;
+>             service.sin_port = htons(27015);
+>             if (bind(listenSocket, (struct sockaddr*)&service, sizeof(service)) == -1)
+>             {
+>                 break;
+>             }
+>             if (listen(listenSocket, 5) == -1)
+>             {
+>                 break;
+>             }
+>             acceptSocket = accept(listenSocket, 
+> # 314 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+>                                                ((void *)0)
+> # 314 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+>                                                    , 
+> # 314 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c" 3 4
+>                                                      ((void *)0)
+> # 314 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_multiply_21.c"
+>                                                          );
+>             if (acceptSocket == -1)
+>             {
+>                 break;
+>             }
+> 
+>             recvResult = recv(acceptSocket, inputBuffer, (3 * sizeof(data) + 2) - 1, 0);
+>             if (recvResult == -1 || recvResult == 0)
+>             {
+>                 break;
+>             }
+> 
+>             inputBuffer[recvResult] = '\0';
+> 
+>             data = atoi(inputBuffer);
+>         }
+>         while (0);
+>         if (listenSocket != -1)
+>         {
+>             close(listenSocket);
+>         }
+>         if (acceptSocket != -1)
+>         {
+>             close(acceptSocket);
+>         }
+> 
+> 
+> 
+> 
+> 
+> 
+>     }
+>     goodB2G2Static = 1;
+>     goodB2G2Sink(data);
+> }
+> 
+> 
+> static void goodG2BSink(int data)
+> {
+>     if(goodG2BStatic)
+>     {
+>         if(data < 0)
+>         {
+> 
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = 0;
+> 
+>     data = -2;
+>     goodG2BStatic = 1;
+>     goodG2BSink(data);
+> }
+> 
+> void CWE191_Integer_Underflow__int_listen_socket_multiply_21_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B();
+5025a5201,5203
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_listen_socket_multiply_21_good();
+>     printLine("Finished good()");
+5031,5033d5208
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_listen_socket_multiply_21_bad();
+<     printLine("Finished bad()");

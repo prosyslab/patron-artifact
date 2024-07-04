@@ -1,0 +1,140 @@
+3731a3732
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_15.c"
+3732a3734,3741
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_15.c"
+> static void goodB2G1()
+> {
+>     unsigned int data;
+>     data = 0;
+>     switch(6)
+>     {
+>     case 6:
+3733a3743,3745
+>         data = (unsigned int)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>         break;
+>     default:
+3734a3747,3756
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(8)
+>     {
+>     case 7:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+3736,3737c3758,3776
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_15.c"
+< void CWE190_Integer_Overflow__unsigned_int_rand_square_15_bad()
+---
+>         if (abs((long)data) < (long)sqrt((double)
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_15.c" 3 4
+>                                                 (0x7fffffff * 2U + 1U)
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_15.c"
+>                                                         ))
+>         {
+>             unsigned int result = data * data;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+3754a3794,3866
+> 
+>         if (abs((long)data) < (long)sqrt((double)
+> # 116 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_15.c" 3 4
+>                                                 (0x7fffffff * 2U + 1U)
+> # 116 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_rand_square_15.c"
+>                                                         ))
+>         {
+>             unsigned int result = data * data;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     unsigned int data;
+>     data = 0;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         data = 2;
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>     {
+> 
+>         unsigned int result = data * data;
+>         printUnsignedLine(result);
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     unsigned int data;
+>     data = 0;
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = 2;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+3766a3879,3886
+> 
+> void CWE190_Integer_Overflow__unsigned_int_rand_square_15_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3776a3897,3899
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__unsigned_int_rand_square_15_good();
+>     printLine("Finished good()");
+3782,3784d3904
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__unsigned_int_rand_square_15_bad();
+<     printLine("Finished bad()");

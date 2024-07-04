@@ -1,0 +1,87 @@
+3240a3241
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c"
+3241a3243,3248
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c"
+> static void goodG2B()
+> {
+>     size_t data;
+>     size_t *dataPtr1 = &data;
+>     size_t *dataPtr2 = &data;
+3242a3250,3252
+>     data = 0;
+>     {
+>         size_t data = *dataPtr1;
+3243a3254,3260
+>         data = 20;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         size_t data = *dataPtr2;
+>         {
+>             char * myString;
+3246a3264,3271
+>             if (data > strlen("hello"))
+>             {
+>                 myString = (char *)malloc(data*sizeof(char));
+>                 if (myString == 
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c" 3 4
+>                                ((void *)0)
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c"
+>                                    ) {exit(-1);}
+3248,3249c3273,3286
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c"
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32_bad()
+---
+>                 strcpy(myString, "hello");
+>                 printLine(myString);
+>                 free(myString);
+>             }
+>             else
+>             {
+>                 printLine("Input is less than the length of the source string");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G()
+3260c3297
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c" 3 4
+---
+> # 118 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c" 3 4
+3262c3299
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c"
+---
+> # 118 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c"
+3273c3310
+<             if (data > strlen("hello"))
+---
+>             if (data > strlen("hello") && data < 100)
+3277c3314
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c" 3 4
+---
+> # 131 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c" 3 4
+3279c3316
+< # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c"
+---
+> # 131 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32.c"
+3288c3325
+<                 printLine("Input is less than the length of the source string");
+---
+>                 printLine("Input is less than the length of the source string or too large");
+3292a3330,3335
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3302a3346,3348
+>     printLine("Calling good()...");
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32_good();
+>     printLine("Finished good()");
+3308,3310d3353
+<     printLine("Calling bad()...");
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_32_bad();
+<     printLine("Finished bad()");

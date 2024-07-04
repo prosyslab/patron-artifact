@@ -1,0 +1,26 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE194_Unexpected_Sign_Extension__negative_memmove_01_bad()
+---
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__negative_memmove_01.c"
+> static void goodG2B()
+2823c2821
+<     data = -1;
+---
+>     data = 100-1;
+2838a2837,2841
+> 
+> void CWE194_Unexpected_Sign_Extension__negative_memmove_01_good()
+> {
+>     goodG2B();
+> }
+2848a2852,2854
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__negative_memmove_01_good();
+>     printLine("Finished good()");
+2854,2856d2859
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__negative_memmove_01_bad();
+<     printLine("Finished bad()");

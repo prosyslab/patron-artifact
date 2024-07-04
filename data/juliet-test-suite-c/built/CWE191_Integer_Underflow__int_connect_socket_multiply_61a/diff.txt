@@ -1,0 +1,61 @@
+4900c4900
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_multiply_61a.c"
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_multiply_61a.c"
+4902,4903c4902,4903
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_multiply_61a.c"
+< int CWE191_Integer_Underflow__int_connect_socket_multiply_61b_badSource(int data);
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_multiply_61a.c"
+> int CWE191_Integer_Underflow__int_connect_socket_multiply_61b_goodG2BSource(int data);
+4905c4905
+< void CWE191_Integer_Underflow__int_connect_socket_multiply_61_bad()
+---
+> static void goodG2B()
+4910c4910
+<     data = CWE191_Integer_Underflow__int_connect_socket_multiply_61b_badSource(data);
+---
+>     data = CWE191_Integer_Underflow__int_connect_socket_multiply_61b_goodG2BSource(data);
+4917a4918,4951
+> 
+> 
+> int CWE191_Integer_Underflow__int_connect_socket_multiply_61b_goodB2GSource(int data);
+> 
+> static void goodB2G()
+> {
+>     int data;
+> 
+>     data = 0;
+>     data = CWE191_Integer_Underflow__int_connect_socket_multiply_61b_goodB2GSource(data);
+>     if(data < 0)
+>     {
+> 
+>         if (data > (
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_multiply_61a.c" 3 4
+>                    (-0x7fffffff - 1)
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_connect_socket_multiply_61a.c"
+>                           /2))
+>         {
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too small to perform multiplication.");
+>         }
+>     }
+> }
+> 
+> void CWE191_Integer_Underflow__int_connect_socket_multiply_61_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+4927a4962,4964
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_connect_socket_multiply_61_good();
+>     printLine("Finished good()");
+4933,4935d4969
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_connect_socket_multiply_61_bad();
+<     printLine("Finished bad()");

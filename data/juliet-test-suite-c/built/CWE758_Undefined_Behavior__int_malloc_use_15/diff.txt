@@ -1,0 +1,70 @@
+2813a2814,2819
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_malloc_use_15.c"
+> static void good1()
+> {
+>     switch(5)
+>     {
+>     case 6:
+2814a2821,2842
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+>     {
+>         int data;
+>         int * pointer = (int *)malloc(sizeof(int));
+>         if (pointer == 
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_malloc_use_15.c" 3 4
+>                       ((void *)0)
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_malloc_use_15.c"
+>                           ) {exit(-1);}
+>         data = 5;
+>         *pointer = data;
+>         {
+>             int data = *pointer;
+>             printIntLine(data);
+>         }
+>         free(pointer);
+>     }
+>     break;
+>     }
+> }
+2817c2845
+< void CWE758_Undefined_Behavior__int_malloc_use_15_bad()
+---
+> static void good2()
+2822a2851
+>         int data;
+2825c2854
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_malloc_use_15.c" 3 4
+---
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_malloc_use_15.c" 3 4
+2827c2856
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_malloc_use_15.c"
+---
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int_malloc_use_15.c"
+2829c2858,2863
+<         int data = *pointer;
+---
+>         data = 5;
+>         *pointer = data;
+>         {
+>             int data = *pointer;
+>             printIntLine(data);
+>         }
+2831d2864
+<         printIntLine(data);
+2839a2873,2878
+> 
+> void CWE758_Undefined_Behavior__int_malloc_use_15_good()
+> {
+>     good1();
+>     good2();
+> }
+2849a2889,2891
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__int_malloc_use_15_good();
+>     printLine("Finished good()");
+2855,2857d2896
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__int_malloc_use_15_bad();
+<     printLine("Finished bad()");

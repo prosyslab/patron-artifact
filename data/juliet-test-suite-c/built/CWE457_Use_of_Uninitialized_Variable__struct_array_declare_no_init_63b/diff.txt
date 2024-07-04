@@ -1,0 +1,28 @@
+2813a2814,2817
+> # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_declare_no_init_63b.c"
+> void CWE457_Use_of_Uninitialized_Variable__struct_array_declare_no_init_63b_goodG2BSink(twoIntsStruct * * dataPtr)
+> {
+>     twoIntsStruct * data = *dataPtr;
+2814a2819,2827
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+>             printIntLine(data[i].intOne);
+>             printIntLine(data[i].intTwo);
+>         }
+>     }
+> }
+2817c2830
+< void CWE457_Use_of_Uninitialized_Variable__struct_array_declare_no_init_63b_badSink(twoIntsStruct * * dataPtr)
+---
+> void CWE457_Use_of_Uninitialized_Variable__struct_array_declare_no_init_63b_goodB2GSink(twoIntsStruct * * dataPtr)
+2820a2834,2841
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+>             data[i].intOne = i;
+>             data[i].intTwo = i;
+>         }
+>     }

@@ -1,0 +1,67 @@
+3731a3732
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_31.c"
+3732a3734,3737
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_31.c"
+> static void goodG2B()
+> {
+>     float data;
+3733a3739
+>     data = 0.0F;
+3734a3741,3745
+>     data = 2.0F;
+>     {
+>         float dataCopy = data;
+>         float data = dataCopy;
+>         {
+3735a3747,3751
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>     }
+> }
+3738,3739c3754
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_31.c"
+< void CWE369_Divide_by_Zero__float_fgets_31_bad()
+---
+> static void goodB2G()
+3748c3763
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_31.c" 3 4
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_31.c" 3 4
+3750c3765
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_31.c"
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_31.c"
+3752c3767
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_31.c" 3 4
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_31.c" 3 4
+3754c3769
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_31.c"
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_31.c"
+3768d3782
+<         {
+3769a3784,3785
+>         if(fabs(data) > 0.000001)
+>         {
+3772a3789,3792
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+3774a3795,3800
+> 
+> void CWE369_Divide_by_Zero__float_fgets_31_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3784a3811,3813
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__float_fgets_31_good();
+>     printLine("Finished good()");
+3790,3792d3818
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__float_fgets_31_bad();
+<     printLine("Finished bad()");

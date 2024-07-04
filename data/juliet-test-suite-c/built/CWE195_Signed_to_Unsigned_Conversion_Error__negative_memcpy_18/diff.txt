@@ -1,0 +1,26 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE195_Signed_to_Unsigned_Conversion_Error__negative_memcpy_18_bad()
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__negative_memcpy_18.c"
+> static void goodG2B()
+2825c2823
+<     data = -1;
+---
+>     data = 100-1;
+2840a2839,2843
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__negative_memcpy_18_good()
+> {
+>     goodG2B();
+> }
+2850a2854,2856
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__negative_memcpy_18_good();
+>     printLine("Finished good()");
+2856,2858d2861
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__negative_memcpy_18_bad();
+<     printLine("Finished bad()");

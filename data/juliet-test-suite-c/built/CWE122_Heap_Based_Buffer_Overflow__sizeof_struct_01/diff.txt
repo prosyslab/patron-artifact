@@ -1,0 +1,43 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01_bad()
+---
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01.c"
+> static void goodG2B()
+2822c2820
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01.c" 3 4
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01.c" 3 4
+2824c2822
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01.c"
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01.c"
+2827,2828c2825
+< 
+<     data = (twoIntsStruct *)malloc(sizeof(data));
+---
+>     data = (twoIntsStruct *)malloc(sizeof(*data));
+2830c2827
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01.c" 3 4
+---
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01.c" 3 4
+2832c2829
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01.c"
+---
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01.c"
+2839a2837,2841
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01_good()
+> {
+>     goodG2B();
+> }
+2849a2852,2854
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01_good();
+>     printLine("Finished good()");
+2855,2857d2859
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_01_bad();
+<     printLine("Finished bad()");

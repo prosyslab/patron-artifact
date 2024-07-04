@@ -1,0 +1,103 @@
+4900c4900
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+---
+> # 134 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+4902,4903c4902,4936
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+< void CWE126_Buffer_Overread__CWE129_connect_socket_32_bad()
+---
+> # 134 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+> static void goodG2B()
+> {
+>     int data;
+>     int *dataPtr1 = &data;
+>     int *dataPtr2 = &data;
+> 
+>     data = -1;
+>     {
+>         int data = *dataPtr1;
+> 
+> 
+>         data = 7;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         int data = *dataPtr2;
+>         {
+>             int buffer[10] = { 0 };
+> 
+> 
+>             if (data >= 0)
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is negative");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G()
+4923c4956
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+---
+> # 195 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+4925c4958
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c" 3 4
+---
+> # 195 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c" 3 4
+4927c4960
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+---
+> # 195 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+4929c4962
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c" 3 4
+---
+> # 195 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c" 3 4
+4931c4964
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+---
+> # 195 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+4933c4966
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c" 3 4
+---
+> # 195 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c" 3 4
+4935c4968
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+---
+> # 195 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+4943c4976
+< # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c" 3 4
+---
+> # 201 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c" 3 4
+4945c4978
+< # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+---
+> # 201 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_connect_socket_32.c"
+4984,4985c5017
+< 
+<             if (data >= 0)
+---
+>             if (data >= 0 && data < (10))
+4991c5023
+<                 printLine("ERROR: Array index is negative");
+---
+>                 printLine("ERROR: Array index is out-of-bounds");
+4995a5028,5033
+> 
+> void CWE126_Buffer_Overread__CWE129_connect_socket_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+5005a5044,5046
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__CWE129_connect_socket_32_good();
+>     printLine("Finished good()");
+5011,5013d5051
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__CWE129_connect_socket_32_bad();
+<     printLine("Finished bad()");

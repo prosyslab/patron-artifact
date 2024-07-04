@@ -1,0 +1,126 @@
+3780a3781,3787
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c"
+> static void goodB2G1()
+> {
+>     int64_t data;
+>     data = 0LL;
+>     if(staticTrue)
+>     {
+3781a3789,3817
+>         fscanf (
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c" 3 4
+>                stdin
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c"
+>                     , "%" 
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c" 3 4
+>                           "l" "d"
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c"
+>                                 , &data);
+>     }
+>     if(staticFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if (imaxabs((intmax_t)data) <= sqrtl(0x7fffffffffffffffLL))
+>         {
+>             int64_t result = data * data;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+3784c3820
+< void CWE190_Integer_Overflow__int64_t_fscanf_square_05_bad()
+---
+> static void goodB2G2()
+3792c3828
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c" 3 4
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c" 3 4
+3794c3830
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c"
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c"
+3796c3832
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c" 3 4
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c" 3 4
+3798c3834
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c"
+---
+> # 92 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_fscanf_square_05.c"
+3802a3839,3868
+> 
+>         if (imaxabs((intmax_t)data) <= sqrtl(0x7fffffffffffffffLL))
+>         {
+>             int64_t result = data * data;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int64_t data;
+>     data = 0LL;
+>     if(staticFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2;
+>     }
+>     if(staticTrue)
+>     {
+3809a3876,3903
+> 
+> 
+> static void goodG2B2()
+> {
+>     int64_t data;
+>     data = 0LL;
+>     if(staticTrue)
+>     {
+> 
+>         data = 2;
+>     }
+>     if(staticTrue)
+>     {
+>         {
+> 
+>             int64_t result = data * data;
+>             printLongLongLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__int64_t_fscanf_square_05_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3819a3914,3916
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_fscanf_square_05_good();
+>     printLine("Finished good()");
+3825,3827d3921
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_fscanf_square_05_bad();
+<     printLine("Finished bad()");

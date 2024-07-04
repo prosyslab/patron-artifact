@@ -1,0 +1,62 @@
+2813a2814,2833
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_declare_partial_init_16.c"
+> static void goodB2G()
+> {
+>     double * data;
+>     double dataUninitArray[10];
+>     data = dataUninitArray;
+>     while(1)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<(10/2); i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+>         break;
+>     }
+>     while(1)
+>     {
+2814a2835,2851
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printDoubleLine(data[i]);
+>             }
+>         }
+>         break;
+>     }
+> }
+2817c2854
+< void CWE457_Use_of_Uninitialized_Variable__double_array_declare_partial_init_16_bad()
+---
+> static void goodG2B()
+2827c2864
+<             for(i=0; i<(10/2); i++)
+---
+>             for(i=0; i<10; i++)
+2846a2884,2889
+> 
+> void CWE457_Use_of_Uninitialized_Variable__double_array_declare_partial_init_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2856a2900,2902
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__double_array_declare_partial_init_16_good();
+>     printLine("Finished good()");
+2862,2864d2907
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__double_array_declare_partial_init_16_bad();
+<     printLine("Finished bad()");

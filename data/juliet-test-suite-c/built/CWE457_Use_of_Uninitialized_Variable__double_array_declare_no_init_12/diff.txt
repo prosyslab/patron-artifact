@@ -1,0 +1,87 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_12_bad()
+---
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_12.c"
+> static void goodB2G()
+2829a2828,2832
+>         ;
+>     }
+>     if(globalReturnsTrueOrFalse())
+>     {
+> 
+2836a2840,2846
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printDoubleLine(data[i]);
+>             }
+>         }
+2838c2848
+<     if(globalReturnsTrueOrFalse())
+---
+>     else
+2844a2855,2861
+>                 data[i] = (double)i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+2848a2866,2886
+> }
+> 
+> 
+> 
+> 
+> static void goodG2B()
+> {
+>     double * data;
+>     double dataUninitArray[10];
+>     data = dataUninitArray;
+>     if(globalReturnsTrueOrFalse())
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+>     }
+2858a2897,2900
+>     }
+>     if(globalReturnsTrueOrFalse())
+>     {
+> 
+2866a2909,2925
+>     else
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printDoubleLine(data[i]);
+>             }
+>         }
+>     }
+> }
+> 
+> void CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_12_good()
+> {
+>     goodB2G();
+>     goodG2B();
+2877a2937,2939
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_12_good();
+>     printLine("Finished good()");
+2883,2885d2944
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_12_bad();
+<     printLine("Finished bad()");

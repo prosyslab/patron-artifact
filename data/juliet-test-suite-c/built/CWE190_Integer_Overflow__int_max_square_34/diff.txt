@@ -1,0 +1,53 @@
+3739a3740,3744
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_square_34.c"
+> static void goodG2B()
+> {
+>     int data;
+>     CWE190_Integer_Overflow__int_max_square_34_unionType myUnion;
+3740a3746,3758
+>     data = 0;
+> 
+>     data = 2;
+>     myUnion.unionFirst = data;
+>     {
+>         int data = myUnion.unionSecond;
+>         {
+> 
+>             int result = data * data;
+>             printIntLine(result);
+>         }
+>     }
+> }
+3743c3761
+< void CWE190_Integer_Overflow__int_max_square_34_bad()
+---
+> static void goodB2G()
+3754d3771
+<         {
+3755a3773,3778
+>         if (data > 
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_square_34.c" 3 4
+>                   (-0x7fffffff - 1) 
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_square_34.c"
+>                           && abs(data) < (long)sqrt((double)0x7fffffff))
+>         {
+3758a3782,3785
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+3760a3788,3793
+> 
+> void CWE190_Integer_Overflow__int_max_square_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3770a3804,3806
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_max_square_34_good();
+>     printLine("Finished good()");
+3776,3778d3811
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_max_square_34_bad();
+<     printLine("Finished bad()");

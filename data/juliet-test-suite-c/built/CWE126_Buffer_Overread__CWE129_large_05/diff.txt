@@ -1,0 +1,120 @@
+2819a2820,2823
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_large_05.c"
+> static void goodB2G1()
+> {
+>     int data;
+2820a2825,2827
+>     data = -1;
+>     if(staticTrue)
+>     {
+2821a2829,2832
+>         data = 10;
+>     }
+>     if(staticFalse)
+>     {
+2823c2834,2854
+< void CWE126_Buffer_Overread__CWE129_large_05_bad()
+---
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             int buffer[10] = { 0 };
+> 
+>             if (data >= 0 && data < (10))
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2837a2869,2902
+>             if (data >= 0 && data < (10))
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is out-of-bounds");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(staticFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+> 
+>         data = 7;
+>     }
+>     if(staticTrue)
+>     {
+>         {
+>             int buffer[10] = { 0 };
+> 
+2849a2915,2952
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = -1;
+>     if(staticTrue)
+>     {
+> 
+> 
+>         data = 7;
+>     }
+>     if(staticTrue)
+>     {
+>         {
+>             int buffer[10] = { 0 };
+> 
+> 
+>             if (data >= 0)
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is negative");
+>             }
+>         }
+>     }
+> }
+> 
+> void CWE126_Buffer_Overread__CWE129_large_05_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2859a2963,2965
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__CWE129_large_05_good();
+>     printLine("Finished good()");
+2865,2867d2970
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__CWE129_large_05_bad();
+<     printLine("Finished bad()");

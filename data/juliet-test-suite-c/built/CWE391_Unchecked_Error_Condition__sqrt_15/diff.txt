@@ -1,0 +1,80 @@
+3761a3762
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c"
+3762a3764,3781
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c"
+> static void good1()
+> {
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+>     {
+>         double doubleNumber;
+>         
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c" 3 4
+>        (*__errno_location ()) 
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c"
+>              = 0;
+>         doubleNumber = (double)sqrt((double)-1);
+3763a3783,3800
+>         if (
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c" 3 4
+>            (*__errno_location ()) 
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c"
+>                  == 
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c" 3 4
+>                     33
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c"
+>                         )
+>         {
+>             printLine("sqrt() failed");
+>             exit(1);
+>         }
+>         printDoubleLine(doubleNumber);
+>     }
+>     break;
+>     }
+> }
+3766,3767c3803
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c"
+< void CWE391_Unchecked_Error_Condition__sqrt_15_bad()
+---
+> static void good2()
+3773a3810,3814
+>         
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c" 3 4
+>        (*__errno_location ()) 
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c"
+>              = 0;
+3775a3817,3829
+>         if (
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c" 3 4
+>            (*__errno_location ()) 
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c"
+>                  == 
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c" 3 4
+>                     33
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE391_Unchecked_Error_Condition/CWE391_Unchecked_Error_Condition__sqrt_15.c"
+>                         )
+>         {
+>             printLine("sqrt() failed");
+>             exit(1);
+>         }
+3784a3839,3844
+> 
+> void CWE391_Unchecked_Error_Condition__sqrt_15_good()
+> {
+>     good1();
+>     good2();
+> }
+3794a3855,3857
+>     printLine("Calling good()...");
+>     CWE391_Unchecked_Error_Condition__sqrt_15_good();
+>     printLine("Finished good()");
+3800,3802d3862
+<     printLine("Calling bad()...");
+<     CWE391_Unchecked_Error_Condition__sqrt_15_bad();
+<     printLine("Finished bad()");

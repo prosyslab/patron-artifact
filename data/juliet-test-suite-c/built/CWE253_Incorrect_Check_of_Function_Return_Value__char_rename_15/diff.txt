@@ -1,0 +1,52 @@
+3241c3241
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_15.c"
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_15.c"
+3243,3244c3243,3244
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_15.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_15_bad()
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_15.c"
+> static void good1()
+3246c3246
+<     switch(6)
+---
+>     switch(5)
+3249a3250,3267
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         if (rename("oldgoodfilename.txt", "newgoodfilename.txt") != 0)
+>         {
+>             printLine("rename failed!");
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void good2()
+> {
+>     switch(6)
+>     {
+>     case 6:
+3251c3269
+<         if (rename("oldbadfilename.txt", "newbadfilename.txt") == 0)
+---
+>         if (rename("oldgoodfilename.txt", "newgoodfilename.txt") != 0)
+3261a3280,3285
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_15_good()
+> {
+>     good1();
+>     good2();
+> }
+3271a3296,3298
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_15_good();
+>     printLine("Finished good()");
+3277,3279d3303
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_rename_15_bad();
+<     printLine("Finished bad()");

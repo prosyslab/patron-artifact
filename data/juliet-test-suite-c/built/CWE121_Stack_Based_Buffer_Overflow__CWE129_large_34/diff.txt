@@ -1,0 +1,63 @@
+2819a2820,2840
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_large_34.c"
+> static void goodG2B()
+> {
+>     int data;
+>     CWE121_Stack_Based_Buffer_Overflow__CWE129_large_34_unionType myUnion;
+> 
+>     data = -1;
+> 
+> 
+>     data = 7;
+>     myUnion.unionFirst = data;
+>     {
+>         int data = myUnion.unionSecond;
+>         {
+>             int i;
+>             int buffer[10] = { 0 };
+> 
+> 
+>             if (data >= 0)
+>             {
+>                 buffer[data] = 1;
+2820a2842,2853
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is negative.");
+>             }
+>         }
+>     }
+> }
+2823c2856
+< void CWE121_Stack_Based_Buffer_Overflow__CWE129_large_34_bad()
+---
+> static void goodB2G()
+2838,2839c2871
+< 
+<             if (data >= 0)
+---
+>             if (data >= 0 && data < (10))
+2850c2882
+<                 printLine("ERROR: Array index is negative.");
+---
+>                 printLine("ERROR: Array index is out-of-bounds");
+2854a2887,2892
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE129_large_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2864a2903,2905
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE129_large_34_good();
+>     printLine("Finished good()");
+2870,2872d2910
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE129_large_34_bad();
+<     printLine("Finished bad()");

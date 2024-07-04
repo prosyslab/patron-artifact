@@ -1,0 +1,56 @@
+3256a3257,3271
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_08.c"
+> static void good1()
+> {
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+> 
+> 
+>             char dataBuffer[100] = "";
+>             char * data = dataBuffer;
+3257a3273,3283
+>             if (scanf("%99s\0", data) == 
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_08.c" 3 4
+>                                         (-1)
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_08.c"
+>                                            )
+>             {
+>                 printLine("scanf failed!");
+>             }
+>         }
+>     }
+> }
+3260c3286
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_08_bad()
+---
+> static void good2()
+3270,3271c3296,3300
+< 
+<             if (scanf("%99s\0", data) == 0)
+---
+>             if (scanf("%99s\0", data) == 
+> # 95 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_08.c" 3 4
+>                                         (-1)
+> # 95 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_08.c"
+>                                            )
+3277a3307,3312
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_08_good()
+> {
+>     good1();
+>     good2();
+> }
+3287a3323,3325
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_08_good();
+>     printLine("Finished good()");
+3293,3295d3330
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_08_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,15 @@
+file(REMOVE_RECURSE
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE761/good/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81-good"
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE761/good/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81-good.pdb"
+  "CMakeFiles/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81-good.dir/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81_bad.cpp.o"
+  "CMakeFiles/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81-good.dir/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81_bad.cpp.o.d"
+  "CMakeFiles/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81-good.dir/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81_goodB2G.cpp.o"
+  "CMakeFiles/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81-good.dir/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81_goodB2G.cpp.o.d"
+  "CMakeFiles/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81-good.dir/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81a.cpp.o"
+  "CMakeFiles/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81-good.dir/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81a.cpp.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_81-good.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

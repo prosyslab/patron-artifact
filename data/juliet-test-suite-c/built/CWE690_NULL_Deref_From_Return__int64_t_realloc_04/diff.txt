@@ -1,0 +1,74 @@
+3247a3248,3260
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_realloc_04.c"
+> static void goodB2G1()
+> {
+>     int64_t * data;
+>     data = 
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_realloc_04.c" 3 4
+>           ((void *)0)
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_realloc_04.c"
+>               ;
+> 
+>     data = (int64_t *)realloc(data, 1*sizeof(int64_t));
+>     if(STATIC_CONST_FALSE)
+>     {
+3248a3262,3278
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if (data != 
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_realloc_04.c" 3 4
+>                    ((void *)0)
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_realloc_04.c"
+>                        )
+>         {
+>             data[0] = 5LL;
+>             printLongLongLine(data[0]);
+>             free(data);
+>         }
+>     }
+> }
+3251c3281
+< void CWE690_NULL_Deref_From_Return__int64_t_realloc_04_bad()
+---
+> static void goodB2G2()
+3255c3285
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_realloc_04.c" 3 4
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_realloc_04.c" 3 4
+3257c3287
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_realloc_04.c"
+---
+> # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_realloc_04.c"
+3264,3266c3294,3303
+<         data[0] = 5LL;
+<         printLongLongLine(data[0]);
+<         free(data);
+---
+>         if (data != 
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_realloc_04.c" 3 4
+>                    ((void *)0)
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__int64_t_realloc_04.c"
+>                        )
+>         {
+>             data[0] = 5LL;
+>             printLongLongLine(data[0]);
+>             free(data);
+>         }
+3268a3306,3311
+> 
+> void CWE690_NULL_Deref_From_Return__int64_t_realloc_04_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+> }
+3278a3322,3324
+>     printLine("Calling good()...");
+>     CWE690_NULL_Deref_From_Return__int64_t_realloc_04_good();
+>     printLine("Finished good()");
+3284,3286d3329
+<     printLine("Calling bad()...");
+<     CWE690_NULL_Deref_From_Return__int64_t_realloc_04_bad();
+<     printLine("Finished bad()");

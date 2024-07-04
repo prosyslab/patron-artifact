@@ -1,0 +1,35 @@
+3239a3240
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_declare_ncpy_41.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_declare_ncpy_41.c"
+< void CWE127_Buffer_Underread__char_declare_ncpy_41_badSink(char * data)
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__char_declare_ncpy_41.c"
+> void CWE127_Buffer_Underread__char_declare_ncpy_41_goodG2BSink(char * data)
+3259c3257,3258
+< void CWE127_Buffer_Underread__char_declare_ncpy_41_bad()
+---
+> 
+> static void goodG2B()
+3266,3267c3265,3271
+<     data = dataBuffer - 8;
+<     CWE127_Buffer_Underread__char_declare_ncpy_41_badSink(data);
+---
+>     data = dataBuffer;
+>     CWE127_Buffer_Underread__char_declare_ncpy_41_goodG2BSink(data);
+> }
+> 
+> void CWE127_Buffer_Underread__char_declare_ncpy_41_good()
+> {
+>     goodG2B();
+3278a3283,3285
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__char_declare_ncpy_41_good();
+>     printLine("Finished good()");
+3284,3286d3290
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__char_declare_ncpy_41_bad();
+<     printLine("Finished bad()");

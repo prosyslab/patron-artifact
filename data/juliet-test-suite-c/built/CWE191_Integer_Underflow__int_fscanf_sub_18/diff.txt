@@ -1,0 +1,60 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE191_Integer_Underflow__int_fscanf_sub_18_bad()
+---
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_sub_18.c"
+> static void goodB2G()
+2826c2824
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_sub_18.c" 3 4
+---
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_sub_18.c" 3 4
+2828c2826
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_sub_18.c"
+---
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_sub_18.c"
+2831a2830,2857
+> 
+>     if (data > 
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_sub_18.c" 3 4
+>               (-0x7fffffff - 1)
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_sub_18.c"
+>                      )
+>     {
+>         int result = data - 1;
+>         printIntLine(result);
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform subtraction.");
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = 0;
+>     goto source;
+> source:
+> 
+>     data = -2;
+>     goto sink;
+> sink:
+2837a2864,2869
+> 
+> void CWE191_Integer_Underflow__int_fscanf_sub_18_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2847a2880,2882
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_fscanf_sub_18_good();
+>     printLine("Finished good()");
+2853,2855d2887
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_fscanf_sub_18_bad();
+<     printLine("Finished bad()");

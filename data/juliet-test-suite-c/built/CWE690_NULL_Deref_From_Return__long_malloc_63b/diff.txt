@@ -1,0 +1,26 @@
+3239a3240
+> # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_63b.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_63b.c"
+< void CWE690_NULL_Deref_From_Return__long_malloc_63b_badSink(long * * dataPtr)
+---
+> # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_63b.c"
+> void CWE690_NULL_Deref_From_Return__long_malloc_63b_goodB2GSink(long * * dataPtr)
+3249,3251c3247,3256
+<     data[0] = 5L;
+<     printLongLine(data[0]);
+<     free(data);
+---
+>     if (data != 
+> # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_63b.c" 3 4
+>                ((void *)0)
+> # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__long_malloc_63b.c"
+>                    )
+>     {
+>         data[0] = 5L;
+>         printLongLine(data[0]);
+>         free(data);
+>     }

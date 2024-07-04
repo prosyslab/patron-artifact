@@ -1,0 +1,23 @@
+4906a4907,4910
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_listen_socket_modulo_67b.c"
+> void CWE369_Divide_by_Zero__int_listen_socket_modulo_67b_goodG2BSink(CWE369_Divide_by_Zero__int_listen_socket_modulo_67_structType myStruct)
+> {
+>     int data = myStruct.structFirst;
+4907a4912,4913
+>     printIntLine(100 % data);
+> }
+4910c4916
+< void CWE369_Divide_by_Zero__int_listen_socket_modulo_67b_badSink(CWE369_Divide_by_Zero__int_listen_socket_modulo_67_structType myStruct)
+---
+> void CWE369_Divide_by_Zero__int_listen_socket_modulo_67b_goodB2GSink(CWE369_Divide_by_Zero__int_listen_socket_modulo_67_structType myStruct)
+4914c4920,4927
+<     printIntLine(100 % data);
+---
+>     if( data != 0 )
+>     {
+>         printIntLine(100 % data);
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");
+>     }

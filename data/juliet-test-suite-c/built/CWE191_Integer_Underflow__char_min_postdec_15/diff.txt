@@ -1,0 +1,151 @@
+2813a2814,2840
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_15.c"
+> static void goodB2G1()
+> {
+>     char data;
+>     data = ' ';
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = 
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_15.c" 3 4
+>               (-0x7f - 1)
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_15.c"
+>                       ;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(8)
+>     {
+>     case 7:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+2814a2842,2858
+>         if (data > 
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_15.c" 3 4
+>                   (-0x7f - 1)
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_15.c"
+>                           )
+>         {
+>             data--;
+>             char result = data;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>         break;
+>     }
+> }
+2817c2861
+< void CWE191_Integer_Underflow__char_min_postdec_15_bad()
+---
+> static void goodB2G2()
+2826c2870
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_15.c" 3 4
+---
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_15.c" 3 4
+2828c2872
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_15.c"
+---
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_15.c"
+2838a2883,2957
+> 
+>         if (data > 
+> # 116 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_15.c" 3 4
+>                   (-0x7f - 1)
+> # 116 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__char_min_postdec_15.c"
+>                           )
+>         {
+>             data--;
+>             char result = data;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     char data;
+>     data = ' ';
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         data = -2;
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>     {
+> 
+>         data--;
+>         char result = data;
+>         printHexCharLine(result);
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     char data;
+>     data = ' ';
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = -2;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+2851a2971,2978
+> 
+> void CWE191_Integer_Underflow__char_min_postdec_15_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2861a2989,2991
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__char_min_postdec_15_good();
+>     printLine("Finished good()");
+2867,2869d2996
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__char_min_postdec_15_bad();
+<     printLine("Finished bad()");

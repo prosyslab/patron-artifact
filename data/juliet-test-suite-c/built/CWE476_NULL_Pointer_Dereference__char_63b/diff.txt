@@ -1,0 +1,32 @@
+3239a3240,3245
+> # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_63b.c"
+> 
+> # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_63b.c"
+> void CWE476_NULL_Pointer_Dereference__char_63b_goodG2BSink(char * * dataPtr)
+> {
+>     char * data = *dataPtr;
+3241a3248,3249
+>     printHexCharLine(data[0]);
+> }
+3244,3245c3252
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_63b.c"
+< void CWE476_NULL_Pointer_Dereference__char_63b_badSink(char * * dataPtr)
+---
+> void CWE476_NULL_Pointer_Dereference__char_63b_goodB2GSink(char * * dataPtr)
+3249,3250c3256,3268
+< 
+<     printHexCharLine(data[0]);
+---
+>     if (data != 
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_63b.c" 3 4
+>                ((void *)0)
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_63b.c"
+>                    )
+>     {
+> 
+>         printHexCharLine(data[0]);
+>     }
+>     else
+>     {
+>         printLine("data is NULL");
+>     }

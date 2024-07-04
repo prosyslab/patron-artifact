@@ -1,0 +1,56 @@
+2813a2814,2817
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s04/CWE190_Integer_Overflow__short_max_add_41.c"
+> static void goodG2BSink(short data)
+> {
+>     {
+2814a2819,2822
+>         short result = data + 1;
+>         printIntLine(result);
+>     }
+> }
+2815a2824,2827
+> static void goodG2B()
+> {
+>     short data;
+>     data = 0;
+2817c2829,2834
+< static void badSink(short data)
+---
+>     data = 2;
+>     goodG2BSink(data);
+> }
+> 
+> 
+> static void goodB2GSink(short data)
+2819d2835
+<     {
+2820a2837,2838
+>     if (data < 0x7fff)
+>     {
+2823a2842,2845
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+2826c2848
+< void CWE190_Integer_Overflow__short_max_add_41_bad()
+---
+> static void goodB2G()
+2832c2854,2860
+<     badSink(data);
+---
+>     goodB2GSink(data);
+> }
+> 
+> void CWE190_Integer_Overflow__short_max_add_41_good()
+> {
+>     goodB2G();
+>     goodG2B();
+2843a2872,2874
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__short_max_add_41_good();
+>     printLine("Finished good()");
+2849,2851d2879
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__short_max_add_41_bad();
+<     printLine("Finished bad()");

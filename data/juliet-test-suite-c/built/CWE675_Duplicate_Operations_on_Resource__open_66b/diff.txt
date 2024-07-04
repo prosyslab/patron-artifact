@@ -1,0 +1,25 @@
+4051a4052
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_66b.c"
+4052a4054,4057
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_66b.c"
+> void CWE675_Duplicate_Operations_on_Resource__open_66b_goodG2BSink(int dataArray[])
+> {
+>     int data = dataArray[2];
+4053a4059,4060
+>     close(data);
+> }
+4056,4060c4063
+< 
+< 
+< 
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_66b.c"
+< void CWE675_Duplicate_Operations_on_Resource__open_66b_badSink(int dataArray[])
+---
+> void CWE675_Duplicate_Operations_on_Resource__open_66b_goodB2GSink(int dataArray[])
+4062d4064
+< 
+4065c4067,4068
+<     close(data);
+---
+> 
+>     ;

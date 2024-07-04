@@ -1,0 +1,38 @@
+3239a3240
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_54e.c"
+3241,3249c3242,3243
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_54e.c"
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_54e_badSink(char * data)
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_54e.c"
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_54e_goodB2GSink(char * data)
+3251,3253d3244
+< 
+< 
+<     for (; *data != '\0'; data++)
+3255c3246,3248
+<         if (*data == 'S')
+---
+>         size_t i;
+> 
+>         for (i=0; i < strlen(data); i++)
+3257,3258c3250,3254
+<             printLine("We have a match!");
+<             break;
+---
+>             if (data[i] == 'S')
+>             {
+>                 printLine("We have a match!");
+>                 break;
+>             }
+3259a3256
+>         free(data);
+3261d3257
+<     free(data);

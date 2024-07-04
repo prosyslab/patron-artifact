@@ -1,0 +1,55 @@
+2814,2820c2814,2815
+< 
+< 
+< 
+< 
+< 
+< 
+< void CWE194_Unexpected_Sign_Extension__fgets_strncpy_41_badSink(short data)
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_41.c"
+> void CWE194_Unexpected_Sign_Extension__fgets_strncpy_41_goodG2BSink(short data)
+2838c2833,2834
+< void CWE194_Unexpected_Sign_Extension__fgets_strncpy_41_bad()
+---
+> 
+> static void goodG2B()
+2843,2844d2838
+<     {
+<         char inputBuffer[8] = "";
+2846,2855c2840,2842
+<         if (fgets(inputBuffer, 8, 
+< # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_41.c" 3 4
+<                                                stdin
+< # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_41.c"
+<                                                     ) != 
+< # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_41.c" 3 4
+<                                                          ((void *)0)
+< # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_strncpy_41.c"
+<                                                              )
+<         {
+---
+>     data = 100-1;
+>     CWE194_Unexpected_Sign_Extension__fgets_strncpy_41_goodG2BSink(data);
+> }
+2857,2864c2844,2846
+<             data = (short)atoi(inputBuffer);
+<         }
+<         else
+<         {
+<             printLine("fgets() failed.");
+<         }
+<     }
+<     CWE194_Unexpected_Sign_Extension__fgets_strncpy_41_badSink(data);
+---
+> void CWE194_Unexpected_Sign_Extension__fgets_strncpy_41_good()
+> {
+>     goodG2B();
+2875a2858,2860
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__fgets_strncpy_41_good();
+>     printLine("Finished good()");
+2881,2883d2865
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__fgets_strncpy_41_bad();
+<     printLine("Finished bad()");

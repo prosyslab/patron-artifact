@@ -1,0 +1,53 @@
+3731a3732
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_rand_square_61a.c"
+3732a3734,3735
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_rand_square_61a.c"
+> char CWE190_Integer_Overflow__char_rand_square_61b_goodG2BSource(char data);
+3733a3737,3742
+> static void goodG2B()
+> {
+>     char data;
+>     data = ' ';
+>     data = CWE190_Integer_Overflow__char_rand_square_61b_goodG2BSource(data);
+>     {
+3734a3744,3747
+>         char result = data * data;
+>         printHexCharLine(result);
+>     }
+> }
+3737,3738c3750
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_rand_square_61a.c"
+< char CWE190_Integer_Overflow__char_rand_square_61b_badSource(char data);
+---
+> char CWE190_Integer_Overflow__char_rand_square_61b_goodB2GSource(char data);
+3740c3752
+< void CWE190_Integer_Overflow__char_rand_square_61_bad()
+---
+> static void goodB2G()
+3744,3745c3756
+<     data = CWE190_Integer_Overflow__char_rand_square_61b_badSource(data);
+<     {
+---
+>     data = CWE190_Integer_Overflow__char_rand_square_61b_goodB2GSource(data);
+3746a3758,3759
+>     if (abs((long)data) <= (long)sqrt((double)0x7f))
+>     {
+3749a3763,3772
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__char_rand_square_61_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3760a3784,3786
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_rand_square_61_good();
+>     printLine("Finished good()");
+3766,3768d3791
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_rand_square_61_bad();
+<     printLine("Finished bad()");

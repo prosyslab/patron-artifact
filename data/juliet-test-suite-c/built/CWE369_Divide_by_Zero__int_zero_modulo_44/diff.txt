@@ -1,0 +1,60 @@
+2813a2814,2816
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_zero_modulo_44.c"
+> static void goodG2BSink(int data)
+> {
+2814a2818,2819
+>     printIntLine(100 % data);
+> }
+2815a2821,2824
+> static void goodG2B()
+> {
+>     int data;
+>     void (*funcPtr) (int) = goodG2BSink;
+2817c2826,2833
+< static void badSink(int data)
+---
+>     data = -1;
+> 
+>     data = 7;
+>     funcPtr(data);
+> }
+> 
+> 
+> static void goodB2GSink(int data)
+2820c2836,2843
+<     printIntLine(100 % data);
+---
+>     if( data != 0 )
+>     {
+>         printIntLine(100 % data);
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");
+>     }
+2823c2846
+< void CWE369_Divide_by_Zero__int_zero_modulo_44_bad()
+---
+> static void goodB2G()
+2826,2827c2849
+< 
+<     void (*funcPtr) (int) = badSink;
+---
+>     void (*funcPtr) (int) = goodB2GSink;
+2832d2853
+< 
+2834a2856,2861
+> 
+> void CWE369_Divide_by_Zero__int_zero_modulo_44_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2844a2872,2874
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_zero_modulo_44_good();
+>     printLine("Finished good()");
+2850,2852d2879
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_zero_modulo_44_bad();
+<     printLine("Finished bad()");

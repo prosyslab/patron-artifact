@@ -1,0 +1,156 @@
+4904,4907c4904,4905
+< 
+< 
+< 
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06_bad()
+---
+> # 145 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c"
+> static void goodG2B1()
+4912c4910
+<     if(STATIC_CONST_FIVE==5)
+---
+>     if(STATIC_CONST_FIVE!=5)
+4914,4916d4911
+<         {
+< 
+< 
+4917a4913,4916
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+4919,4996c4918,4922
+<             int recvResult;
+<             struct sockaddr_in service;
+<             int listenSocket = -1;
+<             int acceptSocket = -1;
+<             char inputBuffer[(3 * sizeof(data) + 2)];
+<             do
+<             {
+< # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c"
+<                 listenSocket = socket(
+< # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c" 3 4
+<                                      2
+< # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c"
+<                                             , 
+< # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c" 3 4
+<                                               SOCK_STREAM
+< # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c"
+<                                                          , 
+< # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c" 3 4
+<                                                            IPPROTO_TCP
+< # 74 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c"
+<                                                                       );
+<                 if (listenSocket == -1)
+<                 {
+<                     break;
+<                 }
+<                 memset(&service, 0, sizeof(service));
+<                 service.sin_family = 
+< # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c" 3 4
+<                                     2
+< # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c"
+<                                            ;
+<                 service.sin_addr.s_addr = 
+< # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c" 3 4
+<                                          ((in_addr_t) 0x00000000)
+< # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c"
+<                                                    ;
+<                 service.sin_port = htons(27015);
+<                 if (bind(listenSocket, (struct sockaddr*)&service, sizeof(service)) == -1)
+<                 {
+<                     break;
+<                 }
+<                 if (listen(listenSocket, 5) == -1)
+<                 {
+<                     break;
+<                 }
+<                 acceptSocket = accept(listenSocket, 
+< # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c" 3 4
+<                                                    ((void *)0)
+< # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c"
+<                                                        , 
+< # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c" 3 4
+<                                                          ((void *)0)
+< # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c"
+<                                                              );
+<                 if (acceptSocket == -1)
+<                 {
+<                     break;
+<                 }
+< 
+<                 recvResult = recv(acceptSocket, inputBuffer, (3 * sizeof(data) + 2) - 1, 0);
+<                 if (recvResult == -1 || recvResult == 0)
+<                 {
+<                     break;
+<                 }
+< 
+<                 inputBuffer[recvResult] = '\0';
+< 
+<                 data = atoi(inputBuffer);
+<             }
+<             while (0);
+<             if (listenSocket != -1)
+<             {
+<                 close(listenSocket);
+<             }
+<             if (acceptSocket != -1)
+<             {
+<                 close(acceptSocket);
+<             }
+---
+>         data = 20;
+>     }
+>     {
+>         size_t i;
+>         int *intPointer;
+4998a4925,4938
+>         intPointer = (int*)malloc(data * sizeof(int));
+>         if (intPointer == 
+> # 166 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c" 3 4
+>                          ((void *)0)
+> # 166 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c"
+>                              ) {exit(-1);}
+>         for (i = 0; i < (size_t)data; i++)
+>         {
+>             intPointer[i] = 0;
+>         }
+>         printIntLine(intPointer[0]);
+>         free(intPointer);
+>     }
+> }
+5000a4941,4943
+> static void goodG2B2()
+> {
+>     int data;
+5001a4945,4947
+>     data = -1;
+>     if(STATIC_CONST_FIVE==5)
+>     {
+5003c4949
+<         }
+---
+>         data = 20;
+5012c4958
+< # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c" 3 4
+---
+> # 193 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c" 3 4
+5014c4960
+< # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c"
+---
+> # 193 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06.c"
+5023a4970,4975
+> 
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+5033a4986,4988
+>     printLine("Calling good()...");
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06_good();
+>     printLine("Finished good()");
+5039,5041d4993
+<     printLine("Calling bad()...");
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_listen_socket_06_bad();
+<     printLine("Finished bad()");

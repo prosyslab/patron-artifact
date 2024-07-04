@@ -1,0 +1,21 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< double * CWE122_Heap_Based_Buffer_Overflow__sizeof_double_61b_badSource(double * data)
+---
+> # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_double_61b.c"
+> double * CWE122_Heap_Based_Buffer_Overflow__sizeof_double_61b_goodG2BSource(double * data)
+2820,2821c2818
+< 
+<     data = (double *)malloc(sizeof(data));
+---
+>     data = (double *)malloc(sizeof(*data));
+2823c2820
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_double_61b.c" 3 4
+---
+> # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_double_61b.c" 3 4
+2825c2822
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_double_61b.c"
+---
+> # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_double_61b.c"

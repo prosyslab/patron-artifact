@@ -1,0 +1,13 @@
+2813a2814,2816
+> # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s02/CWE124_Buffer_Underwrite__CWE839_rand_61b.c"
+> int CWE124_Buffer_Underwrite__CWE839_rand_61b_goodG2BSource(int data)
+> {
+2815a2819,2821
+>     data = 7;
+>     return data;
+> }
+2817c2823,2824
+< int CWE124_Buffer_Underwrite__CWE839_rand_61b_badSource(int data)
+---
+> 
+> int CWE124_Buffer_Underwrite__CWE839_rand_61b_goodB2GSource(int data)

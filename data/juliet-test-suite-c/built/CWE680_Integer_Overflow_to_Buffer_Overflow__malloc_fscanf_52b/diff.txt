@@ -1,0 +1,17 @@
+2813a2814,2815
+> # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_52b.c"
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_52c_goodG2BSink(int data);
+2816,2822c2818
+< 
+< 
+< 
+< 
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_52c_badSink(int data);
+< 
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_52b_badSink(int data)
+---
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_52b_goodG2BSink(int data)
+2824c2820
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_52c_badSink(data);
+---
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fscanf_52c_goodG2BSink(data);

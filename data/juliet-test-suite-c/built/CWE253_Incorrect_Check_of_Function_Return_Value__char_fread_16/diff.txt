@@ -1,0 +1,38 @@
+3240a3241
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fread_16.c"
+3242,3247c3243,3244
+< 
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fread_16.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_fread_16_bad()
+---
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fread_16.c"
+> static void good1()
+3257d3253
+< 
+3259c3255
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fread_16.c" 3 4
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fread_16.c" 3 4
+3261,3262c3257,3258
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fread_16.c"
+<                                                                        ) == 0)
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fread_16.c"
+>                                                                        ) != 100-1)
+3269a3266,3270
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_fread_16_good()
+> {
+>     good1();
+> }
+3279a3281,3283
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_fread_16_good();
+>     printLine("Finished good()");
+3285,3287d3288
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_fread_16_bad();
+<     printLine("Finished bad()");

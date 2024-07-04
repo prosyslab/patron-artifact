@@ -1,0 +1,25 @@
+4900c4900
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_52c.c"
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_52c.c"
+4902,4903c4902,4903
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_52c.c"
+< void CWE369_Divide_by_Zero__int_connect_socket_divide_52c_badSink(int data)
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__int_connect_socket_divide_52c.c"
+> void CWE369_Divide_by_Zero__int_connect_socket_divide_52c_goodG2BSink(int data)
+4906a4907,4920
+> }
+> 
+> 
+> void CWE369_Divide_by_Zero__int_connect_socket_divide_52c_goodB2GSink(int data)
+> {
+> 
+>     if( data != 0 )
+>     {
+>         printIntLine(100 / data);
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");
+>     }

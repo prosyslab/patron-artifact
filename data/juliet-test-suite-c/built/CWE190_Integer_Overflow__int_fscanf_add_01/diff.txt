@@ -1,0 +1,52 @@
+2813a2814,2817
+> # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_add_01.c"
+> static void goodG2B()
+> {
+>     int data;
+2814a2819,2822
+>     data = 0;
+> 
+>     data = 2;
+>     {
+2815a2824,2827
+>         int result = data + 1;
+>         printIntLine(result);
+>     }
+> }
+2817c2829,2830
+< void CWE190_Integer_Overflow__int_fscanf_add_01_bad()
+---
+> 
+> static void goodB2G()
+2824c2837
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_add_01.c" 3 4
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_add_01.c" 3 4
+2826c2839
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_add_01.c"
+---
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fscanf_add_01.c"
+2828d2840
+<     {
+2829a2842,2843
+>     if (data < 0x7fffffff)
+>     {
+2832a2847,2856
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__int_fscanf_add_01_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2843a2868,2870
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_fscanf_add_01_good();
+>     printLine("Finished good()");
+2849,2851d2875
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_fscanf_add_01_bad();
+<     printLine("Finished bad()");

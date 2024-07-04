@@ -1,0 +1,91 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE457_Use_of_Uninitialized_Variable__int_array_declare_partial_init_12_bad()
+---
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_declare_partial_init_12.c"
+> static void goodB2G()
+2838c2836
+<             for(i=0; i<10; i++)
+---
+>             for(i=0; i<(10/2); i++)
+2850a2849,2873
+>                 data[i] = i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printIntLine(data[i]);
+>             }
+>         }
+>     }
+>     else
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+2854a2878,2898
+> }
+> 
+> 
+> 
+> 
+> static void goodG2B()
+> {
+>     int * data;
+>     int dataUninitArray[10];
+>     data = dataUninitArray;
+>     if(globalReturnsTrueOrFalse())
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = i;
+>             }
+>         }
+>     }
+2864a2909,2923
+>     }
+>     if(globalReturnsTrueOrFalse())
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printIntLine(data[i]);
+>             }
+>         }
+>     }
+>     else
+>     {
+> 
+2873a2933,2938
+> 
+> void CWE457_Use_of_Uninitialized_Variable__int_array_declare_partial_init_12_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2883a2949,2951
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__int_array_declare_partial_init_12_good();
+>     printLine("Finished good()");
+2889,2891d2956
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__int_array_declare_partial_init_12_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,33 @@
+3240a3241
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s02/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_cpy_01.c"
+3242,3250c3243,3244
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s02/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_cpy_01.c"
+< void CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_cpy_01_bad()
+---
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s02/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_cpy_01.c"
+> static void goodG2B()
+3257c3251
+<     data = dataBadBuffer;
+---
+>     data = dataGoodBuffer;
+3265a3260,3264
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_cpy_01_good()
+> {
+>     goodG2B();
+> }
+3275a3275,3277
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_cpy_01_good();
+>     printLine("Finished good()");
+3281,3283d3282
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_cpy_01_bad();
+<     printLine("Finished bad()");

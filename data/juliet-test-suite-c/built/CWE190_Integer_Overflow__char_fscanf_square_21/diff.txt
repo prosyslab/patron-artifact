@@ -1,0 +1,121 @@
+3731a3732
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_21.c"
+3732a3734,3737
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_21.c"
+> static int goodB2G1Static = 0;
+> static int goodB2G2Static = 0;
+> static int goodG2BStatic = 0;
+3734a3740,3743
+> static void goodB2G1Sink(char data)
+> {
+>     if(goodB2G1Static)
+>     {
+3735a3745,3748
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3737,3738c3750,3760
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_21.c"
+< static int badStatic = 0;
+---
+>         if (abs((long)data) <= (long)sqrt((double)0x7f))
+>         {
+>             char result = data * data;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+3740c3762
+< static void badSink(char data)
+---
+> static void goodB2G1()
+3742c3764,3779
+<     if(badStatic)
+---
+>     char data;
+>     data = ' ';
+> 
+>     fscanf (
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_21.c" 3 4
+>            stdin
+> # 86 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_21.c"
+>                 , "%c", &data);
+>     goodB2G1Static = 0;
+>     goodB2G1Sink(data);
+> }
+> 
+> 
+> static void goodB2G2Sink(char data)
+> {
+>     if(goodB2G2Static)
+3744d3780
+<         {
+3745a3782,3783
+>         if (abs((long)data) <= (long)sqrt((double)0x7f))
+>         {
+3748a3787,3790
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+3752c3794
+< void CWE190_Integer_Overflow__char_fscanf_square_21_bad()
+---
+> static void goodB2G2()
+3758c3800
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_21.c" 3 4
+---
+> # 114 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_21.c" 3 4
+3760c3802
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_21.c"
+---
+> # 114 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_square_21.c"
+3762,3763c3804,3835
+<     badStatic = 1;
+<     badSink(data);
+---
+>     goodB2G2Static = 1;
+>     goodB2G2Sink(data);
+> }
+> 
+> 
+> static void goodG2BSink(char data)
+> {
+>     if(goodG2BStatic)
+>     {
+>         {
+> 
+>             char result = data * data;
+>             printHexCharLine(result);
+>         }
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     char data;
+>     data = ' ';
+> 
+>     data = 2;
+>     goodG2BStatic = 1;
+>     goodG2BSink(data);
+> }
+> 
+> void CWE190_Integer_Overflow__char_fscanf_square_21_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B();
+3774a3847,3849
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_fscanf_square_21_good();
+>     printLine("Finished good()");
+3780,3782d3854
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_fscanf_square_21_bad();
+<     printLine("Finished bad()");

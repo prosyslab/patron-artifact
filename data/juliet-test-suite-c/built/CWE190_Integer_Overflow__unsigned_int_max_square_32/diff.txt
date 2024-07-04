@@ -1,0 +1,67 @@
+3731a3732
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_32.c"
+3732a3734,3742
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_32.c"
+> static void goodG2B()
+> {
+>     unsigned int data;
+>     unsigned int *dataPtr1 = &data;
+>     unsigned int *dataPtr2 = &data;
+>     data = 0;
+>     {
+>         unsigned int data = *dataPtr1;
+3733a3744,3755
+>         data = 2;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         unsigned int data = *dataPtr2;
+>         {
+> 
+>             unsigned int result = data * data;
+>             printUnsignedLine(result);
+>         }
+>     }
+> }
+3736,3737c3758
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_32.c"
+< void CWE190_Integer_Overflow__unsigned_int_max_square_32_bad()
+---
+> static void goodB2G()
+3747c3768
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_32.c" 3 4
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_32.c" 3 4
+3749c3770
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_32.c"
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_32.c"
+3755d3775
+<         {
+3756a3777,3782
+>         if (abs((long)data) < (long)sqrt((double)
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_32.c" 3 4
+>                                                 (0x7fffffff * 2U + 1U)
+> # 89 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_square_32.c"
+>                                                         ))
+>         {
+3759a3786,3789
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+3761a3792,3797
+> 
+> void CWE190_Integer_Overflow__unsigned_int_max_square_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3771a3808,3810
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__unsigned_int_max_square_32_good();
+>     printLine("Finished good()");
+3777,3779d3815
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__unsigned_int_max_square_32_bad();
+<     printLine("Finished bad()");

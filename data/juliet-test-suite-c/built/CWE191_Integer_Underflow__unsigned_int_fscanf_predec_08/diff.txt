@@ -1,0 +1,117 @@
+2826a2827,2833
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__unsigned_int_fscanf_predec_08.c"
+> static void goodB2G1()
+> {
+>     unsigned int data;
+>     data = 0;
+>     if(staticReturnsTrue())
+>     {
+2827a2835,2860
+>         fscanf (
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__unsigned_int_fscanf_predec_08.c" 3 4
+>                stdin
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__unsigned_int_fscanf_predec_08.c"
+>                     , "%u", &data);
+>     }
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if (data > 0)
+>         {
+>             --data;
+>             unsigned int result = data;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+2830c2863
+< void CWE191_Integer_Underflow__unsigned_int_fscanf_predec_08_bad()
+---
+> static void goodB2G2()
+2838c2871
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__unsigned_int_fscanf_predec_08.c" 3 4
+---
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__unsigned_int_fscanf_predec_08.c" 3 4
+2840c2873
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__unsigned_int_fscanf_predec_08.c"
+---
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__unsigned_int_fscanf_predec_08.c"
+2844a2878,2929
+> 
+>         if (data > 0)
+>         {
+>             --data;
+>             unsigned int result = data;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     unsigned int data;
+>     data = 0;
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = -2;
+>     }
+>     if(staticReturnsTrue())
+>     {
+>         {
+> 
+>             --data;
+>             unsigned int result = data;
+>             printUnsignedLine(result);
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     unsigned int data;
+>     data = 0;
+>     if(staticReturnsTrue())
+>     {
+> 
+>         data = -2;
+>     }
+>     if(staticReturnsTrue())
+>     {
+2852a2938,2945
+> 
+> void CWE191_Integer_Underflow__unsigned_int_fscanf_predec_08_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2862a2956,2958
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__unsigned_int_fscanf_predec_08_good();
+>     printLine("Finished good()");
+2868,2870d2963
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__unsigned_int_fscanf_predec_08_bad();
+<     printLine("Finished bad()");

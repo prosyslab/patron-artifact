@@ -1,0 +1,2 @@
+# CMAKE generated file: DO NOT EDIT!
+# Timestamp file for compiler generated dependencies management for CWE476_NULL_Pointer_Dereference__deref_after_check_04-good.

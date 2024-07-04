@@ -1,0 +1,30 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE127_Buffer_Underread__CWE839_fscanf_64b_badSink(void * dataVoidPtr)
+---
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fscanf_64b.c"
+> void CWE127_Buffer_Underread__CWE839_fscanf_64b_goodG2BSink(void * dataVoidPtr)
+2833a2832,2852
+>         }
+>     }
+> }
+> 
+> 
+> void CWE127_Buffer_Underread__CWE839_fscanf_64b_goodB2GSink(void * dataVoidPtr)
+> {
+> 
+>     int * dataPtr = (int *)dataVoidPtr;
+> 
+>     int data = (*dataPtr);
+>     {
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

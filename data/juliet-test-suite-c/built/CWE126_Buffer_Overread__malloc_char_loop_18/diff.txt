@@ -1,0 +1,51 @@
+3239a3240
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_18.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_18.c"
+< void CWE126_Buffer_Overread__malloc_char_loop_18_bad()
+---
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_18.c"
+> static void goodG2B()
+3249c3247
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_18.c" 3 4
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_18.c" 3 4
+3251c3249
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_18.c"
+---
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_18.c"
+3256c3254
+<     data = (char *)malloc(50*sizeof(char));
+---
+>     data = (char *)malloc(100*sizeof(char));
+3258c3256
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_18.c" 3 4
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_18.c" 3 4
+3260c3258
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_18.c"
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_loop_18.c"
+3262,3263c3260,3261
+<     memset(data, 'A', 50-1);
+<     data[50-1] = '\0';
+---
+>     memset(data, 'A', 100-1);
+>     data[100-1] = '\0';
+3280a3279,3283
+> 
+> void CWE126_Buffer_Overread__malloc_char_loop_18_good()
+> {
+>     goodG2B();
+> }
+3290a3294,3296
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__malloc_char_loop_18_good();
+>     printLine("Finished good()");
+3296,3298d3301
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__malloc_char_loop_18_bad();
+<     printLine("Finished bad()");

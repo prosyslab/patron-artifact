@@ -1,0 +1,63 @@
+2813a2814,2827
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_42.c"
+> static char goodG2BSource(char data)
+> {
+> 
+>     data = 2;
+>     return data;
+> }
+> 
+> static void goodG2B()
+> {
+>     char data;
+>     data = ' ';
+>     data = goodG2BSource(data);
+>     {
+2814a2829,2832
+>         char result = data + 1;
+>         printHexCharLine(result);
+>     }
+> }
+2817c2835
+< static char badSource(char data)
+---
+> static char goodB2GSource(char data)
+2821c2839
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_42.c" 3 4
+---
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_42.c" 3 4
+2823c2841
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_42.c"
+---
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_42.c"
+2828c2846
+< void CWE190_Integer_Overflow__char_fscanf_add_42_bad()
+---
+> static void goodB2G()
+2832,2833c2850
+<     data = badSource(data);
+<     {
+---
+>     data = goodB2GSource(data);
+2834a2852,2853
+>     if (data < 0x7f)
+>     {
+2837a2857,2866
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__char_fscanf_add_42_good()
+> {
+>     goodB2G();
+>     goodG2B();
+2848a2878,2880
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_fscanf_add_42_good();
+>     printLine("Finished good()");
+2854,2856d2885
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_fscanf_add_42_bad();
+<     printLine("Finished bad()");

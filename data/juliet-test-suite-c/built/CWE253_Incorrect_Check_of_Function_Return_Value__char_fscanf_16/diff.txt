@@ -1,0 +1,42 @@
+3240a3241
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16.c"
+3242,3247c3243,3244
+< 
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16_bad()
+---
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16.c"
+> static void good1()
+3257d3253
+< 
+3259c3255
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16.c" 3 4
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16.c" 3 4
+3261,3262c3257,3262
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16.c"
+<                            , "%99s\0", data) == 0)
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16.c"
+>                            , "%99s\0", data) == 
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16.c" 3 4
+>                                                 (-1)
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16.c"
+>                                                    )
+3269a3270,3274
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16_good()
+> {
+>     good1();
+> }
+3279a3285,3287
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16_good();
+>     printLine("Finished good()");
+3285,3287d3292
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_fscanf_16_bad();
+<     printLine("Finished bad()");

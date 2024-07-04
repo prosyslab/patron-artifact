@@ -1,0 +1,149 @@
+4904,4907c4904,4905
+< 
+< 
+< 
+< void CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07_bad()
+---
+> # 144 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c"
+> static void goodG2B1()
+4912c4910
+<     if(staticFive==5)
+---
+>     if(staticFive!=5)
+4914,4927d4911
+<         {
+< 
+< 
+< 
+< 
+<             int recvResult;
+<             int tempInt;
+<             struct sockaddr_in service;
+<             int connectSocket = -1;
+<             char inputBuffer[8];
+<             do
+<             {
+< 
+< 
+4928a4913,4916
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+4929a4918,4919
+>         data = 100-1;
+>     }
+4930a4921,4922
+>     if (data < 100)
+>     {
+4933,4993c4925,4930
+<                 connectSocket = socket(
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c" 3 4
+<                                       2
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c"
+<                                              , 
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c" 3 4
+<                                                SOCK_STREAM
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c"
+<                                                           , 
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c" 3 4
+<                                                             IPPROTO_TCP
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c"
+<                                                                        );
+<                 if (connectSocket == -1)
+<                 {
+<                     break;
+<                 }
+<                 memset(&service, 0, sizeof(service));
+<                 service.sin_family = 
+< # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c" 3 4
+<                                     2
+< # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c"
+<                                            ;
+<                 service.sin_addr.s_addr = inet_addr("127.0.0.1");
+<                 service.sin_port = htons(27015);
+<                 if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == -1)
+<                 {
+<                     break;
+<                 }
+< 
+< 
+< 
+<                 recvResult = recv(connectSocket, inputBuffer, 8 - 1, 0);
+<                 if (recvResult == -1 || recvResult == 0)
+<                 {
+<                     break;
+<                 }
+< 
+<                 inputBuffer[recvResult] = '\0';
+< 
+< 
+<                 tempInt = atoi(inputBuffer);
+<                 if (tempInt > 0x7fff || tempInt < 
+< # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c" 3 4
+<                                                    (-0x7fff - 1)
+< # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c"
+<                                                            )
+<                 {
+<                     data = -1;
+<                 }
+<                 else
+<                 {
+<                     data = tempInt;
+<                 }
+<             }
+<             while (0);
+<             if (connectSocket != -1)
+<             {
+<                 close(connectSocket);
+<             }
+< 
+---
+>         char * dataBuffer = (char *)malloc(data);
+>         if (dataBuffer == 
+> # 165 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c" 3 4
+>                          ((void *)0)
+> # 165 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c"
+>                              ) {exit(-1);}
+4994a4932,4937
+>         memset(dataBuffer, 'A', data-1);
+>         dataBuffer[data-1] = '\0';
+>         printLine(dataBuffer);
+>         free(dataBuffer);
+>     }
+> }
+4996a4940,4942
+> static void goodG2B2()
+> {
+>     short data;
+4997a4944,4946
+>     data = 0;
+>     if(staticFive==5)
+>     {
+4999c4948
+<         }
+---
+>         data = 100-1;
+5008c4957
+< # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c" 3 4
+---
+> # 191 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c" 3 4
+5010c4959
+< # 130 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c"
+---
+> # 191 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07.c"
+5018a4968,4973
+> 
+> void CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+5028a4984,4986
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07_good();
+>     printLine("Finished good()");
+5034,5036d4991
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__connect_socket_malloc_07_bad();
+<     printLine("Finished bad()");

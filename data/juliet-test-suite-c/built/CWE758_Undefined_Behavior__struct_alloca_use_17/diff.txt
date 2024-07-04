@@ -1,0 +1,59 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE758_Undefined_Behavior__struct_alloca_use_17_bad()
+---
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_17.c"
+> static void good1()
+2819,2820c2817,2818
+<     int j;
+<     for(j = 0; j < 1; j++)
+---
+>     int k;
+>     for(k = 0; k < 1; k++)
+2822a2821
+>             twoIntsStruct data;
+2824c2823
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_17.c" 3 4
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_17.c" 3 4
+2826c2825
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_17.c"
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_17.c"
+2828c2827
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_17.c" 3 4
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_17.c" 3 4
+2830c2829
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_17.c"
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_alloca_use_17.c"
+2832,2834c2831,2838
+<             twoIntsStruct data = *pointer;
+<             printIntLine(data.intOne);
+<             printIntLine(data.intTwo);
+---
+>             data.intOne = 1;
+>             data.intTwo = 2;
+>             *pointer = data;
+>             {
+>                 twoIntsStruct data = *pointer;
+>                 printIntLine(data.intOne);
+>                 printIntLine(data.intTwo);
+>             }
+2837a2842,2846
+> 
+> void CWE758_Undefined_Behavior__struct_alloca_use_17_good()
+> {
+>     good1();
+> }
+2847a2857,2859
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__struct_alloca_use_17_good();
+>     printLine("Finished good()");
+2853,2855d2864
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__struct_alloca_use_17_bad();
+<     printLine("Finished bad()");

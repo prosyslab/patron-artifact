@@ -1,0 +1,52 @@
+3240a3241
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_66b.c"
+3241a3243,3248
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_66b.c"
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_66b_goodG2BSink(size_t dataArray[])
+> {
+>     size_t data = dataArray[2];
+>     {
+>         char * myString;
+3244a3252,3259
+>         if (data > strlen("hello"))
+>         {
+>             myString = (char *)malloc(data*sizeof(char));
+>             if (myString == 
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_66b.c" 3 4
+>                            ((void *)0)
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_66b.c"
+>                                ) {exit(-1);}
+3245a3261,3270
+>             strcpy(myString, "hello");
+>             printLine(myString);
+>             free(myString);
+>         }
+>         else
+>         {
+>             printLine("Input is less than the length of the source string");
+>         }
+>     }
+> }
+3248,3249c3273
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_66b.c"
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_66b_badSink(size_t dataArray[])
+---
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_66b_goodB2GSink(size_t dataArray[])
+3251d3274
+< 
+3258c3281
+<         if (data > strlen("hello"))
+---
+>         if (data > strlen("hello") && data < 100)
+3262c3285
+< # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_66b.c" 3 4
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_66b.c" 3 4
+3264c3287
+< # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_66b.c"
+---
+> # 94 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_66b.c"
+3273c3296
+<             printLine("Input is less than the length of the source string");
+---
+>             printLine("Input is less than the length of the source string or too large");

@@ -1,0 +1,23 @@
+3731a3732
+> # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_52b.c"
+3732a3734,3735
+> # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_52b.c"
+> void CWE369_Divide_by_Zero__float_zero_52c_goodG2BSink(float data);
+3733a3737,3740
+> void CWE369_Divide_by_Zero__float_zero_52b_goodG2BSink(float data)
+> {
+>     CWE369_Divide_by_Zero__float_zero_52c_goodG2BSink(data);
+> }
+3735a3743
+> void CWE369_Divide_by_Zero__float_zero_52c_goodB2GSink(float data);
+3737,3740c3745
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_52b.c"
+< void CWE369_Divide_by_Zero__float_zero_52c_badSink(float data);
+< 
+< void CWE369_Divide_by_Zero__float_zero_52b_badSink(float data)
+---
+> void CWE369_Divide_by_Zero__float_zero_52b_goodB2GSink(float data)
+3742c3747
+<     CWE369_Divide_by_Zero__float_zero_52c_badSink(data);
+---
+>     CWE369_Divide_by_Zero__float_zero_52c_goodB2GSink(data);

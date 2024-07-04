@@ -1,0 +1,39 @@
+3246a3247,3251
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_67b.c"
+> void CWE122_Heap_Based_Buffer_Overflow__CWE135_67b_goodG2BSink(CWE122_Heap_Based_Buffer_Overflow__CWE135_67_structType myStruct)
+> {
+>     void * data = myStruct.structFirst;
+>     {
+3247a3253,3264
+>         size_t dataLen = strlen((char *)data);
+>         void * dest = (void *)calloc(dataLen+1, 1);
+>         if (dest == 
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_67b.c" 3 4
+>                    ((void *)0)
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_67b.c"
+>                        ) {exit(-1);}
+>         (void)strcpy(dest, data);
+>         printLine((char *)dest);
+>         free(dest);
+>     }
+> }
+3250c3267
+< void CWE122_Heap_Based_Buffer_Overflow__CWE135_67b_badSink(CWE122_Heap_Based_Buffer_Overflow__CWE135_67_structType myStruct)
+---
+> void CWE122_Heap_Based_Buffer_Overflow__CWE135_67b_goodB2GSink(CWE122_Heap_Based_Buffer_Overflow__CWE135_67_structType myStruct)
+3255c3272
+<         size_t dataLen = strlen((char *)data);
+---
+>         size_t dataLen = wcslen((wchar_t *)data);
+3258c3275
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_67b.c" 3 4
+---
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_67b.c" 3 4
+3260c3277
+< # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_67b.c"
+---
+> # 70 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE135_67b.c"
+3263c3280
+<         printLine((char *)dest);
+---
+>         printWLine((wchar_t *)dest);

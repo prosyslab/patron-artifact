@@ -1,0 +1,117 @@
+2813a2814,2817
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int_rand_predec_02.c"
+> static void goodB2G1()
+> {
+>     int data;
+2814a2819,2826
+>     data = 0;
+>     if(1)
+>     {
+> 
+>         data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>     }
+>     if(0)
+>     {
+2815a2828,2831
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2817c2833,2851
+< void CWE191_Integer_Underflow__int_rand_predec_02_bad()
+---
+>         if (data > 
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int_rand_predec_02.c" 3 4
+>                   (-0x7fffffff - 1)
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int_rand_predec_02.c"
+>                          )
+>         {
+>             --data;
+>             int result = data;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2828a2863,2920
+> 
+>         if (data > 
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int_rand_predec_02.c" 3 4
+>                   (-0x7fffffff - 1)
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__int_rand_predec_02.c"
+>                          )
+>         {
+>             --data;
+>             int result = data;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(0)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = -2;
+>     }
+>     if(1)
+>     {
+>         {
+> 
+>             --data;
+>             int result = data;
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(1)
+>     {
+> 
+>         data = -2;
+>     }
+>     if(1)
+>     {
+2836a2929,2936
+> 
+> void CWE191_Integer_Underflow__int_rand_predec_02_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2846a2947,2949
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_rand_predec_02_good();
+>     printLine("Finished good()");
+2852,2854d2954
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_rand_predec_02_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,102 @@
+3779a3780,3796
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_rand_square_06.c"
+> static void goodB2G1()
+> {
+>     int64_t data;
+>     data = 0LL;
+>     if(STATIC_CONST_FIVE==5)
+>     {
+> 
+>         data = (int64_t)((int64_t)(rand() & 1 ? (((uint64_t)rand()<<60) ^ ((uint64_t)rand()<<45) ^ ((uint64_t)rand()<<30) ^ ((uint64_t)rand()<<15) ^ rand()) : -(((uint64_t)rand()<<60) ^ ((uint64_t)rand()<<45) ^ ((uint64_t)rand()<<30) ^ ((uint64_t)rand()<<15) ^ rand()) - 1));
+>     }
+>     if(STATIC_CONST_FIVE!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3780a3798,3808
+>         if (imaxabs((intmax_t)data) <= sqrtl(0x7fffffffffffffffLL))
+>         {
+>             int64_t result = data * data;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+3783c3811
+< void CWE190_Integer_Overflow__int64_t_rand_square_06_bad()
+---
+> static void goodB2G2()
+3793a3822,3851
+> 
+>         if (imaxabs((intmax_t)data) <= sqrtl(0x7fffffffffffffffLL))
+>         {
+>             int64_t result = data * data;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int64_t data;
+>     data = 0LL;
+>     if(STATIC_CONST_FIVE!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2;
+>     }
+>     if(STATIC_CONST_FIVE==5)
+>     {
+3800a3859,3886
+> 
+> 
+> static void goodG2B2()
+> {
+>     int64_t data;
+>     data = 0LL;
+>     if(STATIC_CONST_FIVE==5)
+>     {
+> 
+>         data = 2;
+>     }
+>     if(STATIC_CONST_FIVE==5)
+>     {
+>         {
+> 
+>             int64_t result = data * data;
+>             printLongLongLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__int64_t_rand_square_06_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3810a3897,3899
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_rand_square_06_good();
+>     printLine("Finished good()");
+3816,3818d3904
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_rand_square_06_bad();
+<     printLine("Finished bad()");

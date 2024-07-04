@@ -1,0 +1,53 @@
+2819a2820,2824
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_sub_34.c"
+> static void goodG2B()
+> {
+>     int data;
+>     CWE191_Integer_Underflow__int_rand_sub_34_unionType myUnion;
+2820a2826,2838
+>     data = 0;
+> 
+>     data = -2;
+>     myUnion.unionFirst = data;
+>     {
+>         int data = myUnion.unionSecond;
+>         {
+> 
+>             int result = data - 1;
+>             printIntLine(result);
+>         }
+>     }
+> }
+2823c2841
+< void CWE191_Integer_Underflow__int_rand_sub_34_bad()
+---
+> static void goodB2G()
+2834d2851
+<         {
+2835a2853,2858
+>         if (data > 
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_sub_34.c" 3 4
+>                   (-0x7fffffff - 1)
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__int_rand_sub_34.c"
+>                          )
+>         {
+2838a2862,2865
+>         else
+>         {
+>             printLine("data value is too large to perform subtraction.");
+>         }
+2840a2868,2873
+> 
+> void CWE191_Integer_Underflow__int_rand_sub_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2850a2884,2886
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_rand_sub_34_good();
+>     printLine("Finished good()");
+2856,2858d2891
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_rand_sub_34_bad();
+<     printLine("Finished bad()");

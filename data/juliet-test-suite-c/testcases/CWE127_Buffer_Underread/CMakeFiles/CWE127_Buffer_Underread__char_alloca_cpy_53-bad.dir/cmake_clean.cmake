@@ -1,0 +1,17 @@
+file(REMOVE_RECURSE
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE127/bad/CWE127_Buffer_Underread__char_alloca_cpy_53-bad"
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE127/bad/CWE127_Buffer_Underread__char_alloca_cpy_53-bad.pdb"
+  "CMakeFiles/CWE127_Buffer_Underread__char_alloca_cpy_53-bad.dir/s01/CWE127_Buffer_Underread__char_alloca_cpy_53a.c.o"
+  "CMakeFiles/CWE127_Buffer_Underread__char_alloca_cpy_53-bad.dir/s01/CWE127_Buffer_Underread__char_alloca_cpy_53a.c.o.d"
+  "CMakeFiles/CWE127_Buffer_Underread__char_alloca_cpy_53-bad.dir/s01/CWE127_Buffer_Underread__char_alloca_cpy_53b.c.o"
+  "CMakeFiles/CWE127_Buffer_Underread__char_alloca_cpy_53-bad.dir/s01/CWE127_Buffer_Underread__char_alloca_cpy_53b.c.o.d"
+  "CMakeFiles/CWE127_Buffer_Underread__char_alloca_cpy_53-bad.dir/s01/CWE127_Buffer_Underread__char_alloca_cpy_53c.c.o"
+  "CMakeFiles/CWE127_Buffer_Underread__char_alloca_cpy_53-bad.dir/s01/CWE127_Buffer_Underread__char_alloca_cpy_53c.c.o.d"
+  "CMakeFiles/CWE127_Buffer_Underread__char_alloca_cpy_53-bad.dir/s01/CWE127_Buffer_Underread__char_alloca_cpy_53d.c.o"
+  "CMakeFiles/CWE127_Buffer_Underread__char_alloca_cpy_53-bad.dir/s01/CWE127_Buffer_Underread__char_alloca_cpy_53d.c.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/CWE127_Buffer_Underread__char_alloca_cpy_53-bad.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

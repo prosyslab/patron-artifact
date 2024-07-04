@@ -1,0 +1,19 @@
+file(REMOVE_RECURSE
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE122/bad/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad"
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE122/bad/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad.pdb"
+  "CMakeFiles/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad.dir/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54a.c.o"
+  "CMakeFiles/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad.dir/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54a.c.o.d"
+  "CMakeFiles/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad.dir/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54b.c.o"
+  "CMakeFiles/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad.dir/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54b.c.o.d"
+  "CMakeFiles/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad.dir/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54c.c.o"
+  "CMakeFiles/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad.dir/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54c.c.o.d"
+  "CMakeFiles/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad.dir/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54d.c.o"
+  "CMakeFiles/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad.dir/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54d.c.o.d"
+  "CMakeFiles/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad.dir/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54e.c.o"
+  "CMakeFiles/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad.dir/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54e.c.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_memcpy_54-bad.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

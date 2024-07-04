@@ -1,0 +1,58 @@
+3240a3241
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42.c"
+3242,3250c3243,3244
+< 
+< 
+< 
+< 
+< 
+< 
+< 
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42.c"
+< static char * badSource(char * data)
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42.c"
+> static char * goodG2BSource(char * data)
+3253c3247
+<     data = (char *)malloc(10*sizeof(char));
+---
+>     data = (char *)malloc((10+1)*sizeof(char));
+3255c3249
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42.c" 3 4
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42.c" 3 4
+3257c3251
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42.c"
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42.c"
+3262c3256,3257
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42_bad()
+---
+> 
+> static void goodG2B()
+3266c3261
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42.c" 3 4
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42.c" 3 4
+3268c3263
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42.c"
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42.c"
+3270c3265
+<     data = badSource(data);
+---
+>     data = goodG2BSource(data);
+3279a3275,3279
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42_good()
+> {
+>     goodG2B();
+> }
+3289a3290,3292
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42_good();
+>     printLine("Finished good()");
+3295,3297d3297
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_42_bad();
+<     printLine("Finished bad()");

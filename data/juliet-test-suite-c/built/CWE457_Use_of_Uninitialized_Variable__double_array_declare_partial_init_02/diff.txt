@@ -1,0 +1,137 @@
+2813a2814,2821
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_declare_partial_init_02.c"
+> static void goodB2G1()
+> {
+>     double * data;
+>     double dataUninitArray[10];
+>     data = dataUninitArray;
+>     if(1)
+>     {
+2814a2823,2832
+>         {
+>             int i;
+>             for(i=0; i<(10/2); i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+>     }
+>     if(0)
+>     {
+2815a2834,2837
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2817c2839,2857
+< void CWE457_Use_of_Uninitialized_Variable__double_array_declare_partial_init_02_bad()
+---
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printDoubleLine(data[i]);
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2839a2880,2886
+>                 data[i] = (double)i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+2844a2892,2964
+> 
+> 
+> static void goodG2B1()
+> {
+>     double * data;
+>     double dataUninitArray[10];
+>     data = dataUninitArray;
+>     if(0)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+>     }
+>     if(1)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printDoubleLine(data[i]);
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     double * data;
+>     double dataUninitArray[10];
+>     data = dataUninitArray;
+>     if(1)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i] = (double)i;
+>             }
+>         }
+>     }
+>     if(1)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printDoubleLine(data[i]);
+>             }
+>         }
+>     }
+> }
+> 
+> void CWE457_Use_of_Uninitialized_Variable__double_array_declare_partial_init_02_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2854a2975,2977
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__double_array_declare_partial_init_02_good();
+>     printLine("Finished good()");
+2860,2862d2982
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__double_array_declare_partial_init_02_bad();
+<     printLine("Finished bad()");

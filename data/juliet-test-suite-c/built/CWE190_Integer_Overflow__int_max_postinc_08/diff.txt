@@ -1,0 +1,109 @@
+2826a2827,2830
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_max_postinc_08.c"
+> static void goodB2G1()
+> {
+>     int data;
+2827a2832,2839
+>     data = 0;
+>     if(staticReturnsTrue())
+>     {
+> 
+>         data = 0x7fffffff;
+>     }
+>     if(staticReturnsFalse())
+>     {
+2828a2841,2844
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2830c2846,2860
+< void CWE190_Integer_Overflow__int_max_postinc_08_bad()
+---
+>         if (data < 0x7fffffff)
+>         {
+>             data++;
+>             int result = data;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2841a2872,2925
+> 
+>         if (data < 0x7fffffff)
+>         {
+>             data++;
+>             int result = data;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(staticReturnsFalse())
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2;
+>     }
+>     if(staticReturnsTrue())
+>     {
+>         {
+> 
+>             data++;
+>             int result = data;
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(staticReturnsTrue())
+>     {
+> 
+>         data = 2;
+>     }
+>     if(staticReturnsTrue())
+>     {
+2849a2934,2941
+> 
+> void CWE190_Integer_Overflow__int_max_postinc_08_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2859a2952,2954
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_max_postinc_08_good();
+>     printLine("Finished good()");
+2865,2867d2959
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_max_postinc_08_bad();
+<     printLine("Finished bad()");

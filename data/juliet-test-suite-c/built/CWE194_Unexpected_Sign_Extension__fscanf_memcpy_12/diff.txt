@@ -1,0 +1,30 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE194_Unexpected_Sign_Extension__fscanf_memcpy_12_bad()
+---
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_memcpy_12.c"
+> static void goodG2B()
+2825,2829c2823
+<         fscanf (
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_memcpy_12.c" 3 4
+<                stdin
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fscanf_memcpy_12.c"
+<                     , "%hd", &data);
+---
+>         data = 100-1;
+2850a2845,2849
+> 
+> void CWE194_Unexpected_Sign_Extension__fscanf_memcpy_12_good()
+> {
+>     goodG2B();
+> }
+2860a2860,2862
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__fscanf_memcpy_12_good();
+>     printLine("Finished good()");
+2866,2868d2867
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__fscanf_memcpy_12_bad();
+<     printLine("Finished bad()");

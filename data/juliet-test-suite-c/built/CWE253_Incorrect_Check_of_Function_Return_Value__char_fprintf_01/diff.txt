@@ -1,0 +1,38 @@
+3240a3241
+> # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fprintf_01.c"
+3242,3247c3243,3244
+< 
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fprintf_01.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_fprintf_01_bad()
+---
+> # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fprintf_01.c"
+> static void good1()
+3250d3246
+< 
+3252c3248
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fprintf_01.c" 3 4
+---
+> # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fprintf_01.c" 3 4
+3254,3255c3250,3251
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fprintf_01.c"
+<                      , "%s\n", "string") == 0)
+---
+> # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_fprintf_01.c"
+>                      , "%s\n", "string") < 0)
+3259a3256,3260
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_fprintf_01_good()
+> {
+>     good1();
+> }
+3269a3271,3273
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_fprintf_01_good();
+>     printLine("Finished good()");
+3275,3277d3278
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_fprintf_01_bad();
+<     printLine("Finished bad()");

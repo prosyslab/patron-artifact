@@ -1,0 +1,78 @@
+2861a2862,2864
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_42.c"
+> static int64_t goodG2BSource(int64_t data)
+> {
+2862a2866,2868
+>     data = 2;
+>     return data;
+> }
+2863a2870,2876
+> static void goodG2B()
+> {
+>     int64_t data;
+>     data = 0LL;
+>     data = goodG2BSource(data);
+>     if(data > 0)
+>     {
+2865c2878,2884
+< static int64_t badSource(int64_t data)
+---
+>         int64_t result = data * 2;
+>         printLongLongLine(result);
+>     }
+> }
+> 
+> 
+> static int64_t goodB2GSource(int64_t data)
+2869c2888
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_42.c" 3 4
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_42.c" 3 4
+2871c2890
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_42.c"
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_42.c"
+2873c2892
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_42.c" 3 4
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_42.c" 3 4
+2875c2894
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_42.c"
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_multiply_42.c"
+2880c2899
+< void CWE190_Integer_Overflow__int64_t_fscanf_multiply_42_bad()
+---
+> static void goodB2G()
+2884c2903
+<     data = badSource(data);
+---
+>     data = goodB2GSource(data);
+2888,2889c2907,2915
+<         int64_t result = data * 2;
+<         printLongLongLine(result);
+---
+>         if (data < (0x7fffffffffffffffLL/2))
+>         {
+>             int64_t result = data * 2;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2891a2918,2923
+> 
+> void CWE190_Integer_Overflow__int64_t_fscanf_multiply_42_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2901a2934,2936
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_fscanf_multiply_42_good();
+>     printLine("Finished good()");
+2907,2909d2941
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_fscanf_multiply_42_bad();
+<     printLine("Finished bad()");

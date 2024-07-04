@@ -1,0 +1,57 @@
+2819a2820,2827
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__CWE839_rand_34.c"
+> static void goodG2B()
+> {
+>     int data;
+>     CWE127_Buffer_Underread__CWE839_rand_34_unionType myUnion;
+> 
+>     data = -1;
+> 
+2820a2829,2847
+>     data = 7;
+>     myUnion.unionFirst = data;
+>     {
+>         int data = myUnion.unionSecond;
+>         {
+>             int buffer[10] = { 0 };
+> 
+> 
+>             if (data < 10)
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is too big.");
+>             }
+>         }
+>     }
+> }
+2823c2850
+< void CWE127_Buffer_Underread__CWE839_rand_34_bad()
+---
+> static void goodB2G()
+2837,2838c2864
+< 
+<             if (data < 10)
+---
+>             if (data >= 0 && data < (10))
+2844c2870
+<                 printLine("ERROR: Array index is too big.");
+---
+>                 printLine("ERROR: Array index is out-of-bounds");
+2848a2875,2880
+> 
+> void CWE127_Buffer_Underread__CWE839_rand_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2858a2891,2893
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__CWE839_rand_34_good();
+>     printLine("Finished good()");
+2864,2866d2898
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__CWE839_rand_34_bad();
+<     printLine("Finished bad()");

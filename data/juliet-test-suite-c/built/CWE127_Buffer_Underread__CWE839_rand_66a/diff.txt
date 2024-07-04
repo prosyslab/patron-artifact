@@ -1,0 +1,43 @@
+2813a2814,2822
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__CWE839_rand_66a.c"
+> void CWE127_Buffer_Underread__CWE839_rand_66b_goodG2BSink(int dataArray[]);
+> 
+> static void goodG2B()
+> {
+>     int data;
+>     int dataArray[5];
+> 
+>     data = -1;
+2815a2825,2828
+>     data = 7;
+>     dataArray[2] = data;
+>     CWE127_Buffer_Underread__CWE839_rand_66b_goodG2BSink(dataArray);
+> }
+2818c2831
+< void CWE127_Buffer_Underread__CWE839_rand_66b_badSink(int dataArray[]);
+---
+> void CWE127_Buffer_Underread__CWE839_rand_66b_goodB2GSink(int dataArray[]);
+2820c2833
+< void CWE127_Buffer_Underread__CWE839_rand_66_bad()
+---
+> static void goodB2G()
+2828d2840
+< 
+2830c2842,2848
+<     CWE127_Buffer_Underread__CWE839_rand_66b_badSink(dataArray);
+---
+>     CWE127_Buffer_Underread__CWE839_rand_66b_goodB2GSink(dataArray);
+> }
+> 
+> void CWE127_Buffer_Underread__CWE839_rand_66_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2841a2860,2862
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__CWE839_rand_66_good();
+>     printLine("Finished good()");
+2847,2849d2867
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__CWE839_rand_66_bad();
+<     printLine("Finished bad()");

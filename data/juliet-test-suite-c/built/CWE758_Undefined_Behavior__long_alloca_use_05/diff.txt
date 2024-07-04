@@ -1,0 +1,78 @@
+2819a2820,2824
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c"
+> static void good1()
+> {
+>     if(staticFalse)
+>     {
+2820a2826,2849
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             long data;
+>             long * pointer = (long *)
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c" 3 4
+>                                     __builtin_alloca (
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c"
+>                                     sizeof(long)
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c" 3 4
+>                                     )
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c"
+>                                                         ;
+>             data = 5L;
+>             *pointer = data;
+>             {
+>                 long data = *pointer;
+>                 printLongLine(data);
+>             }
+>         }
+>     }
+> }
+2823c2852
+< void CWE758_Undefined_Behavior__long_alloca_use_05_bad()
+---
+> static void good2()
+2827a2857
+>             long data;
+2829c2859
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c" 3 4
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c" 3 4
+2831c2861
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c"
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c"
+2833c2863
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c" 3 4
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c" 3 4
+2835c2865
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c"
+---
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__long_alloca_use_05.c"
+2837,2838c2867,2872
+<             long data = *pointer;
+<             printLongLine(data);
+---
+>             data = 5L;
+>             *pointer = data;
+>             {
+>                 long data = *pointer;
+>                 printLongLine(data);
+>             }
+2841a2876,2881
+> 
+> void CWE758_Undefined_Behavior__long_alloca_use_05_good()
+> {
+>     good1();
+>     good2();
+> }
+2851a2892,2894
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__long_alloca_use_05_good();
+>     printLine("Finished good()");
+2857,2859d2899
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__long_alloca_use_05_bad();
+<     printLine("Finished bad()");

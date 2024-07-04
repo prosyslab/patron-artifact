@@ -1,0 +1,52 @@
+2819a2820,2832
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_rand_multiply_34.c"
+> static void goodG2B()
+> {
+>     int64_t data;
+>     CWE190_Integer_Overflow__int64_t_rand_multiply_34_unionType myUnion;
+>     data = 0LL;
+> 
+>     data = 2;
+>     myUnion.unionFirst = data;
+>     {
+>         int64_t data = myUnion.unionSecond;
+>         if(data > 0)
+>         {
+2820a2834,2838
+>             int64_t result = data * 2;
+>             printLongLongLine(result);
+>         }
+>     }
+> }
+2823c2841
+< void CWE190_Integer_Overflow__int64_t_rand_multiply_34_bad()
+---
+> static void goodB2G()
+2836,2837c2854,2862
+<             int64_t result = data * 2;
+<             printLongLongLine(result);
+---
+>             if (data < (0x7fffffffffffffffLL/2))
+>             {
+>                 int64_t result = data * 2;
+>                 printLongLongLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+2840a2866,2871
+> 
+> void CWE190_Integer_Overflow__int64_t_rand_multiply_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2850a2882,2884
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_rand_multiply_34_good();
+>     printLine("Finished good()");
+2856,2858d2889
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_rand_multiply_34_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,50 @@
+3256a3257,3261
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_08.c"
+> static void good1()
+> {
+>     if(staticReturnsFalse())
+>     {
+3257a3263,3277
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if (putchar((int)'A') == 
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_08.c" 3 4
+>                                 (-1)
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_08.c"
+>                                    )
+>         {
+>             printLine("putchar failed!");
+>         }
+>     }
+> }
+3260c3280
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_08_bad()
+---
+> static void good2()
+3265,3266c3285,3289
+< 
+<         if (putchar((int)'A') == 0)
+---
+>         if (putchar((int)'A') == 
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_08.c" 3 4
+>                                 (-1)
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_08.c"
+>                                    )
+3271a3295,3300
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_08_good()
+> {
+>     good1();
+>     good2();
+> }
+3281a3311,3313
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_08_good();
+>     printLine("Finished good()");
+3287,3289d3318
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_08_bad();
+<     printLine("Finished bad()");

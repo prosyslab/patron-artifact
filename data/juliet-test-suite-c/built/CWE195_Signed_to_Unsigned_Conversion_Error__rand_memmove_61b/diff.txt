@@ -1,0 +1,12 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< int CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_61b_badSource(int data)
+---
+> # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_61b.c"
+> int CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_61b_goodG2BSource(int data)
+2820c2818
+<     data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+---
+>     data = 100-1;

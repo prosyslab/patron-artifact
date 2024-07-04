@@ -1,0 +1,132 @@
+2818a2819,2842
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_min_multiply_07.c"
+> static void goodB2G1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(staticFive==5)
+>     {
+> 
+>         data = 
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_min_multiply_07.c" 3 4
+>               (-0x7fffffff - 1)
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_min_multiply_07.c"
+>                      ;
+>     }
+>     if(staticFive!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         if(data < 0)
+>         {
+2819a2844,2859
+>             if (data > (
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_min_multiply_07.c" 3 4
+>                        (-0x7fffffff - 1)
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_min_multiply_07.c"
+>                               /2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+>         }
+>     }
+> }
+2822c2862
+< void CWE191_Integer_Underflow__int_min_multiply_07_bad()
+---
+> static void goodB2G2()
+2831c2871
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_min_multiply_07.c" 3 4
+---
+> # 95 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_min_multiply_07.c" 3 4
+2833c2873
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_min_multiply_07.c"
+---
+> # 95 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_min_multiply_07.c"
+2840a2881,2918
+>             if (data > (
+> # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_min_multiply_07.c" 3 4
+>                        (-0x7fffffff - 1)
+> # 102 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_min_multiply_07.c"
+>                               /2))
+>             {
+>                 int result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(staticFive!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = -2;
+>     }
+>     if(staticFive==5)
+>     {
+>         if(data < 0)
+>         {
+> 
+2845a2924,2953
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = 0;
+>     if(staticFive==5)
+>     {
+> 
+>         data = -2;
+>     }
+>     if(staticFive==5)
+>     {
+>         if(data < 0)
+>         {
+> 
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE191_Integer_Underflow__int_min_multiply_07_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2855a2964,2966
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_min_multiply_07_good();
+>     printLine("Finished good()");
+2861,2863d2971
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_min_multiply_07_bad();
+<     printLine("Finished bad()");

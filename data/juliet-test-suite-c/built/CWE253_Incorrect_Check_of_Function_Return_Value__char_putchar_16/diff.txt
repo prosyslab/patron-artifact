@@ -1,0 +1,35 @@
+3240a3241
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_16.c"
+3242,3247c3243,3244
+< 
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_16.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_16_bad()
+---
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_16.c"
+> static void good1()
+3252,3253c3249,3253
+< 
+<         if (putchar((int)'A') == 0)
+---
+>         if (putchar((int)'A') == 
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_16.c" 3 4
+>                                 (-1)
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_16.c"
+>                                    )
+3259a3260,3264
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_16_good()
+> {
+>     good1();
+> }
+3269a3275,3277
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_16_good();
+>     printLine("Finished good()");
+3275,3277d3282
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_putchar_16_bad();
+<     printLine("Finished bad()");

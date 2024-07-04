@@ -1,0 +1,27 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE127_Buffer_Underread__CWE839_rand_63b_badSink(int * dataPtr)
+---
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__CWE839_rand_63b.c"
+> void CWE127_Buffer_Underread__CWE839_rand_63b_goodG2BSink(int * dataPtr)
+2830a2829,2846
+>         }
+>     }
+> }
+> 
+> 
+> void CWE127_Buffer_Underread__CWE839_rand_63b_goodB2GSink(int * dataPtr)
+> {
+>     int data = *dataPtr;
+>     {
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

@@ -1,0 +1,32 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_51b_badSink(int data)
+---
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_51b.c"
+> void CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_51b_goodG2BSink(int data)
+2835a2834,2856
+>         }
+>     }
+> }
+> 
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE129_fscanf_51b_goodB2GSink(int data)
+> {
+>     {
+>         int i;
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

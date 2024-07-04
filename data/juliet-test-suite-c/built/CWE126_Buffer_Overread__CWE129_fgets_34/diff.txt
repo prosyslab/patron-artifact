@@ -1,0 +1,73 @@
+2821a2822,2829
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_34.c"
+> static void goodG2B()
+> {
+>     int data;
+>     CWE126_Buffer_Overread__CWE129_fgets_34_unionType myUnion;
+> 
+>     data = -1;
+> 
+2822a2831,2849
+>     data = 7;
+>     myUnion.unionFirst = data;
+>     {
+>         int data = myUnion.unionSecond;
+>         {
+>             int buffer[10] = { 0 };
+> 
+> 
+>             if (data >= 0)
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is negative");
+>             }
+>         }
+>     }
+> }
+2825c2852
+< void CWE126_Buffer_Overread__CWE129_fgets_34_bad()
+---
+> static void goodB2G()
+2835c2862
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_34.c" 3 4
+---
+> # 111 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_34.c" 3 4
+2837c2864
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_34.c"
+---
+> # 111 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_34.c"
+2839c2866
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_34.c" 3 4
+---
+> # 111 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_34.c" 3 4
+2841c2868
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_34.c"
+---
+> # 111 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_fgets_34.c"
+2858,2859c2885
+< 
+<             if (data >= 0)
+---
+>             if (data >= 0 && data < (10))
+2865c2891
+<                 printLine("ERROR: Array index is negative");
+---
+>                 printLine("ERROR: Array index is out-of-bounds");
+2869a2896,2901
+> 
+> void CWE126_Buffer_Overread__CWE129_fgets_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2879a2912,2914
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__CWE129_fgets_34_good();
+>     printLine("Finished good()");
+2885,2887d2919
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__CWE129_fgets_34_bad();
+<     printLine("Finished bad()");

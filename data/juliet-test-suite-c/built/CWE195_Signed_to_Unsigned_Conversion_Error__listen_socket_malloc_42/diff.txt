@@ -1,0 +1,134 @@
+4900c4900
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+---
+> # 142 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+4902,4903c4902,4903
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+< static int badSource(int data)
+---
+> # 142 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+> static int goodG2BSource(int data)
+4905,4990d4904
+<     {
+< 
+< 
+< 
+< 
+<         int recvResult;
+<         struct sockaddr_in service;
+<         int listenSocket = -1;
+<         int acceptSocket = -1;
+<         char inputBuffer[(3 * sizeof(data) + 2)];
+<         do
+<         {
+< # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+<             listenSocket = socket(
+< # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c" 3 4
+<                                  2
+< # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+<                                         , 
+< # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c" 3 4
+<                                           SOCK_STREAM
+< # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+<                                                      , 
+< # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c" 3 4
+<                                                        IPPROTO_TCP
+< # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+<                                                                   );
+<             if (listenSocket == -1)
+<             {
+<                 break;
+<             }
+<             memset(&service, 0, sizeof(service));
+<             service.sin_family = 
+< # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c" 3 4
+<                                 2
+< # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+<                                        ;
+<             service.sin_addr.s_addr = 
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c" 3 4
+<                                      ((in_addr_t) 0x00000000)
+< # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+<                                                ;
+<             service.sin_port = htons(27015);
+<             if (bind(listenSocket, (struct sockaddr*)&service, sizeof(service)) == -1)
+<             {
+<                 break;
+<             }
+<             if (listen(listenSocket, 5) == -1)
+<             {
+<                 break;
+<             }
+<             acceptSocket = accept(listenSocket, 
+< # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c" 3 4
+<                                                ((void *)0)
+< # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+<                                                    , 
+< # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c" 3 4
+<                                                      ((void *)0)
+< # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+<                                                          );
+<             if (acceptSocket == -1)
+<             {
+<                 break;
+<             }
+< 
+<             recvResult = recv(acceptSocket, inputBuffer, (3 * sizeof(data) + 2) - 1, 0);
+<             if (recvResult == -1 || recvResult == 0)
+<             {
+<                 break;
+<             }
+< 
+<             inputBuffer[recvResult] = '\0';
+< 
+<             data = atoi(inputBuffer);
+<         }
+<         while (0);
+<         if (listenSocket != -1)
+<         {
+<             close(listenSocket);
+<         }
+<         if (acceptSocket != -1)
+<         {
+<             close(acceptSocket);
+<         }
+< 
+< 
+< 
+4992,4994c4906
+< 
+< 
+<     }
+---
+>     data = 100-1;
+4998c4910,4911
+< void CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42_bad()
+---
+> 
+> static void goodG2B()
+5003c4916
+<     data = badSource(data);
+---
+>     data = goodG2BSource(data);
+5011c4924
+< # 129 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c" 3 4
+---
+> # 162 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c" 3 4
+5013c4926
+< # 129 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+---
+> # 162 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42.c"
+5021a4935,4939
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42_good()
+> {
+>     goodG2B();
+> }
+5031a4950,4952
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42_good();
+>     printLine("Finished good()");
+5037,5039d4957
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__listen_socket_malloc_42_bad();
+<     printLine("Finished bad()");

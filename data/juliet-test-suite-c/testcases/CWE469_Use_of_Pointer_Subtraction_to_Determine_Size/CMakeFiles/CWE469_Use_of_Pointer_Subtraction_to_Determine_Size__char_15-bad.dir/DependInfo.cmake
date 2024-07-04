@@ -1,0 +1,20 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  )
+
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_15.c" "CMakeFiles/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_15-bad.dir/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_15.c.o" "gcc" "CMakeFiles/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_15-bad.dir/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size__char_15.c.o.d"
+  )
+
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE469_Use_of_Pointer_Subtraction_to_Determine_Size/CMakeFiles/support.dir/DependInfo.cmake"
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

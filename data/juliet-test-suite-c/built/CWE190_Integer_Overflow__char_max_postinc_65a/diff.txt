@@ -1,0 +1,43 @@
+2813a2814,2815
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__char_max_postinc_65a.c"
+> void CWE190_Integer_Overflow__char_max_postinc_65b_goodG2BSink(char data);
+2814a2817,2821
+> static void goodG2B()
+> {
+>     char data;
+>     void (*funcPtr) (char) = CWE190_Integer_Overflow__char_max_postinc_65b_goodG2BSink;
+>     data = ' ';
+2815a2823,2825
+>     data = 2;
+>     funcPtr(data);
+> }
+2818c2828
+< void CWE190_Integer_Overflow__char_max_postinc_65b_badSink(char data);
+---
+> void CWE190_Integer_Overflow__char_max_postinc_65b_goodB2GSink(char data);
+2820c2830
+< void CWE190_Integer_Overflow__char_max_postinc_65_bad()
+---
+> static void goodB2G()
+2823,2824c2833
+< 
+<     void (*funcPtr) (char) = CWE190_Integer_Overflow__char_max_postinc_65b_badSink;
+---
+>     void (*funcPtr) (char) = CWE190_Integer_Overflow__char_max_postinc_65b_goodB2GSink;
+2828d2836
+< 
+2830a2839,2844
+> 
+> void CWE190_Integer_Overflow__char_max_postinc_65_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2840a2855,2857
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_max_postinc_65_good();
+>     printLine("Finished good()");
+2846,2848d2862
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_max_postinc_65_bad();
+<     printLine("Finished bad()");

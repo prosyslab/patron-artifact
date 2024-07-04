@@ -1,0 +1,48 @@
+2814,2819c2814,2815
+< 
+< 
+< 
+< 
+< 
+< void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_31_bad()
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_31.c"
+> static void goodG2B()
+2824,2836d2819
+<     {
+<         char inputBuffer[(3 * sizeof(data) + 2)] = "";
+< 
+<         if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_31.c" 3 4
+<                                                stdin
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_31.c"
+<                                                     ) != 
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_31.c" 3 4
+<                                                          ((void *)0)
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_31.c"
+<                                                              )
+<         {
+2838,2844c2821
+<             data = atoi(inputBuffer);
+<         }
+<         else
+<         {
+<             printLine("fgets() failed.");
+<         }
+<     }
+---
+>     data = 100-1;
+2863a2841,2845
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_31_good()
+> {
+>     goodG2B();
+> }
+2873a2856,2858
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_31_good();
+>     printLine("Finished good()");
+2879,2881d2863
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_strncpy_31_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,40 @@
+3737a3738,3740
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_rand_square_68a.c"
+> void CWE190_Integer_Overflow__int64_t_rand_square_68b_goodG2BSink();
+> void CWE190_Integer_Overflow__int64_t_rand_square_68b_goodB2GSink();
+3739a3743,3746
+> static void goodG2B()
+> {
+>     int64_t data;
+>     data = 0LL;
+3740a3748,3751
+>     data = 2;
+>     CWE190_Integer_Overflow__int64_t_rand_square_68_goodG2BData = data;
+>     CWE190_Integer_Overflow__int64_t_rand_square_68b_goodG2BSink();
+> }
+3742d3752
+< void CWE190_Integer_Overflow__int64_t_rand_square_68b_badSink();
+3744c3754
+< void CWE190_Integer_Overflow__int64_t_rand_square_68_bad()
+---
+> static void goodB2G()
+3750,3751c3760,3767
+<     CWE190_Integer_Overflow__int64_t_rand_square_68_badData = data;
+<     CWE190_Integer_Overflow__int64_t_rand_square_68b_badSink();
+---
+>     CWE190_Integer_Overflow__int64_t_rand_square_68_goodB2GData = data;
+>     CWE190_Integer_Overflow__int64_t_rand_square_68b_goodB2GSink();
+> }
+> 
+> void CWE190_Integer_Overflow__int64_t_rand_square_68_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3762a3779,3781
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_rand_square_68_good();
+>     printLine("Finished good()");
+3768,3770d3786
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_rand_square_68_bad();
+<     printLine("Finished bad()");

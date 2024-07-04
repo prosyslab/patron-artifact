@@ -1,0 +1,55 @@
+2813a2814,2815
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__short_rand_postdec_61a.c"
+> short CWE191_Integer_Underflow__short_rand_postdec_61b_goodG2BSource(short data);
+2814a2817,2822
+> static void goodG2B()
+> {
+>     short data;
+>     data = 0;
+>     data = CWE191_Integer_Underflow__short_rand_postdec_61b_goodG2BSource(data);
+>     {
+2815a2824,2828
+>         data--;
+>         short result = data;
+>         printIntLine(result);
+>     }
+> }
+2818c2831
+< short CWE191_Integer_Underflow__short_rand_postdec_61b_badSource(short data);
+---
+> short CWE191_Integer_Underflow__short_rand_postdec_61b_goodB2GSource(short data);
+2820c2833
+< void CWE191_Integer_Underflow__short_rand_postdec_61_bad()
+---
+> static void goodB2G()
+2824,2825c2837
+<     data = CWE191_Integer_Underflow__short_rand_postdec_61b_badSource(data);
+<     {
+---
+>     data = CWE191_Integer_Underflow__short_rand_postdec_61b_goodB2GSource(data);
+2826a2839,2844
+>     if (data > 
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__short_rand_postdec_61a.c" 3 4
+>               (-0x7fff - 1)
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__short_rand_postdec_61a.c"
+>                       )
+>     {
+2830a2849,2858
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+> }
+> 
+> void CWE191_Integer_Underflow__short_rand_postdec_61_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2841a2870,2872
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__short_rand_postdec_61_good();
+>     printLine("Finished good()");
+2847,2849d2877
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__short_rand_postdec_61_bad();
+<     printLine("Finished bad()");

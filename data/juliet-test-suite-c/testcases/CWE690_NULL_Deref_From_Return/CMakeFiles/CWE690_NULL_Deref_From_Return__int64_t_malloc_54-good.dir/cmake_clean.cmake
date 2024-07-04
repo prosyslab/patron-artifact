@@ -1,0 +1,19 @@
+file(REMOVE_RECURSE
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE690/good/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good"
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE690/good/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good.pdb"
+  "CMakeFiles/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good.dir/s01/CWE690_NULL_Deref_From_Return__int64_t_malloc_54a.c.o"
+  "CMakeFiles/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good.dir/s01/CWE690_NULL_Deref_From_Return__int64_t_malloc_54a.c.o.d"
+  "CMakeFiles/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good.dir/s01/CWE690_NULL_Deref_From_Return__int64_t_malloc_54b.c.o"
+  "CMakeFiles/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good.dir/s01/CWE690_NULL_Deref_From_Return__int64_t_malloc_54b.c.o.d"
+  "CMakeFiles/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good.dir/s01/CWE690_NULL_Deref_From_Return__int64_t_malloc_54c.c.o"
+  "CMakeFiles/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good.dir/s01/CWE690_NULL_Deref_From_Return__int64_t_malloc_54c.c.o.d"
+  "CMakeFiles/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good.dir/s01/CWE690_NULL_Deref_From_Return__int64_t_malloc_54d.c.o"
+  "CMakeFiles/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good.dir/s01/CWE690_NULL_Deref_From_Return__int64_t_malloc_54d.c.o.d"
+  "CMakeFiles/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good.dir/s01/CWE690_NULL_Deref_From_Return__int64_t_malloc_54e.c.o"
+  "CMakeFiles/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good.dir/s01/CWE690_NULL_Deref_From_Return__int64_t_malloc_54e.c.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/CWE690_NULL_Deref_From_Return__int64_t_malloc_54-good.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

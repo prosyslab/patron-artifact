@@ -1,0 +1,26 @@
+3241c3241
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53b.c"
+---
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53b.c"
+3243,3244c3243,3244
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53b.c"
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53c_badSink(size_t data);
+---
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53b.c"
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53c_goodG2BSink(size_t data);
+3246c3246
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53b_badSink(size_t data)
+---
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53b_goodG2BSink(size_t data)
+3248c3248,3256
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53c_badSink(data);
+---
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53c_goodG2BSink(data);
+> }
+> 
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53c_goodB2GSink(size_t data);
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53b_goodB2GSink(size_t data)
+> {
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fgets_53c_goodB2GSink(data);

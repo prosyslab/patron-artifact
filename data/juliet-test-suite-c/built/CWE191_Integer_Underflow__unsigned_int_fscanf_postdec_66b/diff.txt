@@ -1,0 +1,28 @@
+2813a2814,2818
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s04/CWE191_Integer_Underflow__unsigned_int_fscanf_postdec_66b.c"
+> void CWE191_Integer_Underflow__unsigned_int_fscanf_postdec_66b_goodG2BSink(unsigned int dataArray[])
+> {
+>     unsigned int data = dataArray[2];
+>     {
+2814a2820,2824
+>         data--;
+>         unsigned int result = data;
+>         printUnsignedLine(result);
+>     }
+> }
+2817c2827
+< void CWE191_Integer_Underflow__unsigned_int_fscanf_postdec_66b_badSink(unsigned int dataArray[])
+---
+> void CWE191_Integer_Underflow__unsigned_int_fscanf_postdec_66b_goodB2GSink(unsigned int dataArray[])
+2819d2828
+< 
+2821d2829
+<     {
+2822a2831,2832
+>     if (data > 0)
+>     {
+2825a2836,2839
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");

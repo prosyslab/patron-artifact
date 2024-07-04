@@ -1,0 +1,75 @@
+3731a3732
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_42.c"
+3732a3734,3736
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_42.c"
+> static float goodG2BSource(float data)
+> {
+3733a3738,3740
+>     data = 2.0F;
+>     return data;
+> }
+3734a3742,3744
+> static void goodG2B()
+> {
+>     float data;
+3735a3746,3753
+>     data = 0.0F;
+>     data = goodG2BSource(data);
+>     {
+> 
+>         int result = (int)(100.0 / data);
+>         printIntLine(result);
+>     }
+> }
+3738,3739c3756
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_42.c"
+< static float badSource(float data)
+---
+> static float goodB2GSource(float data)
+3745c3762
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_42.c" 3 4
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_42.c" 3 4
+3747c3764
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_42.c"
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_42.c"
+3749c3766
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_42.c" 3 4
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_42.c" 3 4
+3751c3768
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_42.c"
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fgets_42.c"
+3765c3782
+< void CWE369_Divide_by_Zero__float_fgets_42_bad()
+---
+> static void goodB2G()
+3770,3771c3787
+<     data = badSource(data);
+<     {
+---
+>     data = goodB2GSource(data);
+3772a3789,3790
+>     if(fabs(data) > 0.000001)
+>     {
+3775a3794,3803
+>     else
+>     {
+>         printLine("This would result in a divide by zero");
+>     }
+> }
+> 
+> void CWE369_Divide_by_Zero__float_fgets_42_good()
+> {
+>     goodB2G();
+>     goodG2B();
+3786a3815,3817
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__float_fgets_42_good();
+>     printLine("Finished good()");
+3792,3794d3822
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__float_fgets_42_bad();
+<     printLine("Finished bad()");

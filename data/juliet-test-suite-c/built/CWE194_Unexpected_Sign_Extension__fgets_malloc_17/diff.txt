@@ -1,0 +1,65 @@
+2814,2820c2814,2815
+< 
+< 
+< 
+< 
+< 
+< 
+< void CWE194_Unexpected_Sign_Extension__fgets_malloc_17_bad()
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_17.c"
+> static void goodG2B()
+2822c2817
+<     int i;
+---
+>     int h;
+2826c2821
+<     for(i = 0; i < 1; i++)
+---
+>     for(h = 0; h < 1; h++)
+2828,2829d2822
+<         {
+<             char inputBuffer[8] = "";
+2831,2848c2824
+<             if (fgets(inputBuffer, 8, 
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_17.c" 3 4
+<                                                    stdin
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_17.c"
+<                                                         ) != 
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_17.c" 3 4
+<                                                              ((void *)0)
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_17.c"
+<                                                                  )
+<             {
+< 
+<                 data = (short)atoi(inputBuffer);
+<             }
+<             else
+<             {
+<                 printLine("fgets() failed.");
+<             }
+<         }
+---
+>         data = 100-1;
+2857c2833
+< # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_17.c" 3 4
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_17.c" 3 4
+2859c2835
+< # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_17.c"
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s01/CWE194_Unexpected_Sign_Extension__fgets_malloc_17.c"
+2867a2844,2848
+> 
+> void CWE194_Unexpected_Sign_Extension__fgets_malloc_17_good()
+> {
+>     goodG2B();
+> }
+2877a2859,2861
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__fgets_malloc_17_good();
+>     printLine("Finished good()");
+2883,2885d2866
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__fgets_malloc_17_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,85 @@
+2813a2814,2819
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_15.c"
+> static void good1()
+> {
+>     switch(5)
+>     {
+>     case 6:
+2814a2821,2831
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+>     {
+>         double * data;
+>         double * * pointer = (double * *)malloc(sizeof(double *));
+>         if (pointer == 
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_15.c" 3 4
+>                       ((void *)0)
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_15.c"
+>                           ) {exit(-1);}
+2815a2833,2849
+>         data = (double *)malloc(sizeof(double));
+>         if (data == 
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_15.c" 3 4
+>                    ((void *)0)
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_15.c"
+>                        ) {exit(-1);}
+>         *data = 5.0;
+>         *pointer = data;
+>         {
+>             double * data = *pointer;
+>             printDoubleLine(*data);
+>         }
+>         free(pointer);
+>     }
+>     break;
+>     }
+> }
+2817c2851,2852
+< void CWE758_Undefined_Behavior__double_pointer_malloc_use_15_bad()
+---
+> 
+> static void good2()
+2822a2858
+>         double * data;
+2825c2861
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_15.c" 3 4
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_15.c" 3 4
+2827c2863
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_15.c"
+---
+> # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_15.c"
+2829c2865,2877
+<         double * data = *pointer;
+---
+> 
+>         data = (double *)malloc(sizeof(double));
+>         if (data == 
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_15.c" 3 4
+>                    ((void *)0)
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__double_pointer_malloc_use_15.c"
+>                        ) {exit(-1);}
+>         *data = 5.0;
+>         *pointer = data;
+>         {
+>             double * data = *pointer;
+>             printDoubleLine(*data);
+>         }
+2831d2878
+<         printDoubleLine(*data);
+2839a2887,2892
+> 
+> void CWE758_Undefined_Behavior__double_pointer_malloc_use_15_good()
+> {
+>     good1();
+>     good2();
+> }
+2849a2903,2905
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__double_pointer_malloc_use_15_good();
+>     printLine("Finished good()");
+2855,2857d2910
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__double_pointer_malloc_use_15_bad();
+<     printLine("Finished bad()");

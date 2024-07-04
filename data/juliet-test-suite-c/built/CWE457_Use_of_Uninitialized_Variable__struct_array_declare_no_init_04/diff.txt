@@ -1,0 +1,138 @@
+2819a2820,2827
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__struct_array_declare_no_init_04.c"
+> static void goodB2G1()
+> {
+>     twoIntsStruct * data;
+>     twoIntsStruct dataUninitArray[10];
+>     data = dataUninitArray;
+>     if(STATIC_CONST_TRUE)
+>     {
+2820a2829,2832
+>         ;
+>     }
+>     if(STATIC_CONST_FALSE)
+>     {
+2821a2834,2837
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2823c2839,2859
+< void CWE457_Use_of_Uninitialized_Variable__struct_array_declare_no_init_04_bad()
+---
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i].intOne = i;
+>                 data[i].intTwo = i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printIntLine(data[i].intOne);
+>                 printIntLine(data[i].intTwo);
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2839a2876,2920
+>                 data[i].intOne = i;
+>                 data[i].intTwo = i;
+>             }
+>         }
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printIntLine(data[i].intOne);
+>                 printIntLine(data[i].intTwo);
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     twoIntsStruct * data;
+>     twoIntsStruct dataUninitArray[10];
+>     data = dataUninitArray;
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i].intOne = i;
+>                 data[i].intTwo = i;
+>             }
+>         }
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+2845a2927,2966
+> 
+> 
+> static void goodG2B2()
+> {
+>     twoIntsStruct * data;
+>     twoIntsStruct dataUninitArray[10];
+>     data = dataUninitArray;
+>     if(STATIC_CONST_TRUE)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 data[i].intOne = i;
+>                 data[i].intTwo = i;
+>             }
+>         }
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+> 
+>         {
+>             int i;
+>             for(i=0; i<10; i++)
+>             {
+>                 printIntLine(data[i].intOne);
+>                 printIntLine(data[i].intTwo);
+>             }
+>         }
+>     }
+> }
+> 
+> void CWE457_Use_of_Uninitialized_Variable__struct_array_declare_no_init_04_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2855a2977,2979
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__struct_array_declare_no_init_04_good();
+>     printLine("Finished good()");
+2861,2863d2984
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__struct_array_declare_no_init_04_bad();
+<     printLine("Finished bad()");

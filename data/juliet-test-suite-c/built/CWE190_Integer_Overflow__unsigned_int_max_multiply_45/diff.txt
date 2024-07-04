@@ -1,0 +1,79 @@
+2817a2818,2833
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_multiply_45.c"
+> static void goodG2BSink()
+> {
+>     unsigned int data = CWE190_Integer_Overflow__unsigned_int_max_multiply_45_goodG2BData;
+>     if(data > 0)
+>     {
+> 
+>         unsigned int result = data * 2;
+>         printUnsignedLine(result);
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     unsigned int data;
+>     data = 0;
+2818a2835,2838
+>     data = 2;
+>     CWE190_Integer_Overflow__unsigned_int_max_multiply_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+2821c2841
+< static void badSink()
+---
+> static void goodB2GSink()
+2823c2843
+<     unsigned int data = CWE190_Integer_Overflow__unsigned_int_max_multiply_45_badData;
+---
+>     unsigned int data = CWE190_Integer_Overflow__unsigned_int_max_multiply_45_goodB2GData;
+2827,2828c2847,2859
+<         unsigned int result = data * 2;
+<         printUnsignedLine(result);
+---
+>         if (data < (
+> # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_multiply_45.c" 3 4
+>                    (0x7fffffff * 2U + 1U)
+> # 80 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_multiply_45.c"
+>                            /2))
+>         {
+>             unsigned int result = data * 2;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2832c2863
+< void CWE190_Integer_Overflow__unsigned_int_max_multiply_45_bad()
+---
+> static void goodB2G()
+2838c2869
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_multiply_45.c" 3 4
+---
+> # 97 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_multiply_45.c" 3 4
+2840c2871
+< # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_multiply_45.c"
+---
+> # 97 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_max_multiply_45.c"
+2842,2843c2873,2880
+<     CWE190_Integer_Overflow__unsigned_int_max_multiply_45_badData = data;
+<     badSink();
+---
+>     CWE190_Integer_Overflow__unsigned_int_max_multiply_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE190_Integer_Overflow__unsigned_int_max_multiply_45_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2854a2892,2894
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__unsigned_int_max_multiply_45_good();
+>     printLine("Finished good()");
+2860,2862d2899
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__unsigned_int_max_multiply_45_bad();
+<     printLine("Finished bad()");

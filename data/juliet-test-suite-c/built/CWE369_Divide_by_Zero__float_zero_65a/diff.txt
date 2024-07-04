@@ -1,0 +1,47 @@
+3731a3732
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_65a.c"
+3732a3734,3735
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_65a.c"
+> void CWE369_Divide_by_Zero__float_zero_65b_goodG2BSink(float data);
+3733a3737,3742
+> static void goodG2B()
+> {
+>     float data;
+>     void (*funcPtr) (float) = CWE369_Divide_by_Zero__float_zero_65b_goodG2BSink;
+> 
+>     data = 0.0F;
+3734a3744,3746
+>     data = 2.0F;
+>     funcPtr(data);
+> }
+3737,3738c3749
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_zero_65a.c"
+< void CWE369_Divide_by_Zero__float_zero_65b_badSink(float data);
+---
+> void CWE369_Divide_by_Zero__float_zero_65b_goodB2GSink(float data);
+3740c3751
+< void CWE369_Divide_by_Zero__float_zero_65_bad()
+---
+> static void goodB2G()
+3743,3744c3754
+< 
+<     void (*funcPtr) (float) = CWE369_Divide_by_Zero__float_zero_65b_badSink;
+---
+>     void (*funcPtr) (float) = CWE369_Divide_by_Zero__float_zero_65b_goodB2GSink;
+3749d3758
+< 
+3751a3761,3766
+> 
+> void CWE369_Divide_by_Zero__float_zero_65_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3761a3777,3779
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__float_zero_65_good();
+>     printLine("Finished good()");
+3767,3769d3784
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__float_zero_65_bad();
+<     printLine("Finished bad()");

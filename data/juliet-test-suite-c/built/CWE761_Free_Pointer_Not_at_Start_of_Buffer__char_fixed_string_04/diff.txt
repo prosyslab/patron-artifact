@@ -1,0 +1,87 @@
+3244a3245,3255
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_04.c"
+> static void goodB2G1()
+> {
+>     char * data;
+>     data = (char *)malloc(100*sizeof(char));
+>     if (data == 
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_04.c" 3 4
+>                ((void *)0)
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_04.c"
+>                    ) {exit(-1);}
+>     data[0] = '\0';
+3245a3257,3259
+>     strcpy(data, "Fixed String");
+>     if(STATIC_CONST_FALSE)
+>     {
+3246a3261,3266
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             size_t i;
+3248c3268,3282
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_04_bad()
+---
+>             for (i=0; i < strlen(data); i++)
+>             {
+>                 if (data[i] == 'S')
+>                 {
+>                     printLine("We have a match!");
+>                     break;
+>                 }
+>             }
+>             free(data);
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+3253c3287
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_04.c" 3 4
+---
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_04.c" 3 4
+3255c3289
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_04.c"
+---
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_04.c"
+3262,3264d3295
+< 
+< 
+<         for (; *data != '\0'; data++)
+3266c3297,3299
+<             if (*data == 'S')
+---
+>             size_t i;
+> 
+>             for (i=0; i < strlen(data); i++)
+3268,3269c3301,3305
+<                 printLine("We have a match!");
+<                 break;
+---
+>                 if (data[i] == 'S')
+>                 {
+>                     printLine("We have a match!");
+>                     break;
+>                 }
+3270a3307
+>             free(data);
+3272d3308
+<         free(data);
+3274a3311,3316
+> 
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_04_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+> }
+3284a3327,3329
+>     printLine("Calling good()...");
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_04_good();
+>     printLine("Finished good()");
+3290,3292d3334
+<     printLine("Calling bad()...");
+<     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_04_bad();
+<     printLine("Finished bad()");

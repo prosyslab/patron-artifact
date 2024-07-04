@@ -1,0 +1,52 @@
+2818a2819,2820
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68a.c"
+> void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68b_goodG2BSink();
+2821,2825c2823
+< 
+< 
+< void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68b_badSink();
+< 
+< void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68_bad()
+---
+> static void goodG2B()
+2830,2831d2827
+<     {
+<         char inputBuffer[(3 * sizeof(data) + 2)] = "";
+2833,2852c2829,2836
+<         if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68a.c" 3 4
+<                                                stdin
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68a.c"
+<                                                     ) != 
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68a.c" 3 4
+<                                                          ((void *)0)
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68a.c"
+<                                                              )
+<         {
+< 
+<             data = atoi(inputBuffer);
+<         }
+<         else
+<         {
+<             printLine("fgets() failed.");
+<         }
+<     }
+<     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68_badData = data;
+<     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68b_badSink();
+---
+>     data = 100-1;
+>     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68_goodG2BData = data;
+>     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68b_goodG2BSink();
+> }
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68_good()
+> {
+>     goodG2B();
+2863a2848,2850
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68_good();
+>     printLine("Finished good()");
+2869,2871d2855
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__fgets_memmove_68_bad();
+<     printLine("Finished bad()");

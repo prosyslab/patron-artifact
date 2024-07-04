@@ -1,0 +1,56 @@
+2813a2814,2837
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_15.c"
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+>         data = 100-1;
+>         break;
+>     }
+>     {
+>         char source[100];
+>         char dest[100] = "";
+>         memset(source, 'A', 100-1);
+>         source[100-1] = '\0';
+>         if (data < 100)
+>         {
+2815a2840,2846
+>             memmove(dest, source, data);
+>             dest[data] = '\0';
+>         }
+>         printLine(dest);
+>     }
+> }
+> 
+2817c2848
+< void CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_15_bad()
+---
+> static void goodG2B2()
+2826c2857
+<         data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+---
+>         data = 100-1;
+2847a2879,2884
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_15_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2857a2895,2897
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_15_good();
+>     printLine("Finished good()");
+2863,2865d2902
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__rand_memmove_15_bad();
+<     printLine("Finished bad()");

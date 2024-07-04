@@ -1,0 +1,42 @@
+3245a3246,3250
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_05.c"
+> static void good1()
+> {
+>     if(staticFalse)
+>     {
+3246a3252,3262
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if (remove("removemegood.txt") != 0)
+>         {
+>             printLine("remove failed!");
+>         }
+>     }
+> }
+3249c3265
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_05_bad()
+---
+> static void good2()
+3254,3255c3270
+< 
+<         if (remove("removemebad.txt") == 0)
+---
+>         if (remove("removemegood.txt") != 0)
+3260a3276,3281
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_05_good()
+> {
+>     good1();
+>     good2();
+> }
+3270a3292,3294
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_05_good();
+>     printLine("Finished good()");
+3276,3278d3299
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_remove_05_bad();
+<     printLine("Finished bad()");

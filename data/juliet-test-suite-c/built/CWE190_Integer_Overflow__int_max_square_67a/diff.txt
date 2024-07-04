@@ -1,0 +1,41 @@
+3738a3739,3740
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_square_67a.c"
+> void CWE190_Integer_Overflow__int_max_square_67b_goodG2BSink(CWE190_Integer_Overflow__int_max_square_67_structType myStruct);
+3739a3742,3747
+> static void goodG2B()
+> {
+>     int data;
+>     CWE190_Integer_Overflow__int_max_square_67_structType myStruct;
+> 
+>     data = 0;
+3740a3749,3752
+>     data = 2;
+>     myStruct.structFirst = data;
+>     CWE190_Integer_Overflow__int_max_square_67b_goodG2BSink(myStruct);
+> }
+3743c3755
+< void CWE190_Integer_Overflow__int_max_square_67b_badSink(CWE190_Integer_Overflow__int_max_square_67_structType myStruct);
+---
+> void CWE190_Integer_Overflow__int_max_square_67b_goodB2GSink(CWE190_Integer_Overflow__int_max_square_67_structType myStruct);
+3745c3757
+< void CWE190_Integer_Overflow__int_max_square_67_bad()
+---
+> static void goodB2G()
+3754c3766,3772
+<     CWE190_Integer_Overflow__int_max_square_67b_badSink(myStruct);
+---
+>     CWE190_Integer_Overflow__int_max_square_67b_goodB2GSink(myStruct);
+> }
+> 
+> void CWE190_Integer_Overflow__int_max_square_67_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3765a3784,3786
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_max_square_67_good();
+>     printLine("Finished good()");
+3771,3773d3791
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_max_square_67_bad();
+<     printLine("Finished bad()");

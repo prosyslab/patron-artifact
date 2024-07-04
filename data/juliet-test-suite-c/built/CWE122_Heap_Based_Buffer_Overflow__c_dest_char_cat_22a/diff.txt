@@ -1,0 +1,69 @@
+3239a3240
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22a.c"
+3240a3242,3244
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22a.c"
+> int CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_goodG2B1Global = 0;
+> int CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_goodG2B2Global = 0;
+3242a3247
+> char * CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_goodG2B1Source(char * data);
+3243a3249,3262
+> static void goodG2B1()
+> {
+>     char * data;
+>     data = 
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22a.c" 3 4
+>           ((void *)0)
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22a.c"
+>               ;
+>     CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_goodG2B1Global = 0;
+>     data = CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_goodG2B1Source(data);
+>     {
+>         char source[100];
+>         memset(source, 'C', 100-1);
+>         source[100-1] = '\0';
+3245,3246c3264,3268
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22a.c"
+< int CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_badGlobal = 0;
+---
+>         strcat(data, source);
+>         printLine(data);
+>         free(data);
+>     }
+> }
+3248d3269
+< char * CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_badSource(char * data);
+3250c3271,3273
+< void CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_bad()
+---
+> char * CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_goodG2B2Source(char * data);
+> 
+> static void goodG2B2()
+3254c3277
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22a.c" 3 4
+---
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22a.c" 3 4
+3256c3279
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22a.c"
+---
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22a.c"
+3258,3259c3281,3282
+<     CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_badGlobal = 1;
+<     data = CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_badSource(data);
+---
+>     CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_goodG2B2Global = 1;
+>     data = CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_goodG2B2Source(data);
+3269a3293,3298
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3279a3309,3311
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_good();
+>     printLine("Finished good()");
+3285,3287d3316
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_22_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,145 @@
+2813a2814,2839
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_rand_15.c"
+> static void goodB2G1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     switch(6)
+>     {
+>     case 6:
+> 
+>         data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(8)
+>     {
+>     case 7:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+>     {
+>         int buffer[10] = { 0 };
+2814a2841,2852
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");
+>         }
+>     }
+>     break;
+>     }
+> }
+2817c2855
+< void CWE126_Buffer_Overread__CWE129_rand_15_bad()
+---
+> static void goodB2G2()
+2838a2877,2959
+>         if (data >= 0 && data < (10))
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");
+>         }
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     int data;
+> 
+>     data = -1;
+>     switch(5)
+>     {
+>     case 6:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+> 
+> 
+>         data = 7;
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>     {
+>         int buffer[10] = { 0 };
+> 
+> 
+>         if (data >= 0)
+>         {
+>             printIntLine(buffer[data]);
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is negative");
+>         }
+>     }
+>     break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     int data;
+> 
+>     data = -1;
+>     switch(6)
+>     {
+>     case 6:
+> 
+> 
+>         data = 7;
+>         break;
+>     default:
+> 
+>         printLine("Benign, fixed string");
+>         break;
+>     }
+>     switch(7)
+>     {
+>     case 7:
+>     {
+>         int buffer[10] = { 0 };
+> 
+2855a2977,2984
+> 
+> void CWE126_Buffer_Overread__CWE129_rand_15_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2865a2995,2997
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__CWE129_rand_15_good();
+>     printLine("Finished good()");
+2871,2873d3002
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__CWE129_rand_15_bad();
+<     printLine("Finished bad()");

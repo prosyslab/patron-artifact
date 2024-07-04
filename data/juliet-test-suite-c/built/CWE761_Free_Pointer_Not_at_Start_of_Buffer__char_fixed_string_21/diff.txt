@@ -1,0 +1,115 @@
+3240c3240
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21.c"
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21.c"
+3242,3243c3242,3244
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21.c"
+< static int badStatic = 0;
+---
+> # 65 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21.c"
+> static int goodB2G1Static = 0;
+> static int goodB2G2Static = 0;
+3245c3246,3247
+< static void badSink(char * data)
+---
+> 
+> static void goodB2G1Sink(char * data)
+3247c3249,3254
+<     if(badStatic)
+---
+>     if(goodB2G1Static)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+3248a3256,3286
+>         {
+>             size_t i;
+> 
+>             for (i=0; i < strlen(data); i++)
+>             {
+>                 if (data[i] == 'S')
+>                 {
+>                     printLine("We have a match!");
+>                     break;
+>                 }
+>             }
+>             free(data);
+>         }
+>     }
+> }
+> 
+> static void goodB2G1()
+> {
+>     char * data;
+>     data = (char *)malloc(100*sizeof(char));
+>     if (data == 
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21.c" 3 4
+>                ((void *)0)
+> # 98 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21.c"
+>                    ) {exit(-1);}
+>     data[0] = '\0';
+> 
+>     strcpy(data, "Fixed String");
+>     goodB2G1Static = 0;
+>     goodB2G1Sink(data);
+> }
+3251c3289,3292
+<         for (; *data != '\0'; data++)
+---
+> static void goodB2G2Sink(char * data)
+> {
+>     if(goodB2G2Static)
+>     {
+3253c3294,3296
+<             if (*data == 'S')
+---
+>             size_t i;
+> 
+>             for (i=0; i < strlen(data); i++)
+3255,3256c3298,3302
+<                 printLine("We have a match!");
+<                 break;
+---
+>                 if (data[i] == 'S')
+>                 {
+>                     printLine("We have a match!");
+>                     break;
+>                 }
+3257a3304
+>             free(data);
+3259d3305
+<         free(data);
+3263c3309
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21_bad()
+---
+> static void goodB2G2()
+3268c3314
+< # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21.c" 3 4
+---
+> # 131 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21.c" 3 4
+3270c3316
+< # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21.c"
+---
+> # 131 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21.c"
+3275,3276c3321,3328
+<     badStatic = 1;
+<     badSink(data);
+---
+>     goodB2G2Static = 1;
+>     goodB2G2Sink(data);
+> }
+> 
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+3287a3340,3342
+>     printLine("Calling good()...");
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21_good();
+>     printLine("Finished good()");
+3293,3295d3347
+<     printLine("Calling bad()...");
+<     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_21_bad();
+<     printLine("Finished bad()");

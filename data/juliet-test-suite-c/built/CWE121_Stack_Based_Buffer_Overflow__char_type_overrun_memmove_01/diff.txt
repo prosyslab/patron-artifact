@@ -1,0 +1,26 @@
+3254,3257c3254,3255
+< 
+< 
+< 
+< void CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memmove_01_bad()
+---
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memmove_01.c"
+> static void good1()
+3265c3263
+<         memmove(structCharVoid.charFirst, "0123456789abcdef0123456789abcde", sizeof(structCharVoid));
+---
+>         memmove(structCharVoid.charFirst, "0123456789abcdef0123456789abcde", sizeof(structCharVoid.charFirst));
+3270a3269,3273
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memmove_01_good()
+> {
+>     good1();
+> }
+3280a3284,3286
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memmove_01_good();
+>     printLine("Finished good()");
+3286,3288d3291
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__char_type_overrun_memmove_01_bad();
+<     printLine("Finished bad()");

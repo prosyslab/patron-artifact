@@ -1,0 +1,30 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE195_Signed_to_Unsigned_Conversion_Error__fscanf_memcpy_31_bad()
+---
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fscanf_memcpy_31.c"
+> static void goodG2B()
+2823,2827c2821
+<     fscanf(
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fscanf_memcpy_31.c" 3 4
+<           stdin
+< # 27 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__fscanf_memcpy_31.c"
+<                , "%d", &data);
+---
+>     data = 100-1;
+2846a2841,2845
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__fscanf_memcpy_31_good()
+> {
+>     goodG2B();
+> }
+2856a2856,2858
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__fscanf_memcpy_31_good();
+>     printLine("Finished good()");
+2862,2864d2863
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__fscanf_memcpy_31_bad();
+<     printLine("Finished bad()");

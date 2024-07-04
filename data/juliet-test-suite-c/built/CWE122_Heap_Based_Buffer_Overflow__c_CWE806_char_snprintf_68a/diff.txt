@@ -1,0 +1,42 @@
+3250a3251,3252
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68a.c"
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68b_goodG2BSink();
+3253,3257c3255
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68b_badSink();
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68_bad()
+---
+> static void goodG2B()
+3262c3260
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68a.c" 3 4
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68a.c" 3 4
+3264c3262
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68a.c"
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68a.c"
+3267,3270c3265,3273
+<     memset(data, 'A', 100-1);
+<     data[100-1] = '\0';
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68_badData = data;
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68b_badSink();
+---
+>     memset(data, 'A', 50-1);
+>     data[50-1] = '\0';
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68_goodG2BData = data;
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68b_goodG2BSink();
+> }
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68_good()
+> {
+>     goodG2B();
+3281a3285,3287
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68_good();
+>     printLine("Finished good()");
+3287,3289d3292
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__c_CWE806_char_snprintf_68_bad();
+<     printLine("Finished bad()");

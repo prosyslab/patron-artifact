@@ -1,0 +1,60 @@
+3240a3241
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_15.c"
+3241a3243,3248
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_15.c"
+> static void good1()
+> {
+>     switch(5)
+>     {
+>     case 6:
+3242a3250,3257
+>         printLine("Benign, fixed string");
+>         break;
+>     default:
+>     {
+> 
+> 
+>         char dataBuffer[100] = "";
+>         char * data = dataBuffer;
+3243a3259,3270
+>         if (scanf("%99s\0", data) == 
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_15.c" 3 4
+>                                     (-1)
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_15.c"
+>                                        )
+>         {
+>             printLine("scanf failed!");
+>         }
+>     }
+>     break;
+>     }
+> }
+3246,3247c3273
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_15.c"
+< void CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_15_bad()
+---
+> static void good2()
+3258,3259c3284,3288
+< 
+<         if (scanf("%99s\0", data) == 0)
+---
+>         if (scanf("%99s\0", data) == 
+> # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_15.c" 3 4
+>                                     (-1)
+> # 90 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE253_Incorrect_Check_of_Function_Return_Value/CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_15.c"
+>                                        )
+3270a3300,3305
+> 
+> void CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_15_good()
+> {
+>     good1();
+>     good2();
+> }
+3280a3316,3318
+>     printLine("Calling good()...");
+>     CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_15_good();
+>     printLine("Finished good()");
+3286,3288d3323
+<     printLine("Calling bad()...");
+<     CWE253_Incorrect_Check_of_Function_Return_Value__char_scanf_15_bad();
+<     printLine("Finished bad()");

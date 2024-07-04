@@ -1,0 +1,54 @@
+3244a3245,3246
+> # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_memmove_68a.c"
+> void CWE126_Buffer_Overread__malloc_char_memmove_68b_goodG2BSink();
+3247,3251c3249
+< 
+< 
+< void CWE126_Buffer_Overread__malloc_char_memmove_68b_badSink();
+< 
+< void CWE126_Buffer_Overread__malloc_char_memmove_68_bad()
+---
+> static void goodG2B()
+3255c3253
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_memmove_68a.c" 3 4
+---
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_memmove_68a.c" 3 4
+3257c3255
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_memmove_68a.c"
+---
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_memmove_68a.c"
+3260c3258
+<     data = (char *)malloc(50*sizeof(char));
+---
+>     data = (char *)malloc(100*sizeof(char));
+3262c3260
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_memmove_68a.c" 3 4
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_memmove_68a.c" 3 4
+3264c3262
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_memmove_68a.c"
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE126_Buffer_Overread/s02/CWE126_Buffer_Overread__malloc_char_memmove_68a.c"
+3266,3269c3264,3272
+<     memset(data, 'A', 50-1);
+<     data[50-1] = '\0';
+<     CWE126_Buffer_Overread__malloc_char_memmove_68_badData = data;
+<     CWE126_Buffer_Overread__malloc_char_memmove_68b_badSink();
+---
+>     memset(data, 'A', 100-1);
+>     data[100-1] = '\0';
+>     CWE126_Buffer_Overread__malloc_char_memmove_68_goodG2BData = data;
+>     CWE126_Buffer_Overread__malloc_char_memmove_68b_goodG2BSink();
+> }
+> 
+> void CWE126_Buffer_Overread__malloc_char_memmove_68_good()
+> {
+>     goodG2B();
+3280a3284,3286
+>     printLine("Calling good()...");
+>     CWE126_Buffer_Overread__malloc_char_memmove_68_good();
+>     printLine("Finished good()");
+3286,3288d3291
+<     printLine("Calling bad()...");
+<     CWE126_Buffer_Overread__malloc_char_memmove_68_bad();
+<     printLine("Finished bad()");

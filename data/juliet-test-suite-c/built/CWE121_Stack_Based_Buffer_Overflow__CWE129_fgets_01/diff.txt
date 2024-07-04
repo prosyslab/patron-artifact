@@ -1,0 +1,73 @@
+2813a2814,2817
+> # 68 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01.c"
+> static void goodG2B()
+> {
+>     int data;
+2814a2819
+>     data = -1;
+2816a2822,2825
+>     data = 7;
+>     {
+>         int i;
+>         int buffer[10] = { 0 };
+2819c2828,2845
+< void CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01_bad()
+---
+>         if (data >= 0)
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is negative.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G()
+2828c2854
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01.c" 3 4
+---
+> # 106 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01.c" 3 4
+2830c2856
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01.c"
+---
+> # 106 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01.c"
+2832c2858
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01.c" 3 4
+---
+> # 106 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01.c" 3 4
+2834c2860
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01.c"
+---
+> # 106 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01.c"
+2849,2850c2875
+< 
+<         if (data >= 0)
+---
+>         if (data >= 0 && data < (10))
+2861c2886
+<             printLine("ERROR: Array index is negative.");
+---
+>             printLine("ERROR: Array index is out-of-bounds");
+2864a2890,2895
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2874a2906,2908
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01_good();
+>     printLine("Finished good()");
+2880,2882d2913
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_01_bad();
+<     printLine("Finished bad()");

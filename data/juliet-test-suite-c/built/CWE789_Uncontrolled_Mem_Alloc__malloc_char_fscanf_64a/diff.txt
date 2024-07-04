@@ -1,0 +1,51 @@
+3240a3241
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64a.c"
+3241a3243,3244
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64a.c"
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64b_goodG2BSink(void * dataVoidPtr);
+3242a3246,3248
+> static void goodG2B()
+> {
+>     size_t data;
+3243a3250
+>     data = 0;
+3244a3252,3254
+>     data = 20;
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64b_goodG2BSink(&data);
+> }
+3246a3257
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64b_goodB2GSink(void * dataVoidPtr);
+3248,3252c3259
+< 
+< # 29 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64a.c"
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64b_badSink(void * dataVoidPtr);
+< 
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64_bad()
+---
+> static void goodB2G()
+3259c3266
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64a.c" 3 4
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64a.c" 3 4
+3261c3268
+< # 37 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64a.c"
+---
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64a.c"
+3263c3270,3276
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64b_badSink(&data);
+---
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64b_goodB2GSink(&data);
+> }
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3274a3288,3290
+>     printLine("Calling good()...");
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64_good();
+>     printLine("Finished good()");
+3280,3282d3295
+<     printLine("Calling bad()...");
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_64_bad();
+<     printLine("Finished bad()");

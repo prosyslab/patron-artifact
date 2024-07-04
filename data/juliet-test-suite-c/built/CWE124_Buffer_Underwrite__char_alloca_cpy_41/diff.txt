@@ -1,0 +1,51 @@
+3239a3240
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_41.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_41.c"
+< void CWE124_Buffer_Underwrite__char_alloca_cpy_41_badSink(char * data)
+---
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_41.c"
+> void CWE124_Buffer_Underwrite__char_alloca_cpy_41_goodG2BSink(char * data)
+3257c3255,3256
+< void CWE124_Buffer_Underwrite__char_alloca_cpy_41_bad()
+---
+> 
+> static void goodG2B()
+3261c3260
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_41.c" 3 4
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_41.c" 3 4
+3263c3262
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_41.c"
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_41.c"
+3265c3264
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_41.c" 3 4
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_41.c" 3 4
+3267c3266
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_41.c"
+---
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__char_alloca_cpy_41.c"
+3272,3273c3271,3277
+<     data = dataBuffer - 8;
+<     CWE124_Buffer_Underwrite__char_alloca_cpy_41_badSink(data);
+---
+>     data = dataBuffer;
+>     CWE124_Buffer_Underwrite__char_alloca_cpy_41_goodG2BSink(data);
+> }
+> 
+> void CWE124_Buffer_Underwrite__char_alloca_cpy_41_good()
+> {
+>     goodG2B();
+3284a3289,3291
+>     printLine("Calling good()...");
+>     CWE124_Buffer_Underwrite__char_alloca_cpy_41_good();
+>     printLine("Finished good()");
+3290,3292d3296
+<     printLine("Calling bad()...");
+<     CWE124_Buffer_Underwrite__char_alloca_cpy_41_bad();
+<     printLine("Finished bad()");

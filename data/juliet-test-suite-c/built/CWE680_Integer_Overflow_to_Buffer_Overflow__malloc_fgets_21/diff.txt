@@ -1,0 +1,114 @@
+2813a2814,2816
+> # 75 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21.c"
+> static int goodG2B1Static = 0;
+> static int goodG2B2Static = 0;
+2815a2819,2822
+> static int goodG2B1Source(int data)
+> {
+>     if(goodG2B1Static)
+>     {
+2816a2824,2827
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2817a2829,2832
+>         data = 20;
+>     }
+>     return data;
+> }
+2818a2834,2836
+> static void goodG2B1()
+> {
+>     int data;
+2820c2838,2843
+< static int badStatic = 0;
+---
+>     data = -1;
+>     goodG2B1Static = 0;
+>     data = goodG2B1Source(data);
+>     {
+>         size_t i;
+>         int *intPointer;
+2822c2845,2862
+< static int badSource(int data)
+---
+> 
+>         intPointer = (int*)malloc(data * sizeof(int));
+>         if (intPointer == 
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21.c" 3 4
+>                          ((void *)0)
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21.c"
+>                              ) {exit(-1);}
+>         for (i = 0; i < (size_t)data; i++)
+>         {
+>             intPointer[i] = 0;
+>         }
+>         printIntLine(intPointer[0]);
+>         free(intPointer);
+>     }
+> }
+> 
+> 
+> static int goodG2B2Source(int data)
+2824c2864
+<     if(badStatic)
+---
+>     if(goodG2B2Static)
+2826,2827d2865
+<         {
+<             char inputBuffer[(3 * sizeof(data) + 2)] = "";
+2829,2846c2867
+<             if (fgets(inputBuffer, (3 * sizeof(data) + 2), 
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21.c" 3 4
+<                                                    stdin
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21.c"
+<                                                         ) != 
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21.c" 3 4
+<                                                              ((void *)0)
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21.c"
+<                                                                  )
+<             {
+< 
+<                 data = atoi(inputBuffer);
+<             }
+<             else
+<             {
+<                 printLine("fgets() failed.");
+<             }
+<         }
+---
+>         data = 20;
+2851c2872
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21_bad()
+---
+> static void goodG2B2()
+2856,2857c2877,2878
+<     badStatic = 1;
+<     data = badSource(data);
+---
+>     goodG2B2Static = 1;
+>     data = goodG2B2Source(data);
+2865c2886
+< # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21.c" 3 4
+---
+> # 141 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21.c" 3 4
+2867c2888
+< # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21.c"
+---
+> # 141 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21.c"
+2876a2898,2903
+> 
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2886a2914,2916
+>     printLine("Calling good()...");
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21_good();
+>     printLine("Finished good()");
+2892,2894d2921
+<     printLine("Calling bad()...");
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_fgets_21_bad();
+<     printLine("Finished bad()");

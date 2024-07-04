@@ -1,0 +1,92 @@
+4900c4900
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c"
+---
+> # 129 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c"
+4902,4903c4902,4903
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c"
+< void CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31_bad()
+---
+> # 129 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c"
+> static void goodG2B()
+4908,4955d4907
+<     {
+< 
+< 
+< 
+< 
+<         int recvResult;
+<         struct sockaddr_in service;
+<         int connectSocket = -1;
+<         char inputBuffer[(3 * sizeof(data) + 2)];
+<         do
+<         {
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c"
+<             connectSocket = socket(
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c" 3 4
+<                                   2
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c"
+<                                          , 
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c" 3 4
+<                                            SOCK_STREAM
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c"
+<                                                       , 
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c" 3 4
+<                                                         IPPROTO_TCP
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c"
+<                                                                    );
+<             if (connectSocket == -1)
+<             {
+<                 break;
+<             }
+<             memset(&service, 0, sizeof(service));
+<             service.sin_family = 
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c" 3 4
+<                                 2
+< # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s01/CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31.c"
+<                                        ;
+<             service.sin_addr.s_addr = inet_addr("127.0.0.1");
+<             service.sin_port = htons(27015);
+<             if (connect(connectSocket, (struct sockaddr*)&service, sizeof(service)) == -1)
+<             {
+<                 break;
+<             }
+< 
+< 
+<             recvResult = recv(connectSocket, inputBuffer, (3 * sizeof(data) + 2) - 1, 0);
+<             if (recvResult == -1 || recvResult == 0)
+<             {
+<                 break;
+<             }
+4957,4972c4909
+<             inputBuffer[recvResult] = '\0';
+< 
+<             data = atoi(inputBuffer);
+<         }
+<         while (0);
+<         if (connectSocket != -1)
+<         {
+<             close(connectSocket);
+<         }
+< 
+< 
+< 
+< 
+< 
+< 
+<     }
+---
+>     data = 100-1;
+4991a4929,4933
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31_good()
+> {
+>     goodG2B();
+> }
+5001a4944,4946
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31_good();
+>     printLine("Finished good()");
+5007,5009d4951
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__connect_socket_strncpy_31_bad();
+<     printLine("Finished bad()");

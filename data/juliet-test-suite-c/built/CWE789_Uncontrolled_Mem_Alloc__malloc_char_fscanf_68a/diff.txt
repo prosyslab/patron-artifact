@@ -1,0 +1,49 @@
+3249a3250,3252
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68a.c"
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68b_goodG2BSink();
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68b_goodB2GSink();
+3251a3255,3259
+> static void goodG2B()
+> {
+>     size_t data;
+> 
+>     data = 0;
+3252a3261,3264
+>     data = 20;
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68_goodG2BData = data;
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68b_goodG2BSink();
+> }
+3254d3265
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68b_badSink();
+3256c3267
+< void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68_bad()
+---
+> static void goodB2G()
+3263c3274
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68a.c" 3 4
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68a.c" 3 4
+3265c3276
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68a.c"
+---
+> # 73 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE789_Uncontrolled_Mem_Alloc/s01/CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68a.c"
+3267,3268c3278,3285
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68_badData = data;
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68b_badSink();
+---
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68_goodB2GData = data;
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68b_goodB2GSink();
+> }
+> 
+> void CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68_good()
+> {
+>     goodG2B();
+>     goodB2G();
+3279a3297,3299
+>     printLine("Calling good()...");
+>     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68_good();
+>     printLine("Finished good()");
+3285,3287d3304
+<     printLine("Calling bad()...");
+<     CWE789_Uncontrolled_Mem_Alloc__malloc_char_fscanf_68_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,65 @@
+2819a2820,2827
+> # 60 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fscanf_34.c"
+> static void goodG2B()
+> {
+>     int data;
+>     CWE127_Buffer_Underread__CWE839_fscanf_34_unionType myUnion;
+> 
+>     data = -1;
+> 
+2820a2829,2847
+>     data = 7;
+>     myUnion.unionFirst = data;
+>     {
+>         int data = myUnion.unionSecond;
+>         {
+>             int buffer[10] = { 0 };
+> 
+> 
+>             if (data < 10)
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is too big.");
+>             }
+>         }
+>     }
+> }
+2823c2850
+< void CWE127_Buffer_Underread__CWE839_fscanf_34_bad()
+---
+> static void goodB2G()
+2831c2858
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fscanf_34.c" 3 4
+---
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fscanf_34.c" 3 4
+2833c2860
+< # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fscanf_34.c"
+---
+> # 96 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_fscanf_34.c"
+2841,2842c2868
+< 
+<             if (data < 10)
+---
+>             if (data >= 0 && data < (10))
+2848c2874
+<                 printLine("ERROR: Array index is too big.");
+---
+>                 printLine("ERROR: Array index is out-of-bounds");
+2852a2879,2884
+> 
+> void CWE127_Buffer_Underread__CWE839_fscanf_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2862a2895,2897
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__CWE839_fscanf_34_good();
+>     printLine("Finished good()");
+2868,2870d2902
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__CWE839_fscanf_34_bad();
+<     printLine("Finished bad()");

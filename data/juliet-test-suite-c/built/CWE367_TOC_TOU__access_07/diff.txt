@@ -1,0 +1,110 @@
+4051a4052,4056
+> # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c"
+> static void good1()
+> {
+>     if(staticFive!=5)
+>     {
+4052a4058,4075
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             char filename[100] = "";
+>             int fileDesc = -1;
+>             if (fgets(filename, 100, 
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c" 3 4
+>                                     stdin
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c"
+>                                          ) == 
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c" 3 4
+>                                               ((void *)0)
+> # 105 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c"
+>                                                   )
+>             {
+>                 printLine("fgets() failed");
+4053a4077,4082
+>                 filename[0] = '\0';
+>             }
+>             if (strlen(filename) > 0)
+>             {
+>                 filename[strlen(filename)-1] = '\0';
+>             }
+4055c4084,4106
+< void CWE367_TOC_TOU__access_07_bad()
+---
+>             fileDesc = open(filename, 
+> # 116 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c" 3 4
+>                                       02
+> # 116 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c"
+>                                             );
+>             if (fileDesc == -1)
+>             {
+>                 exit(1);
+>             }
+>             if (write(fileDesc, "Good Sink...", strlen("Good Sink...")) == -1)
+>             {
+>                 exit(1);
+>             }
+>             if (fileDesc != -1)
+>             {
+>                 close(fileDesc);
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void good2()
+4063c4114
+< # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c" 3 4
+---
+> # 141 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c" 3 4
+4065c4116
+< # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c"
+---
+> # 141 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c"
+4067c4118
+< # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c" 3 4
+---
+> # 141 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c" 3 4
+4069c4120
+< # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c"
+---
+> # 141 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c"
+4081,4088d4131
+<             if (access(filename, 
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c" 3 4
+<                                 2
+< # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c"
+<                                     ) == -1)
+<             {
+<                 exit(1);
+<             }
+4090c4133
+< # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c" 3 4
+---
+> # 152 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c" 3 4
+4092c4135
+< # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c"
+---
+> # 152 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE367_TOC_TOU/CWE367_TOC_TOU__access_07.c"
+4098c4141
+<             if (write(fileDesc, "Bad Sink...", strlen("Bad Sink...")) == -1)
+---
+>             if (write(fileDesc, "Good Sink...", strlen("Good Sink...")) == -1)
+4108a4152,4157
+> 
+> void CWE367_TOC_TOU__access_07_good()
+> {
+>     good1();
+>     good2();
+> }
+4118a4168,4170
+>     printLine("Calling good()...");
+>     CWE367_TOC_TOU__access_07_good();
+>     printLine("Finished good()");
+4124,4126d4175
+<     printLine("Calling bad()...");
+<     CWE367_TOC_TOU__access_07_bad();
+<     printLine("Finished bad()");

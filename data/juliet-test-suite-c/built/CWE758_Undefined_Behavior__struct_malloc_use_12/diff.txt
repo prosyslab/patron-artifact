@@ -1,0 +1,54 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE758_Undefined_Behavior__struct_malloc_use_12_bad()
+---
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_malloc_use_12.c"
+> static void good1()
+2821a2820
+>             twoIntsStruct data;
+2824c2823
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_malloc_use_12.c" 3 4
+---
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_malloc_use_12.c" 3 4
+2826c2825
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_malloc_use_12.c"
+---
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_malloc_use_12.c"
+2828c2827,2834
+<             twoIntsStruct data = *pointer;
+---
+>             data.intOne = 1;
+>             data.intTwo = 2;
+>             *pointer = data;
+>             {
+>                 twoIntsStruct data = *pointer;
+>                 printIntLine(data.intOne);
+>                 printIntLine(data.intTwo);
+>             }
+2830,2831d2835
+<             printIntLine(data.intOne);
+<             printIntLine(data.intTwo);
+2840c2844
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_malloc_use_12.c" 3 4
+---
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_malloc_use_12.c" 3 4
+2842c2846
+< # 38 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_malloc_use_12.c"
+---
+> # 81 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__struct_malloc_use_12.c"
+2855a2860,2864
+> 
+> void CWE758_Undefined_Behavior__struct_malloc_use_12_good()
+> {
+>     good1();
+> }
+2865a2875,2877
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__struct_malloc_use_12_good();
+>     printLine("Finished good()");
+2871,2873d2882
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__struct_malloc_use_12_bad();
+<     printLine("Finished bad()");

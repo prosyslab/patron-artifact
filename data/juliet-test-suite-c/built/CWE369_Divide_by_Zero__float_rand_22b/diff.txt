@@ -1,0 +1,58 @@
+3731a3732
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_rand_22b.c"
+3732a3734,3737
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_rand_22b.c"
+> extern int CWE369_Divide_by_Zero__float_rand_22_goodB2G1Global;
+> extern int CWE369_Divide_by_Zero__float_rand_22_goodB2G2Global;
+> extern int CWE369_Divide_by_Zero__float_rand_22_goodG2BGlobal;
+3734a3740,3766
+> void CWE369_Divide_by_Zero__float_rand_22_goodB2G1Sink(float data)
+> {
+>     if(CWE369_Divide_by_Zero__float_rand_22_goodB2G1Global)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if(fabs(data) > 0.000001)
+>         {
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+> 
+> 
+> void CWE369_Divide_by_Zero__float_rand_22_goodB2G2Sink(float data)
+> {
+>     if(CWE369_Divide_by_Zero__float_rand_22_goodB2G2Global)
+>     {
+3735a3768,3778
+>         if(fabs(data) > 0.000001)
+>         {
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+3737,3738d3779
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_rand_22b.c"
+< extern int CWE369_Divide_by_Zero__float_rand_22_badGlobal;
+3740c3781
+< void CWE369_Divide_by_Zero__float_rand_22_badSink(float data)
+---
+> void CWE369_Divide_by_Zero__float_rand_22_goodG2BSink(float data)
+3742c3783
+<     if(CWE369_Divide_by_Zero__float_rand_22_badGlobal)
+---
+>     if(CWE369_Divide_by_Zero__float_rand_22_goodG2BGlobal)

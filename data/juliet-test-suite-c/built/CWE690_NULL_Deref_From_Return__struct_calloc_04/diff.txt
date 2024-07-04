@@ -1,0 +1,77 @@
+3247a3248,3260
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_04.c"
+> static void goodB2G1()
+> {
+>     twoIntsStruct * data;
+>     data = 
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_04.c" 3 4
+>           ((void *)0)
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_04.c"
+>               ;
+> 
+>     data = (twoIntsStruct *)calloc(1, sizeof(twoIntsStruct));
+>     if(STATIC_CONST_FALSE)
+>     {
+3248a3262,3279
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if (data != 
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_04.c" 3 4
+>                    ((void *)0)
+> # 64 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_04.c"
+>                        )
+>         {
+>             data[0].intOne = 1;
+>             data[0].intTwo = 1;
+>             printStructLine(&data[0]);
+>             free(data);
+>         }
+>     }
+> }
+3251c3282
+< void CWE690_NULL_Deref_From_Return__struct_calloc_04_bad()
+---
+> static void goodB2G2()
+3255c3286
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_04.c" 3 4
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_04.c" 3 4
+3257c3288
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_04.c"
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_04.c"
+3264,3267c3295,3305
+<         data[0].intOne = 1;
+<         data[0].intTwo = 1;
+<         printStructLine(&data[0]);
+<         free(data);
+---
+>         if (data != 
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_04.c" 3 4
+>                    ((void *)0)
+> # 84 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE690_NULL_Deref_From_Return/s02/CWE690_NULL_Deref_From_Return__struct_calloc_04.c"
+>                        )
+>         {
+>             data[0].intOne = 1;
+>             data[0].intTwo = 1;
+>             printStructLine(&data[0]);
+>             free(data);
+>         }
+3269a3308,3313
+> 
+> void CWE690_NULL_Deref_From_Return__struct_calloc_04_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+> }
+3279a3324,3326
+>     printLine("Calling good()...");
+>     CWE690_NULL_Deref_From_Return__struct_calloc_04_good();
+>     printLine("Finished good()");
+3285,3287d3331
+<     printLine("Calling bad()...");
+<     CWE690_NULL_Deref_From_Return__struct_calloc_04_bad();
+<     printLine("Finished bad()");

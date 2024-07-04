@@ -1,0 +1,31 @@
+2813a2814,2815
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__negative_memcpy_64a.c"
+> void CWE194_Unexpected_Sign_Extension__negative_memcpy_64b_goodG2BSink(void * dataVoidPtr);
+2815,2820c2817
+< 
+< 
+< 
+< void CWE194_Unexpected_Sign_Extension__negative_memcpy_64b_badSink(void * dataVoidPtr);
+< 
+< void CWE194_Unexpected_Sign_Extension__negative_memcpy_64_bad()
+---
+> static void goodG2B()
+2826,2827c2823,2829
+<     data = -1;
+<     CWE194_Unexpected_Sign_Extension__negative_memcpy_64b_badSink(&data);
+---
+>     data = 100-1;
+>     CWE194_Unexpected_Sign_Extension__negative_memcpy_64b_goodG2BSink(&data);
+> }
+> 
+> void CWE194_Unexpected_Sign_Extension__negative_memcpy_64_good()
+> {
+>     goodG2B();
+2838a2841,2843
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__negative_memcpy_64_good();
+>     printLine("Finished good()");
+2844,2846d2848
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__negative_memcpy_64_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,19 @@
+file(REMOVE_RECURSE
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE121/bad/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad"
+  "/root/patron-artifact/data/juliet-test-suite-c/bin/CWE121/bad/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad.pdb"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad.dir/s08/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54a.cpp.o"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad.dir/s08/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54a.cpp.o.d"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad.dir/s08/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54b.cpp.o"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad.dir/s08/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54b.cpp.o.d"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad.dir/s08/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54c.cpp.o"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad.dir/s08/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54c.cpp.o.d"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad.dir/s08/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54d.cpp.o"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad.dir/s08/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54d.cpp.o.d"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad.dir/s08/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54e.cpp.o"
+  "CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad.dir/s08/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54e.cpp.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/CWE121_Stack_Based_Buffer_Overflow__placement_new_alloca_54-bad.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

@@ -1,0 +1,61 @@
+2813a2814,2815
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_multiply_61a.c"
+> int CWE191_Integer_Underflow__int_fscanf_multiply_61b_goodG2BSource(int data);
+2814a2817,2819
+> static void goodG2B()
+> {
+>     int data;
+2815a2821,2829
+>     data = 0;
+>     data = CWE191_Integer_Underflow__int_fscanf_multiply_61b_goodG2BSource(data);
+>     if(data < 0)
+>     {
+> 
+>         int result = data * 2;
+>         printIntLine(result);
+>     }
+> }
+2818c2832
+< int CWE191_Integer_Underflow__int_fscanf_multiply_61b_badSource(int data);
+---
+> int CWE191_Integer_Underflow__int_fscanf_multiply_61b_goodB2GSource(int data);
+2820c2834
+< void CWE191_Integer_Underflow__int_fscanf_multiply_61_bad()
+---
+> static void goodB2G()
+2825c2839
+<     data = CWE191_Integer_Underflow__int_fscanf_multiply_61b_badSource(data);
+---
+>     data = CWE191_Integer_Underflow__int_fscanf_multiply_61b_goodB2GSource(data);
+2829,2830c2843,2855
+<         int result = data * 2;
+<         printIntLine(result);
+---
+>         if (data > (
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_multiply_61a.c" 3 4
+>                    (-0x7fffffff - 1)
+> # 72 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fscanf_multiply_61a.c"
+>                           /2))
+>         {
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too small to perform multiplication.");
+>         }
+2832a2858,2863
+> 
+> void CWE191_Integer_Underflow__int_fscanf_multiply_61_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2842a2874,2876
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__int_fscanf_multiply_61_good();
+>     printLine("Finished good()");
+2848,2850d2881
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__int_fscanf_multiply_61_bad();
+<     printLine("Finished bad()");

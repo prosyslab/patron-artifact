@@ -1,0 +1,64 @@
+2813a2814,2830
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_32.c"
+> static void goodG2B()
+> {
+>     char data;
+>     char *dataPtr1 = &data;
+>     char *dataPtr2 = &data;
+>     data = ' ';
+>     {
+>         char data = *dataPtr1;
+> 
+>         data = 2;
+>         *dataPtr1 = data;
+>     }
+>     {
+>         char data = *dataPtr2;
+>         if(data > 0)
+>         {
+2814a2832,2836
+>             char result = data * 2;
+>             printHexCharLine(result);
+>         }
+>     }
+> }
+2817c2839
+< void CWE190_Integer_Overflow__char_fscanf_multiply_32_bad()
+---
+> static void goodB2G()
+2827c2849
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_32.c" 3 4
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_32.c" 3 4
+2829c2851
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_32.c"
+---
+> # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_multiply_32.c"
+2838,2839c2860,2868
+<             char result = data * 2;
+<             printHexCharLine(result);
+---
+>             if (data < (0x7f/2))
+>             {
+>                 char result = data * 2;
+>                 printHexCharLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too large to perform arithmetic safely.");
+>             }
+2842a2872,2877
+> 
+> void CWE190_Integer_Overflow__char_fscanf_multiply_32_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2852a2888,2890
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_fscanf_multiply_32_good();
+>     printLine("Finished good()");
+2858,2860d2895
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_fscanf_multiply_32_bad();
+<     printLine("Finished bad()");

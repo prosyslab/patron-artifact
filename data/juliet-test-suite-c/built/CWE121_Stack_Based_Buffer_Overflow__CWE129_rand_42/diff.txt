@@ -1,0 +1,72 @@
+2813a2814,2816
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_42.c"
+> static int goodG2BSource(int data)
+> {
+2815a2819,2821
+>     data = 7;
+>     return data;
+> }
+2817c2823,2851
+< static int badSource(int data)
+---
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = -1;
+>     data = goodG2BSource(data);
+>     {
+>         int i;
+>         int buffer[10] = { 0 };
+> 
+> 
+>         if (data >= 0)
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is negative.");
+>         }
+>     }
+> }
+> 
+> 
+> static int goodB2GSource(int data)
+2824c2858
+< void CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_42_bad()
+---
+> static void goodB2G()
+2829c2863
+<     data = badSource(data);
+---
+>     data = goodB2GSource(data);
+2834,2835c2868
+< 
+<         if (data >= 0)
+---
+>         if (data >= 0 && data < (10))
+2846c2879
+<             printLine("ERROR: Array index is negative.");
+---
+>             printLine("ERROR: Array index is out-of-bounds");
+2849a2883,2888
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_42_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2859a2899,2901
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_42_good();
+>     printLine("Finished good()");
+2865,2867d2906
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE129_rand_42_bad();
+<     printLine("Finished bad()");

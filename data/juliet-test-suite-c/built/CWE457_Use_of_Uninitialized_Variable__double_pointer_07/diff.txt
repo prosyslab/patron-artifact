@@ -1,0 +1,110 @@
+3246a3247,3252
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_07.c"
+> static void goodB2G1()
+> {
+>     double * data;
+>     if(staticFive==5)
+>     {
+3247a3254,3274
+>         ;
+>     }
+>     if(staticFive!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+> 
+>         data = (double *)malloc(sizeof(double));
+>         if (data == 
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_07.c" 3 4
+>                    ((void *)0)
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_07.c"
+>                        ) {exit(-1);}
+>         *data = 5.0;
+>         printDoubleLine(*data);
+>     }
+> }
+3250c3277
+< void CWE457_Use_of_Uninitialized_Variable__double_pointer_07_bad()
+---
+> static void goodB2G2()
+3260a3288,3295
+> 
+>         data = (double *)malloc(sizeof(double));
+>         if (data == 
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_07.c" 3 4
+>                    ((void *)0)
+> # 87 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_07.c"
+>                        ) {exit(-1);}
+>         *data = 5.0;
+3263a3299,3357
+> 
+> 
+> static void goodG2B1()
+> {
+>     double * data;
+>     if(staticFive!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+> 
+>         data = (double *)malloc(sizeof(double));
+>         if (data == 
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_07.c" 3 4
+>                    ((void *)0)
+> # 107 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_07.c"
+>                        ) {exit(-1);}
+>         *data = 5.0;
+>     }
+>     if(staticFive==5)
+>     {
+> 
+>         printDoubleLine(*data);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     double * data;
+>     if(staticFive==5)
+>     {
+> 
+> 
+>         data = (double *)malloc(sizeof(double));
+>         if (data == 
+> # 126 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_07.c" 3 4
+>                    ((void *)0)
+> # 126 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_pointer_07.c"
+>                        ) {exit(-1);}
+>         *data = 5.0;
+>     }
+>     if(staticFive==5)
+>     {
+> 
+>         printDoubleLine(*data);
+>     }
+> }
+> 
+> void CWE457_Use_of_Uninitialized_Variable__double_pointer_07_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+3273a3368,3370
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__double_pointer_07_good();
+>     printLine("Finished good()");
+3279,3281d3375
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__double_pointer_07_bad();
+<     printLine("Finished bad()");

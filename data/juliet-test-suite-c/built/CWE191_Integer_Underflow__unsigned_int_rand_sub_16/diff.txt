@@ -1,0 +1,50 @@
+2813a2814,2826
+> # 48 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__unsigned_int_rand_sub_16.c"
+> static void goodB2G()
+> {
+>     unsigned int data;
+>     data = 0;
+>     while(1)
+>     {
+> 
+>         data = (unsigned int)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>         break;
+>     }
+>     while(1)
+>     {
+2814a2828,2839
+>         if (data > 0)
+>         {
+>             unsigned int result = data - 1;
+>             printUnsignedLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform subtraction.");
+>         }
+>         break;
+>     }
+> }
+2817c2842
+< void CWE191_Integer_Underflow__unsigned_int_rand_sub_16_bad()
+---
+> static void goodG2B()
+2824c2849
+<         data = (unsigned int)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+---
+>         data = -2;
+2836a2862,2867
+> 
+> void CWE191_Integer_Underflow__unsigned_int_rand_sub_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2846a2878,2880
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__unsigned_int_rand_sub_16_good();
+>     printLine("Finished good()");
+2852,2854d2885
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__unsigned_int_rand_sub_16_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,49 @@
+2819a2820,2824
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s04/CWE190_Integer_Overflow__int_rand_add_34.c"
+> static void goodG2B()
+> {
+>     int data;
+>     CWE190_Integer_Overflow__int_rand_add_34_unionType myUnion;
+2820a2826,2838
+>     data = 0;
+> 
+>     data = 2;
+>     myUnion.unionFirst = data;
+>     {
+>         int data = myUnion.unionSecond;
+>         {
+> 
+>             int result = data + 1;
+>             printIntLine(result);
+>         }
+>     }
+> }
+2823c2841
+< void CWE190_Integer_Overflow__int_rand_add_34_bad()
+---
+> static void goodB2G()
+2834d2851
+<         {
+2835a2853,2854
+>         if (data < 0x7fffffff)
+>         {
+2838a2858,2861
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2840a2864,2869
+> 
+> void CWE190_Integer_Overflow__int_rand_add_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2850a2880,2882
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_rand_add_34_good();
+>     printLine("Finished good()");
+2856,2858d2887
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_rand_add_34_bad();
+<     printLine("Finished bad()");

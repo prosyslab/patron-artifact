@@ -1,0 +1,39 @@
+3239a3240
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_cat_44.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_cat_44.c"
+< static void badSink(char * data)
+---
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_cat_44.c"
+> static void goodG2BSink(char * data)
+3257c3255
+< void CWE665_Improper_Initialization__char_cat_44_bad()
+---
+> static void goodG2B()
+3260,3261c3258
+< 
+<     void (*funcPtr) (char *) = badSink;
+---
+>     void (*funcPtr) (char *) = goodG2BSink;
+3265,3266c3262
+<     ;
+< 
+---
+>     data[0] = '\0';
+3268a3265,3269
+> 
+> void CWE665_Improper_Initialization__char_cat_44_good()
+> {
+>     goodG2B();
+> }
+3278a3280,3282
+>     printLine("Calling good()...");
+>     CWE665_Improper_Initialization__char_cat_44_good();
+>     printLine("Finished good()");
+3284,3286d3287
+<     printLine("Calling bad()...");
+<     CWE665_Improper_Initialization__char_cat_44_bad();
+<     printLine("Finished bad()");

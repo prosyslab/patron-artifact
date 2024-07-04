@@ -1,0 +1,63 @@
+2862,2865c2862,2863
+< 
+< 
+< 
+< void CWE190_Integer_Overflow__int64_t_fscanf_add_18_bad()
+---
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_18.c"
+> static void goodB2G()
+2873c2871
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_18.c" 3 4
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_18.c" 3 4
+2875c2873
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_18.c"
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_18.c"
+2877c2875
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_18.c" 3 4
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_18.c" 3 4
+2879c2877
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_18.c"
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_18.c"
+2882a2881,2903
+> 
+>     if (data < 0x7fffffffffffffffLL)
+>     {
+>         int64_t result = data + 1;
+>         printLongLongLine(result);
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     int64_t data;
+>     data = 0LL;
+>     goto source;
+> source:
+> 
+>     data = 2;
+>     goto sink;
+> sink:
+2888a2910,2915
+> 
+> void CWE190_Integer_Overflow__int64_t_fscanf_add_18_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+2898a2926,2928
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_fscanf_add_18_good();
+>     printLine("Finished good()");
+2904,2906d2933
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_fscanf_add_18_bad();
+<     printLine("Finished bad()");

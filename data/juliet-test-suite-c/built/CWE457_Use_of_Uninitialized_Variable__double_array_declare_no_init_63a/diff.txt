@@ -1,0 +1,45 @@
+2813a2814,2815
+> # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_63a.c"
+> void CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_63b_goodG2BSink(double * * data);
+2814a2817,2821
+> static void goodG2B()
+> {
+>     double * data;
+>     double dataUninitArray[10];
+>     data = dataUninitArray;
+2815a2823,2831
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+>             data[i] = (double)i;
+>         }
+>     }
+>     CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_63b_goodG2BSink(&data);
+> }
+2818c2834
+< void CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_63b_badSink(double * * dataPtr);
+---
+> void CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_63b_goodB2GSink(double * * data);
+2820c2836
+< void CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_63_bad()
+---
+> static void goodB2G()
+2827c2843,2849
+<     CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_63b_badSink(&data);
+---
+>     CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_63b_goodB2GSink(&data);
+> }
+> 
+> void CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_63_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2838a2861,2863
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_63_good();
+>     printLine("Finished good()");
+2844,2846d2868
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_63_bad();
+<     printLine("Finished bad()");

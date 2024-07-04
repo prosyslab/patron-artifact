@@ -1,0 +1,20 @@
+4051a4052
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_66b.c"
+4053,4060c4054,4055
+< 
+< 
+< 
+< 
+< 
+< 
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_66b.c"
+< void CWE404_Improper_Resource_Shutdown__open_fclose_66b_badSink(int dataArray[])
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_66b.c"
+> void CWE404_Improper_Resource_Shutdown__open_fclose_66b_goodB2GSink(int dataArray[])
+4062d4056
+< 
+4067c4061
+<         fclose((FILE *)data);
+---
+>         close(data);

@@ -1,0 +1,102 @@
+2819a2820,2836
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_rand_add_04.c"
+> static void goodB2G1()
+> {
+>     char data;
+>     data = ' ';
+>     if(STATIC_CONST_TRUE)
+>     {
+> 
+>         data = (char)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>     }
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2820a2838,2848
+>         if (data < 0x7f)
+>         {
+>             char result = data + 1;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+2823c2851
+< void CWE190_Integer_Overflow__char_rand_add_04_bad()
+---
+> static void goodB2G2()
+2833a2862,2891
+> 
+>         if (data < 0x7f)
+>         {
+>             char result = data + 1;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     char data;
+>     data = ' ';
+>     if(STATIC_CONST_FALSE)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2;
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+2840a2899,2926
+> 
+> 
+> static void goodG2B2()
+> {
+>     char data;
+>     data = ' ';
+>     if(STATIC_CONST_TRUE)
+>     {
+> 
+>         data = 2;
+>     }
+>     if(STATIC_CONST_TRUE)
+>     {
+>         {
+> 
+>             char result = data + 1;
+>             printHexCharLine(result);
+>         }
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__char_rand_add_04_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2850a2937,2939
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_rand_add_04_good();
+>     printLine("Finished good()");
+2856,2858d2944
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_rand_add_04_bad();
+<     printLine("Finished bad()");

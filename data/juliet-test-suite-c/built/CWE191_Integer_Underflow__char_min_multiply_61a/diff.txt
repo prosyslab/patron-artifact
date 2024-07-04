@@ -1,0 +1,60 @@
+2813a2814,2815
+> # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_min_multiply_61a.c"
+> char CWE191_Integer_Underflow__char_min_multiply_61b_goodG2BSource(char data);
+2814a2817,2823
+> static void goodG2B()
+> {
+>     char data;
+>     data = ' ';
+>     data = CWE191_Integer_Underflow__char_min_multiply_61b_goodG2BSource(data);
+>     if(data < 0)
+>     {
+2815a2825,2828
+>         char result = data * 2;
+>         printHexCharLine(result);
+>     }
+> }
+2818c2831
+< char CWE191_Integer_Underflow__char_min_multiply_61b_badSource(char data);
+---
+> char CWE191_Integer_Underflow__char_min_multiply_61b_goodB2GSource(char data);
+2820c2833
+< void CWE191_Integer_Underflow__char_min_multiply_61_bad()
+---
+> static void goodB2G()
+2824c2837
+<     data = CWE191_Integer_Underflow__char_min_multiply_61b_badSource(data);
+---
+>     data = CWE191_Integer_Underflow__char_min_multiply_61b_goodB2GSource(data);
+2828,2829c2841,2853
+<         char result = data * 2;
+<         printHexCharLine(result);
+---
+>         if (data > (
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_min_multiply_61a.c" 3 4
+>                    (-0x7f - 1)
+> # 69 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_min_multiply_61a.c"
+>                            /2))
+>         {
+>             char result = data * 2;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too small to perform multiplication.");
+>         }
+2831a2856,2861
+> 
+> void CWE191_Integer_Underflow__char_min_multiply_61_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2841a2872,2874
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__char_min_multiply_61_good();
+>     printLine("Finished good()");
+2847,2849d2879
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__char_min_multiply_61_bad();
+<     printLine("Finished bad()");

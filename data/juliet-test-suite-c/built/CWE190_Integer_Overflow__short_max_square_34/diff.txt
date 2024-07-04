@@ -1,0 +1,48 @@
+3739a3740,3745
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s04/CWE190_Integer_Overflow__short_max_square_34.c"
+> static void goodG2B()
+> {
+>     short data;
+>     CWE190_Integer_Overflow__short_max_square_34_unionType myUnion;
+>     data = 0;
+3740a3747,3757
+>     data = 2;
+>     myUnion.unionFirst = data;
+>     {
+>         short data = myUnion.unionSecond;
+>         {
+> 
+>             short result = data * data;
+>             printIntLine(result);
+>         }
+>     }
+> }
+3743c3760
+< void CWE190_Integer_Overflow__short_max_square_34_bad()
+---
+> static void goodB2G()
+3753d3769
+<         {
+3754a3771,3772
+>         if (abs((long)data) <= (long)sqrt((double)0x7fff))
+>         {
+3757a3776,3779
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+3759a3782,3787
+> 
+> void CWE190_Integer_Overflow__short_max_square_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+3769a3798,3800
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__short_max_square_34_good();
+>     printLine("Finished good()");
+3775,3777d3805
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__short_max_square_34_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,115 @@
+2818a2819,2825
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_07.c"
+> static void goodB2G1()
+> {
+>     char data;
+>     data = ' ';
+>     if(staticFive==5)
+>     {
+2819a2827,2834
+>         fscanf (
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_07.c" 3 4
+>                stdin
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_07.c"
+>                     , "%c", &data);
+>     }
+>     if(staticFive!=5)
+>     {
+2820a2836,2839
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2822c2841,2854
+< void CWE190_Integer_Overflow__char_fscanf_add_07_bad()
+---
+>         if (data < 0x7f)
+>         {
+>             char result = data + 1;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G2()
+2830c2862
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_07.c" 3 4
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_07.c" 3 4
+2832c2864
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_07.c"
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_07.c"
+2836a2869,2918
+> 
+>         if (data < 0x7f)
+>         {
+>             char result = data + 1;
+>             printHexCharLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B1()
+> {
+>     char data;
+>     data = ' ';
+>     if(staticFive!=5)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         data = 2;
+>     }
+>     if(staticFive==5)
+>     {
+>         {
+> 
+>             char result = data + 1;
+>             printHexCharLine(result);
+>         }
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+> {
+>     char data;
+>     data = ' ';
+>     if(staticFive==5)
+>     {
+> 
+>         data = 2;
+>     }
+>     if(staticFive==5)
+>     {
+2843a2926,2933
+> 
+> void CWE190_Integer_Overflow__char_fscanf_add_07_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B1();
+>     goodG2B2();
+> }
+2853a2944,2946
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__char_fscanf_add_07_good();
+>     printLine("Finished good()");
+2859,2861d2951
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__char_fscanf_add_07_bad();
+<     printLine("Finished bad()");

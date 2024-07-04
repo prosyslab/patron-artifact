@@ -1,0 +1,79 @@
+2821a2822,2842
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fgets_34.c"
+> static void goodG2B()
+> {
+>     int data;
+>     CWE124_Buffer_Underwrite__CWE839_fgets_34_unionType myUnion;
+> 
+>     data = -1;
+> 
+> 
+>     data = 7;
+>     myUnion.unionFirst = data;
+>     {
+>         int data = myUnion.unionSecond;
+>         {
+>             int i;
+>             int buffer[10] = { 0 };
+> 
+> 
+>             if (data < 10)
+>             {
+>                 buffer[data] = 1;
+2822a2844,2855
+>                 for(i = 0; i < 10; i++)
+>                 {
+>                     printIntLine(buffer[i]);
+>                 }
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is negative.");
+>             }
+>         }
+>     }
+> }
+2825c2858
+< void CWE124_Buffer_Underwrite__CWE839_fgets_34_bad()
+---
+> static void goodB2G()
+2835c2868
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fgets_34.c" 3 4
+---
+> # 123 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fgets_34.c" 3 4
+2837c2870
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fgets_34.c"
+---
+> # 123 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fgets_34.c"
+2839c2872
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fgets_34.c" 3 4
+---
+> # 123 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fgets_34.c" 3 4
+2841c2874
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fgets_34.c"
+---
+> # 123 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fgets_34.c"
+2859,2860c2892
+< 
+<             if (data < 10)
+---
+>             if (data >= 0 && data < (10))
+2871c2903
+<                 printLine("ERROR: Array index is negative.");
+---
+>                 printLine("ERROR: Array index is out-of-bounds");
+2875a2908,2913
+> 
+> void CWE124_Buffer_Underwrite__CWE839_fgets_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2885a2924,2926
+>     printLine("Calling good()...");
+>     CWE124_Buffer_Underwrite__CWE839_fgets_34_good();
+>     printLine("Finished good()");
+2891,2893d2931
+<     printLine("Calling bad()...");
+<     CWE124_Buffer_Underwrite__CWE839_fgets_34_bad();
+<     printLine("Finished bad()");

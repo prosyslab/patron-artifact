@@ -1,0 +1,66 @@
+3731a3732
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_rand_22a.c"
+3732a3734,3737
+> # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_rand_22a.c"
+> int CWE369_Divide_by_Zero__float_rand_22_goodB2G1Global = 0;
+> int CWE369_Divide_by_Zero__float_rand_22_goodB2G2Global = 0;
+> int CWE369_Divide_by_Zero__float_rand_22_goodG2BGlobal = 0;
+3734a3740
+> void CWE369_Divide_by_Zero__float_rand_22_goodB2G1Sink(float data);
+3735a3742,3751
+> static void goodB2G1()
+> {
+>     float data;
+> 
+>     data = 0.0F;
+> 
+>     data = (float)((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+>     CWE369_Divide_by_Zero__float_rand_22_goodB2G1Global = 0;
+>     CWE369_Divide_by_Zero__float_rand_22_goodB2G1Sink(data);
+> }
+3737,3738d3752
+< # 25 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_rand_22a.c"
+< int CWE369_Divide_by_Zero__float_rand_22_badGlobal = 0;
+3740c3754
+< void CWE369_Divide_by_Zero__float_rand_22_badSink(float data);
+---
+> void CWE369_Divide_by_Zero__float_rand_22_goodB2G2Sink(float data);
+3742c3756
+< void CWE369_Divide_by_Zero__float_rand_22_bad()
+---
+> static void goodB2G2()
+3749,3750c3763,3785
+<     CWE369_Divide_by_Zero__float_rand_22_badGlobal = 1;
+<     CWE369_Divide_by_Zero__float_rand_22_badSink(data);
+---
+>     CWE369_Divide_by_Zero__float_rand_22_goodB2G2Global = 1;
+>     CWE369_Divide_by_Zero__float_rand_22_goodB2G2Sink(data);
+> }
+> 
+> 
+> void CWE369_Divide_by_Zero__float_rand_22_goodG2BSink(float data);
+> 
+> static void goodG2B()
+> {
+>     float data;
+> 
+>     data = 0.0F;
+> 
+>     data = 2.0F;
+>     CWE369_Divide_by_Zero__float_rand_22_goodG2BGlobal = 1;
+>     CWE369_Divide_by_Zero__float_rand_22_goodG2BSink(data);
+> }
+> 
+> void CWE369_Divide_by_Zero__float_rand_22_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+>     goodG2B();
+3761a3797,3799
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__float_rand_22_good();
+>     printLine("Finished good()");
+3767,3769d3804
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__float_rand_22_bad();
+<     printLine("Finished bad()");

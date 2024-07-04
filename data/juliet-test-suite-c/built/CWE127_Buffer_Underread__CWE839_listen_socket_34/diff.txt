@@ -1,0 +1,117 @@
+4907a4908,4915
+> # 149 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+> static void goodG2B()
+> {
+>     int data;
+>     CWE127_Buffer_Underread__CWE839_listen_socket_34_unionType myUnion;
+> 
+>     data = -1;
+> 
+4908a4917,4935
+>     data = 7;
+>     myUnion.unionFirst = data;
+>     {
+>         int data = myUnion.unionSecond;
+>         {
+>             int buffer[10] = { 0 };
+> 
+> 
+>             if (data < 10)
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is too big.");
+>             }
+>         }
+>     }
+> }
+4911c4938
+< void CWE127_Buffer_Underread__CWE839_listen_socket_34_bad()
+---
+> static void goodB2G()
+4929c4956
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+---
+> # 204 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+4931c4958
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+---
+> # 204 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+4933c4960
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+---
+> # 204 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+4935c4962
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+---
+> # 204 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+4937c4964
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+---
+> # 204 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+4939c4966
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+---
+> # 204 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+4941c4968
+< # 76 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+---
+> # 204 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+4949c4976
+< # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+---
+> # 210 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+4951c4978
+< # 82 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+---
+> # 210 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+4954c4981
+< # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+---
+> # 211 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+4956c4983
+< # 83 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+---
+> # 211 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+4968c4995
+< # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+---
+> # 221 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+4970c4997
+< # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+---
+> # 221 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+4972c4999
+< # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+---
+> # 221 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c" 3 4
+4974c5001
+< # 93 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+---
+> # 221 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s01/CWE127_Buffer_Underread__CWE839_listen_socket_34.c"
+5013,5014c5040
+< 
+<             if (data < 10)
+---
+>             if (data >= 0 && data < (10))
+5020c5046
+<                 printLine("ERROR: Array index is too big.");
+---
+>                 printLine("ERROR: Array index is out-of-bounds");
+5024a5051,5056
+> 
+> void CWE127_Buffer_Underread__CWE839_listen_socket_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+5034a5067,5069
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__CWE839_listen_socket_34_good();
+>     printLine("Finished good()");
+5040,5042d5074
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__CWE839_listen_socket_34_bad();
+<     printLine("Finished bad()");

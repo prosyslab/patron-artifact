@@ -1,0 +1,69 @@
+2813a2814,2818
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_malloc_use_02.c"
+> static void good1()
+> {
+>     if(0)
+>     {
+2814a2820,2841
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+>         {
+>             char data;
+>             char * pointer = (char *)malloc(sizeof(char));
+>             if (pointer == 
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_malloc_use_02.c" 3 4
+>                           ((void *)0)
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_malloc_use_02.c"
+>                               ) {exit(-1);}
+>             data = 5;
+>             *pointer = data;
+>             {
+>                 char data = *pointer;
+>                 printHexCharLine(data);
+>             }
+>             free(pointer);
+>         }
+>     }
+> }
+2817c2844
+< void CWE758_Undefined_Behavior__char_malloc_use_02_bad()
+---
+> static void good2()
+2821a2849
+>             char data;
+2824c2852
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_malloc_use_02.c" 3 4
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_malloc_use_02.c" 3 4
+2826c2854
+< # 26 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_malloc_use_02.c"
+---
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__char_malloc_use_02.c"
+2828c2856,2861
+<             char data = *pointer;
+---
+>             data = 5;
+>             *pointer = data;
+>             {
+>                 char data = *pointer;
+>                 printHexCharLine(data);
+>             }
+2830d2862
+<             printHexCharLine(data);
+2833a2866,2871
+> 
+> void CWE758_Undefined_Behavior__char_malloc_use_02_good()
+> {
+>     good1();
+>     good2();
+> }
+2843a2882,2884
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__char_malloc_use_02_good();
+>     printLine("Finished good()");
+2849,2851d2889
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__char_malloc_use_02_bad();
+<     printLine("Finished bad()");

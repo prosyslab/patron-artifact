@@ -1,0 +1,39 @@
+3240c3240
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63a.c"
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63a.c"
+3242,3243c3242,3243
+< # 28 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63a.c"
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63b_badSink(char * * dataPtr);
+---
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63a.c"
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63b_goodB2GSink(char * * data);
+3245c3245
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63_bad()
+---
+> static void goodB2G()
+3250c3250
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63a.c" 3 4
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63a.c" 3 4
+3252c3252
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63a.c"
+---
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63a.c"
+3257c3257,3262
+<     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63b_badSink(&data);
+---
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63b_goodB2GSink(&data);
+> }
+> 
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63_good()
+> {
+>     goodB2G();
+3268a3274,3276
+>     printLine("Calling good()...");
+>     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63_good();
+>     printLine("Finished good()");
+3274,3276d3281
+<     printLine("Calling bad()...");
+<     CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_fixed_string_63_bad();
+<     printLine("Finished bad()");

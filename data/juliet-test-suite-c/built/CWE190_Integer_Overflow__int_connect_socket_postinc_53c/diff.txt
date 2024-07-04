@@ -1,0 +1,26 @@
+4900c4900
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_connect_socket_postinc_53c.c"
+---
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_connect_socket_postinc_53c.c"
+4902,4903c4902,4903
+< # 45 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_connect_socket_postinc_53c.c"
+< void CWE190_Integer_Overflow__int_connect_socket_postinc_53d_badSink(int data);
+---
+> # 57 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s06/CWE190_Integer_Overflow__int_connect_socket_postinc_53c.c"
+> void CWE190_Integer_Overflow__int_connect_socket_postinc_53d_goodG2BSink(int data);
+4905c4905
+< void CWE190_Integer_Overflow__int_connect_socket_postinc_53c_badSink(int data)
+---
+> void CWE190_Integer_Overflow__int_connect_socket_postinc_53c_goodG2BSink(int data)
+4907c4907,4915
+<     CWE190_Integer_Overflow__int_connect_socket_postinc_53d_badSink(data);
+---
+>     CWE190_Integer_Overflow__int_connect_socket_postinc_53d_goodG2BSink(data);
+> }
+> 
+> 
+> void CWE190_Integer_Overflow__int_connect_socket_postinc_53d_goodB2GSink(int data);
+> 
+> void CWE190_Integer_Overflow__int_connect_socket_postinc_53c_goodB2GSink(int data)
+> {
+>     CWE190_Integer_Overflow__int_connect_socket_postinc_53d_goodB2GSink(data);

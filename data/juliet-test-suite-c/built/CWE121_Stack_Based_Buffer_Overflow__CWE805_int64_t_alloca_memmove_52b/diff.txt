@@ -1,0 +1,17 @@
+2813a2814,2815
+> # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_52b.c"
+> void CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_52c_goodG2BSink(int64_t * data);
+2816,2822c2818
+< 
+< 
+< 
+< 
+< void CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_52c_badSink(int64_t * data);
+< 
+< void CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_52b_badSink(int64_t * data)
+---
+> void CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_52b_goodG2BSink(int64_t * data)
+2824c2820
+<     CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_52c_badSink(data);
+---
+>     CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memmove_52c_goodG2BSink(data);

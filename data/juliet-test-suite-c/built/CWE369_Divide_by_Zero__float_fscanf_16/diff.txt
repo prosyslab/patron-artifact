@@ -1,0 +1,63 @@
+3731a3732
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_16.c"
+3733,3737c3734,3735
+< 
+< 
+< 
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_16.c"
+< void CWE369_Divide_by_Zero__float_fscanf_16_bad()
+---
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_16.c"
+> static void goodB2G()
+3746c3744
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_16.c" 3 4
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_16.c" 3 4
+3748c3746
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_16.c"
+---
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s01/CWE369_Divide_by_Zero__float_fscanf_16.c"
+3753a3752,3779
+> 
+>         if(fabs(data) > 0.000001)
+>         {
+>             int result = (int)(100.0 / data);
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>         break;
+>     }
+> }
+> 
+> 
+> static void goodG2B()
+> {
+>     float data;
+> 
+>     data = 0.0F;
+>     while(1)
+>     {
+> 
+>         data = 2.0F;
+>         break;
+>     }
+>     while(1)
+>     {
+3761a3788,3793
+> 
+> void CWE369_Divide_by_Zero__float_fscanf_16_good()
+> {
+>     goodB2G();
+>     goodG2B();
+> }
+3771a3804,3806
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__float_fscanf_16_good();
+>     printLine("Finished good()");
+3777,3779d3811
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__float_fscanf_16_bad();
+<     printLine("Finished bad()");

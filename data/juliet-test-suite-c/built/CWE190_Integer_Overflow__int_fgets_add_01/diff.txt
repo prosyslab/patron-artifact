@@ -1,0 +1,59 @@
+2813a2814,2817
+> # 54 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_01.c"
+> static void goodG2B()
+> {
+>     int data;
+2814a2819
+>     data = 0;
+2815a2821,2822
+>     data = 2;
+>     {
+2816a2824,2827
+>         int result = data + 1;
+>         printIntLine(result);
+>     }
+> }
+2819c2830
+< void CWE190_Integer_Overflow__int_fgets_add_01_bad()
+---
+> static void goodB2G()
+2828c2839
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_01.c" 3 4
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_01.c" 3 4
+2830c2841
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_01.c"
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_01.c"
+2832c2843
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_01.c" 3 4
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_01.c" 3 4
+2834c2845
+< # 32 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_01.c"
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int_fgets_add_01.c"
+2845d2855
+<     {
+2846a2857,2858
+>     if (data < 0x7fffffff)
+>     {
+2849a2862,2871
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+> }
+> 
+> void CWE190_Integer_Overflow__int_fgets_add_01_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2860a2883,2885
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_fgets_add_01_good();
+>     printLine("Finished good()");
+2866,2868d2890
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_fgets_add_01_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,51 @@
+2813a2814,2819
+> # 50 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int_array_declare_partial_init_01.c"
+> static void goodG2B()
+> {
+>     int * data;
+>     int dataUninitArray[10];
+>     data = dataUninitArray;
+2814a2821,2836
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+>             data[i] = i;
+>         }
+>     }
+> 
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+>             printIntLine(data[i]);
+>         }
+>     }
+> }
+2817c2839
+< void CWE457_Use_of_Uninitialized_Variable__int_array_declare_partial_init_01_bad()
+---
+> static void goodB2G()
+2834a2857,2863
+>             data[i] = i;
+>         }
+>     }
+>     {
+>         int i;
+>         for(i=0; i<10; i++)
+>         {
+2838a2868,2873
+> 
+> void CWE457_Use_of_Uninitialized_Variable__int_array_declare_partial_init_01_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2848a2884,2886
+>     printLine("Calling good()...");
+>     CWE457_Use_of_Uninitialized_Variable__int_array_declare_partial_init_01_good();
+>     printLine("Finished good()");
+2854,2856d2891
+<     printLine("Calling bad()...");
+<     CWE457_Use_of_Uninitialized_Variable__int_array_declare_partial_init_01_bad();
+<     printLine("Finished bad()");

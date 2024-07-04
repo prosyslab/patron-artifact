@@ -1,0 +1,24 @@
+4051a4052
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_64b.c"
+4052a4054,4056
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_64b.c"
+> void CWE675_Duplicate_Operations_on_Resource__open_64b_goodG2BSink(void * dataVoidPtr)
+> {
+4053a4058
+>     int * dataPtr = (int *)dataVoidPtr;
+4054a4060
+>     int data = (*dataPtr);
+4055a4062,4063
+>     close(data);
+> }
+4058,4060c4066
+< 
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__open_64b.c"
+< void CWE675_Duplicate_Operations_on_Resource__open_64b_badSink(void * dataVoidPtr)
+---
+> void CWE675_Duplicate_Operations_on_Resource__open_64b_goodB2GSink(void * dataVoidPtr)
+4067c4073,4074
+<     close(data);
+---
+> 
+>     ;

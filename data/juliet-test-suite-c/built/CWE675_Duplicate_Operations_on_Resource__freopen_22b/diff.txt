@@ -1,0 +1,41 @@
+2813a2814,2817
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_22b.c"
+> extern int CWE675_Duplicate_Operations_on_Resource__freopen_22_goodB2G1Global;
+> extern int CWE675_Duplicate_Operations_on_Resource__freopen_22_goodB2G2Global;
+> extern int CWE675_Duplicate_Operations_on_Resource__freopen_22_goodG2BGlobal;
+2815a2820,2840
+> void CWE675_Duplicate_Operations_on_Resource__freopen_22_goodB2G1Sink(FILE * data)
+> {
+>     if(CWE675_Duplicate_Operations_on_Resource__freopen_22_goodB2G1Global)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+> 
+>         ;
+>     }
+> }
+> 
+> 
+> void CWE675_Duplicate_Operations_on_Resource__freopen_22_goodB2G2Sink(FILE * data)
+> {
+>     if(CWE675_Duplicate_Operations_on_Resource__freopen_22_goodB2G2Global)
+>     {
+> 
+2816a2842,2844
+>         ;
+>     }
+> }
+2818d2845
+< extern int CWE675_Duplicate_Operations_on_Resource__freopen_22_badGlobal;
+2820c2847
+< void CWE675_Duplicate_Operations_on_Resource__freopen_22_badSink(FILE * data)
+---
+> void CWE675_Duplicate_Operations_on_Resource__freopen_22_goodG2BSink(FILE * data)
+2822c2849
+<     if(CWE675_Duplicate_Operations_on_Resource__freopen_22_badGlobal)
+---
+>     if(CWE675_Duplicate_Operations_on_Resource__freopen_22_goodG2BGlobal)

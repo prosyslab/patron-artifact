@@ -1,0 +1,53 @@
+2813a2814,2817
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_fscanf_modulo_22b.c"
+> extern int CWE369_Divide_by_Zero__int_fscanf_modulo_22_goodB2G1Global;
+> extern int CWE369_Divide_by_Zero__int_fscanf_modulo_22_goodB2G2Global;
+> extern int CWE369_Divide_by_Zero__int_fscanf_modulo_22_goodG2BGlobal;
+2815a2820,2845
+> void CWE369_Divide_by_Zero__int_fscanf_modulo_22_goodB2G1Sink(int data)
+> {
+>     if(CWE369_Divide_by_Zero__int_fscanf_modulo_22_goodB2G1Global)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+> 
+>         if( data != 0 )
+>         {
+>             printIntLine(100 % data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+> 
+> 
+> void CWE369_Divide_by_Zero__int_fscanf_modulo_22_goodB2G2Sink(int data)
+> {
+>     if(CWE369_Divide_by_Zero__int_fscanf_modulo_22_goodB2G2Global)
+>     {
+2816a2847,2856
+>         if( data != 0 )
+>         {
+>             printIntLine(100 % data);
+>         }
+>         else
+>         {
+>             printLine("This would result in a divide by zero");
+>         }
+>     }
+> }
+2818d2857
+< extern int CWE369_Divide_by_Zero__int_fscanf_modulo_22_badGlobal;
+2820c2859
+< void CWE369_Divide_by_Zero__int_fscanf_modulo_22_badSink(int data)
+---
+> void CWE369_Divide_by_Zero__int_fscanf_modulo_22_goodG2BSink(int data)
+2822c2861
+<     if(CWE369_Divide_by_Zero__int_fscanf_modulo_22_badGlobal)
+---
+>     if(CWE369_Divide_by_Zero__int_fscanf_modulo_22_goodG2BGlobal)

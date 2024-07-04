@@ -1,0 +1,29 @@
+3738a3739,3743
+> # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_fscanf_square_67b.c"
+> void CWE190_Integer_Overflow__unsigned_int_fscanf_square_67b_goodG2BSink(CWE190_Integer_Overflow__unsigned_int_fscanf_square_67_structType myStruct)
+> {
+>     unsigned int data = myStruct.structFirst;
+>     {
+3739a3745,3748
+>         unsigned int result = data * data;
+>         printUnsignedLine(result);
+>     }
+> }
+3742c3751
+< void CWE190_Integer_Overflow__unsigned_int_fscanf_square_67b_badSink(CWE190_Integer_Overflow__unsigned_int_fscanf_square_67_structType myStruct)
+---
+> void CWE190_Integer_Overflow__unsigned_int_fscanf_square_67b_goodB2GSink(CWE190_Integer_Overflow__unsigned_int_fscanf_square_67_structType myStruct)
+3745d3753
+<     {
+3746a3755,3760
+>     if (abs((long)data) < (long)sqrt((double)
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_fscanf_square_67b.c" 3 4
+>                                             (0x7fffffff * 2U + 1U)
+> # 59 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s05/CWE190_Integer_Overflow__unsigned_int_fscanf_square_67b.c"
+>                                                     ))
+>     {
+3748a3763,3766
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");

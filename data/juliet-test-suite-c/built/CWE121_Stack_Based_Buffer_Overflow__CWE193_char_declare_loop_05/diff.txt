@@ -1,0 +1,55 @@
+3245a3246,3258
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s02/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_loop_05.c"
+> static void goodG2B1()
+> {
+>     char * data;
+>     char dataBadBuffer[10];
+>     char dataGoodBuffer[10+1];
+>     if(staticFalse)
+>     {
+> 
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+3247a3261,3267
+>         data = dataGoodBuffer;
+>         data[0] = '\0';
+>     }
+>     {
+>         char source[10+1] = "AAAAAAAAAA";
+>         size_t i, sourceLen;
+>         sourceLen = strlen(source);
+3249c3269,3279
+< void CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_loop_05_bad()
+---
+> 
+>         for (i = 0; i < sourceLen + 1; i++)
+>         {
+>             data[i] = source[i];
+>         }
+>         printLine(data);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+3258c3288
+<         data = dataBadBuffer;
+---
+>         data = dataGoodBuffer;
+3273a3304,3309
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_loop_05_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+3283a3320,3322
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_loop_05_good();
+>     printLine("Finished good()");
+3289,3291d3327
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE193_char_declare_loop_05_bad();
+<     printLine("Finished bad()");

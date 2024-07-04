@@ -1,0 +1,30 @@
+4900c4900
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_sub_52c.c"
+---
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_sub_52c.c"
+4902,4903c4902,4903
+< # 44 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_sub_52c.c"
+< void CWE191_Integer_Underflow__int_listen_socket_sub_52c_badSink(int data)
+---
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_sub_52c.c"
+> void CWE191_Integer_Underflow__int_listen_socket_sub_52c_goodG2BSink(int data)
+4908a4909,4927
+>     }
+> }
+> 
+> 
+> void CWE191_Integer_Underflow__int_listen_socket_sub_52c_goodB2GSink(int data)
+> {
+> 
+>     if (data > 
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_sub_52c.c" 3 4
+>               (-0x7fffffff - 1)
+> # 71 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_listen_socket_sub_52c.c"
+>                      )
+>     {
+>         int result = data - 1;
+>         printIntLine(result);
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform subtraction.");

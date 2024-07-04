@@ -1,0 +1,25 @@
+2818a2819,2823
+> # 42 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__unsigned_int_rand_sub_67b.c"
+> void CWE191_Integer_Underflow__unsigned_int_rand_sub_67b_goodG2BSink(CWE191_Integer_Underflow__unsigned_int_rand_sub_67_structType myStruct)
+> {
+>     unsigned int data = myStruct.structFirst;
+>     {
+2819a2825,2828
+>         unsigned int result = data - 1;
+>         printUnsignedLine(result);
+>     }
+> }
+2822c2831
+< void CWE191_Integer_Underflow__unsigned_int_rand_sub_67b_badSink(CWE191_Integer_Underflow__unsigned_int_rand_sub_67_structType myStruct)
+---
+> void CWE191_Integer_Underflow__unsigned_int_rand_sub_67b_goodB2GSink(CWE191_Integer_Underflow__unsigned_int_rand_sub_67_structType myStruct)
+2825d2833
+<     {
+2826a2835,2836
+>     if (data > 0)
+>     {
+2828a2839,2842
+>     }
+>     else
+>     {
+>         printLine("data value is too large to perform subtraction.");

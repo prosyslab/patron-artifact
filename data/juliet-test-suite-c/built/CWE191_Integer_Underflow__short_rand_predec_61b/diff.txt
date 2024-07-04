@@ -1,0 +1,12 @@
+2813a2814,2816
+> # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s05/CWE191_Integer_Underflow__short_rand_predec_61b.c"
+> short CWE191_Integer_Underflow__short_rand_predec_61b_goodG2BSource(short data)
+> {
+2814a2818,2820
+>     data = -2;
+>     return data;
+> }
+2817c2823
+< short CWE191_Integer_Underflow__short_rand_predec_61b_badSource(short data)
+---
+> short CWE191_Integer_Underflow__short_rand_predec_61b_goodB2GSource(short data)

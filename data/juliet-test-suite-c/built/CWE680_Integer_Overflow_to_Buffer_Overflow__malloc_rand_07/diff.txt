@@ -1,0 +1,68 @@
+2819a2820,2823
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_rand_07.c"
+> static void goodG2B1()
+> {
+>     int data;
+2820a2825,2827
+>     data = -1;
+>     if(staticFive!=5)
+>     {
+2821a2829,2832
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2823c2834,2857
+< void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_rand_07_bad()
+---
+>         data = 20;
+>     }
+>     {
+>         size_t i;
+>         int *intPointer;
+> 
+> 
+>         intPointer = (int*)malloc(data * sizeof(int));
+>         if (intPointer == 
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_rand_07.c" 3 4
+>                          ((void *)0)
+> # 79 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_rand_07.c"
+>                              ) {exit(-1);}
+>         for (i = 0; i < (size_t)data; i++)
+>         {
+>             intPointer[i] = 0;
+>         }
+>         printIntLine(intPointer[0]);
+>         free(intPointer);
+>     }
+> }
+> 
+> 
+> static void goodG2B2()
+2831c2865
+<         data = ((int)(rand() & 1 ? (((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) : -(((unsigned)rand()<<30) ^ ((unsigned)rand()<<15) ^ rand()) - 1));
+---
+>         data = 20;
+2840c2874
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_rand_07.c" 3 4
+---
+> # 106 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_rand_07.c" 3 4
+2842c2876
+< # 43 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_rand_07.c"
+---
+> # 106 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE680_Integer_Overflow_to_Buffer_Overflow/CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_rand_07.c"
+2851a2886,2891
+> 
+> void CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_rand_07_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2861a2902,2904
+>     printLine("Calling good()...");
+>     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_rand_07_good();
+>     printLine("Finished good()");
+2867,2869d2909
+<     printLine("Calling bad()...");
+<     CWE680_Integer_Overflow_to_Buffer_Overflow__malloc_rand_07_bad();
+<     printLine("Finished bad()");

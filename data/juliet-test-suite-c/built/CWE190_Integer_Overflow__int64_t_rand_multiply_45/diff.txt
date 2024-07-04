@@ -1,0 +1,67 @@
+2817a2818,2833
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_rand_multiply_45.c"
+> static void goodG2BSink()
+> {
+>     int64_t data = CWE190_Integer_Overflow__int64_t_rand_multiply_45_goodG2BData;
+>     if(data > 0)
+>     {
+> 
+>         int64_t result = data * 2;
+>         printLongLongLine(result);
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     int64_t data;
+>     data = 0LL;
+2818a2835,2838
+>     data = 2;
+>     CWE190_Integer_Overflow__int64_t_rand_multiply_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+2821c2841
+< static void badSink()
+---
+> static void goodB2GSink()
+2823c2843
+<     int64_t data = CWE190_Integer_Overflow__int64_t_rand_multiply_45_badData;
+---
+>     int64_t data = CWE190_Integer_Overflow__int64_t_rand_multiply_45_goodB2GData;
+2827,2828c2847,2855
+<         int64_t result = data * 2;
+<         printLongLongLine(result);
+---
+>         if (data < (0x7fffffffffffffffLL/2))
+>         {
+>             int64_t result = data * 2;
+>             printLongLongLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2832c2859
+< void CWE190_Integer_Overflow__int64_t_rand_multiply_45_bad()
+---
+> static void goodB2G()
+2838,2839c2865,2872
+<     CWE190_Integer_Overflow__int64_t_rand_multiply_45_badData = data;
+<     badSink();
+---
+>     CWE190_Integer_Overflow__int64_t_rand_multiply_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE190_Integer_Overflow__int64_t_rand_multiply_45_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2850a2884,2886
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int64_t_rand_multiply_45_good();
+>     printLine("Finished good()");
+2856,2858d2891
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int64_t_rand_multiply_45_bad();
+<     printLine("Finished bad()");

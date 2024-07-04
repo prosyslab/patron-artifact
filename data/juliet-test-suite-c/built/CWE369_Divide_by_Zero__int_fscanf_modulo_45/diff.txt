@@ -1,0 +1,70 @@
+2817a2818,2828
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_fscanf_modulo_45.c"
+> static void goodG2BSink()
+> {
+>     int data = CWE369_Divide_by_Zero__int_fscanf_modulo_45_goodG2BData;
+> 
+>     printIntLine(100 % data);
+> }
+> 
+> static void goodG2B()
+> {
+>     int data;
+2818a2830,2835
+>     data = -1;
+> 
+>     data = 7;
+>     CWE369_Divide_by_Zero__int_fscanf_modulo_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+2821c2838
+< static void badSink()
+---
+> static void goodB2GSink()
+2823c2840
+<     int data = CWE369_Divide_by_Zero__int_fscanf_modulo_45_badData;
+---
+>     int data = CWE369_Divide_by_Zero__int_fscanf_modulo_45_goodB2GData;
+2825c2842,2849
+<     printIntLine(100 % data);
+---
+>     if( data != 0 )
+>     {
+>         printIntLine(100 % data);
+>     }
+>     else
+>     {
+>         printLine("This would result in a divide by zero");
+>     }
+2828c2852
+< void CWE369_Divide_by_Zero__int_fscanf_modulo_45_bad()
+---
+> static void goodB2G()
+2835c2859
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_fscanf_modulo_45.c" 3 4
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_fscanf_modulo_45.c" 3 4
+2837c2861
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_fscanf_modulo_45.c"
+---
+> # 88 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_fscanf_modulo_45.c"
+2839,2840c2863,2870
+<     CWE369_Divide_by_Zero__int_fscanf_modulo_45_badData = data;
+<     badSink();
+---
+>     CWE369_Divide_by_Zero__int_fscanf_modulo_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE369_Divide_by_Zero__int_fscanf_modulo_45_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2851a2882,2884
+>     printLine("Calling good()...");
+>     CWE369_Divide_by_Zero__int_fscanf_modulo_45_good();
+>     printLine("Finished good()");
+2857,2859d2889
+<     printLine("Calling bad()...");
+<     CWE369_Divide_by_Zero__int_fscanf_modulo_45_bad();
+<     printLine("Finished bad()");

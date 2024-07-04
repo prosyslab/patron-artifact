@@ -1,0 +1,98 @@
+4051a4052
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+4052a4054,4056
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+> int CWE404_Improper_Resource_Shutdown__open_fclose_22_goodB2G1Global = 0;
+> int CWE404_Improper_Resource_Shutdown__open_fclose_22_goodB2G2Global = 0;
+4054a4059
+> void CWE404_Improper_Resource_Shutdown__open_fclose_22_goodB2G1Sink(int data);
+4055a4061,4063
+> static void goodB2G1()
+> {
+>     int data;
+4056a4065
+>     data = -1;
+4057a4067,4086
+>     data = open("BadSource_open.txt", 
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c" 3 4
+>                                      02
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+>                                            |
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c" 3 4
+>                                             0100
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+>                                                    , 
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c" 3 4
+>                                                      0400
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+>                                                             |
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c" 3 4
+>                                                              0200
+> # 63 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+>                                                                      );
+>     CWE404_Improper_Resource_Shutdown__open_fclose_22_goodB2G1Global = 0;
+>     CWE404_Improper_Resource_Shutdown__open_fclose_22_goodB2G1Sink(data);
+> }
+4060,4063c4089
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+< int CWE404_Improper_Resource_Shutdown__open_fclose_22_badGlobal = 0;
+< 
+< void CWE404_Improper_Resource_Shutdown__open_fclose_22_badSink(int data);
+---
+> void CWE404_Improper_Resource_Shutdown__open_fclose_22_goodB2G2Sink(int data);
+4065c4091
+< void CWE404_Improper_Resource_Shutdown__open_fclose_22_bad()
+---
+> static void goodB2G2()
+4072c4098
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c" 3 4
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c" 3 4
+4074c4100
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+4076c4102
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c" 3 4
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c" 3 4
+4078c4104
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+4080c4106
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c" 3 4
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c" 3 4
+4082c4108
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+4084c4110
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c" 3 4
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c" 3 4
+4086c4112
+< # 41 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+---
+> # 77 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE404_Improper_Resource_Shutdown/CWE404_Improper_Resource_Shutdown__open_fclose_22a.c"
+4088,4089c4114,4121
+<     CWE404_Improper_Resource_Shutdown__open_fclose_22_badGlobal = 1;
+<     CWE404_Improper_Resource_Shutdown__open_fclose_22_badSink(data);
+---
+>     CWE404_Improper_Resource_Shutdown__open_fclose_22_goodB2G2Global = 1;
+>     CWE404_Improper_Resource_Shutdown__open_fclose_22_goodB2G2Sink(data);
+> }
+> 
+> void CWE404_Improper_Resource_Shutdown__open_fclose_22_good()
+> {
+>     goodB2G1();
+>     goodB2G2();
+4100a4133,4135
+>     printLine("Calling good()...");
+>     CWE404_Improper_Resource_Shutdown__open_fclose_22_good();
+>     printLine("Finished good()");
+4106,4108d4140
+<     printLine("Calling bad()...");
+<     CWE404_Improper_Resource_Shutdown__open_fclose_22_bad();
+<     printLine("Finished bad()");

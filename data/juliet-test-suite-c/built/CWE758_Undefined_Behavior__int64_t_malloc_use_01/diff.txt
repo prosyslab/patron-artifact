@@ -1,0 +1,43 @@
+2814,2817c2814,2815
+< 
+< 
+< 
+< void CWE758_Undefined_Behavior__int64_t_malloc_use_01_bad()
+---
+> # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_01.c"
+> static void good1()
+2819a2818
+>         int64_t data;
+2822c2821
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_01.c" 3 4
+---
+> # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_01.c" 3 4
+2824c2823
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_01.c"
+---
+> # 40 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE758_Undefined_Behavior/CWE758_Undefined_Behavior__int64_t_malloc_use_01.c"
+2826c2825,2830
+<         int64_t data = *pointer;
+---
+>         data = 5LL;
+>         *pointer = data;
+>         {
+>             int64_t data = *pointer;
+>             printLongLongLine(data);
+>         }
+2828d2831
+<         printLongLongLine(data);
+2830a2834,2838
+> 
+> void CWE758_Undefined_Behavior__int64_t_malloc_use_01_good()
+> {
+>     good1();
+> }
+2840a2849,2851
+>     printLine("Calling good()...");
+>     CWE758_Undefined_Behavior__int64_t_malloc_use_01_good();
+>     printLine("Finished good()");
+2846,2848d2856
+<     printLine("Calling bad()...");
+<     CWE758_Undefined_Behavior__int64_t_malloc_use_01_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,35 @@
+3240c3240
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_66b.c"
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_66b.c"
+3242,3243c3242,3243
+< # 33 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_66b.c"
+< void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_66b_badSink(char * dataArray[])
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_66b.c"
+> void CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_environment_66b_goodB2GSink(char * dataArray[])
+3245d3244
+< 
+3247,3249d3245
+< 
+< 
+<     for (; *data != '\0'; data++)
+3251c3247,3249
+<         if (*data == 'S')
+---
+>         size_t i;
+> 
+>         for (i=0; i < strlen(data); i++)
+3253,3254c3251,3255
+<             printLine("We have a match!");
+<             break;
+---
+>             if (data[i] == 'S')
+>             {
+>                 printLine("We have a match!");
+>                 break;
+>             }
+3255a3257
+>         free(data);
+3257d3258
+<     free(data);

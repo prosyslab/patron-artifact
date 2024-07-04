@@ -1,0 +1,30 @@
+2813a2814,2815
+> # 51 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE194_Unexpected_Sign_Extension/s02/CWE194_Unexpected_Sign_Extension__rand_memmove_61a.c"
+> short CWE194_Unexpected_Sign_Extension__rand_memmove_61b_goodG2BSource(short data);
+2815,2820c2817
+< 
+< 
+< 
+< short CWE194_Unexpected_Sign_Extension__rand_memmove_61b_badSource(short data);
+< 
+< void CWE194_Unexpected_Sign_Extension__rand_memmove_61_bad()
+---
+> static void goodG2B()
+2825c2822
+<     data = CWE194_Unexpected_Sign_Extension__rand_memmove_61b_badSource(data);
+---
+>     data = CWE194_Unexpected_Sign_Extension__rand_memmove_61b_goodG2BSource(data);
+2840a2838,2842
+> 
+> void CWE194_Unexpected_Sign_Extension__rand_memmove_61_good()
+> {
+>     goodG2B();
+> }
+2850a2853,2855
+>     printLine("Calling good()...");
+>     CWE194_Unexpected_Sign_Extension__rand_memmove_61_good();
+>     printLine("Finished good()");
+2856,2858d2860
+<     printLine("Calling bad()...");
+<     CWE194_Unexpected_Sign_Extension__rand_memmove_61_bad();
+<     printLine("Finished bad()");

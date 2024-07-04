@@ -1,0 +1,56 @@
+2813a2814,2817
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE127_Buffer_Underread/s02/CWE127_Buffer_Underread__CWE839_negative_31.c"
+> static void goodG2B()
+> {
+>     int data;
+2814a2819
+>     data = -1;
+2817c2822,2843
+< void CWE127_Buffer_Underread__CWE839_negative_31_bad()
+---
+>     data = 7;
+>     {
+>         int dataCopy = data;
+>         int data = dataCopy;
+>         {
+>             int buffer[10] = { 0 };
+> 
+> 
+>             if (data < 10)
+>             {
+>                 printIntLine(buffer[data]);
+>             }
+>             else
+>             {
+>                 printLine("ERROR: Array index is too big.");
+>             }
+>         }
+>     }
+> }
+> 
+> 
+> static void goodB2G()
+2830,2831c2856
+< 
+<             if (data < 10)
+---
+>             if (data >= 0 && data < (10))
+2837c2862
+<                 printLine("ERROR: Array index is too big.");
+---
+>                 printLine("ERROR: Array index is out-of-bounds");
+2841a2867,2872
+> 
+> void CWE127_Buffer_Underread__CWE839_negative_31_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2851a2883,2885
+>     printLine("Calling good()...");
+>     CWE127_Buffer_Underread__CWE839_negative_31_good();
+>     printLine("Finished good()");
+2857,2859d2890
+<     printLine("Calling bad()...");
+<     CWE127_Buffer_Underread__CWE839_negative_31_bad();
+<     printLine("Finished bad()");

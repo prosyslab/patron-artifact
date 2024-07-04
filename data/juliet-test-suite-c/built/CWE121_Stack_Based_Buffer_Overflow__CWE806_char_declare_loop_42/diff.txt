@@ -1,0 +1,40 @@
+3239a3240
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_42.c"
+3241,3245c3242,3243
+< 
+< 
+< 
+< # 23 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_42.c"
+< static char * badSource(char * data)
+---
+> # 55 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s06/CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_42.c"
+> static char * goodG2BSource(char * data)
+3248,3249c3246,3247
+<     memset(data, 'A', 100-1);
+<     data[100-1] = '\0';
+---
+>     memset(data, 'A', 50-1);
+>     data[50-1] = '\0';
+3253c3251,3252
+< void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_42_bad()
+---
+> 
+> static void goodG2B()
+3258c3257
+<     data = badSource(data);
+---
+>     data = goodG2BSource(data);
+3271a3271,3275
+> 
+> void CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_42_good()
+> {
+>     goodG2B();
+> }
+3281a3286,3288
+>     printLine("Calling good()...");
+>     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_42_good();
+>     printLine("Finished good()");
+3287,3289d3293
+<     printLine("Calling bad()...");
+<     CWE121_Stack_Based_Buffer_Overflow__CWE806_char_declare_loop_42_bad();
+<     printLine("Finished bad()");

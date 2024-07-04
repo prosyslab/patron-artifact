@@ -1,0 +1,20 @@
+3239a3240
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int64_t_64b.c"
+3240a3242,3248
+> # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int64_t_64b.c"
+> void CWE457_Use_of_Uninitialized_Variable__int64_t_64b_goodG2BSink(void * dataVoidPtr)
+> {
+> 
+>     int64_t * dataPtr = (int64_t *)dataVoidPtr;
+> 
+>     int64_t data = (*dataPtr);
+3241a3250,3251
+>     printLongLongLine(data);
+> }
+3244,3245c3254
+< # 24 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__int64_t_64b.c"
+< void CWE457_Use_of_Uninitialized_Variable__int64_t_64b_badSink(void * dataVoidPtr)
+---
+> void CWE457_Use_of_Uninitialized_Variable__int64_t_64b_goodB2GSink(void * dataVoidPtr)
+3251a3261
+>     data = 5LL;

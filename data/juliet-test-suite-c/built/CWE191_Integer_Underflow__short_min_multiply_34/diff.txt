@@ -1,0 +1,64 @@
+2819a2820,2832
+> # 52 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_min_multiply_34.c"
+> static void goodG2B()
+> {
+>     short data;
+>     CWE191_Integer_Underflow__short_min_multiply_34_unionType myUnion;
+>     data = 0;
+> 
+>     data = -2;
+>     myUnion.unionFirst = data;
+>     {
+>         short data = myUnion.unionSecond;
+>         if(data < 0)
+>         {
+2820a2834,2838
+>             short result = data * 2;
+>             printIntLine(result);
+>         }
+>     }
+> }
+2823c2841
+< void CWE191_Integer_Underflow__short_min_multiply_34_bad()
+---
+> static void goodB2G()
+2830c2848
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_min_multiply_34.c" 3 4
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_min_multiply_34.c" 3 4
+2832c2850
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_min_multiply_34.c"
+---
+> # 78 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_min_multiply_34.c"
+2840,2841c2858,2870
+<             short result = data * 2;
+<             printIntLine(result);
+---
+>             if (data > (
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_min_multiply_34.c" 3 4
+>                        (-0x7fff - 1)
+> # 85 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_min_multiply_34.c"
+>                                /2))
+>             {
+>                 short result = data * 2;
+>                 printIntLine(result);
+>             }
+>             else
+>             {
+>                 printLine("data value is too small to perform multiplication.");
+>             }
+2844a2874,2879
+> 
+> void CWE191_Integer_Underflow__short_min_multiply_34_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2854a2890,2892
+>     printLine("Calling good()...");
+>     CWE191_Integer_Underflow__short_min_multiply_34_good();
+>     printLine("Finished good()");
+2860,2862d2897
+<     printLine("Calling bad()...");
+<     CWE191_Integer_Underflow__short_min_multiply_34_bad();
+<     printLine("Finished bad()");

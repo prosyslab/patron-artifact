@@ -1,0 +1,83 @@
+2813a2814,2816
+> # 62 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE195_Signed_to_Unsigned_Conversion_Error/s02/CWE195_Signed_to_Unsigned_Conversion_Error__negative_memcpy_21.c"
+> static int goodG2B1Static = 0;
+> static int goodG2B2Static = 0;
+2815a2819,2822
+> static int goodG2B1Source(int data)
+> {
+>     if(goodG2B1Static)
+>     {
+2816a2824,2827
+>         printLine("Benign, fixed string");
+>     }
+>     else
+>     {
+2818c2829,2832
+< static int badStatic = 0;
+---
+>         data = 100-1;
+>     }
+>     return data;
+> }
+2820c2834
+< static int badSource(int data)
+---
+> static void goodG2B1()
+2822c2836,2840
+<     if(badStatic)
+---
+>     int data;
+> 
+>     data = -1;
+>     goodG2B1Static = 0;
+>     data = goodG2B1Source(data);
+2823a2842,2847
+>         char source[100];
+>         char dest[100] = "";
+>         memset(source, 'A', 100-1);
+>         source[100-1] = '\0';
+>         if (data < 100)
+>         {
+2825c2849,2863
+<         data = -1;
+---
+> 
+>             memcpy(dest, source, data);
+>             dest[data] = '\0';
+>         }
+>         printLine(dest);
+>     }
+> }
+> 
+> 
+> static int goodG2B2Source(int data)
+> {
+>     if(goodG2B2Static)
+>     {
+> 
+>         data = 100-1;
+2830c2868
+< void CWE195_Signed_to_Unsigned_Conversion_Error__negative_memcpy_21_bad()
+---
+> static void goodG2B2()
+2835,2836c2873,2874
+<     badStatic = 1;
+<     data = badSource(data);
+---
+>     goodG2B2Static = 1;
+>     data = goodG2B2Source(data);
+2851a2890,2895
+> 
+> void CWE195_Signed_to_Unsigned_Conversion_Error__negative_memcpy_21_good()
+> {
+>     goodG2B1();
+>     goodG2B2();
+> }
+2861a2906,2908
+>     printLine("Calling good()...");
+>     CWE195_Signed_to_Unsigned_Conversion_Error__negative_memcpy_21_good();
+>     printLine("Finished good()");
+2867,2869d2913
+<     printLine("Calling bad()...");
+<     CWE195_Signed_to_Unsigned_Conversion_Error__negative_memcpy_21_bad();
+<     printLine("Finished bad()");

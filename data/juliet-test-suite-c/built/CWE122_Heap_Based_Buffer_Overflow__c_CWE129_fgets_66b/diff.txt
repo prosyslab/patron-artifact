@@ -1,0 +1,58 @@
+2813a2814,2825
+> # 61 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_66b.c"
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_66b_goodG2BSink(int dataArray[])
+> {
+>     int data = dataArray[2];
+>     {
+>         int i;
+>         int * buffer = (int *)malloc(10 * sizeof(int));
+>         if (buffer == 
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_66b.c" 3 4
+>                      ((void *)0)
+> # 67 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_66b.c"
+>                          ) {exit(-1);}
+2814a2827,2830
+>         for (i = 0; i < 10; i++)
+>         {
+>             buffer[i] = 0;
+>         }
+2816a2833,2835
+>         if (data >= 0)
+>         {
+>             buffer[data] = 1;
+2817a2837,2848
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is negative.");
+>         }
+>         free(buffer);
+>     }
+> }
+2819,2820d2849
+< void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_66b_badSink(int dataArray[])
+< {
+2821a2851,2852
+> void CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_66b_goodB2GSink(int dataArray[])
+> {
+2827c2858
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_66b.c" 3 4
+---
+> # 99 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_66b.c" 3 4
+2829c2860
+< # 31 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_66b.c"
+---
+> # 99 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE129_fgets_66b.c"
+2837,2838c2868
+< 
+<         if (data >= 0)
+---
+>         if (data >= 0 && data < (10))
+2849c2879
+<             printLine("ERROR: Array index is negative.");
+---
+>             printLine("ERROR: Array index is out-of-bounds");

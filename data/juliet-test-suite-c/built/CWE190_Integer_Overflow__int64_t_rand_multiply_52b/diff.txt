@@ -1,0 +1,20 @@
+2813a2814,2815
+> # 35 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s02/CWE190_Integer_Overflow__int64_t_rand_multiply_52b.c"
+> void CWE190_Integer_Overflow__int64_t_rand_multiply_52c_goodG2BSink(int64_t data);
+2814a2817,2820
+> void CWE190_Integer_Overflow__int64_t_rand_multiply_52b_goodG2BSink(int64_t data)
+> {
+>     CWE190_Integer_Overflow__int64_t_rand_multiply_52c_goodG2BSink(data);
+> }
+2816a2823
+> void CWE190_Integer_Overflow__int64_t_rand_multiply_52c_goodB2GSink(int64_t data);
+2818,2820c2825
+< void CWE190_Integer_Overflow__int64_t_rand_multiply_52c_badSink(int64_t data);
+< 
+< void CWE190_Integer_Overflow__int64_t_rand_multiply_52b_badSink(int64_t data)
+---
+> void CWE190_Integer_Overflow__int64_t_rand_multiply_52b_goodB2GSink(int64_t data)
+2822c2827
+<     CWE190_Integer_Overflow__int64_t_rand_multiply_52c_badSink(data);
+---
+>     CWE190_Integer_Overflow__int64_t_rand_multiply_52c_goodB2GSink(data);

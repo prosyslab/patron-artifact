@@ -1,0 +1,70 @@
+2813a2814,2817
+> # 49 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__short_fscanf_preinc_44.c"
+> static void goodG2BSink(short data)
+> {
+>     {
+2814a2819,2823
+>         ++data;
+>         short result = data;
+>         printIntLine(result);
+>     }
+> }
+2815a2825,2829
+> static void goodG2B()
+> {
+>     short data;
+>     void (*funcPtr) (short) = goodG2BSink;
+>     data = 0;
+2817c2831,2836
+< static void badSink(short data)
+---
+>     data = 2;
+>     funcPtr(data);
+> }
+> 
+> 
+> static void goodB2GSink(short data)
+2819d2837
+<     {
+2820a2839,2840
+>     if (data < 0x7fff)
+>     {
+2824a2845,2848
+>     else
+>     {
+>         printLine("data value is too large to perform arithmetic safely.");
+>     }
+2827c2851
+< void CWE190_Integer_Overflow__short_fscanf_preinc_44_bad()
+---
+> static void goodB2G()
+2830,2831c2854
+< 
+<     void (*funcPtr) (short) = badSink;
+---
+>     void (*funcPtr) (short) = goodB2GSink;
+2835c2858
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__short_fscanf_preinc_44.c" 3 4
+---
+> # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__short_fscanf_preinc_44.c" 3 4
+2837c2860
+< # 39 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__short_fscanf_preinc_44.c"
+---
+> # 91 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s07/CWE190_Integer_Overflow__short_fscanf_preinc_44.c"
+2839d2861
+< 
+2841a2864,2869
+> 
+> void CWE190_Integer_Overflow__short_fscanf_preinc_44_good()
+> {
+>     goodG2B();
+>     goodB2G();
+> }
+2851a2880,2882
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__short_fscanf_preinc_44_good();
+>     printLine("Finished good()");
+2857,2859d2887
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__short_fscanf_preinc_44_bad();
+<     printLine("Finished bad()");

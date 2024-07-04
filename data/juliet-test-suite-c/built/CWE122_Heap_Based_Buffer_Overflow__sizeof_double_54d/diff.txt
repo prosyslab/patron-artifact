@@ -1,0 +1,17 @@
+2813a2814,2815
+> # 36 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_double_54d.c"
+> void CWE122_Heap_Based_Buffer_Overflow__sizeof_double_54e_goodG2BSink(double * data);
+2816,2822c2818
+< 
+< 
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__sizeof_double_54e_badSink(double * data);
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__sizeof_double_54d_badSink(double * data)
+---
+> void CWE122_Heap_Based_Buffer_Overflow__sizeof_double_54d_goodG2BSink(double * data)
+2824c2820
+<     CWE122_Heap_Based_Buffer_Overflow__sizeof_double_54e_badSink(data);
+---
+>     CWE122_Heap_Based_Buffer_Overflow__sizeof_double_54e_goodG2BSink(data);

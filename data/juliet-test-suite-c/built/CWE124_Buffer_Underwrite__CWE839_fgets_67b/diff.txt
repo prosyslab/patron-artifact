@@ -1,0 +1,33 @@
+2821,2824c2821,2822
+< 
+< 
+< 
+< void CWE124_Buffer_Underwrite__CWE839_fgets_67b_badSink(CWE124_Buffer_Underwrite__CWE839_fgets_67_structType myStruct)
+---
+> # 58 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE124_Buffer_Underwrite/s01/CWE124_Buffer_Underwrite__CWE839_fgets_67b.c"
+> void CWE124_Buffer_Underwrite__CWE839_fgets_67b_goodG2BSink(CWE124_Buffer_Underwrite__CWE839_fgets_67_structType myStruct)
+2843a2842,2865
+>         }
+>     }
+> }
+> 
+> 
+> void CWE124_Buffer_Underwrite__CWE839_fgets_67b_goodB2GSink(CWE124_Buffer_Underwrite__CWE839_fgets_67_structType myStruct)
+> {
+>     int data = myStruct.structFirst;
+>     {
+>         int i;
+>         int buffer[10] = { 0 };
+> 
+>         if (data >= 0 && data < (10))
+>         {
+>             buffer[data] = 1;
+> 
+>             for(i = 0; i < 10; i++)
+>             {
+>                 printIntLine(buffer[i]);
+>             }
+>         }
+>         else
+>         {
+>             printLine("ERROR: Array index is out-of-bounds");

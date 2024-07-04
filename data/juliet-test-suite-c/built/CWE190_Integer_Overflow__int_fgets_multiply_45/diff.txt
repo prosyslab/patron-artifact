@@ -1,0 +1,84 @@
+2819a2820,2836
+> # 66 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_45.c"
+> static void goodG2BSink()
+> {
+>     int data = CWE190_Integer_Overflow__int_fgets_multiply_45_goodG2BData;
+>     if(data > 0)
+>     {
+> 
+>         int result = data * 2;
+>         printIntLine(result);
+>     }
+> }
+> 
+> static void goodG2B()
+> {
+>     int data;
+> 
+>     data = 0;
+2820a2838,2841
+>     data = 2;
+>     CWE190_Integer_Overflow__int_fgets_multiply_45_goodG2BData = data;
+>     goodG2BSink();
+> }
+2823c2844
+< static void badSink()
+---
+> static void goodB2GSink()
+2825c2846
+<     int data = CWE190_Integer_Overflow__int_fgets_multiply_45_badData;
+---
+>     int data = CWE190_Integer_Overflow__int_fgets_multiply_45_goodB2GData;
+2829,2830c2850,2858
+<         int result = data * 2;
+<         printIntLine(result);
+---
+>         if (data < (0x7fffffff/2))
+>         {
+>             int result = data * 2;
+>             printIntLine(result);
+>         }
+>         else
+>         {
+>             printLine("data value is too large to perform arithmetic safely.");
+>         }
+2834c2862
+< void CWE190_Integer_Overflow__int_fgets_multiply_45_bad()
+---
+> static void goodB2G()
+2843c2871
+< # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_45.c" 3 4
+---
+> # 115 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_45.c" 3 4
+2845c2873
+< # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_45.c"
+---
+> # 115 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_45.c"
+2847c2875
+< # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_45.c" 3 4
+---
+> # 115 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_45.c" 3 4
+2849c2877
+< # 47 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_45.c"
+---
+> # 115 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_fgets_multiply_45.c"
+2860,2861c2888,2895
+<     CWE190_Integer_Overflow__int_fgets_multiply_45_badData = data;
+<     badSink();
+---
+>     CWE190_Integer_Overflow__int_fgets_multiply_45_goodB2GData = data;
+>     goodB2GSink();
+> }
+> 
+> void CWE190_Integer_Overflow__int_fgets_multiply_45_good()
+> {
+>     goodG2B();
+>     goodB2G();
+2872a2907,2909
+>     printLine("Calling good()...");
+>     CWE190_Integer_Overflow__int_fgets_multiply_45_good();
+>     printLine("Finished good()");
+2878,2880d2914
+<     printLine("Calling bad()...");
+<     CWE190_Integer_Overflow__int_fgets_multiply_45_bad();
+<     printLine("Finished bad()");

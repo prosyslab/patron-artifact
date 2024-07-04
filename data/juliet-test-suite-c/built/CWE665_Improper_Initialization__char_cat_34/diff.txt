@@ -1,0 +1,26 @@
+3248,3251c3248,3249
+< 
+< 
+< 
+< void CWE665_Improper_Initialization__char_cat_34_bad()
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE665_Improper_Initialization/CWE665_Improper_Initialization__char_cat_34.c"
+> static void goodG2B()
+3258c3256
+<     ;
+---
+>     data[0] = '\0';
+3271a3270,3274
+> 
+> void CWE665_Improper_Initialization__char_cat_34_good()
+> {
+>     goodG2B();
+> }
+3281a3285,3287
+>     printLine("Calling good()...");
+>     CWE665_Improper_Initialization__char_cat_34_good();
+>     printLine("Finished good()");
+3287,3289d3292
+<     printLine("Calling bad()...");
+<     CWE665_Improper_Initialization__char_cat_34_bad();
+<     printLine("Finished bad()");

@@ -1,0 +1,54 @@
+2813a2814,2815
+> # 46 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65a.c"
+> void CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65b_goodG2BSink(twoIntsStruct * data);
+2815,2820c2817
+< 
+< 
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65b_badSink(twoIntsStruct * data);
+< 
+< void CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65_bad()
+---
+> static void goodG2B()
+2823,2824c2820
+< 
+<     void (*funcPtr) (twoIntsStruct *) = CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65b_badSink;
+---
+>     void (*funcPtr) (twoIntsStruct *) = CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65b_goodG2BSink;
+2827c2823
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65a.c" 3 4
+---
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65a.c" 3 4
+2829c2825
+< # 30 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65a.c"
+---
+> # 53 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65a.c"
+2832,2833c2828
+< 
+<     data = (twoIntsStruct *)malloc(sizeof(data));
+---
+>     data = (twoIntsStruct *)malloc(sizeof(*data));
+2835c2830
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65a.c" 3 4
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65a.c" 3 4
+2837c2832
+< # 34 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65a.c"
+---
+> # 56 "/root/patron-artifact/data/juliet-test-suite-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65a.c"
+2841d2835
+< 
+2843a2838,2842
+> 
+> void CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65_good()
+> {
+>     goodG2B();
+> }
+2853a2853,2855
+>     printLine("Calling good()...");
+>     CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65_good();
+>     printLine("Finished good()");
+2859,2861d2860
+<     printLine("Calling bad()...");
+<     CWE122_Heap_Based_Buffer_Overflow__sizeof_struct_65_bad();
+<     printLine("Finished bad()");
