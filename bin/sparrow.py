@@ -8,6 +8,7 @@ import subprocess
 from logger import log, INFO, ERROR, WARNING
 from typing import TextIO
 import copy
+import time
 SPARROW_LOG_DIR = os.path.join(config.configuration['OUT_DIR'], 'sparrow_logs')
 IS_SOLO_SPARROW = False
 
@@ -39,8 +40,13 @@ Input: str (package name), list (list of file paths)
 Output: bool (True: success, False: fail)
 '''
 def sparrow(package:str, files:list) -> bool:
+    start_time = time.time()
+    time_record = dict()
+    SPARROW_PKG_DIR = os.path.join(SPARROW_LOG_DIR, package)
     if not os.path.exists(SPARROW_LOG_DIR):
         os.mkdir(SPARROW_LOG_DIR)
+    if not os.path.exists(SPARROW_PKG_DIR):
+        os.mkdir(SPARROW_PKG_DIR)
     tsvfile = open(os.path.join(SPARROW_LOG_DIR, '{}_sparrow_stat.tsv'.format(package)), 'a')
     writer = csv.writer(tsvfile, delimiter='\t')
     writer.writerow(['Package', 'Status'])
@@ -52,6 +58,8 @@ def sparrow(package:str, files:list) -> bool:
     i = 0
     while len(rest_files) > 0 and proc_cnt < config.configuration["PROCESS_LIMIT"]:
         log(INFO, f"Running sparrow for {files[i]} ...")
+        time_record[files[i]] = dict()
+        time_record[files[i]]['start'] = time.time()
         sparrow_log, process = run_sparrow(files[i])
         proc_cnt += 1
         procs.append((files[i], process, sparrow_log))
@@ -63,6 +71,7 @@ def sparrow(package:str, files:list) -> bool:
                     stdout, stderr = process.communicate(timeout=900)
                 except subprocess.TimeoutExpired:
                     log(ERROR, f"Timeout for {file}.")
+                    time_record[file]['end'] = 0
                     process.kill()
                     writer.writerow([file, 'X'])
                     tsvfile.flush()
@@ -72,10 +81,12 @@ def sparrow(package:str, files:list) -> bool:
                 sparrow_log.close()
                 if process.returncode == 0:
                     log(INFO, f"{file} is successfully analyzed.")
+                    time_record[file]['end'] = time.time()
                     writer.writerow([file, 'O'])
                     success_cnt += 1
                 else:
                     log(ERROR, f"Failed to analyze {file}.")
+                    time_record[file]['end'] = 0
                     log(ERROR, f"Check {os.path.join(os.path.dirname(file), 'sparrow_log')} for more information.")
                     writer.writerow([file, 'X'])
                 tsvfile.flush()
@@ -88,6 +99,16 @@ def sparrow(package:str, files:list) -> bool:
     if success_cnt == 0:
         log(ERROR, f"No file is successfully analyzed.")
         return False
+    time_lst = []
+    with open(os.path.join(SPARROW_PKG_DIR, f'{package}_time_summary.txt'), 'w') as f:
+        for file in time_record:
+            if time_record[file]['end'] == 0:
+                f.write(f"{file}: Timeout or Error\n")
+            else:
+                time_lst.append(time_record[file]['end'] - time_record[file]['start'])
+                f.write(f"{file}: {time_record[file]['end'] - time_record[file]['start']}\n")
+        f.write(f"Average: {sum(time_lst)/len(time_lst)}\n")
+        f.write(f"Total time: {time.time() - start_time}\n")
     log(INFO, f"{success_cnt} files are successfully analyzed.")
     return True
 

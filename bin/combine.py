@@ -8,9 +8,10 @@ from pathlib import Path
 import csv
 import datetime
 from typing import TextIO
+import time
 
 COMBINE_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "combine_logs")
-
+COMBINE_TIME_TRACK = []
 
 '''
 Separate logging function to record shell stdout and stderr.
@@ -186,7 +187,9 @@ Input: list of tuples (category, package)
 Output: bool (True: success, False: fail) and list of Strings (success packages)
 '''
 def run(tups: list) -> tuple[bool, list]:
-    global COMBINE_LOG_PATH
+    global COMBINE_LOG_PATH, COMBINE_TIME_TRACK
+    start_time = time.time()
+    COMBINE_TIME_TRACK = []
     success_packages = []
     COMBINE_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "combine_logs")
     if not os.path.exists(COMBINE_LOG_PATH):
@@ -198,9 +201,13 @@ def run(tups: list) -> tuple[bool, list]:
     out_dir = config.configuration["ANALYSIS_DIR"]
     pkg_success_cnt = 0
     for category, package in tups:
+        COMBINE_PKG_PATH = os.path.join(COMBINE_LOG_PATH, package)
+        if not os.path.exists(COMBINE_PKG_PATH):
+            os.mkdir(COMBINE_PKG_PATH)
         file_info = dict()
         target_path = os.path.join(config.configuration["SMAKE_OUT_DIR"], category, package)
-        log_path = os.path.join(COMBINE_LOG_PATH, f"{package}_combine_log.txt")
+        log_path = os.path.join(COMBINE_PKG_PATH, f"{package}_combine_log.txt")
+        time_path = os.path.join(COMBINE_PKG_PATH, f"{package}_time_summary.txt")
         log(INFO, f"Beginning to Combine <{package}> of <{category}> category ...")
         if not os.path.exists(target_path):
             log(ERROR, f"{target_path} does not exist. This is because Smake failed")
@@ -219,12 +226,20 @@ def run(tups: list) -> tuple[bool, list]:
                 file_info[file_name] = (os.path.join(target_path, '/'.join(candidate.split(':')[0].split('/')[:-1])), path_list)
                 file_stack.append(file_name)
         log(INFO, f"{len(output)} main functions got filtered down to {len(file_stack)} candidates.")
+        filter_end_time = time.time()
+        write_combine_log(time_path, f"Start Time: {datetime.datetime.fromtimestamp(start_time)}")
+        write_combine_log(time_path, f"{len(file_stack)} binaries are combined.\nFilter Time: {filter_end_time}\nFilter Elapsed Time: {datetime.timedelta(seconds=filter_end_time - start_time)}\n")
 
         for file_name, (orig_path, path_list) in file_info.items():
             if not run_combine_pipeline(orig_path, file_name, path_list):
                 writer.writerow([category, package, '/'.join(path_list), 'X', 'combine error'])
                 tsvfile.flush()
+                write_combine_log(time_path, f"Combine Error on a binary: {file_name}")
                 continue
+            end_time = time.time()
+            combine_time = datetime.timedelta(seconds=end_time - filter_end_time)
+            write_combine_log(time_path, f"Combining {file_name}: {combine_time}\n")
+            COMBINE_TIME_TRACK.append(combine_time)
             c_files = [f for f in os.listdir(orig_path) if f.endswith(".c")]
             if len(c_files) == 0:
                 log(ERROR, f"No .c file found in {orig_path}.")
@@ -273,6 +288,16 @@ def run(tups: list) -> tuple[bool, list]:
         success_packages.append(package)
         tsvfile.flush()
         pkg_success_cnt += 1
+    combine_time_sum = 0
+    if len(COMBINE_TIME_TRACK) != 0:
+        for i in range(len(COMBINE_TIME_TRACK)):
+            combine_time_sum += COMBINE_TIME_TRACK[i].total_seconds()
+            write_combine_log(time_path, f"Average Combine Time per binary: {datetime.timedelta(seconds=combine_time_sum / len(COMBINE_TIME_TRACK))}")
+    else:
+        write_combine_log(time_path, "No binary was combined.")
+    write_combine_log(time_path, f"Total Combine Time: {datetime.timedelta(seconds=time.time() - filter_end_time)}")
+    write_combine_log(time_path, f"Total Elapsed Time: {datetime.timedelta(seconds=time.time() - start_time)}")
+    COMBINE_TIME_TRACK = []
     tsvfile.close()
     if pkg_success_cnt == 0:
         log(ERROR, "No package was combined.")

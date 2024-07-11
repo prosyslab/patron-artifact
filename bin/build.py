@@ -3,6 +3,7 @@ import os
 import sys
 import subprocess
 import datetime
+import time
 import csv
 import config
 import combine
@@ -211,12 +212,17 @@ Input: category(category of the package), package(name of the package),
 Output: Boolean (True: Building is successful, False: Building is not successful)
 '''
 def smake(category: str, package: str, tsvfile: TextIO, writer: csv.writer, smake_out_dir: str, tries: int) -> bool:
+    start_time = time.time()
     proc = None
     out = None
     err = None
     BUILD_LOG_PATH = os.path.join(config.configuration['OUT_DIR'], "build_logs")
     if not os.path.exists(BUILD_LOG_PATH):
         os.mkdir(BUILD_LOG_PATH)
+    BUILD_PKG_PATH = os.path.join(BUILD_LOG_PATH, package)
+    if not os.path.exists(BUILD_PKG_PATH):
+        os.mkdir(BUILD_PKG_PATH)
+        
     try:
         proc = subprocess.Popen([os.path.join(PKG_DIR, 'build-deb.sh'), package, str(category)],
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -232,7 +238,13 @@ def smake(category: str, package: str, tsvfile: TextIO, writer: csv.writer, smak
             proc.kill()
         writer.writerow([package, 'X', '-', '-', '-','timeout'])
         tsvfile.flush()
-        with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
+        with open(os.path.join(BUILD_PKG_PATH, package + '_time_summary.txt'), 'w') as f:
+            end_time = time.time()
+            f.write(f"Start Time: {datetime.datetime.fromtimestamp(start_time)}\n")
+            f.write(f"End Time: {datetime.datetime.fromtimestamp(end_time)}\n")
+            f.write(f"Time Elapsed: {datetime.timedelta(seconds=end_time - start_time)}\n")
+            f.write(f"TimeOut occurred at {datetime.datetime.now()}")
+        with open(os.path.join(BUILD_PKG_PATH, package + '_build_log.txt'), 'w') as f:
             if out != None:
                 f.write(out.decode('utf-8'))
             if err != None:
@@ -242,7 +254,12 @@ def smake(category: str, package: str, tsvfile: TextIO, writer: csv.writer, smak
         if proc != None:
             proc.kill()
         try:
-            with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
+            with open(os.path.join(BUILD_PKG_PATH, package + '_time_summary.txt'), 'w') as f:
+                f.write(f"Start Time: {datetime.datetime.fromtimestamp(start_time)}\n")
+                f.write(f"End Time: {datetime.datetime.fromtimestamp(end_time)}\n")
+                f.write(f"Time Elapsed: {datetime.timedelta(seconds=time.time() - start_time)}\n")
+                f.write(f"Error occurred at {datetime.datetime.now()}\n")
+            with open(os.path.join(BUILD_PKG_PATH, package + '_build_log.txt'), 'w') as f:
                 if out != None:
                     f.write(out.decode('utf-8'))
                 if err != None:
@@ -258,7 +275,12 @@ def smake(category: str, package: str, tsvfile: TextIO, writer: csv.writer, smak
             log(ERROR, f"building {package} has failed: Unexpected Exit!!")
             log(ERROR, e)
             return False
-    with open(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'), 'w') as f:
+    with open(os.path.join(BUILD_PKG_PATH, package + '_time_summary.txt'), 'w') as f:
+        end_time = time.time()
+        f.write(f"Start Time: {datetime.datetime.fromtimestamp(start_time)}\n")
+        f.write(f"End Time: {datetime.datetime.fromtimestamp(end_time)}\n")
+        f.write(f"Time Elapsed: {datetime.timedelta(seconds=end_time - start_time)}\n")
+    with open(os.path.join(BUILD_PKG_PATH, package + '_build_log.txt'), 'w') as f:
         try:
             if out != None:
                 f.write(out.decode('utf-8'))
@@ -268,7 +290,7 @@ def smake(category: str, package: str, tsvfile: TextIO, writer: csv.writer, smak
             log(ERROR, "could not write {}, due to decoding".format(package + '_build_log.txt'))
     if not check_smake_result(os.path.join(smake_out_dir, str(category), package)):
         log(WARNING, f"{package} has no .i files")
-        writer.writerow([package, 'X', '-', '-', '-', "build error, find log at {}".format(os.path.join(BUILD_LOG_PATH, package + '_build_log.txt'))])
+        writer.writerow([package, 'X', '-', '-', '-', "build error, find log at {}".format(os.path.join(BUILD_PKG_PATH, package + '_build_log.txt'))])
         tsvfile.flush()
         log(ERROR, f"building {package} has failed because of no .i files")
         return False

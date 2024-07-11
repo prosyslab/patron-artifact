@@ -35,6 +35,30 @@ find_target() {
   fi
 }
 
+build_package() {
+  CC=$1
+  CXX=$2
+
+  # 4. build the binary for the env settings
+  dpkg-buildpackage -us -uc -d || return 1
+
+  # 5. clear the build history
+  make distclean || make clean || echo "No make file to clean"
+
+  # 6. configure the package according to the pre-set env settings
+  dh_auto_configure || return 1
+
+  # 7. build the package
+  if [ -f "Makefile" ]; then
+    $SMAKE_BIN --init
+    $SMAKE_BIN -j || return 1
+  elif [ -f "CMakeLists.txt" ]; then
+    /smake/scmake
+  fi
+
+  return 0
+}
+
 # remove lock files
 # rm /var/lib/apt/lists/lock ;rm /var/cache/apt/archives/lock;rm /var/lib/dpkg/lock*
 
@@ -56,23 +80,13 @@ find_target || error_exit "Error: find target" $SCRIPT_DIR $TMP_DIR
 # 3. install dependencies
 apt build-dep -y $PKG_NAME || error_exit "Error: install dependencies" $SCRIPT_DIR $TMP_DIR
 
-# 4. build the binary for the env settings
-dpkg-buildpackage -us -uc -d || error_exit "Error: dpkg-buildpackage" $SCRIPT_DIR $TMP_DIR
-
-# 5. clear the build history
-make distclean || make clean || echo "No make file to clean"
-
-# 6. configure the package according to the pre-set env settings
-dh_auto_configure || error_exit "Error: dh_auto_configure failed" $SCRIPT_DIR $TMP_DIR
-
-# 7. build the package
-if [ -f "Makefile" ]; then
-  $SMAKE_BIN --init
-  $SMAKE_BIN -j || error_exit "Error: SMAKE failed" $SCRIPT_DIR $TMP_DIR
-elif [ -f "CMakeLists.txt" ]; then
-  /smake/scmake
+# Try building with gcc and g++
+build_package gcc g++
+if [ $? -ne 0 ]; then
+  echo "GCC build failed, trying with Clang"
+  # Try building with clang and clang++
+  build_package clang clang++ || error_exit "Error: both GCC and Clang builds failed" $SCRIPT_DIR $TMP_DIR
 fi
-
 
 # 8. install the package
 echo sparrow $OUT_DIR
