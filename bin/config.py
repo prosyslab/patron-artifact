@@ -225,6 +225,8 @@ def config_log(config):
             continue
         if key == "DEFAULT_SPARROW_OPT" and "USER_SPARROW_OPT" != []:
             continue
+        if value == False:
+            continue
         logger.log(logger.INFO, f"\t{key}: {value}")
             
 
