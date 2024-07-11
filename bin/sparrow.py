@@ -102,12 +102,14 @@ def sparrow(package:str, files:list) -> bool:
     time_lst = []
     with open(os.path.join(SPARROW_PKG_DIR, f'{package}_time_summary.txt'), 'w') as f:
         for file in time_record:
-            if time_record[file]['end'] == 0:
+            # check if 'end' key exists
+            if 'end' not in time_record[file] or time_record[file]['end'] == 0:
                 f.write(f"{file}: Timeout or Error\n")
             else:
                 time_lst.append(time_record[file]['end'] - time_record[file]['start'])
                 f.write(f"{file}: {time_record[file]['end'] - time_record[file]['start']}\n")
-        f.write(f"Average: {sum(time_lst)/len(time_lst)}\n")
+        if len(time_lst) != 0:
+            f.write(f"Average: {sum(time_lst)/len(time_lst)}\n")
         f.write(f"Total time: {time.time() - start_time}\n")
     log(INFO, f"{success_cnt} files are successfully analyzed.")
     return True
