@@ -20,7 +20,7 @@ configuration = {
     "PATRON_BIN_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "patron", "patron"),
     "EXP_BIN_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "bin"),
     "BENCHMARK_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "benchmark"),
-    "DB_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-DB"),
+    # "DB_PATH": os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-DB"),
     "BUILD_ONLY": False,
     "CRWAL_ONLY": False,
     "SPARROW_ONLY": False,

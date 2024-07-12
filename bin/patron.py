@@ -322,6 +322,8 @@ def check_sparrow() -> list:
     missing_list = []
     donors = [ os.path.join(config.configuration["DONOR_PATH"], f) for f in os.listdir(config.configuration["DONOR_PATH"]) ]
     for donor in donors:
+        if not os.path.isdir(donor):
+            continue
         target = os.path.join(donor, 'bug')
         if not os.path.exists(os.path.join(target, 'sparrow-out')):
             log(WARNING, f"sparrow-out for {donor} does not exist.")
@@ -343,8 +345,9 @@ def mk_database():
     log(WARNING, "Creating {} from scratch...".format(config.configuration["DB_PATH"]))
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     db_name = os.path.basename(config.configuration["DB_PATH"])
-    if os.path.exists(os.path.join(config.configuration["PATRON_ROOT_PATH"], db_name)):
-        subprocess.run(['rm', '-rf', db_name])
+    if os.path.exists(os.path.join(config.configuration["PATRON_ROOT_PATH"], 'patron-DB')):
+        log(WARNING, "Removing existing patron-DB...")
+        subprocess.run(['rm', '-rf', 'patron-DB'])
     cmd = [config.configuration["PATRON_BIN_PATH"], "db"]
     for donor in donor_list:
         log(INFO, f"Creating patron-DB for {donor} ...")
@@ -387,8 +390,16 @@ def mk_database():
             log(INFO, f"Successfully created DB for {donor}")
             writer.writerow([donor.split('/')[-2], donor.split('/')[-1], "O"])
     log(INFO, "Successfully finished making DB.")
-    log(INFO, "Copying the database to the root directory as {}...".format(os.path.basename(config.configuration["DB_PATH"])))
-    os.system('cp -r {} {}'.format(os.path.join(config.configuration["PATRON_ROOT_PATH"], os.path.basename(config.configuration["DB_PATH"])), os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.configuration["DB_PATH"]))))
+    db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.configuration["DB_PATH"]))
+    if os.path.exists(db_dest):
+        db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.configuration["DONOR_PATH"]) + "-DB")
+    dest_cnt = 1
+    while os.path.exists(db_dest):
+        db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.configuration["DONOR_PATH"]) + "-DB" + str(dest_cnt))
+        dest_cnt += 1
+    log(INFO, "Copying the database to the root directory as {}...".format(db_dest))
+    db_src = os.path.join(config.configuration["PATRON_ROOT_PATH"], 'patron-DB')
+    os.system('cp -r {} {}'.format(db_src, db_dest))
     tsv_file.close()
 
 '''
