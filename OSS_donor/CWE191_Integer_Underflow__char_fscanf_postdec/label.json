@@ -1,0 +1,24 @@
+{
+    "ID": "CWE191_Integer_Underflow__char_fscanf_postdec",
+    "URL": "https://github.com/arichardson/juliet-test-suite-c/tree/master/testcases/CWE191_Integer_Underflow",
+    "PROJECT": "juliet-test-suite-c",
+    "TYPE": "MIO",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "CWE191_Integer_Underflow__char_fscanf_postdec_01.c:30"
+        ],
+        "ALARM-FUNC": [
+            "CWE191_Integer_Underflow__char_fscanf_postdec_01_bad"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "((int )data)-1"
+        ]
+    },
+    "PARSER": "claml"
+}

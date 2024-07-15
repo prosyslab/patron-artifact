@@ -1,0 +1,16 @@
+2662,2664c2662,2672
+<   {
+< #line 119
+<   printIntLine(100 / data);
+---
+> #line 214
+>   if (data != 0) {
+>     {
+> #line 216
+>     printIntLine(100 / data);
+>     }
+>   } else {
+>     {
+> #line 220
+>     printLine("This would result in a divide by zero");
+>     }

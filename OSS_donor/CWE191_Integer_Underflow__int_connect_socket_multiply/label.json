@@ -1,0 +1,24 @@
+{
+    "ID": "CWE191_Integer_Underflow__int_connect_socket_multiply",
+    "URL": "https://github.com/arichardson/juliet-test-suite-c/tree/master/testcases/CWE191_Integer_Underflow",
+    "PROJECT": "juliet-test-suite-c",
+    "TYPE": "TIO",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "CWE191_Integer_Underflow__int_connect_socket_multiply_01.c:108"
+        ],
+        "ALARM-FUNC": [
+            "CWE191_Integer_Underflow__int_connect_socket_multiply_01_bad"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "data*2"
+        ]
+    },
+    "PARSER": "claml"
+}

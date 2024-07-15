@@ -1,0 +1,20 @@
+1569,1572c1569,1582
+< #line 30
+<   result = data - 1U;
+< #line 31
+<   printUnsignedLine(result);
+---
+>   }
+> #line 61
+>   if (data > 0U) {
+>     {
+> #line 63
+>     result = data - 1U;
+> #line 64
+>     printUnsignedLine(result);
+>     }
+>   } else {
+>     {
+> #line 68
+>     printLine("data value is too large to perform subtraction.");
+>     }

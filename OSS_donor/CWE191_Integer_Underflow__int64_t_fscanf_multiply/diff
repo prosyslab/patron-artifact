@@ -1,0 +1,20 @@
+1597,1601c1597,1609
+<     {
+< #line 32
+<     result = data * 2L;
+< #line 33
+<     printLongLongLine(result);
+---
+> #line 66
+>     if ((long long )data > 0LL) {
+>       {
+> #line 68
+>       result = data * 2L;
+> #line 69
+>       printLongLongLine(result);
+>       }
+>     } else {
+>       {
+> #line 73
+>       printLine("data value is too small to perform multiplication.");
+>       }

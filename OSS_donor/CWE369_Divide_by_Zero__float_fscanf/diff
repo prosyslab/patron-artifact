@@ -1,0 +1,22 @@
+2478,2481c2478,2493
+< #line 33
+<   result = (int )(100. / (double )data);
+< #line 34
+<   printIntLine(result);
+---
+> #line 66
+>   __cil_tmp2 = fabs((double )data);
+>   }
+> #line 66
+>   if (__cil_tmp2 > 1e-06) {
+>     {
+> #line 68
+>     result = (int )(100. / (double )data);
+> #line 69
+>     printIntLine(result);
+>     }
+>   } else {
+>     {
+> #line 73
+>     printLine("This would result in a divide by zero");
+>     }

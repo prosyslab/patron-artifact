@@ -1,0 +1,24 @@
+1595,1600c1595,1610
+< #line 31
+<   data ++;
+< #line 32
+<   result = data;
+< #line 33
+<   printLongLongLine(result);
+---
+>   }
+> #line 64
+>   if ((long long )data < -1LL) {
+>     {
+> #line 66
+>     data ++;
+> #line 67
+>     result = data;
+> #line 68
+>     printLongLongLine(result);
+>     }
+>   } else {
+>     {
+> #line 72
+>     printLine("data value is too large to perform arithmetic safely.");
+>     }

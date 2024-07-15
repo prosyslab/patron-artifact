@@ -1,0 +1,20 @@
+1587,1591c1587,1599
+<   {
+< #line 44
+<   result = data - 1;
+< #line 45
+<   printIntLine(result);
+---
+> #line 88
+>   if (data > (-0x7FFFFFFF-1)) {
+>     {
+> #line 90
+>     result = data - 1;
+> #line 91
+>     printIntLine(result);
+>     }
+>   } else {
+>     {
+> #line 95
+>     printLine("data value is too large to perform subtraction.");
+>     }

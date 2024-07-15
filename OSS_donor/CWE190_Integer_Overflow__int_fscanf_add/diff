@@ -1,0 +1,20 @@
+1569,1572c1569,1582
+< #line 31
+<   result = data + 1;
+< #line 32
+<   printIntLine(result);
+---
+>   }
+> #line 64
+>   if (data < 2147483647) {
+>     {
+> #line 66
+>     result = data + 1;
+> #line 67
+>     printIntLine(result);
+>     }
+>   } else {
+>     {
+> #line 71
+>     printLine("data value is too large to perform arithmetic safely.");
+>     }

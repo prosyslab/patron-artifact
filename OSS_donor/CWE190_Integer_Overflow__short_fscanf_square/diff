@@ -1,0 +1,26 @@
+2479,2482c2479,2498
+< #line 32
+<   result = (short )((int )data * (int )data);
+< #line 33
+<   printIntLine((int )result);
+---
+> #line 63
+>   __cil_tmp3 = sqrt((double )32767);
+>   }
+>   {
+> #line 63
+>   __cil_tmp2 = abs((int )((long )data));
+>   }
+> #line 63
+>   if ((long )__cil_tmp2 <= (long )__cil_tmp3) {
+>     {
+> #line 65
+>     result = (short )((int )data * (int )data);
+> #line 66
+>     printIntLine((int )result);
+>     }
+>   } else {
+>     {
+> #line 70
+>     printLine("data value is too large to perform arithmetic safely.U");
+>     }

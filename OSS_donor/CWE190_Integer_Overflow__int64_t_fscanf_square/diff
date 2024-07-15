@@ -1,0 +1,26 @@
+2504,2507c2504,2523
+< #line 33
+<   result = data * data;
+< #line 34
+<   printLongLongLine(result);
+---
+> #line 64
+>   __cil_tmp3 = sqrtl((long double )-1LL);
+>   }
+>   {
+> #line 64
+>   __cil_tmp2 = imaxabs((intmax_t )data);
+>   }
+> #line 64
+>   if ((long double )__cil_tmp2 <= __cil_tmp3) {
+>     {
+> #line 66
+>     result = data * data;
+> #line 67
+>     printLongLongLine(result);
+>     }
+>   } else {
+>     {
+> #line 71
+>     printLine("data value is too large to perform arithmetic safely.");
+>     }

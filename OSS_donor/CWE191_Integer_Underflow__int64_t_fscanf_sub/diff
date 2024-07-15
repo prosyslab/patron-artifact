@@ -1,0 +1,20 @@
+1594,1597c1594,1607
+< #line 31
+<   result = data - 1L;
+< #line 32
+<   printLongLongLine(result);
+---
+>   }
+> #line 62
+>   if ((long long )data > 0LL) {
+>     {
+> #line 64
+>     result = data - 1L;
+> #line 65
+>     printLongLongLine(result);
+>     }
+>   } else {
+>     {
+> #line 69
+>     printLine("data value is too large to perform subtraction.");
+>     }

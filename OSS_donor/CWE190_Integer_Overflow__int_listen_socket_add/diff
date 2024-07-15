@@ -1,0 +1,20 @@
+2663,2667c2663,2675
+<   {
+< #line 120
+<   result = data + 1;
+< #line 121
+<   printIntLine(result);
+---
+> #line 220
+>   if (data < 2147483647) {
+>     {
+> #line 222
+>     result = data + 1;
+> #line 223
+>     printIntLine(result);
+>     }
+>   } else {
+>     {
+> #line 227
+>     printLine("data value is too large to perform arithmetic safely.");
+>     }

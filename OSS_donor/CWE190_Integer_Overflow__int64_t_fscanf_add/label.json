@@ -1,0 +1,24 @@
+{
+    "ID": "CWE190_Integer_Overflow__int64_t_fscanf_add",
+    "URL": "https://github.com/arichardson/juliet-test-suite-c/tree/master/testcases/CWE190_Integer_Overflow",
+    "PROJECT": "juliet-test-suite-c",
+    "TYPE": "PIO",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "CWE190_Integer_Overflow__int64_t_fscanf_add_01.c:31"
+        ],
+        "ALARM-FUNC": [
+            "CWE190_Integer_Overflow__int64_t_fscanf_add_01_bad"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "data+1L"
+        ]
+    },
+    "PARSER": "claml"
+}

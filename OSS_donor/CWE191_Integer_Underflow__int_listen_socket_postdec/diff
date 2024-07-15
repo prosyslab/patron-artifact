@@ -1,0 +1,28 @@
+2664,2672c2664,2680
+<   {
+< #line 120
+<   __cil_tmp14 = data;
+< #line 120
+<   data --;
+< #line 121
+<   result = data;
+< #line 122
+<   printIntLine(result);
+---
+> #line 222
+>   if (data > (-0x7FFFFFFF-1)) {
+>     {
+> #line 224
+>     __cil_tmp14 = data;
+> #line 224
+>     data --;
+> #line 225
+>     result = data;
+> #line 226
+>     printIntLine(result);
+>     }
+>   } else {
+>     {
+> #line 230
+>     printLine("data value is too large to perform arithmetic safely.U");
+>     }

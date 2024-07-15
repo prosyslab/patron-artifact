@@ -1,0 +1,20 @@
+2636,2640c2636,2648
+<     {
+< #line 108
+<     result = data * 2;
+< #line 109
+<     printIntLine(result);
+---
+> #line 198
+>     if (data > -1073741824) {
+>       {
+> #line 200
+>       result = data * 2;
+> #line 201
+>       printIntLine(result);
+>       }
+>     } else {
+>       {
+> #line 205
+>       printLine("data value is too small to perform multiplication.");
+>       }

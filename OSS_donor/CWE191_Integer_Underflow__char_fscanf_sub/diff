@@ -1,0 +1,20 @@
+1569,1572c1569,1582
+< #line 30
+<   result = (char )((int )data - 1);
+< #line 31
+<   printHexCharLine(result);
+---
+>   }
+> #line 61
+>   if ((int )data > -128) {
+>     {
+> #line 63
+>     result = (char )((int )data - 1);
+> #line 64
+>     printHexCharLine(result);
+>     }
+>   } else {
+>     {
+> #line 68
+>     printLine("data value is too large to perform subtraction.");
+>     }

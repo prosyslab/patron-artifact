@@ -1,0 +1,24 @@
+1569,1574c1569,1584
+< #line 30
+<   data ++;
+< #line 31
+<   result = data;
+< #line 32
+<   printUnsignedLine(result);
+---
+>   }
+> #line 63
+>   if (data < 4294967295U) {
+>     {
+> #line 65
+>     data ++;
+> #line 66
+>     result = data;
+> #line 67
+>     printUnsignedLine(result);
+>     }
+>   } else {
+>     {
+> #line 71
+>     printLine("data value is too large to perform arithmetic safely.");
+>     }

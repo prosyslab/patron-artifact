@@ -1,0 +1,16 @@
+1586,1588c1586,1596
+<   {
+< #line 43
+<   printIntLine(100 % data);
+---
+> #line 82
+>   if (data != 0) {
+>     {
+> #line 84
+>     printIntLine(100 % data);
+>     }
+>   } else {
+>     {
+> #line 88
+>     printLine("This would result in a divide by zero");
+>     }
