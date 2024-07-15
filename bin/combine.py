@@ -228,7 +228,7 @@ def run(tups: list) -> tuple[bool, list]:
         log(INFO, f"{len(output)} main functions got filtered down to {len(file_stack)} candidates.")
         filter_end_time = time.time()
         write_combine_log(time_path, f"Start Time: {datetime.datetime.fromtimestamp(start_time)}")
-        write_combine_log(time_path, f"{len(file_stack)} binaries are combined.\nFilter Time: {filter_end_time}\nFilter Elapsed Time: {datetime.timedelta(seconds=filter_end_time - start_time)}\n")
+        write_combine_log(time_path, f"{len(file_stack)} binaries are combined.\nFilter Elapsed Time: {datetime.timedelta(seconds=filter_end_time - start_time)}\n")
 
         for file_name, (orig_path, path_list) in file_info.items():
             if not run_combine_pipeline(orig_path, file_name, path_list):
@@ -292,10 +292,9 @@ def run(tups: list) -> tuple[bool, list]:
     if len(COMBINE_TIME_TRACK) != 0:
         for i in range(len(COMBINE_TIME_TRACK)):
             combine_time_sum += COMBINE_TIME_TRACK[i].total_seconds()
-            write_combine_log(time_path, f"Average Combine Time per binary: {datetime.timedelta(seconds=combine_time_sum / len(COMBINE_TIME_TRACK))}")
+        write_combine_log(time_path, f"Average Combine Time per binary: {datetime.timedelta(seconds=combine_time_sum / len(COMBINE_TIME_TRACK))}")
     else:
         write_combine_log(time_path, "No binary was combined.")
-    write_combine_log(time_path, f"Total Combine Time: {datetime.timedelta(seconds=time.time() - filter_end_time)}")
     write_combine_log(time_path, f"Total Elapsed Time: {datetime.timedelta(seconds=time.time() - start_time)}")
     COMBINE_TIME_TRACK = []
     tsvfile.close()
