@@ -231,6 +231,7 @@ def config_log(config):
             
 
 def setup(level):
+    global configuration
     logger.logger = __get_logger(level)
     if level != "PATRON_PIPE" and level != "PATRON":
         configuration["ANALYSIS_DIR"] = os.path.join(configuration["PKG_DIR"], "analysis_target_" + configuration["START_TIME"])
@@ -321,9 +322,9 @@ def setup(level):
         parser.add_argument("-dbpath", "-dbp", type=str, default="benchmark-DB", help="path to the database directory(default:benchmark-DB")
         parser.add_argument("-process", '-p', type=int, default=20, help="number of threads to run")
         configuration["ARGS"] = parser.parse_args()
+        configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
         if configuration["ARGS"].database:
             configuration["DATABASE_ONLY"] = True
-            configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
             configuration["DONOR_PATH"] = os.path.abspath(configuration["ARGS"].donorpath)
         else:
             logger.log(logger.INFO, "Configuring target donee files under given directories {}".format(configuration["ARGS"].donee))
