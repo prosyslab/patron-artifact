@@ -30,6 +30,7 @@ def parse_time_duration(data_rows):
   return time_duration
 
 def run(log_dir_path):
+  OUT_PATH = os.path.join(log_dir_path, '..' , "time_duration.tsv")
   fp = open("time_duration.tsv", "w")
   writer = csv.writer(fp, delimiter='\t')
   writer.writerow(["Title", "Initilization", "Build", "Diff Analysis", "Trace Analysis", "Symbolic Trace Analysis", "Slicing", "Transplantation", "Verification", "Total"])
@@ -40,15 +41,28 @@ def run(log_dir_path):
           continue
       if not file[4].isdigit():
           continue
-      title = file[4:]
       log_file = os.path.join(log_dir_path, file)
       with open(log_file, "r") as f:
           lines = f.readlines()
           idx = -1
+          title = ""
+          for line in lines:
+              if "[COMMAND]: cp -rf" in line:
+                  data_path = line.split(" ")[3]
+                  parsed_path = data_path.split("/")
+                  for i in range(len(parsed_path)):
+                      if parsed_path[i] == "data":
+                          project = parsed_path[i + 1]
+                          name = parsed_path[i + 2]
+                          title = project + "-" + name
+                          break
+          if title == "":
+              title = file[4:]
           for i in range(len(lines) - 1, -1, -1):
               line = lines[i]
               if "Time duration" in line:
                   idx = i + 2
+                  break
           if idx == -1:
               print("Error: no time duration found in log file " + title)
               writer.writerow([title, "X", "X", "X", "X", "X", "X", "X", "X", "X"])

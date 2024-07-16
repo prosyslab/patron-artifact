@@ -1,16 +1,35 @@
 # patron-artifact
 
-## Experiment 1 - Accuracy.
+## Experiment 1, 2 - Accuracy, Scalability.
+
+These two experiments are conducted in a same environment.
+
+### Our Tool (Patron)
+
 Run the following command to reproduce Experiment 1 and 2 for the patron's performance.
 `./bin/run.py -benchmark`
 
-more details at [experiment_manual](https://github.com/prosyslab/patron-experiment/blob/master/README.md) 
+more details at [experiment_manual](https://github.com/prosyslab/patron-experiment/blob/master/README.md)
 
-## Experiment 2 - Scalability.
+### Patchweave
 
-## Experiment 3 - Flexibility.
+To run the Patchweave artifact to see experiment results
 
-## Experiment 4 - Generalizability.
+```
+cd <project root>/docker/patchweave
+./build.sh
+./run.sh
+```
+
+Unfortunately, Patchweave artifact is not provided fully reproducible.
+
+For more details, visit [https://patchweave.github.io/](https://patchweave.github.io/)
+
+### VulnFix
+
+### IntRepair
+
+## Experiment 3 - Generalizability.
 Run the following command to reproduce Experiment 4.
 `./bin/run.py -oss`
 
@@ -41,10 +60,10 @@ This process includes,
 Each step can be separately run through the below subsections as well.
 
 #### Building Debian Packages
-At `pkg/lists/*.txt`, we have the full lists of Debian packages written separately based on their categories. 
-ex) `pkg/lists/sound.txt`, `pkg/lists/graphics.txt` 
+At `pkg/lists/*.txt`, we have the full lists of Debian packages written separately based on their categories.
+ex) `pkg/lists/sound.txt`, `pkg/lists/graphics.txt`
 
-Run the following command to build packages listed in the target `.txt` file(s). 
+Run the following command to build packages listed in the target `.txt` file(s).
 ```
 ./bin/oss_exp.py -build <path_to_txt_file1> <path_to_txt_file2> <path_to_txt_file3> ...
 ```
@@ -92,7 +111,7 @@ The options at the end refer to the purpose of the analysis, which are
 ```
 At least one of these options must be given to run this step.
 
-In the above directory tree, if  
+In the above directory tree, if
 `./bin/oss_exp.py -sparrow pkg/argyll -io` is executed, `GenRMGam.c`, `fakegam.c`, `maptest.c`, `smthtest.c` will be the analysis targets for Integer Overflow bugs
 
 Analysis Results will be saved in `sparrow-out` directory under the directory of each target file

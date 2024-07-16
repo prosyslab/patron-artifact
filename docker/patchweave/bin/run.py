@@ -7,6 +7,8 @@ import sys
 # DIR_MAIN = os.getcwd()
 # CONF_DATA_PATH = "/data"
 # CONF_TOOL_PARAMS = ""
+FILE_PATH = os.path.dirname(os.path.abspath(__file__))
+path = os.path.dirname(FILE_PATH)
 os.chdir(path)
 sys.path.insert(0, path)
 import driver 
@@ -16,15 +18,15 @@ def execute_command_override(command):
         print("\t[COMMAND]" + command)
     process = subprocess.Popen([command], stdout=subprocess.PIPE, shell=True)
     try:
-      (output, error) = process.communicate(timeout=10)
+      (output, error) = process.communicate(timeout=1800)
     except subprocess.TimeoutExpired:
       process.kill()
       print("\t[ERROR] Timeout")
       return
     
 def evaluate_override(conf_path, bug_name, bug_id):
-    global driver.CONF_TOOL_PARAMS, driver.CONF_TOOL_PATH, driver.CONF_TOOL_NAME, driver.DIR_LOGS
-    print("\t[INFO]running evaluation")
+    # global driver.CONF_TOOL_PARAMS, driver.CONF_TOOL_PATH, driver.CONF_TOOL_NAME, driver.DIR_LOGS
+    print("\t[INFO] running evaluation")
     log_path = str(conf_path).replace(".conf", ".log")
     tool_command = "{ cd " + driver.CONF_TOOL_PATH + ";" + driver.CONF_TOOL_NAME + " --conf=" + conf_path + " "+ driver.CONF_TOOL_PARAMS + ";} 2> " + driver.FILE_ERROR_LOG
     execute_command_override(tool_command)
@@ -36,7 +38,7 @@ def evaluate_override(conf_path, bug_name, bug_id):
     execute_command_override(copy_log)
 
 def time_out_driver(path):
-  global driver.EXPERIMENT_ITEMS, driver.DIR_MAIN, driver.CONF_DATA_PATH, driver.CONF_TOOL_PARAMS
+#   global driver.EXPERIMENT_ITEMS, driver.DIR_MAIN, driver.CONF_DATA_PATH, driver.CONF_TOOL_PARAMS
   print("[DRIVER] Running experiment driver")
   driver.read_arg()
   driver.load_experiment()
@@ -73,8 +75,8 @@ def time_out_driver(path):
       print("\t[META-DATA] project: " + directory_name)
       print("\t[META-DATA] bug ID: " + bug_name)
       if not os.path.isfile(deployed_conf_path):
-          setup(script_path, script_name, conf_file_path, deployed_conf_path)
-      if not CONF_SETUP_ONLY:
+          driver.setup(script_path, script_name, conf_file_path, deployed_conf_path)
+      if not driver.CONF_SETUP_ONLY:
           evaluate_override(deployed_conf_path, bug_name, index)
       index = index + 1
 
