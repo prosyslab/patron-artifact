@@ -29,6 +29,14 @@ For more details, visit [https://patchweave.github.io/](https://patchweave.githu
 
 ### VulnFix
 
+To run the VulnFix artifact to see experiment results
+
+```
+cd <project root>/docker/vulnfix
+./build.sh
+./run.sh
+```
+
 ### IntRepair
 
 [IntRepair](https://github.com/TeamVault/IntRepair?tab=readme-ov-file)'s artifact is incompletely provided, we follow the algorithm provided in the [paper](https://ieeexplore.ieee.org/abstract/document/8862860/) to simulate the patches.
