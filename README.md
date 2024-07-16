@@ -2,7 +2,9 @@
 
 ## Experiment 1, 2 - Accuracy, Scalability.
 
-These two experiments are conducted in a same environment.
+These two experiments are conducted in the same environment.
+
+If you would like to check out the experimental outcomes beforehand, refer to [RQ1~2](https://docs.google.com/spreadsheets/d/1Mj6vHFTsFxV7hkIJ6hqLFhdKB-YUEd8fEpcrrrdCrkQ/edit?usp=sharing)
 
 ### Our Tool (Patron)
 
@@ -29,8 +31,16 @@ For more details, visit [https://patchweave.github.io/](https://patchweave.githu
 
 ### IntRepair
 
+[IntRepair](https://github.com/TeamVault/IntRepair?tab=readme-ov-file)'s artifact is incompletely provided, we follow the algorithm provided in the [paper](https://ieeexplore.ieee.org/abstract/document/8862860/) to simulate the patches.
+
+These manually synthesized patches can be found in [here](https://docs.google.com/spreadsheets/d/1Mj6vHFTsFxV7hkIJ6hqLFhdKB-YUEd8fEpcrrrdCrkQ/edit?usp=sharing)
+
 ## Experiment 3 - Generalizability.
-Run the following command to reproduce Experiment 4.
+
+If you would like to check out the experimental outcomes beforehand, refer to [RQ3](https://docs.google.com/spreadsheets/d/1LSj4_yEce8yGmVCOrJjzjmACfad_5634SejwFG051Oc/edit?usp=sharing)
+
+
+Run the following command to reproduce Experiment 3.
 `./bin/run.py -oss`
 
 This will reproduce with the predefined configuration.
