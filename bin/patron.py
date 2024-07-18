@@ -185,8 +185,8 @@ def mk_sparrow_cmd(label_path:str, curr_path:str) -> list:
         default_flags.append("-no_bo")
     target = ""
     for file in os.listdir(curr_path):
-        if file.endswith('.c') and 'cil_' in file:
-            target = file
+        if file.endswith('.c'):
+            target = os.path.join(curr_path, file)
             break
     if target == "":
         log(ERROR, f"Target file not found in {curr_path}")
@@ -221,8 +221,8 @@ def run_sparrow(missing_list:list) -> None:
     rest = []
     run_cnt = 0
     for path in missing_list:
-        if os.path.exists(os.path.join(os.path.dirname(file), 'sparrow-out')):
-            os.system(f'rm -rf {os.path.join(os.path.dirname(file), "sparrow-out")}')
+        if os.path.exists(os.path.join(os.path.dirname(path), 'sparrow-out')):
+            os.system(f'rm -rf {os.path.join(os.path.dirname(path), "sparrow-out")}')
         cmd = mk_sparrow_cmd(os.path.join(path, '..', 'label.json'), path)
         work_list.append(cmd)
     rest = copy.deepcopy(work_list)
