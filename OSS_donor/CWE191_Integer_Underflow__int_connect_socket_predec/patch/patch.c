@@ -2632,7 +2632,13 @@ void CWE191_Integer_Underflow__int_connect_socket_predec_01_bad(void)
     }
   }
 #line 196
-  if (data > (-0x7FFFFFFF-1)) {
+  if (data <= (-0x7FFFFFFF-1)) {
+    {
+#line 204
+    printLine("data value is too large to perform arithmetic safely.");
+    return;
+    }
+  }
     {
 #line 198
     data --;
@@ -2641,12 +2647,6 @@ void CWE191_Integer_Underflow__int_connect_socket_predec_01_bad(void)
 #line 200
     printIntLine(result);
     }
-  } else {
-    {
-#line 204
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-  }
   return;
 }
 }

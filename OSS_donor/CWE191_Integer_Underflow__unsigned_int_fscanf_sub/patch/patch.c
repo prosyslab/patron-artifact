@@ -1570,17 +1570,17 @@ void CWE191_Integer_Underflow__unsigned_int_fscanf_sub_01_bad(void)
 #line 61
   if (data > 0U) {
     {
+#line 68
+    printLine("data value is too large to perform subtraction.");
+    return;
+    }
+  } 
+    {
 #line 63
     result = data - 1U;
 #line 64
     printUnsignedLine(result);
     }
-  } else {
-    {
-#line 68
-    printLine("data value is too large to perform subtraction.");
-    }
-  }
   return;
 }
 }

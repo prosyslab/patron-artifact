@@ -1568,7 +1568,11 @@ void CWE191_Integer_Underflow__short_fscanf_predec_01_bad(void)
   fscanf(stdin, "%hd", & data);
   }
 #line 63
-  if ((int )data > -32768) {
+  if ((int )data <= -32768) {
+   {
+      printLine("data value is too large to perform arithmetic safely.");
+   }
+  }
     {
 #line 65
     data --;
@@ -1576,13 +1580,7 @@ void CWE191_Integer_Underflow__short_fscanf_predec_01_bad(void)
     result = data;
 #line 67
     printIntLine((int )result);
-    }
-  } else {
-    {
-#line 71
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-  }
+   }
   return;
 }
 }

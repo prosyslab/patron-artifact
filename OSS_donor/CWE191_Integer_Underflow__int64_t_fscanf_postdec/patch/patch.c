@@ -1594,7 +1594,13 @@ void CWE191_Integer_Underflow__int64_t_fscanf_postdec_01_bad(void)
   fscanf(stdin, "%ld", & data);
   }
 #line 64
-  if ((long long )data > 0LL) {
+  if ((long long )data <= 0LL) {
+    {
+#line 72
+    printLine("data value is too large to perform arithmetic safely.");
+    return;
+    }
+  } 
     {
 #line 66
     __cil_tmp2 = data;
@@ -1605,12 +1611,6 @@ void CWE191_Integer_Underflow__int64_t_fscanf_postdec_01_bad(void)
 #line 68
     printLongLongLine(result);
     }
-  } else {
-    {
-#line 72
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-  }
   return;
 }
 }

@@ -2510,18 +2510,19 @@ void CWE190_Integer_Overflow__int64_t_fscanf_square_01_bad(void)
   }
 #line 64
   if ((long double )__cil_tmp2 <= __cil_tmp3) {
-    {
+       {
+#line 71
+    printLine("data value is too large to perform arithmetic safely.");
+    return;
+    }
+
+  }
+      {
 #line 66
     result = data * data;
 #line 67
     printLongLongLine(result);
     }
-  } else {
-    {
-#line 71
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-  }
   return;
 }
 }

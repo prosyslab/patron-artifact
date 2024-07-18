@@ -2487,19 +2487,17 @@ void CWE190_Integer_Overflow__char_fscanf_square_01_bad(void)
   __cil_tmp2 = abs((int )((long )data));
   }
 #line 63
-  if ((long )__cil_tmp2 <= (long )__cil_tmp3) {
-    {
-#line 65
-    result = (char )((int )data * (int )data);
-#line 66
-    printHexCharLine(result);
-    }
-  } else {
+  if ((long )__cil_tmp2 > (long )__cil_tmp3) {
     {
 #line 70
     printLine("data value is too large to perform arithmetic safely.U");
+    return;
     }
-  }
+  } 
+#line 32
+    result = (char )((int )data * (int )data);
+#line 33
+    printHexCharLine(result);
 #line 73
   return;
 }

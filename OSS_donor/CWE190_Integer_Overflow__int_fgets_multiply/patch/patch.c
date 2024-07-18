@@ -1583,19 +1583,22 @@ void CWE190_Integer_Overflow__int_fgets_multiply_01_bad(void)
 #line 39
     printLine("fgets() failed.");
     }
+  }
 #line 92
-    if (data < 1073741823) {
-      {
-#line 94
-      result = data * 2;
-#line 95
-      printIntLine(result);
-      }
-    } else {
+    if (data <= 1073741823) {
       {
 #line 99
       printLine("data value is too large to perform arithmetic safely.");
+      return;
       }
+    }
+#line 42
+  if (data > 0) {
+    {
+#line 45
+    result = data * 2;
+#line 46
+    printIntLine(result);
     }
   }
   return;

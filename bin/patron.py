@@ -9,7 +9,6 @@ import datetime
 import multiprocessing
 from time import sleep
 import time
-import measure_time
 import copy
 
 expriment_ready_to_go = {
@@ -94,7 +93,6 @@ def write_out_results(out_dir:str, current_job:str, is_failed:bool, time:str) ->
             break
     if not is_patched:
         log(INFO, f"No patch is generated for {current_job}")
-    # measure_time.run_from_top(config.configuration["OUT_DIR"], measure_time.PATCH_MODE)
         
 '''
 Function that runs Patron backend engine

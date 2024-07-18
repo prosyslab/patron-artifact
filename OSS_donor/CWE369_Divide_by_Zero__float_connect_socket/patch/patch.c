@@ -3546,19 +3546,19 @@ void CWE369_Divide_by_Zero__float_connect_socket_01_bad(void)
   __cil_tmp12 = fabs((double )data);
   }
 #line 196
-  if (__cil_tmp12 > 1e-06) {
+  if (__cil_tmp12 <= 1e-06) {
+       {
+#line 203
+    printLine("This would result in a divide by zeroV");
+    return;
+    }
+  } 
     {
 #line 198
     result = (int )(100. / (double )data);
 #line 199
     printIntLine(result);
     }
-  } else {
-    {
-#line 203
-    printLine("This would result in a divide by zeroV");
-    }
-  }
   return;
 }
 }

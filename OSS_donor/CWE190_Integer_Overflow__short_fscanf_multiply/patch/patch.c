@@ -1567,23 +1567,23 @@ void CWE190_Integer_Overflow__short_fscanf_multiply_01_bad(void)
 #line 27
   fscanf(stdin, "%hd", & data);
   }
-#line 28
-  if ((int )data > 0) {
 #line 65
     if ((int )data < 16383) {
+      {
+         #line 72
+      printLine("data value is too large to perform arithmetic safely.");
+      return;
+      }
+    }
+#line 28
+  if ((int )data > 0) {
       {
 #line 67
       result = (short )((int )data * 2);
 #line 68
       printIntLine((int )result);
       }
-    } else {
-      {
-#line 72
-      printLine("data value is too large to perform arithmetic safely.");
-      }
-    }
-  }
+    } 
   return;
 }
 }

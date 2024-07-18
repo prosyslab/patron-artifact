@@ -2631,17 +2631,17 @@ void CWE369_Divide_by_Zero__int_connect_socket_modulo_01_bad(void)
     }
   }
 #line 188
-  if (data != 0) {
+  if (data == 0) {
+    {
+#line 194
+    printLine("This would result in a divide by zero");
+    return;
+    }
+  } 
     {
 #line 190
     printIntLine(100 % data);
     }
-  } else {
-    {
-#line 194
-    printLine("This would result in a divide by zero");
-    }
-  }
   return;
 }
 }

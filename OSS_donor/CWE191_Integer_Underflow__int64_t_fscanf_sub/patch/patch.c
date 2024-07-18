@@ -1593,19 +1593,18 @@ void CWE191_Integer_Underflow__int64_t_fscanf_sub_01_bad(void)
   fscanf(stdin, "%ld", & data);
   }
 #line 62
-  if ((long long )data > 0LL) {
+  if ((long long )data <= 0LL) {
+    {
+#line 69
+    printLine("data value is too large to perform subtraction.");
+    }
+  } 
     {
 #line 64
     result = data - 1L;
 #line 65
     printLongLongLine(result);
     }
-  } else {
-    {
-#line 69
-    printLine("data value is too large to perform subtraction.");
-    }
-  }
   return;
 }
 }

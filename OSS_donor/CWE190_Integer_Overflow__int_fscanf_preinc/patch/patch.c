@@ -1568,7 +1568,13 @@ void CWE190_Integer_Overflow__int_fscanf_preinc_01_bad(void)
   fscanf(stdin, "%d", & data);
   }
 #line 66
-  if (data < 2147483647) {
+  if (data >= 2147483647) {
+       {
+#line 74
+    printLine("data value is too large to perform arithmetic safely.");
+    return;
+    }
+  }
     {
 #line 68
     data ++;
@@ -1577,12 +1583,7 @@ void CWE190_Integer_Overflow__int_fscanf_preinc_01_bad(void)
 #line 70
     printIntLine(result);
     }
-  } else {
-    {
-#line 74
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-  }
+
   return;
 }
 }

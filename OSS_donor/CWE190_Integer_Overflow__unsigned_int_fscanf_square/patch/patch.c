@@ -2486,17 +2486,17 @@ void CWE190_Integer_Overflow__unsigned_int_fscanf_square_01_bad(void)
 #line 63
   if ((long )__cil_tmp2 < (long )__cil_tmp3) {
     {
+#line 70
+    printLine("data value is too large to perform arithmetic safely.");
+    return;
+    }
+  } 
+    {
 #line 65
     result = data * data;
 #line 66
     printUnsignedLine(result);
     }
-  } else {
-    {
-#line 70
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-  }
   return;
 }
 }

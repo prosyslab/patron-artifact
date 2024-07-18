@@ -1569,8 +1569,14 @@ void CWE191_Integer_Underflow__char_fscanf_postdec_01_bad(void)
   fscanf(stdin, "%c", & data);
   }
 #line 63
-  if ((int )data > -128) {
-    {
+  if ((int )data <= -128) {
+       {
+#line 71
+    printLine("data value is too large to perform arithmetic safely.");
+    return;
+    }
+  } 
+      {
 #line 65
     __cil_tmp2 = data;
 #line 65
@@ -1580,12 +1586,6 @@ void CWE191_Integer_Underflow__char_fscanf_postdec_01_bad(void)
 #line 67
     printHexCharLine(result);
     }
-  } else {
-    {
-#line 71
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-  }
   return;
 }
 }

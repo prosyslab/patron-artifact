@@ -1584,17 +1584,16 @@ void CWE369_Divide_by_Zero__int_fgets_modulo_01_bad(void)
     }
   }
 #line 82
-  if (data != 0) {
-    {
-#line 84
-    printIntLine(100 % data);
-    }
-  } else {
+  if (data == 0) {
     {
 #line 88
     printLine("This would result in a divide by zero");
     }
-  }
+  } 
+    {
+#line 84
+    printIntLine(100 % data);
+    }
   return;
 }
 }

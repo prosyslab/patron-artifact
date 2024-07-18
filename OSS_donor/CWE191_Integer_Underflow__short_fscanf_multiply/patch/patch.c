@@ -1567,22 +1567,23 @@ void CWE191_Integer_Underflow__short_fscanf_multiply_01_bad(void)
 #line 27
   fscanf(stdin, "%hd", & data);
   }
+#line 65
+    if ((int )data <= -16384) {
+      {
+#line 72
+      printLine("data value is too small to perform multiplication.");
+      return;
+      }
+    } 
 #line 28
   if ((int )data < 0) {
-#line 65
-    if ((int )data > -16384) {
-      {
+         {
 #line 67
       result = (short )((int )data * 2);
 #line 68
       printIntLine((int )result);
       }
-    } else {
-      {
-#line 72
-      printLine("data value is too small to perform multiplication.");
-      }
-    }
+
   }
   return;
 }

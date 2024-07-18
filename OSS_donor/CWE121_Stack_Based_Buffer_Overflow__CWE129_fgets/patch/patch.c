@@ -1633,6 +1633,38 @@ void CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_32_bad(void)
   while_break: ;
 #line 55
   if (data___1 >= 0) {
+#line 57
+      buffer[data___1] = 1;
+#line 59
+      i = 0;
+      {
+#line 59
+      while (1) {
+        while_continue___2: /* CIL Label */ ;
+        while_continue___0: ;
+#line 59
+        if (! (i < 10)) {
+#line 59
+          goto while_break___0;
+        }
+        {
+#line 61
+        printIntLine(buffer[i]);
+#line 59
+        i ++;
+        }
+      }
+      while_break___2: /* CIL Label */ ;
+      }
+      while_break___0: ;
+    } else {
+      {
+      {
+#line 66
+      printLine("ERROR: Array index is negative.");
+      }
+      }
+    }
 #line 55
     if (data___1 < 10) {
 #line 57
@@ -1667,14 +1699,6 @@ void CWE121_Stack_Based_Buffer_Overflow__CWE129_fgets_32_bad(void)
       }
       }
     }
-  } else {
-    {
-    {
-#line 66
-    printLine("ERROR: Array index is negative.");
-    }
-    }
-  }
 #line 69
   return;
 }

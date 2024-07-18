@@ -2631,23 +2631,23 @@ void CWE191_Integer_Underflow__int_connect_socket_multiply_01_bad(void)
     close(connectSocket);
     }
   }
-#line 105
-  if (data < 0) {
 #line 198
     if (data > -1073741824) {
+      {
+#line 205
+      printLine("data value is too small to perform multiplication.");
+      return;
+      }
+    }
+#line 105
+  if (data < 0) {
       {
 #line 200
       result = data * 2;
 #line 201
       printIntLine(result);
       }
-    } else {
-      {
-#line 205
-      printLine("data value is too small to perform multiplication.");
-      }
-    }
-  }
+  } 
   return;
 }
 }

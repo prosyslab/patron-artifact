@@ -2661,19 +2661,19 @@ void CWE191_Integer_Underflow__int_listen_socket_sub_01_bad(void)
     }
   }
 #line 220
-  if (data > (-0x7FFFFFFF-1)) {
+  if (data <= (-0x7FFFFFFF-1)) {
+    {
+#line 227
+    printLine("data value is too large to perform subtraction.");
+    return;
+    }
+  } 
     {
 #line 222
     result = data - 1;
 #line 223
     printIntLine(result);
     }
-  } else {
-    {
-#line 227
-    printLine("data value is too large to perform subtraction.");
-    }
-  }
   return;
 }
 }

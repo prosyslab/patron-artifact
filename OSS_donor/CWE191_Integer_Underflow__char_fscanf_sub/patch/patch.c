@@ -1569,18 +1569,18 @@ void CWE191_Integer_Underflow__char_fscanf_sub_01_bad(void)
   }
 #line 61
   if ((int )data > -128) {
+       {
+#line 68
+    printLine("data value is too large to perform subtraction.");
+    return;
+    }
+  } 
     {
 #line 63
     result = (char )((int )data - 1);
 #line 64
     printHexCharLine(result);
     }
-  } else {
-    {
-#line 68
-    printLine("data value is too large to perform subtraction.");
-    }
-  }
   return;
 }
 }

@@ -1584,22 +1584,22 @@ void CWE191_Integer_Underflow__int_fgets_multiply_01_bad(void)
     printLine("fgets() failed.");
     }
   }
+#line 92
+    if (data <= -1073741824) {
+      {
+#line 99
+      printLine("data value is too small to perform multiplication.");
+      return;
+      }
+    } 
 #line 42
   if (data < 0) {
-#line 92
-    if (data > -1073741824) {
       {
 #line 94
       result = data * 2;
 #line 95
       printIntLine(result);
       }
-    } else {
-      {
-#line 99
-      printLine("data value is too small to perform multiplication.");
-      }
-    }
   }
   return;
 }

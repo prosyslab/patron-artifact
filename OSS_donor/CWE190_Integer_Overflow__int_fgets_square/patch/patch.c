@@ -2503,31 +2503,27 @@ void CWE190_Integer_Overflow__int_fgets_square_01_bad(void)
   __cil_tmp5 = abs(data);
   }
 #line 90
-  if (data > (-0x7FFFFFFF-1)) {
+  if (data <= (-0x7FFFFFFF-1)) {
+               {
+#line 97
+      printLine("data value is too large to perform arithmetic safely.");
+      return;
+      }
+  }
 #line 90
-    if ((long )__cil_tmp5 < (long )__cil_tmp6) {
+    if ((long )__cil_tmp5 >= (long )__cil_tmp6) {
+            {
+#line 97
+      printLine("data value is too large to perform arithmetic safely.");
+      return;
+      }
+    }
       {
 #line 92
       result = data * data;
 #line 93
       printIntLine(result);
       }
-    } else {
-      {
-      {
-#line 97
-      printLine("data value is too large to perform arithmetic safely.");
-      }
-      }
-    }
-  } else {
-    {
-    {
-#line 97
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-    }
-  }
   return;
 }
 }

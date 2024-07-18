@@ -1569,7 +1569,12 @@ void CWE191_Integer_Underflow__unsigned_int_fscanf_postdec_01_bad(void)
   fscanf(stdin, "%u", & data);
   }
 #line 63
-  if (data > 0U) {
+  if (data <= 0U) {
+    {
+#line 71
+    printLine("data value is too large to perform arithmetic safely.");
+    }
+  } 
     {
 #line 65
     __cil_tmp2 = data;
@@ -1580,12 +1585,6 @@ void CWE191_Integer_Underflow__unsigned_int_fscanf_postdec_01_bad(void)
 #line 67
     printUnsignedLine(result);
     }
-  } else {
-    {
-#line 71
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-  }
   return;
 }
 }

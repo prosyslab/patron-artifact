@@ -1586,7 +1586,13 @@ void CWE190_Integer_Overflow__int_fgets_postinc_01_bad(void)
     }
   }
 #line 90
-  if (data < 2147483647) {
+  if (data >= 2147483647) {
+   {
+#line 98
+    printLine("data value is too large to perform arithmetic safely.");
+    return;
+    }
+  }
     {
 #line 92
     data ++;
@@ -1595,12 +1601,6 @@ void CWE190_Integer_Overflow__int_fgets_postinc_01_bad(void)
 #line 94
     printIntLine(result);
     }
-  } else {
-    {
-#line 98
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-  }
   return;
 }
 }

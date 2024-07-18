@@ -2632,19 +2632,19 @@ void CWE190_Integer_Overflow__int_connect_socket_add_01_bad(void)
     }
   }
 #line 194
-  if (data < 2147483647) {
+  if (data >= 2147483647) {
     {
+#line 201
+    printLine("data value is too large to perform arithmetic safely.");
+    return;
+    }
+}
+{
 #line 196
     result = data + 1;
 #line 197
     printIntLine(result);
     }
-  } else {
-    {
-#line 201
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-  }
   return;
 }
 }

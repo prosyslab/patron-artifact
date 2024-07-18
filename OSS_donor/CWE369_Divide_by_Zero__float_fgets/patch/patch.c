@@ -2498,19 +2498,19 @@ void CWE369_Divide_by_Zero__float_fgets_01_bad(void)
   __cil_tmp5 = fabs((double )data);
   }
 #line 90
-  if (__cil_tmp5 > 1e-06) {
+  if (__cil_tmp5 <= 1e-06) {
+    {
+#line 97
+    printLine("This would result in a divide by zero");
+    return;
+    }
+  } 
     {
 #line 92
     result = (int )(100. / (double )data);
 #line 93
     printIntLine(result);
     }
-  } else {
-    {
-#line 97
-    printLine("This would result in a divide by zero");
-    }
-  }
   return;
 }
 }

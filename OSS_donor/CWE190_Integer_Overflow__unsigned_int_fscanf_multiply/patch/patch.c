@@ -1568,21 +1568,21 @@ void CWE190_Integer_Overflow__unsigned_int_fscanf_multiply_01_bad(void)
   fscanf(stdin, "%u", & data);
   }
 #line 28
-  if (data > 0U) {
 #line 65
-    if (data < 2147483647U) {
-      {
+    if (data >= 2147483647U) {
+            {
+#line 72
+      printLine("data value is too large to perform arithmetic safely.");
+      return;
+      }
+    }
+  if (data > 0U) {
+         {
 #line 67
       result = data * 2U;
 #line 68
       printUnsignedLine(result);
       }
-    } else {
-      {
-#line 72
-      printLine("data value is too large to perform arithmetic safely.");
-      }
-    }
   }
   return;
 }

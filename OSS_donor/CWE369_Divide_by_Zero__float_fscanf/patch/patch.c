@@ -2479,19 +2479,19 @@ void CWE369_Divide_by_Zero__float_fscanf_01_bad(void)
   __cil_tmp2 = fabs((double )data);
   }
 #line 66
-  if (__cil_tmp2 > 1e-06) {
+  if (__cil_tmp2 <= 1e-06) {
+       {
+#line 73
+    printLine("This would result in a divide by zero");
+    return;
+    }
+  } 
     {
 #line 68
     result = (int )(100. / (double )data);
 #line 69
     printIntLine(result);
     }
-  } else {
-    {
-#line 73
-    printLine("This would result in a divide by zero");
-    }
-  }
   return;
 }
 }

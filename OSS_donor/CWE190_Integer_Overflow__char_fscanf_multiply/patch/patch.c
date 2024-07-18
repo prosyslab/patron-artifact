@@ -1567,8 +1567,15 @@ void CWE190_Integer_Overflow__char_fscanf_multiply_01_bad(void)
 #line 27
   fscanf(stdin, "%c", & data);
   }
-#line 62
+#line 28
   if ((int )data > 0) {
+    {
+#line 31
+    result = (char )((int )data * 2);
+#line 32
+    printHexCharLine(result);
+    }
+  }
 #line 65
     if ((int )data < 63) {
       {
@@ -1583,7 +1590,6 @@ void CWE190_Integer_Overflow__char_fscanf_multiply_01_bad(void)
       printLine("data value is too large to perform arithmetic safely.");
       }
     }
-  }
   return;
 }
 }

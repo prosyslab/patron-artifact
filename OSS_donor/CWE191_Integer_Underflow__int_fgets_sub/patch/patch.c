@@ -1585,19 +1585,19 @@ void CWE191_Integer_Underflow__int_fgets_sub_01_bad(void)
     }
   }
 #line 88
-  if (data > (-0x7FFFFFFF-1)) {
+  if (data <= (-0x7FFFFFFF-1)) {
+       {
+#line 95
+    printLine("data value is too large to perform subtraction.");
+    return;
+    }
+  }
     {
 #line 90
     result = data - 1;
 #line 91
     printIntLine(result);
     }
-  } else {
-    {
-#line 95
-    printLine("data value is too large to perform subtraction.");
-    }
-  }
   return;
 }
 }

@@ -1585,8 +1585,14 @@ void CWE191_Integer_Underflow__int_fgets_predec_01_bad(void)
     }
   }
 #line 90
-  if (data > (-0x7FFFFFFF-1)) {
+  if (data <= (-0x7FFFFFFF-1)) {
     {
+#line 98
+    printLine("data value is too large to perform arithmetic safely.");
+    return;
+    }
+  } 
+   {
 #line 92
     data --;
 #line 93
@@ -1594,12 +1600,6 @@ void CWE191_Integer_Underflow__int_fgets_predec_01_bad(void)
 #line 94
     printIntLine(result);
     }
-  } else {
-    {
-#line 98
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-  }
   return;
 }
 }

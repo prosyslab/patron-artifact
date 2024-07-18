@@ -1567,17 +1567,17 @@ void CWE369_Divide_by_Zero__int_fscanf_modulo_01_bad(void)
   fscanf(stdin, "%d", & data);
   }
 #line 58
-  if (data != 0) {
+  if (data == 0) {
+    {
+#line 64
+    printLine("This would result in a divide by zero");
+    return;
+    }
+  } 
     {
 #line 60
     printIntLine(100 % data);
     }
-  } else {
-    {
-#line 64
-    printLine("This would result in a divide by zero");
-    }
-  }
   return;
 }
 }

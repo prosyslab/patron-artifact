@@ -2660,23 +2660,23 @@ void CWE190_Integer_Overflow__int_listen_socket_multiply_01_bad(void)
     close(acceptSocket);
     }
   }
-#line 118
-  if (data > 0) {
-#line 224
+  #line 224
     if (data < 1073741823) {
       {
+         #line 231
+      printLine("data value is too large to perform arithmetic safely.");
+      return;
+      }
+    }
+#line 118
+  if (data > 0) {
+{
 #line 226
       result = data * 2;
 #line 227
       printIntLine(result);
       }
-    } else {
-      {
-#line 231
-      printLine("data value is too large to perform arithmetic safely.");
-      }
-    }
-  }
+    } 
   return;
 }
 }

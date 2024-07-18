@@ -3579,30 +3579,26 @@ void CWE190_Integer_Overflow__int_listen_socket_square_01_bad(void)
   __cil_tmp14 = abs(data);
   }
 #line 222
-  if (data > (-0x7FFFFFFF-1)) {
-#line 222
-    if ((long )__cil_tmp14 < (long )__cil_tmp15) {
-      {
-#line 224
-      result = data * data;
-#line 225
-      printIntLine(result);
+  if (data <= (-0x7FFFFFFF-1)) {
+         {
+#line 229
+      printLine("data value is too large to perform arithmetic safely.");
+      return;
       }
-    } else {
-      {
+  }
+#line 222
+    if ((long )__cil_tmp14 >= (long )__cil_tmp15) {
       {
 #line 229
       printLine("data value is too large to perform arithmetic safely.");
+      return;
       }
-      }
-    }
-  } else {
-    {
-    {
-#line 229
-    printLine("data value is too large to perform arithmetic safely.");
-    }
-    }
+  } 
+   {
+#line 122
+  result = data * data;
+#line 123
+  printIntLine(result);
   }
   return;
 }

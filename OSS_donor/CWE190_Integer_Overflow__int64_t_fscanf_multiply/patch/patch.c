@@ -1592,21 +1592,21 @@ void CWE190_Integer_Overflow__int64_t_fscanf_multiply_01_bad(void)
 #line 28
   fscanf(stdin, "%ld", & data);
   }
-#line 29
-  if (data > 0L) {
 #line 66
-    if ((long long )data < 0LL) {
-      {
-#line 68
-      result = data * 2L;
-#line 69
-      printLongLongLine(result);
-      }
-    } else {
+    if ((long long )data >= 0LL) {
       {
 #line 73
       printLine("data value is too large to perform arithmetic safely.");
+      return;
       }
+}
+#line 29
+  if (data > 0L) {
+    {
+#line 32
+    result = data * 2L;
+#line 33
+    printLongLongLine(result);
     }
   }
   return;

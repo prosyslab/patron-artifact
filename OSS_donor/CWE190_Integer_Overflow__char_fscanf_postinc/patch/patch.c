@@ -1569,20 +1569,20 @@ void CWE190_Integer_Overflow__char_fscanf_postinc_01_bad(void)
   fscanf(stdin, "%c", & data);
   }
 #line 63
-  if ((int )data < 127) {
-    {
-#line 65
-    data ++;
-#line 66
-    result = data;
-#line 67
-    printHexCharLine(result);
-    }
-  } else {
+  if ((int )data >= 127) {
     {
 #line 71
     printLine("data value is too large to perform arithmetic safely.");
+    return;
     }
+  }
+ {
+#line 30
+  data ++;
+#line 31
+  result = data;
+#line 32
+  printHexCharLine(result);
   }
   return;
 }

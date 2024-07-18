@@ -2661,20 +2661,20 @@ void CWE190_Integer_Overflow__int_listen_socket_preinc_01_bad(void)
     }
   }
 #line 222
-  if (data < 2147483647) {
-    {
-#line 224
-    data ++;
-#line 225
-    result = data;
-#line 226
-    printIntLine(result);
-    }
-  } else {
-    {
+  if (data >= 2147483647) {
+        {
 #line 230
     printLine("data value is too large to perform arithmetic safely.");
+    return;
     }
+  }       
+    {
+#line 120
+  data ++;
+#line 121
+  result = data;
+#line 122
+  printIntLine(result);
   }
   return;
 }
