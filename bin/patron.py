@@ -40,7 +40,8 @@ Output: None
 def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:str) -> None:
     current_job = os.path.basename(current_job_path)
     package = "-"
-    for i in range(len(current_job_path.split('/'))-1, -1, -1):
+    path_split = current_job_path.split('/')
+    for i in range(len(path_split)-1, -1, -1):
         if path_split[i].startswith('_'):
             package = path_split[i][1:]
             break
@@ -48,11 +49,12 @@ def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:st
     time_tsv_path = os.path.join(config.configuration["OUT_DIR"], 'time.tsv')
     with open(time_tsv_path, 'a') as time_tsv:
         time_writer = csv.writer(time_tsv, delimiter='\t')
-        if alarm_num == 0:
+        if alarm_num == 0 or alarm_num == -1 or time == "Failed":
             time_writer.writerow([package, current_job, time, alarm_num, "-"])
         else:
-            time_writer.writerow([package, current_job, time, alarm_num, str(float(time)/alarm_num)])
-        time_tsv.flush()
+            time_in_sec = float(time.split(':')[0]) * 3600 + float(time.split(':')[1]) * 60 + float(time.split(':')[2])
+            time_writer.writerow([package, current_job, time, alarm_num, str(float(time_in_sec)/alarm_num)])
+            time_tsv.flush()
     patches = []
     log(INFO, "Writing out the results for {}...".format(current_job))
     stat_file_name = os.path.join(stat_out, current_job + '_status_')
