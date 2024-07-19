@@ -512,32 +512,32 @@ def main(from_top:bool=False, package:list=[]) -> None:
         time_writer = csv.writer(time_tsv, delimiter='\t')
         time_writer.writerow(['Package', 'Binary' 'Total Time', '# Alarm', "Avg. Time per Alarm"])
         time_tsv.flush()
-
-    for i in range(len(worklist)):
-        jobs_finished[i] = False
-        work, path = worklist[i]
-        log(INFO, f"Work: {work}")
-        p = run_patron(work, path)
-        if p is None:
-            continue
-        PROCS.append((work, i, p))
-        time.sleep(5)
-        work_cnt += 1
-        total_work_cnt += 1
-        if work_cnt >= config.configuration["PROCESS_LIMIT"]:
-            log(INFO, "{}".format(len(worklist)-total_work_cnt) + " jobs are left.")
-            log(WARNING, "Waiting for the current jobs to finish...")
-        while work_cnt >= config.configuration["PROCESS_LIMIT"]:
-            log(INFO, "{}".format(len(worklist)-total_work_cnt) + " jobs are left.")
-            PROCS, work_cnt = collect_job_results(PROCS, work_cnt, jobs_finished)
+    try:
+        for i in range(len(worklist)):
+            jobs_finished[i] = False
+            work, path = worklist[i]
+            log(INFO, f"Work: {work}")
+            p = run_patron(work, path)
+            if p is None:
+                continue
+            PROCS.append((work, i, p))
             time.sleep(5)
-    all_finished = False
-    while not all_finished:
-        PROCS, work_cnt = collect_job_results(PROCS, work_cnt, jobs_finished)
-        if False not in jobs_finished:
-            all_finished = True
-        else:
-            time.sleep(5)   
+            work_cnt += 1
+            total_work_cnt += 1
+            if work_cnt >= config.configuration["PROCESS_LIMIT"]:
+                log(INFO, "{}".format(len(worklist)-total_work_cnt) + " jobs are left.")
+                log(WARNING, "Waiting for the current jobs to finish...")
+            while work_cnt >= config.configuration["PROCESS_LIMIT"]:
+                log(INFO, "{}".format(len(worklist)-total_work_cnt) + " jobs are left.")
+                PROCS, work_cnt = collect_job_results(PROCS, work_cnt, jobs_finished)
+                time.sleep(5)
+        all_finished = False
+        while not all_finished:
+            PROCS, work_cnt = collect_job_results(PROCS, work_cnt, jobs_finished)
+            if False not in jobs_finished:
+                all_finished = True
+            else:
+                time.sleep(5)   
     except Exception as e:
         log(ERROR, f"Exception occurred:")
         log(ERROR, e)
