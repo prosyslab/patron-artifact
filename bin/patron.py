@@ -37,11 +37,21 @@ copy the .tsv files to Google Sheet for easier analysis
 Input: str (output directory), str (current job(the donee file name)), bool (is failed)
 Output: None
 '''
-def write_out_results(out_dir:str, current_job:str, is_failed:bool, time:str) -> None:
+def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:str) -> None:
+    current_job = os.path.basename(current_job_path)
+    package = "-"
+    for i in range(len(current_job_path.split('/'))-1, -1, -1):
+        if path_split[i].startswith('_'):
+            package = path_split[i][1:]
+            break
+    alarm_num = len(os.listdir(os.path.join(current_job_path, 'sparrow-out', 'taint', 'datalog'))) - 1
     time_tsv_path = os.path.join(config.configuration["OUT_DIR"], 'time.tsv')
     with open(time_tsv_path, 'a') as time_tsv:
         time_writer = csv.writer(time_tsv, delimiter='\t')
-        time_writer.writerow([current_job, time])
+        if alarm_num == 0:
+            time_writer.writerow([package, current_job, time, alarm_num, "-"])
+        else:
+            time_writer.writerow([package, current_job, time, alarm_num, str(float(time)/alarm_num)])
         time_tsv.flush()
     patches = []
     log(INFO, "Writing out the results for {}...".format(current_job))
@@ -454,7 +464,7 @@ def collect_job_results(PROCS, work_cnt, jobs_finished):
                 time_in_str_insec = str(datetime.timedelta(seconds=elapsed_time))
             jobs_finished[work_id] = True
             work_cnt -= 1
-            write_out_results(cmd[-1], os.path.basename(cmd[2]), is_failed, time_in_str_insec)
+            write_out_results(cmd[-1], cmd[2], is_failed, time_in_str_insec)
             break
     return PROCS, work_cnt
 
@@ -497,7 +507,12 @@ def main(from_top:bool=False, package:list=[]) -> None:
     global_writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
     global_stat.flush()
     jobs_finished = multiprocessing.Manager().list(range(len(worklist)))
-    # try:
+    time_tsv_path = os.path.join(config.configuration["OUT_DIR"], 'time.tsv')
+    with open(time_tsv_path, 'a') as time_tsv:
+        time_writer = csv.writer(time_tsv, delimiter='\t')
+        time_writer.writerow(['Package', 'Binary' 'Total Time', '# Alarm', "Avg. Time per Alarm"])
+        time_tsv.flush()
+
     for i in range(len(worklist)):
         jobs_finished[i] = False
         work, path = worklist[i]
