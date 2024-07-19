@@ -444,6 +444,7 @@ def collect_job_results(PROCS, work_cnt, jobs_finished):
             if proc.returncode != 0:
                 log(ERROR, f"Failed to run patron with {cmd}")
                 is_failed = True
+                time_in_str_insec = "Failed"
             else:
                 log(INFO, f"Successfully ran patron with {cmd}")
                 is_failed = False
@@ -522,14 +523,14 @@ def main(from_top:bool=False, package:list=[]) -> None:
             all_finished = True
         else:
             time.sleep(5)   
-    # except Exception as e:
-    #     log(ERROR, f"Exception occurred:")
-    #     log(ERROR, e)
-    #     log(ERROR, "Terminating all the jobs...")
-    #     for p in PROCS:
-    #         cmd, work_id, proc = p
-    #         proc.terminate()
-    #         jobs_finished[work_id] = True
+    except Exception as e:
+        log(ERROR, f"Exception occurred:")
+        log(ERROR, e)
+        log(ERROR, "Terminating all the jobs...")
+        for p in PROCS:
+            cmd, work_id, proc = p
+            proc.terminate()
+            jobs_finished[work_id] = True
 
     global_stat.close()
     log(INFO, "All jobs are finished.")
@@ -537,4 +538,8 @@ def main(from_top:bool=False, package:list=[]) -> None:
 
 if __name__ == '__main__':
     print('YOU ARE RUNNING PATRON.PY AS A SCRIPT DIRECTLY.')
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print('Keyboard Interrupted')
+        exit(1)
