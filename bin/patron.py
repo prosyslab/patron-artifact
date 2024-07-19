@@ -125,9 +125,8 @@ def run_patron(cmd:list, path:str) -> subprocess.Popen:
     with open(os.path.join(sub_out_dir, "donee_path.txt"), 'w') as f:
         f.write(path)
     log(INFO, f"Running patron with {cmd}")
-    # get current time
     time_record[' '.join(cmd)] = time.time()
-    return subprocess.Popen(cmd)
+    return subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 '''
 Function that generates cmds
