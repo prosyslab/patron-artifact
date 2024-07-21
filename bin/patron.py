@@ -10,6 +10,8 @@ import multiprocessing
 from time import sleep
 import time
 import copy
+import threading
+from queue import Queue
 
 expriment_ready_to_go = {
     "patron": [
@@ -28,6 +30,7 @@ global_stat = None
 global_writer = None
 stat_out = ""
 time_record = dict()
+work_stack = Queue()
 
 '''
 Function that writes out the combined patch results
@@ -447,27 +450,45 @@ This function collects the patch results from each job directory everytime each 
 Input: list (PROCS)[command, process_id, Popen], int (work_cnt), list (boolean list to track which process is finished)
 Output: list (PROCS), int (work_cnt) -> updated
 '''
-def collect_job_results(PROCS, work_cnt, jobs_finished):
+def collect_job_results(work, tries):
     global time_record
-    for j in range(len(PROCS)):
-        cmd, work_id, proc = PROCS[j]
-        if proc.poll() is not None and not jobs_finished[work_id]:
-            if proc.returncode != 0:
-                log(ERROR, f"Failed to run patron with {cmd}")
-                is_failed = True
-                time_in_str_insec = "Failed"
-            else:
-                log(INFO, f"Successfully ran patron with {cmd}")
-                is_failed = False
-                end_time = time.time()
-                start_time = time_record[' '.join(cmd)]
-                elapsed_time = end_time - start_time
-                time_in_str_insec = str(datetime.timedelta(seconds=elapsed_time))
-            jobs_finished[work_id] = True
-            work_cnt -= 1
-            write_out_results(cmd[-1], cmd[2], is_failed, time_in_str_insec)
-            break
-    return PROCS, work_cnt
+    cmd, proc = work
+    if proc.poll() is not None:
+        if proc.returncode != 0:
+            log(ERROR, f"Failed to run patron with {cmd}")
+            is_failed = True
+            time_in_str_insec = "Failed"
+        else:
+            log(INFO, f"Successfully ran patron with {cmd}")
+            is_failed = False
+            end_time = time.time()
+            start_time = time_record[' '.join(cmd)]
+            elapsed_time = end_time - start_time
+            time_in_str_insec = str(datetime.timedelta(seconds=elapsed_time))
+        write_out_results(cmd[-1], cmd[2], is_failed, time_in_str_insec)
+    else:
+        log(ERROR, f"Process {cmd} is still running...")
+        if tries > 5:
+            log(ERROR, f"Process {cmd} is still running after 5 tries. Terminating...")
+            proc.terminate()
+        tries += 1
+        log(ERROR, f"Try recollecting the results...{tries}tries")
+        time.sleep(5)
+        collect_job_results(work, tries)
+
+def work_manager():
+    global work_stack
+    while not work_stack.empty():
+        work = work_stack.get()
+        log(INFO, f"{work_stack.qsize()} jobs are left.")
+        cmd, path = work
+        p = run_patron(cmd, path)
+        if p is None:
+            continue
+        p.communicate(timeout=1800)
+        proc = (cmd, p)
+        collect_job_results(proc, 0)
+
 
 '''
 patron.py has two different procedures
@@ -484,7 +505,7 @@ Optional (str) -> to specify the package name if run pipe
 Output: None
 '''
 def main(from_top:bool=False, package:list=[]) -> None:
-    global level, global_stat, global_writer, stat_out
+    global level, global_stat, global_writer, stat_out, work_stack
     if not from_top:
         config.setup(level)
     stat_out = os.path.join(config.configuration["OUT_DIR"], 'results_combined')
@@ -513,40 +534,24 @@ def main(from_top:bool=False, package:list=[]) -> None:
         time_writer = csv.writer(time_tsv, delimiter='\t')
         time_writer.writerow(['Package', 'Binary' 'Total Time', '# Alarm', "Avg. Time per Alarm"])
         time_tsv.flush()
+
+    for work in worklist:
+        work_stack.put(work)
+
+    managers = []
     try:
-        for i in range(len(worklist)):
-            jobs_finished[i] = False
-            work, path = worklist[i]
-            log(INFO, f"Work: {work}")
-            p = run_patron(work, path)
-            if p is None:
-                continue
-            PROCS.append((work, i, p))
-            time.sleep(5)
-            work_cnt += 1
-            total_work_cnt += 1
-            if work_cnt >= config.configuration["PROCESS_LIMIT"]:
-                log(INFO, "{}".format(len(worklist)-total_work_cnt) + " jobs are left.")
-                log(WARNING, "Waiting for the current jobs to finish...")
-            while work_cnt >= config.configuration["PROCESS_LIMIT"]:
-                log(INFO, "{}".format(len(worklist)-total_work_cnt) + " jobs are left.")
-                PROCS, work_cnt = collect_job_results(PROCS, work_cnt, jobs_finished)
-                time.sleep(5)
-        all_finished = False
-        while not all_finished:
-            PROCS, work_cnt = collect_job_results(PROCS, work_cnt, jobs_finished)
-            if False not in jobs_finished:
-                all_finished = True
-            else:
-                time.sleep(5)   
-    except Exception as e:
-        log(ERROR, f"Exception occurred:")
-        log(ERROR, e)
+        for i in range(config.configuration["PROCESS_LIMIT"]):
+            manager = threading.Thread(target=work_manager, args=())
+            manager.start()
+            managers.append(manager)
+        for manager in managers:
+            manager.join()
+    except KeyboardInterrupt:
+        log(ERROR, "Keyboard Interrupted")
         log(ERROR, "Terminating all the jobs...")
-        for p in PROCS:
-            cmd, work_id, proc = p
-            proc.terminate()
-            jobs_finished[work_id] = True
+        for manager in managers:
+            manager.terminate()
+        exit(1)
 
     global_stat.close()
     log(INFO, "All jobs are finished.")
