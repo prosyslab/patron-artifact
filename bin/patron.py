@@ -485,7 +485,7 @@ def work_manager():
         p = run_patron(cmd, path)
         if p is None:
             continue
-        p.communicate(timeout=1800)
+        p.communicate()
         proc = (cmd, p)
         collect_job_results(proc, 0)
 
