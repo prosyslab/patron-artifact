@@ -66,7 +66,7 @@ def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:st
         file_cnt += 1
     with open(stat_file_name + str(file_cnt) + '.tsv', 'a') as local_stat:
         local_writer = csv.writer(local_stat, delimiter='\t')
-        local_writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
+        local_writer.writerow(["Package", "Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
         local_stat.flush()
         for file in os.listdir(out_dir):
             if file.endswith('.patch'):
@@ -91,15 +91,15 @@ def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:st
                         benchmark = "patchweave"
                         donor_num = tmp_list[0].strip()
                     pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
-                    local_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
+                    local_writer.writerow([package, current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     local_stat.flush()
-                    global_writer.writerow([current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
+                    global_writer.writerow([package, current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     global_stat.flush()
         if is_failed:
             msg = '----------PATRON STOPPED DUE TO UNEXPECTED ERROR----------'
-            local_writer.writerow([current_job, msg, "-", "-", "-", "-", "-"])
+            local_writer.writerow([package, current_job, msg, "-", "-", "-", "-", "-"])
             local_stat.flush()
-            global_writer.writerow([current_job, msg, "-", "-", "-", "-" ,"-"])
+            global_writer.writerow([package, current_job, msg, "-", "-", "-", "-" ,"-"])
             global_stat.flush()
     is_patched = False
     for file in os.listdir(out_dir):
