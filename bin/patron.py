@@ -76,20 +76,29 @@ def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:st
             df = open(os.path.join(out_dir, patch_file), 'r')
             diff = df.read()
             df.close()
-            file_parsed = patch_file.split('.')[0].split('_')
-            donor_num = file_parsed[1].strip()
-            donee_num = file_parsed[2].strip()
+            file_wo_ext = patch_file.split('_diff.')[0]
+            # result_patron-18_0_diff.patch
+            # patch_patron-18_0_0.c
+            # result_OSS_donor-CVE-2017-1000229_123_diff.patch
+            # patch_OSS_donor-CVE-2017-1000229_123_1.c
+            for i in range(len(file_wo_ext)-1, -1, -1):
+                if file_wo_ext[i] == '_':
+                    donee_num = file_wo_ext[i+1:]
+                    donee_begin_idx = i
+                    break
+            donor_num = file_wo_ext[7:donee_begin_idx]
             unique_str = '_' + donor_num + '_' + donee_num + '_'
             for infof in os.listdir(out_dir):
                 if infof.endswith('.c') and unique_str in infof and infof.startswith('patch_'):
                     parsed_info = infof.split('_')[1:]
-                    tmp_list = parsed_info[0].split('-')
-                    if "patron" in tmp_list[0]:
+                    if "patron" in infof:
                         benchmark = "patron"
-                        donor_num = tmp_list[1].strip()
-                    else:
+                    elif "-donor" in infof:
                         benchmark = "patchweave"
-                        donor_num = tmp_list[0].strip()
+                    elif "OSS" in infof:
+                        benchmark = "OSS"
+                    else:
+                        benchmark = "Custom"
                     pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
                     local_writer.writerow([package, current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     local_stat.flush()
@@ -526,7 +535,7 @@ def main(from_top:bool=False, package:list=[]) -> None:
     PROCS = []
     global_stat = open(os.path.join(stat_out, 'status.tsv'), 'a')
     global_writer = csv.writer(global_stat, delimiter='\t')
-    global_writer.writerow(["Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
+    global_writer.writerow(["Package", "Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
     global_stat.flush()
     jobs_finished = multiprocessing.Manager().list(range(len(worklist)))
     time_tsv_path = os.path.join(config.configuration["OUT_DIR"], 'time.tsv')

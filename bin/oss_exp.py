@@ -8,7 +8,6 @@ import patron
 import config
 import combine
 import count_sparrow_log
-import measure_time
 from logger import log, INFO, ERROR, WARNING
 
 def run_full_pipe():

@@ -6,8 +6,7 @@ import oss_exp
 import patron
 import config
 
-FILE_PATH = os.path.dirname(os.path.realpath(__file__))
-BIN_PATH = os.path.dirname(FILE_PATH)
+BIN_PATH = os.path.dirname(os.path.realpath(__file__))
 ROOT_PATH = os.path.dirname(BIN_PATH)
 BENCHMARK_EXP_PATH = os.path.join(ROOT_PATH, 'patron-experiment')
 BENCHMARK_EXP_BIN_PATH = os.path.join(BENCHMARK_EXP_PATH, 'bin')
@@ -48,6 +47,7 @@ Output: None
 '''
 def benchmark_experiment() -> None:
     print("You have chosen benchmark experiment")
+    print(BENCHMARK_EXP_SCRIPT_PATH)
     if not os.path.exists(BENCHMARK_EXP_SCRIPT_PATH):
         print("Experiment file not found")
         sys.exit(1)
