@@ -55,7 +55,12 @@ def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:st
         if alarm_num == 0 or alarm_num == -1 or time == "Failed":
             time_writer.writerow([package, current_job, time, alarm_num, "-"])
         else:
-            time_in_sec = float(time.split(':')[0]) * 3600 + float(time.split(':')[1]) * 60 + float(time.split(':')[2])
+            if 'day' in time:
+                day_in_sec = float(time.split(' ')[0]) * 86400
+                rest_time = time.split(' ')[-1]
+                time_in_sec = float(rest_time.split(':')[0]) * 3600 + float(rest_time.split(':')[1]) * 60 + float(rest_time.split(':')[2]) + day_in_sec
+            else:
+                time_in_sec = float(time.split(':')[0]) * 3600 + float(time.split(':')[1]) * 60 + float(time.split(':')[2])
             time_writer.writerow([package, current_job, time, alarm_num, str(float(time_in_sec)/alarm_num)])
             time_tsv.flush()
     patches = []
@@ -77,10 +82,6 @@ def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:st
             diff = df.read()
             df.close()
             file_wo_ext = patch_file.split('_diff.')[0]
-            # result_patron-18_0_diff.patch
-            # patch_patron-18_0_0.c
-            # result_OSS_donor-CVE-2017-1000229_123_diff.patch
-            # patch_OSS_donor-CVE-2017-1000229_123_1.c
             for i in range(len(file_wo_ext)-1, -1, -1):
                 if file_wo_ext[i] == '_':
                     donee_num = file_wo_ext[i+1:]
