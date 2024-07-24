@@ -50,19 +50,22 @@ def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:st
             break
     alarm_num = len(os.listdir(os.path.join(current_job_path, 'sparrow-out', 'taint', 'datalog'))) - 1
     time_tsv_path = os.path.join(config.configuration["OUT_DIR"], 'time.tsv')
-    with open(time_tsv_path, 'a') as time_tsv:
-        time_writer = csv.writer(time_tsv, delimiter='\t')
-        if alarm_num == 0 or alarm_num == -1 or time == "Failed":
-            time_writer.writerow([package, current_job, time, alarm_num, "-"])
-        else:
-            if 'day' in str(time):
-                day_in_sec = float(time.split(' ')[0]) * 86400
-                rest_time = time.split(' ')[-1]
-                time_in_sec = float(rest_time.split(':')[0]) * 3600 + float(rest_time.split(':')[1]) * 60 + float(rest_time.split(':')[2]) + day_in_sec
+    try:
+        with open(time_tsv_path, 'a') as time_tsv:
+            time_writer = csv.writer(time_tsv, delimiter='\t')
+            if alarm_num == 0 or alarm_num == -1 or time == "Failed":
+                time_writer.writerow([package, current_job, time, alarm_num, "-"])
             else:
-                time_in_sec = float(time.split(':')[0]) * 3600 + float(time.split(':')[1]) * 60 + float(time.split(':')[2])
-            time_writer.writerow([package, current_job, time, alarm_num, str(float(time_in_sec)/alarm_num)])
-            time_tsv.flush()
+                if 'day' in str(time):
+                    day_in_sec = float(time.split(' ')[0]) * 86400
+                    rest_time = time.split(' ')[-1]
+                    time_in_sec = float(rest_time.split(':')[0]) * 3600 + float(rest_time.split(':')[1]) * 60 + float(rest_time.split(':')[2]) + day_in_sec
+                else:
+                    time_in_sec = float(time.split(':')[0]) * 3600 + float(time.split(':')[1]) * 60 + float(time.split(':')[2])
+                time_writer.writerow([package, current_job, time, alarm_num, str(float(time_in_sec)/alarm_num)])
+                time_tsv.flush()
+    except Exception as e:
+        log(ERROR, f"Failed to write out time.tsv: {e}")
     patches = []
     log(INFO, "Writing out the results for {}...".format(current_job))
     stat_file_name = os.path.join(stat_out, current_job + '_status_')
