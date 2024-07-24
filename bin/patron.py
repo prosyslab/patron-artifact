@@ -55,7 +55,7 @@ def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:st
         if alarm_num == 0 or alarm_num == -1 or time == "Failed":
             time_writer.writerow([package, current_job, time, alarm_num, "-"])
         else:
-            if 'day' in time:
+            if 'day' in str(time):
                 day_in_sec = float(time.split(' ')[0]) * 86400
                 rest_time = time.split(' ')[-1]
                 time_in_sec = float(rest_time.split(':')[0]) * 3600 + float(rest_time.split(':')[1]) * 60 + float(rest_time.split(':')[2]) + day_in_sec
