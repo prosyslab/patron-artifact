@@ -23,9 +23,11 @@ function myFunction() {
       if (restLines[k].includes("#line")) {
         continue;
       }
+      if (restLines[k].includes('@@')) continue;
       const pattern1 = /_cil_tmp\d+/g;
       const pattern2 = /while_break___\d+/g;
-      var replacedStrings = restLines[k].replace(pattern1, '_cil_tmp').replace(pattern2, 'while_break')
+      const pattern3 = /__patron_tmp\d+/g;
+      var replacedStrings = restLines[k].replace(pattern1, '_cil_tmp').replace(pattern2, 'while_break').replace(pattern3, '__patron_tmp')
       joined_line = joined_line + replacedStrings
     }
 

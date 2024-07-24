@@ -9,6 +9,8 @@ def run(file_path):
     for line in lines:
         if not '#line' in line:
             loc += 1
+    name = file_path.split('/')[-1].split('.')[0]
+    print(name + '\t' + str(loc))
     
 
 def find_file_path(target_dir, file_name):
@@ -30,10 +32,10 @@ if __name__ == '__main__':
     if len(sys.argv) != 3:
         print("Usage: python3 count_loc.py <target_dir_path> <file_list.txt>")
         sys.exit(1)
-    if os.path.exists(sys.argv[1]):
+    if not os.path.exists(sys.argv[1]):
         print("Directory path exists")
         exit(0)
-    elif os.path.exists(sys.argv[2]):
+    elif not os.path.exists(sys.argv[2]):
         print("File path exists")
         exit(0)
         
