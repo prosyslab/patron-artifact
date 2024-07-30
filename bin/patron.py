@@ -321,13 +321,21 @@ def check_sparrow_default() -> list:
         if file.endswith('.sh'):
             continue
         if file in expriment_ready_to_go["patron"]:
-            if not os.path.exists(os.path.join(patron_bench_path, file, 'bug', 'sparrow-out')):
+            if config.configuration["OVERWRITE_SPARROW"]:
+                if os.path.exists(os.path.join(patron_bench_path, file, 'sparrow-out')):
+                    os.system(f'rm -rf {os.path.join(patron_bench_path, file, "sparrow-out")}')
+                patron_missing_list.append(str(file))
+            elif not os.path.exists(os.path.join(patron_bench_path, file, 'bug', 'sparrow-out')):
                 log(WARNING, f"sparrow-out for {file} does not exist in {patron_bench_path}")
                 patron_missing_list.append(str(file))
             donor_list.append(os.path.join(patron_bench_path, file))
     for file in os.listdir(patchweave_bench_path):
         if file in expriment_ready_to_go["patchweave"]:
-            if not os.path.exists(os.path.join(patchweave_bench_path, file, 'donor', 'bug', 'sparrow-out')):
+            if config.configuration["OVERWRITE_SPARROW"]:
+                if os.path.exists(os.path.join(patchweave_bench_path, file, 'sparrow-out')):
+                    os.system(f'rm -rf {os.path.join(patchweave_bench_path, file, "sparrow-out")}')
+                patchweave_missing_list.append(str(file))
+            elif not os.path.exists(os.path.join(patchweave_bench_path, file, 'donor', 'bug', 'sparrow-out')):
                 log(WARNING, f"sparrow-out for {file} does not exist in {patchweave_bench_path}")
                 patchweave_missing_list.append(str(file))
             donor_list.append(os.path.join(patchweave_bench_path, file, 'donor'))
@@ -350,7 +358,11 @@ def check_sparrow() -> list:
         if not os.path.isdir(donor):
             continue
         target = os.path.join(donor, 'bug')
-        if not os.path.exists(os.path.join(target, 'sparrow-out')):
+        if config.configuration["OVERWRITE_SPARROW"]:
+            if os.path.exists(os.path.join(target, 'sparrow-out')):
+                os.system(f'rm -rf {os.path.join(target, "sparrow-out")}')
+            missing_list.append(target)
+        elif not os.path.exists(os.path.join(target, 'sparrow-out')):
             log(WARNING, f"sparrow-out for {donor} does not exist.")
             missing_list.append(target)
         donor_list.append(donor)
@@ -446,7 +458,10 @@ Input: None (Path details are stored in config.py)
 Output: None
 '''
 def construct_database() -> None:
-    log(INFO, 'Checking If all donors in {} are analyzed by Sparrow...'.format(config.configuration["DONOR_PATH"]))
+    if config.configuration["OVERWRITE_SPARROW"]:
+        log(WARNING, 'Overwriting the existing Sparrow results...')
+    else:
+        log(INFO, 'Checking If all donors in {} are analyzed by Sparrow...'.format(config.configuration["DONOR_PATH"]))
     if config.configuration["DONOR_PATH"] == "benchmark":
         patchweave_works, patron_works = check_sparrow_default()
         if len(patchweave_works) > 0 or len(patron_works) > 0:
@@ -495,10 +510,14 @@ def work_manager():
         work = work_stack.get()
         log(INFO, f"{work_stack.qsize()} jobs are left.")
         cmd, path = work
-        p = run_patron(cmd, path)
-        if p is None:
-            continue
-        p.communicate()
+        try:
+            p = run_patron(cmd, path)
+            if p is None:
+                continue
+            p.communicate(timeout=(3600*3))
+        except subprocess.TimeoutExpired:
+            log(ERROR, f"Timeout! 3 hours passed for {cmd}")
+            p.terminate()
         proc = (cmd, p)
         collect_job_results(proc, 0)
 
@@ -547,10 +566,8 @@ def main(from_top:bool=False, package:list=[]) -> None:
         time_writer = csv.writer(time_tsv, delimiter='\t')
         time_writer.writerow(['Package', 'Binary' 'Total Time', '# Alarm', "Avg. Time per Alarm"])
         time_tsv.flush()
-
     for work in worklist:
         work_stack.put(work)
-
     managers = []
     try:
         for i in range(config.configuration["PROCESS_LIMIT"]):

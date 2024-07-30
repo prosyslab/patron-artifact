@@ -37,6 +37,7 @@ configuration = {
     "PROCESS_LIMIT": 20,
     "DB_PATH": os.path.abspath("benchmark-DB"),
     "DONOR_PATH": "benchmark",
+    "OVERWRITE_SPARROW": False
 }
 
 def openings() -> None:
@@ -321,11 +322,13 @@ def setup(level):
         parser.add_argument("-donorpath", "-dp", type=str, default="benchmark", help="path to the donor parograms(default:benchmark")
         parser.add_argument("-dbpath", "-dbp", type=str, default="benchmark-DB", help="path to the database directory(default:benchmark-DB")
         parser.add_argument("-process", '-p', type=int, default=20, help="number of threads to run")
+        parser.add_argument("-sparrow", '-s', action="store_true", default=False, help="overwrite the sparrow results")
         configuration["ARGS"] = parser.parse_args()
         configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
         if configuration["ARGS"].database:
             configuration["DATABASE_ONLY"] = True
             configuration["DONOR_PATH"] = os.path.abspath(configuration["ARGS"].donorpath)
+            configuration["OVERWRITE_SPARROW"] = configuration["ARGS"].sparrow
         else:
             logger.log(logger.INFO, "Configuring target donee files under given directories {}".format(configuration["ARGS"].donee))
             if configuration["ARGS"].donee == ["None"]:
