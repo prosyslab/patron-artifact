@@ -34,6 +34,7 @@ work_stack = Queue()
 
 '''
 Function that writes out the combined patch results
+This function mostly contains patch parsing logic.
 The results are written as .tsv file at out/combined_results directory
 copy the .tsv files to Google Sheet for easier analysis
 
@@ -503,8 +504,14 @@ def collect_job_results(work, tries):
         log(ERROR, f"Try recollecting the results...{tries}tries")
         time.sleep(5)
         collect_job_results(work, tries)
+'''
+Thread worker.
+This function is run parallelly to run Patron processes until the work_stack is empty
 
-def work_manager():
+Input: None
+Output: None
+'''
+def work_manager() -> None:
     global work_stack
     while not work_stack.empty():
         work = work_stack.get()
@@ -517,7 +524,12 @@ def work_manager():
             p.communicate(timeout=(3600*3))
         except subprocess.TimeoutExpired:
             log(ERROR, f"Timeout! 3 hours passed for {cmd}")
-            p.terminate()
+            if not p is None and p.poll() is None:
+                p.terminate()
+        except Exception as e:
+            log(ERROR, f"Failed to run patron with {cmd}: {e}")
+            if not p is None and p.poll() is None:
+                p.terminate()
         proc = (cmd, p)
         collect_job_results(proc, 0)
 
@@ -539,7 +551,12 @@ Output: None
 def main(from_top:bool=False, package:list=[]) -> None:
     global level, global_stat, global_writer, stat_out, work_stack
     if not from_top:
-        config.setup(level)
+        try:
+            config.setup(level)
+        except Exception as e:
+            print('Invalid argument given')
+            config.patron_usage()
+            exit(1)
     stat_out = os.path.join(config.configuration["OUT_DIR"], 'results_combined')
     if not os.path.exists(stat_out):
         os.mkdir(stat_out)
@@ -588,9 +605,11 @@ def main(from_top:bool=False, package:list=[]) -> None:
     log(INFO, "Please check the status.tsv file for the results.")
 
 if __name__ == '__main__':
+    config.openings()
     print('YOU ARE RUNNING PATRON.PY AS A SCRIPT DIRECTLY.')
     try:
         main()
+        config.happy_ending()
     except KeyboardInterrupt:
         print('Keyboard Interrupted')
         exit(1)

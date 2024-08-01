@@ -127,6 +127,17 @@ def __get_logger(level):
     __logger.setLevel(logging.DEBUG)
     return __logger
 
+def patron_usage():
+    print("usage: patron.py [-h] [-donee [DONEE ...]] [-database] [-donorpath DONORPATH] [-dbpath DBPATH] [-process PROCESS] [-sparrow]")
+    print("Options:")
+    print("  -h, --help                 show this help message and exit")
+    print("  -database, -db             construct patron-DB only")
+    print("  -donorpath, -dp DONORPATH  path to the donor parograms when making db (default:benchmark")
+    print("  -sparrow, -s               overwrite the sparrow results (if run with -db)")
+    print("  -donee, -d [DONEE ...]     run the patron for the given donee directory(ies) (default:all)")
+    print("  -process, -p PROCESS       number of threads to run (default:20)")
+    print("  -dbpath, -dbp DBPATH       path to the DB directory(default:benchmark-DB")
+    
 def oss_usage():
     print("Usage: python3 oss_exp.py [-h] [-build [BUILD [BUILD ...]]] [-crawl] [-sparrow [SPARROW [SPARROW ...]]]")
     print("Options:")
