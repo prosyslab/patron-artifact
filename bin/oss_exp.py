@@ -8,7 +8,9 @@ import patron
 import config
 import combine
 import count_sparrow_log
-from logger import log, INFO, ERROR, WARNING
+from logger import log, INFO, ERROR, WARNING, ALL
+import progressbar
+import time
 
 def run_full_pipe():
     config.setup("FULL")
@@ -29,9 +31,13 @@ def run_full_pipe():
             os.mkdir(os.path.join(smake_out_dir, str(category)))
         packages = packages[ str(category) ]
         os.chdir(build.PKG_DIR)
+        bar = progressbar.ProgressBar(widgets=[' [', 'Pipelining Processing...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=work_size).start()
         for package in packages:
             work_cnt += 1
-            log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
+            if config.configuration["VERBOSE"]:
+                log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
+            else:
+                bar.update(work_cnt)
             package = package.strip()
             is_success, next_args = build.smake_pipe(str(category), package, tsvfile, writer, smake_out_dir, 0)
             if not is_success:
@@ -48,6 +54,7 @@ def run_full_pipe():
     tsvfile.close()
     # count_sparrow_log.run(sparrow.SPARROW_LOG_DIR)
     # measure_time.run_from_top(config.configuration['OUT_DIR'], measure_time.PIPE_MODE)
+    bar.finish()
     return True
 
 '''
@@ -82,8 +89,13 @@ def run_pipe(level : str, from_top: bool=False ) -> bool:
             os.mkdir(os.path.join(smake_out_dir, str(category)))
         packages = packages[ str(category) ]
         os.chdir(build.PKG_DIR)
+        bar = progressbar.ProgressBar(widgets=[' [', 'Pipelining Processing...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=work_size).start()
         for package in packages:
             work_cnt += 1
+            if config.configuration["VERBOSE"]:
+                log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
+            else:
+                bar.update(work_cnt)
             log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
             package = package.strip()
             is_success, next_args = build.smake_pipe(str(category), package, tsvfile, writer, smake_out_dir, 0)
@@ -100,6 +112,7 @@ def run_pipe(level : str, from_top: bool=False ) -> bool:
     tsvfile.close()
     # count_sparrow_log.run(sparrow.SPARROW_LOG_DIR)
     # measure_time.run_from_top(config.configuration['OUT_DIR'], measure_time.PIPE_MODE)
+    bar.finish()
     return True
 
 '''

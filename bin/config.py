@@ -6,6 +6,7 @@ import datetime
 
 configuration = {
     "ARGS": None,
+    "VERBOSE": False,
     "START_TIME": datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
     "FILE_PATH": os.path.dirname(os.path.realpath(__file__)),
     "ROOT_PATH": os.path.dirname(os.path.dirname(os.path.realpath(__file__))),
@@ -100,9 +101,10 @@ def bad_ending(out_path:str) -> None:
 def __get_logger(level):
     __logger = logging.getLogger("logger")
     formatter = logging.Formatter("[%(levelname)s][%(asctime)s] %(message)s")
-    stream_handler = logging.StreamHandler()
-    stream_handler.setFormatter(formatter)
-    __logger.addHandler(stream_handler)
+    if configuration["VERBOSE"]:
+        stream_handler = logging.StreamHandler()
+        stream_handler.setFormatter(formatter)
+        __logger.addHandler(stream_handler)
     if not os.path.isdir(configuration["OUT_DIR"]):
         os.mkdir(configuration["OUT_DIR"])
     if level == "TOP":
@@ -229,7 +231,12 @@ def get_patron_target_files(target_dirs):
     return donee_list
 
 def config_log(config):
-    logger.log(logger.INFO, "Configuration:")
+    if config["VERBOSE"]:
+        log = logger.INFO
+    else:
+        log = logger.ALL
+        
+    logger.log(log, "Configuration:")
     for key, value in config.items():
         if key == "ARGS":
             continue
@@ -239,12 +246,11 @@ def config_log(config):
             continue
         if value == False:
             continue
-        logger.log(logger.INFO, f"\t{key}: {value}")
+        logger.log(log, f"\t{key}: {value}")
             
 
 def setup(level):
     global configuration
-    logger.logger = __get_logger(level)
     if level != "PATRON_PIPE" and level != "PATRON":
         configuration["ANALYSIS_DIR"] = os.path.join(configuration["PKG_DIR"], "analysis_target_" + configuration["START_TIME"])
         if not os.path.exists(configuration["ANALYSIS_DIR"]):
@@ -254,6 +260,7 @@ def setup(level):
     if level != "PATRON_PIPE" and level != "PATRON" and level != "SPARROW" and level != "FULL":
         level = "TOP"
     if level == "TOP" or level == "FULL":
+        parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
         parser.add_argument("-oss", action="store_true", default=False, help="run the OSS experiment")
         parser.add_argument("-build", "-b", nargs="*", default=["None"], help="build the given path for category list(s) of package only (default:all)")
         parser.add_argument("-crawl", "-c", action="store_true", default=False, help="crawl the package list from the web only")
@@ -267,6 +274,8 @@ def setup(level):
         parser = parse_sparrow_opt(parser)
         configuration["ARGS"] = parser.parse_args()
         configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
+        configuration["VERBOSE"] = configuration["ARGS"].verbose
+        logger.logger = __get_logger(level)
         if configuration["ARGS"].bo_only:
             configuration["DEFAULT_SPARROW_OPT"] = ["-bo"]
         if configuration["ARGS"].oss:
@@ -309,6 +318,9 @@ def setup(level):
             configuration["SPARROW_TARGET_FILES"] = get_sparrow_target_files(configuration["ARGS"].sparrow)
     if level == "SPARROW":
         configuration["SPARROW_ONLY"] = True
+        parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
+        configuration["VERBOSE"] = configuration["ARGS"].verbose
+        logger.logger = __get_logger(level)
         parser.add_argument("-files", "-f", nargs="*", default=["None"], help="run the sparrow for the given file(s) (default:all)")
         parser.add_argument("-out", "-o", type=str, default=configuration["ANALYSIS_DIR"], help="output directory for the analysis results")
         parser = parse_sparrow_opt(parser)
@@ -322,6 +334,9 @@ def setup(level):
         check_sparrow_opt(level)
     if level == "COMBINE":
         configuration["COMBINE_ONLY"] = True
+        parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
+        configuration["VERBOSE"] = configuration["ARGS"].verbose
+        logger.logger = __get_logger(level)
         parser.add_argument("file", type=str, default="", help=".txt file containing list of target packages")
         parser.add_argument("-out", "-o", type=str, default=configuration["ANALYSIS_DIR"], help="output directory for the analysis results")
         configuration["ARGS"] = parser.parse_args()
@@ -331,6 +346,9 @@ def setup(level):
             config.patron_exit("COMBINE")
     if level == "PATRON":
         configuration["PATRON_ONLY"] = True
+        parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
+        configuration["VERBOSE"] = configuration["ARGS"].verbose
+        logger.logger = __get_logger(level)
         parser.add_argument("-donee", "-d", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
         parser.add_argument("-database", "-db", action="store_true", default=False, help="construct patron-DB only")
         parser.add_argument("-donorpath", "-dp", type=str, default="benchmark", help="path to the donor parograms(default:benchmark")
