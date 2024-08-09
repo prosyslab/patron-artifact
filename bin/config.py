@@ -263,9 +263,12 @@ def setup(level):
         parser.add_argument("-donorpath", "-dp", type=str, default="benchmark", help="path to the donor parograms(default:benchmark")
         parser.add_argument("-dbpath", "-dbp", type=str, default="benchmark-DB", help="path to the DB directory(default:benchmark-DB")
         parser.add_argument("-pipe", nargs="*", default=["None"], help="run the sparrow in pipe mode (build->combine->sparrow)")
+        parser.add_argument("-bo", action="store_true", default=False, help="run the sparrow for Buffer Overflow")
         parser = parse_sparrow_opt(parser)
         configuration["ARGS"] = parser.parse_args()
         configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
+        if configuration["ARGS"].bo:
+            configuration["DEFAULT_SPARROW_OPT"] = ["-bo"]
         if configuration["ARGS"].oss:
             configuration["ARGS"].pipe = ["all"]
         if configuration["ARGS"].pipe == []:

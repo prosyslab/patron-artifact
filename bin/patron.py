@@ -609,7 +609,7 @@ if __name__ == '__main__':
     print('YOU ARE RUNNING PATRON.PY AS A SCRIPT DIRECTLY.')
     try:
         main()
-        config.happy_ending()
+        config.happy_ending(config.configuration["OUT_DIR"])
     except KeyboardInterrupt:
         print('Keyboard Interrupted')
         exit(1)

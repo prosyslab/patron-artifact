@@ -72,7 +72,8 @@ def sparrow(package:str, files:list) -> bool:
                 except subprocess.TimeoutExpired:
                     log(ERROR, f"Timeout for {file}.")
                     time_record[file]['end'] = 0
-                    process.kill()
+                    import signal
+                    os.killpg(proc.pid, signal.SIGTERM)
                     writer.writerow([file, 'X'])
                     tsvfile.flush()
                     sparrow_log.close()
@@ -115,7 +116,7 @@ def sparrow(package:str, files:list) -> bool:
     return True
 
 '''
-Function called from -pipe option of bin/oss.py
+Function called from -pipe option of bin/oss_exp.py
 
 Input: str (package name), TextIO (tsvfile), csv.writer
 Output: bool (True: success, False: fail)
