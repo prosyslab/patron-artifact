@@ -68,12 +68,12 @@ def sparrow(package:str, files:list) -> bool:
         if proc_cnt > config.configuration["PROCESS_LIMIT"] or i >= len(files):
             for file, process, sparrow_log in procs:
                 try:
-                    stdout, stderr = process.communicate(timeout=900)
+                    stdout, stderr = process.communicate(timeout=3600)
                 except subprocess.TimeoutExpired:
                     log(ERROR, f"Timeout for {file}.")
                     time_record[file]['end'] = 0
                     import signal
-                    os.killpg(proc.pid, signal.SIGTERM)
+                    os.killpg(process.pid, signal.SIGTERM)
                     writer.writerow([file, 'X'])
                     tsvfile.flush()
                     sparrow_log.close()
