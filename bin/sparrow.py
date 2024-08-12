@@ -73,7 +73,11 @@ def sparrow(package:str, files:list) -> bool:
                     log(ERROR, f"Timeout for {file}.")
                     time_record[file]['end'] = 0
                     import signal
-                    os.killpg(process.pid, signal.SIGTERM)
+                    log(ERROR, f"Killing the process for {file} ...")
+                    try:
+                        os.killpg(process.pid, signal.SIGTERM)
+                    except ProcessLookupError:
+                        log(ERROR, f"process for {file} already exited.")
                     writer.writerow([file, 'X'])
                     tsvfile.flush()
                     sparrow_log.close()
