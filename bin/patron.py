@@ -257,7 +257,8 @@ def run_sparrow(missing_list:list) -> None:
     i = 0
     while run_cnt < config.configuration["PROCESS_LIMIT"] and len(rest) > 0:
         log(INFO, f"Running sparrow for {work_list[i]} ...")
-        os.chdir(os.path.dirname(work_list[i][1]))
+        path = os.path.dirname(work_list[i][1])
+        os.chdir(path)
         sparrow_log = open('sparrow_log', 'w')
         proc = subprocess.Popen(work_list[i], stdout=sparrow_log, stderr=subprocess.STDOUT)
         proc_list.append((work_list[i], proc, sparrow_log))
@@ -282,6 +283,17 @@ def run_sparrow(missing_list:list) -> None:
                 i -= 1
                 proc_list.remove((cmd, proc, sparrow_log))
                 work_list.remove(cmd)
+                # label = os.path.join(os.path.dirname(os.path.dirname(path)), "label.json")
+                # with open(label, 'r') as f:
+                #     data = json.load(f)
+                #     try:
+                #         true_alarm = data["TRUE-ALARM"]["ALARM-DIR"][0]
+                #     except IndexError:
+                #         log(ERROR, f"Failed to get true alarm for {path}")
+                #         return
+                # for dirs in os.path.join(os.path.dirname(path), "sparrow-out", "taint", "datalog"):
+                #     if dirs != true_alarm and dirs != "Alarm.map":
+                #         os.system(f'rm -rf {os.path.join(os.path.dirname(path), "sparrow-out", "taint", "datalog", dirs)}')
     log(INFO, "Successfully finished running sparrow.")
         
 '''

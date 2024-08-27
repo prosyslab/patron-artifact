@@ -319,12 +319,12 @@ def setup(level):
     if level == "SPARROW":
         configuration["SPARROW_ONLY"] = True
         parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
-        configuration["VERBOSE"] = configuration["ARGS"].verbose
-        logger.logger = __get_logger(level)
         parser.add_argument("-files", "-f", nargs="*", default=["None"], help="run the sparrow for the given file(s) (default:all)")
         parser.add_argument("-out", "-o", type=str, default=configuration["ANALYSIS_DIR"], help="output directory for the analysis results")
         parser = parse_sparrow_opt(parser)
         configuration["ARGS"] = parser.parse_args()
+        configuration["VERBOSE"] = configuration["ARGS"].verbose
+        logger.logger = __get_logger(level)
         configuration["ANALYSIS_DIR"] = configuration["ARGS"].out
         if configuration["ARGS"].files == ["None"]:
             logger.log(logger.ERROR, "No file is given. Please provide at least one file.")
@@ -347,8 +347,6 @@ def setup(level):
     if level == "PATRON":
         configuration["PATRON_ONLY"] = True
         parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
-        configuration["VERBOSE"] = configuration["ARGS"].verbose
-        logger.logger = __get_logger(level)
         parser.add_argument("-donee", "-d", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
         parser.add_argument("-database", "-db", action="store_true", default=False, help="construct patron-DB only")
         parser.add_argument("-donorpath", "-dp", type=str, default="benchmark", help="path to the donor parograms(default:benchmark")
@@ -356,6 +354,8 @@ def setup(level):
         parser.add_argument("-process", '-p', type=int, default=20, help="number of threads to run")
         parser.add_argument("-sparrow", '-s', action="store_true", default=False, help="overwrite the sparrow results")
         configuration["ARGS"] = parser.parse_args()
+        configuration["VERBOSE"] = configuration["ARGS"].verbose
+        logger.logger = __get_logger(level)
         configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
         if configuration["ARGS"].database:
             configuration["DATABASE_ONLY"] = True
