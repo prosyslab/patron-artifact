@@ -69,16 +69,16 @@ def patron_exit(stage:str):
     
 
 def happy_ending(out_path:str) -> None:
-    print('                                     .''.       ')
-    print('           .''.      .        *''*    :_\/_:     . ')
+    print('                                    .''.       ')
+    print('        .''.        .        *''*     :_\/_:     . ')
     print('      :_\/_:   _\(/_  .:.*_\/_*   : /\ :  .\'.:.\'.')
     print('    .''.: /\ :   ./)\   \':\'* /\ * :  \'..\'.  -=:o:=-')
     print(' :_\/_:\'.:::.    \' *\'\'*    * \'.\'/.\' _\(/_\'.\':\'.\'')
     print(' : /\ : :::::     *_\/_*     -= o =-  /)\    \'  *')
     print('  \'..\'  \':::\'     * /\ *     .\'/.\\\'.   \'')
     print('      *            *..*         :')
-    print('        *')
-    print('        *')
+    print('      *')
+    print('      *')
     print('ALL DONE! THANK YOU FOR YOUR PATIENCE!')
     print('PLEASE CHECK THE {} FOR THE RESULTS!'.format(out_path))
 

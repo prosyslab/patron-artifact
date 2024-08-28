@@ -12,6 +12,7 @@ import time
 import copy
 import threading
 from queue import Queue
+import progressbar
 
 expriment_ready_to_go = {
     "patron": [
@@ -256,6 +257,8 @@ def run_sparrow(missing_list:list) -> None:
     rest = copy.deepcopy(work_list)
     i = 0
     while run_cnt < config.configuration["PROCESS_LIMIT"] and len(rest) > 0:
+        if 0 == len(work_list[i]):
+            continue
         log(INFO, f"Running sparrow for {work_list[i]} ...")
         path = os.path.dirname(work_list[i][1])
         os.chdir(path)
@@ -399,8 +402,16 @@ def mk_database():
         log(WARNING, "Removing existing patron-DB...")
         subprocess.run(['rm', '-rf', 'patron-DB'])
     cmd = [config.configuration["PATRON_BIN_PATH"], "db"]
+    work_size = len(donor_list)
+    work_cnt = 0
+    bar = progressbar.ProgressBar(widgets=[' [', 'Constructing DB...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=work_size).start()
     for donor in donor_list:
         log(INFO, f"Creating patron-DB for {donor} ...")
+        work_cnt += 1
+        if config.configuration["VERBOSE"]:
+                log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
+        else:
+            bar.update(work_cnt)
         if donor.endswith('donor'):
             label = os.path.join(donor, '..', 'label.json')
             with open(label, 'r') as f:
@@ -440,9 +451,7 @@ def mk_database():
             log(INFO, f"Successfully created DB for {donor}")
             writer.writerow([donor.split('/')[-2], donor.split('/')[-1], "O"])
     log(INFO, "Successfully finished making DB.")
-    db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.configuration["DB_PATH"]))
-    if os.path.exists(db_dest):
-        db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.configuration["DONOR_PATH"]) + "-DB")
+    db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.configuration["DONOR_PATH"]) + "-DB")
     dest_cnt = 1
     while os.path.exists(db_dest):
         db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.configuration["DONOR_PATH"]) + "-DB" + str(dest_cnt))
@@ -475,7 +484,7 @@ def construct_database() -> None:
         log(WARNING, 'Overwriting the existing Sparrow results...')
     else:
         log(INFO, 'Checking If all donors in {} are analyzed by Sparrow...'.format(config.configuration["DONOR_PATH"]))
-    if config.configuration["DONOR_PATH"] == "benchmark":
+    if "benchmark" in config.configuration["DONOR_PATH"]:
         patchweave_works, patron_works = check_sparrow_default()
         if len(patchweave_works) > 0 or len(patron_works) > 0:
             run_sparrow_defualt(patchweave_works, patron_works)
