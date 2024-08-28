@@ -1,2 +1,0 @@
-# Empty dependencies file for CWE690_NULL_Deref_From_Return__int_realloc_41-bad.
-# This may be replaced when dependencies are built.
