@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import config
 import os
-from logger import log, INFO, ERROR, WARNING
+from logger import log, INFO, ERROR, WARNING, ALL
 import subprocess
 import json
 import csv
@@ -32,6 +32,9 @@ global_writer = None
 stat_out = ""
 time_record = dict()
 work_stack = Queue()
+patch_work_size = None
+patch_work_cnt = 0
+patch_bar = None
 
 '''
 Function that writes out the combined patch results
@@ -131,7 +134,10 @@ Input: list (command), str (path for output path)
 Output: subprocess.Popen
 '''
 def run_patron(cmd:list, path:str) -> subprocess.Popen:
-    global time_record
+    global time_record, patch_work_cnt, patch_bar
+    if not config.configuration["VERBOSE"]:
+        patch_work_cnt += 1
+        patch_bar.update(patch_work_cnt)
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     current_job = os.path.basename(cmd[2])
     if not check_donee(cmd[2]):
@@ -182,7 +188,7 @@ def run_sparrow_defualt(patchweave_worklist:list, patron_worklist:list, mk_full_
     log(WARNING, f"Running sparrow to construct databse ...")
     os.chdir(config.configuration["EXP_ROOT_PATH"])
     log(INFO, "Detailed log will be saved in {}".format(os.path.join(config.configuration["EXP_ROOT_PATH"], 'out')))
-    log(INFO, "Running sparrow for patchweave benchmarks...")
+    log(ALL, "Running sparrow for patchweave benchmarks...")
     result_patchweave = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patchweave', '-p', '-id'] + patchweave_worklist, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     result_patchweave.wait()
     if result_patchweave.returncode != 0:
@@ -256,10 +262,18 @@ def run_sparrow(missing_list:list) -> None:
         work_list.append(cmd)
     rest = copy.deepcopy(work_list)
     i = 0
+    work_size = len(work_list)
+    work_cnt = 0
+    bar = progressbar.ProgressBar(widgets=[' [', 'Running Analysis for DB...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=work_size).start()
     while run_cnt < config.configuration["PROCESS_LIMIT"] and len(rest) > 0:
         if 0 == len(work_list[i]):
             continue
         log(INFO, f"Running sparrow for {work_list[i]} ...")
+        work_cnt += 1
+        if config.configuration["VERBOSE"]:
+                log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
+        else:
+            bar.update(work_cnt)
         path = os.path.dirname(work_list[i][1])
         os.chdir(path)
         sparrow_log = open('sparrow_log', 'w')
@@ -533,7 +547,7 @@ Input: None
 Output: None
 '''
 def work_manager() -> None:
-    global work_stack
+    global work_stack, patch_work_cnt, patch_patch_bar
     while not work_stack.empty():
         work = work_stack.get()
         log(INFO, f"{work_stack.qsize()} jobs are left.")
@@ -607,6 +621,9 @@ def main(from_top:bool=False, package:list=[]) -> None:
     for work in worklist:
         work_stack.put(work)
     managers = []
+    global patch_work_size, patch_bar
+    patch_work_size = work_stack.qsize()
+    patch_bar = progressbar.ProgressBar(widgets=[' [', 'Patron Running...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=patch_work_size).start()
     try:
         for i in range(config.configuration["PROCESS_LIMIT"]):
             manager = threading.Thread(target=work_manager, args=())

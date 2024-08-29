@@ -43,7 +43,6 @@ def run():
       sys.exit(1)
     for cont in os.listdir(path):
       cont_path = os.path.join(path, cont)
-      # check if key exists
       if not cont in config['DONOR_PATHS']:
         config['DONOR_PATHS'][cont] = []
       config['DONOR_PATHS'][cont] = config['DONOR_PATHS'][cont] + [ os.path.join(cont_path, f) for f in os.listdir(cont_path) ]
@@ -51,14 +50,18 @@ def run():
   for key, value in config['DONOR_PATHS'].items():
     os.makedirs(os.path.join(ROOT_PATH, "combined-DB", key), exist_ok=True)
     for f in value:
-      os.system("cp -rf {} {}".format(f, os.path.join(ROOT_PATH, "combined-DB", key)))
+      if os.path.exists(os.path.join(ROOT_PATH, "combined-DB", key, os.path.basename(f))):
+        print("File already exists: {}".format(f))
+        continue
+      else:
+        os.system("cp -rf {} {}".format(f, os.path.join(ROOT_PATH, "combined-DB", key)))
       
 
 if __name__ == "__main__":
   if sys.argv[1] == "-s" or sys.argv[1] == "--scratch":
     config['IS_SCRATCH'] = True
     mk_exp_dbs()
-    config.DB_PATHS = ["..-DB"] # TODO: Check the path to the DB after the test
+    config.DB_PATHS = ["CVE-patches-DB", "CWE-patches-DB", "benchmark-DB"]
   else:
     arg_parser = argparse.ArgumentParser()
     arg_parser.add_argument("db_path", nargs="+", help="Path to the database")
@@ -66,3 +69,4 @@ if __name__ == "__main__":
     config['DB_PATHS'] = args.db_path
     print("DB_PATHS: {}".format(config['DB_PATHS']))
   run()
+  print("Merging is complete!")
