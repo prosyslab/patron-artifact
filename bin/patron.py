@@ -259,6 +259,9 @@ def run_sparrow(missing_list:list) -> None:
         if os.path.exists(os.path.join(os.path.dirname(path), 'sparrow-out')):
             os.system(f'rm -rf {os.path.join(os.path.dirname(path), "sparrow-out")}')
         cmd = mk_sparrow_cmd(os.path.join(path, '..', 'label.json'), path)
+        if len(cmd) == 0:
+            log(ERROR, f"Failed to make sparrow command for {path}")
+            continue
         work_list.append(cmd)
     rest = copy.deepcopy(work_list)
     i = 0
