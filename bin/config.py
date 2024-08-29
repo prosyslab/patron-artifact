@@ -111,7 +111,7 @@ def __get_logger(level):
         configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_pipe')
     elif level == "FULL":
         configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_full')
-    elif level == "PATRON" or "PATRON_PIPE":
+    elif level == "PATRON" or level == "PATRON_PIPE":
         configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_patch')
     elif level == "SPARROW":
         configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_sparrow')
@@ -121,6 +121,8 @@ def __get_logger(level):
         configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_build')
     elif level == "CRAWL":
         configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_crawl')
+    elif level == "MERGE":
+        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_mergeDB')
     os.mkdir(configuration["OUT_DIR"])
     file_handler = logging.FileHandler(
         os.path.join(configuration["OUT_DIR"], "log_{}.txt".format(configuration["START_TIME"])))
