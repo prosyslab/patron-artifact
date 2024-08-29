@@ -15,17 +15,17 @@ def run_process(cmd):
   return out, err
 
 def mk_exp_dbs():
-  first_out, first_err = run_process([FILE_PATH + 'patron.py', '-db'])
+  first_out, first_err = run_process([os.path.join(FILE_PATH, 'patron.py'), '-db'])
   if first_err:
     print("Error: {}".format(first_err))
     sys.exit(1)
   print('First run done (benchmark DB)')
-  second_out, second_err = run_process([FILE_PATH + 'patron.py', '-db', '-donorpath', 'data/CWE-patches'])
+  second_out, second_err = run_process([os.path.join(FILE_PATH, 'patron.py'), '-db', '-donorpath', 'data/CWE-patches'])
   if second_err:
     print("Error: {}".format(second_err))
     sys.exit(1)
   print('Second run done (juliet DB)')
-  third_out, third_err = run_process([FILE_PATH + 'patron.py', '-db', '-donorpath', 'data/CVE-patches'])
+  third_out, third_err = run_process([os.path.join(FILE_PATH, 'patron.py'), '-db', '-donorpath', 'data/CVE-patches'])
   if third_err:
     print("Error: {}".format(third_err))
     sys.exit(1)
