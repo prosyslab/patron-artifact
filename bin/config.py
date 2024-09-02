@@ -224,7 +224,9 @@ def get_patron_target_files(target_dirs):
         if not os.path.exists(target):
             logger.log(logger.ERROR, f"{target} does not exist.")
             config.patron_exit("PATRON")
-        for root, _, files in os.walk(target):
+        for root, dirs, files in os.walk(target):
+            if any([d.isdigit() for d in dirs]):
+                continue
             for file in files:
                 if file.endswith(".c"):
                     donee_list.append((os.path.dirname(os.path.abspath(os.path.join(root, file))), os.path.abspath(os.path.join(root, file))))
