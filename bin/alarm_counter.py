@@ -18,7 +18,7 @@ def run(target_dir):
             for alarm in os.listdir(alarm_path):
                 if alarm == 'Alarm.map':
                     continue
-            cnt += 1
+                cnt += 1
             fp.write(f"{project_path}\t{cnt}\n")
             fp.flush()
             print(f"{project_path}\t{cnt}")
