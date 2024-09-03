@@ -3,9 +3,12 @@ import sys
 import os
 import subprocess
 import csv
+import logger
 from logger import log, INFO, ERROR, WARNING
+import config
 
 FILE_PATH = os.path.dirname(os.path.abspath(__file__))
+ROOT_PATH = os.path.abspath(os.path.join(FILE_PATH, '..'))
 
 def recursive_search(package_map):
     remove_list = []
@@ -25,6 +28,13 @@ def recursive_search(package_map):
     if is_clean:
         return package_map
     return recursive_search(package_map)
+
+def find_duplicate(package_map, package, target_dir):
+    for p, t in package_map:
+        if t == target_dir:
+            log(INFO, f"Found duplicate package: {package} and {p}")
+            return True
+    return False
 
 '''
 Function that checks duplicate packages in the package list
@@ -49,7 +59,12 @@ def run(package_lists):
             os.system('rm -rf '+ tmp_dir)
         os.mkdir(tmp_dir)    
         os.chdir(tmp_dir)
+        out = open(os.path.join(ROOT_PATH, package_list.replace('.txt', '_dups.txt')), 'w')
+        work_size = len(packages)
+        cnt = 0
         for package in packages:
+            cnt += 1
+            log(INFO, f"Processing {package} ({cnt}/{work_size})")
             try:
                 proc = subprocess.run(['apt', 'source', package], cwd=tmp_dir, check=True)
                 if proc.returncode != 0:
@@ -68,25 +83,28 @@ def run(package_lists):
                 if target_dir is None:
                     log(ERROR, f"Failed to find source directory for {package}.")
                     continue
+                is_duplicate = find_duplicate(package_map, package, target_dir)
+                if is_duplicate:
+                    log(INFO, f"Found duplicate package: {package}")
+                    continue
                 log(INFO, f"{package}\t{target_dir}")
                 package_map.append((package, target_dir))
                 os.system('rm -rf *')
                 log(INFO, f"Finished apt source for {package}.")
+                out.write(f"{package}\t{target_dir}\n")
+                out.flush()
             except Exception as e:
                 log(ERROR, e)
                 os.chdir(tmp_dir)
                 os.system('rm -rf *')
                 continue
-        # os.system('cp '+ package_list + ' ' + package_list.replace('.txt', '_old.txt'))
-        with open(package_list, 'w') as f:
-            package_map = recursive_search(package_map)
-            for package, target_dir in package_map:
-                f.write(f"{package}\n")
+    out.close()
 
 # TODO: use config.setup
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python find_duplicate_pkg.py <package_list1.txt> <package_list2> <package_list3> ...")
         sys.exit(1)
+    logger.logger = config.__get_logger("FIND_DUPS")
     package_list = sys.argv[1:]
     run(package_list)
