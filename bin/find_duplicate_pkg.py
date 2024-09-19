@@ -10,29 +10,30 @@ import config
 FILE_PATH = os.path.dirname(os.path.abspath(__file__))
 ROOT_PATH = os.path.abspath(os.path.join(FILE_PATH, '..'))
 
-def recursive_search(package_map):
-    remove_list = []
-    is_clean = True
-    for i in range(len(package_map)):
-        package, target_dir = package_map[i]
-        for j in range(i+1, len(package_map)):
-            package2, target_dir2 = package_map[j]
-            if target_dir == target_dir2:
-                log(INFO, f"Found duplicate package: {package} and {package2}")
-                remove_list.append((package2, target_dir2))
-                is_clean = False
-        if remove_list != []:
-            break
-    for package, target_dir in remove_list:
-        package_map.remove((package, target_dir))
-    if is_clean:
-        return package_map
-    return recursive_search(package_map)
+# def recursive_search(package_map):
+#     remove_list = []
+#     is_clean = True
+#     for i in range(len(package_map)):
+#         package, target_dir = package_map[i]
+#         for j in range(i+1, len(package_map)):
+#             package2, target_dir2 = package_map[j]
+#             if target_dir == target_dir2:
+#                 log(INFO, f"Found duplicate package: {package} and {package2}")
+#                 remove_list.append((package2, target_dir2))
+#                 is_clean = False
+#         if remove_list != []:
+#             break
+#     for package, target_dir in remove_list:
+#         package_map.remove((package, target_dir))
+#     if is_clean:
+#         return package_map
+#     return recursive_search(package_map)
 
 def find_duplicate(package_map, package, target_dir):
     for p, t in package_map:
         if t == target_dir:
             log(INFO, f"Found duplicate package: {package} and {p}")
+            log(INFO, f"previously: {target_dir}\tDuplicated: {t}")
             return True
     return False
 
@@ -86,6 +87,7 @@ def run(package_lists):
                 is_duplicate = find_duplicate(package_map, package, target_dir)
                 if is_duplicate:
                     log(INFO, f"Found duplicate package: {package}")
+                    os.system('rm -rf *')
                     continue
                 log(INFO, f"{package}\t{target_dir}")
                 package_map.append((package, target_dir))
