@@ -46,6 +46,8 @@ Input: str (output directory), str (current job(the donee file name)), bool (is 
 Output: None
 '''
 def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:str) -> None:
+    if not os.path.exists(out_dir):
+        return
     current_job = os.path.basename(current_job_path)
     package = "-"
     path_split = current_job_path.split('/')
@@ -145,7 +147,11 @@ def run_patron(cmd:list, path:str) -> subprocess.Popen:
         return None
     sub_out_dir = cmd[-1]
     if not os.path.exists(sub_out_dir):
-        os.mkdir(sub_out_dir)
+        try:
+            os.mkdir(sub_out_dir)
+        except Exception as e:
+            time.sleep(5)
+            os.mkdir(sub_out_dir)
     with open(os.path.join(sub_out_dir, "donee_path.txt"), 'w') as f:
         f.write(path)
     log(INFO, f"Running patron with {cmd}")
@@ -511,6 +517,58 @@ def construct_database() -> None:
             run_sparrow(works)
     mk_database()
 
+def parse_patron_log(cmd):
+    alarm_list = []
+    patron_log_file = os.path.join(cmd[-1], 'log.txt')
+    with open(patron_log_file, 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+            if 'Target Alarm:' in line:
+                alarm_list.append(line.split('Target Alarm: ')[-1].strip())
+    return alarm_list
+
+def reattempt_patron(cmd):
+    reattempt_dir = os.path.join(config.configuration["OUT_DIR"], 'reattempted_projects')
+    if not os.path.exists(reattempt_dir):
+        os.mkdir(reattempt_dir)
+    is_success = True
+    finished_alarm_list = parse_patron_log(cmd)
+    target_dir = cmd[2]
+    reattempt_project_dir = os.path.join(reattempt_dir, os.path.basename(target_dir))
+    os.system(f'cp -rf {target_dir} {reattempt_project_dir}')
+    time.sleep(5)
+    for alarm in os.listdir(os.path.join(reattempt_project_dir, 'sparrow-out', 'taint', 'datalog')):
+        if alarm in finished_alarm_list:
+            os.system(f'rm -rf {os.path.join(reattempt_project_dir, "sparrow-out", "taint", "datalog", alarm)}')
+    new_out_dir = os.path.join(config.configuration["OUT_DIR"], os.path.basename(reattempt_project_dir))
+    if not os.path.exists(new_out_dir):
+        os.mkdir(new_out_dir)
+    else:
+        cnt = 1
+        while os.path.exists(new_out_dir):
+            new_out_dir = os.path.join(config.configuration["OUT_DIR"], os.path.basename(reattempt_project_dir) + str(cnt))
+            cnt += 1
+
+    new_cmd = cmd[:2] + [reattempt_project_dir] + cmd[3:-1] + [new_out_dir]
+    try:
+        p = None
+        p = run_patron(new_cmd, reattempt_project_dir)
+        if p is None:
+            return False
+        p.communicate(timeout=(3600*3))
+    except subprocess.TimeoutExpired:
+        log(ERROR, f"Timeout! 3 hours passed for {cmd}")
+        if not p is None and p.poll() is None:
+            p.terminate()
+            is_success = False
+    except Exception as e:
+        log(ERROR, f"Failed to run patron with {cmd}: {e}")
+        if not p is None and p.poll() is None:
+            p.terminate()
+            is_success = False
+    proc = (new_cmd, p)
+    collect_job_results(proc, 0)
+    return is_success
 '''
 This function collects the patch results from each job directory everytime each process finishes
 
@@ -520,8 +578,13 @@ Output: list (PROCS), int (work_cnt) -> updated
 def collect_job_results(work, tries):
     global time_record
     cmd, proc = work
-    if proc.poll() is not None:
+    if proc is not None and proc.poll() is not None:
         if proc.returncode != 0:
+            if proc.returncode == -11:
+                log(ERROR, f"Segmentation Fault for {cmd}")
+                log(ERROR, f"reattempting to run patron with {cmd} by removing the error-prone alarm")
+                if reattempt_patron(cmd):
+                    return
             log(ERROR, f"Failed to run patron with {cmd}")
             is_failed = True
             time_in_str_insec = "Failed"
@@ -537,7 +600,11 @@ def collect_job_results(work, tries):
         log(ERROR, f"Process {cmd} is still running...")
         if tries > 5:
             log(ERROR, f"Process {cmd} is still running after 5 tries. Terminating...")
-            proc.terminate()
+            if not proc is None:
+                proc.terminate()
+            else:
+                log(ERROR, f"Process {cmd} is already terminated.")
+            return
         tries += 1
         log(ERROR, f"Try recollecting the results...{tries}tries")
         time.sleep(5)
@@ -556,6 +623,7 @@ def work_manager() -> None:
         log(INFO, f"{work_stack.qsize()} jobs are left.")
         cmd, path = work
         try:
+            p = None
             p = run_patron(cmd, path)
             if p is None:
                 continue
