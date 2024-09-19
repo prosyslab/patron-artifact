@@ -640,6 +640,18 @@ def work_manager() -> None:
         collect_job_results(proc, 0)
 
 
+def recollect_result(out_dir:str) -> None:
+    log(INFO, "List of directories to recollect the results:")
+    for d in os.listdir(out_dir):
+        path1 = os.path.join(out_dir, d)
+        if os.path.isdir(path1) and d != 'results_combined':
+            for f in os.listdir(path1):
+                path2 = os.path.join(path1, f)
+                if f.endswith('.patch'):
+                    log(INFO, f"{path2}")
+                    continue
+            
+
 '''
 patron.py has two different procedures
 1) Constructing database from scratch
@@ -711,7 +723,9 @@ def main(from_top:bool=False, package:list=[]) -> None:
 
     global_stat.close()
     log(INFO, "All jobs are finished.")
-    log(INFO, "Please check the status.tsv file for the results.")
+    log(INFO, "Recollecting the results just in case some jobs are left behind.")
+    recollect_result(config.configuration["OUT_DIR"])
+    log(INFO, f"Please check the {config.configuration['OUT_DIR']}results_combined/status.tsv and log file for the results.")
 
 if __name__ == '__main__':
     config.openings()

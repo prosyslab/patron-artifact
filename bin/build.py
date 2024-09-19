@@ -275,6 +275,8 @@ def smake(category: str, package: str, tsvfile: TextIO, writer: csv.writer, smak
             log(ERROR, f"building {package} has failed: Unexpected Exit!!")
             log(ERROR, e)
             return False
+    if not os.path.exists(BUILD_PKG_PATH):
+        os.mkdir(BUILD_PKG_PATH)
     with open(os.path.join(BUILD_PKG_PATH, package + '_time_summary.txt'), 'w') as f:
         end_time = time.time()
         f.write(f"Start Time: {datetime.datetime.fromtimestamp(start_time)}\n")
