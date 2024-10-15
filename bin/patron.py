@@ -110,7 +110,14 @@ def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:st
                         benchmark = "OSS"
                     else:
                         benchmark = "Custom"
-                    pattern = "ALT" if parsed_info[-1].strip() == "1" else "NORMAL"
+                    if parsed_info[-1].strip() == "0":
+                        pattern = "FULL"
+                    elif parsed_info[-1].strip() == "1":
+                        pattern = "ABSTRACT"
+                    elif parsed_info[-1].strip() == "2":
+                        pattern = "ALT"
+                    else:
+                        pattern = "UNKNOWN"
                     local_writer.writerow([package, current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     local_stat.flush()
                     global_writer.writerow([package, current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
@@ -555,9 +562,9 @@ def reattempt_patron(cmd):
         p = run_patron(new_cmd, reattempt_project_dir)
         if p is None:
             return False
-        p.communicate(timeout=(3600*3))
+        p.communicate(timeout=(3600*6))
     except subprocess.TimeoutExpired:
-        log(ERROR, f"Timeout! 3 hours passed for {cmd}")
+        log(ERROR, f"Timeout! 6 hours passed for {cmd}")
         if not p is None and p.poll() is None:
             p.terminate()
             is_success = False
