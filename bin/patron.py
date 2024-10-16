@@ -35,6 +35,7 @@ work_stack = Queue()
 patch_work_size = None
 patch_work_cnt = 0
 patch_bar = None
+lagging_proc = []
 
 '''
 Function that writes out the combined patch results
@@ -45,7 +46,9 @@ copy the .tsv files to Google Sheet for easier analysis
 Input: str (output directory), str (current job(the donee file name)), bool (is failed)
 Output: None
 '''
-def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:str) -> None:
+def write_out_results(cmd:list, is_failed:bool, time:str, is_timeout:bool) -> None:
+    out_dir = cmd[-1]
+    current_job_path = cmd[2]
     if not os.path.exists(out_dir):
         return
     current_job = os.path.basename(current_job_path)
@@ -60,7 +63,7 @@ def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:st
     try:
         with open(time_tsv_path, 'a') as time_tsv:
             time_writer = csv.writer(time_tsv, delimiter='\t')
-            if alarm_num == 0 or alarm_num == -1 or time == "Failed":
+            if alarm_num == 0 or alarm_num == -1 or time == "Process Failed" or time == "Timeout":
                 time_writer.writerow([package, current_job, time, alarm_num, "-"])
             else:
                 if 'day' in str(time):
@@ -110,23 +113,32 @@ def write_out_results(out_dir:str, current_job_path:str, is_failed:bool, time:st
                         benchmark = "OSS"
                     else:
                         benchmark = "Custom"
-                    if parsed_info[-1].strip() == "0":
+                    pattern_txt = infof[-3]
+                    if pattern_txt in "0":
                         pattern = "FULL"
-                    elif parsed_info[-1].strip() == "1":
+                    elif pattern_txt in "1":
                         pattern = "ABSTRACT"
-                    elif parsed_info[-1].strip() == "2":
+                    elif pattern_txt in "2":
                         pattern = "ALT"
                     else:
                         pattern = "UNKNOWN"
+                    if diff.strip() == "":
+                        diff = "Reproduction CMD: " + ' '.join(cmd)
                     local_writer.writerow([package, current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     local_stat.flush()
                     global_writer.writerow([package, current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     global_stat.flush()
+        if is_timeout:
+            msg = '----------PATRON STOPPED DUE TO TIMEOUT----------'
+            local_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
+            local_stat.flush()
+            local_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
+            global_stat.flush()
         if is_failed:
             msg = '----------PATRON STOPPED DUE TO UNEXPECTED ERROR----------'
-            local_writer.writerow([package, current_job, msg, "-", "-", "-", "-", "-"])
+            local_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
             local_stat.flush()
-            global_writer.writerow([package, current_job, msg, "-", "-", "-", "-" ,"-"])
+            local_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
             global_stat.flush()
     is_patched = False
     for file in os.listdir(out_dir):
@@ -316,17 +328,6 @@ def run_sparrow(missing_list:list) -> None:
                 i -= 1
                 proc_list.remove((cmd, proc, sparrow_log))
                 work_list.remove(cmd)
-                # label = os.path.join(os.path.dirname(os.path.dirname(path)), "label.json")
-                # with open(label, 'r') as f:
-                #     data = json.load(f)
-                #     try:
-                #         true_alarm = data["TRUE-ALARM"]["ALARM-DIR"][0]
-                #     except IndexError:
-                #         log(ERROR, f"Failed to get true alarm for {path}")
-                #         return
-                # for dirs in os.path.join(os.path.dirname(path), "sparrow-out", "taint", "datalog"):
-                #     if dirs != true_alarm and dirs != "Alarm.map":
-                #         os.system(f'rm -rf {os.path.join(os.path.dirname(path), "sparrow-out", "taint", "datalog", dirs)}')
     log(INFO, "Successfully finished running sparrow.")
         
 '''
@@ -557,6 +558,7 @@ def reattempt_patron(cmd):
             cnt += 1
 
     new_cmd = cmd[:2] + [reattempt_project_dir] + cmd[3:-1] + [new_out_dir]
+    is_timeout = False
     try:
         p = None
         p = run_patron(new_cmd, reattempt_project_dir)
@@ -565,6 +567,7 @@ def reattempt_patron(cmd):
         p.communicate(timeout=(3600*6))
     except subprocess.TimeoutExpired:
         log(ERROR, f"Timeout! 6 hours passed for {cmd}")
+        is_timeout = True
         if not p is None and p.poll() is None:
             p.terminate()
             is_success = False
@@ -574,7 +577,7 @@ def reattempt_patron(cmd):
             p.terminate()
             is_success = False
     proc = (new_cmd, p)
-    collect_job_results(proc, 0)
+    collect_job_results(proc, 0, is_timeout)
     return is_success
 '''
 This function collects the patch results from each job directory everytime each process finishes
@@ -582,8 +585,8 @@ This function collects the patch results from each job directory everytime each 
 Input: list (PROCS)[command, process_id, Popen], int (work_cnt), list (boolean list to track which process is finished)
 Output: list (PROCS), int (work_cnt) -> updated
 '''
-def collect_job_results(work, tries):
-    global time_record
+def collect_job_results(work, tries, is_timeout):
+    global time_record, lagging_proc
     cmd, proc = work
     if proc is not None and proc.poll() is not None:
         if proc.returncode != 0:
@@ -594,7 +597,7 @@ def collect_job_results(work, tries):
                     return
             log(ERROR, f"Failed to run patron with {cmd}")
             is_failed = True
-            time_in_str_insec = "Failed"
+            time_in_str_insec = "Timeout" if is_timeout else "Process Failed"
         else:
             log(INFO, f"Successfully ran patron with {cmd}")
             is_failed = False
@@ -602,20 +605,18 @@ def collect_job_results(work, tries):
             start_time = time_record[' '.join(cmd)]
             elapsed_time = end_time - start_time
             time_in_str_insec = str(datetime.timedelta(seconds=elapsed_time))
-        write_out_results(cmd[-1], cmd[2], is_failed, time_in_str_insec)
+        write_out_results(cmd, is_failed, time_in_str_insec, is_timeout)
     else:
         log(ERROR, f"Process {cmd} is still running...")
         if tries > 5:
-            log(ERROR, f"Process {cmd} is still running after 5 tries. Terminating...")
-            if not proc is None:
-                proc.terminate()
-            else:
-                log(ERROR, f"Process {cmd} is already terminated.")
+            log(ERROR, f"Process {cmd} is still running after 5 tries. Giving it up.")
+            log(ERROR, f"This process will be terminated after experiment finishes.")
+            lagging_proc.append((proc, cmd))
             return
         tries += 1
         log(ERROR, f"Try recollecting the results...{tries}tries")
         time.sleep(5)
-        collect_job_results(work, tries)
+        collect_job_results(work, tries, is_timeout)
 '''
 Thread worker.
 This function is run parallelly to run Patron processes until the work_stack is empty
@@ -629,14 +630,16 @@ def work_manager() -> None:
         work = work_stack.get()
         log(INFO, f"{work_stack.qsize()} jobs are left.")
         cmd, path = work
+        is_timeout = False
         try:
             p = None
             p = run_patron(cmd, path)
             if p is None:
                 continue
-            p.communicate(timeout=(3600*3))
+            p.communicate(timeout=(3600*6))
         except subprocess.TimeoutExpired:
-            log(ERROR, f"Timeout! 3 hours passed for {cmd}")
+            is_timeout = True
+            log(ERROR, f"Timeout! 6 hours passed for {cmd}")
             if not p is None and p.poll() is None:
                 p.terminate()
         except Exception as e:
@@ -644,19 +647,60 @@ def work_manager() -> None:
             if not p is None and p.poll() is None:
                 p.terminate()
         proc = (cmd, p)
-        collect_job_results(proc, 0)
+        collect_job_results(proc, 0, is_timeout)
 
 
 def recollect_result(out_dir:str) -> None:
-    log(INFO, "List of directories to recollect the results:")
-    for d in os.listdir(out_dir):
-        path1 = os.path.join(out_dir, d)
-        if os.path.isdir(path1) and d != 'results_combined':
-            for f in os.listdir(path1):
-                path2 = os.path.join(path1, f)
-                if f.endswith('.patch'):
-                    log(INFO, f"{path2}")
-                    continue
+    command = ['find', sys.argv[1], '-name', '*.patch']
+    result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    output = result.stdout
+    lst = list(filter(None, output.split('\n')))
+    with open(os.path.join(out_dir, 'final_result.tsv'), 'a') as f:
+        writer = csv.writer(f, delimiter='\t')
+        writer.writerow(['Project', 'Binary', 'File Name', 'Donor', 'Alarm #', 'Pattern'])
+        f.flush()
+        for path in lst:
+            path_explod1 = path.split('/')
+            file_name = path_explod1[-1]
+            binary = path_explod1[-2]
+            target_dir = '/'.join(path_explod1[0:-1])
+            donee_path_file = os.path.join(target_dir, 'donee_path.txt')
+            if os.path.exists(donee_path_file):
+                with open(donee_path_file, 'r') as f:
+                    donee_path = f.read().strip()
+                    path_explod2 = donee_path.split('/')
+                    for token in path_explod2:
+                        if token.startswith('_'):
+                            project_idx = path_explod2.index(token)
+                            break
+                    project = '/'.join(path_explod2[project_idx:-1])[1:]
+            else:
+                project = 'NotFound'
+            unique_str = '_'.join(file_name.split('.')[0].split('_')[1:-1])
+            patch_found = False
+            for f in os.listdir(target_dir):
+                if f.startswith('patch_') and unique_str in f:
+                    patch_found = True
+                    patch_info = f.split('.c')[0][6:]
+                    break
+            if patch_found:
+                pattern_num = patch_info[-1]
+                if pattern_num == '0':
+                    pattern = 'FULL'
+                elif pattern_num == '1':
+                    pattern = 'ABSTRACT'
+                elif pattern_num == '2':
+                    pattern = 'ALT'
+                else:
+                    pattern = 'UNKNOWN'
+                alarm_num = patch_info.split('_')[-2]
+            else:
+                pattern = 'NotFound'
+                alarm_num = 'NotFound'
+            donor = '_'.join(unique_str.split('_')[:-1])
+            writer.writerow([project, binary, file_name, donor, alarm_num, pattern])
+            f.flush()
+        
             
 
 '''
@@ -675,6 +719,7 @@ Output: None
 '''
 def main(from_top:bool=False, package:list=[]) -> None:
     global level, global_stat, global_writer, stat_out, work_stack
+    global patch_work_size, patch_bar, lagging_proc
     if not from_top:
         try:
             config.setup(level)
@@ -694,24 +739,28 @@ def main(from_top:bool=False, package:list=[]) -> None:
         if len(patchweave_works) > 0 or len(patron_works) > 0:
             run_sparrow(patchweave_works, patron_works)
         mk_database()
+        
     worklist = mk_worklist(from_top, package)
     work_cnt = 0
     total_work_cnt = 0
     PROCS = []
+    
     global_stat = open(os.path.join(stat_out, 'status.tsv'), 'a')
     global_writer = csv.writer(global_stat, delimiter='\t')
     global_writer.writerow(["Package", "Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
     global_stat.flush()
     jobs_finished = multiprocessing.Manager().list(range(len(worklist)))
     time_tsv_path = os.path.join(config.configuration["OUT_DIR"], 'time.tsv')
+    
     with open(time_tsv_path, 'a') as time_tsv:
         time_writer = csv.writer(time_tsv, delimiter='\t')
         time_writer.writerow(['Package', 'Binary' 'Total Time', '# Alarm', "Avg. Time per Alarm"])
         time_tsv.flush()
+        
     for work in worklist:
         work_stack.put(work)
+        
     managers = []
-    global patch_work_size, patch_bar
     patch_work_size = work_stack.qsize()
     patch_bar = progressbar.ProgressBar(widgets=[' [', 'Patron Running...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=patch_work_size).start()
     try:
@@ -732,7 +781,28 @@ def main(from_top:bool=False, package:list=[]) -> None:
     log(INFO, "All jobs are finished.")
     log(INFO, "Recollecting the results just in case some jobs are left behind.")
     recollect_result(config.configuration["OUT_DIR"])
-    log(INFO, f"Please check the {config.configuration['OUT_DIR']}results_combined/status.tsv and log file for the results.")
+    
+    all_finished = True
+    non_finished = []
+    for proc, cmd in lagging_proc:
+        log(ERROR, f"Terminating the lagging process...")
+        if not proc is None:
+            proc.terminate()
+        else:
+            all_finished = False
+            non_finished.append(cmd)
+            log(ERROR, f"Process {cmd} is already terminated, or not terminatable.")
+    if all_finished:
+        log(INFO, "All the lagging processes are terminated.")
+    else:
+        log(WARNING, 'Some processes were not able to be terminated.')
+        for cmd in non_finished:
+            log(WARNING, f"Non-terminated process: {cmd}")
+            log(WARNING, 'Force terminating the process...')
+            os.system('ps aux | grep "patron patch" | awk \'{print $2}\' | xargs kill -9')
+        log(WARNING, 'Please, manually terminate the processes if any process is still running.')
+    
+    log(INFO, f"Please check the {config.configuration['OUT_DIR']}/final_result.tsv and log file for the results.")
 
 if __name__ == '__main__':
     config.openings()
