@@ -119,6 +119,8 @@ def write_out_results(cmd:list, is_failed:bool, time:str, is_timeout:bool) -> No
                     elif pattern_txt in "1":
                         pattern = "ABSTRACT"
                     elif pattern_txt in "2":
+                        pattern = "ALT_FULL"
+                    elif pattern_txt in "3":
                         pattern = "ALT"
                     else:
                         pattern = "UNKNOWN"
