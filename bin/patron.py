@@ -651,7 +651,7 @@ def work_manager() -> None:
 
 
 def recollect_result(out_dir:str) -> None:
-    command = ['find', sys.argv[1], '-name', '*.patch']
+    command = ['find', out_dir, '-name', '*.patch']
     result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     output = result.stdout
     lst = list(filter(None, output.split('\n')))
