@@ -671,17 +671,18 @@ def recollect_result(out_dir:str) -> None:
                 with open(donee_path_file, 'r') as f:
                     donee_path = f.read().strip()
                     path_explod2 = donee_path.split('/')
+                    project_idx = 0
                     for token in path_explod2:
                         if token.startswith('_'):
                             project_idx = path_explod2.index(token)
                             break
-                    project = '/'.join(path_explod2[project_idx:-1])[1:]
+                    project = '/'.join(path_explod2[project_idx:-1])[1:] if project_idx != 0 else 'NotFound'
             else:
                 project = 'NotFound'
             unique_str = '_'.join(file_name.split('.')[0].split('_')[1:-1])
             patch_found = False
-            for f in os.listdir(target_dir):
-                if f.startswith('patch_') and unique_str in f:
+            for file in os.listdir(target_dir):
+                if file.startswith('patch_') and unique_str in file:
                     patch_found = True
                     patch_info = f.split('.c')[0][6:]
                     break
