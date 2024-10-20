@@ -657,19 +657,24 @@ def recollect_result(out_dir:str) -> None:
     result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     output = result.stdout
     lst = list(filter(None, output.split('\n')))
-    with open(os.path.join(out_dir, 'final_result.tsv'), 'a') as f:
-        writer = csv.writer(f, delimiter='\t')
-        writer.writerow(['Project', 'Binary', 'File Name', 'Donor', 'Alarm #', 'Pattern'])
-        f.flush()
+    with open(os.path.join(out_dir, 'final_result.tsv'), 'w') as result_fp:
+        writer = csv.writer(result_fp, delimiter='\t')
+        writer.writerow(['Project', 'Binary', 'FilePath', 'Donor', 'Alarm #', 'Pattern', 'Diff'])
+        result_fp.flush()
         for path in lst:
+            diff = 'NotFound'
+            with open(path, 'r') as diff_fp:
+                diff = diff_fp.read()
+            if diff.strip() == "":
+                diff = 'NotFound'
             path_explod1 = path.split('/')
             file_name = path_explod1[-1]
             binary = path_explod1[-2]
             target_dir = '/'.join(path_explod1[0:-1])
             donee_path_file = os.path.join(target_dir, 'donee_path.txt')
             if os.path.exists(donee_path_file):
-                with open(donee_path_file, 'r') as f:
-                    donee_path = f.read().strip()
+                with open(donee_path_file, 'r') as path_fp:
+                    donee_path = path_fp.read().strip()
                     path_explod2 = donee_path.split('/')
                     project_idx = 0
                     for token in path_explod2:
@@ -684,7 +689,7 @@ def recollect_result(out_dir:str) -> None:
             for file in os.listdir(target_dir):
                 if file.startswith('patch_') and unique_str in file:
                     patch_found = True
-                    patch_info = f.split('.c')[0][6:]
+                    patch_info = file.split('.c')[0][6:]
                     break
             if patch_found:
                 pattern_num = patch_info[-1]
@@ -701,8 +706,8 @@ def recollect_result(out_dir:str) -> None:
                 pattern = 'NotFound'
                 alarm_num = 'NotFound'
             donor = '_'.join(unique_str.split('_')[:-1])
-            writer.writerow([project, binary, file_name, donor, alarm_num, pattern])
-            f.flush()
+            writer.writerow([project, binary, path, donor, alarm_num, pattern, diff])
+            result_fp.flush()
         
             
 
