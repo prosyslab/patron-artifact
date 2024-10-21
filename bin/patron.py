@@ -698,6 +698,8 @@ def recollect_result(out_dir:str) -> None:
                 elif pattern_num == '1':
                     pattern = 'ABSTRACT'
                 elif pattern_num == '2':
+                    pattern = 'ALT(FULL)'
+                elif pattern_num == '3':
                     pattern = 'ALT'
                 else:
                     pattern = 'UNKNOWN'
