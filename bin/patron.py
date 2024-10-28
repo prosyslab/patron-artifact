@@ -25,7 +25,7 @@ expriment_ready_to_go = {
     ]
     }
 
-level = "PATRON"
+# process information is kept global for the sake of multithreading
 donor_list = []
 global_stat = None
 global_writer = None
@@ -134,13 +134,13 @@ def write_out_results(cmd:list, is_failed:bool, time:str, is_timeout:bool) -> No
             msg = '----------PATRON STOPPED DUE TO TIMEOUT----------'
             local_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
             local_stat.flush()
-            local_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
+            global_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
             global_stat.flush()
         if is_failed:
             msg = '----------PATRON STOPPED DUE TO UNEXPECTED ERROR----------'
             local_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
             local_stat.flush()
-            local_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
+            global_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
             global_stat.flush()
     is_patched = False
     for file in os.listdir(out_dir):
@@ -195,7 +195,7 @@ def mk_worklist(from_top:bool, package:str) -> list:
         target_donee = config.get_patron_target_files(package)
     for donee, path in target_donee:
         package = donee.split('/')[-1]
-        sub_out = os.path.join(config.configuration["OUT_DIR"], package)
+        sub_out = os.path.join(config.configuration["SUBOUT_DIR"], package)
         db_opt = ["--db", os.path.join(config.configuration["DB_PATH"])]
         if os.path.exists(sub_out):
             sub_out = sub_out + "_" + str(cnt)
@@ -500,7 +500,7 @@ Function that checks if the target database exists
 Input: None
 Output: bool (True: database exists, False: database does not exist)
 '''
-def check_database() -> bool:
+def is_exist_database() -> bool:
     if not os.path.exists(os.path.join(config.configuration["DB_PATH"])):
         log(ERROR, "{} does not exist.".format(config.configuration["DB_PATH"]))
         return False
@@ -538,7 +538,7 @@ def parse_patron_log(cmd):
     return alarm_list
 
 def reattempt_patron(cmd):
-    reattempt_dir = os.path.join(config.configuration["OUT_DIR"], 'reattempted_projects')
+    reattempt_dir = os.path.join(config.configuration["SUBOUT_DIR"], 'reattempted_projects')
     if not os.path.exists(reattempt_dir):
         os.mkdir(reattempt_dir)
     is_success = True
@@ -550,13 +550,13 @@ def reattempt_patron(cmd):
     for alarm in os.listdir(os.path.join(reattempt_project_dir, 'sparrow-out', 'taint', 'datalog')):
         if alarm in finished_alarm_list:
             os.system(f'rm -rf {os.path.join(reattempt_project_dir, "sparrow-out", "taint", "datalog", alarm)}')
-    new_out_dir = os.path.join(config.configuration["OUT_DIR"], os.path.basename(reattempt_project_dir))
+    new_out_dir = os.path.join(config.configuration["SUBOUT_DIR"], os.path.basename(reattempt_project_dir))
     if not os.path.exists(new_out_dir):
         os.mkdir(new_out_dir)
     else:
         cnt = 1
         while os.path.exists(new_out_dir):
-            new_out_dir = os.path.join(config.configuration["OUT_DIR"], os.path.basename(reattempt_project_dir) + str(cnt))
+            new_out_dir = os.path.join(config.configuration["SUBOUT_DIR"], os.path.basename(reattempt_project_dir) + str(cnt))
             cnt += 1
 
     new_cmd = cmd[:2] + [reattempt_project_dir] + cmd[3:-1] + [new_out_dir]
@@ -713,82 +713,50 @@ def recollect_result(out_dir:str) -> None:
         
             
 
-'''
-patron.py has two different procedures
-1) Constructing database from scratch
-2) Running Patron with the constructed database
-It can be run from four different sources
-1) oss_exp.py -patron <analysis_target_dir>
-2) oss_exp.py -fullpipe
-2) run.py -oss
-3) patron.py -db /path/to/db -d /path/to/donee -p <number_of_processes>
-
-Input: Optional (bool) -> to check where this program is run from, 
-Optional (str) -> to specify the package name if run pipe
-Output: None
-'''
-def main(from_top:bool=False, package:list=[]) -> None:
-    global level, global_stat, global_writer, stat_out, work_stack
-    global patch_work_size, patch_bar, lagging_proc
+def setup_patron(from_top):
     if not from_top:
         try:
-            config.setup(level)
+            config.setup("PATRON")
         except Exception as e:
             print('Invalid argument given')
             config.patron_usage()
             exit(1)
+
+def run_database():
+    log(INFO, 'Entering Database-Only mode...')
+    construct_database()
+    log(INFO, 'Database is successfully constructed.')
+    return
+
+def setup_logging_directories():
+    global stat_out, global_stat, global_writer
     stat_out = os.path.join(config.configuration["OUT_DIR"], 'results_combined')
     if not os.path.exists(stat_out):
         os.mkdir(stat_out)
-    if config.configuration["DATABASE_ONLY"]:
-        log(INFO, 'Entering Database-Only mode...')
-        construct_database()
-        return
-    if not check_database():
-        patchweave_works, patron_works = check_sparrow()
-        if len(patchweave_works) > 0 or len(patron_works) > 0:
-            run_sparrow(patchweave_works, patron_works)
-        mk_database()
-        
-    worklist = mk_worklist(from_top, package)
-    work_cnt = 0
-    total_work_cnt = 0
-    PROCS = []
-    
-    global_stat = open(os.path.join(stat_out, 'status.tsv'), 'a')
+    global_stat = open(os.path.join(config.configuration["OUT_DIR"], 'current_exp_status.tsv'), 'a')
     global_writer = csv.writer(global_stat, delimiter='\t')
     global_writer.writerow(["Package", "Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
     global_stat.flush()
-    jobs_finished = multiprocessing.Manager().list(range(len(worklist)))
     time_tsv_path = os.path.join(config.configuration["OUT_DIR"], 'time.tsv')
     
     with open(time_tsv_path, 'a') as time_tsv:
         time_writer = csv.writer(time_tsv, delimiter='\t')
         time_writer.writerow(['Package', 'Binary' 'Total Time', '# Alarm', "Avg. Time per Alarm"])
         time_tsv.flush()
-        
+
+def init_procs(from_top, package):
+    global work_stack, patch_work_size, lagging_proc
+    worklist = mk_worklist(from_top, package)
+    work_cnt = 0
+    total_work_cnt = 0
+    PROCS = []
     for work in worklist:
         work_stack.put(work)
-        
-    managers = []
     patch_work_size = work_stack.qsize()
-    patch_bar = progressbar.ProgressBar(widgets=[' [', 'Patron Running...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=patch_work_size).start()
-    try:
-        for i in range(config.configuration["PROCESS_LIMIT"]):
-            manager = threading.Thread(target=work_manager, args=())
-            manager.start()
-            managers.append(manager)
-        for manager in managers:
-            manager.join()
-    except KeyboardInterrupt:
-        log(ERROR, "Keyboard Interrupted")
-        log(ERROR, "Terminating all the jobs...")
-        for manager in managers:
-            manager.terminate()
-        exit(1)
+    
+    return
 
-    global_stat.close()
-    log(INFO, "All jobs are finished.")
+def post_process():
     log(INFO, "Recollecting the results just in case some jobs are left behind.")
     recollect_result(config.configuration["OUT_DIR"])
     
@@ -811,8 +779,68 @@ def main(from_top:bool=False, package:list=[]) -> None:
             log(WARNING, 'Force terminating the process...')
             os.system('ps aux | grep "patron patch" | awk \'{print $2}\' | xargs kill -9')
         log(WARNING, 'Please, manually terminate the processes if any process is still running.')
+
+def iter_works():
+    global patch_work_size, patch_bar
+    managers = []
+    patch_bar = progressbar.ProgressBar(widgets=[' [', 'Patron Running...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=patch_work_size).start()
+    try:
+        for i in range(config.configuration["PROCESS_LIMIT"]):
+            manager = threading.Thread(target=work_manager, args=())
+            manager.start()
+            managers.append(manager)
+        for manager in managers:
+            manager.join()
+    except KeyboardInterrupt:
+        log(ERROR, "Keyboard Interrupted")
+        log(ERROR, "Terminating all the jobs...")
+        for manager in managers:
+            manager.terminate()
+        exit(1)
+
+    global_stat.close()
+    log(INFO, "All jobs are finished.")
+    post_process()
+    
+    
+def run_patch_transplantation(from_top, package):
+    global global_stat, global_writer, stat_out, work_stack
+    global patch_work_size, patch_bar, lagging_proc
+    
+    # run default database if path does not exist
+    if not is_exist_database():
+        patchweave_works, patron_works = check_sparrow()
+        if len(patchweave_works) > 0 or len(patron_works) > 0:
+            run_sparrow(patchweave_works, patron_works)
+        mk_database()
+    
+    setup_logging_directories()
+    init_procs(from_top, package)
+    iter_works()
     
     log(INFO, f"Please check the {config.configuration['OUT_DIR']}/final_result.tsv and log file for the results.")
+    
+'''
+patron.py has two different procedures
+1) Constructing database from scratch
+2) Running Patron with the constructed database
+It can be run from four different sources
+1) oss_exp.py -patron <analysis_target_dir>
+2) oss_exp.py -fullpipe
+2) run.py -oss
+3) patron.py -db /path/to/db -d /path/to/donee -p <number_of_processes>
+
+Input: Optional (bool) -> to check where this program is run from, 
+Optional (str) -> to specify the package name if run pipe
+Output: None
+'''
+def main(from_top:bool=False, package:list=[]) -> None:
+    setup_patron(from_top)
+    if config.configuration["DATABASE_ONLY"]:
+        run_database()
+    else:
+        run_patch_transplantation(from_top, package)
+
 
 if __name__ == '__main__':
     config.openings()

@@ -11,6 +11,7 @@ configuration = {
     "FILE_PATH": os.path.dirname(os.path.realpath(__file__)),
     "ROOT_PATH": os.path.dirname(os.path.dirname(os.path.realpath(__file__))),
     "OUT_DIR": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), ".." ,"out")),
+    "SUBOUT_DIR": "",
     "PKG_DIR": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "package")),
     "SMAKE_OUT_DIR": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "package", "smake_out")),
     "LIST_DIR": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "package", "debian_lists")),
@@ -374,9 +375,13 @@ def setup(level):
                 target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].donee ]
             configuration['PROCESS_LIMIT'] = configuration["ARGS"].process
             get_patron_target_files(target_dirs)
+            configuration["SUBOUT_DIR"] = os.path.abspath(os.path.join(configuration["OUT_DIR"], "patches"))
+            os.mkdir(configuration["SUBOUT_DIR"])
     if level == "TOP" and configuration["PATRON_ONLY"]:
         configuration["PATRON_ONLY"] = True
         logger.log(logger.INFO, "Configuring target donee files under given directories {}".format(configuration["ARGS"].patron))
         target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].patron ]
         get_patron_target_files(target_dirs)
+        configuration["SUBOUT_DIR"] = os.path.abspath(os.path.join(configuration["OUT_DIR"], "patches"))
+        os.mkdir(configuration["SUBOUT_DIR"])
     config_log(configuration)

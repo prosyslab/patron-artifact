@@ -68,7 +68,7 @@ def sparrow(package:str, files:list) -> bool:
         if proc_cnt > config.configuration["PROCESS_LIMIT"] or i >= len(files):
             for file, process, sparrow_log in procs:
                 try:
-                    stdout, stderr = process.communicate(timeout=3600)
+                    stdout, stderr = process.communicate(timeout=3600*6)
                 except subprocess.TimeoutExpired:
                     log(ERROR, f"Timeout for {file}.")
                     time_record[file]['end'] = 0
