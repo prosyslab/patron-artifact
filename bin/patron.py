@@ -13,6 +13,7 @@ import copy
 import threading
 from queue import Queue
 import progressbar
+import traceback
 
 expriment_ready_to_go = {
     "patron": [
@@ -159,8 +160,11 @@ Output: subprocess.Popen
 def run_patron(cmd:list, path:str) -> subprocess.Popen:
     global time_record, patch_work_cnt, patch_bar
     if not config.configuration["VERBOSE"]:
-        patch_work_cnt += 1
-        patch_bar.update(patch_work_cnt)
+        try:
+            patch_work_cnt += 1
+            patch_bar.update(patch_work_cnt)
+        except ValueError:
+            patch_work_cnt -= 1
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
     current_job = os.path.basename(cmd[2])
     if not check_donee(cmd[2]):
@@ -300,10 +304,13 @@ def run_sparrow(missing_list:list) -> None:
             continue
         log(INFO, f"Running sparrow for {work_list[i]} ...")
         work_cnt += 1
-        if config.configuration["VERBOSE"]:
-                log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
-        else:
-            bar.update(work_cnt)
+        try:
+            if config.configuration["VERBOSE"]:
+                    log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
+            else:
+                bar.update(work_cnt)
+        except ValueError:
+            work_cnt -= 1
         path = os.path.dirname(work_list[i][1])
         os.chdir(path)
         sparrow_log = open('sparrow_log', 'w')
@@ -441,10 +448,13 @@ def mk_database():
     for donor in donor_list:
         log(INFO, f"Creating patron-DB for {donor} ...")
         work_cnt += 1
-        if config.configuration["VERBOSE"]:
-                log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
-        else:
-            bar.update(work_cnt)
+        try:
+            if config.configuration["VERBOSE"]:
+                    log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
+            else:
+                bar.update(work_cnt)
+        except ValueError:
+            work_cnt -= 1
         if donor.endswith('donor'):
             label = os.path.join(donor, '..', 'label.json')
             with open(label, 'r') as f:
@@ -556,17 +566,19 @@ def reattempt_patron(cmd):
     else:
         cnt = 1
         while os.path.exists(new_out_dir):
-            new_out_dir = os.path.join(config.configuration["SUBOUT_DIR"], os.path.basename(reattempt_project_dir) + str(cnt))
+            new_out_dir = os.path.join(config.configuration["SUBOUT_DIR"], os.path.basename(reattempt_project_dir) + '_continued_' + str(cnt))
             cnt += 1
 
     new_cmd = cmd[:2] + [reattempt_project_dir] + cmd[3:-1] + [new_out_dir]
     is_timeout = False
+    log(ERROR, f"reattempting to run patron with {new_cmd} by removing the error-prone alarm")
     try:
         p = None
         p = run_patron(new_cmd, reattempt_project_dir)
         if p is None:
             return False
-        p.communicate(timeout=(3600*6))
+        stderr = None
+        (stdout, stderr) = p.communicate(timeout=(3600*6))
     except subprocess.TimeoutExpired:
         log(ERROR, f"Timeout! 6 hours passed for {cmd}")
         is_timeout = True
@@ -574,13 +586,21 @@ def reattempt_patron(cmd):
             p.terminate()
             is_success = False
     except Exception as e:
-        log(ERROR, f"Failed to run patron with {cmd}: {e}")
+        log(ERROR, f"Failed to run patron with {cmd}")
+        log(ERROR, f"error: {e}")
+        log(ERROR, f"{traceback.format_exc()}")
+        if stderr is not None:
+            log(ERROR, f"stderr: {stderr}")
         if not p is None and p.poll() is None:
             p.terminate()
             is_success = False
     proc = (new_cmd, p)
     collect_job_results(proc, 0, is_timeout)
     return is_success
+
+def remove_core_dumped():
+    os.system(f'rm -rf {config.configuration["PATRON_ROOT_PATH"]}/core*')
+
 '''
 This function collects the patch results from each job directory everytime each process finishes
 
@@ -593,8 +613,8 @@ def collect_job_results(work, tries, is_timeout):
     if proc is not None and proc.poll() is not None:
         if proc.returncode != 0:
             if proc.returncode == -11:
-                log(ERROR, f"Segmentation Fault for {cmd}")
-                log(ERROR, f"reattempting to run patron with {cmd} by removing the error-prone alarm")
+                log(ERROR, f"Segmentation Fault for {cmd}. Removing core dumped...")
+                remove_core_dumped()
                 if reattempt_patron(cmd):
                     return
             log(ERROR, f"Failed to run patron with {cmd}")
@@ -634,11 +654,12 @@ def work_manager() -> None:
         cmd, path = work
         is_timeout = False
         try:
+            stderr = None
             p = None
             p = run_patron(cmd, path)
             if p is None:
                 continue
-            p.communicate(timeout=(3600*6))
+            (stdout, stderr) = p.communicate(timeout=(3600*6))
         except subprocess.TimeoutExpired:
             is_timeout = True
             log(ERROR, f"Timeout! 6 hours passed for {cmd}")
@@ -646,6 +667,9 @@ def work_manager() -> None:
                 p.terminate()
         except Exception as e:
             log(ERROR, f"Failed to run patron with {cmd}: {e}")
+            log(ERROR, f"{traceback.format_exc()}")
+            if stderr is not None:
+                log(ERROR, f"stderr: {stderr}")
             if not p is None and p.poll() is None:
                 p.terminate()
         proc = (cmd, p)
