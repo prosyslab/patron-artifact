@@ -547,6 +547,10 @@ def parse_patron_log(cmd):
                 alarm_list.append(line.split('Target Alarm: ')[-1].strip())
     return alarm_list
 
+def kill_proc_by_cmd(cmd):
+    cmd_str = ' '.join(cmd)
+    os.system(f'pkill -f "{cmd_str}"')
+
 def reattempt_patron(cmd):
     reattempt_dir = os.path.join(config.configuration["SUBOUT_DIR"], 'reattempted_projects')
     if not os.path.exists(reattempt_dir):
@@ -554,7 +558,11 @@ def reattempt_patron(cmd):
     is_success = True
     finished_alarm_list = parse_patron_log(cmd)
     target_dir = cmd[2]
-    reattempt_project_dir = os.path.join(reattempt_dir, os.path.basename(target_dir))
+    new_file_name = os.path.basename(target_dir)
+    file_cnt = 1
+    while os.path.exists(os.path.join(reattempt_dir, new_file_name)):
+        new_file_name = new_file_name + '_' + str(file_cnt)
+    reattempt_project_dir = os.path.join(reattempt_dir, new_file_name)
     os.system(f'cp -rf {target_dir} {reattempt_project_dir}')
     time.sleep(5)
     for alarm in os.listdir(os.path.join(reattempt_project_dir, 'sparrow-out', 'taint', 'datalog')):
@@ -594,8 +602,8 @@ def reattempt_patron(cmd):
         if not p is None and p.poll() is None:
             p.terminate()
             is_success = False
-    proc = (new_cmd, p)
-    collect_job_results(proc, 0, is_timeout)
+    work = (new_cmd, p)
+    collect_job_results(work, 0, is_timeout)
     return is_success
 
 def remove_core_dumped():
@@ -612,11 +620,12 @@ def collect_job_results(work, tries, is_timeout):
     cmd, proc = work
     if proc is not None and proc.poll() is not None:
         if proc.returncode != 0:
+            kill_proc_by_cmd(cmd)
             if proc.returncode == -11:
                 log(ERROR, f"Segmentation Fault for {cmd}. Removing core dumped...")
                 remove_core_dumped()
-                if reattempt_patron(cmd):
-                    return
+            if reattempt_patron(cmd):
+                return
             log(ERROR, f"Failed to run patron with {cmd}")
             is_failed = True
             time_in_str_insec = "Timeout" if is_timeout else "Process Failed"

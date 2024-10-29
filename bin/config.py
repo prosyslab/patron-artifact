@@ -234,6 +234,7 @@ def get_patron_target_files(target_dirs):
                     donee_list.append((os.path.dirname(os.path.abspath(os.path.join(root, file))), os.path.abspath(os.path.join(root, file))))
     configuration["DONEE_LIST"] = donee_list
     logger.log("INFO", "Configured donee files: {}".format([os.path.basename(donee) for donee, path in configuration["DONEE_LIST"]]))
+    assert(False)
     return donee_list
 
 def config_log(config):
