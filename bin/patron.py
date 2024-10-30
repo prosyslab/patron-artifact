@@ -559,10 +559,12 @@ def reattempt_patron(cmd):
     finished_alarm_list = parse_patron_log(cmd)
     target_dir = cmd[2]
     new_file_name = os.path.basename(target_dir)
-    file_cnt = 1
-    while os.path.exists(os.path.join(reattempt_dir, new_file_name)):
-        new_file_name = new_file_name + '_' + str(file_cnt)
-    reattempt_project_dir = os.path.join(reattempt_dir, new_file_name)
+    file_name_check = new_file_name
+    file_cnt = 0
+    while os.path.exists(os.path.join(reattempt_dir, file_name_check)):
+        file_cnt += 1
+        file_name_check = new_file_name + '_' + str(file_cnt)
+    reattempt_project_dir = os.path.join(reattempt_dir, file_name_check)
     os.system(f'cp -rf {target_dir} {reattempt_project_dir}')
     time.sleep(5)
     for alarm in os.listdir(os.path.join(reattempt_project_dir, 'sparrow-out', 'taint', 'datalog')):
@@ -727,12 +729,8 @@ def recollect_result(out_dir:str) -> None:
             if patch_found:
                 pattern_num = patch_info[-1]
                 if pattern_num == '0':
-                    pattern = 'FULL'
+                    pattern = 'NORMAL'
                 elif pattern_num == '1':
-                    pattern = 'ABSTRACT'
-                elif pattern_num == '2':
-                    pattern = 'ALT(FULL)'
-                elif pattern_num == '3':
                     pattern = 'ALT'
                 else:
                     pattern = 'UNKNOWN'
