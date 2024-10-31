@@ -652,7 +652,7 @@ def collect_job_results(work, tries, is_timeout):
         collect_job_results(work, tries, is_timeout)
 '''
 Thread worker.
-This function is run parallelly to run Patron processes until the work_stack is empty
+This function is to run Patron processes until the work_stack is empty
 
 Input: None
 Output: None
@@ -811,7 +811,7 @@ def post_process():
             os.system('ps aux | grep "patron patch" | awk \'{print $2}\' | xargs kill -9')
         log(WARNING, 'Please, manually terminate the processes if any process is still running.')
 
-def iter_works():
+def run_works_parallel():
     global patch_work_size, patch_bar
     managers = []
     patch_bar = progressbar.ProgressBar(widgets=[' [', 'Patron Running...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=patch_work_size).start()
@@ -833,7 +833,15 @@ def iter_works():
     log(INFO, "All jobs are finished.")
     post_process()
     
-    
+def run_works_iterative():
+    global patch_work_size, patch_bar
+    patch_bar = progressbar.ProgressBar(widgets=[' [', 'Patron Running...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=patch_work_size).start()
+    while not work_stack.empty():
+        work_manager()
+    global_stat.close()
+    log(INFO, "All jobs are finished.")
+    post_process()
+
 def run_patch_transplantation(from_top, package):
     global global_stat, global_writer, stat_out, work_stack
     global patch_work_size, patch_bar, lagging_proc
@@ -847,7 +855,10 @@ def run_patch_transplantation(from_top, package):
     
     setup_logging_directories()
     init_procs(from_top, package)
-    iter_works()
+    if config.configuration["ITER_MODE"]:
+        run_works_iterative()
+    else:
+        run_works_parallel()
     
     log(INFO, f"Please check the {config.configuration['OUT_DIR']}/final_result.tsv and log file for the results.")
     

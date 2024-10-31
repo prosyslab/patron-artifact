@@ -30,6 +30,7 @@ configuration = {
     "PIPE_MODE": False,
     "DATABASE_ONLY": False,
     "CSV_FOR_STAT": False,
+    "ITER_MODE": False,
     "DEFAULT_SPARROW_OPT": ["-no_bo", "-tio", "-pio", "-mio", "-dz"],
     "USER_SPARROW_OPT": [],
     "ADDITIONAL_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full"],
@@ -359,9 +360,14 @@ def setup(level):
         parser.add_argument("-dbpath", "-dbp", type=str, default="benchmark-DB", help="path to the database directory(default:benchmark-DB")
         parser.add_argument("-process", '-p', type=int, default=20, help="number of threads to run")
         parser.add_argument("-sparrow", '-s', action="store_true", default=False, help="overwrite the sparrow results")
+        parser.add_argument("-iter", '-i', action="store_true", default=False, help="run the patron in iterative mode")
         configuration["ARGS"] = parser.parse_args()
         configuration["VERBOSE"] = configuration["ARGS"].verbose
         logger.logger = __get_logger(level)
+        if configuration["ARGS"].iter and configuration["ARGS"].process != 20:
+            logger.log(logger.ERROR, "Cannot run the patron in iterative mode with process limit set.")
+            exit()
+        configuration["ITER_MODE"] = configuration["ARGS"].iter
         configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
         if configuration["ARGS"].database:
             configuration["DATABASE_ONLY"] = True
