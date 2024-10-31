@@ -1,0 +1,24 @@
+{
+  "ID": "-",
+  "URL": "https://github.com/vadz/libtiff/commit/21d39de1002a5e69caa0574b2cc05d795d6fbfad#diff-9890166d836044dcd3d22c42b005a5fc7d296dee3ffb884e149031111a0eb2d2R1166",
+  "PROJECT": "libtiff",
+  "TYPE": "TIO",
+  "TRUE-ALARM": {
+      "ALARM-LOC": [
+          "libtiff.c:31"
+      ],
+      "ALARM-FUNC": [
+          "writeBufferToSeparateStrips"
+      ],
+      "ALARM-DIR": [
+          "1"
+      ],
+      "ALARM-SYMBOL": [
+          "Alarm-1"
+      ],
+      "ALARM-EXP": [
+          "((unsigned int )(((int )bps)*((int )spp)))*width"
+      ]
+  },
+  "PARSER": "claml"
+}
