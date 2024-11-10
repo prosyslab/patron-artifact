@@ -559,11 +559,20 @@ def reattempt_patron(cmd):
     finished_alarm_list = parse_patron_log(cmd)
     target_dir = cmd[2]
     new_file_name = os.path.basename(target_dir)
-    file_name_check = new_file_name
-    file_cnt = 0
+    if "_" in new_file_name:
+        true_name = new_file_name.split('_')[0]
+        cnt = new_file_name.split('_')[-1]
+        if cnt.isdigit():
+            file_cnt = int(cnt)
+        else:
+            file_cnt = 0
+    else:
+        true_name = new_file_name
+        file_cnt = 0
+    file_name_check = true_name
     while os.path.exists(os.path.join(reattempt_dir, file_name_check)):
         file_cnt += 1
-        file_name_check = new_file_name + '_' + str(file_cnt)
+        file_name_check = true_name + '_' + str(file_cnt)
     reattempt_project_dir = os.path.join(reattempt_dir, file_name_check)
     os.system(f'cp -rf {target_dir} {reattempt_project_dir}')
     time.sleep(5)
@@ -626,7 +635,7 @@ def collect_job_results(work, tries, is_timeout):
             if proc.returncode == -11:
                 log(ERROR, f"Segmentation Fault for {cmd}. Removing core dumped...")
                 remove_core_dumped()
-            if reattempt_patron(cmd):
+            if not is_timeout and reattempt_patron(cmd):
                 return
             log(ERROR, f"Failed to run patron with {cmd}")
             is_failed = True

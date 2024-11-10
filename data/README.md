@@ -20,6 +20,7 @@ patchweave-20: control dependency error\
 patchweave-21: memory write error\
 patchweave-22: buffer overflow(not used for now)\
 patchweave-23: buffer overflow(not used for now)\
+patron-1: The characteristics of the patch is not well-appeared in the pattern\
 patron-2: duplicate to patchweave-1\
 patron-4: buffer overflow on fread(not used for now)\
 patron-6: Pattern too simple, just one side of Mult-BinOP is tainted.\
