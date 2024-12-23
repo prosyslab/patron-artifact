@@ -1,0 +1,60 @@
+{
+    "DONOR": {
+        "CVE-ID": "CVE-2016-9387",
+        "TYPE": "TIO",
+        "BUG-COMMIT": "b9be3d9",
+        "PATCH-COMMIT": "d91198abd00fc435a397fe6bad906a4c1748e9cf",
+        "REPO-URL": "https://github.com/jasper-software/jasper/commit/d91198abd00fc435a397fe6bad906a4c1748e9cf",
+        "POC-URL": "https://www.cvedetails.com/cve/CVE-2016-9387/",
+        "TRUE-ALARM": {
+            "ALARM-LOC": [
+                "jpc_dec.c:1238"
+            ],
+            "ALARM-FUNC": [
+                "jpc_dec_process_siz"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "*dec.numhtiles**dec.numvtiles"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "src/appl/.libs/imginfo/*.i"
+        ]
+    },
+    "DONEE": {
+        "CVE-ID": "",
+        "TYPE": "TIO",
+        "BUG-COMMIT": "910af7edeca8e9fe6ebfd0d4ab2a118081e6a88e",
+        "PATCH-COMMIT": "6e0162a8a67932e59489b6f6a3bec01d64d2db8b",
+        "REPO-URL": "https://github.com/uclouvain/openjpeg/commit/6e0162a8a67932e59489b6f6a3bec01d64d2db8b#diff-34e35bc2aefa4ec848d41eed5cb81160",
+        "POC-URL": "",
+        "OTHER-ALARMS": {
+            "ALARM-LOC": [
+                "j2k.c:591"
+            ],
+            "ALARM-FUNC": [
+                "j2k_read_siz"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "*cp.tw**cp.th"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "applications/codec/.libs/j2k_to_image/*.i"
+        ]
+    }
+}

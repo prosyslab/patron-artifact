@@ -1,0 +1,60 @@
+{
+    "DONOR": {
+        "CVE-ID": "CVE-2017-14039",
+        "TYPE": "BO",
+        "BUG-COMMIT": "f3069a5adc65b67b90222441e3711b236a16e624",
+        "PATCH-COMMIT": "5ed9fea523316c2f5cec4d393e4d5d671c2dbc33",
+        "REPO-URL": "https://github.com/vadz/libtiff/commit/5ed9fea523316c2f5cec4d393e4d5d671c2dbc33",
+        "POC-URL": "https://www.cvedetails.com/cve/CVE-2017-14039/",
+        "TRUE-ALARM": {
+            "ALARM-LOC": [
+                "tiff2ps.c:2475"
+            ],
+            "ALARM_FUNC": [
+                "PSDataColorContig"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "*(cp+nc)"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "tools/.libs/tiff2ps/*.i"
+        ]
+    },
+    "DONEE": {
+        "CVE-ID": "",
+        "TYPE": "BO",
+        "BUG-COMMIT": "Release-v4-0-0",
+        "PATCH-COMMIT": "",
+        "REPO-URL": "",
+        "POC-URL": "",
+        "OTHER-ALARMS": {
+            "ALARM-LOC": [
+                "tiff2ps.c:2449"
+            ],
+            "ALARM_FUNC": [
+                "PSDataColorContig"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "*(cp+nc)"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            ""
+        ]
+    }
+}

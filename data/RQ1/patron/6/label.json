@@ -1,0 +1,51 @@
+{
+    "CVE-ID": "",
+    "TYPE": "BO",
+    "BUG-COMMIT": "6c4cee62b668482150c78cc5401544b289ca7fe7",
+    "PATCH-COMMIT": "3fb9c79269f45c8026ea2c748ed58e590a32b2bd",
+    "REPO-URL": "https://github.com/vadz/libtiff/commit/3fb9c79269f45c8026ea2c748ed58e590a32b2bd",
+    "POC-URL": "",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "tiffmedian.c:374"
+        ],
+        "ALARM-FUNC": [
+            "get_histogram"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "*(__cil_tmp17)"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "tiffmedian.c:375",
+            "tiffmedian.c:376"
+        ],
+        "ALARM-FUNC": [
+            "get_histogram",
+            "get_histogram"
+        ],
+        "ALARM-DIR": [
+            "2",
+            "4"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-1",
+            "Alarm-2"
+        ],
+        "ALARM-EXP": [
+            "*(__cil_tmp18)",
+            "*(__cil_tmp19)"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "tools/.libs/tiffmedian/*.i"
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "CVE-ID": "",
+    "type": "IO",
+    "bug-commit": "aeea7b21ff9164633bdac943aca02c16fa2b2254",
+    "patch-commit": "c978029edc0dfe0e20013cf40b0c9984af3e272f",
+    "Repo-URL": "https://github.com/vadz/libtiff/commit/c978029edc0dfe0e20013cf40b0c9984af3e272f",
+    "POC-URL": "",
+    "Alarm": ["55. tiffdump.c:430 {ReadDirectory} UnProven", "10. tiffdump.c:472 {ReadDirectory} UnProven"],
+    "True-Alarm": ["110"],
+    "Other-Alarms": ["116"],
+    "parser": "claml",
+    "include": ["tools/.libs/tiffdump/*.i"]
+}

@@ -1,0 +1,13 @@
+{
+    "CVE-ID": "",
+    "type": "IO",
+    "bug-commit": "89406285f318ffad27af4b200204394b2ee6ba5e",
+    "patch-commit": "4519fa4e32461862a20982949fd53a46ecc09529",
+    "Repo-URL": "https://github.com/vadz/libtiff/commit/4519fa4e32461862a20982949fd53a46ecc09529",
+    "POC-URL": "",
+    "Alarm": ["115. tif_getimage.c:1443 {putRGBUAcontig8bittile} UnProven", "119. tif_getimage.c:1514 {putRGBUAcontig16bittile} UnProven", "236. tif_getimage.c:1645 {putRGBUAseparate8bittile} UnProven", "240. tif_getimage.c:1711 {putRGBUAseparate16bittile} UnProven"],
+    "True-Alarm": ["662"],
+    "Other-Alarms": ["654", "678", "670"],
+    "parser": "claml",
+    "include": ["tools/.libs/rgb2ycbcr/*.i"]
+}

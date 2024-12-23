@@ -1,0 +1,51 @@
+{
+    "CVE-ID": "CVE-2016-9532",
+    "TYPE": "TIO",
+    "BUG-COMMIT": "d651abc097d91fac57f33b5f9447d0a9183f58e7",
+    "PATCH-COMMIT": "21d39de1002a5e69caa0574b2cc05d795d6fbfad",
+    "REPO-URL": "https://github.com/vadz/libtiff/commit/21d39de1002a5e69caa0574b2cc05d795d6fbfad",
+    "POC-URL": "http://bugzilla.maptools.org/show_bug.cgi?id=2592",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "tiffcrop.c:1354"
+        ],
+        "ALARM-FUNC": [
+            "writeBufferToSeparateTiles"
+        ],
+        "ALARM-DIR": [
+            "4"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-4"
+        ],
+        "ALARM-EXP": [
+            "(imagewidth*((unsigned int )spp))*((unsigned int )bps)"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "tiffcrop.c:1273",
+            "tiffcrop.c:1169"
+        ],
+        "ALARM-FUNC": [
+            "writeBufferToContigTiles",
+            "writeBufferToSeparateStrips"
+        ],
+        "ALARM-DIR": [
+            "1",
+            "2"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-1",
+            "Alarm-2"
+        ],
+        "ALARM-EXP": [
+            "(imagewidth*((uint32 )spp))*((uint32 )bps)",
+            "((uint32 )(((int )bps)*((int )spp)))*width"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "tools/.libs/tiffcrop/*.i"
+    ]
+}

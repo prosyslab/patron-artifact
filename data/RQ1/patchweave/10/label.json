@@ -1,0 +1,82 @@
+{
+    "DONOR": {
+        "CVE-ID": "",
+        "TYPE": "MIO",
+        "BUG-COMMIT": "c0cb119c",
+        "PATCH-COMMIT": "58fc8645",
+        "REPO-URL": "https://github.com/uclouvain/openjpeg/commit/58fc86452dbe0ebfd62077c0d8ec3db688417d3a",
+        "POC-URL": "",
+        "TRUE-ALARM": {
+            "ALARM-LOC": [
+                "j2k.c:2122"
+            ],
+            "ALARM_FUNC": [
+                "opj_j2k_read_siz"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "*l_image.y1-*l_cp.ty0"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "bin/common/*.i",
+            "bin/jp2/opj_decompress.i",
+            "bin/jp2/convert.i",
+            "bin/jp2/index.i",
+            "lib/openjp2/bio.i",
+            "lib/openjp2/cio.i",
+            "lib/openjp2/dwt.i",
+            "lib/openjp2/event.i",
+            "lib/openjp2/function_list.i",
+            "lib/openjp2/image.i",
+            "lib/openjp2/invert.i",
+            "lib/openjp2/jp2.i",
+            "lib/openjp2/mct.i",
+            "lib/openjp2/mqc.i",
+            "lib/openjp2/opj_clock.i",
+            "lib/openjp2/pi.i",
+            "lib/openjp2/raw.i",
+            "lib/openjp2/t1.i",
+            "lib/openjp2/t2.i",
+            "lib/openjp2/tcd.i",
+            "lib/openjp2/tgt.i",
+            "lib/openjp2/j2k.i",
+            "lib/openjp2/openjpeg.i"
+        ]
+    },
+    "DONEE": {
+        "CVE-ID": "",
+        "TYPE": "MIO",
+        "BUG-COMMIT": "e546362",
+        "PATCH-COMMIT": "",
+        "REPO-URL": "https://github.com/jasper-software/jasper/commit/e5463624837d08d404dc64bba74eca8ce0ded9a3",
+        "POC-URL": "",
+        "OTHER-ALARMS": {
+            "ALARM-LOC": [
+                "jpc_dec.c:1244"
+            ],
+            "ALARM_FUNC": [
+                "jpc_dec_process_siz"
+            ],
+            "ALARM-DIR": [
+                "3"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-3"
+            ],
+            "ALARM-EXP": [
+                "*dec.xend-*dec.tilexoff"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "src/appl/.libs/imginfo/*.i"
+        ]
+    }
+}

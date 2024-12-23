@@ -1,0 +1,54 @@
+{
+    "CVE-ID": "",
+    "TYPE": "SIO",
+    "BUG-COMMIT": "89406285f318ffad27af4b200204394b2ee6ba5e",
+    "PATCH-COMMIT": "4519fa4e32461862a20982949fd53a46ecc09529",
+    "REPO-URL": "https://github.com/vadz/libtiff/commit/4519fa4e32461862a20982949fd53a46ecc09529",
+    "POC-URL": "",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "tif_getimage.c:1443"
+        ],
+        "ALARM_FUNC": [
+            "putRGBUAcontig8bittile"
+        ],
+        "ALARM-DIR": [
+            "2"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-1"
+        ],
+        "ALARM-EXP": [
+            "a<<8"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "tif_getimage.c:1514",
+            "tif_getimage.c:1645",
+            "tif_getimage.c:1711"
+        ],
+        "ALARM-FUNC": [
+            "putRGBUAcontig16bittile",
+            "putRGBUAseparate8bittile",
+            "putRGBUAseparate16bittile"
+        ],
+        "ALARM-DIR": [
+            "0",
+            "4"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0",
+            "Alarm-2"
+        ],
+        "ALARM-EXP": [
+            "a<<8",
+            "a<<8",
+            "a2<<8"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "tools/.libs/rgb2ycbcr/*.i"
+    ]
+}

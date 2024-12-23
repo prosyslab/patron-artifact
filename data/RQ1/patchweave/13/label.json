@@ -1,0 +1,58 @@
+{
+    "DONOR": {
+        "CVE-ID": "",
+        "TYPE": "SIO",
+        "BUG-COMMIT": "31bea324",
+        "PATCH-COMMIT": "7a650c6a",
+        "REPO-URL": "https://github.com/webmproject/libwebp/commit/7a650c6ad65cc77421aaf3d9aadfdfd583e54b8d",
+        "POC-URL": "",
+        "TRUE-ALARM": {
+            "ALARM-LOC": [
+                "cwebp.c:120"
+            ],
+            "ALARM_FUNC": [
+                "GetImageType"
+            ],
+            "ALARM-DIR": [
+                "2"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-2"
+            ],
+            "ALARM-EXP": [
+                "((int )buf[0])<<24"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "examples/.libs/cwebp/*.i"
+        ]
+    },
+    "DONEE": {
+        "CVE-ID": "",
+        "TYPE": "SIO",
+        "BUG-COMMIT": "8b6e9a0",
+        "PATCH-COMMIT": "",
+        "REPO-URL": "https://github.com/jasper-software/jasper/commit/8b6e9a08373d3bed83a220e0b9382416994106b3",
+        "POC-URL": "",
+        "OTHER-ALARMS": {
+            "ALARM-LOC": [
+                "mif_cod.c:394"
+            ],
+            "ALARM_FUNC": [
+                "mif_validate"
+            ],
+            "ALARM-DIR": [
+                "2"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-2"
+            ],
+            "ALARM-EXP": [
+                "((int )buf[0])<<24"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": []
+    }
+}

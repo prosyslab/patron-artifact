@@ -1,0 +1,80 @@
+{
+    "DONOR": {
+        "CVE-ID": "CVE-2016-9387",
+        "TYPE": "MIO",
+        "BUG-COMMIT": "e546362",
+        "PATCH-COMMIT": "ba2b9d000660313af7b692542afbd374c5685865",
+        "REPO-URL": "https://github.com/jasper-software/jasper/commit/ba2b9d000660313af7b692542afbd374c5685865",
+        "POC-URL": "https://www.cvedetails.com/cve/CVE-2016-9387/",
+        "TRUE-ALARM": {
+            "ALARM-LOC": [
+                "jpc_dec.c:1244"
+            ],
+            "ALARM-FUNC": [
+                "jpc_dec_process_siz"
+            ],
+            "ALARM-DIR": [
+                "3"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-3"
+            ],
+            "ALARM-EXP": [
+                "*dec.xend-*dec.tilexoff"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "src/appl/.libs/imginfo/*.i"
+        ]
+    },
+    "DONEE": {
+        "CVE-ID": "",
+        "TYPE": "MIO",
+        "BUG-COMMIT": "9a21e1eef06672b8a546430e9cb578c56d7858cf",
+        "PATCH-COMMIT": "c0cb119c0e6a18b6a9ac2ee4305acfb71b06a63c",
+        "REPO-URL": "https://github.com/uclouvain/openjpeg/commit/c0cb119c0e6a18b6a9ac2ee4305acfb71b06a63c#diff-aa569d1fec07851a18fc1d90ac382f3e83feb4603bd18cf9637e9882864e4ff5",
+        "POC-URL": "",
+        "OTHER-ALARMS": {
+            "ALARM-LOC": [
+                "j2k.c:2106"
+            ],
+            "ALARM-FUNC": [
+                "opj_j2k_read_siz"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "*l_image.x1-*l_cp.tx0"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "bin/common/*.i",
+            "bin/jp2/convert.i",
+            "bin/jp2/index.i",
+            "bin/jp2/opj_dump.i",
+            "lib/openjp2/bio.i",
+            "lib/openjp2/cio.i",
+            "lib/openjp2/event.i",
+            "lib/openjp2/image.i",
+            "lib/openjp2/invert.i",
+            "lib/openjp2/j2k.i",
+            "lib/openjp2/jp2.i",
+            "lib/openjp2/mqc.i",
+            "lib/openjp2/opj_clock.i",
+            "lib/openjp2/pi.i",
+            "lib/openjp2/raw.i",
+            "lib/openjp2/t1.i",
+            "lib/openjp2/t2.i",
+            "lib/openjp2/tcd.i",
+            "lib/openjp2/tgt.i",
+            "lib/openjp2/openjpeg.i",
+            "lib/openjp2/function_list.i"
+        ]
+    }
+}

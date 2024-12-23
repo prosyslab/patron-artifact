@@ -1,0 +1,13 @@
+{
+    "CVE-ID": "",
+    "type": "BO",
+    "bug-commit": "6c4cee62b668482150c78cc5401544b289ca7fe7",
+    "patch-commit": "3fb9c79269f45c8026ea2c748ed58e590a32b2bd",
+    "Repo-URL": "https://github.com/vadz/libtiff/commit/3fb9c79269f45c8026ea2c748ed58e590a32b2bd",
+    "POC-URL": "",
+    "Alarm": ["505. tiffmedian.c:374 {get_histogram} UnProven", "506. tiffmedian.c:375 {get_histogram} UnProven", "507. tiffmedian.c:376 {get_histogram} UnProven"],
+    "True-Alarm": ["1328"],
+    "Other-Alarms": ["1330", "1332"],
+    "parser": "claml",
+    "include": ["tools/.libs/tiffmedian/*.i"]
+}

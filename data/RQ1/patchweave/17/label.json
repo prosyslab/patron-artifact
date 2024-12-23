@@ -1,0 +1,60 @@
+{
+    "DONOR": {
+        "CVE-ID": "",
+        "TYPE": "MWE(MIO)",
+        "BUG-COMMIT": "991404c",
+        "PATCH-COMMIT": "50373d7d",
+        "REPO-URL": "https://github.com/vadz/libtiff/commit/50373d7d2290701732cad0690260c48184f8b8b6",
+        "POC-URL": "",
+        "TRUE-ALARM": {
+            "ALARM-LOC": [
+                "bmp2tiff.c:519"
+            ],
+            "ALARM_FUNC": [
+                "main"
+            ],
+            "ALARM-DIR": [
+                "2"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-1"
+            ],
+            "ALARM-EXP": [
+                "width*((uint32 )info_hdr.iBitCount)"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "tools/.libs/bmp2tiff/*.i"
+        ]
+    },
+    "DONEE": {
+        "CVE-ID": "",
+        "TYPE": "MIO",
+        "BUG-COMMIT": "95e510c",
+        "PATCH-COMMIT": "",
+        "REPO-URL": "",
+        "POC-URL": "",
+        "OTHER-ALARMS": {
+            "ALARM-LOC": [
+                "bmp_dec.c:358"
+            ],
+            "ALARM_FUNC": [
+                "bmp_getdata"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "((long )numcmpts)**info.width"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "src/appl/.libs/imginfo/*.i"
+        ]
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "CVE-ID": "",
+    "TYPE": "SIO",
+    "BUG-COMMIT": "8b6e9a0",
+    "PATCH-COMMIT": "6109f6a",
+    "REPO-URL": "https://github.com/jasper-software/jasper/commit/6109f6a4e731085f50aca1a483fa90668e3203d9",
+    "POC-URL": "",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "mif_cod.c:394"
+        ],
+        "ALARM-FUNC": [
+            "mif_validate"
+        ],
+        "ALARM-DIR": [
+            "2"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-2"
+        ],
+        "ALARM-EXP": [
+            "((unsigned long )buf[0])<<24"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "ras_dec.c:212"
+        ],
+        "ALARM-FUNC": [
+            "ras_validate"
+        ],
+        "ALARM-DIR": [
+            "5"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-5"
+        ],
+        "ALARM-EXP": [
+            "((unsigned long )buf[0])<<24"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        ""
+    ]
+}

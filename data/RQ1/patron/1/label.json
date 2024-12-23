@@ -1,0 +1,46 @@
+{
+    "CVE-ID": "",
+    "TYPE": "DZ",
+    "BUG-COMMIT": "313be084309bc4e8be72fc43ac71b9f8474d7988",
+    "PATCH-COMMIT": "cb3c87aa3bba868dd6477d35cf4b86d67c3e1f77",
+    "REPO-URL": "https://github.com/libsndfile/libsndfile/commit/cb3c87aa3bba868dd6477d35cf4b86d67c3e1f77",
+    "POC-URL": "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=530831",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "alaw.c:72"
+        ],
+        "ALARM-FUNC": [
+            "alaw_init"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "*psf.datalength/((long )*psf.blockwidth)"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "float32.c:244"
+        ],
+        "ALARM-FUNC": [
+            "float32_init"
+        ],
+        "ALARM-DIR": [
+            "2"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-1"
+        ],
+        "ALARM-EXP": [
+            "*psf.datalength/((long )*psf.blockwidth)"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "src/appl/.libs/imginfo/*.i"
+    ]
+}

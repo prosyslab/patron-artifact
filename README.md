@@ -1,17 +1,15 @@
 # patron-artifact
 
-## Experiment 1, 2 - Accuracy, Scalability.
+## RQ 1, 2 - Accuracy, Scalability.
 
-These two experiments are conducted in the same environment.
-
-If you would like to check out the experimental outcomes beforehand, refer to [RQ1~2](https://docs.google.com/spreadsheets/d/1Mj6vHFTsFxV7hkIJ6hqLFhdKB-YUEd8fEpcrrrdCrkQ/edit?usp=sharing)
+If you would like to check out the experimental outcomes beforehand, refer to [RQ1 spreadsheet](https://docs.google.com/spreadsheets/d/1Mj6vHFTsFxV7hkIJ6hqLFhdKB-YUEd8fEpcrrrdCrkQ/edit?usp=sharing)
 
 ### Our Tool (Patron)
 
-Run the following command to reproduce Experiment 1 and 2 for the patron's performance.
-`./bin/run.py -benchmark`
+Run the following command to reproduce Experiment for the RQ1.
+`./bin/run_experiment`
 
-more details at [experiment_manual](https://github.com/prosyslab/patron-experiment/blob/master/README.md)
+more details at [RQ1_manual](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ1/README.md)
 
 ### Patchweave
 
@@ -43,9 +41,9 @@ cd <project root>/docker/vulnfix
 
 These manually synthesized patches can be found in [here](https://docs.google.com/spreadsheets/d/1Mj6vHFTsFxV7hkIJ6hqLFhdKB-YUEd8fEpcrrrdCrkQ/edit?usp=sharing)
 
-## Experiment 3 - Generalizability.
+## RQ 2 - Generalizability.
 
-If you would like to check out the experimental outcomes beforehand, refer to [RQ3](https://docs.google.com/spreadsheets/d/1LSj4_yEce8yGmVCOrJjzjmACfad_5634SejwFG051Oc/edit?usp=sharing)
+If you would like to check out the experimental outcomes beforehand, refer to [RQ3]()
 
 
 Run the following command to reproduce Experiment 3.

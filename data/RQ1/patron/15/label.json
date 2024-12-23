@@ -1,0 +1,46 @@
+{
+    "CVE-ID": "",
+    "TYPE": "TIO",
+    "BUG-COMMIT": "779ddf80c2a9021d5ed134319c54bc38ca9ef9b6",
+    "PATCH-COMMIT": "3c55b399c36ef46befcb21e4ebc4799367f89684",
+    "REPO-URL": "https://github.com/jasper-software/jasper/commit/3c55b399c36ef46befcb21e4ebc4799367f89684",
+    "POC-URL": "",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "jas_cm.c:892"
+        ],
+        "ALARM-FUNC": [
+            "jas_cmshapmatlut_set"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "((size_t )*lut.size)*SizeOf(jas_cmreal_t )"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "jas_cm.c:898"
+        ],
+        "ALARM-FUNC": [
+            "jas_cmshapmatlut_set"
+        ],
+        "ALARM-DIR": [
+            "1"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-1"
+        ],
+        "ALARM-EXP": [
+            "((size_t )*lut.size)*SizeOf(jas_cmreal_t )"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "src/appl/.libs/imginfo/*.i"
+    ]
+}

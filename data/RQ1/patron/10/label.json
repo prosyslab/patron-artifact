@@ -1,0 +1,67 @@
+{
+    "CVE-ID": "",
+    "TYPE": "BO",
+    "BUG-COMMIT": "09fb8b6989b4b278084f0da40aed00111d2af081",
+    "PATCH-COMMIT": "7f8f284ee5ee05200f62266dfff0284551407a83",
+    "REPO-URL": "https://github.com/uclouvain/openjpeg/commit/7f8f284ee5ee05200f62266dfff0284551407a83",
+    "POC-URL": "https://github.com/uclouvain/openjpeg/issues/392",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "j2k.c:3696"
+        ],
+        "ALARM-FUNC": [
+            "j2k_read_ppm_v3"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "malloc(*l_cp.ppm_len+l_N_ppm)"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "j2k.c:3729"
+        ],
+        "ALARM-FUNC": [
+            "j2k_read_ppm_v3"
+        ],
+        "ALARM-DIR": [
+            "1"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-1"
+        ],
+        "ALARM-EXP": [
+            "malloc(*l_cp.ppm_len+l_N_ppm)"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "sparrow/src/bin/common/*.i",
+        "sparrow/src/bin/jp2/opj_decompress.i",
+        "sparrow/src/bin/jp2/convert*",
+        "sparrow/src/bin/jp2/index.i",
+        "sparrow/src/lib/openjp2/tcd.i",
+        "sparrow/src/lib/openjp2/bio.i",
+        "sparrow/src/lib/openjp2/cio.i",
+        "sparrow/src/lib/openjp2/event.i",
+        "sparrow/src/lib/openjp2/function_list.i",
+        "sparrow/src/lib/openjp2/image.i",
+        "sparrow/src/lib/openjp2/invert.i",
+        "sparrow/src/lib/openjp2/j2k.i",
+        "sparrow/src/lib/openjp2/jp2.i",
+        "sparrow/src/lib/openjp2/mqc.i",
+        "sparrow/src/lib/openjp2/openjpeg.i",
+        "sparrow/src/lib/openjp2/opj_clock.i",
+        "sparrow/src/lib/openjp2/pi.i",
+        "sparrow/src/lib/openjp2/t2.i",
+        "sparrow/src/lib/openjp2/raw.i",
+        "sparrow/src/lib/openjp2/t1.i",
+        "sparrow/src/lib/openjp2/tcd.i",
+        "sparrow/src/lib/openjp2/tgt.i"
+    ]
+}

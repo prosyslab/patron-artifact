@@ -1,0 +1,60 @@
+{
+    "DONOR": {
+        "CVE-ID": "",
+        "TYPE": "BO",
+        "BUG-COMMIT": "5206a9b",
+        "PATCH-COMMIT": "fd0484ab",
+        "REPO-URL": "https://github.com/libsndfile/libsndfile/commit/fd0484aba8e51d16af1e3a880f9b8b857b385eb3",
+        "POC-URL": "",
+        "TRUE-ALARM": {
+            "ALARM-LOC": [
+                "pcm.c:670"
+            ],
+            "ALARM_FUNC": [
+                "i2les_array"
+            ],
+            "ALARM-DIR": [
+                "1"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-1"
+            ],
+            "ALARM-EXP": [
+                "*(ucptr+0)"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "programs/.libs/sndfile-convert"
+        ]
+    },
+    "DONEE": {
+        "CVE-ID": "",
+        "TYPE": "BO",
+        "BUG-COMMIT": "",
+        "PATCH-COMMIT": "",
+        "REPO-URL": "",
+        "POC-URL": "",
+        "OTHER-ALARMS": {
+            "ALARM-LOC": [
+                "pcm.c:670"
+            ],
+            "ALARM_FUNC": [
+                "i2les_array"
+            ],
+            "ALARM-DIR": [
+                "2"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-1"
+            ],
+            "ALARM-EXP": [
+                "*(ucptr+0)"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            ""
+        ]
+    }
+}

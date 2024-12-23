@@ -1,0 +1,60 @@
+{
+    "DONOR": {
+        "CVE-ID": "CVE-2017-9387",
+        "TYPE": "TIO",
+        "BUG-COMMIT": "b9be3d9f35fccb7811ff68bbd6a57156f0192427",
+        "PATCH-COMMIT": "d91198abd00fc435a397fe6bad906a4c1748e9cf",
+        "REPO-URL": "https://github.com/jasper-software/jasper/commit/d91198abd00fc435a397fe6bad906a4c1748e9cf",
+        "POC-URL": "https://www.cvedetails.com/cve/CVE-2017-9387/",
+        "TRUE-ALARM": {
+            "ALARM-LOC": [
+                "jpc_dec.c:1238"
+            ],
+            "ALARM_FUNC": [
+                "jpc_dec_process_siz"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "*dec.numhtiles**dec.numvtiles"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "appl/.libs/imginfo/*.i"
+        ]
+    },
+    "DONEE": {
+        "CVE-ID": "",
+        "TYPE": "TIO",
+        "BUG-COMMIT": "version-1.900.2",
+        "PATCH-COMMIT": "",
+        "REPO-URL": "",
+        "POC-URL": "",
+        "OTHER-ALARMS": {
+            "ALARM-LOC": [
+                "jpc_dec.c:1235"
+            ],
+            "ALARM_FUNC": [
+                "jpc_dec_process_siz"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "*dec.numhtiles**dec.numvtiles"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "appl/.libs/imginfo/*.i"
+        ]
+    }
+}

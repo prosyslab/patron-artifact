@@ -1,0 +1,46 @@
+{
+    "CVE-ID": "",
+    "TYPE": "BO",
+    "BUG-COMMIT": "acb5bb918a520c808ef1afe12f9434fd56c683cb",
+    "PATCH-COMMIT": "531a87ec56c682d65fa1c09f0474124cfb2a1dda",
+    "REPO-URL": "https://github.com/vadz/libtiff/commit/531a87ec56c682d65fa1c09f0474124cfb2a1dda",
+    "POC-URL": "",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "gif2tiff.c:350"
+        ],
+        "ALARM-FUNC": [
+            "readraster"
+        ],
+        "ALARM-DIR": [
+            "1"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-1"
+        ],
+        "ALARM-EXP": [
+            "fread((void *)StartOf(buf), 1UL, (unsigned long )count)"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "gif2tiff.c:316"
+        ],
+        "ALARM-FUNC": [
+            "readextension"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "fread((void *)StartOf(buf), 1UL, (unsigned long )count)"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "tools/.libs/gif2tiff/.*.i"
+    ]
+}

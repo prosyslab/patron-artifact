@@ -1,0 +1,58 @@
+{
+    "CVE-ID": "",
+    "TYPE": "DZ",
+    "BUG-COMMIT": "5da5d02d76f3fbd3a2a198965a56a6e97be71995",
+    "PATCH-COMMIT": "a6e6f98f1301595352e88021a7110d47c553f59d",
+    "REPO-URL": "https://github.com/jasper-software/jasper/commit/a6e6f98f1301595352e88021a7110d47c553f59d",
+    "POC-URL": "",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "jpc_t2cod.c:273"
+        ],
+        "ALARM-FUNC": [
+            "jpc_pi_nextrpcl"
+        ],
+        "ALARM-DIR": [
+            "4"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-2"
+        ],
+        "ALARM-EXP": [
+            "*pi.x%*pi.xstep"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "jpc_t2cod.c:271",
+            "jpc_t2cod.c:375",
+            "jpc_t2cod.c:475"
+        ],
+        "ALARM_FUNC": [
+            "jpc_pi_nextcprl",
+            "jpc_pi_nextpcrl",
+            "jpc_pi_nextcprl"
+        ],
+        "ALARM-DIR": [
+            "6",
+            "2",
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-3",
+            "Alarm-1",
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "*pi.y%*pi.ystep",
+            "*pi.x%*pi.xstep",
+            "*pi.x%*pi.xstep"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "libjasper/base/*.i",
+        "libjasper/jpc/*.i",
+        "appl/imginfo.i"
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "CVE-ID": "",
+    "TYPE": "PIO",
+    "BUG-COMMIT": "a5f4c4a",
+    "PATCH-COMMIT": "e396dff5929071da830a84b64405f7a7c8e0113e",
+    "REPO-URL": "https://github.com/gavinhoward/bc/commit/e396dff5929071da830a84b64405f7a7c8e0113e",
+    "POC-URL": "",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "num.c:592"
+        ],
+        "ALARM-FUNC": [
+            "bc_num_extend"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "*n.len+places_rdx"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "num.c:906"
+        ],
+        "ALARM-FUNC": [
+            "bc_num_shiftRight"
+        ],
+        "ALARM-DIR": [
+            "6"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-1"
+        ],
+        "ALARM-EXP": [
+            "*n.len+expand"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "bin/bc/*.i"
+    ]
+}

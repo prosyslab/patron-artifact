@@ -1,0 +1,64 @@
+{
+    "CVE-ID": "",
+    "TYPE": "SIO",
+    "BUG-COMMIT": "178194c093422c9564efc41f9ecb5c630b43f723",
+    "PATCH-COMMIT": "6c4e5bacb9d9791fc6ff074bd7958b3820d70514",
+    "REPO-URL": "https://github.com/uclouvain/openjpeg/commit/6c4e5bacb9d9791fc6ff074bd7958b3820d70514",
+    "POC-URL": "https://github.com/uclouvain/openjpeg/pull/895",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "pi.c:407"
+        ],
+        "ALARM-FUNC": [
+            "opj_pi_next_rpcl"
+        ],
+        "ALARM-DIR": [
+            "4"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-4"
+        ],
+        "ALARM-EXP": [
+            "*comp.dx<<levelno"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "pi.c:408",
+            "pi.c:537",
+            "pi.c:538",
+            "pi.c:665",
+            "pi.c:666"
+        ],
+        "ALARM-FUNC": [
+            "opj_pi_next_rpcl",
+            "opj_pi_next_pcrl",
+            "opj_pi_next_pcrl",
+            "opj_pi_next_cprl",
+            "opj_pi_next_cprl"
+        ],
+        "ALARM-DIR": [
+            "5",
+            "2",
+            "3",
+            "0",
+            "1"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-5",
+            "Alarm-2",
+            "Alarm-3",
+            "Alarm-0",
+            "Alarm-1"
+        ],
+        "ALARM-EXP": [
+            "*comp.dy<<levelno",
+            "*comp.dx<<levelno",
+            "*comp.dy<<levelno",
+            "*comp.dx<<levelno",
+            "*comp.dy<<levelno"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": []
+}

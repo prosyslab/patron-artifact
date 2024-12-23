@@ -1,0 +1,64 @@
+{
+    "CVE-ID": "",
+    "TYPE": "BO",
+    "BUG-COMMIT": "a466755bbb02b6e02f4d1e34f5c2f32df7b71d75",
+    "PATCH-COMMIT": "7ce3f3c1a636439a6f0dc5fffc58f7f69f9febd4",
+    "REPO-URL": "https://github.com/uclouvain/openjpeg/commit/7ce3f3c1a636439a6f0dc5fffc58f7f69f9febd4",
+    "POC-URL": "",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "t2.c:898"
+        ],
+        "ALARM-FUNC": [
+            "opj_t2_read_packet_header"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "*(l_modified_length_ptr)"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "t2.c:1029"
+        ],
+        "ALARM-FUNC": [
+            "opj_t2_read_packet_header"
+        ],
+        "ALARM-DIR": [
+            "2"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-1"
+        ],
+        "ALARM-EXP": [
+            "*(l_modified_length_ptr)"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "bin/common/*.i",
+        "bin/jp2/opj_decompress.i",
+        "bin/jp2/convert*",
+        "bin/jp2/index.i",
+        "lib/openjp2/tcd.i",
+        "lib/openjp2/bio.i",
+        "lib/openjp2/cio.i",
+        "lib/openjp2/event.i",
+        "lib/openjp2/function_list.i",
+        "lib/openjp2/image.i",
+        "lib/openjp2/invert.i",
+        "lib/openjp2/j2k.i",
+        "lib/openjp2/jp2.i",
+        "lib/openjp2/mqc.i",
+        "lib/openjp2/openjpeg.i",
+        "lib/openjp2/opj_clock.i",
+        "lib/openjp2/pi.i",
+        "lib/openjp2/t2.i",
+        "lib/openjp2/tcd.c"
+    ]
+}

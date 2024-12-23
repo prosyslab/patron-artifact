@@ -1,0 +1,46 @@
+{
+    "CVE-ID": "",
+    "TYPE": "TIO",
+    "BUG-COMMIT": "b3ff0bd",
+    "PATCH-COMMIT": "e3c259a2788eb07dacc5c30dd8759f59bfb5dd36",
+    "REPO-URL": "https://github.com/webmproject/libwebp/commit/e3c259a2788eb07dacc5c30dd8759f59bfb5dd36",
+    "POC-URL": "",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "io_dec.c:45"
+        ],
+        "ALARM-FUNC": [
+            "EmitSampledRGB"
+        ],
+        "ALARM-DIR": [
+            "9"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-3"
+        ],
+        "ALARM-EXP": [
+            "((unsigned long )*io.mb_y)*((unsigned long )*buf.stride)"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "io_dec.c:60"
+        ],
+        "ALARM-FUNC": [
+            "EmitAlphaYUV"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "((unsigned long )*io.mb_y)*((unsigned long )*buf.stride)"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        ""
+    ]
+}

@@ -1,0 +1,60 @@
+{
+    "DONOR": {
+        "CVE-ID": "CVE-2016-9266",
+        "TYPE": "PIO",
+        "BUG-COMMIT": "19e7127e29122be571c87bfb90bca9581417d220",
+        "PATCH-COMMIT": "2e5a98a0dbbd9714294007c601e584aa201494ed",
+        "REPO-URL": "https://github.com/libming/libming/commit/2e5a98a0dbbd9714294007c601e584aa201494ed",
+        "POC-URL": "https://www.cvedetails.com/cve/CVE-2016-9266/",
+        "TRUE-ALARM": {
+            "ALARM-LOC": [
+                "listmp3.c:99"
+            ],
+            "ALARM_FUNC": [
+                "printMP3Headers"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "flags+((unsigned long )tmp___6)"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "util/.libs/listmp3/*.i"
+        ]
+    },
+    "DONEE": {
+        "CVE-ID": "",
+        "TYPE": "PIO",
+        "BUG-COMMIT": "ming-0_4_6",
+        "PATCH-COMMIT": "",
+        "REPO-URL": "",
+        "POC-URL": "",
+        "OTHER-ALARMS": {
+            "ALARM-LOC": [
+                "listmp3.c:96"
+            ],
+            "ALARM_FUNC": [
+                "printMP3Headers"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "flags+((unsigned long )__cil_tmp21)"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "util/.libs/listmp3/*.i"
+        ]
+    }
+}

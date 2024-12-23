@@ -1,0 +1,60 @@
+{
+    "DONOR": {
+        "CVE-ID": "",
+        "TYPE": "MIO",
+        "BUG-COMMIT": "65e5ff0",
+        "PATCH-COMMIT": "f4d394d9324f12e820339fce0182b1d47f831059",
+        "REPO-URL": "https://github.com/uclouvain/openjpeg/commit/f4d394d9324f12e820339fce0182b1d47f831059#diff-34e35bc2aefa4ec848d41eed5cb81160",
+        "POC-URL": "",
+        "TRUE-ALARM": {
+            "ALARM-LOC": [
+                "j2k.c:511"
+            ],
+            "ALARM_FUNC": [
+                "j2k_read_siz"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "*image.x1-*image.x0"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "applications/codec/.libs/j2k_to_image/*.i"
+        ]
+    },
+    "DONEE": {
+        "CVE-ID": "CVE-2016-8692",
+        "TYPE": "DZ",
+        "BUG-COMMIT": "3c55b399c36ef46befcb21e4ebc4799367f89684",
+        "PATCH-COMMIT": "d8c2604cd438c41ec72aff52c16ebd8183068020",
+        "REPO-URL": "https://github.com/jasper-software/jasper/commit/d8c2604cd438c41ec72aff52c16ebd8183068020",
+        "POC-URL": "https://www.cvedetails.com/cve/CVE-2016-8691/",
+        "OTHER-ALARMS": {
+            "ALARM-LOC": [
+                "jpc_dec.c:1194"
+            ],
+            "ALARM_FUNC": [
+                "jpc_dec_process_siz"
+            ],
+            "ALARM-DIR": [
+                "1"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-1"
+            ],
+            "ALARM-EXP": [
+                "(*dec.xend+*cmpt.hstep)-1UL"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "src/appl/.libs/imginfo/*.i"
+        ]
+    }
+}

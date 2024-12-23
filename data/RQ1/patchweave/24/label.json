@@ -1,0 +1,61 @@
+{
+    "DONOR": {
+        "CVE-ID": "CVE-2017-14107",
+        "TYPE": "BO",
+        "BUG-COMMIT": "e37a0eab57215c72b691cf40f565c11fec223851",
+        "PATCH-COMMIT": "9b46957ec98d85a572e9ef98301247f39338a3b5",
+        "REPO-URL": "https://github.com/nih-at/libzip/commit/9b46957ec98d85a572e9ef98301247f39338a3b5",
+        "POC-URL": "https://www.cvedetails.com/cve/CVE-2017-14107/",
+        "TRUE-ALARM": {
+            "ALARM-LOC": [
+                "zip_dirent.c:108"
+            ],
+            "ALARM_FUNC": [
+                "_zip_cdir_grow"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "malloc(SizeOf(zip_entry_t )*new_alloc)"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "src/.libs/ziptool",
+            "except 04.002.libzip_la-gladman-fcrypt.o.i"
+        ]
+    },
+    "DONEE": {
+        "CVE-ID": "",
+        "TYPE": "BO",
+        "BUG-COMMIT": "rel-1-1-2",
+        "PATCH-COMMIT": "",
+        "REPO-URL": "",
+        "POC-URL": "",
+        "OTHER-ALARMS": {
+            "ALARM-LOC": [
+                "zip_dirent.c:77"
+            ],
+            "ALARM_FUNC": [
+                "_zip_cdir_new"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "malloc(SizeOf(zip_entry_t )*nentry)"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            ""
+        ]
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "CVE-ID": "",
+    "type": "DZ",
+    "bug-commit": "80818c39f5bfbac37768fcee95b0ffeceaa77264",
+    "patch-commit": "5c5319984b81e2aa32d1d83abdef0cdb8dbe7b18",
+    "Repo-URL": "https://github.com/uclouvain/openjpeg/commit/5c5319984b81e2aa32d1d83abdef0cdb8dbe7b18",
+    "POC-URL": "https://github.com/uclouvain/openjpeg/issues/938",
+    "Alarm": ["53. pi.c:393 {opj_pi_next_rpcl} UnProven", "59. pi.c:510 {opj_pi_next_pcrl} UnProven", "761. pi.c:388 {opj_pi_next_rpcl} UnProven", "65. pi.c:624 {opj_pi_next_cprl} UnProven"],
+    "True-Alarm": ["79"],
+    "Other-Alarms": ["73", "67"],
+    "parser": "claml",
+    "include": ["bin/common/*.i", "bin/jp2/opj_decompress.i", "bin/jp2/convert*", "bin/jp2/index.i", "lib/openjp2/tcd.i", "lib/openjp2/bio.i", "lib/openjp2/cio.i", "lib/openjp2/event.i", "lib/openjp2/function_list.i", "lib/openjp2/image.i", "lib/openjp2/invert.i", "lib/openjp2/j2k.i", "lib/openjp2/jp2.i", "lib/openjp2/mqc.i", "lib/openjp2/openjpeg.i", "lib/openjp2/opj_clock.i", "lib/openjp2/opj_malloc.i", "lib/openjp2/pi.i", "lib/openjp2/t2.i", "lib/openjp2/t2.i", "lib/openjp2/tcd.c"]
+}

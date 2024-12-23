@@ -1,0 +1,46 @@
+{
+    "CVE-ID": "",
+    "TYPE": "DZ",
+    "BUG-COMMIT": "c6a413a42394836b956846cc037dd8297b732f44",
+    "PATCH-COMMIT": "4ab2ed090747ad2f22e78d45a1db5640d40e6a34",
+    "REPO-URL": "https://github.com/webmproject/libwebp/commit/4edea4a6954074276cc37ab77a564f6fbedfe199",
+    "POC-URL": "",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "io_dec.c:301"
+        ],
+        "ALARM-FUNC": [
+            "InitYUVRescaler"
+        ],
+        "ALARM-DIR": [
+            "9"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-3"
+        ],
+        "ALARM-EXP": [
+            "2UL*((unsigned long )out_width)"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "io_dec.c:489"
+        ],
+        "ALARM-FUNC": [
+            "InitRGBRescaler"
+        ],
+        "ALARM-DIR": [
+            "6"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-2"
+        ],
+        "ALARM-EXP": [
+            "2*out_width"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "examples/.libs/cwebp/*.i"
+    ]
+}

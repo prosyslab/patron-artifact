@@ -1,0 +1,60 @@
+{
+    "CVE-ID": "OSSFUZZ-3297",
+    "TYPE": "ND",
+    "BUG-COMMIT": "e656822f927c869f31f2685c67644eacb75fc5d2",
+    "PATCH-COMMIT": "003759a4829f3f1baa5a2292956618fecf314818",
+    "REPO-URL": "https://github.com/uclouvain/openjpeg/commit/003759a4829f3f1baa5a2292956618fecf314818",
+    "POC-URL": "https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=3297",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "dwt.c:1854"
+        ],
+        "ALARM-FUNC": [
+            "opj_dwt_init_sparse_array"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "*(tr_max)"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "dwt.c:1855",
+            "dwt.c:1908",
+            "dwt.c:1909"
+        ],
+        "ALARM-FUNC": [
+            "opj_dwt_init_sparse_array",
+            "opj_dwt_init_sparse_array1",
+            "opj_dwt_init_sparse_array1"
+        ],
+        "ALARM-DIR": [
+            "2",
+            "4",
+            "6"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-1",
+            "Alarm-2",
+            "Alarm-3"
+        ],
+        "ALARM-EXP": [
+            "*(tr_max)",
+            "*(tr_max)",
+            "*(tr_max)"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "bin/common/*.i",
+        "bin/jp2/opj_decompress.i",
+        "bin/jp2/convert*",
+        "bin/jp2/index.i",
+        "lib/openjp2/*.i"
+    ]
+}

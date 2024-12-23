@@ -1,28 +1,30 @@
 
 check_and_build() {
-    if [ -d $$1/$2 ]; then
-        TARGET_PATH=$1/$2
-        if [ ls $TARGET_PATH | wc -l -eq 0 ]; then
-            # rm -rf $TARGET_PATH
-            echo "remove"
-        else
-            echo "exist"
-        fi
+    if [ $2 == "sparrow-incubator" ]; then
+        TOOL_NAME="sparrow"
     else
-        git clone https://github.com/prosyslab/$2 $1/$2
+        TOOL_NAME=$2
     fi
+    echo "Checking $TOOL_NAME..."
+    if [ -d $1/$TOOL_NAME ]; then
+        TARGET_PATH=$1/$TOOL_NAME
+        if [ ls $TARGET_PATH | wc -l -eq 0 ]; then
+            rm -rf $TARGET_PATH
+        else
+            echo "$TOOL_NAME already exists."
+            return
+        fi
+    fi
+    echo "$TOOL_NAME does not exist."
+    echo "Cloning $TOOL_NAME..."
+    git clone https://github.com/prosyslab/$2 $1/$2
 }
 
 SCRIPT_PATH=$(dirname $(realpath $0))
-check_and_build $SCRIPT_PATH patron-experiment
-EXP_PATH=$SCRIPT_PATH/patron-experiment
-
-check_and_build $EXP_PATH patron
-PATRON_PATH=$EXP_PATH/patron
-
-check_and_build $EXP_PATH sparrow-incubator
-SPARROW_PATH=$EXP_PATH/sparrow-incubator
-mv $SPARROW_PATH $EXP_PATH/sparrow
+check_and_build $SCRIPT_PATH patron
+PATRON_PATH=$SCRIPT_PATH/patron
+check_and_build $SCRIPT_PATH sparrow-incubator
+SPARROW_PATH=$SCRIPT_PATH/sparrow
 
 opam option depext=false
 cd $PATRON_PATH
@@ -31,33 +33,12 @@ opam switch patron-4.13.1
 eval $(opam env)
 make
 
-cd ../sparrow
+cd $SPARROW_PATH
 git checkout patron
 ./build.sh
 opam switch sparrow-4.13.1+flambda
 eval $(opam env)
 make
-
-rm -rf patron
-rm -rf sparrow
-git clone https://github.com/prosyslab/patron
-git clone https://github.com/prosyslab/sparrow-incubator
-
-mv sparrow-incubator sparrow
-cd patron
-./build.sh
-opam switch patron-4.13.1
-eval $(opam env)
-make
-cd ../sparrow
-git checkout patron
-./build.sh
-opam switch sparrow-4.13.1+flambda
-eval $(opam env)
-make
-cd ../../docker/vulnfix
-rm -rf vulnfix
-git clone https://github.com/yuntongzhang/vulnfix/
 
 echo "export PATH=\"\$PATH:/root/patron-artifact/patron-experiment/sparrow/bin\"" >> /root/.bashrc
 source /root/.bashrc

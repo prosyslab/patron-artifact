@@ -1,0 +1,86 @@
+{
+    "DONOR": {
+        "CVE-ID": "",
+        "TYPE": "ND",
+        "BUG-COMMIT": "910af7edeca8e9fe6ebfd0d4ab2a118081e6a88e",
+        "PATCH-COMMIT": "6e0162a8a67932e59489b6f6a3bec01d64d2db8b",
+        "REPO-URL": "https://github.com/uclouvain/openjpeg/commit/6e0162a8a67932e59489b6f6a3bec01d64d2db8b#diff-34e35bc2aefa4ec848d41eed5cb81160",
+        "POC-URL": "",
+        "TRUE-ALARM": {
+            "ALARM-LOC": [
+                "cio.c:146"
+            ],
+            "ALARM-FUNC": [
+                "cio_bytein"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "*(__cil_tmp2)"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "applications/codec/convert.i",
+            "applications/codec/index.i",
+            "applications/codec/j2k_dump.i",
+            "applications/common/*.i",
+            "libopenjpeg/cio.i",
+            "libopenjpeg/bio.i",
+            "libopenjpeg/cidx_manager.i",
+            "libopenjpeg/event.i",
+            "libopenjpeg/image.i",
+            "libopenjpeg/j2k.i",
+            "libopenjpeg/j2k_lib.i",
+            "libopenjpeg/jp2.i",
+            "libopenjpeg/jpt.i",
+            "libopenjpeg/mqc.i",
+            "libopenjpeg/openjpeg.i",
+            "libopenjpeg/phix_manager.i",
+            "libopenjpeg/pi.i",
+            "libopenjpeg/ppix_manager.i",
+            "libopenjpeg/raw.i",
+            "libopenjpeg/t1.i",
+            "libopenjpeg/t2.i",
+            "libopenjpeg/tcd.i",
+            "libopenjpeg/tgt.i",
+            "libopenjpeg/thix_manager.i",
+            "libopenjpeg/tpix_manager.i"
+        ]
+    },
+    "DONEE": {
+        "CVE-ID": "CVE-2017-6850",
+        "TYPE": "ND",
+        "BUG-COMMIT": "7692d6d",
+        "PATCH-COMMIT": "e96fc4fdd525fa0ede28074a7e2b1caf94b58b0d",
+        "REPO-URL": "https://github.com/jasper-software/jasper/commit/e96fc4fdd525fa0ede28074a7e2b1caf94b58b0d",
+        "POC-URL": "https://www.cvedetails.com/cve/CVE-2017-6850/",
+        "OTHER-ALARMS": {
+            "ALARM-LOC": [
+                "jp2_cod.c:259"
+            ],
+            "ALARM-FUNC": [
+                "jp2_box_get"
+            ],
+            "ALARM-DIR": [
+                "0"
+            ],
+            "ALARM-SYMBOL": [
+                "Alarm-0"
+            ],
+            "ALARM-EXP": [
+                "*(box)"
+            ]
+        },
+        "PARSER": "claml",
+        "FILES-INCLUDED": [
+            "appl/imginfo.i",
+            "libjasper/base/*.i",
+            "libjasper/jp2/*.i"
+        ]
+    }
+}

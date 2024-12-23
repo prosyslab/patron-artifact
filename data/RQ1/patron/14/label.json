@@ -1,0 +1,47 @@
+{
+    "CVE-ID": "",
+    "TYPE": "DZ",
+    "BUG-COMMIT": "c6a413a42394836b956846cc037dd8297b732f44",
+    "PATCH-COMMIT": "4ab2ed090747ad2f22e78d45a1db5640d40e6a34",
+    "REPO-URL": "https://github.com/uclouvain/openjpeg/commit/4ab2ed090747ad2f22e78d45a1db5640d40e6a34",
+    "POC-URL": "",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "j2k.c:7834"
+        ],
+        "ALARM-FUNC": [
+            "opj_j2k_setup_encoder"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "(((*image___9.x1-*cp___2.tx0)+*cp___2.tdx)-1U)/*cp___2.tdx"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "j2k.c:7836"
+        ],
+        "ALARM-FUNC": [
+            "opj_j2k_setup_encoder"
+        ],
+        "ALARM-DIR": [
+            "9"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-1"
+        ],
+        "ALARM-EXP": [
+            "(((*image___9.y1-*cp___2.ty0)+*cp___2.tdy)-1U)/*cp___2.tdy"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "exclude dwt.i, t1.i, mct.i",
+        "opj_compress.i"
+    ]
+}

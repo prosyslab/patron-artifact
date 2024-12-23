@@ -1,0 +1,46 @@
+{
+    "CVE-ID": "CVE-2016-8691",
+    "TYPE": "DZ",
+    "BUG-COMMIT": "3c55b399c36ef46befcb21e4ebc4799367f89684",
+    "PATCH-COMMIT": "d8c2604cd438c41ec72aff52c16ebd8183068020",
+    "REPO-URL": "https://github.com/jasper-software/jasper/commit/d8c2604cd438c41ec72aff52c16ebd8183068020",
+    "POC-URL": "https://nvd.nist.gov/vuln/detail/CVE-2016-8691",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "jpc_dec.c:1194"
+        ],
+        "ALARM-FUNC": [
+            "jpc_dec_process_siz"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "((*dec.xstart+*cmpt.hstep)-1UL)/*cmpt.hstep"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "jpc_dec.c:1196"
+        ],
+        "ALARM-FUNC": [
+            "jpc_dec_process_siz"
+        ],
+        "ALARM-DIR": [
+            "2"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-2"
+        ],
+        "ALARM-EXP": [
+            "((*dec.ystart+*cmpt.vstep)-1UL)/*cmpt.vstep"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "src/appl/.libs/imginfo/*.i"
+    ]
+}

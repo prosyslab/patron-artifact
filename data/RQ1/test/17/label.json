@@ -1,0 +1,13 @@
+{
+    "CVE-ID": "",
+    "type": "DZ",
+    "bug-commit": "5da5d02d76f3fbd3a2a198965a56a6e97be71995",
+    "patch-commit": "a6e6f98f1301595352e88021a7110d47c553f59d",
+    "Repo-URL": "https://github.com/jasper-software/jasper/commit/a6e6f98f1301595352e88021a7110d47c553f59d",
+    "POC-URL": "",
+    "Alarm": ["38. jpc_t2cod.c:273 {jpc_pi_nextrpcl} UnProven", "44. jpc_t2cod.c:375 {jpc_pi_nextpcrl} UnProven", "50. jpc_t2cod.c:475 {jpc_pi_nextcprl} UnProven"],
+    "True-Alarm": ["98"],
+    "Other-Alarms": ["86", "74"],
+    "parser": "claml",
+    "include": ["libjasper/base/*.i", "libjasper/jpc/*.i", "appl/imginfo.i"]
+}

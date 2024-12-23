@@ -1,0 +1,46 @@
+{
+    "CVE-ID": "",
+    "TYPE": "TIO",
+    "BUG-COMMIT": "aeea7b21ff9164633bdac943aca02c16fa2b2254",
+    "PATCH-COMMIT": "c978029edc0dfe0e20013cf40b0c9984af3e272f",
+    "REPO-URL": "https://github.com/vadz/libtiff/commit/c978029edc0dfe0e20013cf40b0c9984af3e272f",
+    "POC-URL": "",
+    "TRUE-ALARM": {
+        "ALARM-LOC": [
+            "tiffdump.c:430"
+        ],
+        "ALARM-FUNC": [
+            "ReadDirectory"
+        ],
+        "ALARM-DIR": [
+            "0"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-0"
+        ],
+        "ALARM-EXP": [
+            "count*((uint64 )typewidth)"
+        ]
+    },
+    "OTHER-ALARMS": {
+        "ALARM-LOC": [
+            "tiffdump.c:472"
+        ],
+        "ALARM-FUNC": [
+            "ReadDirectory"
+        ],
+        "ALARM-DIR": [
+            "6"
+        ],
+        "ALARM-SYMBOL": [
+            "Alarm-1"
+        ],
+        "ALARM-EXP": [
+            "count*((uint64 )typewidth)"
+        ]
+    },
+    "PARSER": "claml",
+    "FILES-INCLUDED": [
+        "tools/.libs/tiffdump/*.i"
+    ]
+}
