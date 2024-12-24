@@ -1,5 +1,7 @@
 # patron-artifact
 
+## Setup
+
 ## Experiment Reproduction
 
 ### RQ 1, 2 - Accuracy, Scalability.
@@ -9,11 +11,14 @@ If you would like to check out the experimental outcomes beforehand, refer to [R
 #### Our Tool (Patron)
 
 Run the following command to reproduce Experiment for the RQ1 and RQ2.
+
 `./bin/run_experiment --reproduce-RQ1-2`
 
-The output to the experiment which you could also found in our paper is located at `./out/<experment_time>_RQ1-2`
+The output to the experiment which you could also found in our paper is located at 
 
-more details at [RQ1_manual](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ1/README.md)
+`./out/<experment_time>_RQ1-2`
+
+Please, read [RQ1-2_manual](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ1-2/README.md) for more details about the experiment reproduction.
 
 #### Patchweave
 
