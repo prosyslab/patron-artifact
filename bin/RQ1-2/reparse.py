@@ -7,15 +7,15 @@ import argparse
 import datetime
 import benchmark
 
+FILE_PATH=os.path.dirname(os.path.abspath(__file__))
+ROOT_PATH=os.path.abspath(os.path.join(FILE_PATH, "..", ".."))
+
 failed = []
 successed = []
 
-PATRON_BENCH_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "benchmark",
-                                 "patron")
-PATCHWEAVE_BENCH_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "benchmark",
-                                     "patchweave")
-SPARROW_BIN = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sparrow", "bin",
-                           "sparrow")
+PATRON_BENCH_PATH = os.path.join(ROOT_PATH, "data", "RQ1-2", "patron")
+PATCHWEAVE_BENCH_PATH = os.path.join(ROOT_PATH, "data", "RQ1-2", "PWBench")
+SPARROW_BIN = os.path.join(ROOT_PATH, "sparrow", "bin", "sparrow")
 
 
 def run_cil_frontend(old_path, new_path):
@@ -131,7 +131,7 @@ def main():
     parse_args()
     if configuration["BENCHMARK_SET"] == "patron":
         reparse_patron()
-    elif configuration["BENCHMARK_SET"] == "patchweave":
+    elif configuration["BENCHMARK_SET"] == "PWBench":
         reparse_patchweave()
     else:
         logger.log(-1, "Please specify the benchmark set")

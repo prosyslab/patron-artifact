@@ -7,21 +7,20 @@ import datetime
 configuration = {
     "ARGS": None,
     "VERBOSE": False,
+    "PURPOSE": "",
     "START_TIME": datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
-    "FILE_PATH": os.path.dirname(os.path.realpath(__file__)),
-    "ROOT_PATH": os.path.dirname(os.path.dirname(os.path.realpath(__file__))),
-    "OUT_DIR": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), ".." ,"out")),
+    "FILE_PATH": "",
+    "ROOT_PATH": "",
+    "OUT_DIR": "",
     "SUBOUT_DIR": "",
-    "PKG_DIR": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "package")),
-    "SMAKE_OUT_DIR": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "package", "smake_out")),
-    "LIST_DIR": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "package", "debian_lists")),
+    "PKG_DIR": "",
+    "SMAKE_OUT_DIR": "",
+    "LIST_DIR": "",
     "ANALYSIS_DIR": "",
-    "EXP_ROOT_PATH": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment")),
-    "SPARROW_BIN_PATH": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "sparrow", "bin", "sparrow")),
-    "PATRON_ROOT_PATH": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "patron")),
-    "PATRON_BIN_PATH": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "patron", "patron")),
-    "EXP_BIN_PATH": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "bin")),
-    "BENCHMARK_PATH": os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "patron-experiment", "benchmark")),
+    "SPARROW_BIN_PATH": "",
+    "PATRON_ROOT_PATH": "",
+    "PATRON_BIN_PATH": "",
+    "BENCHMARK_PATH": "",
     "BUILD_ONLY": False,
     "CRWAL_ONLY": False,
     "SPARROW_ONLY": False,
@@ -31,9 +30,9 @@ configuration = {
     "DATABASE_ONLY": False,
     "CSV_FOR_STAT": False,
     "ITER_MODE": False,
-    "DEFAULT_SPARROW_OPT": ["-no_bo", "-tio", "-pio", "-mio", "-dz"],
+    "ADDITIONAL_SPARROW_OPT": ["-no_bo", "-tio", "-pio", "-mio", "-dz"],
     "USER_SPARROW_OPT": [],
-    "ADDITIONAL_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full"],
+    "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full"],
     "SPARROW_TARGET_FILES": [],
     "DONEE_LIST": [],
     "PROCESS_LIMIT": 20,
@@ -66,9 +65,6 @@ def patron_exit(stage:str):
         outpath = configuration["OUT_DIR"]
     bad_ending(outpath)
     
-        
-    
-
 def happy_ending(out_path:str) -> None:
     print('                                    .''.       ')
     print('        .''.        .        *''*     :_\/_:     . ')
@@ -99,7 +95,7 @@ def bad_ending(out_path:str) -> None:
     print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠈⠁⠀⠀⠀⠁⠀')
     print('SOMETHING WENT WRONG... PLEASE CHECK THE {} FOR THE RESULTS!'.format(out_path))
     
-def __get_logger(level):
+def __get_logger(purpose):
     __logger = logging.getLogger("logger")
     formatter = logging.Formatter("[%(levelname)s][%(asctime)s] %(message)s")
     if configuration["VERBOSE"]:
@@ -108,24 +104,25 @@ def __get_logger(level):
         __logger.addHandler(stream_handler)
     if not os.path.isdir(configuration["OUT_DIR"]):
         os.mkdir(configuration["OUT_DIR"])
-    if level == "TOP":
-        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_pipe')
-    elif level == "FULL":
-        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_full')
-    elif level == "PATRON" or level == "PATRON_PIPE":
-        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_patch')
-    elif level == "SPARROW":
-        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_sparrow')
-    elif level == "COMBINE":
-        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_combine')
-    elif level == "BUILD":
-        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_build')
-    elif level == "CRAWL":
-        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_crawl')
-    elif level == "MERGE":
-        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_mergeDB')
-    elif level == "FIND_DUPS":
-        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_find_dups')
+    if purpose == "PREP":
+        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_RQ3_PREPROCESS')
+    elif purpose == "TRANS":
+        configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_RQ3_TRANSPLANT')
+    # NOTE: add more purpose
+    # elif level == "PATRON" or level == "PATRON_PIPE":
+    #     configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_patch')
+    # elif level == "SPARROW":
+    #     configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_sparrow')
+    # elif level == "COMBINE":
+    #     configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_combine')
+    # elif level == "BUILD":
+    #     configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_build')
+    # elif level == "CRAWL":
+    #     configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_crawl')
+    # elif level == "MERGE":
+    #     configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_mergeDB')
+    # elif level == "FIND_DUPS":
+    #     configuration["OUT_DIR"] = os.path.join(configuration["OUT_DIR"], configuration["START_TIME"] + '_find_dups')
     os.mkdir(configuration["OUT_DIR"])
     file_handler = logging.FileHandler(
         os.path.join(configuration["OUT_DIR"], "log_{}.txt".format(configuration["START_TIME"])))
@@ -255,139 +252,162 @@ def config_log(config):
             continue
         logger.log(log, f"\t{key}: {value}")
             
-
-def setup(level):
+def setup_default_config():
     global configuration
-    if level != "PATRON_PIPE" and level != "PATRON":
-        configuration["ANALYSIS_DIR"] = os.path.join(configuration["PKG_DIR"], "analysis_target_" + configuration["START_TIME"])
-        if not os.path.exists(configuration["ANALYSIS_DIR"]):
-            os.mkdir(configuration["ANALYSIS_DIR"])
-    if level != "PATRON_PIPE":
-        parser = argparse.ArgumentParser()
-    if level != "PATRON_PIPE" and level != "PATRON" and level != "SPARROW" and level != "FULL":
-        level = "TOP"
-    if level == "TOP" or level == "FULL":
-        parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
-        parser.add_argument("-oss", action="store_true", default=False, help="run the OSS experiment")
-        parser.add_argument("-build", "-b", nargs="*", default=["None"], help="build the given path for category list(s) of package only (default:all)")
-        parser.add_argument("-crawl", "-c", action="store_true", default=False, help="crawl the package list from the web only")
-        parser.add_argument("-combine", "-m", nargs="*", default=["None"], help="combine *.i files into .c in the the given directory for packages only (default:all)")
-        parser.add_argument("-sparrow", "-s", nargs="*", default=["None"], help="run the sparrow for the given directory(ies) (default:all)")
-        parser.add_argument("-patron", "-p", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
-        parser.add_argument("-donorpath", "-dp", type=str, default="benchmark", help="path to the donor parograms(default:benchmark")
-        parser.add_argument("-dbpath", "-dbp", type=str, default="benchmark-DB", help="path to the DB directory(default:benchmark-DB")
-        parser.add_argument("-pipe", nargs="*", default=["None"], help="run the sparrow in pipe mode (build->combine->sparrow)")
-        parser.add_argument("-bo_only", action="store_true", default=False, help="run the sparrow for Buffer Overflow")
-        parser = parse_sparrow_opt(parser)
-        configuration["ARGS"] = parser.parse_args()
-        configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
-        configuration["VERBOSE"] = configuration["ARGS"].verbose
-        logger.logger = __get_logger(level)
-        if configuration["ARGS"].bo_only:
-            configuration["DEFAULT_SPARROW_OPT"] = ["-bo"]
-        if configuration["ARGS"].oss:
-            configuration["ARGS"].pipe = ["all"]
-        if configuration["ARGS"].pipe == []:
-            configuration["ARGS"].pipe = ["all"]
-        if configuration["ARGS"].pipe[0] != "None":
-            configuration["PIPE_MODE"] = True
-        if configuration["ARGS"].build == []:
-            configuration["ARGS"].build = ["all"]
-        if configuration["ARGS"].build[0] != "None":
-            configuration["BUILD_ONLY"] = True
-        if configuration["ARGS"].sparrow == []:
-            configuration["ARGS"].sparrow = ["all"]
-        if configuration["ARGS"].sparrow[0] != "None":
-            configuration["SPARROW_ONLY"] = True
-        if configuration["ARGS"].combine == []:
-            configuration["ARGS"].combine = ["all"]
-        if configuration["ARGS"].combine[0] != "None":
-            configuration["COMBINE_ONLY"] = True
-        if configuration["ARGS"].patron == []:
-            configuration["ARGS"].patron = ["all"]
-        if configuration["ARGS"].patron[0] != "None":
-            configuration["PATRON_ONLY"] = True
-        if configuration["ARGS"].crawl:
-            configuration["CRWAL_ONLY"] = True
-        if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"] and not configuration["PIPE_MODE"] and not configuration["PATRON_ONLY"]:
-            configuration["BUILD_ONLY"] = True
-            configuration["CRWAL_ONLY"] = True
-            configuration["SPARROW_ONLY"] = True
-            configuration["COMBINE_ONLY"] = True
-        if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"] and not configuration["PATRON_ONLY"] and configuration["ARGS"].pipe == ["all"]:
-            configuration["PIPE_MODE"] = True
-            # NOTE: change this after experiment is set
-            configuration["ARGS"].pipe = [os.path.join(configuration["LIST_DIR"], 'test.txt')]
-        if configuration["CSV_FOR_STAT"]:
-            configuration["CSV_FOR_STAT"] = True
-        if configuration["SPARROW_ONLY"]:
-            check_sparrow_opt(level)
-            configuration["SPARROW_TARGET_FILES"] = get_sparrow_target_files(configuration["ARGS"].sparrow)
-    if level == "SPARROW":
-        configuration["SPARROW_ONLY"] = True
-        parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
-        parser.add_argument("-files", "-f", nargs="*", default=["None"], help="run the sparrow for the given file(s) (default:all)")
-        parser.add_argument("-out", "-o", type=str, default=configuration["ANALYSIS_DIR"], help="output directory for the analysis results")
-        parser = parse_sparrow_opt(parser)
-        configuration["ARGS"] = parser.parse_args()
-        configuration["VERBOSE"] = configuration["ARGS"].verbose
-        logger.logger = __get_logger(level)
-        configuration["ANALYSIS_DIR"] = configuration["ARGS"].out
-        if configuration["ARGS"].files == ["None"]:
-            logger.log(logger.ERROR, "No file is given. Please provide at least one file.")
-            sparrow_usage()
-            config.patron_exit("SPARROW")
-        configuration["SPARROW_TARGET_FILES"] = configuration["ARGS"].files
-        check_sparrow_opt(level)
-    if level == "COMBINE":
-        configuration["COMBINE_ONLY"] = True
-        parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
-        configuration["VERBOSE"] = configuration["ARGS"].verbose
-        logger.logger = __get_logger(level)
-        parser.add_argument("file", type=str, default="", help=".txt file containing list of target packages")
-        parser.add_argument("-out", "-o", type=str, default=configuration["ANALYSIS_DIR"], help="output directory for the analysis results")
-        configuration["ARGS"] = parser.parse_args()
-        configuration["ANALYSIS_DIR"] = configuration["ARGS"].out
-        if configuration["ARGS"].file == "":
-            logger.log(logger.ERROR, "No file is given. Please provide a file.")
-            config.patron_exit("COMBINE")
-    if level == "PATRON":
-        configuration["PATRON_ONLY"] = True
-        parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
-        parser.add_argument("-donee", "-d", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
-        parser.add_argument("-database", "-db", action="store_true", default=False, help="construct patron-DB only")
-        parser.add_argument("-donorpath", "-dp", type=str, default="benchmark", help="path to the donor parograms(default:benchmark")
-        parser.add_argument("-dbpath", "-dbp", type=str, default="benchmark-DB", help="path to the database directory(default:benchmark-DB")
-        parser.add_argument("-process", '-p', type=int, default=20, help="number of threads to run")
-        parser.add_argument("-sparrow", '-s', action="store_true", default=False, help="overwrite the sparrow results")
-        parser.add_argument("-iter", '-i', action="store_true", default=False, help="run the patron in iterative mode")
-        configuration["ARGS"] = parser.parse_args()
-        configuration["VERBOSE"] = configuration["ARGS"].verbose
-        logger.logger = __get_logger(level)
-        if configuration["ARGS"].iter and configuration["ARGS"].process != 20:
-            logger.log(logger.ERROR, "Cannot run the patron in iterative mode with process limit set.")
-            exit()
-        configuration["ITER_MODE"] = configuration["ARGS"].iter
-        configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
-        if configuration["ARGS"].database:
-            configuration["DATABASE_ONLY"] = True
-            configuration["DONOR_PATH"] = os.path.abspath(configuration["ARGS"].donorpath)
-            configuration["OVERWRITE_SPARROW"] = configuration["ARGS"].sparrow
-        else:
-            logger.log(logger.INFO, "Configuring target donee files under given directories {}".format(configuration["ARGS"].donee))
-            if configuration["ARGS"].donee == ["None"]:
-                target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].patron ]
-            else:
-                target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].donee ]
-            configuration['PROCESS_LIMIT'] = configuration["ARGS"].process
-            get_patron_target_files(target_dirs)
-            configuration["SUBOUT_DIR"] = os.path.abspath(os.path.join(configuration["OUT_DIR"], "patches"))
-            os.mkdir(configuration["SUBOUT_DIR"])
-    if level == "TOP" and configuration["PATRON_ONLY"]:
-        configuration["PATRON_ONLY"] = True
-        logger.log(logger.INFO, "Configuring target donee files under given directories {}".format(configuration["ARGS"].patron))
-        target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].patron ]
-        get_patron_target_files(target_dirs)
-        configuration["SUBOUT_DIR"] = os.path.abspath(os.path.join(configuration["OUT_DIR"], "patches"))
-        os.mkdir(configuration["SUBOUT_DIR"])
+    configuration["FILE_PATH"] = os.path.dirname(os.path.realpath(__file__))
+    configuration["ROOT_PATH"] = os.path.abspath(os.path.join(configuration["FILE_PATH"], '..', '..'))
+    configuration["OUT_DIR"] = os.path.abspath(os.path.join(configuration["ROOT_PATH"], "out")),
+    configuration["PKG_DIR"] = os.path.abspath(os.path.join(configuration["ROOT_PATH"], "data", "RQ3", "DebianBench")),
+    configuration["SMAKE_OUT_DIR"] = os.path.abspath(os.path.join(configuration["PKG_DIR"], "smake_out")),
+    configuration["LIST_DIR"] = os.path.abspath(os.path.join(configuration["PKG_DIR"], "crawling_result")),
+    configuration["SPARROW_BIN_PATH"] = os.path.abspath(os.path.join(configuration["ROOT_PATH"], "sparrow", "bin", "sparrow")),
+    configuration["PATRON_ROOT_PATH"] = os.path.abspath(os.path.join(configuration["ROOT_PATH"], "patron")),
+    configuration["PATRON_BIN_PATH"] = os.path.abspath(os.path.join(configuration["ROOT_PATH"], "patron", "patron")),
+    configuration["ANALYSIS_DIR"] = os.path.join(configuration["PKG_DIR"], "analysis_target_" + configuration["START_TIME"])
+            
+def setup_main():
+    global configuration
+    setup_default_config()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-v', '--verbose', action='store_true', default=False, help='increase output verbosity')
+    parser.add_argument('-prep', '--preprocess', action='store_true', default=False, help='run the preprocess (crawl-build-parse-analysis)')
+    parser.add_argument('-trans', '--transplant', action='store_true', default=False, help='run the transplant (DB construction-transplantation)')
+    configuration["ARGS"] = parser.parse_args()
+    purpose = "PREP" if configuration["ARGS"].preprocess else "TRANS"
+    configuration["VERBOSE"] = configuration["ARGS"].verbose
+    logger.logger = __get_logger(purpose)
     config_log(configuration)
+    return purpose
+    # if level != "PATRON_PIPE" and level != "PATRON":
+    #     configuration["ANALYSIS_DIR"] = os.path.join(configuration["PKG_DIR"], "analysis_target_" + configuration["START_TIME"])
+    #     if not os.path.exists(configuration["ANALYSIS_DIR"]):
+    #         os.mkdir(configuration["ANALYSIS_DIR"])
+    # if level != "PATRON_PIPE":
+    #     parser = argparse.ArgumentParser()
+    # if level != "PATRON_PIPE" and level != "PATRON" and level != "SPARROW" and level != "FULL":
+    #     level = "TOP"
+    # if level == "TOP" or level == "FULL":
+    #     parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
+    #     parser.add_argument("-oss", action="store_true", default=False, help="run the OSS experiment")
+    #     parser.add_argument("-build", "-b", nargs="*", default=["None"], help="build the given path for category list(s) of package only (default:all)")
+    #     parser.add_argument("-crawl", "-c", action="store_true", default=False, help="crawl the package list from the web only")
+    #     parser.add_argument("-combine", "-m", nargs="*", default=["None"], help="combine *.i files into .c in the the given directory for packages only (default:all)")
+    #     parser.add_argument("-sparrow", "-s", nargs="*", default=["None"], help="run the sparrow for the given directory(ies) (default:all)")
+    #     parser.add_argument("-patron", "-p", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
+    #     parser.add_argument("-donorpath", "-dp", type=str, default="benchmark", help="path to the donor parograms(default:benchmark")
+    #     parser.add_argument("-dbpath", "-dbp", type=str, default="benchmark-DB", help="path to the DB directory(default:benchmark-DB")
+    #     parser.add_argument("-pipe", nargs="*", default=["None"], help="run the sparrow in pipe mode (build->combine->sparrow)")
+    #     parser.add_argument("-bo_only", action="store_true", default=False, help="run the sparrow for Buffer Overflow")
+    #     parser = parse_sparrow_opt(parser)
+    #     configuration["ARGS"] = parser.parse_args()
+    #     configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
+    #     configuration["VERBOSE"] = configuration["ARGS"].verbose
+    #     logger.logger = __get_logger(level)
+    #     if configuration["ARGS"].bo_only:
+    #         configuration["DEFAULT_SPARROW_OPT"] = ["-bo"]
+    #     if configuration["ARGS"].oss:
+    #         configuration["ARGS"].pipe = ["all"]
+    #     if configuration["ARGS"].pipe == []:
+    #         configuration["ARGS"].pipe = ["all"]
+    #     if configuration["ARGS"].pipe[0] != "None":
+    #         configuration["PIPE_MODE"] = True
+    #     if configuration["ARGS"].build == []:
+    #         configuration["ARGS"].build = ["all"]
+    #     if configuration["ARGS"].build[0] != "None":
+    #         configuration["BUILD_ONLY"] = True
+    #     if configuration["ARGS"].sparrow == []:
+    #         configuration["ARGS"].sparrow = ["all"]
+    #     if configuration["ARGS"].sparrow[0] != "None":
+    #         configuration["SPARROW_ONLY"] = True
+    #     if configuration["ARGS"].combine == []:
+    #         configuration["ARGS"].combine = ["all"]
+    #     if configuration["ARGS"].combine[0] != "None":
+    #         configuration["COMBINE_ONLY"] = True
+    #     if configuration["ARGS"].patron == []:
+    #         configuration["ARGS"].patron = ["all"]
+    #     if configuration["ARGS"].patron[0] != "None":
+    #         configuration["PATRON_ONLY"] = True
+    #     if configuration["ARGS"].crawl:
+    #         configuration["CRWAL_ONLY"] = True
+    #     if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"] and not configuration["PIPE_MODE"] and not configuration["PATRON_ONLY"]:
+    #         configuration["BUILD_ONLY"] = True
+    #         configuration["CRWAL_ONLY"] = True
+    #         configuration["SPARROW_ONLY"] = True
+    #         configuration["COMBINE_ONLY"] = True
+    #     if not configuration["BUILD_ONLY"] and not configuration["CRWAL_ONLY"] and not configuration["COMBINE_ONLY"] and not configuration["SPARROW_ONLY"] and not configuration["PATRON_ONLY"] and configuration["ARGS"].pipe == ["all"]:
+    #         configuration["PIPE_MODE"] = True
+    #         # NOTE: change this after experiment is set
+    #         configuration["ARGS"].pipe = [os.path.join(configuration["LIST_DIR"], 'test.txt')]
+    #     if configuration["CSV_FOR_STAT"]:
+    #         configuration["CSV_FOR_STAT"] = True
+    #     if configuration["SPARROW_ONLY"]:
+    #         check_sparrow_opt(level)
+    #         configuration["SPARROW_TARGET_FILES"] = get_sparrow_target_files(configuration["ARGS"].sparrow)
+    # if level == "SPARROW":
+    #     configuration["SPARROW_ONLY"] = True
+    #     parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
+    #     parser.add_argument("-files", "-f", nargs="*", default=["None"], help="run the sparrow for the given file(s) (default:all)")
+    #     parser.add_argument("-out", "-o", type=str, default=configuration["ANALYSIS_DIR"], help="output directory for the analysis results")
+    #     parser = parse_sparrow_opt(parser)
+    #     configuration["ARGS"] = parser.parse_args()
+    #     configuration["VERBOSE"] = configuration["ARGS"].verbose
+    #     logger.logger = __get_logger(level)
+    #     configuration["ANALYSIS_DIR"] = configuration["ARGS"].out
+    #     if configuration["ARGS"].files == ["None"]:
+    #         logger.log(logger.ERROR, "No file is given. Please provide at least one file.")
+    #         sparrow_usage()
+    #         config.patron_exit("SPARROW")
+    #     configuration["SPARROW_TARGET_FILES"] = configuration["ARGS"].files
+    #     check_sparrow_opt(level)
+    # if level == "COMBINE":
+    #     configuration["COMBINE_ONLY"] = True
+    #     parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
+    #     configuration["VERBOSE"] = configuration["ARGS"].verbose
+    #     logger.logger = __get_logger(level)
+    #     parser.add_argument("file", type=str, default="", help=".txt file containing list of target packages")
+    #     parser.add_argument("-out", "-o", type=str, default=configuration["ANALYSIS_DIR"], help="output directory for the analysis results")
+    #     configuration["ARGS"] = parser.parse_args()
+    #     configuration["ANALYSIS_DIR"] = configuration["ARGS"].out
+    #     if configuration["ARGS"].file == "":
+    #         logger.log(logger.ERROR, "No file is given. Please provide a file.")
+    #         config.patron_exit("COMBINE")
+    # if level == "PATRON":
+    #     configuration["PATRON_ONLY"] = True
+    #     parser.add_argument("-v", "--verbose", action="store_true", default=False, help="increase output verbosity")
+    #     parser.add_argument("-donee", "-d", nargs="*", default=["None"], help="run the patron for the given donee directory(ies) (default:all)")
+    #     parser.add_argument("-database", "-db", action="store_true", default=False, help="construct patron-DB only")
+    #     parser.add_argument("-donorpath", "-dp", type=str, default="benchmark", help="path to the donor parograms(default:benchmark")
+    #     parser.add_argument("-dbpath", "-dbp", type=str, default="benchmark-DB", help="path to the database directory(default:benchmark-DB")
+    #     parser.add_argument("-process", '-p', type=int, default=20, help="number of threads to run")
+    #     parser.add_argument("-sparrow", '-s', action="store_true", default=False, help="overwrite the sparrow results")
+    #     parser.add_argument("-iter", '-i', action="store_true", default=False, help="run the patron in iterative mode")
+    #     configuration["ARGS"] = parser.parse_args()
+    #     configuration["VERBOSE"] = configuration["ARGS"].verbose
+    #     logger.logger = __get_logger(level)
+    #     if configuration["ARGS"].iter and configuration["ARGS"].process != 20:
+    #         logger.log(logger.ERROR, "Cannot run the patron in iterative mode with process limit set.")
+    #         exit()
+    #     configuration["ITER_MODE"] = configuration["ARGS"].iter
+    #     configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].dbpath)
+    #     if configuration["ARGS"].database:
+    #         configuration["DATABASE_ONLY"] = True
+    #         configuration["DONOR_PATH"] = os.path.abspath(configuration["ARGS"].donorpath)
+    #         configuration["OVERWRITE_SPARROW"] = configuration["ARGS"].sparrow
+    #     else:
+    #         logger.log(logger.INFO, "Configuring target donee files under given directories {}".format(configuration["ARGS"].donee))
+    #         if configuration["ARGS"].donee == ["None"]:
+    #             target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].patron ]
+    #         else:
+    #             target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].donee ]
+    #         configuration['PROCESS_LIMIT'] = configuration["ARGS"].process
+    #         get_patron_target_files(target_dirs)
+    #         configuration["SUBOUT_DIR"] = os.path.abspath(os.path.join(configuration["OUT_DIR"], "patches"))
+    #         os.mkdir(configuration["SUBOUT_DIR"])
+    # if level == "TOP" and configuration["PATRON_ONLY"]:
+    #     configuration["PATRON_ONLY"] = True
+    #     logger.log(logger.INFO, "Configuring target donee files under given directories {}".format(configuration["ARGS"].patron))
+    #     target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].patron ]
+    #     get_patron_target_files(target_dirs)
+    #     configuration["SUBOUT_DIR"] = os.path.abspath(os.path.join(configuration["OUT_DIR"], "patches"))
+    #     os.mkdir(configuration["SUBOUT_DIR"])
+    # config_log(configuration)

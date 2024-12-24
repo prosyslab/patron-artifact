@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+import argparse, os, sys
+
+DEFAULT_PARSE_OPTS=['-il', '-frontend' 'claml']
+DEFAULT_ANALYSIS_OPTS=['-taint', '-unwrap_alloc', '-extract_datalog_fact_full', '-patron',
+        '-remove_cast', '-dz', '-io', '-no_bo']
+
+def safty_check(input_files, output_file):
+    if len(input_files) == 0:
+        print('No input file provided')
+        sys.exit(1)
+    for input_file in input_files:
+        if len(input_file) > 50:
+            print('Maximum length of input file is 50 characters')
+            sys.exit(1)
+        if not os.path.exists(input_file):
+            print('Input file {} does not exist'.format(input_file))
+            sys.exit(1)
+        if not os.path.isfile(input_file) or not input_file.endswith('.c'):
+            print('Input file {} is not a valid file'.format(input_file))
+            sys.exit(1)
+
+def safty_check_parse(input_files, output_file):
+    if os.path.exists(output_file):
+        if os.path.isdir(output_file):
+            print('Output file {} is a directory'.format(output_file))
+            sys.exit(1)
+    safty_check(input_files, output_file)
+    
+def safty_check_analysis(input_file, output_path):
+    if not os.path.exists(output_path):
+        print('Output path {} does not exist'.format(output_path))
+        sys.exit(1)
+    if not os.path.isdir(output_path):
+        print('Output path {} is not a directory'.format(output_path))
+        sys.exit(1)
+    safty_check([input_file], output_path)
+
+def analyze_preprocessed_file(input_file, output_path):
+    safty_check_parse([input_file], output_path)
+    current_dir = os.getcwd()
+    if output_path != "":
+        os.chdir(output_path)
+    os.execvp('sparrow', DEFAULT_ANALYSIS_OPTS + [input_file])
+    os.chdir(current_dir)
+
+def parse_input2cil(input_files, output_file):
+    safty_check_parse(input_files, output_file)
+    current_dir = os.getcwd()
+    if output_path != "":
+        os.chdir(output_path)
+    os.execvp('sparrow', DEFAULT_PARSE_OPTS + input_files + [ '> ' + output_file])
+    os.chdir(current_dir)
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='SPARROW, Static Program Analysis for C Programs')
+    parser.add_argument('input', type=list, help='Input File(s)')
+    parser.add_argument('-o', '--output', type=str, default="",
+                        help='Output Path(default: current directory (if parsing, the output filename is tmp.c))')
+    parser.add_argument('-p', '--parse', action='store_true', help='Parse the input file and save the CIL to the output file')
+    args = parser.parse_args()
+    if args.parse:
+        parse_input2cil(args.input, args.output)
+    else:
+        analyze_preprocessed_file(args.input[0], args.output)
+
+    

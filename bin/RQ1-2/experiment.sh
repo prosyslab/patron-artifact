@@ -16,10 +16,10 @@ function usage {
 
 function safety_check {
     if [ ! -z "$1" ]; then
-        if [ "$1" != "patchweave" ] && [ "$1" != "patron" ] && [ "$1" != "test" ]; then
+        if [ "$1" != "PWBench" ] && [ "$1" != "patron" ] && [ "$1" != "test" ]; then
             echo "$1 is not a valid benchmark title"
             echo "Please provide a valid benchmark title for the experiment"
-            echo "We support patchweave and patron"
+            echo "We support PWBench and patron"
             usage
             exit 1
         fi
@@ -32,17 +32,17 @@ function safety_check {
 }
 
 function run_full {
-    python3 $DIR/run.py patchweave -sparrow -t -o $OUT/$DATE -lt SPARROW
+    python3 $DIR/run.py PWBench -sparrow -t -o $OUT/$DATE -lt SPARROW
     if [ $? -ne 0 ]; then
         echo "Failed to run sparrow"
         exit 1
     fi
-    python3 $DIR/sep_true_alrams.py patchweave -o $OUT/$DATE
+    python3 $DIR/sep_true_alrams.py PWBench -o $OUT/$DATE
     if [ $? -ne 0 ]; then
         echo "Failed to run sep_true_alarms"
         exit 1
     fi
-    python3 $DIR/run.py patchweave -patron -t -o $OUT/$DATE -lt PATRON
+    python3 $DIR/run.py PWBench -patron -t -o $OUT/$DATE -lt PATRON
     if [ $? -ne 0 ]; then
         echo "Failed to run patron"
         exit 1
@@ -111,7 +111,7 @@ function run_on_ids {
 }
 
 function patron_test {
-    python3 $DIR/run.py patchweave -patron -t -o $OUT/$DATE -lt PATRON
+    python3 $DIR/run.py PWBench -patron -t -o $OUT/$DATE -lt PATRON
     if [ $? -ne 0 ]; then
         echo "Failed to run patron"
         exit 1
@@ -133,13 +133,13 @@ function patron_test_id {
             exit 1
         fi
     done    
-    python3 $DIR/run.py patchweave -patron -t -id "${args[@]}" -o $OUT/$DATE -lt PATRON
+    python3 $DIR/run.py PWBench -patron -t -id "${args[@]}" -o $OUT/$DATE -lt PATRON
     if [ $? -ne 0 ]; then
         echo "Failed to run patron"
         exit 1
     fi
 }
-
+echo "$@"
 safety_check "$@"
 if [ "$1" == "test" ]; then
     if [ -z "$2" ]; then
@@ -147,10 +147,8 @@ if [ "$1" == "test" ]; then
     else
         patron_test_id "$@"
     fi
-elif [ -z "$1" ]; then
-    run_full
 elif [ -z "$2" ]; then
-    run_on_benchmark "$1"]
+    run_on_benchmark "$1"
 else
     run_on_ids "$@"
 fi

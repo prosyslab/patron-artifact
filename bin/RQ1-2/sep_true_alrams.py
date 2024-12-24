@@ -8,14 +8,14 @@ import argparse
 import datetime
 import benchmark
 
+FILE_PATH = os.path.dirname(os.path.abspath(__file__))
+ROOT_PATH = os.path.abspath(os.path.join(FILE_PATH, "..", ".."))
+
 failed = []
 successed = []
 
-PATRON_BENCH_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                 "..", "benchmark", "patron")
-PATCHWEAVE_BENCH_PATH = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "..", "benchmark",
-    "patchweave")
+PATRON_BENCH_PATH = os.path.join(ROOT_PATH, "data", "RQ1-2", "patron")
+PATCHWEAVE_BENCH_PATH = os.path.join(ROOT_PATH, "data", "RQ1-2", "PWBench")
 
 configuration = {"BENCHMARK_SET": "", "ID": None, "NO_LOG": False}
 
@@ -280,7 +280,7 @@ def main():
     parse_args()
     if configuration["BENCHMARK_SET"] == "patron":
         run_on_patron()
-    elif configuration["BENCHMARK_SET"] == "patchweave":
+    elif configuration["BENCHMARK_SET"] == "PWBench":
         run_on_patchweave()
     else:
         logger_wrapper(-1, "Please specify the benchmark set")

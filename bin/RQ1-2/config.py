@@ -58,8 +58,8 @@ def __get_logger():
 
 def setup():
     configuration["PROJECT_HOME"] = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..'))
-    configuration["BENCHMARK_DIR"] = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))), "data", "RQ1")
-    configuration["BIN_HOME"] = os.path.join(configuration["PROJECT_HOME"], "bin", "RQ1")
+    configuration["BENCHMARK_DIR"] = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))), "data", "RQ1-2")
+    configuration["BIN_HOME"] = os.path.join(configuration["PROJECT_HOME"], "bin", "RQ1-2")
     parser = argparse.ArgumentParser()
     parser.add_argument("-sparrow",
                         action="store_true",
@@ -86,7 +86,7 @@ def setup():
     parser.add_argument(
         "-out",
         default=os.path.join(configuration["PROJECT_HOME"], "out",
-                             datetime.datetime.now().strftime("%Y%m%d%H%M%S") + "_RQ1"),
+                             datetime.datetime.now().strftime("%Y%m%d%H%M%S") + "_RQ1-2"),
         help="output directory(default={}/out)".format(
             configuration["PROJECT_HOME"]),
     )
@@ -196,6 +196,7 @@ def setup():
     logger.log(0, "\tSPARROW_BIN_PATH: " + configuration["SPARROW_BIN_PATH"])
     logger.log(0, "\tPATRON_BIN_PATH: " + configuration["PATRON_BIN_PATH"])
     if configuration["args"].id == []:
+        print(configuration["args"].benchmark_set)
         configuration["args"].id = benchmark.expriment_ready_to_go[
             configuration["args"].benchmark_set]
         logger.log(

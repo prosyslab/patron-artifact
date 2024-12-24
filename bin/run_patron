@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+import os, sys, argparse
+
+FILE_PATH = os.path.dirname(os.path.realpath(__file__))
+RQ1_2_SCRIPT_PATH=os.path.join(FILE_PATH, 'RQ1-2', 'experiment.sh')
+RQ3_SCRIPT_PATH=os.path.join(FILE_PATH, 'RQ2', 'run.py')
+
+RQ1_2_CMD=['bash', RQ1_2_SCRIPT_PATH, 'PWBench']
+RQ3_CMD=['python3', RQ3_SCRIPT_PATH]
+
+def saftey_check(args):
+    is_projects_provided = args.projects is not None
+    if args.reproduce_RQ1_2 and args.reproduce_RQ3:
+        print('Only one of the following arguments can be provided: --reproduce-RQ1-2, --reproduce-RQ3, --projects')
+        return False
+    if args.reproduce_RQ1_2 and is_projects_provided:
+        print('Only one of the following arguments can be provided: --reproduce-RQ1-2, --reproduce-RQ3, --projects')
+        return False
+    if args.reproduce_RQ3 and is_projects_provided:
+        print('Only one of the following arguments can be provided: --reproduce-RQ1-2, --reproduce-RQ3, --projects')
+        return False
+    if not args.reproduce_RQ1_2 and not args.reproduce_RQ3 and not is_projects_provided:
+        print('One of the following arguments must be provided: --reproduce-RQ1-2, --reproduce-RQ3, --projects')
+        return False
+    if is_projects_provided and len(args.projects) == 0:
+        print('At least one project name must be provided')
+        return False
+    return True
+
+def print_help():
+    print("usage: ./run_patron [-h] [--reproduce-RQ1-2] [--reproduce-RQ3] [--projects PROJECTS [PROJECTS ...]]")
+    print("       [-h] : Show this help message and exit")
+    print("       [--reproduce-RQ1-2] : Reproduce RQ1-2 experiment")
+    print("       [--reproduce-RQ3] : Reproduce RQ3 experiment (not recommended, it takes too long)")
+    print("       [--projects PROJECTS [PROJECTS ...]] : List of Debian project names to run the experiment on")
+    print("       For more usage of Patron, please refer to the README file")
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Run patron experiment')
+    parser.add_argument('--reproduce-RQ1-2', action='store_true', help='Reproduce RQ1-2 experiment')
+    parser.add_argument('--reproduce-RQ3', action='store_true', help='Reproduce RQ3 experiment')
+    parser.add_argument('--projects', nargs='+', help='List of project names to run the experiment on')
+    args = parser.parse_args()
+    if not saftey_check(args):
+        print_help()
+        sys.exit(1)
+    if args.reproduce_RQ1_2:
+        os.execvp(RQ1_2_CMD[0], RQ1_2_CMD)
+    elif args.reproduce_RQ3:
+        if input('[!WARNING!]Running the entire RQ3 experiment is not recommended, it may take over weeks to build, analyze, transplant patches on 113 Debian Projects.\n' +
+        '           You can also run experiment on each Debian project using "--projects" options.\nDo you still want to continue? (y/n): ').lower() == 'y':
+            os.execvp(RQ3_CMD[0], RQ3_CMD[:2])
+        else:
+            print_help()
+            sys.exit(0)
+    elif args.projects is not None:
+        for project in args.projects:
+            os.execvp(RQ3_CMD[0], RQ3_CMD[:2])
+    else:
+        print('Invalid arguments!')
+        print_help()
+        sys.exit(1)
+

@@ -31,7 +31,7 @@ sparrow_options = {
         "new_14": [],
         "new_15": []
     },
-    "patchweave": {
+    "PWBench": {
         "1": ["-dz", "-no_bo"],
         "2-1": ["-dz", "-no_bo"],
         "2-2": ["-dz", "-no_bo"],

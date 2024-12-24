@@ -42,7 +42,7 @@ def generate_worklist():
         target_path = os.path.join(config.configuration["BENCHMARK_DIR"],
                                    benchmark_set, v)
         patron_path = [target_path, target_path
-                       ] if benchmark_set != "patchweave" else [
+                       ] if benchmark_set != "PWBench" else [
                            target_path + "/donor", target_path + "/donee"
                        ]
         if os.path.exists(patron_path[1] +
@@ -59,14 +59,14 @@ def generate_worklist():
                  sparrow_options[benchmark_set][str(v)]))
             patron_opt.append([])
             versions.append(benchmark_set + "/" + str(v) + (
-                "/donor" if benchmark_set == "patchweave" else ""))
-            if benchmark_set == "patchweave":
+                "/donor" if benchmark_set == "PWBench" else ""))
+            if benchmark_set == "PWBench":
                 sparrow_opt.append(
                     (config.configuration["default_sparrow_options"] +
                      donee_path + sparrow_options[benchmark_set][str(v)]))
                 patron_opt.append([])
                 versions.append(benchmark_set + "/" + str(v) + (
-                    "/donee" if benchmark_set == "patchweave" else ""))
+                    "/donee" if benchmark_set == "PWBench" else ""))
         elif config.configuration["TARGET_PROCEDURE"] == "PATRON":
             label_path = os.path.join(benchmark_set, v)
             path = sparrow.get_label_dir(label_path)
@@ -75,7 +75,7 @@ def generate_worklist():
                               patron_path + [patron_option])
             sparrow_opt.append([])
             versions.append(benchmark_set + "/" + str(v) + (
-                "/donor" if benchmark_set == "patchweave" else ""))
+                "/donor" if benchmark_set == "PWBench" else ""))
         else:
             label_path = os.path.join(benchmark_set, v)
             path = sparrow.get_label_dir(label_path)
@@ -86,7 +86,7 @@ def generate_worklist():
             patron_opt.append(config.configuration["default_patron_options"] +
                               patron_path + [patron_option])
             versions.append(benchmark_set + "/" + str(v) + (
-                "/donor" if benchmark_set == "patchweave" else ""))
+                "/donor" if benchmark_set == "PWBench" else ""))
 
     worklist = []
     for process, s_option, patron_option in zip(versions, sparrow_opt,
@@ -296,7 +296,7 @@ def get_file_path(i, is_donor):
         config.configuration["args"].benchmark_set,
         i,
     )
-    if config.configuration["args"].benchmark_set == "patchweave":
+    if config.configuration["args"].benchmark_set == "PWBench":
         if is_donor:
             path = os.path.join(path, "donor")
         else:

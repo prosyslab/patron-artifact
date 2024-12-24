@@ -166,7 +166,7 @@ def get_target_loc(path):
 
 
 def get_label_dir(version):
-    label_path = os.path.join(configuration['PROJECT_HOME'], 'data/RQ1/{}'.format(version))
+    label_path = os.path.join(configuration['PROJECT_HOME'], 'data/RQ1-2/{}'.format(version))
     if os.path.basename(label_path) == "donor" or os.path.basename(label_path) == "donee":
         label_path = os.path.dirname(label_path)
     if os.path.basename(label_path) == "bug":
@@ -204,12 +204,12 @@ def run_sparrow(version, options, is_pipe, pat_options: list = []):
         0, "SPARROW ANALYSIS on {} version of example-{}".format(target, version) +
         "\n\twith options:{}".format(options + pat_options))
     if os.path.isdir(
-            os.path.join(configuration['PROJECT_HOME'], 'data/RQ1/{}/{}/'.format(version,
+            os.path.join(configuration['PROJECT_HOME'], 'data/RQ1-2/{}/{}/'.format(version,
                                                                                   target))):
         os.chdir(
-            os.path.join(configuration['PROJECT_HOME'], 'data/RQ1//{}/{}/'.format(version, target)))
+            os.path.join(configuration['PROJECT_HOME'], 'data/RQ1-2/{}/{}/'.format(version, target)))
     else:
-        os.chdir(os.path.join(configuration['PROJECT_HOME'], 'data/RQ1//{}'.format(version)))
+        os.chdir(os.path.join(configuration['PROJECT_HOME'], 'data/RQ1-2/{}'.format(version)))
     if not configuration['args'].mute:
         log = open('sparrow_log', 'w')
     else:
