@@ -54,7 +54,7 @@ def run_preprocess() -> bool:
     return True
 
 def run_transplantation() -> bool:
-    patron.run_transplantation(config.transplant_configuration["DONEE_LIST"])
+    patron.run_patch_transplantation(config.transplant_configuration["DONEE_LIST"])
 
 def run_database_construction() -> bool:
     patron.run_database()

@@ -34,7 +34,6 @@ preprocess_configuration = {
     "SPARROW_BIN_PATH": "",
     "DEFAULT_SPARROW_OPT": ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full"],
     "ADDITIONAL_SPARROW_OPT": ["-no_bo", "-tio", "-pio", "-mio", "-dz"],
-    # "SPARROW_COMMAND": "",
     "USER_SPARROW_OPT": [],
     "SPARROW_TARGET_FILES": [],
     "OVERWRITE_SPARROW": True
@@ -64,16 +63,6 @@ sparrow_configuration = {
     "SPARROW_TARGET_FILES": [],
     "OVERWRITE_SPARROW": False
 }
-
-# patron_configuration = {
-#     "VERBOSE": False,
-#     "PATRON_ROOT_PATH": "",
-#     "PATRON_BIN_PATH": "",
-#     "DONOR_PATH": "benchmark",
-#     "DB_PATH": os.path.abspath("benchmark-DB"),
-#     "BENCHMARK_PATH": "",
-#     "SUBOUT_DIR": ""
-# }
 
 db_configuration = {
     "PATRON_ROOT_PATH": "",
@@ -262,10 +251,13 @@ def __get_logger(purpose):
 
 def get_patron_target_files(target_dirs):
     donee_list = []
+    print(target_dirs)
     for target in target_dirs:
+        # d, target = t
+        # print(target)
         if not os.path.exists(target):
             logger.log(logger.ERROR, f"{target} does not exist.")
-            config.patron_exit("PATRON")
+            patron_exit("PATRON")
         for root, dirs, files in os.walk(target):
             if any([d.isdigit() for d in dirs]):
                 continue
@@ -273,7 +265,7 @@ def get_patron_target_files(target_dirs):
                 if file.endswith(".c"):
                     donee_list.append((os.path.dirname(os.path.abspath(os.path.join(root, file))), os.path.abspath(os.path.join(root, file))))
     transplant_configuration["DONEE_LIST"] = donee_list
-    logger.log("INFO", "Configured donee files: {}".format([os.path.basename(donee) for donee, path in configuration["DONEE_LIST"]]))
+    logger.log(logger.ALL, "Configured donee files: {}".format([os.path.basename(donee) for donee, path in configuration["DONEE_LIST"]]))
     return donee_list
 
 def filter_unnecessary_config(config):
@@ -413,7 +405,11 @@ def setup_db():
     configuration["PURPOSE"] = "DB"
     db_configuration["DATABASE_ONLY"] = True
     db_configuration["BENCHMARK_PATH"] = os.path.join(configuration["ROOT_PATH"], "data", "RQ1-2")
-    db_configuration["DONOR_PATH"] = configuration["ARGS"].database
+    if configuration["ARGS"].database == "":
+        print("[ERROR] Invalid usage for database option:")
+        print("\t--database, -db [DONOR_PATH]")
+        exit(1)
+    db_configuration["DONOR_PATH"] = os.path.abspath(configuration["ARGS"].database)
     db_configuration["OVERWRITE_SPARROW"] = configuration["ARGS"].overwrite_sparrow
     db_configuration["RQ1-2_EXP_PATH"] = os.path.join(configuration["ROOT_PATH"], "bin", "RQ1-2")
     db_configuration["DB_OUT_DIR"] = os.path.abspath(configuration["ARGS"].database_path)
@@ -425,18 +421,15 @@ def setup_transplant():
         print(f"[ERROR] {configuration['ARGS'].database_path} does not exist.")
         print(f"[ERROR] Please run \"./bin/run_patron --construct-database\" or \"./bin/RQ3/run.py --construct-database path/to/donor\" first.")
         exit(1)
-    transplant_configuration["DB_PATH"] = configuration["ARGS"].database_path
+    logger.logger = __get_logger("TRANS")
+    transplant_configuration["DB_PATH"] = os.path.abspath(configuration["ARGS"].database_path)
     target_dirs = [ os.path.abspath(don) for don in configuration["ARGS"].projects ]
     get_patron_target_files(target_dirs)
     transplant_configuration["SUBOUT_DIR"] = os.path.abspath(os.path.join(configuration["OUT_DIR"], "patches"))
     os.mkdir(transplant_configuration["SUBOUT_DIR"])
 
 def safty_check_main(args):
-    if len(args.database) == 0:
-        print('[ERROR] Invalid usage for database option:')
-        print('\t--database, -db [DONOR_PATH ...]')
-        exit(1)
-    is_database = False if args.database[0] == "none" else True
+    is_database = False if args.database == "" else True
     msg = "[ERROR] You can only use one of the following options: --preprocess, --transplant, --database"
     if args.preprocess and args.transplant:
         print(msg)
@@ -448,7 +441,7 @@ def safty_check_main(args):
         print(msg)
         exit(1)
     elif not (args.preprocess or args.transplant or is_database):
-        print("[ERROR] No arguments given, ex) --database [DONOR_PATH ...]")
+        print("[ERROR] No arguments given, ex) --database [DONOR_PATH]")
         exit(1)
     
 
@@ -461,7 +454,7 @@ def setup_main():
     parser.add_argument('--transplant', '-trans', action='store_true', default=False, help='run the transplant')
     parser.add_argument('--projects', '-p', nargs='+', default=["all"], help='run on the given debian projects (default:113 projects from DebianBench)')
     parser.add_argument('--package-list', type=str, default=configuration["DEFAULT_TARGET_LIST_PATH"], help='path to the debian package list')
-    parser.add_argument('--database', '-db', nargs='+', default=["none"], help='run the database construction on the given donor directory(ies)')
+    parser.add_argument('--database', '-db', type=str, default="", help='run the database construction on the given donor directory(ies)')
     parser.add_argument('--database-path', '-dbp', type=str, default="benchmark-DB", help='path to the DB directory (default:benchmark-DB)')
     parser.add_argument('--overwrite-sparrow', action='store_true', default=False, help='overwrite the sparrow results if already exists')
     parser.add_argument('--process-limit', '-pl', type=int, default=20, help='number of threads to run (default:20)')
@@ -474,7 +467,7 @@ def setup_main():
     elif configuration["ARGS"].transplant:
         purpose = "TRANS"
         setup_transplant()
-    elif configuration["ARGS"].database:
+    elif configuration["ARGS"].database != "":
         purpose = "DB"
         setup_db()
     else:

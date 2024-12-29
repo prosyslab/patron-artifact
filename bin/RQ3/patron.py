@@ -190,13 +190,13 @@ Input: bool (from_top), str (package) -> if from_top is False, package can be ig
 Output: list (command)
 '''
 def mk_worklist(package:str) -> list:
-    base_cmd = [config.transplant_configuration["PATRON_BIN_PATH"]]
+    base_cmd = [config.configuration["PATRON_BIN_PATH"]]
     worklist = []
     cnt = 0
-    if package == []:
-        target_donee = config.transplant_configuration["DONEE_LIST"]
-    else:
-        target_donee = config.get_patron_target_files(package)
+    # if package == []:
+    target_donee = config.transplant_configuration["DONEE_LIST"]
+    # else:
+        # target_donee = config.get_patron_target_files(package)
     for donee, path in target_donee:
         package = donee.split('/')[-1]
         sub_out = os.path.join(config.transplant_configuration["SUBOUT_DIR"], package)
@@ -251,7 +251,7 @@ def mk_sparrow_cmd(label_path:str, curr_path:str) -> list:
     target = ""
     for file in os.listdir(curr_path):
         if file.endswith('.c'):
-            target = os.path.join(curr_path, file)
+            target = os.path.abspath(os.path.join(curr_path, file))
             break
     if target == "":
         log(ERROR, f"Target file not found in {curr_path}")
@@ -408,12 +408,12 @@ Output: list (missing_list)
 def check_sparrow() -> list:
     global donor_list
     missing_list = []
-    donors = [ os.path.join(config.configuration["DONOR_PATH"], f) for f in os.listdir(config.configuration["DONOR_PATH"]) ]
+    donors = [ os.path.join(config.db_configuration["DONOR_PATH"], f) for f in os.listdir(config.db_configuration["DONOR_PATH"]) ]
     for donor in donors:
         if not os.path.isdir(donor):
             continue
         target = os.path.join(donor, 'bug')
-        if config.configuration["OVERWRITE_SPARROW"]:
+        if config.db_configuration["OVERWRITE_SPARROW"]:
             if os.path.exists(os.path.join(target, 'sparrow-out')):
                 os.system(f'rm -rf {os.path.join(target, "sparrow-out")}')
             missing_list.append(target)
@@ -557,7 +557,7 @@ def kill_proc_by_cmd(cmd):
     os.system(f'pkill -f "{cmd_str}"')
 
 def reattempt_patron(cmd):
-    reattempt_dir = os.path.join(config.configuration["SUBOUT_DIR"], 'reattempted_projects')
+    reattempt_dir = os.path.join(config.transplant_configuration["SUBOUT_DIR"], 'reattempted_projects')
     if not os.path.exists(reattempt_dir):
         os.mkdir(reattempt_dir)
     is_success = True
@@ -584,13 +584,13 @@ def reattempt_patron(cmd):
     for alarm in os.listdir(os.path.join(reattempt_project_dir, 'sparrow-out', 'taint', 'datalog')):
         if alarm in finished_alarm_list:
             os.system(f'rm -rf {os.path.join(reattempt_project_dir, "sparrow-out", "taint", "datalog", alarm)}')
-    new_out_dir = os.path.join(config.configuration["SUBOUT_DIR"], os.path.basename(reattempt_project_dir))
+    new_out_dir = os.path.join(config.transplant_configuration["SUBOUT_DIR"], os.path.basename(reattempt_project_dir))
     if not os.path.exists(new_out_dir):
         os.mkdir(new_out_dir)
     else:
         cnt = 1
         while os.path.exists(new_out_dir):
-            new_out_dir = os.path.join(config.configuration["SUBOUT_DIR"], os.path.basename(reattempt_project_dir) + '_continued_' + str(cnt))
+            new_out_dir = os.path.join(config.transplant_configuration["SUBOUT_DIR"], os.path.basename(reattempt_project_dir) + '_continued_' + str(cnt))
             cnt += 1
 
     new_cmd = cmd[:2] + [reattempt_project_dir] + cmd[3:-1] + [new_out_dir]
@@ -868,35 +868,3 @@ def run_patch_transplantation(package):
         run_works_parallel()
     
     log(INFO, f"Please check the {config.configuration['OUT_DIR']}/final_result.tsv and log file for the results.")
-    
-'''
-patron.py has two different procedures
-1) Constructing database from scratch
-2) Running Patron with the constructed database
-It can be run from four different sources
-1) oss_exp.py -patron <analysis_target_dir>
-2) oss_exp.py -fullpipe
-2) run.py -oss
-3) patron.py -db /path/to/db -d /path/to/donee -p <number_of_processes>
-
-Input: Optional (bool) -> to check where this program is run from, 
-Optional (str) -> to specify the package name if run pipe
-Output: None
-'''
-def main(from_top:bool=False, package:list=[]) -> None:
-    setup_patron(from_top)
-    if config.configuration["DATABASE_ONLY"]:
-        run_database()
-    else:
-        run_patch_transplantation(package)
-
-
-if __name__ == '__main__':
-    config.openings()
-    print('YOU ARE RUNNING PATRON.PY AS A SCRIPT DIRECTLY.')
-    try:
-        main()
-        config.happy_ending(config.configuration["OUT_DIR"])
-    except KeyboardInterrupt:
-        print('Keyboard Interrupted')
-        exit(1)

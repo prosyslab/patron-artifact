@@ -137,36 +137,6 @@ def sparrow(package:str, files:list) -> bool:
     log(ALL, f"{success_cnt} files are successfully analyzed.")
     log(ALL, f"Output for analysis is saved in {SPARROW_PKG_DIR}")
     return True
-
-# '''
-# Function called from -pipe option of bin/oss_exp.py
-
-# Input: str (package name), TextIO (tsvfile), csv.writer
-# Output: bool (True: success, False: fail)
-# '''
-# def sparrow_pipe(package:str, tsvfile:TextIO, writer:csv.writer) -> bool:
-#     global SPARROW_LOG_DIR
-#     config.configuration["SPARROW_LOG_DIR"] = os.path.join(config.configuration['OUT_DIR'], 'sparrow_logs')
-#     if not os.path.exists(SPARROW_LOG_DIR):
-#         os.mkdir(SPARROW_LOG_DIR)
-#     target_dir = os.path.join(config.configuration["ANALYSIS_DIR"], package)
-#     if not os.path.exists(target_dir):
-#         log(ERROR, f"{target_dir} does not exist.")
-#         writer.writerow([package, 'O', 'O', 'X', '-', "dir not found"])
-#         tsvfile.flush()
-#         return False
-#     c_files = []
-#     for root, dirs, files in os.walk(target_dir):
-#         for file in files:
-#             if file.endswith('.c'):
-#                 c_files.append(os.path.join(root, file))
-#     if len(c_files) == 0:
-#         log(ERROR, f"No .c files found in {target_dir}.")
-#         writer.writerow([package, 'O', 'O', 'X', '-', "no .c file found"])
-#         tsvfile.flush()
-#         return False
-#     log(INFO, f"Found {len(c_files)} .c files in {target_dir}.")
-#     return sparrow(package, c_files)
                 
 def mk_worklist(targets):
     log(ALL, "Looking for .c files in the target directories ...")
