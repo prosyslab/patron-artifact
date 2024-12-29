@@ -4,9 +4,9 @@ This is the artifact of the paper *Static Patch Transplantation for Recurring So
 
 ## 1. Getting Started
 
-<!-- ### __1.1. Get Image from Dockerhub. -->
+<!-- ### 1.1. Get Image from Dockerhub. -->
 
-### __1.1. Build Your Own Image.
+### 1.1. Build Your Own Image.
 
 To build your own image, run the following commands.
 
@@ -16,7 +16,7 @@ cd docker/patron
 docker build . -t prosyslab/patron-artifact
 ```
 
-### __1.2. Build it on Your Machine.
+### 1.2. Build it on Your Machine.
 
 We assume that the following environment settings are met.
 - Ubuntu 22.04
@@ -39,7 +39,7 @@ Then, run
 
 &nbsp;
 
-## 2. __Directory structure__
+## 2. Directory structure
 
 ```
 ├─ README.md                        <- The top-level README (this file)
@@ -106,11 +106,11 @@ Then, run
 
 ## 3. Experiment Reproduction
 
-### __3.1. RQ 1, 2 - Accuracy, Scalability.
+### 3.1. RQ 1, 2 - Accuracy, Scalability.
 
 If you would like to check out the experimental outcomes beforehand, refer to [RQ1 spreadsheet](https://docs.google.com/spreadsheets/d/1Mj6vHFTsFxV7hkIJ6hqLFhdKB-YUEd8fEpcrrrdCrkQ/edit?usp=sharing)
 
-#### __3.1.1. Our Tool (Patron)
+#### 3.1.1. Our Tool (Patron)
 
 Run the following command to reproduce Experiment for the RQ1 and RQ2.
 
@@ -122,7 +122,7 @@ The output to the experiment which you could also found in our paper is located 
 
 Please, read [RQ1-2_manual](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ1-2/README.md) for more details about the experiment reproduction.
 
-#### __3.1.2. Patchweave
+#### 3.1.2. Patchweave
 
 To run the Patchweave artifact to see experiment results
 
@@ -136,7 +136,7 @@ Unfortunately, Patchweave artifact is not provided fully reproducible.
 
 For more details, visit [https://patchweave.github.io/](https://patchweave.github.io/)
 
-#### __3.1.3. VulnFix
+#### 3.1.3. VulnFix
 
 To run the VulnFix artifact to see experiment results
 
@@ -146,13 +146,13 @@ cd <project root>/docker/vulnfix
 ./run.sh
 ```
 
-#### __3.1.4. IntRepair
+#### 3.1.4. IntRepair
 
 [IntRepair](https://github.com/TeamVault/IntRepair?tab=readme-ov-file)'s artifact is incompletely provided, we follow the algorithm provided in the [paper](https://ieeexplore.ieee.org/abstract/document/8862860/) to simulate the patches.
 
 These manually synthesized patches can be found in [here](https://docs.google.com/spreadsheets/d/1Mj6vHFTsFxV7hkIJ6hqLFhdKB-YUEd8fEpcrrrdCrkQ/edit?usp=sharing)
 
-### __3.2. RQ 3 - Generalizability.
+### 3.2. RQ 3 - Generalizability.
 
 This section inculdes how to reproduce the experiment results for RQ 3.
 
@@ -160,7 +160,7 @@ The list of 113 target Debian projects are at `./data/RQ3/DebianBench/target_lis
 
 If you want to run against all 113 projects, refer to [RQ3 manual](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ3/README.md)
 
-#### __3.2.1. Making Pattern Database
+#### 3.2.1. Making Pattern Database
 
 Run the following command to construct the minimal pattern database.
 
@@ -170,7 +170,7 @@ Run the following command to construct the minimal pattern database.
 
 If you want to try building other databases, please refer to [RQ3 manual](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ3/README.md)
 
-#### __3.2.2. Preprocessing Target Projects
+#### 3.2.2. Preprocessing Target Projects
 
 This process includes build and analysis steps for Patron to work.
 
@@ -184,7 +184,7 @@ Note that <Debian Project> is sensitive to package name.
 
 To know more about various Debian Projects, refer to [RQ3 manual](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ3/README.md)
 
-#### __3.2.3. Run Patron on the Target Projects
+#### 3.2.3. Run Patron on the Target Projects
 
 Run the following command to run patron on target directories.
 
