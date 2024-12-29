@@ -1,14 +1,114 @@
 # Patron: Static Patch Transplantation for Recurring Software Vulnerabilities (Paper Artifact)
 
-## Setup
+This is the artifact of the paper *Static Patch Transplantation for Recurring Software Vulnerabilities*.
 
-## Experiment Reproduction
+## 1. Getting Started
 
-### RQ 1, 2 - Accuracy, Scalability.
+<!-- ### __1.1. Get Image from Dockerhub. -->
+
+### __1.1. Build Your Own Image.
+
+To build your own image, run the following commands.
+
+```
+git clone https://github.com/prosyslab/patron --recursive
+cd docker/patron
+docker build . -t prosyslab/patron-artifact
+```
+
+### __1.2. Build it on Your Machine.
+
+We assume that the following environment settings are met.
+- Ubuntu 22.04
+- Docker
+- python 3.8+
+- pip3
+- Opam 2.1.2+
+
+For the Python dependencies required to run the experiment scripts, run
+```
+yes | pip3 install -r requirements.txt
+```
+
+Then, run
+```
+./build.sh
+```
+
+&nbsp;
+
+## 2. __Directory structure__
+
+```
+├─ README.md                        <- The top-level README (this file)
+│   
+├─ bin                              <- Scripts to run Patron and other Supplementry tools
+│  │
+│  ├─ run_patron                    <- The top-level script to run experiments
+│  │
+│  ├─ RQ1-2                         <- Directory with low-level scripts to reproduce RQ1 and RQ2 experiment
+│  │  ├─ experiment.sh              <- The mid-level script to run the experiment with various settings
+│  │  ├─ ...
+│  │  ├─ README.md                  <- A manual for RQ1-2 scripts
+│  │  └─ run.py                     <- The low-level scripts for RQ1-2
+│  │
+│  └─ RQ3                           <- Directory with low-level scripts to run Patron against Debian projects
+│     ├─ run.py                     <- The mid-level script to configure details for Patron
+│     ├─ ...
+│     └─ README.md                  <- A manual for RQ3 scripts
+│
+├─ data
+│  │
+│  ├─ RQ1-2                         <- Directory with benchmark data for RQ1 and 2
+│  │  ├─ PWBench                    <- PatchWeave Benchmarks
+│  │  └─ ...
+│  └─ RQ3                           <- Directory with benchmark data for RQ3
+│     ├─ DebianBench                <- Directory with meta-data for DebianBench
+│     │    ├─ target_list.txt       <- List of 113 Debian projects used in the experiments
+│     │    ├─ crawling_result       <- Directory with all Debian projects crawled from web (Can be updated by running `./bin/RQ3/crawl.py`)
+│     │    ├─ smake_out             <- An automatically generated directory after preprocessing Debian projects
+│     │    ├─ reproduction_packages <-
+│     │    └─ ...
+│     │
+│     └─ patternDatabase
+│          ├─ ...
+│          ├─ CVE-patches           <- Manually collected bug-patch program pairs from CVE 
+│          ├─ CWE-patches           <- Bug-patch program pairs collected from Juliet-Testcase (CWE)
+│          └─ reprod-patches        <- Simplified database to reproduce the experiment results
+│
+├─ patron                           <- Implementation of Patron, the patch transplantation tool
+│
+├─ sparrow                          <- Implementation of Sparrow, the static analyzer
+│
+├─ smake                            <- Implementation of Smake, the program analysis preparation tool
+│
+├─ out                              <- An automatically generated directory for logs, statistics, and results
+│
+├─ docker                           <- Docker-related scripts to get images for Patron and baseline tools
+│  │
+│  ├─ patron                        
+│  │  ├─ Dockerfile                 <- Dockerfile used to make the Patron artifact image
+│  │  └─ ...
+│  ├─ patchweave                    
+│  │  ├─ build.sh                   <- The script to generate PatchWeave image and also to run the experiment
+│  │  ├─ proof_for_wrong_patches    <- PoCs that show PatchWeave's patch result can still be vulnerable
+│  │  └─ ...
+│  └─ vulnfix
+│     ├─ build.sh                   <- The script to generate VulnFix image and also to reproduce the experiment
+│     └─ ...
+│
+├─ build.sh                         <- The script to build Patron
+│
+└─ requirements.txt                 <- Python requirements for the scripts
+```
+
+## 3. Experiment Reproduction
+
+### __3.1. RQ 1, 2 - Accuracy, Scalability.
 
 If you would like to check out the experimental outcomes beforehand, refer to [RQ1 spreadsheet](https://docs.google.com/spreadsheets/d/1Mj6vHFTsFxV7hkIJ6hqLFhdKB-YUEd8fEpcrrrdCrkQ/edit?usp=sharing)
 
-#### Our Tool (Patron)
+#### __3.1.1. Our Tool (Patron)
 
 Run the following command to reproduce Experiment for the RQ1 and RQ2.
 
@@ -20,7 +120,7 @@ The output to the experiment which you could also found in our paper is located 
 
 Please, read [RQ1-2_manual](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ1-2/README.md) for more details about the experiment reproduction.
 
-#### Patchweave
+#### __3.1.2. Patchweave
 
 To run the Patchweave artifact to see experiment results
 
@@ -34,7 +134,7 @@ Unfortunately, Patchweave artifact is not provided fully reproducible.
 
 For more details, visit [https://patchweave.github.io/](https://patchweave.github.io/)
 
-#### VulnFix
+#### __3.1.3. VulnFix
 
 To run the VulnFix artifact to see experiment results
 
@@ -44,130 +144,34 @@ cd <project root>/docker/vulnfix
 ./run.sh
 ```
 
-#### IntRepair
+#### __3.1.4. IntRepair
 
 [IntRepair](https://github.com/TeamVault/IntRepair?tab=readme-ov-file)'s artifact is incompletely provided, we follow the algorithm provided in the [paper](https://ieeexplore.ieee.org/abstract/document/8862860/) to simulate the patches.
 
 These manually synthesized patches can be found in [here](https://docs.google.com/spreadsheets/d/1Mj6vHFTsFxV7hkIJ6hqLFhdKB-YUEd8fEpcrrrdCrkQ/edit?usp=sharing)
 
-### RQ 3 - Generalizability.
+### __3.2. RQ 3 - Generalizability.
 
-Running the following command would reproduce the experment for RQ3:
-`./bin/run_experiment --reproduce-RQ1-2`
-
-However, it is not recommended to build, analyze, and transplant on 113 Debian projects.
-
-The experiment could take over a week depending on your machine (The analysis itself produces over 60K alarms).
-
-On the other hand, you can run the experiment on your desired package(s) by following the command below:
-`./bin/run_experiment --projects [project1] [project2] [project3]`
+This section inculdes how to reproduce the experiment results for RQ 3.
 
 The list of 113 target Debian projects are at `./data/RQ3/DebianBench/target_list.txt`
 
+If you want to run against all 113 projects, refer to [RQ3 manual](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ3/README.md)
 
-If you would like to check out the experimental outcomes beforehand, refer to [RQ3]()
+#### __3.2.1. Making Pattern Database
 
-
-Run the following command to reproduce Experiment 3.
-`./bin/run.py -oss`
-
-This will reproduce with the predefined configuration.
-If for the lower level execution, follow the below instructions
-
-### Get the List of Debian Packages
-We already have run this process and collected the list at `pkg/lists/*.txt`. Each text files refer to the list of packages based on different categories.
-
-However, to update this list run the following command.
-`./bin/oss_exp.py -crwal`
-
-### Preprocess Packages for Patron
-Run the following command to preprocess the packages for Patron
-`./oss_exp.py -pipe <.txt file>`
-
-The `.txt` file is output of the above crawlling step.
-However, `<.txt file> ` can be omitted to reproduce the exact packages used in the paper.
-
-This process includes,
 ```
-1. download the package
-2. build the package to obtain *.i files
-3. combine *.i files to *.c files depending on the different main functions the project has
-4. taint analysis via Sparrow
+./bin/run_patron --construct-database
 ```
 
-Each step can be separately run through the below subsections as well.
+#### __3.2.2. Preprocessing Target Projects
 
-#### Building Debian Packages
-At `pkg/lists/*.txt`, we have the full lists of Debian packages written separately based on their categories.
-ex) `pkg/lists/sound.txt`, `pkg/lists/graphics.txt`
-
-Run the following command to build packages listed in the target `.txt` file(s).
 ```
-./bin/oss_exp.py -build <path_to_txt_file1> <path_to_txt_file2> <path_to_txt_file3> ...
-```
-If you don't specify a path after the `-build` option, the script attempts to build entire packages.
-
-`*.i` files from the above process are saved at `pkg/i_files/` with the directory named after the package names.
-
-#### Taint Analysis via Sparrow
-At `pkg/analysis-target` directory, there are lists of directories named after the package names.
-Each directories have a sub-directory based on different `main()` functions of the package.
-For example,
-```
-analysis-target
-            |-- argyll
-            |   `-- gamut
-            |       |-- GenRMGam
-            |       |   `-- GenRMGam.c
-            |       |-- fakegam
-            |       |   `-- fakegam.c
-            |       |-- maptest
-            |       |   `-- maptest.c
-            |       `-- smthtest
-            |           `-- smthtest.c
-            |-- ccast
-            |   |-- cgat
-            |   |   `-- cgat.c
-            |   `-- dpat
-            |       `-- dpat.c
-            ...
+./bin/run_patron --preprocess-target --projects [Debian Project1] [Debian Project2] ...
 ```
 
-Run the following command to taint-analyze target *.c files
+#### __3.2.3. Run Patron on the Target Projects
+
 ```
-./bin/oss_exp.py -sparrow <target_dir1> <target_dir2> <target_dir3> ... <-io | -tio | -pio | -mio | -sio | -dz | -bo>
+./bin/run_patron --transplant-target
 ```
-The options at the end refer to the purpose of the analysis, which are
-```
--io    Analyze Integer Overflow
--tio   Analyze Times Integer Overflow(Mult)
--pio   Analyze Puls Integer Overflow(Add)
--mio   Analyze Minus Integer Overflow(Sub)
--sio   Analyze Shift Integer Overflow
--dz    Analyze Division by Zero
--bo    Analyze Buffer Overrun
-```
-At least one of these options must be given to run this step.
-
-In the above directory tree, if
-`./bin/oss_exp.py -sparrow pkg/argyll -io` is executed, `GenRMGam.c`, `fakegam.c`, `maptest.c`, `smthtest.c` will be the analysis targets for Integer Overflow bugs
-
-Analysis Results will be saved in `sparrow-out` directory under the directory of each target file
-
-### Patch Transplantation via Patron
-Run the following command to run Patron for patch transplantation on the debian packages
-`./bin/patron.py -d <dir1> <dir2>... [-p <# of processes>]`
-
-The target dirs are output of above preprocessing.
-`-p` option determines the number of multiprocesses.
-
-### Generating DB
-We already have database pushed in this repository. However, to make a custom database, the following command can be helpful.
-`./bin/patron -db`
-
-However, to make a custom database, `patron-experiment/benchmark` has to be updated.
-
-### Debugging
-
-All the necessary information (building status for example) is saved at
-`out/` directory

@@ -29,6 +29,7 @@ ROOT_PATH = os.path.abspath(os.path.join(FILE_PATH, '..'))
 #         return package_map
 #     return recursive_search(package_map)
 
+
 def find_duplicate(package_map, package, target_dir):
     for p, t in package_map:
         if t == target_dir:
@@ -36,6 +37,7 @@ def find_duplicate(package_map, package, target_dir):
             log(INFO, f"previously: {target_dir}\tDuplicated: {t}")
             return True
     return False
+
 
 '''
 Function that checks duplicate packages in the package list
@@ -47,6 +49,8 @@ It follows the following steps:
 Input: List of File Names
 Output: None
 '''
+
+
 def run(package_lists):
     OUT_DIR = os.path.join(FILE_PATH, '..', 'out')
     LIST_DIR = os.path.join(FILE_PATH, '..', 'package', "debian_lists")
@@ -57,8 +61,8 @@ def run(package_lists):
         packages = [x.strip() for x in packages]
         tmp_dir = os.path.join(FILE_PATH, 'tmp_dir')
         if os.path.exists(tmp_dir):
-            os.system('rm -rf '+ tmp_dir)
-        os.mkdir(tmp_dir)    
+            os.system('rm -rf ' + tmp_dir)
+        os.mkdir(tmp_dir)
         os.chdir(tmp_dir)
         out = open(os.path.join(ROOT_PATH, package_list.replace('.txt', '_dups.txt')), 'w')
         work_size = len(packages)
@@ -102,10 +106,13 @@ def run(package_lists):
                 continue
     out.close()
 
+
 # TODO: use config.setup
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python find_duplicate_pkg.py <package_list1.txt> <package_list2> <package_list3> ...")
+        print(
+            "Usage: python find_duplicate_pkg.py <package_list1.txt> <package_list2> <package_list3> ..."
+        )
         sys.exit(1)
     logger.logger = config.__get_logger("FIND_DUPS")
     package_list = sys.argv[1:]

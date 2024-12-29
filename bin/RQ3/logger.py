@@ -7,6 +7,7 @@ INFO = 0
 WARNING = 1
 LOG_MODE = 0
 
+
 def log(code: int, msg: str):
     if code == ERROR:
         logger.error(msg)

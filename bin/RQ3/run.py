@@ -11,7 +11,6 @@ import count_sparrow_log
 from logger import log, INFO, ERROR, WARNING, ALL
 import progressbar
 import time
-
 '''
 Function that runs build.py->combine.py->sparrow.py in a pipeline
 Crawling is not included in the pipeline for convenience.(You can do this with -crawl option)
@@ -24,9 +23,14 @@ single OS can only run apt source command sequentially.
 Input: Boolean, String (Both arguments indicate from where this function was called)
 Output: Boolean (True: Pipe mode confirmed, False: Pipe mode not confirmed)
 '''
+
+
 def run_preprocess() -> bool:
     packages = build.get_target_list()
-    tsvfile = open(os.path.join(config.configuration['OUT_DIR'], 'preprocess_stat_{}.tsv'.format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
+    tsvfile = open(
+        os.path.join(
+            config.configuration['OUT_DIR'],
+            'preprocess_stat_{}.tsv'.format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
     writer = csv.writer(tsvfile, delimiter='\t')
     writer.writerow(['Package', 'Build', 'Sparrow'])
     tsvfile.flush()
@@ -53,17 +57,23 @@ def run_preprocess() -> bool:
     tsvfile.close()
     return True
 
+
 def run_transplantation() -> bool:
     patron.run_patch_transplantation(config.transplant_configuration["DONEE_LIST"])
 
+
 def run_database_construction() -> bool:
     patron.run_database()
+
+
 '''
 main function chooses which procedure will be run based on the CLI arguments
 
 Input: None
 Output: None
 '''
+
+
 def main():
     config.openings()
     purpose = config.setup_main()
@@ -78,6 +88,7 @@ def main():
             log(ERROR, "Invalid purpose: {}".format(purpose))
             config.bad_ending(config.configuration['OUT_DIR'])
     config.happy_ending(config.configuration["OUT_DIR"])
-    
+
+
 if __name__ == '__main__':
     main()

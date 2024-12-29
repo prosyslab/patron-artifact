@@ -17,14 +17,12 @@ import traceback
 
 expriment_ready_to_go = {
     "patron": [
-        "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13",
-        "14", "15", "16", "17", "18", "19", "20"
+        "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17",
+        "18", "19", "20"
     ],
-    "patchweave": [
-        "1", "2-1", "3", "4", "6", "7", "8", "9-1", "10",
-        "12-1", "13", "17", "19", "21", "22", "24"
-    ]
-    }
+    "patchweave":
+    ["1", "2-1", "3", "4", "6", "7", "8", "9-1", "10", "12-1", "13", "17", "19", "21", "22", "24"]
+}
 
 # process information is kept global for the sake of multithreading
 donor_list = []
@@ -37,7 +35,6 @@ patch_work_size = None
 patch_work_cnt = 0
 patch_bar = None
 lagging_proc = []
-
 '''
 Function that writes out the combined patch results
 This function mostly contains patch parsing logic.
@@ -47,7 +44,9 @@ copy the .tsv files to Google Sheet for easier analysis
 Input: str (output directory), str (current job(the donee file name)), bool (is failed)
 Output: None
 '''
-def write_out_results(cmd:list, is_failed:bool, time:str, is_timeout:bool) -> None:
+
+
+def write_out_results(cmd: list, is_failed: bool, time: str, is_timeout: bool) -> None:
     out_dir = cmd[-1]
     current_job_path = cmd[2]
     if not os.path.exists(out_dir):
@@ -55,11 +54,12 @@ def write_out_results(cmd:list, is_failed:bool, time:str, is_timeout:bool) -> No
     current_job = os.path.basename(current_job_path)
     package = "-"
     path_split = current_job_path.split('/')
-    for i in range(len(path_split)-1, -1, -1):
+    for i in range(len(path_split) - 1, -1, -1):
         if path_split[i].startswith('_'):
             package = path_split[i][1:]
             break
-    alarm_num = len(os.listdir(os.path.join(current_job_path, 'sparrow-out', 'taint', 'datalog'))) - 1
+    alarm_num = len(os.listdir(os.path.join(current_job_path, 'sparrow-out', 'taint',
+                                            'datalog'))) - 1
     time_tsv_path = os.path.join(config.configuration["OUT_DIR"], 'time.tsv')
     try:
         with open(time_tsv_path, 'a') as time_tsv:
@@ -70,10 +70,14 @@ def write_out_results(cmd:list, is_failed:bool, time:str, is_timeout:bool) -> No
                 if 'day' in str(time):
                     day_in_sec = float(time.split(' ')[0]) * 86400
                     rest_time = time.split(' ')[-1]
-                    time_in_sec = float(rest_time.split(':')[0]) * 3600 + float(rest_time.split(':')[1]) * 60 + float(rest_time.split(':')[2]) + day_in_sec
+                    time_in_sec = float(rest_time.split(':')[0]) * 3600 + float(
+                        rest_time.split(':')[1]) * 60 + float(rest_time.split(':')[2]) + day_in_sec
                 else:
-                    time_in_sec = float(time.split(':')[0]) * 3600 + float(time.split(':')[1]) * 60 + float(time.split(':')[2])
-                time_writer.writerow([package, current_job, time, alarm_num, str(float(time_in_sec)/alarm_num)])
+                    time_in_sec = float(time.split(':')[0]) * 3600 + float(
+                        time.split(':')[1]) * 60 + float(time.split(':')[2])
+                time_writer.writerow(
+                    [package, current_job, time, alarm_num,
+                     str(float(time_in_sec) / alarm_num)])
                 time_tsv.flush()
     except Exception as e:
         log(ERROR, f"Failed to write out time.tsv: {e}")
@@ -85,7 +89,10 @@ def write_out_results(cmd:list, is_failed:bool, time:str, is_timeout:bool) -> No
         file_cnt += 1
     with open(stat_file_name + str(file_cnt) + '.tsv', 'a') as local_stat:
         local_writer = csv.writer(local_stat, delimiter='\t')
-        local_writer.writerow(["Package", "Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
+        local_writer.writerow([
+            "Package", "Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type",
+            "Correct?", "Diff"
+        ])
         local_stat.flush()
         for file in os.listdir(out_dir):
             if file.endswith('.patch'):
@@ -96,9 +103,9 @@ def write_out_results(cmd:list, is_failed:bool, time:str, is_timeout:bool) -> No
             diff = df.read()
             df.close()
             file_wo_ext = patch_file.split('_diff.')[0]
-            for i in range(len(file_wo_ext)-1, -1, -1):
+            for i in range(len(file_wo_ext) - 1, -1, -1):
                 if file_wo_ext[i] == '_':
-                    donee_num = file_wo_ext[i+1:]
+                    donee_num = file_wo_ext[i + 1:]
                     donee_begin_idx = i
                     break
             donor_num = file_wo_ext[7:donee_begin_idx]
@@ -127,37 +134,50 @@ def write_out_results(cmd:list, is_failed:bool, time:str, is_timeout:bool) -> No
                         pattern = "UNKNOWN"
                     if diff.strip() == "":
                         diff = "Reproduction CMD: " + ' '.join(cmd)
-                    local_writer.writerow([package, current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
+                    local_writer.writerow(
+                        [package, current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     local_stat.flush()
-                    global_writer.writerow([package, current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
+                    global_writer.writerow(
+                        [package, current_job, benchmark, donor_num, donee_num, pattern, "-", diff])
                     global_stat.flush()
         if is_timeout:
             msg = '----------PATRON STOPPED DUE TO TIMEOUT----------'
-            local_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
+            local_writer.writerow([
+                package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"
+            ])
             local_stat.flush()
-            global_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
+            global_writer.writerow([
+                package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"
+            ])
             global_stat.flush()
         if is_failed:
             msg = '----------PATRON STOPPED DUE TO UNEXPECTED ERROR----------'
-            local_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
+            local_writer.writerow([
+                package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"
+            ])
             local_stat.flush()
-            global_writer.writerow([package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"])
+            global_writer.writerow([
+                package, current_job, msg, "Reproduction CMD: " + ' '.join(cmd), "-", "-", "-", "-"
+            ])
             global_stat.flush()
     is_patched = False
     for file in os.listdir(out_dir):
-        if file.endswith('.patch'): 
+        if file.endswith('.patch'):
             is_patched = True
             break
     if not is_patched:
         log(INFO, f"No patch is generated for {current_job}")
-        
+
+
 '''
 Function that runs Patron backend engine
 
 Input: list (command), str (path for output path)
 Output: subprocess.Popen
 '''
-def run_patron(cmd:list, path:str) -> subprocess.Popen:
+
+
+def run_patron(cmd: list, path: str) -> subprocess.Popen:
     global time_record, patch_work_cnt, patch_bar
     if not config.configuration["VERBOSE"]:
         try:
@@ -183,20 +203,23 @@ def run_patron(cmd:list, path:str) -> subprocess.Popen:
     time_record[' '.join(cmd)] = time.time()
     return subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
+
 '''
 Function that generates cmds
 
 Input: bool (from_top), str (package) -> if from_top is False, package can be ignored
 Output: list (command)
 '''
-def mk_worklist(package:str) -> list:
+
+
+def mk_worklist(package: str) -> list:
     base_cmd = [config.configuration["PATRON_BIN_PATH"]]
     worklist = []
     cnt = 0
     # if package == []:
     target_donee = config.transplant_configuration["DONEE_LIST"]
     # else:
-        # target_donee = config.get_patron_target_files(package)
+    # target_donee = config.get_patron_target_files(package)
     for donee, path in target_donee:
         package = donee.split('/')[-1]
         sub_out = os.path.join(config.transplant_configuration["SUBOUT_DIR"], package)
@@ -208,6 +231,7 @@ def mk_worklist(package:str) -> list:
         cnt += 1
     return worklist
 
+
 '''
 Function that runs Sparrow to get the analysis results, which is pre-requisite for DB construction
 This function is fitted to make DB out of RQ1, RQ2 benchmark dataset
@@ -215,23 +239,35 @@ This function is fitted to make DB out of RQ1, RQ2 benchmark dataset
 Input: list (patchweave_worklist), list (patron_worklist), bool (mk_full_db)
 Output: None (It handles the process itself)
 '''
-def run_sparrow_defualt(patchweave_worklist:list, patron_worklist:list, mk_full_db:bool=True):
+
+
+def run_sparrow_defualt(patchweave_worklist: list, patron_worklist: list, mk_full_db: bool = True):
     log(WARNING, f"Running sparrow to construct databse ...")
-    log(INFO, "Detailed log will be saved in {}".format(os.path.join(config.configuration["OUT_DIR"])))
+    log(INFO,
+        "Detailed log will be saved in {}".format(os.path.join(config.configuration["OUT_DIR"])))
     log(ALL, "Running sparrow for patchweave benchmarks...")
-    result_patchweave = subprocess.Popen(['python3', os.path.join(config.db_configuration["RQ1-2_EXP_PATH"], 'run.py'), '-sparrow', 'PWBench', '-p', '-id'] + patchweave_worklist)
+    result_patchweave = subprocess.Popen([
+        'python3',
+        os.path.join(config.db_configuration["RQ1-2_EXP_PATH"], 'run.py'), '-sparrow', 'PWBench',
+        '-p', '-id'
+    ] + patchweave_worklist)
     result_patchweave.wait()
     if result_patchweave.returncode != 0:
         log(ERROR, f"Failed to run sparrow for patchweave.")
         log(ERROR, result_patchweave.stderr.read().decode('utf-8'))
         config.patron_exit("PATRON")
     log(INFO, "Running sparrow for patron benchmarks...")
-    result_patron = subprocess.Popen(['python3', os.path.join(config.db_configuration["RQ1-2_EXP_PATH"], 'run.py'), '-sparrow', 'patron', '-p', '-id'] + patron_worklist)
+    result_patron = subprocess.Popen([
+        'python3',
+        os.path.join(config.db_configuration["RQ1-2_EXP_PATH"], 'run.py'), '-sparrow', 'patron',
+        '-p', '-id'
+    ] + patron_worklist)
     result_patron.wait()
     if result_patron.returncode != 0:
         log(ERROR, f"Failed to run sparrow for patron.")
         log(ERROR, result_patron.stderr.read().decode('utf-8'))
         config.patron_exit("PATRON")
+
 
 '''
 Function that creates Sparrow CMD for custom DB construction
@@ -239,13 +275,17 @@ Function that creates Sparrow CMD for custom DB construction
 Input: str (label_path), str (curr_path)
 Output: list (str)(command)
 '''
-def mk_sparrow_cmd(label_path:str, curr_path:str) -> list:
+
+
+def mk_sparrow_cmd(label_path: str, curr_path: str) -> list:
     with open(label_path, 'r') as f:
         data = json.load(f)
     bug_type = data["TYPE"].lower()
-    bug_flag = [ "-" + bug_type ]
-    loc_flag = [ "-target_loc", data["TRUE-ALARM"]['ALARM-LOC'][0] ]
-    default_flags = ["-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full"]
+    bug_flag = ["-" + bug_type]
+    loc_flag = ["-target_loc", data["TRUE-ALARM"]['ALARM-LOC'][0]]
+    default_flags = [
+        "-taint", "-unwrap_alloc", "-remove_cast", "-patron", "-extract_datalog_fact_full"
+    ]
     if bug_type != "bo":
         default_flags.append("-no_bo")
     target = ""
@@ -258,6 +298,7 @@ def mk_sparrow_cmd(label_path:str, curr_path:str) -> list:
         return []
     cmd = [config.configuration["SPARROW_BIN_PATH"], target] + default_flags + bug_flag + loc_flag
     return cmd
+
 
 '''
 Function that runs Sparrow to get the analysis results, which is pre-requisite for DB construction
@@ -279,7 +320,9 @@ For example, if donor programs are under /path/to/donor, the directory structure
 Input: list (paths of programs that are not analyzed by Sparrow)
 Output: None (It handles the process itself)
 '''
-def run_sparrow(missing_list:list) -> None:
+
+
+def run_sparrow(missing_list: list) -> None:
     log(WARNING, f"Running sparrow to construct databse ...")
     work_list = []
     proc_list = []
@@ -297,7 +340,17 @@ def run_sparrow(missing_list:list) -> None:
     i = 0
     work_size = len(work_list)
     work_cnt = 0
-    bar = progressbar.ProgressBar(widgets=[' [', 'Running Analysis for DB...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=work_size).start()
+    bar = progressbar.ProgressBar(widgets=[
+        ' [',
+        'Running Analysis for DB...',
+        progressbar.Percentage(),
+        '] ',
+        progressbar.Bar(),
+        ' (',
+        progressbar.ETA(),
+        ') ',
+    ],
+                                  maxval=work_size).start()
     while run_cnt < config.configuration["PROCESS_LIMIT"] and len(rest) > 0:
         if 0 == len(work_list[i]):
             continue
@@ -305,7 +358,7 @@ def run_sparrow(missing_list:list) -> None:
         work_cnt += 1
         try:
             if config.configuration["VERBOSE"]:
-                    log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
+                log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
             else:
                 bar.update(work_cnt)
         except ValueError:
@@ -337,7 +390,8 @@ def run_sparrow(missing_list:list) -> None:
                 proc_list.remove((cmd, proc, sparrow_log))
                 work_list.remove(cmd)
     log(INFO, "Successfully finished running sparrow.")
-        
+
+
 '''
 This function inistially made to check to ensure that the donee file is analyzed by Sparrow before Patron
 However, maybe useless because this is already done by previous steps
@@ -345,6 +399,8 @@ However, maybe useless because this is already done by previous steps
 Input: str (donee)
 Output: bool (True: donee is ready, False: donee is not ready)
 '''
+
+
 def check_donee(donee) -> bool:
     if not os.path.exists(donee):
         log(ERROR, f"{donee} does not exist.")
@@ -358,6 +414,7 @@ def check_donee(donee) -> bool:
         return False
     return True
 
+
 '''
 Function that check the analysis results, which is pre-requisite for DB construction
 This function is for our benchmark dataset
@@ -366,6 +423,8 @@ Since, patchweave dataset and patron dataset have different directory structure,
 Input: None
 Output: list (patchweave_missing_list), list (patron_missing_list)
 '''
+
+
 def check_sparrow_default() -> list:
     global donor_list
     patron_bench_path = os.path.join(config.db_configuration["BENCHMARK_PATH"], "patron")
@@ -390,11 +449,13 @@ def check_sparrow_default() -> list:
                 if os.path.exists(os.path.join(patchweave_bench_path, file, 'sparrow-out')):
                     os.system(f'rm -rf {os.path.join(patchweave_bench_path, file, "sparrow-out")}')
                 patchweave_missing_list.append(str(file))
-            elif not os.path.exists(os.path.join(patchweave_bench_path, file, 'donor', 'bug', 'sparrow-out')):
+            elif not os.path.exists(
+                    os.path.join(patchweave_bench_path, file, 'donor', 'bug', 'sparrow-out')):
                 log(WARNING, f"sparrow-out for {file} does not exist in {patchweave_bench_path}")
                 patchweave_missing_list.append(str(file))
             donor_list.append(os.path.join(patchweave_bench_path, file, 'donor'))
     return patchweave_missing_list, patron_missing_list
+
 
 '''
 Function that check the analysis results, which is pre-requisite for DB construction
@@ -405,10 +466,15 @@ or README.md
 Input: None
 Output: list (missing_list)
 '''
+
+
 def check_sparrow() -> list:
     global donor_list
     missing_list = []
-    donors = [ os.path.join(config.db_configuration["DONOR_PATH"], f) for f in os.listdir(config.db_configuration["DONOR_PATH"]) ]
+    donors = [
+        os.path.join(config.db_configuration["DONOR_PATH"], f)
+        for f in os.listdir(config.db_configuration["DONOR_PATH"])
+    ]
     for donor in donors:
         if not os.path.isdir(donor):
             continue
@@ -423,14 +489,20 @@ def check_sparrow() -> list:
         donor_list.append(donor)
     return missing_list
 
+
 '''
 Function that makes database from scratch
 
 Input: None (Path details are stored in config.py)
 Output: None
 '''
+
+
 def mk_database():
-    tsv_file = open(os.path.join(config.configuration["OUT_DIR"], "database_{}.tsv".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))), 'a')
+    tsv_file = open(
+        os.path.join(config.configuration["OUT_DIR"],
+                     "database_{}.tsv".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"))),
+        'a')
     writer = csv.writer(tsv_file, delimiter='\t')
     writer.writerow(["BENCHMARK", "ID", "STATUS"])
     tsv_file.flush()
@@ -447,13 +519,23 @@ def mk_database():
     cmd = [config.configuration["PATRON_BIN_PATH"], "db"]
     work_size = len(donor_list)
     work_cnt = 0
-    bar = progressbar.ProgressBar(widgets=[' [', 'Constructing DB...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=work_size).start()
+    bar = progressbar.ProgressBar(widgets=[
+        ' [',
+        'Constructing DB...',
+        progressbar.Percentage(),
+        '] ',
+        progressbar.Bar(),
+        ' (',
+        progressbar.ETA(),
+        ') ',
+    ],
+                                  maxval=work_size).start()
     for donor in donor_list:
         log(INFO, f"Creating {db_name} for {donor} ...")
         work_cnt += 1
         try:
             if config.configuration["VERBOSE"]:
-                    log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
+                log(INFO, "Working on {}/{} ...".format(work_cnt, work_size))
             else:
                 bar.update(work_cnt)
         except ValueError:
@@ -486,7 +568,9 @@ def mk_database():
                 for f in ls:
                     if f != 'Alarm.map':
                         true_alarm = f
-        result = subprocess.Popen(cmd + [donor, true_alarm], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        result = subprocess.Popen(cmd + [donor, true_alarm],
+                                  stdout=subprocess.PIPE,
+                                  stderr=subprocess.PIPE)
         result.wait()
         if result.returncode != 0:
             log(ERROR, f"Failed to create DB for {donor}")
@@ -497,15 +581,19 @@ def mk_database():
             log(INFO, f"Successfully created DB for {donor}")
             writer.writerow([donor.split('/')[-2], donor.split('/')[-1], "O"])
     log(INFO, "Successfully finished making DB.")
-    db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.db_configuration["DONOR_PATH"]) + "-DB")
+    db_dest = os.path.join(config.configuration["ROOT_PATH"],
+                           os.path.basename(config.db_configuration["DONOR_PATH"]) + "-DB")
     dest_cnt = 1
     while os.path.exists(db_dest):
-        db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.db_configuration["DONOR_PATH"]) + "-DB" + str(dest_cnt))
+        db_dest = os.path.join(
+            config.configuration["ROOT_PATH"],
+            os.path.basename(config.db_configuration["DONOR_PATH"]) + "-DB" + str(dest_cnt))
         dest_cnt += 1
     log(INFO, "Copying the database to the root directory as {}...".format(db_dest))
     db_src = os.path.join(config.configuration["PATRON_ROOT_PATH"], 'patron-DB')
     os.system('cp -r {} {}'.format(db_src, db_dest))
     tsv_file.close()
+
 
 '''
 Function that checks if the target database exists
@@ -513,11 +601,14 @@ Function that checks if the target database exists
 Input: None
 Output: bool (True: database exists, False: database does not exist)
 '''
+
+
 def is_exist_database() -> bool:
     if not os.path.exists(os.path.join(config.configuration["DB_PATH"])):
         log(ERROR, "{} does not exist.".format(config.configuration["DB_PATH"]))
         return False
     return True
+
 
 '''
 High level function that makes database from scratch
@@ -525,11 +616,15 @@ High level function that makes database from scratch
 Input: None (Path details are stored in config.py)
 Output: None
 '''
+
+
 def construct_database() -> None:
     if config.db_configuration["OVERWRITE_SPARROW"]:
         log(WARNING, 'Overwriting the existing Sparrow results...')
     else:
-        log(INFO, 'Checking If all donors in {} are analyzed by Sparrow...'.format(config.db_configuration["DONOR_PATH"]))
+        log(
+            INFO, 'Checking If all donors in {} are analyzed by Sparrow...'.format(
+                config.db_configuration["DONOR_PATH"]))
     works = []
     for donor in config.db_configuration["DONOR_PATH"]:
         if "RQ1-2" in donor:
@@ -542,6 +637,7 @@ def construct_database() -> None:
                 run_sparrow(works)
     mk_database()
 
+
 def parse_patron_log(cmd):
     alarm_list = []
     patron_log_file = os.path.join(cmd[-1], 'log.txt')
@@ -552,12 +648,15 @@ def parse_patron_log(cmd):
                 alarm_list.append(line.split('Target Alarm: ')[-1].strip())
     return alarm_list
 
+
 def kill_proc_by_cmd(cmd):
     cmd_str = ' '.join(cmd)
     os.system(f'pkill -f "{cmd_str}"')
 
+
 def reattempt_patron(cmd):
-    reattempt_dir = os.path.join(config.transplant_configuration["SUBOUT_DIR"], 'reattempted_projects')
+    reattempt_dir = os.path.join(config.transplant_configuration["SUBOUT_DIR"],
+                                 'reattempted_projects')
     if not os.path.exists(reattempt_dir):
         os.mkdir(reattempt_dir)
     is_success = True
@@ -583,14 +682,19 @@ def reattempt_patron(cmd):
     time.sleep(5)
     for alarm in os.listdir(os.path.join(reattempt_project_dir, 'sparrow-out', 'taint', 'datalog')):
         if alarm in finished_alarm_list:
-            os.system(f'rm -rf {os.path.join(reattempt_project_dir, "sparrow-out", "taint", "datalog", alarm)}')
-    new_out_dir = os.path.join(config.transplant_configuration["SUBOUT_DIR"], os.path.basename(reattempt_project_dir))
+            os.system(
+                f'rm -rf {os.path.join(reattempt_project_dir, "sparrow-out", "taint", "datalog", alarm)}'
+            )
+    new_out_dir = os.path.join(config.transplant_configuration["SUBOUT_DIR"],
+                               os.path.basename(reattempt_project_dir))
     if not os.path.exists(new_out_dir):
         os.mkdir(new_out_dir)
     else:
         cnt = 1
         while os.path.exists(new_out_dir):
-            new_out_dir = os.path.join(config.transplant_configuration["SUBOUT_DIR"], os.path.basename(reattempt_project_dir) + '_continued_' + str(cnt))
+            new_out_dir = os.path.join(
+                config.transplant_configuration["SUBOUT_DIR"],
+                os.path.basename(reattempt_project_dir) + '_continued_' + str(cnt))
             cnt += 1
 
     new_cmd = cmd[:2] + [reattempt_project_dir] + cmd[3:-1] + [new_out_dir]
@@ -602,7 +706,7 @@ def reattempt_patron(cmd):
         if p is None:
             return False
         stderr = None
-        (stdout, stderr) = p.communicate(timeout=(3600*6))
+        (stdout, stderr) = p.communicate(timeout=(3600 * 6))
     except subprocess.TimeoutExpired:
         log(ERROR, f"Timeout! 6 hours passed for {cmd}")
         is_timeout = True
@@ -622,8 +726,10 @@ def reattempt_patron(cmd):
     collect_job_results(work, 0, is_timeout)
     return is_success
 
+
 def remove_core_dumped():
     os.system(f'rm -rf {config.configuration["PATRON_ROOT_PATH"]}/core*')
+
 
 '''
 This function collects the patch results from each job directory everytime each process finishes
@@ -631,6 +737,8 @@ This function collects the patch results from each job directory everytime each 
 Input: list (PROCS)[command, process_id, Popen], int (work_cnt), list (boolean list to track which process is finished)
 Output: list (PROCS), int (work_cnt) -> updated
 '''
+
+
 def collect_job_results(work, tries, is_timeout):
     global time_record, lagging_proc
     cmd, proc = work
@@ -664,6 +772,8 @@ def collect_job_results(work, tries, is_timeout):
         log(ERROR, f"Try recollecting the results...{tries}tries")
         time.sleep(5)
         collect_job_results(work, tries, is_timeout)
+
+
 '''
 Thread worker.
 This function is to run Patron processes until the work_stack is empty
@@ -671,6 +781,8 @@ This function is to run Patron processes until the work_stack is empty
 Input: None
 Output: None
 '''
+
+
 def work_manager() -> None:
     global work_stack, patch_work_cnt, patch_patch_bar
     while not work_stack.empty():
@@ -684,7 +796,7 @@ def work_manager() -> None:
             p = run_patron(cmd, path)
             if p is None:
                 continue
-            (stdout, stderr) = p.communicate(timeout=(3600*6))
+            (stdout, stderr) = p.communicate(timeout=(3600 * 6))
         except subprocess.TimeoutExpired:
             is_timeout = True
             log(ERROR, f"Timeout! 6 hours passed for {cmd}")
@@ -701,7 +813,7 @@ def work_manager() -> None:
         collect_job_results(proc, 0, is_timeout)
 
 
-def recollect_result(out_dir:str) -> None:
+def recollect_result(out_dir: str) -> None:
     command = ['find', out_dir, '-name', '*.patch']
     result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     output = result.stdout
@@ -730,7 +842,8 @@ def recollect_result(out_dir:str) -> None:
                         if token.startswith('_'):
                             project_idx = path_explod2.index(token)
                             break
-                    project = '/'.join(path_explod2[project_idx:-1])[1:] if project_idx != 0 else 'NotFound'
+                    project = '/'.join(
+                        path_explod2[project_idx:-1])[1:] if project_idx != 0 else 'NotFound'
             else:
                 project = 'NotFound'
             unique_str = '_'.join(file_name.split('.')[0].split('_')[1:-1])
@@ -755,8 +868,7 @@ def recollect_result(out_dir:str) -> None:
             donor = '_'.join(unique_str.split('_')[:-1])
             writer.writerow([project, binary, path, donor, alarm_num, pattern, diff])
             result_fp.flush()
-        
-            
+
 
 def setup_patron(from_top):
     if not from_top:
@@ -767,11 +879,13 @@ def setup_patron(from_top):
             config.patron_usage()
             exit(1)
 
+
 def run_database():
     log(INFO, 'Entering Database-Only mode...')
     construct_database()
     log(INFO, 'Database is successfully constructed.')
     return
+
 
 def setup_logging_directories():
     global stat_out, global_stat, global_writer
@@ -780,14 +894,19 @@ def setup_logging_directories():
         os.mkdir(stat_out)
     global_stat = open(os.path.join(config.configuration["OUT_DIR"], 'current_exp_status.tsv'), 'a')
     global_writer = csv.writer(global_stat, delimiter='\t')
-    global_writer.writerow(["Package", "Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type","Correct?", "Diff"])
+    global_writer.writerow([
+        "Package", "Donee Name", "Donor Benchmark", "Donor #", "Donee #", "Pattern Type",
+        "Correct?", "Diff"
+    ])
     global_stat.flush()
     time_tsv_path = os.path.join(config.configuration["OUT_DIR"], 'time.tsv')
-    
+
     with open(time_tsv_path, 'a') as time_tsv:
         time_writer = csv.writer(time_tsv, delimiter='\t')
-        time_writer.writerow(['Package', 'Binary' 'Total Time', '# Alarm', "Avg. Time per Alarm"])
+        time_writer.writerow(['Package', 'Binary'
+                              'Total Time', '# Alarm', "Avg. Time per Alarm"])
         time_tsv.flush()
+
 
 def init_procs(package):
     global work_stack, patch_work_size, lagging_proc
@@ -798,13 +917,14 @@ def init_procs(package):
     for work in worklist:
         work_stack.put(work)
     patch_work_size = work_stack.qsize()
-    
+
     return
+
 
 def post_process():
     log(INFO, "Recollecting the results just in case some jobs are left behind.")
     recollect_result(config.configuration["OUT_DIR"])
-    
+
     all_finished = True
     non_finished = []
     for proc, cmd in lagging_proc:
@@ -825,10 +945,21 @@ def post_process():
             os.system('ps aux | grep "patron patch" | awk \'{print $2}\' | xargs kill -9')
         log(WARNING, 'Please, manually terminate the processes if any process is still running.')
 
+
 def run_works_parallel():
     global patch_work_size, patch_bar
     managers = []
-    patch_bar = progressbar.ProgressBar(widgets=[' [', 'Patron Running...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=patch_work_size).start()
+    patch_bar = progressbar.ProgressBar(widgets=[
+        ' [',
+        'Patron Running...',
+        progressbar.Percentage(),
+        '] ',
+        progressbar.Bar(),
+        ' (',
+        progressbar.ETA(),
+        ') ',
+    ],
+                                        maxval=patch_work_size).start()
     try:
         for i in range(config.configuration["PROCESS_LIMIT"]):
             manager = threading.Thread(target=work_manager, args=())
@@ -846,25 +977,40 @@ def run_works_parallel():
     global_stat.close()
     log(INFO, "All jobs are finished.")
     post_process()
-    
+
+
 def run_works_iterative():
     global patch_work_size, patch_bar
-    patch_bar = progressbar.ProgressBar(widgets=[' [', 'Patron Running...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=patch_work_size).start()
+    patch_bar = progressbar.ProgressBar(widgets=[
+        ' [',
+        'Patron Running...',
+        progressbar.Percentage(),
+        '] ',
+        progressbar.Bar(),
+        ' (',
+        progressbar.ETA(),
+        ') ',
+    ],
+                                        maxval=patch_work_size).start()
     while not work_stack.empty():
         work_manager()
     global_stat.close()
     log(INFO, "All jobs are finished.")
     post_process()
 
+
 def run_patch_transplantation(package):
     global global_stat, global_writer, stat_out, work_stack
     global patch_work_size, patch_bar, lagging_proc
-    
+
     setup_logging_directories()
     init_procs(package)
     if config.configuration["ITER_MODE"]:
         run_works_iterative()
     else:
         run_works_parallel()
-    
-    log(INFO, f"Please check the {config.configuration['OUT_DIR']}/final_result.tsv and log file for the results.")
+
+    log(
+        INFO,
+        f"Please check the {config.configuration['OUT_DIR']}/final_result.tsv and log file for the results."
+    )

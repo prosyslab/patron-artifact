@@ -18,7 +18,7 @@ target_dir = sys.argv[2]
 if not os.path.exists(target_dir):
     print("Directory not found: " + target_dir)
     sys.exit(1)
-    
+
 done_list = []
 for f in os.listdir(out_dir):
     if f == "stat" or f.endswith(".txt"):
@@ -26,7 +26,7 @@ for f in os.listdir(out_dir):
     with open(os.path.join(out_dir, f, "donee_path.txt"), "r") as p:
         path = p.read().strip()
         done_list.append(path)
-        
+
 for f in os.listdir(target_dir):
     for d in done_list:
         if f in d:

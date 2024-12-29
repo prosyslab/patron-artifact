@@ -1,5 +1,6 @@
 import datetime
 import config
+
 logger = None
 
 ERROR = -1
@@ -8,7 +9,7 @@ WARNING = 1
 
 
 def openings():
-    if config.configuration["args"].skip_intro:
+    if config.configuration["args"] is None or config.configuration["args"].skip_intro:
         return
     print('______  ___ ___________ _____ _   _ ')
     print('| ___ \/ _ \_   _| ___ \  _  | \ | |')

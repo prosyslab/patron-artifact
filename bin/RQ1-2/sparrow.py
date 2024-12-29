@@ -177,7 +177,7 @@ def get_label_dir(version):
 def get_sparrow_out_dir(version, target):
     if os.path.isdir(
             os.path.join(configuration['PROJECT_HOME'], 'data/RQ1-2/{}/{}/'.format(version,
-                                                                                  target))):
+                                                                                   target))):
         target_path = os.path.join(configuration['PROJECT_HOME'],
                                    'data/RQ1-2/{}/{}/'.format(version, target))
     else:
@@ -206,9 +206,10 @@ def run_sparrow(version, options, is_pipe):
         "\n\twith options:{}".format(options + pat_options))
     if os.path.isdir(
             os.path.join(configuration['PROJECT_HOME'], 'data/RQ1-2/{}/{}/'.format(version,
-                                                                                  target))):
+                                                                                   target))):
         os.chdir(
-            os.path.join(configuration['PROJECT_HOME'], 'data/RQ1-2/{}/{}/'.format(version, target)))
+            os.path.join(configuration['PROJECT_HOME'], 'data/RQ1-2/{}/{}/'.format(version,
+                                                                                   target)))
     else:
         os.chdir(os.path.join(configuration['PROJECT_HOME'], 'data/RQ1-2/{}'.format(version)))
     if not configuration['args'].mute:

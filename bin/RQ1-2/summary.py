@@ -11,20 +11,17 @@ duplicate_check = False
 def open_csv():
     global duplicate_check
     tsvfile = open(
-        os.path.join(
-            config.configuration["OUT_DIR"],
-            "summary_{}.tsv".format(config.configuration["TARGET_PROCEDURE"])),
-        "a")
+        os.path.join(config.configuration["OUT_DIR"],
+                     "summary_{}.tsv".format(config.configuration["TARGET_PROCEDURE"])), "a")
     txtfile = open(
-        os.path.join(
-            config.configuration["OUT_DIR"], "summary_hum_{}.txt".format(
-                config.configuration["TARGET_PROCEDURE"])), "a")
+        os.path.join(config.configuration["OUT_DIR"],
+                     "summary_hum_{}.txt".format(config.configuration["TARGET_PROCEDURE"])), "a")
     writer = csv.writer(tsvfile, delimiter='\t', lineterminator='\n')
     columns = ["Project", "Success?"]
     if config.configuration["TARGET_PROCEDURE"] == "PATRON":
         columns += [
-            "Total Time", "Preprocess Time", "Match Time", "Patch Time",
-            "Original Rel #", "Original DUE #", "Alt. Rel #", "Alt. DUE #,"
+            "Total Time", "Preprocess Time", "Match Time", "Patch Time", "Original Rel #",
+            "Original DUE #", "Alt. Rel #", "Alt. DUE #,"
         ]
     else:
         columns += ["Donor Time", "Donee Time"]
@@ -35,8 +32,10 @@ def open_csv():
     duplicate_check = True
     return tsvfile, txtfile, writer
 
+
 def parse_time_from_log(line):
     return datetime.datetime.strptime(line.split("[")[1].split("]")[0], "%Y%m%d-%H:%M:%S")
+
 
 def get_log_time(log_file):
     with open(log_file, "r") as f:
@@ -50,6 +49,7 @@ def get_log_time(log_file):
             end_time = parse_time_from_log(line)
     return str(end_time - start_time)
 
+
 def double_check(out_dir, info):
     info_lst = info[1].split("/")
     if info_lst[-1] == "donor":
@@ -62,6 +62,7 @@ def double_check(out_dir, info):
         return "O", "Experiment Success(Check Required)", new_time
     else:
         return "X", "Experiment Failed", "NO_TIME_RECORDED"
+
 
 def record_csv(tsv, file, writer, t):
     global prev_record_sparrow
@@ -78,31 +79,21 @@ def record_csv(tsv, file, writer, t):
     else:
         is_success, return_code, new_time = double_check(config.configuration["OUT_DIR"], t)
         time_taken = new_time
-    file.write("{} - {} - {}\n".format(t[0], t[1], time_taken,
-                                       return_code))
+    file.write("{} - {} - {}\n".format(t[0], t[1], time_taken, return_code))
     file.flush()
     os.fsync(file.fileno())
     if config.configuration["TARGET_PROCEDURE"] == "PATRON":
-        patron.parse_patron2csv(tsv, file, writer, t,
-                                [case_num, is_success, time_taken])
+        patron.parse_patron2csv(tsv, file, writer, t, [case_num, is_success, time_taken])
     if config.configuration["TARGET_PROCEDURE"] == "SPARROW":
         if donor_or_donee is not None:
-            if prev_record_sparrow is None or prev_record_sparrow[
-                    1] != case_num:
-                prev_record_sparrow = (donor_or_donee, case_num, is_success,
-                                       time_taken)
+            if prev_record_sparrow is None or prev_record_sparrow[1] != case_num:
+                prev_record_sparrow = (donor_or_donee, case_num, is_success, time_taken)
                 return
             elif prev_record_sparrow[1] == case_num:
                 if donor_or_donee == "donor":
-                    writer.writerow([
-                        case_num, is_success, time_taken,
-                        prev_record_sparrow[3]
-                    ])
+                    writer.writerow([case_num, is_success, time_taken, prev_record_sparrow[3]])
                 else:
-                    writer.writerow([
-                        case_num, is_success, prev_record_sparrow[3],
-                        time_taken
-                    ])
+                    writer.writerow([case_num, is_success, prev_record_sparrow[3], time_taken])
                 tsv.flush()
                 os.fsync(tsv.fileno())
         else:

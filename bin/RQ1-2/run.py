@@ -22,10 +22,7 @@ def run_cmd(cmd_str, shell=False):
     else:
         cmd_args = cmd_str.split()
     try:
-        subprocess.call(cmd_args,
-                        stdout=subprocess.DEVNULL,
-                        stderr=subprocess.DEVNULL,
-                        shell=shell)
+        subprocess.call(cmd_args, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=shell)
     except Exception as e:
         print(e)
         exit(1)
@@ -39,14 +36,11 @@ def generate_worklist():
     patron_opt = []
     benchmark_set = config.configuration["args"].benchmark_set
     for v in processes:
-        target_path = os.path.join(config.configuration["BENCHMARK_DIR"],
-                                   benchmark_set, v)
-        patron_path = [target_path, target_path
-                       ] if benchmark_set != "PWBench" else [
-                           target_path + "/donor", target_path + "/donee"
-                       ]
-        if os.path.exists(patron_path[1] +
-                          "/bug") and os.path.exists(target_path + "/patch"):
+        target_path = os.path.join(config.configuration["BENCHMARK_DIR"], benchmark_set, v)
+        patron_path = [target_path, target_path] if benchmark_set != "PWBench" else [
+            target_path + "/donor", target_path + "/donee"
+        ]
+        if os.path.exists(patron_path[1] + "/bug") and os.path.exists(target_path + "/patch"):
             patron_path[1] = target_path + "/bug"
         donor_path = get_file_path(v, True)
         donee_path = get_file_path(v, False)
@@ -54,43 +48,39 @@ def generate_worklist():
             donor_path = ["not ready"]
             donee_path = ["not ready"]
         if config.configuration["TARGET_PROCEDURE"] == "SPARROW":
-            sparrow_opt.append(
-                (config.configuration["default_sparrow_options"] + donor_path +
-                 sparrow_options[benchmark_set][str(v)]))
+            sparrow_opt.append((config.configuration["default_sparrow_options"] + donor_path +
+                                sparrow_options[benchmark_set][str(v)]))
             patron_opt.append([])
-            versions.append(benchmark_set + "/" + str(v) + (
-                "/donor" if benchmark_set == "PWBench" else ""))
+            versions.append(benchmark_set + "/" + str(v) +
+                            ("/donor" if benchmark_set == "PWBench" else ""))
             if benchmark_set == "PWBench":
-                sparrow_opt.append(
-                    (config.configuration["default_sparrow_options"] +
-                     donee_path + sparrow_options[benchmark_set][str(v)]))
+                sparrow_opt.append((config.configuration["default_sparrow_options"] + donee_path +
+                                    sparrow_options[benchmark_set][str(v)]))
                 patron_opt.append([])
-                versions.append(benchmark_set + "/" + str(v) + (
-                    "/donee" if benchmark_set == "PWBench" else ""))
+                versions.append(benchmark_set + "/" + str(v) +
+                                ("/donee" if benchmark_set == "PWBench" else ""))
         elif config.configuration["TARGET_PROCEDURE"] == "PATRON":
             label_path = os.path.join(benchmark_set, v)
             path = sparrow.get_label_dir(label_path)
             patron_option = sparrow.get_true_alarm(path)
-            patron_opt.append(config.configuration["default_patron_options"] +
-                              patron_path + [patron_option])
+            patron_opt.append(config.configuration["default_patron_options"] + patron_path +
+                              [patron_option])
             sparrow_opt.append([])
-            versions.append(benchmark_set + "/" + str(v) + (
-                "/donor" if benchmark_set == "PWBench" else ""))
+            versions.append(benchmark_set + "/" + str(v) +
+                            ("/donor" if benchmark_set == "PWBench" else ""))
         else:
             label_path = os.path.join(benchmark_set, v)
             path = sparrow.get_label_dir(label_path)
             patron_option = sparrow.get_true_alarm(path)
-            sparrow_opt.append(
-                (config.configuration["default_sparrow_options"] +
-                 sparrow_options[benchmark_set][str(v)]))
-            patron_opt.append(config.configuration["default_patron_options"] +
-                              patron_path + [patron_option])
-            versions.append(benchmark_set + "/" + str(v) + (
-                "/donor" if benchmark_set == "PWBench" else ""))
+            sparrow_opt.append((config.configuration["default_sparrow_options"] +
+                                sparrow_options[benchmark_set][str(v)]))
+            patron_opt.append(config.configuration["default_patron_options"] + patron_path +
+                              [patron_option])
+            versions.append(benchmark_set + "/" + str(v) +
+                            ("/donor" if benchmark_set == "PWBench" else ""))
 
     worklist = []
-    for process, s_option, patron_option in zip(versions, sparrow_opt,
-                                                patron_opt):
+    for process, s_option, patron_option in zip(versions, sparrow_opt, patron_opt):
         worklist.append((process, s_option, patron_option))
     return worklist
 
@@ -116,8 +106,7 @@ def run_seqential(works):
             procs = (v, log, child_process, SPARROW_CODE)
         elif config.configuration["TARGET_PROCEDURE"] == "PATRON":
             out_name = "out-{}".format(v.replace('/', '-'))
-            patron_out = os.path.join(config.configuration["OUT_DIR"],
-                                      out_name)
+            patron_out = os.path.join(config.configuration["OUT_DIR"], out_name)
             patron_option = patron_option + ["-o", patron_out]
             start_time = datetime.datetime.now()
             child_process = patron.run_patron(v, patron_option)
@@ -129,10 +118,8 @@ def run_seqential(works):
             logger.log(0, "Wating for sparrow process to finish")
             child_process.wait()
             if patron_option == []:
-                logger.log(
-                    1,
-                    "No patron process to run, skip this and run the next sparrow process"
-                )
+                logger.log(1,
+                           "No patron process to run, skip this and run the next sparrow process")
                 continue
             child_process = patron.run_patron(v, patron_option)
             log = None
@@ -143,8 +130,8 @@ def run_seqential(works):
         if child_process.returncode != 0:
             logger.log(
                 -1,
-                "An error occurred while running the {} process example-{}".
-                format(config.TARGET_PROCEDURE[proc_code], v),
+                "An error occurred while running the {} process example-{}".format(
+                    config.TARGET_PROCEDURE[proc_code], v),
             )
             success = False
             res = child_process.communicate()
@@ -158,8 +145,7 @@ def run_seqential(works):
                     is_bug = True
                 logger.log(
                     -1,
-                    "Error Message Saved in {}".format(
-                        get_log_paths(v, is_sparrow, is_bug)),
+                    "Error Message Saved in {}".format(get_log_paths(v, is_sparrow, is_bug)),
                 )
 
         if log is not None:
@@ -180,8 +166,7 @@ def run_seqential(works):
         )
     if proc_code == SPARROW_CODE and not config.configuration["args"].no_target:
         target_dir = sparrow.get_label_dir(v)
-        datalog_dir = os.path.join(sparrow.get_sparrow_out_dir(v, "bug"),
-                                   "taint", "datalog")
+        datalog_dir = os.path.join(sparrow.get_sparrow_out_dir(v, "bug"), "taint", "datalog")
         sparrow.adjust_labels(target_dir, datalog_dir)
 
 
@@ -197,19 +182,16 @@ def run_parallel(works):
             PROCS.append((v, log, child_process, SPARROW_CODE))
         elif config.configuration["TARGET_PROCEDURE"] == "PATRON":
             out_name = "out-{}".format(v.replace('/', '-'))
-            patron_out = os.path.join(config.configuration["OUT_DIR"],
-                                      out_name)
+            patron_out = os.path.join(config.configuration["OUT_DIR"], out_name)
             patron_option = patron_option + ["-o", patron_out]
             child_process = patron.run_patron(v, patron_option)
             log = None
             PROCS.append((v, log, child_process, PATRON_CODE))
         else:
             out_name = "out-{}".format(v.replace('/', '-'))
-            patron_out = os.path.join(config.configuration["OUT_DIR"],
-                                      out_name)
+            patron_out = os.path.join(config.configuration["OUT_DIR"], out_name)
             patron_option = patron_option + ["-o", patron_out]
-            log, child_process = sparrow.run_sparrow(v, sparrow_option, True,
-                                                     patron_option)
+            log, child_process = sparrow.run_sparrow(v, sparrow_option, True, patron_option)
             PROCS.append((v, log, child_process, PIPE_CODE))
             log = None
     for v, log, proc, proc_code in PROCS:
@@ -217,8 +199,8 @@ def run_parallel(works):
         if proc.returncode != 0:
             logger.log(
                 -1,
-                "An error occurred while running the {} process example-{}".
-                format(config.TARGET_PROCEDURE[proc_code], v),
+                "An error occurred while running the {} process example-{}".format(
+                    config.TARGET_PROCEDURE[proc_code], v),
             )
             res = proc.communicate()
             if res[1] is not None:
@@ -231,8 +213,7 @@ def run_parallel(works):
                     is_bug = True
                 logger.log(
                     -1,
-                    "Error Message Saved in {}".format(
-                        get_log_paths(v, is_sparrow, is_bug)),
+                    "Error Message Saved in {}".format(get_log_paths(v, is_sparrow, is_bug)),
                 )
             if (config.configuration["args"].t):
                 end_time = datetime.datetime.now()
@@ -250,11 +231,9 @@ def run_parallel(works):
             "FINISH " + config.configuration["TARGET_PROCEDURE"] +
             " PROCESS - benchmark example-{}".format(v),
         )
-        if proc_code == SPARROW_CODE and not config.configuration[
-                "args"].no_target:
+        if proc_code == SPARROW_CODE and not config.configuration["args"].no_target:
             target_dir = sparrow.get_label_dir(v)
-            datalog_dir = os.path.join(sparrow.get_sparrow_out_dir(v, "bug"),
-                                       "taint", "datalog")
+            datalog_dir = os.path.join(sparrow.get_sparrow_out_dir(v, "bug"), "taint", "datalog")
             sparrow.adjust_labels(target_dir, datalog_dir)
 
 

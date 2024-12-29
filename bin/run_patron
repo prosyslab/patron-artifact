@@ -3,37 +3,54 @@ import os, sys, argparse
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 ROOT_PATH = os.path.dirname(FILE_PATH)
-RQ1_2_SCRIPT_PATH=os.path.join(FILE_PATH, 'RQ1-2', 'experiment.sh')
-RQ3_SCRIPT_PATH=os.path.join(FILE_PATH, 'RQ3', 'run.py')
+RQ1_2_SCRIPT_PATH = os.path.join(FILE_PATH, 'RQ1-2', 'experiment.sh')
+RQ3_SCRIPT_PATH = os.path.join(FILE_PATH, 'RQ3', 'run.py')
 
-RQ1_2_CMD=['bash', RQ1_2_SCRIPT_PATH, 'PWBench']
-RQ3_CMD=['python3', RQ3_SCRIPT_PATH]
+RQ1_2_CMD = ['bash', RQ1_2_SCRIPT_PATH, 'PWBench']
+RQ3_CMD = ['python3', RQ3_SCRIPT_PATH]
+
 
 def saftey_check(args):
     is_projects_provided = args.projects is not None
-    if args.reproduce_RQ1_2 and (args.preprocess_target or args.transplant_target or args.construct_database or is_projects_provided):
-        print('Only one of the following arguments can be provided: --reproduce-RQ1-2, --reproduce-RQ3, --projects')
+    if args.reproduce_RQ1_2 and (args.preprocess_target or args.transplant_target
+                                 or args.construct_database or is_projects_provided):
+        print(
+            'Only one of the following arguments can be provided: --reproduce-RQ1-2, --reproduce-RQ3, --projects'
+        )
         return False
-    if (args.preprocess_target and args.transplant_target) or (args.preprocess_target and args.construct_database) or (args.transplant_target and args.construct_database):
-        print('Only one of the following arguments can be provided: --preprocess-target, --transplant-target, --construct-database')
+    if (args.preprocess_target and args.transplant_target) or (
+            args.preprocess_target and args.construct_database) or (args.transplant_target
+                                                                    and args.construct_database):
+        print(
+            'Only one of the following arguments can be provided: --preprocess-target, --transplant-target, --construct-database'
+        )
         return False
     if (args.construct_database and is_projects_provided):
-        print('Only one of the following arguments can be provided: --construct-database, --projects')
+        print(
+            'Only one of the following arguments can be provided: --construct-database, --projects')
         return False
     if is_projects_provided and len(args.projects) == 0:
         print('At least one project name must be provided')
         return False
     return True
 
+
 def print_help():
-    print("usage: ./run_patron [-h] [--reproduce-RQ1-2] [--reproduce-RQ3] [--projects PROJECTS [PROJECTS ...]]")
+    print(
+        "usage: ./run_patron [-h] [--reproduce-RQ1-2] [--reproduce-RQ3] [--projects PROJECTS [PROJECTS ...]]"
+    )
     print("       [-h] : Show this help message and exit")
     print("       [--reproduce-RQ1-2] : Reproduce RQ1-2 experiment")
     print("       [--preprocess-target] : build and analyze the target project")
     print("       [--transplant-target] : transplant patches on the target project")
-    print("       [--construnct-database] : construct the database from given donor directory (default: our default patterns)")
-    print("       [--projects PROJECTS [PROJECTS ...]] : List of Debian project names to run Patron (default: 113 Debian projects)")
+    print(
+        "       [--construnct-database] : construct the database from given donor directory (default: our default patterns)"
+    )
+    print(
+        "       [--projects PROJECTS [PROJECTS ...]] : List of Debian project names to run Patron (default: 113 Debian projects)"
+    )
     print("       For more usage of Patron, please refer to the README file")
+
 
 def get_default_debian_projects():
     list_path = os.path.join(ROOT_PATH, 'data', 'RQ3', 'DebianBench', 'target_list.txt')
@@ -44,9 +61,11 @@ def get_default_debian_projects():
     with open(list_path, 'r') as f:
         return f.read().splitlines()
 
+
 def construct_and_run_cmd(args):
     if args.projects is None:
-        print('@@@@[Warning]: Running Patron on all 113 Debian projects may take very long time@@@@')
+        print(
+            '@@@@[Warning]: Running Patron on all 113 Debian projects may take very long time@@@@')
         if 'y' == input('Do you want to run Patron on all 113 Debian projects? (y/n)'):
             target_projects = get_default_debian_projects()
             print(target_projects)
@@ -68,13 +87,22 @@ def construct_and_run_cmd(args):
         print_help()
         sys.exit(1)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run patron experiment')
     parser.add_argument('--reproduce-RQ1-2', action='store_true', help='Reproduce RQ1-2 experiment')
-    parser.add_argument('--preprocess-target', action='store_true', help='build and analyze the target project')
-    parser.add_argument('--transplant-target', action='store_true', help='transplant patches on the target project')
-    parser.add_argument('--construct-database', action='store_true', help='construct the database from the our experiment donor directory.')
-    parser.add_argument('--projects', nargs='+', help='List of project names to run the experiment on')
+    parser.add_argument('--preprocess-target',
+                        action='store_true',
+                        help='build and analyze the target project')
+    parser.add_argument('--transplant-target',
+                        action='store_true',
+                        help='transplant patches on the target project')
+    parser.add_argument('--construct-database',
+                        action='store_true',
+                        help='construct the database from the our experiment donor directory.')
+    parser.add_argument('--projects',
+                        nargs='+',
+                        help='List of project names to run the experiment on')
     args = parser.parse_args()
     if not saftey_check(args):
         print_help()
@@ -83,4 +111,3 @@ if __name__ == '__main__':
         os.execvp(RQ1_2_CMD[0], RQ1_2_CMD)
     else:
         construct_and_run_cmd(args)
-

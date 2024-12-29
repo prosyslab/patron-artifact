@@ -4,7 +4,8 @@ import logger
 from config import configuration
 import datetime, re
 
-PROJECT_HOME = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..'))
+PROJECT_HOME = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..',
+                                            '..'))
 
 try:
     from subprocess import DEVNULL
@@ -14,8 +15,7 @@ except ImportError:
 
 def parse_patron2csv(tsv, file, writer, t, cols):
     parsed_logs = []
-    dir_name = os.path.join(configuration["OUT_DIR"],
-                            "out-{}".format(t[1].replace('/', '-')))
+    dir_name = os.path.join(configuration["OUT_DIR"], "out-{}".format(t[1].replace('/', '-')))
     start_time = None
     end_time = None
     preprocess_end_time = None
@@ -29,34 +29,29 @@ def parse_patron2csv(tsv, file, writer, t, cols):
     # parsing log.txt
     with open(os.path.join(dir_name, "log.txt"), "r") as f:
         for line in f:
-            match = re.match(r'\[(\d{8}-\d{2}:\d{2}:\d{2})\]\[(\w+)\]\s(.*)',
-                             line)
+            match = re.match(r'\[(\d{8}-\d{2}:\d{2}:\d{2})\]\[(\w+)\]\s(.*)', line)
             if match:
-                time = datetime.datetime.strptime(match.group(1),
-                                                  "%Y%m%d-%H:%M:%S")
+                time = datetime.datetime.strptime(match.group(1), "%Y%m%d-%H:%M:%S")
                 log_type = match.group(2)
                 msg = match.group(3)
                 parsed_logs.append((time, log_type, msg))
     for i in range(len(parsed_logs)):
         if "Starting Patron" in parsed_logs[i][2]:
             start_time = parsed_logs[i][0]
-        if "Patch for" in parsed_logs[i][2]:
+        if "Patron procedure on Donor to Donee direct transplantation" in parsed_logs[i][2]:
             end_time = parsed_logs[i][0]
         if "Preprocessing with pattern is done" in parsed_logs[i][2]:
             preprocess_end_time = parsed_logs[i][0]
-        if "Matching with" in parsed_logs[i][2] and "is done" in parsed_logs[
-                i][2]:
+        if "Try matching with ..." in parsed_logs[i][2] and "is done" in parsed_logs[i][2]:
             match_end_time = parsed_logs[i][0]
         if "Translating patch" in parsed_logs[i][2]:
             patch_start_time = parsed_logs[i][0]
         if "Original Pattern" in parsed_logs[i][2]:
-            matches = re.findall(r"#Rels: (\d+), #DUEdges: (\d+)",
-                                 parsed_logs[i][2])
+            matches = re.findall(r"#Rels: (\d+), #DUEdges: (\d+)", parsed_logs[i][2])
             if matches:
                 org_rel_num, org_due_num = matches[0]
         if "Alternative Pattern" in parsed_logs[i][2]:
-            matches = re.findall(r"#Rels: (\d+), #DUEdges: (\d+)",
-                                 parsed_logs[i][2])
+            matches = re.findall(r"#Rels: (\d+), #DUEdges: (\d+)", parsed_logs[i][2])
             if matches:
                 alt_rel_num, alt_due_num = matches[0]
     # writing both to tsv and txt files with safty checks
@@ -69,8 +64,7 @@ def parse_patron2csv(tsv, file, writer, t, cols):
     if alt_due_num is None:
         alt_due_num = "X"
     if start_time is None or end_time is None or preprocess_end_time is None or match_end_time is None or patch_start_time is None:
-        msg = "Error parsing Patron log, Check if {} process ended successfully".format(
-            t[1])
+        msg = "Error parsing Patron log, Check if {} process ended successfully".format(t[1])
         logger.log(-1, msg)
     if start_time is None or preprocess_end_time is None:
         if start_time is None:
@@ -78,8 +72,7 @@ def parse_patron2csv(tsv, file, writer, t, cols):
             logger.log(-1, msg)
             file.write(msg)
         if preprocess_end_time is None:
-            msg = "\tNo Patron Preprocessing End Time Found in log for {}\n".format(
-                t[1])
+            msg = "\tNo Patron Preprocessing End Time Found in log for {}\n".format(t[1])
             logger.log(-1, msg)
             file.write(msg)
         preprocess_time = "X"
@@ -95,8 +88,7 @@ def parse_patron2csv(tsv, file, writer, t, cols):
             logger.log(-1, msg)
             file.write(msg)
         if preprocess_end_time is None:
-            msg = "\tNo Patron Preprocessing End Time Time Found in log for {}\n".format(
-                t[1])
+            msg = "\tNo Patron Preprocessing End Time Time Found in log for {}\n".format(t[1])
             logger.log(-1, msg)
             file.write(msg)
         match_time = "X"
@@ -112,8 +104,7 @@ def parse_patron2csv(tsv, file, writer, t, cols):
             logger.log(-1, msg)
             file.write("\tNo Patron End Time Found in log\n")
         if patch_start_time is None:
-            msg = "\tNo Patron Patch Translation Start Time Found in log for {}\n".format(
-                t[1])
+            msg = "\tNo Patron Patch Translation Start Time Found in log for {}\n".format(t[1])
             logger.log(-1, msg)
             file.write(msg)
         patch_time = "X"
@@ -148,10 +139,8 @@ def run_patron(version, options):
         logger.log(-1, "Patron is not ready on example-{}".format(version))
         return None
     logger.log(
-        0, "Running patron on example-{}".format(version) +
-        "\n\twith options:{}".format(options))
+        0, "Running patron on example-{}".format(version) + "\n\twith options:{}".format(options))
     os.chdir(os.path.join(PROJECT_HOME, 'patron'))
-    return subprocess.Popen(["timeout", timeout] +
-                            [configuration["PATRON_BIN_PATH"]] + options,
+    return subprocess.Popen(["timeout", timeout] + [configuration["PATRON_BIN_PATH"]] + options,
                             stdout=DEVNULL,
                             stderr=subprocess.PIPE)
