@@ -2,7 +2,7 @@
 ## Setup
 First, build both Sparrow and Patron
 
-Please, refer to [sparrow_manual](https://github.com/prosyslab/sparrow-incubator/blob/master/README.md) for building sparrow and [patron_manual](https://github.com/prosyslab/patron/blob/main/README.md) for building patron
+Please, refer to [sparrow_manual](https://github.com/prosyslab/sparrow/blob/master/README.md) for building sparrow and [patron_manual](https://github.com/prosyslab/patron/blob/main/README.md) for building patron
 
 
 ## Reproduce
@@ -16,7 +16,7 @@ If you would like to reproduce a specific benchmark set, run
 ./bin/experiment.sh <target_benchmark_set>
 ```
 
-The <target_benchmark_set> is either `patron` or `patchweave`
+The <target_benchmark_set> is either `patron` or `PWBench`
 
 If you wan to check the result of the experiment, go to [Experiment Result](#experiment-result)
 
@@ -29,7 +29,7 @@ You can also run specific id(s) of the target benchmark as the following.
 
 For example,
 ```
-./bin/experiment.sh patchweave -id 1 2 5
+./bin/experiment.sh PWBench -id 1 2 5
 ```
 will run patchweave benchmark id No.1, 2, and 5 sequentially.
 
@@ -83,8 +83,8 @@ options:
 You can also run a specific program(s) in the target benchmark by giving id No. (using -id or -range options)
 For example,
 ```
-$ ./bin/run.py -sparrow patchweave -id 5 
-$ ./bin/run.py -patron patchweave -id 1 2 3
+$ ./bin/run.py -sparrow PWBench -id 5 
+$ ./bin/run.py -patron PWBench -id 1 2 3
 $ ./bin/run.py -patron patron -range 1 10
 ```
 
@@ -109,15 +109,15 @@ Details are logged depending on the process.
 
 For Example,
 
-- Sparrow Analysis Process
+- Sparrow's Analysis Process
 ```
-benchmark/<benchmark project>/<ProjectID>/sparrow_log 
-ex) benchmark/patchweave/1/sparrow_log
+data/<benchmark project>/<ProjectID>/sparrow_log 
+ex) data/PWBench/1/sparrow_log
 ```
 
-- Patron Extraction Process
+- Patron's patch transplantation Process
 ```
-out/<datetime of your experiment>/out-patron-<ProjectID>/log.txt
+out/<datetime of your experiment>-1-2/out-<target benchmark>-<ProjectID>/log.txt
 ```
 
 ## Debugging
@@ -126,5 +126,5 @@ All the information regarding the patron process(facts and rules fed to the z3, 
 
 
 ```
-out/<datetime of your experiment>/out-patron-<ID>/
+out/<datetime of your experiment>-1-2/out-<target benchmark>-<ProjectID>/
 ```

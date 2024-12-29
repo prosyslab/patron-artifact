@@ -315,8 +315,8 @@ def get_file_path(i, is_donor):
 
 
 if __name__ == "__main__":
-    logger.openings()
     config.setup()
+    logger.openings()
     worklist = generate_worklist()
     if len(worklist) == 0:
         logger.log(-1, "Worklist is empty")

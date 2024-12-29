@@ -128,6 +128,12 @@ def setup():
         help=
         "set desirable cpu core on the experiment(default = half the cores)",
     )
+    parser.add_argument(
+        "--skip-intro",
+        action="store_true",
+        default=False,
+        help="skip the introduction message"
+    )
     configuration["args"] = parser.parse_args()
     if configuration["args"].t and configuration["args"].parallel:
         logger.log(

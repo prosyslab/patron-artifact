@@ -2,25 +2,23 @@
 import os, sys, argparse
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
+ROOT_PATH = os.path.dirname(FILE_PATH)
 RQ1_2_SCRIPT_PATH=os.path.join(FILE_PATH, 'RQ1-2', 'experiment.sh')
-RQ3_SCRIPT_PATH=os.path.join(FILE_PATH, 'RQ2', 'run.py')
+RQ3_SCRIPT_PATH=os.path.join(FILE_PATH, 'RQ3', 'run.py')
 
 RQ1_2_CMD=['bash', RQ1_2_SCRIPT_PATH, 'PWBench']
 RQ3_CMD=['python3', RQ3_SCRIPT_PATH]
 
 def saftey_check(args):
     is_projects_provided = args.projects is not None
-    if args.reproduce_RQ1_2 and args.reproduce_RQ3:
+    if args.reproduce_RQ1_2 and (args.preprocess_target or args.transplant_target or args.construct_database or is_projects_provided):
         print('Only one of the following arguments can be provided: --reproduce-RQ1-2, --reproduce-RQ3, --projects')
         return False
-    if args.reproduce_RQ1_2 and is_projects_provided:
-        print('Only one of the following arguments can be provided: --reproduce-RQ1-2, --reproduce-RQ3, --projects')
+    if (args.preprocess_target and args.transplant_target) or (args.preprocess_target and args.construct_database) or (args.transplant_target and args.construct_database):
+        print('Only one of the following arguments can be provided: --preprocess-target, --transplant-target, --construct-database')
         return False
-    if args.reproduce_RQ3 and is_projects_provided:
-        print('Only one of the following arguments can be provided: --reproduce-RQ1-2, --reproduce-RQ3, --projects')
-        return False
-    if not args.reproduce_RQ1_2 and not args.reproduce_RQ3 and not is_projects_provided:
-        print('One of the following arguments must be provided: --reproduce-RQ1-2, --reproduce-RQ3, --projects')
+    if (args.construct_database and is_projects_provided):
+        print('Only one of the following arguments can be provided: --construct-database, --projects')
         return False
     if is_projects_provided and len(args.projects) == 0:
         print('At least one project name must be provided')
@@ -31,14 +29,51 @@ def print_help():
     print("usage: ./run_patron [-h] [--reproduce-RQ1-2] [--reproduce-RQ3] [--projects PROJECTS [PROJECTS ...]]")
     print("       [-h] : Show this help message and exit")
     print("       [--reproduce-RQ1-2] : Reproduce RQ1-2 experiment")
-    print("       [--reproduce-RQ3] : Reproduce RQ3 experiment (not recommended, it takes too long)")
-    print("       [--projects PROJECTS [PROJECTS ...]] : List of Debian project names to run the experiment on")
+    print("       [--preprocess-target] : build and analyze the target project")
+    print("       [--transplant-target] : transplant patches on the target project")
+    print("       [--construnct-database] : construct the database from given donor directory (default: our default patterns)")
+    print("       [--projects PROJECTS [PROJECTS ...]] : List of Debian project names to run Patron (default: 113 Debian projects)")
     print("       For more usage of Patron, please refer to the README file")
+
+def get_default_debian_projects():
+    list_path = os.path.join(ROOT_PATH, 'data', 'RQ3', 'DebianBench', 'target_list.txt')
+    if not os.path.exists(list_path):
+        print('Error: Default Debian project list not found')
+        print('Please start over from crawling the Debian Project described in ./bin/RQ3/README.md')
+        sys.exit(1)
+    with open(list_path, 'r') as f:
+        return f.read().splitlines()
+
+def construct_and_run_cmd(args):
+    if args.projects is None:
+        print('@@@@[Warning]: Running Patron on all 113 Debian projects may take very long time@@@@')
+        if 'y' == input('Do you want to run Patron on all 113 Debian projects? (y/n)'):
+            target_projects = get_default_debian_projects()
+            print(target_projects)
+        else:
+            print_help()
+            sys.exit(1)
+    else:
+        target_projects = args.projects
+    if args.preprocess_target:
+        os.execvp(RQ3_CMD[0], RQ3_CMD + ['--preprocess', '--projects'] + target_projects)
+    elif args.transplant_target:
+        pass
+        # os.execvp(RQ3_CMD[0], RQ3_CMD + ['--transplant', '--projects'] + target_projects)
+    elif args.construct_database:
+        pass
+        # os.execvp(RQ3_CMD[0], RQ3_CMD + ['--construct-database', '--donor', args.construct_database])
+    else:
+        print('Invalid arguments')
+        print_help()
+        sys.exit(1)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run patron experiment')
     parser.add_argument('--reproduce-RQ1-2', action='store_true', help='Reproduce RQ1-2 experiment')
-    parser.add_argument('--reproduce-RQ3', action='store_true', help='Reproduce RQ3 experiment')
+    parser.add_argument('--preprocess-target', action='store_true', help='build and analyze the target project')
+    parser.add_argument('--transplant-target', action='store_true', help='transplant patches on the target project')
+    parser.add_argument('--construct-database', action='store_true', help='construct the database from the our experiment donor directory.')
     parser.add_argument('--projects', nargs='+', help='List of project names to run the experiment on')
     args = parser.parse_args()
     if not saftey_check(args):
@@ -46,18 +81,6 @@ if __name__ == '__main__':
         sys.exit(1)
     if args.reproduce_RQ1_2:
         os.execvp(RQ1_2_CMD[0], RQ1_2_CMD)
-    elif args.reproduce_RQ3:
-        if input('[!WARNING!]Running the entire RQ3 experiment is not recommended, it may take over weeks to build, analyze, transplant patches on 113 Debian Projects.\n' +
-        '           You can also run experiment on each Debian project using "--projects" options.\nDo you still want to continue? (y/n): ').lower() == 'y':
-            os.execvp(RQ3_CMD[0], RQ3_CMD[:2])
-        else:
-            print_help()
-            sys.exit(0)
-    elif args.projects is not None:
-        for project in args.projects:
-            os.execvp(RQ3_CMD[0], RQ3_CMD[:2])
     else:
-        print('Invalid arguments!')
-        print_help()
-        sys.exit(1)
+        construct_and_run_cmd(args)
 

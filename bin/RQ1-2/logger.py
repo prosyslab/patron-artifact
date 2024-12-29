@@ -1,5 +1,5 @@
 import datetime
-
+import config
 logger = None
 
 ERROR = -1
@@ -8,15 +8,17 @@ WARNING = 1
 
 
 def openings():
+    if config.configuration["args"].skip_intro:
+        return
     print('______  ___ ___________ _____ _   _ ')
     print('| ___ \/ _ \_   _| ___ \  _  | \ | |')
     print('| |_/ / /_\ \| | | |_/ / | | |  \| |')
     print('|  __/|  _  || | |    /| | | | . ` |')
     print('| |   | | | || | | |\  \\ \_/ / |\  |')
     print('\_|   \_| |_/\_/ \_| \_|\___/\_| \_/\n')
-    print('                             v.0.0.1')
+    print('                             v.0.1.0')
     print('                by prosys lab, KAIST\n')
-    print('YOU ARE RUNNING RQ1 EXPERIMENT\n')
+    print('YOU ARE RUNNING THE REPRODUCTION FOR RQ1 and 2 EXPERIMENT\n')
 
 
 def log(code: int, msg: str):

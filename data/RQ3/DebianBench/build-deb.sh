@@ -2,11 +2,8 @@
 
 PKG_NAME=$1
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
-if [ -n "$2" ]; then
-  OUT_DIR=$SCRIPT_DIR/smake_out/$2/$PKG_NAME
-else
-  OUT_DIR=$SCRIPT_DIR/smake_out/$PKG_NAME
-fi
+OUT_DIR=$SCRIPT_DIR/smake_out/$PKG_NAME
+
 
 TMP='_tmp'
 TMP_DIR=$SCRIPT_DIR/smake_out/$PKG_NAME$TMP
@@ -89,8 +86,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # 8. install the package
-echo sparrow $OUT_DIR
-mv sparrow $OUT_DIR || error_exit "Error: mv sparrow failed" $SCRIPT_DIR $TMP_DIR
+mv sparrow/* $OUT_DIR || error_exit "Error: mv sparrow failed" $SCRIPT_DIR $TMP_DIR
 
 # 9. clean the tmp directory
 clean $SCRIPT_DIR/smake_out $TMP_DIR

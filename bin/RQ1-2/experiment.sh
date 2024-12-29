@@ -37,28 +37,28 @@ function run_full {
         echo "Failed to run sparrow"
         exit 1
     fi
-    python3 $DIR/sep_true_alrams.py PWBench -o $OUT/$DATE
+    python3 $DIR/sep_true_alrams.py PWBench -o $OUT/$DATE --skip-intro
     if [ $? -ne 0 ]; then
         echo "Failed to run sep_true_alarms"
         exit 1
     fi
-    python3 $DIR/run.py PWBench -patron -t -o $OUT/$DATE -lt PATRON
+    python3 $DIR/run.py PWBench -patron -t -o $OUT/$DATE -lt PATRON --skip-intro
     if [ $? -ne 0 ]; then
         echo "Failed to run patron"
         exit 1
     fi
 
-    python3 $DIR/run.py patron -sparrow -t -o $OUT/$DATE -lt SPARROW
+    python3 $DIR/run.py patron -sparrow -t -o $OUT/$DATE -lt SPARROW --skip-intro
     if [ $? -ne 0 ]; then
         echo "Failed to run sparrow"
         exit 1
     fi
-    python3 $DIR/sep_true_alrams.py patron -o $OUT/$DATE
+    python3 $DIR/sep_true_alrams.py patron -o $OUT/$DATE --skip-intro
     if [ $? -ne 0 ]; then
         echo "Failed to run sep_true_alarms"
         exit 1
     fi
-    python3 $DIR/run.py patron -patron -t -o $OUT/$DATE -lt PATRON
+    python3 $DIR/run.py patron -patron -t -o $OUT/$DATE -lt PATRON --skip-intro
     if [ $? -ne 0 ]; then
         echo "Failed to run patron"
         exit 1
@@ -71,12 +71,12 @@ function run_on_benchmark {
         echo "Failed to run sparrow"
         exit 1
     fi
-    python3 $DIR/sep_true_alrams.py "$1" -o $OUT/$DATE
+    python3 $DIR/sep_true_alrams.py "$1" -o $OUT/$DATE --skip-intro
     if [ $? -ne 0 ]; then
         echo "Failed to run sep_true_alarms"
         exit 1
     fi
-    python3 $DIR/run.py "$1" -patron -t  -o $OUT/$DATE -lt PATRON
+    python3 $DIR/run.py "$1" -patron -t  -o $OUT/$DATE -lt PATRON --skip-intro
     if [ $? -ne 0 ]; then
         echo "Failed to run patron"
         exit 1
@@ -98,12 +98,12 @@ function run_on_ids {
         echo "Failed to run sparrow"
         exit 1
     fi
-    python3 $DIR/sep_true_alrams.py "$1" -id "${args[@]}" -o $OUT/$DATE
+    python3 $DIR/sep_true_alrams.py "$1" -id "${args[@]}" -o $OUT/$DATE --skip-intro
     if [ $? -ne 0 ]; then
         echo "Failed to run sep_true_alarms"
         exit 1
     fi
-    python3 $DIR/run.py "$1" -patron -t -id "${args[@]}" -o $OUT/$DATE -lt PATRON
+    python3 $DIR/run.py "$1" -patron -t -id "${args[@]}" -o $OUT/$DATE -lt PATRON --skip-intro
     if [ $? -ne 0 ]; then
         echo "Failed to run patron"
         exit 1
@@ -116,7 +116,7 @@ function patron_test {
         echo "Failed to run patron"
         exit 1
     fi
-    python3 $DIR/run.py patron -patron -t -o $OUT/$DATE -lt PATRON
+    python3 $DIR/run.py patron -patron -t -o $OUT/$DATE -lt PATRON --skip-intro
     if [ $? -ne 0 ]; then
         echo "Failed to run patron"
         exit 1

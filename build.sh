@@ -40,5 +40,7 @@ opam switch sparrow-4.13.1+flambda
 eval $(opam env)
 make
 
-echo "export PATH=\"\$PATH:/root/patron-artifact/sparrow/bin\"" >> /root/.bashrc
+echo "export PATH=\"\$PATH:$SCRIPT_PATH/sparrow/bin\"" >> /root/.bashrc
+echo "export PATH=\"\$PATH:$SCRIPT_PATH/smake\"" >> /root/.bashrc
+echo "SMAKE_BIN=$SCRIPT_PATH/smake/smake" >> /root/.bashrc
 source /root/.bashrc

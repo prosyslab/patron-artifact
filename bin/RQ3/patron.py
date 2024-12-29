@@ -189,18 +189,18 @@ Function that generates cmds
 Input: bool (from_top), str (package) -> if from_top is False, package can be ignored
 Output: list (command)
 '''
-def mk_worklist(from_top:bool, package:str) -> list:
-    base_cmd = [config.configuration["PATRON_BIN_PATH"]]
+def mk_worklist(package:str) -> list:
+    base_cmd = [config.transplant_configuration["PATRON_BIN_PATH"]]
     worklist = []
     cnt = 0
     if package == []:
-        target_donee = config.configuration["DONEE_LIST"]
+        target_donee = config.transplant_configuration["DONEE_LIST"]
     else:
         target_donee = config.get_patron_target_files(package)
     for donee, path in target_donee:
         package = donee.split('/')[-1]
-        sub_out = os.path.join(config.configuration["SUBOUT_DIR"], package)
-        db_opt = ["--db", os.path.join(config.configuration["DB_PATH"])]
+        sub_out = os.path.join(config.transplant_configuration["SUBOUT_DIR"], package)
+        db_opt = ["--db", os.path.join(config.transplant_configuration["DB_PATH"])]
         if os.path.exists(sub_out):
             sub_out = sub_out + "_" + str(cnt)
         out_opt = ["-o", sub_out]
@@ -217,17 +217,16 @@ Output: None (It handles the process itself)
 '''
 def run_sparrow_defualt(patchweave_worklist:list, patron_worklist:list, mk_full_db:bool=True):
     log(WARNING, f"Running sparrow to construct databse ...")
-    os.chdir(config.configuration["EXP_ROOT_PATH"])
-    log(INFO, "Detailed log will be saved in {}".format(os.path.join(config.configuration["EXP_ROOT_PATH"], 'out')))
+    log(INFO, "Detailed log will be saved in {}".format(os.path.join(config.configuration["OUT_DIR"])))
     log(ALL, "Running sparrow for patchweave benchmarks...")
-    result_patchweave = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patchweave', '-p', '-id'] + patchweave_worklist, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    result_patchweave = subprocess.Popen(['python3', os.path.join(config.db_configuration["RQ1-2_EXP_PATH"], 'run.py'), '-sparrow', 'PWBench', '-p', '-id'] + patchweave_worklist)
     result_patchweave.wait()
     if result_patchweave.returncode != 0:
         log(ERROR, f"Failed to run sparrow for patchweave.")
         log(ERROR, result_patchweave.stderr.read().decode('utf-8'))
         config.patron_exit("PATRON")
     log(INFO, "Running sparrow for patron benchmarks...")
-    result_patron = subprocess.Popen(['python3', 'bin/run.py', '-sparrow', 'patron', '-p', '-id'] + patron_worklist, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    result_patron = subprocess.Popen(['python3', os.path.join(config.db_configuration["RQ1-2_EXP_PATH"], 'run.py'), '-sparrow', 'patron', '-p', '-id'] + patron_worklist)
     result_patron.wait()
     if result_patron.returncode != 0:
         log(ERROR, f"Failed to run sparrow for patron.")
@@ -369,15 +368,15 @@ Output: list (patchweave_missing_list), list (patron_missing_list)
 '''
 def check_sparrow_default() -> list:
     global donor_list
-    patron_bench_path = os.path.join(config.configuration["BENCHMARK_PATH"], "patron")
-    patchweave_bench_path = os.path.join(config.configuration["BENCHMARK_PATH"], "patchweave")
+    patron_bench_path = os.path.join(config.db_configuration["BENCHMARK_PATH"], "patron")
+    patchweave_bench_path = os.path.join(config.db_configuration["BENCHMARK_PATH"], "PWBench")
     patchweave_missing_list = []
     patron_missing_list = []
     for file in os.listdir(patron_bench_path):
         if file.endswith('.sh'):
             continue
         if file in expriment_ready_to_go["patron"]:
-            if config.configuration["OVERWRITE_SPARROW"]:
+            if config.db_configuration["OVERWRITE_SPARROW"]:
                 if os.path.exists(os.path.join(patron_bench_path, file, 'sparrow-out')):
                     os.system(f'rm -rf {os.path.join(patron_bench_path, file, "sparrow-out")}')
                 patron_missing_list.append(str(file))
@@ -387,7 +386,7 @@ def check_sparrow_default() -> list:
             donor_list.append(os.path.join(patron_bench_path, file))
     for file in os.listdir(patchweave_bench_path):
         if file in expriment_ready_to_go["patchweave"]:
-            if config.configuration["OVERWRITE_SPARROW"]:
+            if config.db_configuration["OVERWRITE_SPARROW"]:
                 if os.path.exists(os.path.join(patchweave_bench_path, file, 'sparrow-out')):
                     os.system(f'rm -rf {os.path.join(patchweave_bench_path, file, "sparrow-out")}')
                 patchweave_missing_list.append(str(file))
@@ -435,18 +434,22 @@ def mk_database():
     writer = csv.writer(tsv_file, delimiter='\t')
     writer.writerow(["BENCHMARK", "ID", "STATUS"])
     tsv_file.flush()
-    log(WARNING, "Creating {} from scratch...".format(config.configuration["DB_PATH"]))
+    log(WARNING, "Creating {} from scratch...".format(config.db_configuration["DB_OUT_DIR"]))
     os.chdir(config.configuration["PATRON_ROOT_PATH"])
-    db_name = os.path.basename(config.configuration["DB_PATH"])
-    if os.path.exists(os.path.join(config.configuration["PATRON_ROOT_PATH"], 'patron-DB')):
-        log(WARNING, "Removing existing patron-DB...")
-        subprocess.run(['rm', '-rf', 'patron-DB'])
+    db_name = os.path.basename(config.db_configuration["DB_OUT_DIR"])
+    if os.path.exists(config.db_configuration["DB_OUT_DIR"]):
+        if 'y' == input(f"{db_name} already exists. Do you want to overwrite it? (y/n)"):
+            log(WARNING, "Removing existing DB...")
+            subprocess.run(['rm', '-rf', config.db_configuration["DB_OUT_DIR"]])
+        else:
+            log(ERROR, "Exiting...")
+            exit(1)
     cmd = [config.configuration["PATRON_BIN_PATH"], "db"]
     work_size = len(donor_list)
     work_cnt = 0
     bar = progressbar.ProgressBar(widgets=[' [', 'Constructing DB...', progressbar.Percentage(), '] ', progressbar.Bar(), ' (', progressbar.ETA(), ') ',], maxval=work_size).start()
     for donor in donor_list:
-        log(INFO, f"Creating patron-DB for {donor} ...")
+        log(INFO, f"Creating {db_name} for {donor} ...")
         work_cnt += 1
         try:
             if config.configuration["VERBOSE"]:
@@ -494,10 +497,10 @@ def mk_database():
             log(INFO, f"Successfully created DB for {donor}")
             writer.writerow([donor.split('/')[-2], donor.split('/')[-1], "O"])
     log(INFO, "Successfully finished making DB.")
-    db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.configuration["DONOR_PATH"]) + "-DB")
+    db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.db_configuration["DONOR_PATH"]) + "-DB")
     dest_cnt = 1
     while os.path.exists(db_dest):
-        db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.configuration["DONOR_PATH"]) + "-DB" + str(dest_cnt))
+        db_dest = os.path.join(config.configuration["ROOT_PATH"], os.path.basename(config.db_configuration["DONOR_PATH"]) + "-DB" + str(dest_cnt))
         dest_cnt += 1
     log(INFO, "Copying the database to the root directory as {}...".format(db_dest))
     db_src = os.path.join(config.configuration["PATRON_ROOT_PATH"], 'patron-DB')
@@ -523,18 +526,20 @@ Input: None (Path details are stored in config.py)
 Output: None
 '''
 def construct_database() -> None:
-    if config.configuration["OVERWRITE_SPARROW"]:
+    if config.db_configuration["OVERWRITE_SPARROW"]:
         log(WARNING, 'Overwriting the existing Sparrow results...')
     else:
-        log(INFO, 'Checking If all donors in {} are analyzed by Sparrow...'.format(config.configuration["DONOR_PATH"]))
-    if "benchmark" in config.configuration["DONOR_PATH"]:
-        patchweave_works, patron_works = check_sparrow_default()
-        if len(patchweave_works) > 0 or len(patron_works) > 0:
-            run_sparrow_defualt(patchweave_works, patron_works)
-    else:
-        works = check_sparrow()
-        if len(works) > 0:
-            run_sparrow(works)
+        log(INFO, 'Checking If all donors in {} are analyzed by Sparrow...'.format(config.db_configuration["DONOR_PATH"]))
+    works = []
+    for donor in config.db_configuration["DONOR_PATH"]:
+        if "RQ1-2" in donor:
+            patchweave_works, patron_works = check_sparrow_default()
+            if len(patchweave_works) > 0 or len(patron_works) > 0:
+                run_sparrow_defualt(patchweave_works, patron_works)
+        else:
+            works = check_sparrow()
+            if len(works) > 0:
+                run_sparrow(works)
     mk_database()
 
 def parse_patron_log(cmd):
@@ -784,9 +789,9 @@ def setup_logging_directories():
         time_writer.writerow(['Package', 'Binary' 'Total Time', '# Alarm', "Avg. Time per Alarm"])
         time_tsv.flush()
 
-def init_procs(from_top, package):
+def init_procs(package):
     global work_stack, patch_work_size, lagging_proc
-    worklist = mk_worklist(from_top, package)
+    worklist = mk_worklist(package)
     work_cnt = 0
     total_work_cnt = 0
     PROCS = []
@@ -851,19 +856,12 @@ def run_works_iterative():
     log(INFO, "All jobs are finished.")
     post_process()
 
-def run_patch_transplantation(from_top, package):
+def run_patch_transplantation(package):
     global global_stat, global_writer, stat_out, work_stack
     global patch_work_size, patch_bar, lagging_proc
     
-    # run default database if path does not exist
-    if not is_exist_database():
-        patchweave_works, patron_works = check_sparrow()
-        if len(patchweave_works) > 0 or len(patron_works) > 0:
-            run_sparrow(patchweave_works, patron_works)
-        mk_database()
-    
     setup_logging_directories()
-    init_procs(from_top, package)
+    init_procs(package)
     if config.configuration["ITER_MODE"]:
         run_works_iterative()
     else:
@@ -890,7 +888,7 @@ def main(from_top:bool=False, package:list=[]) -> None:
     if config.configuration["DATABASE_ONLY"]:
         run_database()
     else:
-        run_patch_transplantation(from_top, package)
+        run_patch_transplantation(package)
 
 
 if __name__ == '__main__':

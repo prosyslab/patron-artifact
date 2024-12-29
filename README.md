@@ -1,4 +1,4 @@
-# patron-artifact
+# Patron: Static Patch Transplantation for Recurring Software Vulnerabilities (Paper Artifact)
 
 ## Setup
 

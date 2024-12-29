@@ -53,7 +53,7 @@ def get_log_time(log_file):
 def double_check(out_dir, info):
     info_lst = info[1].split("/")
     if info_lst[-1] == "donor":
-        target_dir = os.path.join(out_dir, "out-patchweave-" + info_lst[-2] + "-" + info_lst[-1])
+        target_dir = os.path.join(out_dir, "out-PWBench-" + info_lst[-2] + "-" + info_lst[-1])
     else:
         target_dir = os.path.join(out_dir, "out-patron-" + info_lst[-1])
     patron_out = os.listdir(target_dir)

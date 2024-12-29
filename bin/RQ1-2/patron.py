@@ -4,7 +4,7 @@ import logger
 from config import configuration
 import datetime, re
 
-PROJECT_HOME = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+PROJECT_HOME = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..'))
 
 try:
     from subprocess import DEVNULL
