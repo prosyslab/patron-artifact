@@ -74,14 +74,17 @@ def construct_and_run_cmd(args):
             sys.exit(1)
     else:
         target_projects = args.projects
+    db_path = os.path.join(ROOT_PATH, 'reprod-patches-DB')
     if args.preprocess_target:
         os.execvp(RQ3_CMD[0], RQ3_CMD + ['--preprocess', '--projects'] + target_projects)
     elif args.transplant_target:
-        pass
-        # os.execvp(RQ3_CMD[0], RQ3_CMD + ['--transplant', '--projects'] + target_projects)
+        if not os.path.exists(db_path):
+            print('Error: Database directory not found, please run with --database first')
+            sys.exit(1)
+        os.execvp(RQ3_CMD[0], RQ3_CMD + ['--transplant', '--projects'] + target_projects + ['--database-path', db_path])
     elif args.construct_database:
-        pass
-        # os.execvp(RQ3_CMD[0], RQ3_CMD + ['--construct-database', '--donor', args.construct_database])
+        fixed_donors = os.path.join(ROOT_PATH, 'data', 'RQ3', 'DebianBench', 'reprod-patches')   
+        os.execvp(RQ3_CMD[0], RQ3_CMD + ['--database', fixed_donors])
     else:
         print('Invalid arguments')
         print_help()

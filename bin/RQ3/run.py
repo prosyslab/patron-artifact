@@ -7,7 +7,6 @@ import sparrow
 import patron
 import config
 import combine
-import count_sparrow_log
 from logger import log, INFO, ERROR, WARNING, ALL
 import progressbar
 import time

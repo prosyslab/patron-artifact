@@ -626,15 +626,18 @@ def construct_database() -> None:
             INFO, 'Checking If all donors in {} are analyzed by Sparrow...'.format(
                 config.db_configuration["DONOR_PATH"]))
     works = []
-    for donor in config.db_configuration["DONOR_PATH"]:
-        if "RQ1-2" in donor:
-            patchweave_works, patron_works = check_sparrow_default()
-            if len(patchweave_works) > 0 or len(patron_works) > 0:
-                run_sparrow_defualt(patchweave_works, patron_works)
-        else:
-            works = check_sparrow()
-            if len(works) > 0:
-                run_sparrow(works)
+    log(ALL, config.db_configuration["DONOR_PATH"])
+    donor = config.db_configuration["DONOR_PATH"]
+    if "RQ1-2" in donor:
+        patchweave_works, patron_works = check_sparrow_default()
+        if len(patchweave_works) > 0 or len(patron_works) > 0:
+            run_sparrow_defualt(patchweave_works, patron_works)
+    else:
+        log(ALL, "donor: " + donor)
+        works = check_sparrow()
+        log(ALL, "works: " + str(works))
+        if len(works) > 0:
+            run_sparrow(works)
     mk_database()
 
 
@@ -744,6 +747,7 @@ def collect_job_results(work, tries, is_timeout):
     cmd, proc = work
     if proc is not None and proc.poll() is not None:
         if proc.returncode != 0:
+            log(ERROR, proc.stderr.read().decode('utf-8'))
             kill_proc_by_cmd(cmd)
             if proc.returncode == -11:
                 log(ERROR, f"Segmentation Fault for {cmd}. Removing core dumped...")

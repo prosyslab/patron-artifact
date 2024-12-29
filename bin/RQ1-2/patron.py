@@ -123,7 +123,7 @@ def parse_patron2csv(tsv, file, writer, t, cols):
         alt_rel_num,
         alt_due_num,
     ]
-    if "X" in all_cols:
+    if not any(s.endswith(".patch") for s in os.listdir(dir_name)):
         all_cols[1] = "X"
     writer.writerow(all_cols)
     file.flush()

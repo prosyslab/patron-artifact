@@ -23,7 +23,9 @@ We assume that the following environment settings are met.
 - Docker
 - python 3.8+
 - pip3
-- Opam 2.1.2+
+- Ocaml 3.16.0
+- Dune 3.16.0
+- Opam 2.1.2
 
 For the Python dependencies required to run the experiment scripts, run
 ```
@@ -160,18 +162,34 @@ If you want to run against all 113 projects, refer to [RQ3 manual](https://githu
 
 #### __3.2.1. Making Pattern Database
 
+Run the following command to construct the minimal pattern database.
+
 ```
 ./bin/run_patron --construct-database
 ```
 
+If you want to try building other databases, please refer to [RQ3 manual](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ3/README.md)
+
 #### __3.2.2. Preprocessing Target Projects
 
+This process includes build and analysis steps for Patron to work.
+
+Run the following command to preprocess target donee projects
+
 ```
-./bin/run_patron --preprocess-target --projects [Debian Project1] [Debian Project2] ...
+./bin/run_patron --preprocess-target --projects <Debian Project1> <Debian Project2> ...
 ```
+
+Note that <Debian Project> is sensitive to package name.
+
+To know more about various Debian Projects, refer to [RQ3 manual](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ3/README.md)
 
 #### __3.2.3. Run Patron on the Target Projects
 
+Run the following command to run patron on target directories.
+
 ```
-./bin/run_patron --transplant-target
+./bin/run_patron --transplant-target <Target Dir1> <Target Dir2> ... 
 ```
+
+Each <Target Dir> must be from the output of the preprocess step.
