@@ -4,9 +4,24 @@ This is the artifact of the paper *Static Patch Transplantation for Recurring So
 
 ## 1. Getting Started
 
-<!-- ### 1.1. Get Image from Dockerhub. -->
+We assume that the following environment settings are met.
+- Ubuntu 22.04
+- Docker
+- python 3.8+
+- pip3
+- Ocaml 3.16.0
+- Dune 3.16.0
+- Opam 2.1.2
 
-### 1.1. Build Your Own Image.
+### 1.1. Get Image from Dockerhub.
+
+Get the pre-built image by running.
+
+```
+docker pull prosyslab/patron-artifact
+```
+
+### 1.2. Build Your Own Image.
 
 To build your own image, run the following commands.
 
@@ -16,16 +31,7 @@ cd docker/patron
 docker build . -t prosyslab/patron-artifact
 ```
 
-### 1.2. Build it on Your Machine.
-
-We assume that the following environment settings are met.
-- Ubuntu 22.04
-- Docker
-- python 3.8+
-- pip3
-- Ocaml 3.16.0
-- Dune 3.16.0
-- Opam 2.1.2
+### 1.3. Build it on Your Machine.
 
 For the Python dependencies required to run the experiment scripts, run
 ```
@@ -193,3 +199,80 @@ Run the following command to run patron on target directories.
 ```
 
 Each <Target Dir> must be from the output of the preprocess step.
+
+## 4. Patron on Custom Settings
+
+For this version of the artifact, there are two main challenges to use Patron on custom settings.
+
+## 4.1. Running Patron on an Arbitrary Project.
+
+This artifact offers to automatically preprocess the Debian projects only.
+
+If the project has a `Makefile`, run `smake/smake` file at the same directory where the `Makefile` is present.
+
+Then, the result of the smake will be under the automatically generated directory `sparrow` at your current directory.
+
+Usually, `sparrow` directory has several subdirectories based on different main functions.
+
+Choose one of the subdirectory as a target, and run the following command.
+
+```
+<Sparrow Bin Path> -il -frontenc claml <Chosen Subdirectory>/*.i > out.c
+```
+
+If the project does not have a `Makefile`, run the command with all the .c files you are targeting.
+
+For example,
+```
+sparrow -il -frontenc claml path/to/file1.c path/to/file2.c ... > out.c
+```
+
+Finally, run `bin/RQ3/sparrow.py` to continue with the analysis.
+
+The details of `sparrow.py` is written [here](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ3/README.md).
+
+## 4.2. Preparing a custom pattern database
+
+To prepare a custom pattern database, your donor directory must have the following directory structure.
+
+```
+Database
+├─ donor1            
+│   ├─ bug
+│   │   └─ buggy.c   <- a buggy version of CIL-parsed program. The name does not matter
+│   ├─ patch
+│   │   └─ patch.c   <- a patched version of CIL-parsed program. The name does not matter
+│   └─ label.json    <- meta information
+├─ donor2
+│   ├─ bug
+│   │   └─ buggy.c
+│   ├─ patch
+│   │   └─ patch.c
+│   └─ label.json
+...
+```
+
+each `buggy.c` and `patch.c` files must be in CIL format, meaning that you must run
+```
+<Sparrow Bin Path> -il -frontenc claml <your file1> <your .c file2> ... > buggy.c
+```
+This is identical to the command in section 4.1.
+
+The `label.json` must have the following fields.
+```
+1. TYPE     : IO, TIO, MIO, PIO, DZ, BO, ND
+2. ALARM-LOC: CIL line number of the bug in the buggy.c (a CIL file contains #line 000 in each line)
+3. ALARM-DIR: directory name for the target sparrow alarm
+```
+
+Here, to know `ALARM-DIR`, you must first run the sparrow analysis on your `buggy.c` file.
+
+Then, `sparrow-out` directory will be created at your current directory.
+
+Under `sparrow-out/taint/datalog/` directory, there will be directories named with digits.
+
+Find your target alaram by referencing `sparrow-out/taint/datalog/Alarm.map`.
+
+Once these are ready, you can continue to make your custom database by running `bin/RQ3/run.py`
+
+For the instruction for this script, refer to [here](https://github.com/prosyslab/patron-artifact/blob/master/bin/RQ3/README.md).
