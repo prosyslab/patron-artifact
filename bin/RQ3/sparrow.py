@@ -192,8 +192,7 @@ def execute_worklist(worklist):
 
 
 '''
-Run this script directly with -f option (target directory(s))
--f argument must have one or more .c files for Sparrow to analyze
+-t argument must have one or more directories with .c files for Sparrow to analyze
 and add the following options
 -io: Integer Overflow
 -dz: Division by Zero
@@ -204,10 +203,8 @@ and add the following options
 -bo: Buffer Overflow
 -no_bo: No Buffer Overflow(because buffer overflow alrams are too noisy)
 
-If none of these alram flags are given, it runs on a default setting
-
-Input: str (package name), TextIO (tsvfile), csv.writer
-Output: bool (True: success, False: fail)
+Input: None
+Output: None
 '''
 
 

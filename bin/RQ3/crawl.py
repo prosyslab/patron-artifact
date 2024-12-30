@@ -58,8 +58,6 @@ def crawl() -> None:
     if not get_package_list_from_web():
         return
     log(ALL, "Packages are retrieved.")
-    # log(ALL, "Checking duplicated packages ...")
-    # find_duplicate_pkg.run([os.path.join(LIST_DIR, file) for file in os.listdir(LIST_DIR) if file.endswith(".txt")])
     log(ALL, "Crawling Summary:")
     for file in os.listdir(os.path.join(PKG_DIR, 'crawling_result')):
         if file.endswith(".txt"):

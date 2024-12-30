@@ -12,14 +12,8 @@ import progressbar
 import time
 '''
 Function that runs build.py->combine.py->sparrow.py in a pipeline
-Crawling is not included in the pipeline for convenience.(You can do this with -crawl option)
-If -pipe option is not given when run directly on this file, it exits False
-Otherwise, this is the default mode, either run from run.py or run from main with -pipe option
-In some cases, pipe mode is slower than running each script separately because
-single OS can only run apt source command sequentially.
-*Target debian list should be given with -pipe option, otherwise, it runs on default settings.
 
-Input: Boolean, String (Both arguments indicate from where this function was called)
+Input: None
 Output: Boolean (True: Pipe mode confirmed, False: Pipe mode not confirmed)
 '''
 

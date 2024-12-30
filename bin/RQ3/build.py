@@ -13,6 +13,14 @@ import find_duplicate_pkg
 from typing import TextIO
 
 
+'''
+Function that gets the target list from the configuration data.
+If the target list is "all", it reads all the default target package list (113 packages).
+
+Input: None
+Output: list of package names
+'''
+
 def get_target_list():
     target_list = config.configuration["ARGS"].projects
     if len(target_list) == 1 and target_list[0] == "all":
@@ -25,7 +33,7 @@ Otherwise, pipeline doesn't have to waste resources trying the next steps
 Smake sometimes weirdly fails to generate .i files.
 There are various reasons for this, but this function will check if the package has .i files.
 
-Input: None
+Input: path (path to the package)
 Output: Boolean (True: Smake result is successfully generated, False: Smake result is not successfully generated)
 '''
 
@@ -87,11 +95,10 @@ def kill_processes() -> bool:
 
 
 '''
-Function that runs package/build-deb.sh on non-pipeline mode.
-For more detail about smake, check smake() function.
+Prep function for smake() function.
 
-Input: tries(number of tries (default=0))
-Output: None(Not interested in build_only mode.(check the log for the result))
+Input: packages(list of package names)
+Output: tuple (list of boolean values, list of package paths)
 '''
 
 
@@ -127,13 +134,13 @@ def run_smake(packages: list) -> tuple:
 
 
 '''
-Function that runs package/build-deb.sh.
-build-deb.sh is sequence of smake procedure.
+Function that runs data/RQ3/DebianBench/build-deb.sh.
+build-deb.sh is a sequence of smake procedures.
 smake is a tool that generates .i files from the source code.
 Given Makefile of a package, smake extracts all linked files and generates .i files for each executable binary.
 This is an essential procedure for Sparrow, the static analyzer.
 
-Input: category(category of the package), package(name of the package), 
+Input: package(name of the package), 
        tsvfile(file object to write the result), writer(csv.writer object), 
        smake_out_dir(directory to save the smake result), tries(number of tries (default=0))
 Output: Boolean (True: Building is successful, False: Building is not successful)
