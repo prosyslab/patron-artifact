@@ -42,7 +42,7 @@ def parse_patron2csv(tsv, file, writer, t, cols):
             end_time = parsed_logs[i][0]
         if "Preprocessing with pattern is done" in parsed_logs[i][2]:
             preprocess_end_time = parsed_logs[i][0]
-        if "Try matching with ..." in parsed_logs[i][2] and "is done" in parsed_logs[i][2]:
+        if "Matching with" in parsed_logs[i][2] and "is done" in parsed_logs[i][2]:
             match_end_time = parsed_logs[i][0]
         if "Translating patch" in parsed_logs[i][2]:
             patch_start_time = parsed_logs[i][0]
