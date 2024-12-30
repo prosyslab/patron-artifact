@@ -1,0 +1,15 @@
+dbfopen.c:623	nHeadLen-32	Alarm-2
+dbfopen.c:662	nHeadLen-32	Alarm-3
+dbfopen.c:673	SizeOf(int )*((unsigned long )nFields)	Alarm-5
+dbfopen.c:676	SizeOf(char )*((unsigned long )nFields)	Alarm-8
+dbfinfo.c:76	((unsigned long )__cil_tmp24)*SizeOf(int )	Alarm-9
+dbfopen.c:313	*psDBF.nHeaderLength/256	Alarm-12
+dbfopen.c:316	*psDBF.nRecordLength/256	Alarm-14
+dbfopen.c:367	(((unsigned long )*psDBF.nRecordLength)*((SAOffset )*psDBF.nCurrentRecord))+((unsigned long )*psDBF.nHeaderLength)	Alarm-1
+dbfopen.c:367	((unsigned long )*psDBF.nRecordLength)*((SAOffset )*psDBF.nCurrentRecord)	Alarm-0
+dbfopen.c:713	*(*psDBF.panFieldOffset+(iField-1))+*(*psDBF.panFieldSize+(iField-1))	Alarm-4
+dbfopen.c:674	SizeOf(int )*((unsigned long )nFields)	Alarm-6
+dbfopen.c:675	SizeOf(int )*((unsigned long )nFields)	Alarm-7
+dbfopen.c:623	(nHeadLen-32)/32	Alarm-10
+dbfopen.c:312	*psDBF.nHeaderLength%256	Alarm-11
+dbfopen.c:315	*psDBF.nRecordLength%256	Alarm-13

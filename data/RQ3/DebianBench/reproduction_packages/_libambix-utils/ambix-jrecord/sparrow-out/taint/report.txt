@@ -1,0 +1,88 @@
+= Alarms =
+1. adaptor.c:36 {_ambix_adaptorbuffer_resize} UnProven
+  ambichannels+extrachannels @_ambix_adaptorbuffer_resize-3061:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+2. adaptor.c:37 {_ambix_adaptorbuffer_resize} UnProven
+  (((unsigned long )channels)*frames)*((unsigned long )itemsize) @_ambix_adaptorbuffer_resize-3062:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+  ((unsigned long )channels)*frames @_ambix_adaptorbuffer_resize-3062:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+3. adaptor_acn.c:34 {_matrix_sid2acn} UnProven
+  __cil_tmp11-offset @_matrix_sid2acn-3028:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+4. adaptor_acn.c:39 {_matrix_sid2acn} UnProven
+  ((unsigned int )index___0)+offset @_matrix_sid2acn-3032:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+5. adaptor_acn.c:41 {_matrix_sid2acn} UnProven
+  maxindex-1 @_matrix_sid2acn-3034:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+6. adaptor_acn.c:41 {_matrix_sid2acn} UnProven
+  index___0-2 @_matrix_sid2acn-3038:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+7. adaptor_acn.c:42 {_matrix_sid2acn} UnProven
+  ((unsigned int )index___0)+offset @_matrix_sid2acn-3037:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+8. libambix.c:140 {ambix_open} UnProven
+  channels-*ambix.matrix.cols @ambix_open-3583:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+9. libambix.c:408 {_ambix_write_header} UnProven
+  datalen/SizeOf(float32_t ) @_ambix_write_header-3829:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+  1UL+(datalen/SizeOf(float32_t )) @_ambix_write_header-3829:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+10. libambix.c:413 {_ambix_write_header} UnProven
+  usedlen*SizeOf(float32_t ) @_ambix_write_header-3838:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+11. matrix.c:73 {ambix_matrix_init} UnProven
+  ((unsigned long )rows)*SizeOf(float32_t *) @ambix_matrix_init-1880:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+12. matrix.c:75 {ambix_matrix_init} UnProven
+  ((unsigned long )cols)*SizeOf(float32_t ) @ambix_matrix_init-1881:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+13. matrix.c:271 {ambix_matrix_fill} UnProven
+  ((unsigned long )rows)*SizeOf(float32_t ) @ambix_matrix_fill-2168:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+14. matrix.c:283 {ambix_matrix_fill} UnProven
+  ((unsigned long )rows)*SizeOf(float32_t ) @ambix_matrix_fill-2169:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+15. matrix.c:300 {ambix_matrix_fill} UnProven
+  ((unsigned long )rows)*SizeOf(float32_t ) @ambix_matrix_fill-2170:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+16. matrix.c:320 {ambix_matrix_fill} UnProven
+  ((unsigned long )rows)*SizeOf(float32_t ) @ambix_matrix_fill-2171:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+17. matrix_invert.c:95 {_ambix_matrix_invert_gaussjordan} UnProven
+  row-1 @_ambix_matrix_invert_gaussjordan-1678:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+18. matrix_invert.c:95 {_ambix_matrix_invert_gaussjordan} UnProven
+  j-1 @_ambix_matrix_invert_gaussjordan-1682:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+19. sndfile.c:106 {ambix2sndfile_info} UnProven
+  *axinfo.ambichannels+*axinfo.extrachannels @ambix2sndfile_info-449:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+20. sndfile.c:370 {_ambix_write_uuidchunk} UnProven
+  datasize4+1L @_ambix_write_uuidchunk-741:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+21. sndfile.c:377 {_ambix_write_uuidchunk} UnProven
+  ((unsigned long )datasize4)*4UL @_ambix_write_uuidchunk-750:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+22. utils.c:30 {ambix_order2channels} UnProven
+  (order+1U)*(order+1U) @ambix_order2channels-1213:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+  order+1U @ambix_order2channels-1213:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+  order+1U @ambix_order2channels-1213:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+23. utils.c:37 {ambix_channels2order} UnProven
+  order1-1 @ambix_channels2order-1218:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+24. uuid_chunk.c:181 {_ambix_matrix_to_uuid1} UnProven
+  datasize+((((uint64_t )rows)*((uint64_t )cols))*SizeOf(float32_t )) @_ambix_matrix_to_uuid1-1481:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+  (((uint64_t )rows)*((uint64_t )cols))*SizeOf(float32_t ) @_ambix_matrix_to_uuid1-1481:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+  ((uint64_t )rows)*((uint64_t )cols) @_ambix_matrix_to_uuid1-1481:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+25. uuid_chunk.c:187 {_ambix_matrix_to_uuid1} UnProven
+  ((uint64_t )rows)*((uint64_t )cols) @_ambix_matrix_to_uuid1-1483:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+26. uuid_chunk.c:201 {_ambix_matrix_to_uuid1} UnProven
+  ((unsigned long )cols)*SizeOf(float32_t ) @_ambix_matrix_to_uuid1-1492:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+27. uuid_chunk.c:202 {_ambix_matrix_to_uuid1} UnProven
+  index___1+(((unsigned long )cols)*SizeOf(float32_t )) @_ambix_matrix_to_uuid1-1493:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+  ((unsigned long )cols)*SizeOf(float32_t ) @_ambix_matrix_to_uuid1-1493:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+28. uuid_chunk.c:206 {_ambix_matrix_to_uuid1} UnProven
+  elements+2UL @_ambix_matrix_to_uuid1-1495:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+29. ambix-jrecord.c:400 {main} UnProven
+  d.a_channels+d.e_channels @main-5090:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+30. ambix-jrecord.c:407 {main} UnProven
+  ((unsigned long )d.channels)*SizeOf(float *) @main-5164:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+31. ambix-jrecord.c:408 {main} UnProven
+  ((unsigned long )d.channels)*SizeOf(jack_port_t *) @main-5165:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+32. ambix-jrecord.c:423 {main} UnProven
+  d.timer_seconds*d.sample_rate @main-5105:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+33. ambix-jrecord.c:449 {main} UnProven
+  d.buffer_frames*d.channels @main-5117:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+34. ambix-jrecord.c:450 {main} UnProven
+  ((unsigned long )d.buffer_samples)*SizeOf(float ) @main-5118:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+35. ambix-jrecord.c:452 {main} UnProven
+  ((unsigned long )(((unsigned int )d.buffer_frames)*d.a_channels))*SizeOf(float32_t ) @main-5166:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+  ((unsigned int )d.buffer_frames)*d.a_channels @main-5166:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+36. ambix-jrecord.c:453 {main} UnProven
+  ((unsigned long )(((unsigned int )d.buffer_frames)*d.e_channels))*SizeOf(float32_t ) @main-5167:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+  ((unsigned int )d.buffer_frames)*d.e_channels @main-5167:  source = main-4987 @ ambix-jrecord.c:299 UnProven
+
+#queries                 : 45
+#queries mod alarm point : 36
+#proven                  : 0
+#unproven                : 36
+#bot-involved            : 0

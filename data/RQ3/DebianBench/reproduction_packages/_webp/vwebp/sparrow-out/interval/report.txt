@@ -1,0 +1,35 @@
+= Alarms =
+1. vwebp.c:435 {StartDisplay} UnProven
+  (((height*screen_width)+width)-1)/width @StartDisplay-28249:  Divide by [-oo, +oo] UnProven
+2. vwebp.c:439 {StartDisplay} UnProven
+  (((width*screen_height)+height)-1)/height @StartDisplay-28251:  Divide by [-oo, +oo] UnProven
+3. vp8l_dec.c:1016 {DecodeAlphaData} UnProven
+  *dec.last_pixel_/width @DecodeAlphaData-21876:  Divide by [-oo, +oo] UnProven
+4. vp8l_dec.c:1017 {DecodeAlphaData} UnProven
+  *dec.last_pixel_%width @DecodeAlphaData-21877:  Divide by [-oo, +oo] UnProven
+5. vp8l_dec.c:1121 {DecodeImageData} UnProven
+  *dec.last_pixel_/width @DecodeImageData-22034:  Divide by [-oo, +oo] UnProven
+6. vp8l_dec.c:1122 {DecodeImageData} UnProven
+  *dec.last_pixel_%width @DecodeImageData-22035:  Divide by [-oo, +oo] UnProven
+7. alpha_processing.c:135 {GetScale} UnProven
+  (255U<<24)/a @GetScale-20112:  Divide by [-oo, +oo] UnProven
+8. rescaler.c:116 {WebPRescalerExportRowExpand_C} UnProven
+  (((uint64_t )(-*wrk.y_accum))<<32)/((unsigned long )*wrk.y_sub) @WebPRescalerExportRowExpand_C-16969:  Divide by [0, +oo] UnProven
+9. quant_levels_dec_utils.c:173 {InitCorrectionLUT} UnProven
+  (max_threshold*(threshold1-i))/delta @InitCorrectionLUT-1090:  Divide by [-oo, +oo] UnProven
+10. rescaler_utils.c:50 {WebPRescalerInit} UnProven
+  (1UL<<32)/((unsigned long )*rescaler.x_sub) @WebPRescalerInit-689:  Divide by [0, +oo] UnProven
+11. rescaler_utils.c:62 {WebPRescalerInit} UnProven
+  num/den @WebPRescalerInit-701:  Divide by [0, +oo] UnProven
+12. rescaler_utils.c:72 {WebPRescalerInit} UnProven
+  (1UL<<32)/((unsigned long )*rescaler.y_sub) @WebPRescalerInit-704:  Divide by [0, +oo] UnProven
+13. rescaler_utils.c:74 {WebPRescalerInit} UnProven
+  (1UL<<32)/((unsigned long )*rescaler.x_add) @WebPRescalerInit-705:  Divide by [0, +oo] UnProven
+14. rescaler_utils.c:121 {WebPRescaleNeededLines} UnProven
+  ((*rescaler.y_accum+*rescaler.y_sub)-1)/*rescaler.y_sub @WebPRescaleNeededLines-738:  Divide by [-oo, +oo] UnProven
+
+#queries                 : 56
+#queries mod alarm point : 43
+#proven                  : 29
+#unproven                : 14
+#bot-involved            : 0

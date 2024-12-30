@@ -1,0 +1,35 @@
+= Alarms =
+1. dbfinfo.c:76 {main} UnProven
+  ((unsigned long )__cil_tmp24)*SizeOf(int ) @main-6677:  source = SADFRead-2177 @ safileio.c:105 UnProven
+2. dbfopen.c:312 {DBFWriteHeader} UnProven
+  *psDBF.nHeaderLength%256 @DBFWriteHeader-2248:  source = SADFRead-2177 @ safileio.c:105 UnProven
+3. dbfopen.c:313 {DBFWriteHeader} UnProven
+  *psDBF.nHeaderLength/256 @DBFWriteHeader-2249:  source = SADFRead-2177 @ safileio.c:105 UnProven
+4. dbfopen.c:315 {DBFWriteHeader} UnProven
+  *psDBF.nRecordLength%256 @DBFWriteHeader-2250:  source = SADFRead-2177 @ safileio.c:105 UnProven
+5. dbfopen.c:316 {DBFWriteHeader} UnProven
+  *psDBF.nRecordLength/256 @DBFWriteHeader-2251:  source = SADFRead-2177 @ safileio.c:105 UnProven
+6. dbfopen.c:367 {DBFFlushRecord} UnProven
+  (((unsigned long )*psDBF.nRecordLength)*((SAOffset )*psDBF.nCurrentRecord))+((unsigned long )*psDBF.nHeaderLength) @DBFFlushRecord-2280:  source = SADFRead-2177 @ safileio.c:105 UnProven
+  ((unsigned long )*psDBF.nRecordLength)*((SAOffset )*psDBF.nCurrentRecord) @DBFFlushRecord-2280:  source = SADFRead-2177 @ safileio.c:105 UnProven
+7. dbfopen.c:623 {DBFOpenLL} UnProven
+  (nHeadLen-32)/32 @DBFOpenLL-2477:  source = SADFRead-2177 @ safileio.c:105 UnProven
+  nHeadLen-32 @DBFOpenLL-2477:  source = SADFRead-2177 @ safileio.c:105 UnProven
+8. dbfopen.c:662 {DBFOpenLL} UnProven
+  nHeadLen-32 @DBFOpenLL-2499:  source = SADFRead-2177 @ safileio.c:105 UnProven
+9. dbfopen.c:673 {DBFOpenLL} UnProven
+  SizeOf(int )*((unsigned long )nFields) @DBFOpenLL-2543:  source = SADFRead-2177 @ safileio.c:105 UnProven
+10. dbfopen.c:674 {DBFOpenLL} UnProven
+  SizeOf(int )*((unsigned long )nFields) @DBFOpenLL-2544:  source = SADFRead-2177 @ safileio.c:105 UnProven
+11. dbfopen.c:675 {DBFOpenLL} UnProven
+  SizeOf(int )*((unsigned long )nFields) @DBFOpenLL-2545:  source = SADFRead-2177 @ safileio.c:105 UnProven
+12. dbfopen.c:676 {DBFOpenLL} UnProven
+  SizeOf(char )*((unsigned long )nFields) @DBFOpenLL-2546:  source = SADFRead-2177 @ safileio.c:105 UnProven
+13. dbfopen.c:713 {DBFOpenLL} UnProven
+  *(*psDBF.panFieldOffset+(iField-1))+*(*psDBF.panFieldSize+(iField-1)) @DBFOpenLL-2524:  source = SADFRead-2177 @ safileio.c:105 UnProven
+
+#queries                 : 24
+#queries mod alarm point : 15
+#proven                  : 2
+#unproven                : 13
+#bot-involved            : 0

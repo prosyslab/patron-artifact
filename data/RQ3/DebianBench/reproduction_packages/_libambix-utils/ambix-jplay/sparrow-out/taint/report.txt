@@ -1,0 +1,19 @@
+= Alarms =
+1. ambix-jplay.c:376 {jackplay} UnProven
+  d.o.buffer_frames*d.channels @jackplay-5033:  source = main-5157 @ ambix-jplay.c:514 UnProven
+2. ambix-jplay.c:377 {jackplay} UnProven
+  ((unsigned long )d.buffer_samples)*SizeOf(float ) @jackplay-5034:  source = main-5157 @ ambix-jplay.c:514 UnProven
+3. ambix-jplay.c:379 {jackplay} UnProven
+  ((unsigned long )(d.o.buffer_frames*d.a_channels))*SizeOf(float32_t ) @jackplay-5105:  source = main-5157 @ ambix-jplay.c:514 UnProven
+  d.o.buffer_frames*d.a_channels @jackplay-5105:  source = main-5157 @ ambix-jplay.c:514 UnProven
+4. ambix-jplay.c:380 {jackplay} UnProven
+  ((unsigned long )(d.o.buffer_frames*d.e_channels))*SizeOf(float32_t ) @jackplay-5106:  source = main-5157 @ ambix-jplay.c:514 UnProven
+  d.o.buffer_frames*d.e_channels @jackplay-5106:  source = main-5157 @ ambix-jplay.c:514 UnProven
+5. ambix-jplay.c:446 {jackplay} UnProven
+  d.o.src_ratio*((double )(osr/isr)) @jackplay-5063:  source = main-5157 @ ambix-jplay.c:514 UnProven
+
+#queries                 : 7
+#queries mod alarm point : 5
+#proven                  : 0
+#unproven                : 5
+#bot-involved            : 0

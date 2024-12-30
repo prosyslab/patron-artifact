@@ -1,0 +1,213 @@
+= Alarms =
+1. corpus.c:1344 {corpus_get_generic_featurevec} UnProven
+  n_c%veclen @corpus_get_generic_featurevec-15263:  source = get_length-12205 @ s3io.c:429 UnProven
+2. corpus.c:1347 {corpus_get_generic_featurevec} UnProven
+  n_c/veclen @corpus_get_generic_featurevec-15265:  source = get_length-12205 @ s3io.c:429 UnProven
+3. s3io.c:494 {areadfloat} UnProven
+  ((unsigned long )length)*SizeOf(float ) @areadfloat-12273:  source = get_length-12205 @ s3io.c:429 UnProven
+4. s3io.c:576 {areadfloat_part} UnProven
+  @len-1 @areadfloat_part-12335:  source = get_length-12205 @ s3io.c:429 UnProven
+5. s3io.c:590 {areadfloat_part} UnProven
+  (e_coeff-s_coeff)+1 @areadfloat_part-12342:  source = get_length-12205 @ s3io.c:429 UnProven
+  e_coeff-s_coeff @areadfloat_part-12342:  source = get_length-12205 @ s3io.c:429 UnProven
+6. s3io.c:600 {areadfloat_part} UnProven
+  ((unsigned long )r_len)*SizeOf(float ) @areadfloat_part-12356:  source = get_length-12205 @ s3io.c:429 UnProven
+7. em_full_vars.c:118 {Expectation} UnProven
+  (*(Tau+i)-max)+((float )10) @Expectation-16324:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  (*(Tau+i)-max)+((float )10) @Expectation-16324:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  (*(Tau+i)-max)+((float )10) @Expectation-16324:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+  *(Tau+i)-max @Expectation-16324:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(Tau+i)-max @Expectation-16324:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(Tau+i)-max @Expectation-16324:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+8. em_full_vars.c:119 {Expectation} UnProven
+  sum+*(Tau+i) @Expectation-16326:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  sum+*(Tau+i) @Expectation-16326:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  sum+*(Tau+i) @Expectation-16326:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+9. em_full_vars.c:123 {Expectation} UnProven
+  1./((double )sum) @Expectation-16329:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  1./((double )sum) @Expectation-16329:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  1./((double )sum) @Expectation-16329:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+10. em_full_vars.c:125 {Expectation} UnProven
+  *(Tau+i)*invsum @Expectation-16331:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(Tau+i)*invsum @Expectation-16331:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(Tau+i)*invsum @Expectation-16331:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+11. em_full_vars.c:127 {Expectation} UnProven
+  (((double )max)+__cil_tmp17)-((double )10) @Expectation-16334:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  (((double )max)+__cil_tmp17)-((double )10) @Expectation-16334:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  (((double )max)+__cil_tmp17)-((double )10) @Expectation-16334:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+  ((double )max)+__cil_tmp17 @Expectation-16334:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  ((double )max)+__cil_tmp17 @Expectation-16334:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  ((double )max)+__cil_tmp17 @Expectation-16334:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+12. em_full_vars.c:198 {estimate_multi_modals} UnProven
+  ((double )*(corprod+k))-(0.5*__cil_tmp35) @estimate_multi_modals-16437:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  ((double )*(corprod+k))-(0.5*__cil_tmp35) @estimate_multi_modals-16437:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  ((double )*(corprod+k))-(0.5*__cil_tmp35) @estimate_multi_modals-16437:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+13. em_full_vars.c:216 {estimate_multi_modals} UnProven
+  Prevlogprob+__cil_tmp36 @estimate_multi_modals-16445:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  Prevlogprob+__cil_tmp36 @estimate_multi_modals-16445:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  Prevlogprob+__cil_tmp36 @estimate_multi_modals-16445:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+14. em_full_vars.c:221 {estimate_multi_modals} UnProven
+  *(Newc+k)+*(Tau+k) @estimate_multi_modals-16447:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(Newc+k)+*(Tau+k) @estimate_multi_modals-16447:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(Newc+k)+*(Tau+k) @estimate_multi_modals-16447:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+15. em_full_vars.c:223 {estimate_multi_modals} UnProven
+  *(*(Newmean+k)+j)+(*(Tau+k)**(*(x+i)+j)) @estimate_multi_modals-16449:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(Newmean+k)+j)+(*(Tau+k)**(*(x+i)+j)) @estimate_multi_modals-16449:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(*(Newmean+k)+j)+(*(Tau+k)**(*(x+i)+j)) @estimate_multi_modals-16449:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+  *(Tau+k)**(*(x+i)+j) @estimate_multi_modals-16449:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(Tau+k)**(*(x+i)+j) @estimate_multi_modals-16449:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(Tau+k)**(*(x+i)+j) @estimate_multi_modals-16449:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+16. em_full_vars.c:229 {estimate_multi_modals} UnProven
+  *(*(Newmean+k)+j)/*(Newc+k) @estimate_multi_modals-16455:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(Newmean+k)+j)/*(Newc+k) @estimate_multi_modals-16455:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(*(Newmean+k)+j)/*(Newc+k) @estimate_multi_modals-16455:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+17. em_full_vars.c:236 {estimate_multi_modals} UnProven
+  *(*(Newvar+k)+j)+((*(Tau+k)*(*(*(x+i)+j)-*(*(Newmean+k)+j)))*(*(*(x+i)+j)-*(*(Newmean+k)+j))) @estimate_multi_modals-16462:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(Newvar+k)+j)+((*(Tau+k)*(*(*(x+i)+j)-*(*(Newmean+k)+j)))*(*(*(x+i)+j)-*(*(Newmean+k)+j))) @estimate_multi_modals-16462:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(*(Newvar+k)+j)+((*(Tau+k)*(*(*(x+i)+j)-*(*(Newmean+k)+j)))*(*(*(x+i)+j)-*(*(Newmean+k)+j))) @estimate_multi_modals-16462:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+  (*(Tau+k)*(*(*(x+i)+j)-*(*(Newmean+k)+j)))*(*(*(x+i)+j)-*(*(Newmean+k)+j)) @estimate_multi_modals-16462:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  (*(Tau+k)*(*(*(x+i)+j)-*(*(Newmean+k)+j)))*(*(*(x+i)+j)-*(*(Newmean+k)+j)) @estimate_multi_modals-16462:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  (*(Tau+k)*(*(*(x+i)+j)-*(*(Newmean+k)+j)))*(*(*(x+i)+j)-*(*(Newmean+k)+j)) @estimate_multi_modals-16462:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+  *(Tau+k)*(*(*(x+i)+j)-*(*(Newmean+k)+j)) @estimate_multi_modals-16462:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(Tau+k)*(*(*(x+i)+j)-*(*(Newmean+k)+j)) @estimate_multi_modals-16462:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(Tau+k)*(*(*(x+i)+j)-*(*(Newmean+k)+j)) @estimate_multi_modals-16462:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+  *(*(x+i)+j)-*(*(Newmean+k)+j) @estimate_multi_modals-16462:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(x+i)+j)-*(*(Newmean+k)+j) @estimate_multi_modals-16462:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(*(x+i)+j)-*(*(Newmean+k)+j) @estimate_multi_modals-16462:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(x+i)+j)-*(*(Newmean+k)+j) @estimate_multi_modals-16462:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+18. em_full_vars.c:253 {estimate_multi_modals} UnProven
+  SumNewc+*(Newc+k) @estimate_multi_modals-16469:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  SumNewc+*(Newc+k) @estimate_multi_modals-16469:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  SumNewc+*(Newc+k) @estimate_multi_modals-16469:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+19. em_full_vars.c:258 {estimate_multi_modals} UnProven
+  *(*(Newvar+k)+j)/*(Newc+k) @estimate_multi_modals-16474:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(Newvar+k)+j)/*(Newc+k) @estimate_multi_modals-16474:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(*(Newvar+k)+j)/*(Newc+k) @estimate_multi_modals-16474:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+20. em_full_vars.c:260 {estimate_multi_modals} UnProven
+  *(Newc+k)/SumNewc @estimate_multi_modals-16476:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(Newc+k)/SumNewc @estimate_multi_modals-16476:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(Newc+k)/SumNewc @estimate_multi_modals-16476:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+21. em_full_vars.c:299 {estimate_multi_modals} UnProven
+  ((double )*(corprod+k))-(0.5*__cil_tmp39) @estimate_multi_modals-16504:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  ((double )*(corprod+k))-(0.5*__cil_tmp39) @estimate_multi_modals-16504:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  ((double )*(corprod+k))-(0.5*__cil_tmp39) @estimate_multi_modals-16504:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+22. em_full_vars.c:311 {estimate_multi_modals} UnProven
+  LogProb+__cil_tmp40 @estimate_multi_modals-16512:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  LogProb+__cil_tmp40 @estimate_multi_modals-16512:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  LogProb+__cil_tmp40 @estimate_multi_modals-16512:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+23. em_full_vars.c:316 {estimate_multi_modals} UnProven
+  *(Newc+k)+*(Tau+k) @estimate_multi_modals-16514:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(Newc+k)+*(Tau+k) @estimate_multi_modals-16514:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(Newc+k)+*(Tau+k) @estimate_multi_modals-16514:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+24. em_full_vars.c:318 {estimate_multi_modals} UnProven
+  *(*(Newmean+k)+j)+(*(Tau+k)**(*(x+i)+j)) @estimate_multi_modals-16516:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(Newmean+k)+j)+(*(Tau+k)**(*(x+i)+j)) @estimate_multi_modals-16516:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(*(Newmean+k)+j)+(*(Tau+k)**(*(x+i)+j)) @estimate_multi_modals-16516:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+  *(Tau+k)**(*(x+i)+j) @estimate_multi_modals-16516:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(Tau+k)**(*(x+i)+j) @estimate_multi_modals-16516:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(Tau+k)**(*(x+i)+j) @estimate_multi_modals-16516:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+25. em_full_vars.c:320 {estimate_multi_modals} UnProven
+  *(*(Newvar+k)+j)+((*(Tau+k)*(*(*(x+i)+j)-*(*(mean+k)+j)))*(*(*(x+i)+j)-*(*(mean+k)+j))) @estimate_multi_modals-16517:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(Newvar+k)+j)+((*(Tau+k)*(*(*(x+i)+j)-*(*(mean+k)+j)))*(*(*(x+i)+j)-*(*(mean+k)+j))) @estimate_multi_modals-16517:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(*(Newvar+k)+j)+((*(Tau+k)*(*(*(x+i)+j)-*(*(mean+k)+j)))*(*(*(x+i)+j)-*(*(mean+k)+j))) @estimate_multi_modals-16517:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+  (*(Tau+k)*(*(*(x+i)+j)-*(*(mean+k)+j)))*(*(*(x+i)+j)-*(*(mean+k)+j)) @estimate_multi_modals-16517:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  (*(Tau+k)*(*(*(x+i)+j)-*(*(mean+k)+j)))*(*(*(x+i)+j)-*(*(mean+k)+j)) @estimate_multi_modals-16517:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  (*(Tau+k)*(*(*(x+i)+j)-*(*(mean+k)+j)))*(*(*(x+i)+j)-*(*(mean+k)+j)) @estimate_multi_modals-16517:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+  *(Tau+k)*(*(*(x+i)+j)-*(*(mean+k)+j)) @estimate_multi_modals-16517:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(Tau+k)*(*(*(x+i)+j)-*(*(mean+k)+j)) @estimate_multi_modals-16517:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(Tau+k)*(*(*(x+i)+j)-*(*(mean+k)+j)) @estimate_multi_modals-16517:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+  *(*(x+i)+j)-*(*(mean+k)+j) @estimate_multi_modals-16517:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(x+i)+j)-*(*(mean+k)+j) @estimate_multi_modals-16517:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(*(x+i)+j)-*(*(mean+k)+j) @estimate_multi_modals-16517:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(x+i)+j)-*(*(mean+k)+j) @estimate_multi_modals-16517:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+26. em_full_vars.c:330 {estimate_multi_modals} UnProven
+  *(*(Newmean+k)+j)/*(Newc+k) @estimate_multi_modals-16523:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(Newmean+k)+j)/*(Newc+k) @estimate_multi_modals-16523:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(*(Newmean+k)+j)/*(Newc+k) @estimate_multi_modals-16523:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+27. em_full_vars.c:345 {estimate_multi_modals} UnProven
+  (LogProb-Prevlogprob)/LogProb @estimate_multi_modals-16526:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  (LogProb-Prevlogprob)/LogProb @estimate_multi_modals-16526:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  (LogProb-Prevlogprob)/LogProb @estimate_multi_modals-16526:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+  LogProb-Prevlogprob @estimate_multi_modals-16526:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  LogProb-Prevlogprob @estimate_multi_modals-16526:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  LogProb-Prevlogprob @estimate_multi_modals-16526:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+28. gauss.c:49 {gauss} UnProven
+  *__cil_tmp9-*__cil_tmp10 @gauss-16302:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *__cil_tmp9-*__cil_tmp10 @gauss-16302:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+29. gauss.c:50 {gauss} UnProven
+  density-((t*t)**__cil_tmp11) @gauss-16305:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  density-((t*t)**__cil_tmp11) @gauss-16305:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  density-((t*t)**__cil_tmp11) @gauss-16305:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+  (t*t)**__cil_tmp11 @gauss-16305:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  (t*t)**__cil_tmp11 @gauss-16305:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  t*t @gauss-16305:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  t*t @gauss-16305:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+30. main.c:126 {main} UnProven
+  noise_threshold+noise_width @main-16125:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  noise_threshold+noise_width @main-16125:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+31. main.c:134 {main} UnProven
+  noisemean[j]+*(*(vector+i)+j) @main-16131:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  noisemean[j]+*(*(vector+i)+j) @main-16131:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+32. main.c:135 {main} UnProven
+  noisevar[j]+(*(*(vector+i)+j)**(*(vector+i)+j)) @main-16132:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  noisevar[j]+(*(*(vector+i)+j)**(*(vector+i)+j)) @main-16132:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  *(*(vector+i)+j)**(*(vector+i)+j) @main-16132:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(vector+i)+j)**(*(vector+i)+j) @main-16132:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+33. main.c:153 {main} UnProven
+  noisemean[j]/((float )numnoise) @main-16142:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  noisemean[j]/((float )numnoise) @main-16142:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+34. main.c:154 {main} UnProven
+  noisevar[j]/((float )numnoise) @main-16143:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  noisevar[j]/((float )numnoise) @main-16143:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  (noisevar[j]/((float )numnoise))-(noisemean[j]*noisemean[j]) @main-16143:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  (noisevar[j]/((float )numnoise))-(noisemean[j]*noisemean[j]) @main-16143:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  noisemean[j]*noisemean[j] @main-16143:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  noisemean[j]*noisemean[j] @main-16143:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+35. main.c:206 {main} UnProven
+  *(*(vector+i)+j)-*(*(mean+*(bin+i))+j) @main-16175:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(vector+i)+j)-*(*(mean+*(bin+i))+j) @main-16175:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+36. main.c:207 {main} UnProven
+  *(*(variance+*(bin+i))+j)+(atemp*atemp) @main-16176:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(variance+*(bin+i))+j)+(atemp*atemp) @main-16176:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  atemp*atemp @main-16176:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  atemp*atemp @main-16176:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+37. store_distribution.c:61 {store_distribution} UnProven
+  Nmodes+1 @store_distribution-15658:  source = read_backup_distribution-15709 @ read_backup_distributions.c:55 UnProven
+38. store_distribution.c:74 {store_distribution} UnProven
+  (1.-((double )noisec))*((double )*(c+i)) @store_distribution-15669:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  (1.-((double )noisec))*((double )*(c+i)) @store_distribution-15669:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  (1.-((double )noisec))*((double )*(c+i)) @store_distribution-15669:  source = read_backup_distribution-15720 @ read_backup_distributions.c:71 UnProven
+39. vq.c:81 {prune_distance} UnProven
+  *__cil_tmp8-*__cil_tmp9 @prune_distance-15435:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *__cil_tmp8-*__cil_tmp9 @prune_distance-15435:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+40. vq.c:82 {prune_distance} UnProven
+  t*t @prune_distance-15436:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  t*t @prune_distance-15436:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+41. vq.c:84 {prune_distance} UnProven
+  *__cil_tmp10-*__cil_tmp11 @prune_distance-15442:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *__cil_tmp10-*__cil_tmp11 @prune_distance-15442:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+42. vq.c:85 {prune_distance} UnProven
+  dist+(t*t) @prune_distance-15443:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  dist+(t*t) @prune_distance-15443:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  t*t @prune_distance-15443:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  t*t @prune_distance-15443:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+43. vq.c:148 {Initial_codebook} UnProven
+  (*(*(codes+nbin)+j)*((float )*(bin+nbin)))+*(*(vector+i)+j) @Initial_codebook-15490:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  (*(*(codes+nbin)+j)*((float )*(bin+nbin)))+*(*(vector+i)+j) @Initial_codebook-15490:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+44. vq.c:187 {Distortion_and_cluster} UnProven
+  distortion+mindist @Distortion_and_cluster-15514:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  distortion+mindist @Distortion_and_cluster-15514:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+45. vq.c:223 {Update_codebook} UnProven
+  *(*(codes+j)+k)+*(*(vector+i)+k) @Update_codebook-15568:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  *(*(codes+j)+k)+*(*(vector+i)+k) @Update_codebook-15568:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+46. vq.c:284 {vector_quantize} UnProven
+  (prevdist-distortion)/distortion @vector_quantize-15629:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  (prevdist-distortion)/distortion @vector_quantize-15629:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+  prevdist-distortion @vector_quantize-15629:  source = areadfloat-12261 @ s3io.c:501 UnProven
+  prevdist-distortion @vector_quantize-15629:  source = areadfloat_part-12346 @ s3io.c:601 UnProven
+
+#queries                 : 160
+#queries mod alarm point : 46
+#proven                  : 0
+#unproven                : 46
+#bot-involved            : 0

@@ -1,0 +1,40 @@
+= Alarms =
+1. acmod_set.c:749 {acmod_set_id2tri} UnProven
+  id-*acmod_set.n_ci @acmod_set_id2tri-7479:  source = areadshort-12447 @ s3io.c:717 UnProven
+2. ck_seg.c:86 {ck_seg} UnProven
+  ((unsigned int )(((int )*(seg+__cil_tmp12))&32767))/n_state @ck_seg-6159:  source = areadshort-12447 @ s3io.c:717 UnProven
+3. ck_seg.c:95 {ck_seg} UnProven
+  ((unsigned int )(((int )*(seg+__cil_tmp16))&32767))/n_state @ck_seg-6167:  source = areadshort-12447 @ s3io.c:717 UnProven
+4. mk_sseq.c:89 {mk_sseq} UnProven
+  ((unsigned int )seg_val)%n_state @mk_sseq-3868:  source = areadshort-12447 @ s3io.c:717 UnProven
+5. corpus.c:553 {corpus_set_partition} UnProven
+  ((unsigned int )lineno)/parts @corpus_set_partition-14852:  Divide by [0, +oo] UnProven
+6. corpus.c:1343 {corpus_get_generic_featurevec} UnProven
+  n_c%veclen @corpus_get_generic_featurevec-15217:  Divide by [0, +oo] UnProven
+  n_c%veclen @corpus_get_generic_featurevec-15216:  Divide by [0, +oo] UnProven
+7. corpus.c:1344 {corpus_get_generic_featurevec} UnProven
+  n_c%veclen @corpus_get_generic_featurevec-15253:  source = get_length-12195 @ s3io.c:429 UnProven
+  n_c%veclen @corpus_get_generic_featurevec-15253:  Divide by [0, +oo] UnProven
+8. corpus.c:1347 {corpus_get_generic_featurevec} UnProven
+  n_c/veclen @corpus_get_generic_featurevec-15255:  source = get_length-12195 @ s3io.c:429 UnProven
+  n_c/veclen @corpus_get_generic_featurevec-15255:  Divide by [0, +oo] UnProven
+9. s3io.c:494 {areadfloat} UnProven
+  ((unsigned long )length)*SizeOf(float ) @areadfloat-12263:  source = get_length-12195 @ s3io.c:429 UnProven
+10. s3io.c:576 {areadfloat_part} UnProven
+  @len-1 @areadfloat_part-12325:  source = get_length-12195 @ s3io.c:429 UnProven
+11. s3io.c:590 {areadfloat_part} UnProven
+  (e_coeff-s_coeff)+1 @areadfloat_part-12332:  source = get_length-12195 @ s3io.c:429 UnProven
+  e_coeff-s_coeff @areadfloat_part-12332:  source = get_length-12195 @ s3io.c:429 UnProven
+12. s3io.c:600 {areadfloat_part} UnProven
+  ((unsigned long )r_len)*SizeOf(float ) @areadfloat_part-12346:  source = get_length-12195 @ s3io.c:429 UnProven
+13. s3io.c:709 {areadshort} UnProven
+  ((unsigned long )length)*SizeOf(short ) @areadshort-12441:  source = areadshort-12434 @ s3io.c:693 UnProven
+14. init_gau.c:275 {init_gau} UnProven
+  feat_n_frame+*feat___0.window_size @init_gau-16379:  source = areadshort-12434 @ s3io.c:693 UnProven
+  feat_n_frame+*feat___0.window_size @init_gau-16379:  source = get_length-12195 @ s3io.c:429 UnProven
+
+#queries                 : 32
+#queries mod alarm point : 19
+#proven                  : 5
+#unproven                : 14
+#bot-involved            : 0

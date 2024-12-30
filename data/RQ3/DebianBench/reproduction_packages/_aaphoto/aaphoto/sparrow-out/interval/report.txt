@@ -1,0 +1,70 @@
+= Alarms =
+1. aaphoto.c:410 {MAIN_RESIZE} UnProven
+  (@bitmap_width*opr)/@bitmap_height @MAIN_RESIZE-5225:  Divide by [0, +oo] UnProven
+2. aargb.c:164 {RGB_TO_HSL} UnProven
+  (L-LK)/L @RGB_TO_HSL-2686:  Divide by [0, 1] UnProven
+3. aargb.c:165 {RGB_TO_HSL} UnProven
+  (LN-L)/(((double )1)-L) @RGB_TO_HSL-2687:  Divide by [0, 1] UnProven
+4. aargb.c:175 {RGB_TO_HSL} UnProven
+  (R-LK)/LN @RGB_TO_HSL-2693:  Divide by [-1, 1] UnProven
+5. aargb.c:176 {RGB_TO_HSL} UnProven
+  (G-LK)/LN @RGB_TO_HSL-2694:  Divide by [-1, 1] UnProven
+6. aargb.c:177 {RGB_TO_HSL} UnProven
+  (B-LK)/LN @RGB_TO_HSL-2695:  Divide by [-1, 1] UnProven
+7. aargb.c:236 {HSL_TO_RGB} UnProven
+  (((double )1)-L)/(((double )1)-L2) @HSL_TO_RGB-2781:  Divide by [0, 1] UnProven
+8. aargb.c:242 {HSL_TO_RGB} UnProven
+  L/L2 @HSL_TO_RGB-2785:  Divide by [0, 1] UnProven
+9. aargb.c:741 {AARGB_MAIN} UnProven
+  ((double )hist_cut_columns)/(wp-bp) @AARGB_MAIN-3788:  Divide by [-253, 255] UnProven
+10. aargb.c:1057 {AARGB_MAIN} UnProven
+  ((temp2-bp_end)*(wp_end-bp_end))/(wp-bp_end) @AARGB_MAIN-3891:  Divide by [-1, +oo] UnProven
+11. aargb.c:1063 {AARGB_MAIN} UnProven
+  ((bp-bp_end)*(wp_end-bp_end))/(wp-bp_end) @AARGB_MAIN-3893:  Divide by [-1, +oo] UnProven
+12. aargb.c:1065 {AARGB_MAIN} UnProven
+  ((wp_end-temp2)*(wp_end-bp_end))/(wp_end-temp3) @AARGB_MAIN-3894:  Divide by [-oo, +oo] UnProven
+13. aargb.c:1186 {AARGB_MAIN} UnProven
+  __cil_tmp134/__cil_tmp135 @AARGB_MAIN-3936:  Divide by [-oo, +oo] UnProven
+14. aargb.c:1189 {AARGB_MAIN} UnProven
+  __cil_tmp136/__cil_tmp137 @AARGB_MAIN-3939:  Divide by [-oo, +oo] UnProven
+15. aargb.c:1240 {AARGB_MAIN} UnProven
+  ((col_r2-bp_r_end)*(wp_r_end-bp_r_end))/(wp_r-bp_r_end) @AARGB_MAIN-3954:  Divide by [-1, +oo] UnProven
+16. aargb.c:1242 {AARGB_MAIN} UnProven
+  ((col_g2-bp_g_end)*(wp_g_end-bp_g_end))/(wp_g-bp_g_end) @AARGB_MAIN-3955:  Divide by [-1, +oo] UnProven
+17. aargb.c:1244 {AARGB_MAIN} UnProven
+  ((col_b2-bp_b_end)*(wp_b_end-bp_b_end))/(wp_b-bp_b_end) @AARGB_MAIN-3956:  Divide by [-1, +oo] UnProven
+18. aargb.c:1251 {AARGB_MAIN} UnProven
+  ((bp_r-bp_r_end)*(wp_r_end-bp_r_end))/(wp_r-bp_r_end) @AARGB_MAIN-3958:  Divide by [-1, +oo] UnProven
+19. aargb.c:1253 {AARGB_MAIN} UnProven
+  ((wp_r_end-col_r2)*(wp_r_end-bp_r_end))/(wp_r_end-temp3) @AARGB_MAIN-3959:  Divide by [-oo, +oo] UnProven
+20. aargb.c:1257 {AARGB_MAIN} UnProven
+  ((bp_g-bp_g_end)*(wp_g_end-bp_g_end))/(wp_g-bp_g_end) @AARGB_MAIN-3961:  Divide by [-1, +oo] UnProven
+21. aargb.c:1259 {AARGB_MAIN} UnProven
+  ((wp_g_end-col_g2)*(wp_g_end-bp_g_end))/(wp_g_end-temp3) @AARGB_MAIN-3962:  Divide by [-oo, +oo] UnProven
+22. aargb.c:1263 {AARGB_MAIN} UnProven
+  ((bp_b-bp_b_end)*(wp_b_end-bp_b_end))/(wp_b-bp_b_end) @AARGB_MAIN-3964:  Divide by [-1, +oo] UnProven
+23. aargb.c:1265 {AARGB_MAIN} UnProven
+  ((wp_b_end-col_b2)*(wp_b_end-bp_b_end))/(wp_b_end-temp3) @AARGB_MAIN-3965:  Divide by [-oo, +oo] UnProven
+24. aargb.c:1396 {AARGB_MAIN} UnProven
+  __cil_tmp151/__cil_tmp152 @AARGB_MAIN-4028:  Divide by [-oo, +oo] UnProven
+25. aargb.c:1532 {AARGB_MAIN} UnProven
+  (hist1[xm]*99L)/hist1_max @AARGB_MAIN-4096:  Divide by [0, 1] UnProven
+26. aargb.c:1538 {AARGB_MAIN} UnProven
+  (((long )hist_cut_limit)*99L)/hist_max @AARGB_MAIN-3499:  Divide by [0, 0] UnProven
+  (((long )hist_cut_limit)*99L)/hist_max @AARGB_MAIN-3498:  Divide by [0, 0] UnProven
+27. aargb.c:1563 {AARGB_MAIN} UnProven
+  (hist2[xm]*99L)/hist2_max @AARGB_MAIN-4112:  Divide by [0, 1] UnProven
+28. aargb.c:1603 {AARGB_MAIN} UnProven
+  (hist_satur[xm]*99L)/histS_max @AARGB_MAIN-4126:  Divide by [0, 1] UnProven
+29. aargb.c:1626 {AARGB_MAIN} UnProven
+  (hist3[xm]*99L)/hist3_max @AARGB_MAIN-4138:  Divide by [0, 1] UnProven
+30. aargb.c:1691 {AARGB_MAIN} UnProven
+  d/__cil_tmp196 @AARGB_MAIN-4197:  Divide by [-oo, +oo] UnProven
+31. aargb.c:1710 {AARGB_MAIN} UnProven
+  d/__cil_tmp209 @AARGB_MAIN-4226:  Divide by [-oo, +oo] UnProven
+
+#queries                 : 153
+#queries mod alarm point : 130
+#proven                  : 99
+#unproven                : 31
+#bot-involved            : 0

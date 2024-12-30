@@ -1,0 +1,14 @@
+= Alarms =
+1. tiffmakemosaic.c:678 {computeMaxPieceMemorySize} UnProven
+  ((inimagewidth+outpiecewidth)-1U)/outpiecewidth @computeMaxPieceMemorySize-1360:  Divide by [-oo, +oo] UnProven
+2. tiffmakemosaic.c:679 {computeMaxPieceMemorySize} UnProven
+  ((inimagelength+outpiecelength)-1U)/outpiecelength @computeMaxPieceMemorySize-1361:  Divide by [-oo, +oo] UnProven
+3. tiffmakemosaic.c:1077 {makeMosaicFromTIFFFile} UnProven
+  y/outlength @makeMosaicFromTIFFFile-1937:  Divide by [-oo, +oo] UnProven
+  x/outwidth @makeMosaicFromTIFFFile-1937:  Divide by [-oo, +oo] UnProven
+
+#queries                 : 75
+#queries mod alarm point : 48
+#proven                  : 45
+#unproven                : 3
+#bot-involved            : 0

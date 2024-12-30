@@ -1,0 +1,89 @@
+= Alarms =
+1. main.c:626 {decodeAACfile} UnProven
+  (length*8.f)/((float )bitrate) @decodeAACfile-17117:  Divide by [-oo, +oo] UnProven
+2. main.c:744 {decodeAACfile} UnProven
+  ((int )(b.file_offset*100L))/fileread @decodeAACfile-17020:  Divide by [-oo, +oo] UnProven
+  ((int )(b.file_offset*100L))/fileread @decodeAACfile-17019:  Divide by [-oo, +oo] UnProven
+3. main.c:744 {decodeAACfile} UnProven
+  ((int )(b.file_offset*100L))/fileread @decodeAACfile-17161:  Divide by [-oo, +oo] UnProven
+4. main.c:892 {decodeMP4file} UnProven
+  ((float )@mp4config.samples)/((float )mp4ASC.samplingFrequency) @decodeMP4file-17408:  Divide by [0, +oo] UnProven
+5. main.c:994 {decodeMP4file} UnProven
+  ((unsigned int )((int )(sampleId*100L)))/@mp4config.frame.ents @decodeMP4file-17351:  Divide by [0, +oo] UnProven
+  ((unsigned int )((int )(sampleId*100L)))/@mp4config.frame.ents @decodeMP4file-17350:  Divide by [0, +oo] UnProven
+6. main.c:994 {decodeMP4file} UnProven
+  ((unsigned int )((int )(sampleId*100L)))/@mp4config.frame.ents @decodeMP4file-17445:  Divide by [0, +oo] UnProven
+7. mp4read.c:975 {mp4info} UnProven
+  ((float )@mp4config.samples)/((float )@mp4config.samplerate) @mp4info-20246:  Divide by [0, +oo] UnProven
+8. cfft.c:710 {cfftf1pos} UnProven
+  ((int )n)/((int )l2) @cfftf1pos-15728:  Divide by [0, +oo] UnProven
+9. cfft.c:789 {cfftf1neg} UnProven
+  ((int )n)/((int )l2) @cfftf1neg-15792:  Divide by [0, +oo] UnProven
+10. cfft.c:888 {cffti1} UnProven
+  ((int )nl)/((int )ntry) @cffti1-15862:  Divide by [0, +oo] UnProven
+11. cfft.c:922 {cffti1} UnProven
+  ((int )n)/((int )l2) @cffti1-15881:  Divide by [0, +oo] UnProven
+12. pns.c:97 {gen_rand_vector} UnProven
+  ((real_t )1.)/((real_t )size) @gen_rand_vector-12923:  Divide by [0, +oo] UnProven
+13. pns.c:106 {gen_rand_vector} UnProven
+  ((real_t )1.)/((real_t )__cil_tmp13) @gen_rand_vector-12931:  Divide by [-oo, +oo] UnProven
+14. ps_dec.c:917 {ps_data_decode} UnProven
+  (((int )env)*((int )*ps.numTimeSlotsRate))/((int )*ps.num_env) @ps_data_decode-12008:  Divide by [0, +oo] UnProven
+15. ps_dec.c:1711 {ps_mix_phase} UnProven
+  tempRight[0]/xy @ps_mix_phase-12462:  Divide by [-oo, +oo] UnProven
+16. ps_dec.c:1712 {ps_mix_phase} UnProven
+  tempRight[1]/xy @ps_mix_phase-12463:  Divide by [-oo, +oo] UnProven
+17. ps_dec.c:1725 {ps_mix_phase} UnProven
+  tmp1/xypq @ps_mix_phase-12469:  Divide by [-oo, +oo] UnProven
+18. ps_dec.c:1726 {ps_mix_phase} UnProven
+  tmp2/xypq @ps_mix_phase-12470:  Divide by [-oo, +oo] UnProven
+19. ps_dec.c:1751 {ps_mix_phase} UnProven
+  (h11[0]-*ps.h11_prev[gr][0])/L @ps_mix_phase-12482:  Divide by [-oo, +oo] UnProven
+20. ps_dec.c:1752 {ps_mix_phase} UnProven
+  (h12[0]-*ps.h12_prev[gr][0])/L @ps_mix_phase-12483:  Divide by [-oo, +oo] UnProven
+21. ps_dec.c:1753 {ps_mix_phase} UnProven
+  (h21[0]-*ps.h21_prev[gr][0])/L @ps_mix_phase-12484:  Divide by [-oo, +oo] UnProven
+22. ps_dec.c:1754 {ps_mix_phase} UnProven
+  (h22[0]-*ps.h22_prev[gr][0])/L @ps_mix_phase-12485:  Divide by [-oo, +oo] UnProven
+23. ps_dec.c:1770 {ps_mix_phase} UnProven
+  (h11[1]-*ps.h11_prev[gr][1])/L @ps_mix_phase-12494:  Divide by [-oo, +oo] UnProven
+24. ps_dec.c:1771 {ps_mix_phase} UnProven
+  (h12[1]-*ps.h12_prev[gr][1])/L @ps_mix_phase-12495:  Divide by [-oo, +oo] UnProven
+25. ps_dec.c:1772 {ps_mix_phase} UnProven
+  (h21[1]-*ps.h21_prev[gr][1])/L @ps_mix_phase-12496:  Divide by [-oo, +oo] UnProven
+26. ps_dec.c:1773 {ps_mix_phase} UnProven
+  (h22[1]-*ps.h22_prev[gr][1])/L @ps_mix_phase-12497:  Divide by [-oo, +oo] UnProven
+27. sbr_fbt.c:301 {find_bands} UnProven
+  ((float )a1)/((float )a0) @find_bands-3757:  Divide by [0, +oo] UnProven
+28. sbr_fbt.c:301 {find_bands} UnProven
+  (((double )((int )bands))*__cil_tmp7)/((double )div___5) @find_bands-3117:  Divide by [-oo, +oo] UnProven
+29. sbr_fbt.c:343 {find_initial_power} UnProven
+  ((real_t )a1)/((real_t )a0) @find_initial_power-3760:  Divide by [0, 64] UnProven
+  1./((double )((real_t )bands)) @find_initial_power-3760:  Divide by [0, 63] UnProven
+30. sbr_fbt.c:379 {master_frequency_table} UnProven
+  ((float )k2)/((float )k0) @master_frequency_table-3783:  Divide by [0, 0] UnProven
+  ((float )k2)/((float )k0) @master_frequency_table-3782:  Divide by [0, 0] UnProven
+31. sbr_fbt.c:587 {derived_frequency_table} UnProven
+  (((int )*sbr.N_low)-((int )i))/((((int )*sbr.N_Q)+1)-((int )k)) @derived_frequency_table-3970:  Divide by [-oo, +oo] UnProven
+32. sbr_fbt.c:696 {limiter_frequency_table} UnProven
+  ((real_t )limTable[k])/((real_t )limTable[((int )k)-1]) @limiter_frequency_table-4048:  Divide by [0, +oo] UnProven
+33. sbr_hfadj.c:178 {estimate_current_envelope} UnProven
+  nrg/div___3 @estimate_current_envelope-3053:  Divide by [-oo, +oo] UnProven
+34. sbr_hfadj.c:230 {estimate_current_envelope} UnProven
+  nrg/div___3 @estimate_current_envelope-3071:  Divide by [-oo, +oo] UnProven
+35. sbr_hfadj.c:1231 {calculate_gain} UnProven
+  (1e-12+((double )acc1))/(1e-12+((double )acc2)) @calculate_gain-3167:  Divide by [-oo, +oo] UnProven
+36. sbr_hfadj.c:1318 {calculate_gain} UnProven
+  ((double )*sbr.E_orig[ch][current_res_band2][l])/(1.+((double )*sbr.E_curr[ch][m][l])) @calculate_gain-3184:  Divide by [-oo, +oo] UnProven
+37. sbr_hfadj.c:1332 {calculate_gain} UnProven
+  (Q_M*G_max)/G @calculate_gain-3189:  Divide by [-oo, +oo] UnProven
+38. sbr_hfadj.c:1344 {calculate_gain} UnProven
+  (((double )acc1)+1e-12)/(((double )den)+1e-12) @calculate_gain-3194:  Divide by [-oo, +oo] UnProven
+39. sbr_hfgen.c:450 {calc_prediction_coef} UnProven
+  1.f/ac.r11[0] @calc_prediction_coef-2816:  Divide by [0, 0] UnProven
+
+#queries                 : 116
+#queries mod alarm point : 109
+#proven                  : 70
+#unproven                : 39
+#bot-involved            : 0

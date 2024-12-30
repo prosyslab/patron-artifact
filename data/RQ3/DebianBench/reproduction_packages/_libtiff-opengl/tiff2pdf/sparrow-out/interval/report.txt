@@ -1,0 +1,113 @@
+= Alarms =
+1. tif_aux.c:49 {_TIFFMultiply64} UnProven
+  18446744073709551615UL/second @_TIFFMultiply64-37544:  Divide by [-oo, +oo] UnProven
+  18446744073709551615UL/second @_TIFFMultiply64-37543:  Divide by [-oo, +oo] UnProven
+2. tif_color.c:99 {TIFFXYZToRGB} UnProven
+  (Yr-*cielab.display.d_Y0R)/*cielab.rstep @TIFFXYZToRGB-37208:  Divide by [0, 0] UnProven
+3. tif_color.c:103 {TIFFXYZToRGB} UnProven
+  (Yg-*cielab.display.d_Y0G)/*cielab.gstep @TIFFXYZToRGB-37215:  Divide by [0, 0] UnProven
+4. tif_color.c:107 {TIFFXYZToRGB} UnProven
+  (Yb-*cielab.display.d_Y0B)/*cielab.bstep @TIFFXYZToRGB-37222:  Divide by [0, 0] UnProven
+5. tif_dirread.c:2496 {TIFFReadDirEntryFloatArray} UnProven
+  ((float )maa)/((float )mab) @TIFFReadDirEntryFloatArray-30583:  Divide by [-oo, +oo] UnProven
+6. tif_dirread.c:2521 {TIFFReadDirEntryFloatArray} UnProven
+  ((float )maa___0)/((float )mab___0) @TIFFReadDirEntryFloatArray-30600:  Divide by [-oo, +oo] UnProven
+7. tif_dirread.c:2741 {TIFFReadDirEntryDoubleArray} UnProven
+  ((double )maa)/((double )mab) @TIFFReadDirEntryDoubleArray-30839:  Divide by [-oo, +oo] UnProven
+8. tif_dirread.c:2766 {TIFFReadDirEntryDoubleArray} UnProven
+  ((double )maa___0)/((double )mab___0) @TIFFReadDirEntryDoubleArray-30856:  Divide by [-oo, +oo] UnProven
+9. tif_dirread.c:3015 {TIFFReadDirEntryCheckedRational} UnProven
+  ((double )m.i[0])/((double )m.i[1]) @TIFFReadDirEntryCheckedRational-31046:  Divide by [-oo, +oo] UnProven
+10. tif_dirread.c:3046 {TIFFReadDirEntryCheckedSrational} UnProven
+  ((double )((int32_t )m.i[0]))/((double )m.i[1]) @TIFFReadDirEntryCheckedSrational-31076:  Divide by [-oo, +oo] UnProven
+11. tif_dirread.c:6226 {TryChopUpUncompressedBigTiff} UnProven
+  536870912UL/rowblockbytes @TryChopUpUncompressedBigTiff-33863:  Divide by [-oo, 2147483647] UnProven
+12. tif_dirwrite.c:2780 {ToRationalEuclideanGCD} UnProven
+  bigNum/bigDenom @ToRationalEuclideanGCD-27444:  Divide by [-oo, +oo] UnProven
+13. tif_dirwrite.c:2785 {ToRationalEuclideanGCD} UnProven
+  aux%bigDenom @ToRationalEuclideanGCD-27447:  Divide by [-oo, +oo] UnProven
+14. tif_getimage.c:668 {gtTileContig} UnProven
+  ((unsigned int )*img.col_offset)%tw @gtTileContig-16740:  Divide by [-oo, +oo] UnProven
+15. tif_getimage.c:673 {gtTileContig} UnProven
+  (row+((unsigned int )*img.row_offset))%th @gtTileContig-16744:  Divide by [-oo, +oo] UnProven
+16. tif_getimage.c:689 {gtTileContig} UnProven
+  (row+((unsigned int )*img.row_offset))%th @gtTileContig-16756:  Divide by [-oo, +oo] UnProven
+17. tif_getimage.c:809 {gtTileSeparate} UnProven
+  ((unsigned int )*img.col_offset)%tw @gtTileSeparate-16906:  Divide by [-oo, +oo] UnProven
+18. tif_getimage.c:814 {gtTileSeparate} UnProven
+  (row+((unsigned int )*img.row_offset))%th @gtTileSeparate-16910:  Divide by [-oo, +oo] UnProven
+19. tif_getimage.c:877 {gtTileSeparate} UnProven
+  (row+((unsigned int )*img.row_offset))%th @gtTileSeparate-16941:  Divide by [-oo, +oo] UnProven
+20. tiff2pdf.c:1241 {t2p_read_tiff_init} UnProven
+  *(*t2p.tiff_tiles+((int )i)).tiles_tilecount%((unsigned int )xuint16) @t2p_read_tiff_init-38890:  Divide by [0, +oo] UnProven
+  *(*t2p.tiff_tiles+((int )i)).tiles_tilecount%((unsigned int )xuint16) @t2p_read_tiff_init-38889:  Divide by [0, +oo] UnProven
+21. tiff2pdf.c:1250 {t2p_read_tiff_init} UnProven
+  *(*t2p.tiff_tiles+((int )i)).tiles_tilecount/((unsigned int )xuint16) @t2p_read_tiff_init-38988:  Divide by [0, +oo] UnProven
+22. tiff2pdf.c:2374 {t2p_readwrite_pdf_image} UnProven
+  ((*t2p.tiff_width+((unsigned int )h_samp))-1U)/((unsigned int )h_samp) @t2p_readwrite_pdf_image-40333:  Divide by [0, +oo] UnProven
+23. tiff2pdf.c:2378 {t2p_readwrite_pdf_image} UnProven
+  ((rows+((unsigned int )v_samp))-1U)/((unsigned int )v_samp) @t2p_readwrite_pdf_image-40335:  Divide by [0, +oo] UnProven
+24. tiff2pdf.c:3544 {t2p_process_ojpeg_tables} UnProven
+  ((*t2p.tiff_width+((unsigned int )h_samp))-1U)/((unsigned int )h_samp) @t2p_process_ojpeg_tables-41629:  Divide by [0, +oo] UnProven
+25. tiff2pdf.c:3546 {t2p_process_ojpeg_tables} UnProven
+  ((rows+((unsigned int )v_samp))-1U)/((unsigned int )v_samp) @t2p_process_ojpeg_tables-41631:  Divide by [0, +oo] UnProven
+26. tiff2pdf.c:3652 {t2p_process_jpeg_strip} UnProven
+  ((((((int )((uint16_t )*(buffer+(*bufferoffset+5L))))<<8)|((int )((uint16_t )*(buffer+(*bufferoffset+6L)))))+((int )v_samp))-1)/((int )v_samp) @t2p_process_jpeg_strip-41837:  Divide by [0, +oo] UnProven
+27. tiff2pdf.c:3655 {t2p_process_jpeg_strip} UnProven
+  ((((((int )((uint16_t )*(buffer+(*bufferoffset+7L))))<<8)|((int )((uint16_t )*(buffer+(*bufferoffset+8L)))))+((int )h_samp))-1)/((int )h_samp) @t2p_process_jpeg_strip-41838:  Divide by [0, +oo] UnProven
+28. tiff2pdf.c:3725 {t2p_tile_collapse_left} UnProven
+  ((scanwidth*((long )edgetilewidth))+((long )(tilewidth-1U)))/((long )tilewidth) @t2p_tile_collapse_left-41882:  Divide by [-oo, +oo] UnProven
+29. tiff2pdf.c:4558 {t2p_compose_pdf_page} UnProven
+  *t2p.pdf_defaultpagewidth/((float )*t2p.tiff_width) @t2p_compose_pdf_page-43262:  Divide by [-oo, +oo] UnProven
+30. tiff2pdf.c:4559 {t2p_compose_pdf_page} UnProven
+  *t2p.pdf_defaultpagelength/((float )*t2p.tiff_length) @t2p_compose_pdf_page-43263:  Divide by [-oo, +oo] UnProven
+31. tiff2pdf.c:4569 {t2p_compose_pdf_page} UnProven
+  ((float )*t2p.tiff_width)/*t2p.pdf_xres @t2p_compose_pdf_page-43268:  Divide by [-oo, +oo] UnProven
+32. tiff2pdf.c:4570 {t2p_compose_pdf_page} UnProven
+  ((float )*t2p.tiff_length)/*t2p.pdf_yres @t2p_compose_pdf_page-43269:  Divide by [-oo, +oo] UnProven
+33. tiff2pdf.c:4572 {t2p_compose_pdf_page} UnProven
+  (((float )*t2p.tiff_width)*72.f)/*t2p.pdf_xres @t2p_compose_pdf_page-43270:  Divide by [-oo, +oo] UnProven
+34. tiff2pdf.c:4572 {t2p_compose_pdf_page} UnProven
+  (((float )*t2p.tiff_width)*72.f)/*t2p.pdf_xres @t2p_compose_pdf_page-43272:  Divide by [-oo, +oo] UnProven
+35. tiff2pdf.c:4574 {t2p_compose_pdf_page} UnProven
+  (((float )*t2p.tiff_length)*72.f)/*t2p.pdf_yres @t2p_compose_pdf_page-43271:  Divide by [-oo, +oo] UnProven
+36. tiff2pdf.c:4574 {t2p_compose_pdf_page} UnProven
+  (((float )*t2p.tiff_length)*72.f)/*t2p.pdf_yres @t2p_compose_pdf_page-43273:  Divide by [-oo, +oo] UnProven
+37. tiff2pdf.c:4619 {t2p_compose_pdf_page} UnProven
+  ((*t2p.tiff_width+tilewidth)-1U)/tilewidth @t2p_compose_pdf_page-43307:  Divide by [-oo, 2147483647] UnProven
+38. tiff2pdf.c:4623 {t2p_compose_pdf_page} UnProven
+  ((*t2p.tiff_length+tilelength)-1U)/tilelength @t2p_compose_pdf_page-43309:  Divide by [-oo, 2147483647] UnProven
+39. tiff2pdf.c:4627 {t2p_compose_pdf_page} UnProven
+  *t2p.tiff_width%tilewidth @t2p_compose_pdf_page-43311:  Divide by [-oo, 2147483647] UnProven
+40. tiff2pdf.c:4629 {t2p_compose_pdf_page} UnProven
+  *t2p.tiff_length%tilelength @t2p_compose_pdf_page-43312:  Divide by [-oo, 2147483647] UnProven
+41. tiff2pdf.c:4635 {t2p_compose_pdf_page} UnProven
+  ((*t2p.pdf_imagewidth*((float )i))*((float )tilewidth))/((float )*t2p.tiff_width) @t2p_compose_pdf_page-43317:  Divide by [-oo, +oo] UnProven
+42. tiff2pdf.c:4639 {t2p_compose_pdf_page} UnProven
+  ((*t2p.pdf_imagewidth*((float )(i+1U)))*((float )tilewidth))/((float )*t2p.tiff_width) @t2p_compose_pdf_page-43318:  Divide by [-oo, +oo] UnProven
+43. tiff2pdf.c:4643 {t2p_compose_pdf_page} UnProven
+  ((*t2p.pdf_imagelength*((float )(i2+1U)))*((float )tilelength))/((float )*t2p.tiff_length) @t2p_compose_pdf_page-43319:  Divide by [-oo, +oo] UnProven
+44. tiff2pdf.c:4647 {t2p_compose_pdf_page} UnProven
+  ((*t2p.pdf_imagelength*((float )i2))*((float )tilelength))/((float )*t2p.tiff_length) @t2p_compose_pdf_page-43320:  Divide by [-oo, +oo] UnProven
+45. tiff2pdf.c:4653 {t2p_compose_pdf_page} UnProven
+  ((*t2p.pdf_imagewidth*((float )i))*((float )tilewidth))/((float )*t2p.tiff_width) @t2p_compose_pdf_page-43323:  Divide by [-oo, +oo] UnProven
+46. tiff2pdf.c:4658 {t2p_compose_pdf_page} UnProven
+  ((*t2p.pdf_imagelength*((float )(i2+1U)))*((float )tilelength))/((float )*t2p.tiff_length) @t2p_compose_pdf_page-43325:  Divide by [-oo, +oo] UnProven
+47. tiff2pdf.c:4662 {t2p_compose_pdf_page} UnProven
+  ((*t2p.pdf_imagelength*((float )i2))*((float )tilelength))/((float )*t2p.tiff_length) @t2p_compose_pdf_page-43326:  Divide by [-oo, +oo] UnProven
+48. tiff2pdf.c:4669 {t2p_compose_pdf_page} UnProven
+  ((*t2p.pdf_imagewidth*((float )i))*((float )tilewidth))/((float )*t2p.tiff_width) @t2p_compose_pdf_page-43330:  Divide by [-oo, +oo] UnProven
+49. tiff2pdf.c:4673 {t2p_compose_pdf_page} UnProven
+  ((*t2p.pdf_imagewidth*((float )(i+1U)))*((float )tilewidth))/((float )*t2p.tiff_width) @t2p_compose_pdf_page-43331:  Divide by [-oo, +oo] UnProven
+50. tiff2pdf.c:4678 {t2p_compose_pdf_page} UnProven
+  ((*t2p.pdf_imagelength*((float )i2))*((float )tilelength))/((float )*t2p.tiff_length) @t2p_compose_pdf_page-43333:  Divide by [-oo, +oo] UnProven
+51. tiff2pdf.c:4684 {t2p_compose_pdf_page} UnProven
+  ((*t2p.pdf_imagewidth*((float )i))*((float )tilewidth))/((float )*t2p.tiff_width) @t2p_compose_pdf_page-43336:  Divide by [-oo, +oo] UnProven
+52. tiff2pdf.c:4690 {t2p_compose_pdf_page} UnProven
+  ((*t2p.pdf_imagelength*((float )i2))*((float )tilelength))/((float )*t2p.tiff_length) @t2p_compose_pdf_page-43339:  Divide by [-oo, +oo] UnProven
+
+#queries                 : 325
+#queries mod alarm point : 277
+#proven                  : 225
+#unproven                : 52
+#bot-involved            : 0

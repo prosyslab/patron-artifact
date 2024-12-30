@@ -1,0 +1,66 @@
+em_full_vars.c:118	(*(Tau+i)-max)+((float )10)	Alarm-2
+main.c:206	*(*(vector+i)+j)-*(*(mean+*(bin+i))+j)	Alarm-44
+store_distribution.c:74	(1.-((double )noisec))*((double )*(c+i))	Alarm-53
+corpus.c:1347	n_c/veclen	Alarm-57
+main.c:135	*(*(vector+i)+j)**(*(vector+i)+j)	Alarm-40
+em_full_vars.c:299	((double )*(corprod+k))-(0.5*__cil_tmp39)	Alarm-24
+s3io.c:590	(e_coeff-s_coeff)+1	Alarm-12
+em_full_vars.c:221	*(Newc+k)+*(Tau+k)	Alarm-16
+em_full_vars.c:216	Prevlogprob+__cil_tmp36	Alarm-15
+em_full_vars.c:318	*(*(Newmean+k)+j)+(*(Tau+k)**(*(x+i)+j))	Alarm-28
+vq.c:81	*__cil_tmp8-*__cil_tmp9	Alarm-47
+vq.c:148	(*(*(codes+nbin)+j)*((float )*(bin+nbin)))+*(*(vector+i)+j)	Alarm-7
+vq.c:187	distortion+mindist	Alarm-0
+em_full_vars.c:320	(*(Tau+k)*(*(*(x+i)+j)-*(*(mean+k)+j)))*(*(*(x+i)+j)-*(*(mean+k)+j))	Alarm-31
+em_full_vars.c:320	*(Tau+k)*(*(*(x+i)+j)-*(*(mean+k)+j))	Alarm-30
+vq.c:284	(prevdist-distortion)/distortion	Alarm-65
+main.c:126	noise_threshold+noise_width	Alarm-38
+em_full_vars.c:229	*(*(Newmean+k)+j)/*(Newc+k)	Alarm-58
+main.c:207	*(*(variance+*(bin+i))+j)+(atemp*atemp)	Alarm-46
+main.c:134	noisemean[j]+*(*(vector+i)+j)	Alarm-39
+vq.c:85	dist+(t*t)	Alarm-51
+vq.c:284	prevdist-distortion	Alarm-54
+em_full_vars.c:318	*(Tau+k)**(*(x+i)+j)	Alarm-27
+em_full_vars.c:236	*(Tau+k)*(*(*(x+i)+j)-*(*(Newmean+k)+j))	Alarm-20
+s3io.c:590	e_coeff-s_coeff	Alarm-11
+s3io.c:494	((unsigned long )length)*SizeOf(float )	Alarm-9
+corpus.c:1344	n_c%veclen	Alarm-56
+em_full_vars.c:330	*(*(Newmean+k)+j)/*(Newc+k)	Alarm-61
+vq.c:84	*__cil_tmp10-*__cil_tmp11	Alarm-49
+vq.c:223	*(*(codes+j)+k)+*(*(vector+i)+k)	Alarm-8
+em_full_vars.c:236	*(*(Newvar+k)+j)+((*(Tau+k)*(*(*(x+i)+j)-*(*(Newmean+k)+j)))*(*(*(x+i)+j)-*(*(Newmean+k)+j)))	Alarm-22
+em_full_vars.c:123	1./((double )sum)	Alarm-55
+main.c:154	noisevar[j]/((float )numnoise)	Alarm-64
+s3io.c:576	@len-1	Alarm-10
+vq.c:85	t*t	Alarm-50
+em_full_vars.c:127	((double )max)+__cil_tmp17	Alarm-5
+vq.c:82	t*t	Alarm-48
+gauss.c:50	density-((t*t)**__cil_tmp11)	Alarm-37
+gauss.c:50	(t*t)**__cil_tmp11	Alarm-36
+main.c:153	noisemean[j]/((float )numnoise)	Alarm-63
+main.c:207	atemp*atemp	Alarm-45
+s3io.c:600	((unsigned long )r_len)*SizeOf(float )	Alarm-13
+em_full_vars.c:236	*(*(x+i)+j)-*(*(Newmean+k)+j)	Alarm-19
+em_full_vars.c:258	*(*(Newvar+k)+j)/*(Newc+k)	Alarm-59
+em_full_vars.c:253	SumNewc+*(Newc+k)	Alarm-23
+em_full_vars.c:119	sum+*(Tau+i)	Alarm-3
+em_full_vars.c:223	*(*(Newmean+k)+j)+(*(Tau+k)**(*(x+i)+j))	Alarm-18
+em_full_vars.c:311	LogProb+__cil_tmp40	Alarm-25
+em_full_vars.c:320	*(*(x+i)+j)-*(*(mean+k)+j)	Alarm-29
+em_full_vars.c:345	(LogProb-Prevlogprob)/LogProb	Alarm-62
+main.c:154	(noisevar[j]/((float )numnoise))-(noisemean[j]*noisemean[j])	Alarm-43
+em_full_vars.c:223	*(Tau+k)**(*(x+i)+j)	Alarm-17
+gauss.c:49	*__cil_tmp9-*__cil_tmp10	Alarm-34
+em_full_vars.c:236	(*(Tau+k)*(*(*(x+i)+j)-*(*(Newmean+k)+j)))*(*(*(x+i)+j)-*(*(Newmean+k)+j))	Alarm-21
+em_full_vars.c:260	*(Newc+k)/SumNewc	Alarm-60
+em_full_vars.c:118	*(Tau+i)-max	Alarm-1
+main.c:154	noisemean[j]*noisemean[j]	Alarm-42
+em_full_vars.c:345	LogProb-Prevlogprob	Alarm-33
+em_full_vars.c:316	*(Newc+k)+*(Tau+k)	Alarm-26
+em_full_vars.c:127	(((double )max)+__cil_tmp17)-((double )10)	Alarm-6
+store_distribution.c:61	Nmodes+1	Alarm-52
+em_full_vars.c:198	((double )*(corprod+k))-(0.5*__cil_tmp35)	Alarm-14
+main.c:135	noisevar[j]+(*(*(vector+i)+j)**(*(vector+i)+j))	Alarm-41
+em_full_vars.c:125	*(Tau+i)*invsum	Alarm-4
+em_full_vars.c:320	*(*(Newvar+k)+j)+((*(Tau+k)*(*(*(x+i)+j)-*(*(mean+k)+j)))*(*(*(x+i)+j)-*(*(mean+k)+j)))	Alarm-32
+gauss.c:50	t*t	Alarm-35

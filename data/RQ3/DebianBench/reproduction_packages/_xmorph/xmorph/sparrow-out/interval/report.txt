@@ -1,0 +1,30 @@
+= Alarms =
+1. RgbaImage.c:890 {rgbaImageTestCreate} UnProven
+  ((float )xi)/((float )*self.ncols) @rgbaImageTestCreate-1987:  Divide by [-oo, +oo] UnProven
+  ((float )yi)/((float )*self.nrows) @rgbaImageTestCreate-1987:  Divide by [-oo, +oo] UnProven
+2. mesh.c:741 {meshReset} UnProven
+  ((double )(img_width-1))/((double )(*this.nx-1L)) @meshReset-3026:  Divide by [-1, +oo] UnProven
+3. mesh.c:742 {meshReset} UnProven
+  ((double )(img_height-1))/((double )(*this.ny-1L)) @meshReset-3027:  Divide by [-1, +oo] UnProven
+4. spl-array.c:54 {derivative_hack} UnProven
+  (*(y+1)-*(y+0))/__cil_tmp6 @derivative_hack-1630:  Divide by [-oo, +oo] UnProven
+5. spl-array.c:56 {derivative_hack} UnProven
+  (*(y+(len-1))-*(y+(len-2)))/__cil_tmp7 @derivative_hack-1632:  Divide by [-oo, +oo] UnProven
+6. spl-array.c:66 {derivative_hack} UnProven
+  (*(y+(indx-1))-*(y+(indx+1)))/__cil_tmp8 @derivative_hack-1637:  Divide by [-oo, +oo] UnProven
+7. spl-array.c:66 {derivative_hack} UnProven
+  (*(y+(indx-1))-*(y+(indx+1)))/__cil_tmp8 @derivative_hack-1639:  Divide by [-oo, +oo] UnProven
+8. spline.c:155 {d_parabola} UnProven
+  ((((xp0*(yp1-yp2))*((2.*x)-xp0))+((xp1*(yp2-yp0))*((2.*x)-xp1)))+((xp2*(yp0-yp1))*((2.*x)-xp2)))/(((xp0-xp1)*(xp0-xp2))*(xp2-xp1)) @d_parabola-2783:  Divide by [-oo, +oo] UnProven
+9. spline.c:338 {hermite3_interp} UnProven
+  ((*(y+(si+1L))-*(y+si))-(h**(d+si)))/h_2 @hermite3_interp-2826:  Divide by [-oo, +oo] UnProven
+10. spline.c:339 {hermite3_interp} UnProven
+  ((*(d+(si+1L))-*(d+si))-((2.*h)*A))/h_2 @hermite3_interp-2827:  Divide by [-oo, +oo] UnProven
+11. main.c:93 {sigmoid} UnProven
+  (__cil_tmp5+((double )as))/(2.*((double )as)) @sigmoid-3928:  Divide by [-oo, +oo] UnProven
+
+#queries                 : 80
+#queries mod alarm point : 57
+#proven                  : 46
+#unproven                : 11
+#bot-involved            : 0

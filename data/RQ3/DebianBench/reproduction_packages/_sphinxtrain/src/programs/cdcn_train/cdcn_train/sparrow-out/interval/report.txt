@@ -1,0 +1,40 @@
+= Alarms =
+1. corpus.c:1343 {corpus_get_generic_featurevec} UnProven
+  n_c%veclen @corpus_get_generic_featurevec-15227:  Divide by [0, +oo] UnProven
+  n_c%veclen @corpus_get_generic_featurevec-15226:  Divide by [0, +oo] UnProven
+2. corpus.c:1344 {corpus_get_generic_featurevec} UnProven
+  n_c%veclen @corpus_get_generic_featurevec-15263:  Divide by [0, +oo] UnProven
+3. corpus.c:1347 {corpus_get_generic_featurevec} UnProven
+  n_c/veclen @corpus_get_generic_featurevec-15265:  Divide by [0, +oo] UnProven
+4. em_full_vars.c:123 {Expectation} UnProven
+  1./((double )sum) @Expectation-16329:  Divide by [-oo, +oo] UnProven
+5. em_full_vars.c:229 {estimate_multi_modals} UnProven
+  *(*(Newmean+k)+j)/*(Newc+k) @estimate_multi_modals-16455:  Divide by [-oo, +oo] UnProven
+6. em_full_vars.c:258 {estimate_multi_modals} UnProven
+  *(*(Newvar+k)+j)/*(Newc+k) @estimate_multi_modals-16474:  Divide by [-oo, +oo] UnProven
+7. em_full_vars.c:260 {estimate_multi_modals} UnProven
+  *(Newc+k)/SumNewc @estimate_multi_modals-16476:  Divide by [-oo, +oo] UnProven
+8. em_full_vars.c:330 {estimate_multi_modals} UnProven
+  *(*(Newmean+k)+j)/*(Newc+k) @estimate_multi_modals-16523:  Divide by [-oo, +oo] UnProven
+9. em_full_vars.c:345 {estimate_multi_modals} UnProven
+  (LogProb-Prevlogprob)/LogProb @estimate_multi_modals-16526:  Divide by [-oo, +oo] UnProven
+10. main.c:153 {main} UnProven
+  noisemean[j]/((float )numnoise) @main-16142:  Divide by [0, +oo] UnProven
+11. main.c:154 {main} UnProven
+  noisevar[j]/((float )numnoise) @main-16143:  Divide by [0, +oo] UnProven
+12. main.c:198 {main} UnProven
+  1./((double )((float )Nmodes)) @main-16165:  Divide by [-oo, +oo] UnProven
+13. main.c:213 {main} UnProven
+  *(*(variance+k)+j)/((float )*(nbin+k)) @main-16182:  Divide by [-oo, +oo] UnProven
+14. vq.c:150 {Initial_codebook} UnProven
+  *(*(codes+nbin)+j)/((float )(*(bin+nbin)+1)) @Initial_codebook-15491:  Divide by [-oo, +oo] UnProven
+15. vq.c:234 {Update_codebook} UnProven
+  *(*(codes+i)+j)/((float )*(Noincode+i)) @Update_codebook-15578:  Divide by [0, +oo] UnProven
+16. vq.c:284 {vector_quantize} UnProven
+  (prevdist-distortion)/distortion @vector_quantize-15629:  Divide by [0, 0] UnProven
+
+#queries                 : 25
+#queries mod alarm point : 22
+#proven                  : 6
+#unproven                : 16
+#bot-involved            : 0

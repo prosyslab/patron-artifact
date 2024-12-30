@@ -1,0 +1,1215 @@
+= Alarms =
+1. aaio.c:689 {EXIF_GET} UnProven
+  exif_start+2L @EXIF_GET-1054:  source = EXIF_GET-1055 @ aaio.c:690 UnProven
+  exif_start+2L @EXIF_GET-1054:  source = EXIF_GET-1056 @ aaio.c:691 UnProven
+2. aaio.c:692 {EXIF_GET} UnProven
+  (((long )ch1)*256L)+((long )ch2) @EXIF_GET-1057:  source = EXIF_GET-1055 @ aaio.c:690 UnProven
+  (((long )ch1)*256L)+((long )ch2) @EXIF_GET-1057:  source = EXIF_GET-1056 @ aaio.c:691 UnProven
+  ((long )ch1)*256L @EXIF_GET-1057:  source = EXIF_GET-1055 @ aaio.c:690 UnProven
+3. aaio.c:693 {EXIF_GET} UnProven
+  exif_start+(2L+exif_offset) @EXIF_GET-1058:  source = EXIF_GET-1055 @ aaio.c:690 UnProven
+  exif_start+(2L+exif_offset) @EXIF_GET-1058:  source = EXIF_GET-1056 @ aaio.c:691 UnProven
+  2L+exif_offset @EXIF_GET-1058:  source = EXIF_GET-1055 @ aaio.c:690 UnProven
+  2L+exif_offset @EXIF_GET-1058:  source = EXIF_GET-1056 @ aaio.c:691 UnProven
+4. aaio.c:703 {EXIF_GET} UnProven
+  exif_start+4L @EXIF_GET-1061:  source = EXIF_GET-1055 @ aaio.c:690 UnProven
+  exif_start+4L @EXIF_GET-1061:  source = EXIF_GET-1056 @ aaio.c:691 UnProven
+5. aaio.c:709 {EXIF_GET} UnProven
+  exif_start+6L @EXIF_GET-1066:  source = EXIF_GET-1055 @ aaio.c:690 UnProven
+  exif_start+6L @EXIF_GET-1066:  source = EXIF_GET-1056 @ aaio.c:691 UnProven
+6. aaio.c:715 {EXIF_GET} UnProven
+  exif_start+8L @EXIF_GET-1071:  source = EXIF_GET-1055 @ aaio.c:690 UnProven
+  exif_start+8L @EXIF_GET-1071:  source = EXIF_GET-1056 @ aaio.c:691 UnProven
+7. aaio.c:724 {EXIF_GET} UnProven
+  exif_start+2L @EXIF_GET-1076:  source = EXIF_GET-1055 @ aaio.c:690 UnProven
+  exif_start+2L @EXIF_GET-1076:  source = EXIF_GET-1056 @ aaio.c:691 UnProven
+8. aaio.c:729 {EXIF_GET} UnProven
+  ((((long )ch1)*256L)+((long )ch2))+2L @EXIF_GET-1079:  source = EXIF_GET-1077 @ aaio.c:725 UnProven
+  ((((long )ch1)*256L)+((long )ch2))+2L @EXIF_GET-1079:  source = EXIF_GET-1078 @ aaio.c:726 UnProven
+  (((long )ch1)*256L)+((long )ch2) @EXIF_GET-1079:  source = EXIF_GET-1077 @ aaio.c:725 UnProven
+  (((long )ch1)*256L)+((long )ch2) @EXIF_GET-1079:  source = EXIF_GET-1078 @ aaio.c:726 UnProven
+  ((long )ch1)*256L @EXIF_GET-1079:  source = EXIF_GET-1077 @ aaio.c:725 UnProven
+9. aaio.c:747 {EXIF_GET} UnProven
+  SizeOf(char )*((unsigned long )@exif_buffer_length) @EXIF_GET-1092:  source = EXIF_GET-1077 @ aaio.c:725 UnProven
+  SizeOf(char )*((unsigned long )@exif_buffer_length) @EXIF_GET-1092:  source = EXIF_GET-1078 @ aaio.c:726 UnProven
+10. aaio.c:793 {EXIF_PUT} UnProven
+  @exif_buffer_length-2L @EXIF_PUT-1154:  source = EXIF_GET-1077 @ aaio.c:725 UnProven
+  @exif_buffer_length-2L @EXIF_PUT-1154:  source = EXIF_GET-1078 @ aaio.c:726 UnProven
+11. aaio.c:878 {BITMAP_READ_BMP} UnProven
+  f_bm+((unsigned long )((int )*(file_buffer+0))) @BITMAP_READ_BMP-1268:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+12. aaio.c:879 {BITMAP_READ_BMP} UnProven
+  f_bm+((unsigned long )(((int )*(file_buffer+1))<<8)) @BITMAP_READ_BMP-1269:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+13. aaio.c:881 {BITMAP_READ_BMP} UnProven
+  f_bitcount+((unsigned long )((int )*(file_buffer+28))) @BITMAP_READ_BMP-1271:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+14. aaio.c:882 {BITMAP_READ_BMP} UnProven
+  f_bitcount+((unsigned long )(((int )*(file_buffer+29))<<8)) @BITMAP_READ_BMP-1272:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+15. aaio.c:884 {BITMAP_READ_BMP} UnProven
+  f_compressed+((unsigned long )((int )*(file_buffer+30))) @BITMAP_READ_BMP-1274:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+16. aaio.c:885 {BITMAP_READ_BMP} UnProven
+  f_compressed+((unsigned long )(((int )*(file_buffer+31))<<8)) @BITMAP_READ_BMP-1275:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+17. aaio.c:886 {BITMAP_READ_BMP} UnProven
+  f_compressed+((unsigned long )(((int )*(file_buffer+32))<<16)) @BITMAP_READ_BMP-1276:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+18. aaio.c:887 {BITMAP_READ_BMP} UnProven
+  f_compressed+((unsigned long )(((int )*(file_buffer+33))<<24)) @BITMAP_READ_BMP-1277:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+19. aaio.c:898 {BITMAP_READ_BMP} UnProven
+  f_headersize+((unsigned long )((int )*(file_buffer+14))) @BITMAP_READ_BMP-1280:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+20. aaio.c:899 {BITMAP_READ_BMP} UnProven
+  f_headersize+((unsigned long )(((int )*(file_buffer+15))<<8)) @BITMAP_READ_BMP-1281:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+21. aaio.c:900 {BITMAP_READ_BMP} UnProven
+  f_headersize+((unsigned long )(((int )*(file_buffer+16))<<16)) @BITMAP_READ_BMP-1282:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+22. aaio.c:901 {BITMAP_READ_BMP} UnProven
+  f_headersize+((unsigned long )(((int )*(file_buffer+17))<<24)) @BITMAP_READ_BMP-1283:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+23. aaio.c:920 {BITMAP_READ_BMP} UnProven
+  f_offs+((unsigned long )((int )*(file_buffer+10))) @BITMAP_READ_BMP-1292:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+24. aaio.c:921 {BITMAP_READ_BMP} UnProven
+  f_offs+((unsigned long )(((int )*(file_buffer+11))<<8)) @BITMAP_READ_BMP-1293:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+25. aaio.c:922 {BITMAP_READ_BMP} UnProven
+  f_offs+((unsigned long )(((int )*(file_buffer+12))<<16)) @BITMAP_READ_BMP-1294:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+26. aaio.c:923 {BITMAP_READ_BMP} UnProven
+  f_offs+((unsigned long )(((int )*(file_buffer+13))<<24)) @BITMAP_READ_BMP-1295:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+27. aaio.c:926 {BITMAP_READ_BMP} UnProven
+  f_width+((unsigned long )((int )*(file_buffer+18))) @BITMAP_READ_BMP-1297:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+28. aaio.c:927 {BITMAP_READ_BMP} UnProven
+  f_width+((unsigned long )(((int )*(file_buffer+19))<<8)) @BITMAP_READ_BMP-1298:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+29. aaio.c:928 {BITMAP_READ_BMP} UnProven
+  f_width+((unsigned long )(((int )*(file_buffer+20))<<16)) @BITMAP_READ_BMP-1299:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+30. aaio.c:929 {BITMAP_READ_BMP} UnProven
+  f_width+((unsigned long )(((int )*(file_buffer+21))<<24)) @BITMAP_READ_BMP-1300:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+31. aaio.c:932 {BITMAP_READ_BMP} UnProven
+  f_height+((unsigned long )((int )*(file_buffer+22))) @BITMAP_READ_BMP-1302:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+32. aaio.c:933 {BITMAP_READ_BMP} UnProven
+  f_height+((unsigned long )(((int )*(file_buffer+23))<<8)) @BITMAP_READ_BMP-1303:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+33. aaio.c:934 {BITMAP_READ_BMP} UnProven
+  f_height+((unsigned long )(((int )*(file_buffer+24))<<16)) @BITMAP_READ_BMP-1304:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+34. aaio.c:935 {BITMAP_READ_BMP} UnProven
+  f_height+((unsigned long )(((int )*(file_buffer+25))<<24)) @BITMAP_READ_BMP-1305:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+35. aaio.c:938 {BITMAP_READ_BMP} UnProven
+  f_xpixelpermeter+((unsigned long )((int )*(file_buffer+38))) @BITMAP_READ_BMP-1307:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+36. aaio.c:939 {BITMAP_READ_BMP} UnProven
+  f_xpixelpermeter+((unsigned long )(((int )*(file_buffer+39))<<8)) @BITMAP_READ_BMP-1308:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+37. aaio.c:940 {BITMAP_READ_BMP} UnProven
+  f_xpixelpermeter+((unsigned long )(((int )*(file_buffer+40))<<16)) @BITMAP_READ_BMP-1309:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+38. aaio.c:941 {BITMAP_READ_BMP} UnProven
+  f_xpixelpermeter+((unsigned long )(((int )*(file_buffer+41))<<24)) @BITMAP_READ_BMP-1310:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+39. aaio.c:944 {BITMAP_READ_BMP} UnProven
+  f_ypixelpermeter+((unsigned long )((int )*(file_buffer+42))) @BITMAP_READ_BMP-1312:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+40. aaio.c:945 {BITMAP_READ_BMP} UnProven
+  f_ypixelpermeter+((unsigned long )(((int )*(file_buffer+43))<<8)) @BITMAP_READ_BMP-1313:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+41. aaio.c:946 {BITMAP_READ_BMP} UnProven
+  f_ypixelpermeter+((unsigned long )(((int )*(file_buffer+44))<<16)) @BITMAP_READ_BMP-1314:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+42. aaio.c:947 {BITMAP_READ_BMP} UnProven
+  f_ypixelpermeter+((unsigned long )(((int )*(file_buffer+45))<<24)) @BITMAP_READ_BMP-1315:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+43. aaio.c:972 {BITMAP_READ_BMP} UnProven
+  SizeOf(unsigned char )*((bw*bh)*3UL) @BITMAP_READ_BMP-1370:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bw*bh)*3UL @BITMAP_READ_BMP-1370:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*bh @BITMAP_READ_BMP-1370:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+44. aaio.c:977 {BITMAP_READ_BMP} UnProven
+  f_width%4UL @BITMAP_READ_BMP-1343:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+45. aaio.c:978 {BITMAP_READ_BMP} UnProven
+  4UL-addr_offset @BITMAP_READ_BMP-1344:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+46. aaio.c:983 {BITMAP_READ_BMP} UnProven
+  (y*bw)+(y*addr_offset) @BITMAP_READ_BMP-1346:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  y*bw @BITMAP_READ_BMP-1346:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  y*addr_offset @BITMAP_READ_BMP-1346:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+47. aaio.c:985 {BITMAP_READ_BMP} UnProven
+  (f_offs+addr2)+x @BITMAP_READ_BMP-1348:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  f_offs+addr2 @BITMAP_READ_BMP-1348:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+48. aaio.c:993 {BITMAP_READ_BMP} UnProven
+  (f_width*3UL)%4UL @BITMAP_READ_BMP-1354:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  f_width*3UL @BITMAP_READ_BMP-1354:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+49. aaio.c:994 {BITMAP_READ_BMP} UnProven
+  4UL-addr_offset @BITMAP_READ_BMP-1355:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+50. aaio.c:999 {BITMAP_READ_BMP} UnProven
+  ((y*bw)*3UL)+(y*addr_offset) @BITMAP_READ_BMP-1357:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (y*bw)*3UL @BITMAP_READ_BMP-1357:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  y*bw @BITMAP_READ_BMP-1357:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  y*addr_offset @BITMAP_READ_BMP-1357:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+51. aaio.c:1001 {BITMAP_READ_BMP} UnProven
+  (f_offs+addr2)+(x*3UL) @BITMAP_READ_BMP-1359:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  f_offs+addr2 @BITMAP_READ_BMP-1359:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+52. aaio.c:1002 {BITMAP_READ_BMP} UnProven
+  addr+2UL @BITMAP_READ_BMP-1360:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+53. aaio.c:1003 {BITMAP_READ_BMP} UnProven
+  addr+1UL @BITMAP_READ_BMP-1361:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+54. aaio.c:1053 {BITMAP_WRITE_BMP} UnProven
+  bw%4UL @BITMAP_WRITE_BMP-1494:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+55. aaio.c:1054 {BITMAP_WRITE_BMP} UnProven
+  4UL-addr_offset @BITMAP_WRITE_BMP-1495:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+56. aaio.c:1055 {BITMAP_WRITE_BMP} UnProven
+  1078UL+((bw+addr_offset)*bh) @BITMAP_WRITE_BMP-1496:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bw+addr_offset)*bh @BITMAP_WRITE_BMP-1496:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw+addr_offset @BITMAP_WRITE_BMP-1496:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+57. aaio.c:1058 {BITMAP_WRITE_BMP} UnProven
+  (bw*3UL)%4UL @BITMAP_WRITE_BMP-1497:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*3UL @BITMAP_WRITE_BMP-1497:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+58. aaio.c:1059 {BITMAP_WRITE_BMP} UnProven
+  4UL-addr_offset @BITMAP_WRITE_BMP-1498:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+59. aaio.c:1060 {BITMAP_WRITE_BMP} UnProven
+  54UL+(((bw*3UL)+addr_offset)*bh) @BITMAP_WRITE_BMP-1499:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((bw*3UL)+addr_offset)*bh @BITMAP_WRITE_BMP-1499:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bw*3UL)+addr_offset @BITMAP_WRITE_BMP-1499:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*3UL @BITMAP_WRITE_BMP-1499:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+60. aaio.c:1063 {BITMAP_WRITE_BMP} UnProven
+  SizeOf(unsigned char )*file_length @BITMAP_WRITE_BMP-1596:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+61. aaio.c:1127 {BITMAP_WRITE_BMP} UnProven
+  (bw+addr_offset)*bh @BITMAP_WRITE_BMP-1542:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw+addr_offset @BITMAP_WRITE_BMP-1542:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+62. aaio.c:1128 {BITMAP_WRITE_BMP} UnProven
+  ((bw*3UL)+addr_offset)*bh @BITMAP_WRITE_BMP-1543:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bw*3UL)+addr_offset @BITMAP_WRITE_BMP-1543:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*3UL @BITMAP_WRITE_BMP-1543:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+63. aaio.c:1164 {BITMAP_WRITE_BMP} UnProven
+  y*(bw+addr_offset) @BITMAP_WRITE_BMP-1569:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw+addr_offset @BITMAP_WRITE_BMP-1569:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+64. aaio.c:1166 {BITMAP_WRITE_BMP} UnProven
+  (f_offs+addr2)+x @BITMAP_WRITE_BMP-1571:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  f_offs+addr2 @BITMAP_WRITE_BMP-1571:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+65. aaio.c:1167 {BITMAP_WRITE_BMP} UnProven
+  (x*3UL)+((bw*3UL)*((bh-1UL)-y)) @BITMAP_WRITE_BMP-1572:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bw*3UL)*((bh-1UL)-y) @BITMAP_WRITE_BMP-1572:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*3UL @BITMAP_WRITE_BMP-1572:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bh-1UL)-y @BITMAP_WRITE_BMP-1572:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bh-1UL @BITMAP_WRITE_BMP-1572:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+66. aaio.c:1168 {BITMAP_WRITE_BMP} UnProven
+  col+((unsigned long )*(@bitmap_buffer+(((x*3UL)+((bw*3UL)*((bh-1UL)-y)))+1UL))) @BITMAP_WRITE_BMP-1573:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((x*3UL)+((bw*3UL)*((bh-1UL)-y)))+1UL @BITMAP_WRITE_BMP-1573:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (x*3UL)+((bw*3UL)*((bh-1UL)-y)) @BITMAP_WRITE_BMP-1573:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bw*3UL)*((bh-1UL)-y) @BITMAP_WRITE_BMP-1573:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*3UL @BITMAP_WRITE_BMP-1573:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bh-1UL)-y @BITMAP_WRITE_BMP-1573:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bh-1UL @BITMAP_WRITE_BMP-1573:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+67. aaio.c:1169 {BITMAP_WRITE_BMP} UnProven
+  col+((unsigned long )*(@bitmap_buffer+(((x*3UL)+((bw*3UL)*((bh-1UL)-y)))+2UL))) @BITMAP_WRITE_BMP-1574:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((x*3UL)+((bw*3UL)*((bh-1UL)-y)))+2UL @BITMAP_WRITE_BMP-1574:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (x*3UL)+((bw*3UL)*((bh-1UL)-y)) @BITMAP_WRITE_BMP-1574:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bw*3UL)*((bh-1UL)-y) @BITMAP_WRITE_BMP-1574:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*3UL @BITMAP_WRITE_BMP-1574:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bh-1UL)-y @BITMAP_WRITE_BMP-1574:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bh-1UL @BITMAP_WRITE_BMP-1574:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+68. aaio.c:1170 {BITMAP_WRITE_BMP} UnProven
+  col/3UL @BITMAP_WRITE_BMP-1575:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+69. aaio.c:1182 {BITMAP_WRITE_BMP} UnProven
+  y*((bw*3UL)+addr_offset) @BITMAP_WRITE_BMP-1581:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bw*3UL)+addr_offset @BITMAP_WRITE_BMP-1581:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*3UL @BITMAP_WRITE_BMP-1581:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+70. aaio.c:1184 {BITMAP_WRITE_BMP} UnProven
+  (f_offs+addr2)+(x*3UL) @BITMAP_WRITE_BMP-1583:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  f_offs+addr2 @BITMAP_WRITE_BMP-1583:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+71. aaio.c:1185 {BITMAP_WRITE_BMP} UnProven
+  ((x*3UL)+((bw*3UL)*((bh-1UL)-y)))+2UL @BITMAP_WRITE_BMP-1584:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (x*3UL)+((bw*3UL)*((bh-1UL)-y)) @BITMAP_WRITE_BMP-1584:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bw*3UL)*((bh-1UL)-y) @BITMAP_WRITE_BMP-1584:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*3UL @BITMAP_WRITE_BMP-1584:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bh-1UL)-y @BITMAP_WRITE_BMP-1584:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bh-1UL @BITMAP_WRITE_BMP-1584:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+72. aaio.c:1186 {BITMAP_WRITE_BMP} UnProven
+  ((x*3UL)+((bw*3UL)*((bh-1UL)-y)))+1UL @BITMAP_WRITE_BMP-1585:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (x*3UL)+((bw*3UL)*((bh-1UL)-y)) @BITMAP_WRITE_BMP-1585:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bw*3UL)*((bh-1UL)-y) @BITMAP_WRITE_BMP-1585:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*3UL @BITMAP_WRITE_BMP-1585:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bh-1UL)-y @BITMAP_WRITE_BMP-1585:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bh-1UL @BITMAP_WRITE_BMP-1585:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+73. aaio.c:1187 {BITMAP_WRITE_BMP} UnProven
+  (x*3UL)+((bw*3UL)*((bh-1UL)-y)) @BITMAP_WRITE_BMP-1586:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bw*3UL)*((bh-1UL)-y) @BITMAP_WRITE_BMP-1586:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*3UL @BITMAP_WRITE_BMP-1586:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bh-1UL)-y @BITMAP_WRITE_BMP-1586:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bh-1UL @BITMAP_WRITE_BMP-1586:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+74. aaio.c:1497 {BITMAP_WRITE_PNG} UnProven
+  col+((long )*(@bitmap_buffer+offs2)) @BITMAP_WRITE_PNG-1999:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+75. aaio.c:1498 {BITMAP_WRITE_PNG} UnProven
+  col+((long )*(@bitmap_buffer+(offs2+1L))) @BITMAP_WRITE_PNG-2000:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+76. aaio.c:1499 {BITMAP_WRITE_PNG} UnProven
+  col+((long )*(@bitmap_buffer+(offs2+2L))) @BITMAP_WRITE_PNG-2001:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+77. aaio.c:1500 {BITMAP_WRITE_PNG} UnProven
+  col/3L @BITMAP_WRITE_PNG-2002:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+78. aaio.c:1519 {BITMAP_WRITE_PNG} UnProven
+  col+((long )*(@bitmap_buffer+offs2)) @BITMAP_WRITE_PNG-2013:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+79. aaio.c:1520 {BITMAP_WRITE_PNG} UnProven
+  col+((long )*(@bitmap_buffer+(offs2+1L))) @BITMAP_WRITE_PNG-2014:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+80. aaio.c:1521 {BITMAP_WRITE_PNG} UnProven
+  col+((long )*(@bitmap_buffer+(offs2+2L))) @BITMAP_WRITE_PNG-2015:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+81. aaio.c:1522 {BITMAP_WRITE_PNG} UnProven
+  col/3L @BITMAP_WRITE_PNG-2016:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+82. aaio.c:1529 {BITMAP_WRITE_PNG} UnProven
+  (@bitmap_width*@bitmap_height)*3UL @BITMAP_WRITE_PNG-2022:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @bitmap_width*@bitmap_height @BITMAP_WRITE_PNG-2022:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+83. aaio.c:1534 {BITMAP_WRITE_PNG} UnProven
+  offs1+1L @BITMAP_WRITE_PNG-2027:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+84. aaio.c:1542 {BITMAP_WRITE_PNG} UnProven
+  ((@bitmap_width*@bitmap_height)*4UL)-1UL @BITMAP_WRITE_PNG-2031:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (@bitmap_width*@bitmap_height)*4UL @BITMAP_WRITE_PNG-2031:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @bitmap_width*@bitmap_height @BITMAP_WRITE_PNG-2031:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+85. aaio.c:1543 {BITMAP_WRITE_PNG} UnProven
+  ((@bitmap_width*@bitmap_height)*5UL)-1UL @BITMAP_WRITE_PNG-2032:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (@bitmap_width*@bitmap_height)*5UL @BITMAP_WRITE_PNG-2032:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @bitmap_width*@bitmap_height @BITMAP_WRITE_PNG-2032:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+86. aaio.c:1547 {BITMAP_WRITE_PNG} UnProven
+  offs1-1L @BITMAP_WRITE_PNG-2037:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+87. aaio.c:1548 {BITMAP_WRITE_PNG} UnProven
+  offs2-1L @BITMAP_WRITE_PNG-2039:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+88. aaio.c:1552 {BITMAP_WRITE_PNG} UnProven
+  ((@bitmap_width*@bitmap_height)*3UL)-3UL @BITMAP_WRITE_PNG-2042:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (@bitmap_width*@bitmap_height)*3UL @BITMAP_WRITE_PNG-2042:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @bitmap_width*@bitmap_height @BITMAP_WRITE_PNG-2042:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+89. aaio.c:1553 {BITMAP_WRITE_PNG} UnProven
+  ((@bitmap_width*@bitmap_height)*4UL)-4UL @BITMAP_WRITE_PNG-2043:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (@bitmap_width*@bitmap_height)*4UL @BITMAP_WRITE_PNG-2043:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @bitmap_width*@bitmap_height @BITMAP_WRITE_PNG-2043:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+90. aaio.c:1556 {BITMAP_WRITE_PNG} UnProven
+  offs1+2L @BITMAP_WRITE_PNG-2046:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+91. aaio.c:1557 {BITMAP_WRITE_PNG} UnProven
+  offs1+1L @BITMAP_WRITE_PNG-2047:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+92. aaio.c:1559 {BITMAP_WRITE_PNG} UnProven
+  offs1-3L @BITMAP_WRITE_PNG-2049:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+93. aaio.c:1560 {BITMAP_WRITE_PNG} UnProven
+  offs2-4L @BITMAP_WRITE_PNG-2050:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+94. aaio.c:1564 {BITMAP_WRITE_PNG} UnProven
+  ((@bitmap_width*@bitmap_height)*5UL)-1UL @BITMAP_WRITE_PNG-2053:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (@bitmap_width*@bitmap_height)*5UL @BITMAP_WRITE_PNG-2053:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @bitmap_width*@bitmap_height @BITMAP_WRITE_PNG-2053:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+95. aaio.c:1565 {BITMAP_WRITE_PNG} UnProven
+  ((@bitmap_width*@bitmap_height)*4UL)-1UL @BITMAP_WRITE_PNG-2054:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (@bitmap_width*@bitmap_height)*4UL @BITMAP_WRITE_PNG-2054:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @bitmap_width*@bitmap_height @BITMAP_WRITE_PNG-2054:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+96. aaio.c:1569 {BITMAP_WRITE_PNG} UnProven
+  offs1-1L @BITMAP_WRITE_PNG-2059:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+97. aaio.c:1570 {BITMAP_WRITE_PNG} UnProven
+  offs2-4L @BITMAP_WRITE_PNG-2060:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+98. aaio.c:1622 {BITMAP_WRITE_PNG} UnProven
+  @bitmap_height*SizeOf(long ) @BITMAP_WRITE_PNG-2090:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+99. aaio.c:1803 {BITMAP_WRITE_JPEG} UnProven
+  (@xdpi*25.4)/((double )100) @BITMAP_WRITE_JPEG-2402:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @xdpi*25.4 @BITMAP_WRITE_JPEG-2402:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+100. aaio.c:1804 {BITMAP_WRITE_JPEG} UnProven
+  (@ydpi*25.4)/((double )100) @BITMAP_WRITE_JPEG-2403:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @ydpi*25.4 @BITMAP_WRITE_JPEG-2403:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+101. aaio.c:1805 {BITMAP_WRITE_JPEG} UnProven
+  xnew+5 @BITMAP_WRITE_JPEG-2404:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+102. aaio.c:1806 {BITMAP_WRITE_JPEG} UnProven
+  ynew+5 @BITMAP_WRITE_JPEG-2405:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+103. aaio.c:1807 {BITMAP_WRITE_JPEG} UnProven
+  xnew/10 @BITMAP_WRITE_JPEG-2406:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+104. aaio.c:1808 {BITMAP_WRITE_JPEG} UnProven
+  ynew/10 @BITMAP_WRITE_JPEG-2407:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+105. aaio.c:1823 {BITMAP_WRITE_JPEG} UnProven
+  @bitmap_width*((unsigned long )cinfo.input_components) @BITMAP_WRITE_JPEG-2417:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+106. aaio.c:1834 {BITMAP_WRITE_JPEG} UnProven
+  col+((unsigned int )*(@bitmap_buffer+offs2)) @BITMAP_WRITE_JPEG-2423:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+107. aaio.c:1835 {BITMAP_WRITE_JPEG} UnProven
+  col+((unsigned int )*(@bitmap_buffer+(offs2+1))) @BITMAP_WRITE_JPEG-2424:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+108. aaio.c:1836 {BITMAP_WRITE_JPEG} UnProven
+  col+((unsigned int )*(@bitmap_buffer+(offs2+2))) @BITMAP_WRITE_JPEG-2425:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+109. aaio.c:1837 {BITMAP_WRITE_JPEG} UnProven
+  col/3U @BITMAP_WRITE_JPEG-2426:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+110. aaio.c:1847 {BITMAP_WRITE_JPEG} UnProven
+  cinfo.next_scanline*((unsigned int )row_stride) @BITMAP_WRITE_JPEG-2433:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+111. aaphoto.c:397 {MAIN_RESIZE} UnProven
+  (@bitmap_width*opr)/100UL @MAIN_RESIZE-5221:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @bitmap_width*opr @MAIN_RESIZE-5221:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+112. aaphoto.c:398 {MAIN_RESIZE} UnProven
+  (@bitmap_height*opr)/100UL @MAIN_RESIZE-5222:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @bitmap_height*opr @MAIN_RESIZE-5222:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+113. aaphoto.c:407 {MAIN_RESIZE} UnProven
+  (@bitmap_height*opr)/@bitmap_width @MAIN_RESIZE-5224:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @bitmap_height*opr @MAIN_RESIZE-5224:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+114. aaphoto.c:410 {MAIN_RESIZE} UnProven
+  (@bitmap_width*opr)/@bitmap_height @MAIN_RESIZE-5225:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @bitmap_width*opr @MAIN_RESIZE-5225:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+115. aaphoto.c:450 {MAIN_AARGB} UnProven
+  @bitmap_width-1UL @MAIN_AARGB-5301:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  @bitmap_height-1UL @MAIN_AARGB-5301:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+116. aaphoto.c:592 {MAIN_ARGUMENTS_READ} UnProven
+  argc-1 @MAIN_ARGUMENTS_READ-5855:  source = main-6497 @ aaphoto.c:1116 UnProven
+117. aaphoto.c:593 {MAIN_ARGUMENTS_READ} UnProven
+  argc-1 @MAIN_ARGUMENTS_READ-5857:  source = main-6497 @ aaphoto.c:1116 UnProven
+118. aaresize.c:38 {RESIZE} UnProven
+  SizeOf(unsigned char )*((new_width*new_height)*((unsigned long )(3+alpha_flag))) @RESIZE-4461:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (new_width*new_height)*((unsigned long )(3+alpha_flag)) @RESIZE-4461:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  new_width*new_height @RESIZE-4461:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+119. aaresize.c:57 {RESIZE} UnProven
+  (*image_width*((unsigned long )i))/new_width @RESIZE-4431:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_width*((unsigned long )i) @RESIZE-4431:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+120. aaresize.c:58 {RESIZE} UnProven
+  (*image_width*((unsigned long )(i+1U)))/new_width @RESIZE-4432:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_width*((unsigned long )(i+1U)) @RESIZE-4432:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+121. aaresize.c:59 {RESIZE} UnProven
+  (*image_height*((unsigned long )j))/new_height @RESIZE-4433:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_height*((unsigned long )j) @RESIZE-4433:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+122. aaresize.c:60 {RESIZE} UnProven
+  (*image_height*((unsigned long )(j+1U)))/new_height @RESIZE-4434:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_height*((unsigned long )(j+1U)) @RESIZE-4434:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+123. aaresize.c:62 {RESIZE} UnProven
+  y+1U @RESIZE-4444:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+124. aaresize.c:63 {RESIZE} UnProven
+  x+1U @RESIZE-4443:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+125. aaresize.c:65 {RESIZE} UnProven
+  ((unsigned long )x)+(((unsigned long )y)**image_width) @RESIZE-4437:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((unsigned long )y)**image_width @RESIZE-4437:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+126. aaresize.c:66 {RESIZE} UnProven
+  rgb_avg_r+((long )*(*image_buffer+(3L*addr))) @RESIZE-4438:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr @RESIZE-4438:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+127. aaresize.c:67 {RESIZE} UnProven
+  rgb_avg_g+((long )*(*image_buffer+((3L*addr)+1L))) @RESIZE-4439:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr)+1L @RESIZE-4439:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr @RESIZE-4439:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+128. aaresize.c:68 {RESIZE} UnProven
+  rgb_avg_b+((long )*(*image_buffer+((3L*addr)+2L))) @RESIZE-4440:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr)+2L @RESIZE-4440:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr @RESIZE-4440:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+129. aaresize.c:70 {RESIZE} UnProven
+  rgb_avg_a+((long )*(*image_buffer+(((*image_width**image_height)*3UL)+((unsigned long )addr)))) @RESIZE-4441:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((*image_width**image_height)*3UL)+((unsigned long )addr) @RESIZE-4441:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (*image_width**image_height)*3UL @RESIZE-4441:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_width**image_height @RESIZE-4441:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+130. aaresize.c:77 {RESIZE} UnProven
+  rgb_avg_r/rgb_counter @RESIZE-4445:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+131. aaresize.c:78 {RESIZE} UnProven
+  rgb_avg_g/rgb_counter @RESIZE-4446:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+132. aaresize.c:79 {RESIZE} UnProven
+  rgb_avg_b/rgb_counter @RESIZE-4447:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+133. aaresize.c:80 {RESIZE} UnProven
+  rgb_avg_a/rgb_counter @RESIZE-4448:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+134. aaresize.c:83 {RESIZE} UnProven
+  ((unsigned long )i)+(((unsigned long )j)*new_width) @RESIZE-4449:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((unsigned long )j)*new_width @RESIZE-4449:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+135. aaresize.c:122 {ROTATE90} UnProven
+  SizeOf(unsigned char )*((new_width*new_height)*((unsigned long )(3+alpha_flag))) @ROTATE90-4518:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (new_width*new_height)*((unsigned long )(3+alpha_flag)) @ROTATE90-4518:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  new_width*new_height @ROTATE90-4518:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+136. aaresize.c:140 {ROTATE90} UnProven
+  ((unsigned long )x)+(((unsigned long )y)*new_width) @ROTATE90-4501:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((unsigned long )y)*new_width @ROTATE90-4501:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+137. aaresize.c:141 {ROTATE90} UnProven
+  rgb_avg_r+((long )*(*image_buffer+(3L*addr))) @ROTATE90-4502:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr @ROTATE90-4502:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+138. aaresize.c:142 {ROTATE90} UnProven
+  rgb_avg_g+((long )*(*image_buffer+((3L*addr)+1L))) @ROTATE90-4503:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr)+1L @ROTATE90-4503:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr @ROTATE90-4503:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+139. aaresize.c:143 {ROTATE90} UnProven
+  rgb_avg_b+((long )*(*image_buffer+((3L*addr)+2L))) @ROTATE90-4504:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr)+2L @ROTATE90-4504:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr @ROTATE90-4504:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+140. aaresize.c:144 {ROTATE90} UnProven
+  rgb_avg_a+((long )*(*image_buffer+(((*image_width**image_height)*3UL)+((unsigned long )addr)))) @ROTATE90-4505:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((*image_width**image_height)*3UL)+((unsigned long )addr) @ROTATE90-4505:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (*image_width**image_height)*3UL @ROTATE90-4505:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_width**image_height @ROTATE90-4505:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+141. aaresize.c:146 {ROTATE90} UnProven
+  ((new_height-1UL)-((unsigned long )y))+(((unsigned long )x)*new_height) @ROTATE90-4506:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (new_height-1UL)-((unsigned long )y) @ROTATE90-4506:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  new_height-1UL @ROTATE90-4506:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((unsigned long )x)*new_height @ROTATE90-4506:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+142. aaresize.c:182 {ROTATE180} UnProven
+  new_height/2UL @ROTATE180-4552:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (new_height/2UL)+((unsigned long )y_odd) @ROTATE180-4552:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+143. aaresize.c:192 {ROTATE180} UnProven
+  new_width/2UL @ROTATE180-4555:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+144. aaresize.c:207 {ROTATE180} UnProven
+  ((unsigned long )x)+(((unsigned long )y)*new_width) @ROTATE180-4567:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((unsigned long )y)*new_width @ROTATE180-4567:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+145. aaresize.c:208 {ROTATE180} UnProven
+  ((new_width-1UL)-((unsigned long )x))+(((new_height-1UL)-((unsigned long )y))*new_width) @ROTATE180-4568:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (new_width-1UL)-((unsigned long )x) @ROTATE180-4568:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  new_width-1UL @ROTATE180-4568:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((new_height-1UL)-((unsigned long )y))*new_width @ROTATE180-4568:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (new_height-1UL)-((unsigned long )y) @ROTATE180-4568:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  new_height-1UL @ROTATE180-4568:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+146. aaresize.c:210 {ROTATE180} UnProven
+  rgb_avg_r1+((long )*(*image_buffer+(3L*addr1))) @ROTATE180-4569:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr1 @ROTATE180-4569:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+147. aaresize.c:211 {ROTATE180} UnProven
+  rgb_avg_g1+((long )*(*image_buffer+((3L*addr1)+1L))) @ROTATE180-4570:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr1)+1L @ROTATE180-4570:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr1 @ROTATE180-4570:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+148. aaresize.c:212 {ROTATE180} UnProven
+  rgb_avg_b1+((long )*(*image_buffer+((3L*addr1)+2L))) @ROTATE180-4571:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr1)+2L @ROTATE180-4571:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr1 @ROTATE180-4571:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+149. aaresize.c:213 {ROTATE180} UnProven
+  rgb_avg_a1+((long )*(*image_buffer+(((*image_width**image_height)*3UL)+((unsigned long )addr1)))) @ROTATE180-4572:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((*image_width**image_height)*3UL)+((unsigned long )addr1) @ROTATE180-4572:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (*image_width**image_height)*3UL @ROTATE180-4572:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_width**image_height @ROTATE180-4572:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+150. aaresize.c:214 {ROTATE180} UnProven
+  rgb_avg_r2+((long )*(*image_buffer+(3L*addr2))) @ROTATE180-4573:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr2 @ROTATE180-4573:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+151. aaresize.c:215 {ROTATE180} UnProven
+  rgb_avg_g2+((long )*(*image_buffer+((3L*addr2)+1L))) @ROTATE180-4574:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr2)+1L @ROTATE180-4574:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr2 @ROTATE180-4574:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+152. aaresize.c:216 {ROTATE180} UnProven
+  rgb_avg_b2+((long )*(*image_buffer+((3L*addr2)+2L))) @ROTATE180-4575:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr2)+2L @ROTATE180-4575:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr2 @ROTATE180-4575:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+153. aaresize.c:217 {ROTATE180} UnProven
+  rgb_avg_a2+((long )*(*image_buffer+(((*image_width**image_height)*3UL)+((unsigned long )addr2)))) @ROTATE180-4576:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((*image_width**image_height)*3UL)+((unsigned long )addr2) @ROTATE180-4576:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (*image_width**image_height)*3UL @ROTATE180-4576:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_width**image_height @ROTATE180-4576:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+154. aaresize.c:252 {ROTATE270} UnProven
+  SizeOf(unsigned char )*((new_width*new_height)*((unsigned long )(3+alpha_flag))) @ROTATE270-4634:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (new_width*new_height)*((unsigned long )(3+alpha_flag)) @ROTATE270-4634:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  new_width*new_height @ROTATE270-4634:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+155. aaresize.c:270 {ROTATE270} UnProven
+  ((unsigned long )x)+(((unsigned long )y)*new_width) @ROTATE270-4617:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((unsigned long )y)*new_width @ROTATE270-4617:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+156. aaresize.c:271 {ROTATE270} UnProven
+  rgb_avg_r+((long )*(*image_buffer+(3L*addr))) @ROTATE270-4618:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr @ROTATE270-4618:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+157. aaresize.c:272 {ROTATE270} UnProven
+  rgb_avg_g+((long )*(*image_buffer+((3L*addr)+1L))) @ROTATE270-4619:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr)+1L @ROTATE270-4619:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr @ROTATE270-4619:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+158. aaresize.c:273 {ROTATE270} UnProven
+  rgb_avg_b+((long )*(*image_buffer+((3L*addr)+2L))) @ROTATE270-4620:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr)+2L @ROTATE270-4620:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr @ROTATE270-4620:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+159. aaresize.c:274 {ROTATE270} UnProven
+  rgb_avg_a+((long )*(*image_buffer+(((*image_width**image_height)*3UL)+((unsigned long )addr)))) @ROTATE270-4621:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((*image_width**image_height)*3UL)+((unsigned long )addr) @ROTATE270-4621:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (*image_width**image_height)*3UL @ROTATE270-4621:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_width**image_height @ROTATE270-4621:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+160. aaresize.c:276 {ROTATE270} UnProven
+  ((unsigned long )y)+(((new_width-1UL)-((unsigned long )x))*new_height) @ROTATE270-4622:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((new_width-1UL)-((unsigned long )x))*new_height @ROTATE270-4622:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (new_width-1UL)-((unsigned long )x) @ROTATE270-4622:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  new_width-1UL @ROTATE270-4622:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+161. aaresize.c:328 {FLIPX} UnProven
+  ((unsigned long )x)+(((unsigned long )y)*new_width) @FLIPX-4675:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((unsigned long )y)*new_width @FLIPX-4675:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+162. aaresize.c:329 {FLIPX} UnProven
+  ((new_width-1UL)-((unsigned long )x))+(((unsigned long )y)*new_width) @FLIPX-4676:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (new_width-1UL)-((unsigned long )x) @FLIPX-4676:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  new_width-1UL @FLIPX-4676:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((unsigned long )y)*new_width @FLIPX-4676:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+163. aaresize.c:331 {FLIPX} UnProven
+  rgb_avg_r1+((long )*(*image_buffer+(3L*addr1))) @FLIPX-4677:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr1 @FLIPX-4677:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+164. aaresize.c:332 {FLIPX} UnProven
+  rgb_avg_g1+((long )*(*image_buffer+((3L*addr1)+1L))) @FLIPX-4678:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr1)+1L @FLIPX-4678:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr1 @FLIPX-4678:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+165. aaresize.c:333 {FLIPX} UnProven
+  rgb_avg_b1+((long )*(*image_buffer+((3L*addr1)+2L))) @FLIPX-4679:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr1)+2L @FLIPX-4679:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr1 @FLIPX-4679:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+166. aaresize.c:334 {FLIPX} UnProven
+  rgb_avg_a1+((long )*(*image_buffer+(((*image_width**image_height)*3UL)+((unsigned long )addr1)))) @FLIPX-4680:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((*image_width**image_height)*3UL)+((unsigned long )addr1) @FLIPX-4680:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (*image_width**image_height)*3UL @FLIPX-4680:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_width**image_height @FLIPX-4680:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+167. aaresize.c:335 {FLIPX} UnProven
+  rgb_avg_r2+((long )*(*image_buffer+(3L*addr2))) @FLIPX-4681:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr2 @FLIPX-4681:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+168. aaresize.c:336 {FLIPX} UnProven
+  rgb_avg_g2+((long )*(*image_buffer+((3L*addr2)+1L))) @FLIPX-4682:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr2)+1L @FLIPX-4682:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr2 @FLIPX-4682:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+169. aaresize.c:337 {FLIPX} UnProven
+  rgb_avg_b2+((long )*(*image_buffer+((3L*addr2)+2L))) @FLIPX-4683:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr2)+2L @FLIPX-4683:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr2 @FLIPX-4683:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+170. aaresize.c:338 {FLIPX} UnProven
+  rgb_avg_a2+((long )*(*image_buffer+(((*image_width**image_height)*3UL)+((unsigned long )addr2)))) @FLIPX-4684:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((*image_width**image_height)*3UL)+((unsigned long )addr2) @FLIPX-4684:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (*image_width**image_height)*3UL @FLIPX-4684:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_width**image_height @FLIPX-4684:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+171. aaresize.c:389 {FLIPY} UnProven
+  ((unsigned long )x)+(((unsigned long )y)*new_width) @FLIPY-4726:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((unsigned long )y)*new_width @FLIPY-4726:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+172. aaresize.c:390 {FLIPY} UnProven
+  ((unsigned long )x)+(((new_height-1UL)-((unsigned long )y))*new_width) @FLIPY-4727:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((new_height-1UL)-((unsigned long )y))*new_width @FLIPY-4727:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (new_height-1UL)-((unsigned long )y) @FLIPY-4727:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  new_height-1UL @FLIPY-4727:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+173. aaresize.c:392 {FLIPY} UnProven
+  rgb_avg_r1+((long )*(*image_buffer+(3L*addr1))) @FLIPY-4728:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr1 @FLIPY-4728:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+174. aaresize.c:393 {FLIPY} UnProven
+  rgb_avg_g1+((long )*(*image_buffer+((3L*addr1)+1L))) @FLIPY-4729:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr1)+1L @FLIPY-4729:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr1 @FLIPY-4729:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+175. aaresize.c:394 {FLIPY} UnProven
+  rgb_avg_b1+((long )*(*image_buffer+((3L*addr1)+2L))) @FLIPY-4730:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr1)+2L @FLIPY-4730:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr1 @FLIPY-4730:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+176. aaresize.c:395 {FLIPY} UnProven
+  rgb_avg_a1+((long )*(*image_buffer+(((*image_width**image_height)*3UL)+((unsigned long )addr1)))) @FLIPY-4731:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((*image_width**image_height)*3UL)+((unsigned long )addr1) @FLIPY-4731:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (*image_width**image_height)*3UL @FLIPY-4731:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_width**image_height @FLIPY-4731:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+177. aaresize.c:396 {FLIPY} UnProven
+  rgb_avg_r2+((long )*(*image_buffer+(3L*addr2))) @FLIPY-4732:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr2 @FLIPY-4732:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+178. aaresize.c:397 {FLIPY} UnProven
+  rgb_avg_g2+((long )*(*image_buffer+((3L*addr2)+1L))) @FLIPY-4733:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr2)+1L @FLIPY-4733:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr2 @FLIPY-4733:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+179. aaresize.c:398 {FLIPY} UnProven
+  rgb_avg_b2+((long )*(*image_buffer+((3L*addr2)+2L))) @FLIPY-4734:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (3L*addr2)+2L @FLIPY-4734:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  3L*addr2 @FLIPY-4734:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+180. aaresize.c:399 {FLIPY} UnProven
+  rgb_avg_a2+((long )*(*image_buffer+(((*image_width**image_height)*3UL)+((unsigned long )addr2)))) @FLIPY-4735:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((*image_width**image_height)*3UL)+((unsigned long )addr2) @FLIPY-4735:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (*image_width**image_height)*3UL @FLIPY-4735:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *image_width**image_height @FLIPY-4735:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+181. aargb.c:146 {RGB_TO_HSL} UnProven
+  ((R+G)+B)/((double )3) @RGB_TO_HSL-2677:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (R+G)+B @RGB_TO_HSL-2677:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  R+G @RGB_TO_HSL-2677:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+182. aargb.c:164 {RGB_TO_HSL} UnProven
+  (L-LK)/L @RGB_TO_HSL-2686:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  L-LK @RGB_TO_HSL-2686:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+183. aargb.c:165 {RGB_TO_HSL} UnProven
+  (LN-L)/(((double )1)-L) @RGB_TO_HSL-2687:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  LN-L @RGB_TO_HSL-2687:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-L @RGB_TO_HSL-2687:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+184. aargb.c:174 {RGB_TO_HSL} UnProven
+  LN-LK @RGB_TO_HSL-2692:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+185. aargb.c:175 {RGB_TO_HSL} UnProven
+  (R-LK)/LN @RGB_TO_HSL-2693:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  R-LK @RGB_TO_HSL-2693:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+186. aargb.c:176 {RGB_TO_HSL} UnProven
+  (G-LK)/LN @RGB_TO_HSL-2694:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  G-LK @RGB_TO_HSL-2694:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+187. aargb.c:177 {RGB_TO_HSL} UnProven
+  (B-LK)/LN @RGB_TO_HSL-2695:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  B-LK @RGB_TO_HSL-2695:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+188. aargb.c:179 {RGB_TO_HSL} UnProven
+  (((double )0)+(G2*((double )60)))/((double )360) @RGB_TO_HSL-2696:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )0)+(G2*((double )60)) @RGB_TO_HSL-2696:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  G2*((double )60) @RGB_TO_HSL-2696:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+189. aargb.c:180 {RGB_TO_HSL} UnProven
+  (((double )60)+((((double )1)-R2)*((double )60)))/((double )360) @RGB_TO_HSL-2697:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )60)+((((double )1)-R2)*((double )60)) @RGB_TO_HSL-2697:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-R2)*((double )60) @RGB_TO_HSL-2697:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-R2 @RGB_TO_HSL-2697:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+190. aargb.c:181 {RGB_TO_HSL} UnProven
+  (((double )120)+(B2*((double )60)))/((double )360) @RGB_TO_HSL-2698:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )120)+(B2*((double )60)) @RGB_TO_HSL-2698:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  B2*((double )60) @RGB_TO_HSL-2698:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+191. aargb.c:182 {RGB_TO_HSL} UnProven
+  (((double )180)+((((double )1)-G2)*((double )60)))/((double )360) @RGB_TO_HSL-2699:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )180)+((((double )1)-G2)*((double )60)) @RGB_TO_HSL-2699:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-G2)*((double )60) @RGB_TO_HSL-2699:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-G2 @RGB_TO_HSL-2699:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+192. aargb.c:183 {RGB_TO_HSL} UnProven
+  (((double )240)+(R2*((double )60)))/((double )360) @RGB_TO_HSL-2700:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )240)+(R2*((double )60)) @RGB_TO_HSL-2700:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  R2*((double )60) @RGB_TO_HSL-2700:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+193. aargb.c:184 {RGB_TO_HSL} UnProven
+  (((double )300)+((((double )1)-B2)*((double )60)))/((double )360) @RGB_TO_HSL-2701:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )300)+((((double )1)-B2)*((double )60)) @RGB_TO_HSL-2701:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-B2)*((double )60) @RGB_TO_HSL-2701:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-B2 @RGB_TO_HSL-2701:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+194. aargb.c:215 {HSL_TO_RGB} UnProven
+  H*((double )6) @HSL_TO_RGB-2760:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+195. aargb.c:216 {HSL_TO_RGB} UnProven
+  (H*((double )6))-((double )deg) @HSL_TO_RGB-2761:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H*((double )6) @HSL_TO_RGB-2761:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+196. aargb.c:222 {HSL_TO_RGB} UnProven
+  ((double )1)-mul @HSL_TO_RGB-2766:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+197. aargb.c:226 {HSL_TO_RGB} UnProven
+  ((double )1)-mul @HSL_TO_RGB-2772:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+198. aargb.c:230 {HSL_TO_RGB} UnProven
+  ((double )1)-mul @HSL_TO_RGB-2778:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+199. aargb.c:234 {HSL_TO_RGB} UnProven
+  ((R+G)+B)/((double )3) @HSL_TO_RGB-2780:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (R+G)+B @HSL_TO_RGB-2780:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  R+G @HSL_TO_RGB-2780:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+200. aargb.c:236 {HSL_TO_RGB} UnProven
+  (((double )1)-L)/(((double )1)-L2) @HSL_TO_RGB-2781:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-L @HSL_TO_RGB-2781:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-L2 @HSL_TO_RGB-2781:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+201. aargb.c:237 {HSL_TO_RGB} UnProven
+  ((double )1)-((((double )1)-R)*templ) @HSL_TO_RGB-2782:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-R)*templ @HSL_TO_RGB-2782:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-R @HSL_TO_RGB-2782:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+202. aargb.c:238 {HSL_TO_RGB} UnProven
+  ((double )1)-((((double )1)-G)*templ) @HSL_TO_RGB-2783:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-G)*templ @HSL_TO_RGB-2783:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-G @HSL_TO_RGB-2783:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+203. aargb.c:239 {HSL_TO_RGB} UnProven
+  ((double )1)-((((double )1)-B)*templ) @HSL_TO_RGB-2784:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-B)*templ @HSL_TO_RGB-2784:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-B @HSL_TO_RGB-2784:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+204. aargb.c:242 {HSL_TO_RGB} UnProven
+  L/L2 @HSL_TO_RGB-2785:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+205. aargb.c:243 {HSL_TO_RGB} UnProven
+  R*templ @HSL_TO_RGB-2786:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+206. aargb.c:244 {HSL_TO_RGB} UnProven
+  G*templ @HSL_TO_RGB-2787:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+207. aargb.c:245 {HSL_TO_RGB} UnProven
+  B*templ @HSL_TO_RGB-2788:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+208. aargb.c:249 {HSL_TO_RGB} UnProven
+  L+((R-L)*S) @HSL_TO_RGB-2789:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (R-L)*S @HSL_TO_RGB-2789:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  R-L @HSL_TO_RGB-2789:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+209. aargb.c:249 {HSL_TO_RGB} UnProven
+  L-((L-R)*S) @HSL_TO_RGB-2790:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (L-R)*S @HSL_TO_RGB-2790:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  L-R @HSL_TO_RGB-2790:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+210. aargb.c:250 {HSL_TO_RGB} UnProven
+  L+((G-L)*S) @HSL_TO_RGB-2791:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (G-L)*S @HSL_TO_RGB-2791:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  G-L @HSL_TO_RGB-2791:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+211. aargb.c:250 {HSL_TO_RGB} UnProven
+  L-((L-G)*S) @HSL_TO_RGB-2792:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (L-G)*S @HSL_TO_RGB-2792:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  L-G @HSL_TO_RGB-2792:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+212. aargb.c:251 {HSL_TO_RGB} UnProven
+  L+((B-L)*S) @HSL_TO_RGB-2793:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (B-L)*S @HSL_TO_RGB-2793:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  B-L @HSL_TO_RGB-2793:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+213. aargb.c:251 {HSL_TO_RGB} UnProven
+  L-((L-B)*S) @HSL_TO_RGB-2794:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (L-B)*S @HSL_TO_RGB-2794:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  L-B @HSL_TO_RGB-2794:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+214. aargb.c:453 {AARGB_MAIN} UnProven
+  bw-1L @AARGB_MAIN-3697:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+215. aargb.c:454 {AARGB_MAIN} UnProven
+  bw-1L @AARGB_MAIN-3698:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+216. aargb.c:455 {AARGB_MAIN} UnProven
+  bh-1L @AARGB_MAIN-3699:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+217. aargb.c:456 {AARGB_MAIN} UnProven
+  bh-1L @AARGB_MAIN-3700:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+218. aargb.c:466 {AARGB_MAIN} UnProven
+  (bh-1L)-((long )y1___0) @AARGB_MAIN-3702:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bh-1L @AARGB_MAIN-3702:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+219. aargb.c:467 {AARGB_MAIN} UnProven
+  (bh-1L)-((long )y2) @AARGB_MAIN-3703:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bh-1L @AARGB_MAIN-3703:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+220. aargb.c:468 {AARGB_MAIN} UnProven
+  (bw*3L)/4L @AARGB_MAIN-3704:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bw*3L)-(4L*((bw*3L)/4L)) @AARGB_MAIN-3704:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*3L @AARGB_MAIN-3704:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  4L*((bw*3L)/4L) @AARGB_MAIN-3704:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bw*3L @AARGB_MAIN-3704:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+221. aargb.c:469 {AARGB_MAIN} UnProven
+  4L-addr_offset @AARGB_MAIN-3705:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+222. aargb.c:509 {AARGB_MAIN} UnProven
+  ((y*bw)*3L)+(y*addr_offset) @AARGB_MAIN-3722:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (y*bw)*3L @AARGB_MAIN-3722:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  y*bw @AARGB_MAIN-3722:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  y*addr_offset @AARGB_MAIN-3722:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+223. aargb.c:516 {AARGB_MAIN} UnProven
+  addr2+(x*3L) @AARGB_MAIN-3724:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+224. aargb.c:518 {AARGB_MAIN} UnProven
+  addr+1L @AARGB_MAIN-3726:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+225. aargb.c:519 {AARGB_MAIN} UnProven
+  addr+2L @AARGB_MAIN-3727:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+226. aargb.c:520 {AARGB_MAIN} UnProven
+  ((col_r+col_g)+col_b)/3L @AARGB_MAIN-3728:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (col_r+col_g)+col_b @AARGB_MAIN-3728:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  col_r+col_g @AARGB_MAIN-3728:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+227. aargb.c:528 {AARGB_MAIN} UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-3730:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-3730:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+228. aargb.c:531 {AARGB_MAIN} UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-3731:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *(col_r3n+(cc+((long )(N*256))))+((unsigned long )col_r) @AARGB_MAIN-3731:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-3731:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+229. aargb.c:532 {AARGB_MAIN} UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-3732:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *(col_g3n+(cc+((long )(N*256))))+((unsigned long )col_g) @AARGB_MAIN-3732:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-3732:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+230. aargb.c:533 {AARGB_MAIN} UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-3733:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  *(col_b3n+(cc+((long )(N*256))))+((unsigned long )col_b) @AARGB_MAIN-3733:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-3733:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+231. aargb.c:545 {AARGB_MAIN} UnProven
+  col_r3[i1]+*(col_r3n+(i1+(i2*256L))) @AARGB_MAIN-3739:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+232. aargb.c:546 {AARGB_MAIN} UnProven
+  col_g3[i1]+*(col_g3n+(i1+(i2*256L))) @AARGB_MAIN-3740:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+233. aargb.c:547 {AARGB_MAIN} UnProven
+  col_b3[i1]+*(col_b3n+(i1+(i2*256L))) @AARGB_MAIN-3741:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+234. aargb.c:571 {AARGB_MAIN} UnProven
+  bw*bh @AARGB_MAIN-3744:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+235. aargb.c:846 {AARGB_MAIN} UnProven
+  bp_r+((double )col_r3[i1]) @AARGB_MAIN-3828:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+236. aargb.c:847 {AARGB_MAIN} UnProven
+  bp_g+((double )col_g3[i1]) @AARGB_MAIN-3829:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+237. aargb.c:848 {AARGB_MAIN} UnProven
+  bp_b+((double )col_b3[i1]) @AARGB_MAIN-3830:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+238. aargb.c:853 {AARGB_MAIN} UnProven
+  bp_r/((double )i3) @AARGB_MAIN-3834:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+239. aargb.c:854 {AARGB_MAIN} UnProven
+  bp_g/((double )i3) @AARGB_MAIN-3835:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+240. aargb.c:855 {AARGB_MAIN} UnProven
+  bp_b/((double )i3) @AARGB_MAIN-3836:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+241. aargb.c:864 {AARGB_MAIN} UnProven
+  wp_r+((double )col_r3[i1]) @AARGB_MAIN-3839:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+242. aargb.c:865 {AARGB_MAIN} UnProven
+  wp_g+((double )col_g3[i1]) @AARGB_MAIN-3840:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+243. aargb.c:866 {AARGB_MAIN} UnProven
+  wp_b+((double )col_b3[i1]) @AARGB_MAIN-3841:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+244. aargb.c:870 {AARGB_MAIN} UnProven
+  wp_r/((double )i3) @AARGB_MAIN-3844:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+245. aargb.c:871 {AARGB_MAIN} UnProven
+  wp_g/((double )i3) @AARGB_MAIN-3845:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+246. aargb.c:872 {AARGB_MAIN} UnProven
+  wp_b/((double )i3) @AARGB_MAIN-3846:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+247. aargb.c:876 {AARGB_MAIN} UnProven
+  bp_r/((double )255) @AARGB_MAIN-3847:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+248. aargb.c:877 {AARGB_MAIN} UnProven
+  bp_g/((double )255) @AARGB_MAIN-3848:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+249. aargb.c:878 {AARGB_MAIN} UnProven
+  bp_b/((double )255) @AARGB_MAIN-3849:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+250. aargb.c:879 {AARGB_MAIN} UnProven
+  wp_r/((double )255) @AARGB_MAIN-3850:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+251. aargb.c:880 {AARGB_MAIN} UnProven
+  wp_g/((double )255) @AARGB_MAIN-3851:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+252. aargb.c:881 {AARGB_MAIN} UnProven
+  wp_b/((double )255) @AARGB_MAIN-3852:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+253. aargb.c:919 {AARGB_MAIN} UnProven
+  bp_r-temp3 @AARGB_MAIN-3862:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+254. aargb.c:920 {AARGB_MAIN} UnProven
+  bp_g-temp3 @AARGB_MAIN-3863:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+255. aargb.c:921 {AARGB_MAIN} UnProven
+  bp_b-temp3 @AARGB_MAIN-3864:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+256. aargb.c:927 {AARGB_MAIN} UnProven
+  wp_r/temp3 @AARGB_MAIN-3868:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+257. aargb.c:928 {AARGB_MAIN} UnProven
+  wp_g/temp3 @AARGB_MAIN-3869:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+258. aargb.c:929 {AARGB_MAIN} UnProven
+  wp_b/temp3 @AARGB_MAIN-3870:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+259. aargb.c:990 {AARGB_MAIN} UnProven
+  temp2-temp1 @AARGB_MAIN-3875:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+260. aargb.c:993 {AARGB_MAIN} UnProven
+  ((double )0)-temp2 @AARGB_MAIN-3876:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+261. aargb.c:996 {AARGB_MAIN} UnProven
+  ((double )1)-temp2 @AARGB_MAIN-3877:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+262. aargb.c:999 {AARGB_MAIN} UnProven
+  temp2*((double )6) @AARGB_MAIN-3878:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+263. aargb.c:1003 {AARGB_MAIN} UnProven
+  (temp2*temp2)*temp2 @AARGB_MAIN-3880:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  temp2*temp2 @AARGB_MAIN-3880:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+264. aargb.c:1014 {AARGB_MAIN} UnProven
+  L*temp2 @AARGB_MAIN-3882:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+265. aargb.c:1017 {AARGB_MAIN} UnProven
+  ((double )1)-((((double )1)-L)*temp2) @AARGB_MAIN-3885:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-L)*temp2 @AARGB_MAIN-3885:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-L @AARGB_MAIN-3885:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+266. aargb.c:1020 {AARGB_MAIN} UnProven
+  ((wp_r_end+wp_g_end)+wp_b_end)/((double )3) @AARGB_MAIN-3887:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (wp_r_end+wp_g_end)+wp_b_end @AARGB_MAIN-3887:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_r_end+wp_g_end @AARGB_MAIN-3887:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+267. aargb.c:1021 {AARGB_MAIN} UnProven
+  ((bp_r_end+bp_g_end)+bp_b_end)/((double )3) @AARGB_MAIN-3888:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bp_r_end+bp_g_end)+bp_b_end @AARGB_MAIN-3888:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp_r_end+bp_g_end @AARGB_MAIN-3888:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+268. aargb.c:1057 {AARGB_MAIN} UnProven
+  ((temp2-bp_end)*(wp_end-bp_end))/(wp-bp_end) @AARGB_MAIN-3891:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp_end+(((temp2-bp_end)*(wp_end-bp_end))/(wp-bp_end)) @AARGB_MAIN-3891:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (temp2-bp_end)*(wp_end-bp_end) @AARGB_MAIN-3891:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  temp2-bp_end @AARGB_MAIN-3891:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_end-bp_end @AARGB_MAIN-3891:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp-bp_end @AARGB_MAIN-3891:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+269. aargb.c:1063 {AARGB_MAIN} UnProven
+  ((bp-bp_end)*(wp_end-bp_end))/(wp-bp_end) @AARGB_MAIN-3893:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp_end+(((bp-bp_end)*(wp_end-bp_end))/(wp-bp_end)) @AARGB_MAIN-3893:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bp-bp_end)*(wp_end-bp_end) @AARGB_MAIN-3893:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp-bp_end @AARGB_MAIN-3893:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_end-bp_end @AARGB_MAIN-3893:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp-bp_end @AARGB_MAIN-3893:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+270. aargb.c:1065 {AARGB_MAIN} UnProven
+  ((wp_end-temp2)*(wp_end-bp_end))/(wp_end-temp3) @AARGB_MAIN-3894:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_end-(((wp_end-temp2)*(wp_end-bp_end))/(wp_end-temp3)) @AARGB_MAIN-3894:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (wp_end-temp2)*(wp_end-bp_end) @AARGB_MAIN-3894:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_end-temp2 @AARGB_MAIN-3894:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_end-bp_end @AARGB_MAIN-3894:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_end-temp3 @AARGB_MAIN-3894:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+271. aargb.c:1070 {AARGB_MAIN} UnProven
+  temp2*((double )255) @AARGB_MAIN-3897:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+272. aargb.c:1076 {AARGB_MAIN} UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-3899:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-3899:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+273. aargb.c:1217 {AARGB_MAIN} UnProven
+  ((y*bw)*3L)+(y*addr_offset) @AARGB_MAIN-3945:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (y*bw)*3L @AARGB_MAIN-3945:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  y*bw @AARGB_MAIN-3945:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  y*addr_offset @AARGB_MAIN-3945:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+274. aargb.c:1219 {AARGB_MAIN} UnProven
+  addr2+(x*3L) @AARGB_MAIN-3947:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+275. aargb.c:1229 {AARGB_MAIN} UnProven
+  addr+1L @AARGB_MAIN-3949:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+276. aargb.c:1230 {AARGB_MAIN} UnProven
+  addr+2L @AARGB_MAIN-3950:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+277. aargb.c:1232 {AARGB_MAIN} UnProven
+  col_r2/((double )255) @AARGB_MAIN-3951:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+278. aargb.c:1233 {AARGB_MAIN} UnProven
+  col_g2/((double )255) @AARGB_MAIN-3952:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+279. aargb.c:1234 {AARGB_MAIN} UnProven
+  col_b2/((double )255) @AARGB_MAIN-3953:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+280. aargb.c:1240 {AARGB_MAIN} UnProven
+  ((col_r2-bp_r_end)*(wp_r_end-bp_r_end))/(wp_r-bp_r_end) @AARGB_MAIN-3954:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp_r_end+(((col_r2-bp_r_end)*(wp_r_end-bp_r_end))/(wp_r-bp_r_end)) @AARGB_MAIN-3954:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (col_r2-bp_r_end)*(wp_r_end-bp_r_end) @AARGB_MAIN-3954:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  col_r2-bp_r_end @AARGB_MAIN-3954:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_r_end-bp_r_end @AARGB_MAIN-3954:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_r-bp_r_end @AARGB_MAIN-3954:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+281. aargb.c:1242 {AARGB_MAIN} UnProven
+  ((col_g2-bp_g_end)*(wp_g_end-bp_g_end))/(wp_g-bp_g_end) @AARGB_MAIN-3955:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp_g_end+(((col_g2-bp_g_end)*(wp_g_end-bp_g_end))/(wp_g-bp_g_end)) @AARGB_MAIN-3955:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (col_g2-bp_g_end)*(wp_g_end-bp_g_end) @AARGB_MAIN-3955:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  col_g2-bp_g_end @AARGB_MAIN-3955:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_g_end-bp_g_end @AARGB_MAIN-3955:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_g-bp_g_end @AARGB_MAIN-3955:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+282. aargb.c:1244 {AARGB_MAIN} UnProven
+  ((col_b2-bp_b_end)*(wp_b_end-bp_b_end))/(wp_b-bp_b_end) @AARGB_MAIN-3956:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp_b_end+(((col_b2-bp_b_end)*(wp_b_end-bp_b_end))/(wp_b-bp_b_end)) @AARGB_MAIN-3956:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (col_b2-bp_b_end)*(wp_b_end-bp_b_end) @AARGB_MAIN-3956:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  col_b2-bp_b_end @AARGB_MAIN-3956:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_b_end-bp_b_end @AARGB_MAIN-3956:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_b-bp_b_end @AARGB_MAIN-3956:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+283. aargb.c:1251 {AARGB_MAIN} UnProven
+  ((bp_r-bp_r_end)*(wp_r_end-bp_r_end))/(wp_r-bp_r_end) @AARGB_MAIN-3958:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp_r_end+(((bp_r-bp_r_end)*(wp_r_end-bp_r_end))/(wp_r-bp_r_end)) @AARGB_MAIN-3958:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bp_r-bp_r_end)*(wp_r_end-bp_r_end) @AARGB_MAIN-3958:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp_r-bp_r_end @AARGB_MAIN-3958:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_r_end-bp_r_end @AARGB_MAIN-3958:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_r-bp_r_end @AARGB_MAIN-3958:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+284. aargb.c:1253 {AARGB_MAIN} UnProven
+  ((wp_r_end-col_r2)*(wp_r_end-bp_r_end))/(wp_r_end-temp3) @AARGB_MAIN-3959:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_r_end-(((wp_r_end-col_r2)*(wp_r_end-bp_r_end))/(wp_r_end-temp3)) @AARGB_MAIN-3959:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (wp_r_end-col_r2)*(wp_r_end-bp_r_end) @AARGB_MAIN-3959:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_r_end-col_r2 @AARGB_MAIN-3959:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_r_end-bp_r_end @AARGB_MAIN-3959:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_r_end-temp3 @AARGB_MAIN-3959:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+285. aargb.c:1257 {AARGB_MAIN} UnProven
+  ((bp_g-bp_g_end)*(wp_g_end-bp_g_end))/(wp_g-bp_g_end) @AARGB_MAIN-3961:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp_g_end+(((bp_g-bp_g_end)*(wp_g_end-bp_g_end))/(wp_g-bp_g_end)) @AARGB_MAIN-3961:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bp_g-bp_g_end)*(wp_g_end-bp_g_end) @AARGB_MAIN-3961:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp_g-bp_g_end @AARGB_MAIN-3961:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_g_end-bp_g_end @AARGB_MAIN-3961:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_g-bp_g_end @AARGB_MAIN-3961:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+286. aargb.c:1259 {AARGB_MAIN} UnProven
+  ((wp_g_end-col_g2)*(wp_g_end-bp_g_end))/(wp_g_end-temp3) @AARGB_MAIN-3962:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_g_end-(((wp_g_end-col_g2)*(wp_g_end-bp_g_end))/(wp_g_end-temp3)) @AARGB_MAIN-3962:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (wp_g_end-col_g2)*(wp_g_end-bp_g_end) @AARGB_MAIN-3962:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_g_end-col_g2 @AARGB_MAIN-3962:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_g_end-bp_g_end @AARGB_MAIN-3962:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_g_end-temp3 @AARGB_MAIN-3962:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+287. aargb.c:1263 {AARGB_MAIN} UnProven
+  ((bp_b-bp_b_end)*(wp_b_end-bp_b_end))/(wp_b-bp_b_end) @AARGB_MAIN-3964:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp_b_end+(((bp_b-bp_b_end)*(wp_b_end-bp_b_end))/(wp_b-bp_b_end)) @AARGB_MAIN-3964:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (bp_b-bp_b_end)*(wp_b_end-bp_b_end) @AARGB_MAIN-3964:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bp_b-bp_b_end @AARGB_MAIN-3964:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_b_end-bp_b_end @AARGB_MAIN-3964:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_b-bp_b_end @AARGB_MAIN-3964:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+288. aargb.c:1265 {AARGB_MAIN} UnProven
+  ((wp_b_end-col_b2)*(wp_b_end-bp_b_end))/(wp_b_end-temp3) @AARGB_MAIN-3965:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_b_end-(((wp_b_end-col_b2)*(wp_b_end-bp_b_end))/(wp_b_end-temp3)) @AARGB_MAIN-3965:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (wp_b_end-col_b2)*(wp_b_end-bp_b_end) @AARGB_MAIN-3965:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_b_end-col_b2 @AARGB_MAIN-3965:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_b_end-bp_b_end @AARGB_MAIN-3965:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  wp_b_end-temp3 @AARGB_MAIN-3965:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+289. aargb.c:1279 {AARGB_MAIN} UnProven
+  ((col_r2+col_g2)+col_b2)/((double )3) @AARGB_MAIN-3972:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (col_r2+col_g2)+col_b2 @AARGB_MAIN-3972:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  col_r2+col_g2 @AARGB_MAIN-3972:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+290. aargb.c:1280 {AARGB_MAIN} UnProven
+  temp2*((double )255) @AARGB_MAIN-3973:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+291. aargb.c:1283 {AARGB_MAIN} UnProven
+  temp2*((double )2) @AARGB_MAIN-3974:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+292. aargb.c:1283 {AARGB_MAIN} UnProven
+  __cil_tmp138/((double )2) @AARGB_MAIN-3975:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+293. aargb.c:1284 {AARGB_MAIN} UnProven
+  (temp2-0.5)*((double )2) @AARGB_MAIN-3976:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  temp2-0.5 @AARGB_MAIN-3976:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+294. aargb.c:1284 {AARGB_MAIN} UnProven
+  __cil_tmp139/((double )2) @AARGB_MAIN-3977:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (__cil_tmp139/((double )2))+0.5 @AARGB_MAIN-3977:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+295. aargb.c:1290 {AARGB_MAIN} UnProven
+  ((((double )1)-(((((double )1)-col_r2)*(((double )1)-temp3))/(((double )1)-temp2)))+((col_r2*temp3)/temp2))/((double )2) @AARGB_MAIN-3978:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((((double )1)-col_r2)*(((double )1)-temp3))/(((double )1)-temp2) @AARGB_MAIN-3978:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (col_r2*temp3)/temp2 @AARGB_MAIN-3978:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-(((((double )1)-col_r2)*(((double )1)-temp3))/(((double )1)-temp2)))+((col_r2*temp3)/temp2) @AARGB_MAIN-3978:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-(((((double )1)-col_r2)*(((double )1)-temp3))/(((double )1)-temp2)) @AARGB_MAIN-3978:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-col_r2)*(((double )1)-temp3) @AARGB_MAIN-3978:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-col_r2 @AARGB_MAIN-3978:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-temp3 @AARGB_MAIN-3978:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-temp2 @AARGB_MAIN-3978:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  col_r2*temp3 @AARGB_MAIN-3978:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+296. aargb.c:1292 {AARGB_MAIN} UnProven
+  ((((double )1)-(((((double )1)-col_g2)*(((double )1)-temp3))/(((double )1)-temp2)))+((col_g2*temp3)/temp2))/((double )2) @AARGB_MAIN-3979:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((((double )1)-col_g2)*(((double )1)-temp3))/(((double )1)-temp2) @AARGB_MAIN-3979:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (col_g2*temp3)/temp2 @AARGB_MAIN-3979:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-(((((double )1)-col_g2)*(((double )1)-temp3))/(((double )1)-temp2)))+((col_g2*temp3)/temp2) @AARGB_MAIN-3979:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-(((((double )1)-col_g2)*(((double )1)-temp3))/(((double )1)-temp2)) @AARGB_MAIN-3979:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-col_g2)*(((double )1)-temp3) @AARGB_MAIN-3979:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-col_g2 @AARGB_MAIN-3979:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-temp3 @AARGB_MAIN-3979:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-temp2 @AARGB_MAIN-3979:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  col_g2*temp3 @AARGB_MAIN-3979:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+297. aargb.c:1294 {AARGB_MAIN} UnProven
+  ((((double )1)-(((((double )1)-col_b2)*(((double )1)-temp3))/(((double )1)-temp2)))+((col_b2*temp3)/temp2))/((double )2) @AARGB_MAIN-3980:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((((double )1)-col_b2)*(((double )1)-temp3))/(((double )1)-temp2) @AARGB_MAIN-3980:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (col_b2*temp3)/temp2 @AARGB_MAIN-3980:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-(((((double )1)-col_b2)*(((double )1)-temp3))/(((double )1)-temp2)))+((col_b2*temp3)/temp2) @AARGB_MAIN-3980:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-(((((double )1)-col_b2)*(((double )1)-temp3))/(((double )1)-temp2)) @AARGB_MAIN-3980:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (((double )1)-col_b2)*(((double )1)-temp3) @AARGB_MAIN-3980:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-col_b2 @AARGB_MAIN-3980:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-temp3 @AARGB_MAIN-3980:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((double )1)-temp2 @AARGB_MAIN-3980:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  col_b2*temp3 @AARGB_MAIN-3980:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+298. aargb.c:1301 {AARGB_MAIN} UnProven
+  (col_r2*temp3)/temp2 @AARGB_MAIN-3981:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  col_r2*temp3 @AARGB_MAIN-3981:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+299. aargb.c:1302 {AARGB_MAIN} UnProven
+  (col_g2*temp3)/temp2 @AARGB_MAIN-3982:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  col_g2*temp3 @AARGB_MAIN-3982:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+300. aargb.c:1303 {AARGB_MAIN} UnProven
+  (col_b2*temp3)/temp2 @AARGB_MAIN-3983:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  col_b2*temp3 @AARGB_MAIN-3983:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+301. aargb.c:1316 {AARGB_MAIN} UnProven
+  col_r2*((double )255) @AARGB_MAIN-3990:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+302. aargb.c:1317 {AARGB_MAIN} UnProven
+  col_g2*((double )255) @AARGB_MAIN-3991:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+303. aargb.c:1318 {AARGB_MAIN} UnProven
+  col_b2*((double )255) @AARGB_MAIN-3992:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+304. aargb.c:1333 {AARGB_MAIN} UnProven
+  ((double )1)-L___3 @AARGB_MAIN-3997:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+305. aargb.c:1334 {AARGB_MAIN} UnProven
+  (S___2*L___3)*((double )2) @AARGB_MAIN-3998:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  S___2*L___3 @AARGB_MAIN-3998:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+306. aargb.c:1339 {AARGB_MAIN} UnProven
+  S___2*((double )255) @AARGB_MAIN-3999:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+307. aargb.c:1345 {AARGB_MAIN} UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-4001:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-4001:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+308. aargb.c:1405 {AARGB_MAIN} UnProven
+  ((y*bw)*3L)+(y*addr_offset) @AARGB_MAIN-4030:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (y*bw)*3L @AARGB_MAIN-4030:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  y*bw @AARGB_MAIN-4030:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  y*addr_offset @AARGB_MAIN-4030:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+309. aargb.c:1410 {AARGB_MAIN} UnProven
+  addr2+(x*3L) @AARGB_MAIN-4032:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+310. aargb.c:1420 {AARGB_MAIN} UnProven
+  addr+1L @AARGB_MAIN-4034:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+311. aargb.c:1421 {AARGB_MAIN} UnProven
+  addr+2L @AARGB_MAIN-4035:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+312. aargb.c:1423 {AARGB_MAIN} UnProven
+  col_r2/((double )255) @AARGB_MAIN-4036:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+313. aargb.c:1424 {AARGB_MAIN} UnProven
+  col_g2/((double )255) @AARGB_MAIN-4037:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+314. aargb.c:1425 {AARGB_MAIN} UnProven
+  col_b2/((double )255) @AARGB_MAIN-4038:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+315. aargb.c:1444 {AARGB_MAIN} UnProven
+  0.5-S @AARGB_MAIN-4041:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+316. aargb.c:1444 {AARGB_MAIN} UnProven
+  ((double )1)-(__cil_tmp156*((double )2)) @AARGB_MAIN-4042:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  __cil_tmp156*((double )2) @AARGB_MAIN-4042:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+317. aargb.c:1445 {AARGB_MAIN} UnProven
+  ((S_new-S)*S_diff)+S @AARGB_MAIN-4043:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (S_new-S)*S_diff @AARGB_MAIN-4043:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  S_new-S @AARGB_MAIN-4043:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+318. aargb.c:1450 {AARGB_MAIN} UnProven
+  col_r2*((double )255) @AARGB_MAIN-4045:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+319. aargb.c:1451 {AARGB_MAIN} UnProven
+  col_g2*((double )255) @AARGB_MAIN-4046:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+320. aargb.c:1452 {AARGB_MAIN} UnProven
+  col_b2*((double )255) @AARGB_MAIN-4047:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+321. aargb.c:1458 {AARGB_MAIN} UnProven
+  ((double )((col_r+col_g)+col_b))/((double )3) @AARGB_MAIN-4051:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (col_r+col_g)+col_b @AARGB_MAIN-4051:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  col_r+col_g @AARGB_MAIN-4051:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+322. aargb.c:1467 {AARGB_MAIN} UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-4053:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  cc+((long )(N*256)) @AARGB_MAIN-4053:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+323. aargb.c:1510 {AARGB_MAIN} UnProven
+  ((y*bw)*3L)+(y*addr_offset) @AARGB_MAIN-4081:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (y*bw)*3L @AARGB_MAIN-4081:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  y*bw @AARGB_MAIN-4081:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  y*addr_offset @AARGB_MAIN-4081:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+324. aargb.c:1512 {AARGB_MAIN} UnProven
+  addr2+(x*3L) @AARGB_MAIN-4083:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+325. aargb.c:1515 {AARGB_MAIN} UnProven
+  (bh-1L)-ym @AARGB_MAIN-4086:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bh-1L @AARGB_MAIN-4086:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+326. aargb.c:1516 {AARGB_MAIN} UnProven
+  (bh-1L)-ym @AARGB_MAIN-4087:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  bh-1L @AARGB_MAIN-4087:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+327. aargb.c:1535 {AARGB_MAIN} UnProven
+  bp_end*((double )255) @AARGB_MAIN-4099:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+328. aargb.c:1536 {AARGB_MAIN} UnProven
+  wp_end*((double )255) @AARGB_MAIN-4100:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+329. aargb.c:1649 {AARGB_MAIN} UnProven
+  ((double )(ym-400L))-rad @AARGB_MAIN-4148:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ym-400L @AARGB_MAIN-4148:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+330. aargb.c:1650 {AARGB_MAIN} UnProven
+  (rx*rx)+(ry*ry) @AARGB_MAIN-4149:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ry*ry @AARGB_MAIN-4149:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+331. aargb.c:1655 {AARGB_MAIN} UnProven
+  rx/rr @AARGB_MAIN-4151:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+332. aargb.c:1655 {AARGB_MAIN} UnProven
+  (__cil_tmp179/pi)/((double )2) @AARGB_MAIN-4152:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  __cil_tmp179/pi @AARGB_MAIN-4152:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((__cil_tmp179/pi)/((double )2))+0. @AARGB_MAIN-4152:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+333. aargb.c:1656 {AARGB_MAIN} UnProven
+  ry/rr @AARGB_MAIN-4153:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+334. aargb.c:1656 {AARGB_MAIN} UnProven
+  (__cil_tmp180/pi)/((double )2) @AARGB_MAIN-4154:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  __cil_tmp180/pi @AARGB_MAIN-4154:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((__cil_tmp180/pi)/((double )2))+0.25 @AARGB_MAIN-4154:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+335. aargb.c:1657 {AARGB_MAIN} UnProven
+  (-rx)/rr @AARGB_MAIN-4155:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+336. aargb.c:1657 {AARGB_MAIN} UnProven
+  (__cil_tmp181/pi)/((double )2) @AARGB_MAIN-4156:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  __cil_tmp181/pi @AARGB_MAIN-4156:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((__cil_tmp181/pi)/((double )2))+0.5 @AARGB_MAIN-4156:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+337. aargb.c:1658 {AARGB_MAIN} UnProven
+  (-ry)/rr @AARGB_MAIN-4157:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+338. aargb.c:1658 {AARGB_MAIN} UnProven
+  (__cil_tmp182/pi)/((double )2) @AARGB_MAIN-4158:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  __cil_tmp182/pi @AARGB_MAIN-4158:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ((__cil_tmp182/pi)/((double )2))+0.75 @AARGB_MAIN-4158:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+339. aargb.c:1661 {AARGB_MAIN} UnProven
+  rad-rr @AARGB_MAIN-4161:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+340. aargb.c:1662 {AARGB_MAIN} UnProven
+  outline-L @AARGB_MAIN-4162:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+341. aargb.c:1663 {AARGB_MAIN} UnProven
+  L/outline @AARGB_MAIN-4163:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+342. aargb.c:1665 {AARGB_MAIN} UnProven
+  col_r2*((double )255) @AARGB_MAIN-4165:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+343. aargb.c:1666 {AARGB_MAIN} UnProven
+  col_g2*((double )255) @AARGB_MAIN-4166:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+344. aargb.c:1667 {AARGB_MAIN} UnProven
+  col_b2*((double )255) @AARGB_MAIN-4167:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+345. aargb.c:1683 {AARGB_MAIN} UnProven
+  ((H-0.)*((double )2))*pi @AARGB_MAIN-4177:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.)*((double )2) @AARGB_MAIN-4177:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0. @AARGB_MAIN-4177:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+346. aargb.c:1683 {AARGB_MAIN} UnProven
+  __cil_tmp188*rr @AARGB_MAIN-4178:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+347. aargb.c:1683 {AARGB_MAIN} UnProven
+  ((H-0.)*((double )2))*pi @AARGB_MAIN-4179:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.)*((double )2) @AARGB_MAIN-4179:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0. @AARGB_MAIN-4179:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+348. aargb.c:1683 {AARGB_MAIN} UnProven
+  __cil_tmp189*rr @AARGB_MAIN-4180:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+349. aargb.c:1684 {AARGB_MAIN} UnProven
+  ((H-0.25)*((double )2))*pi @AARGB_MAIN-4181:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.25)*((double )2) @AARGB_MAIN-4181:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0.25 @AARGB_MAIN-4181:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+350. aargb.c:1684 {AARGB_MAIN} UnProven
+  __cil_tmp190*rr @AARGB_MAIN-4182:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+351. aargb.c:1684 {AARGB_MAIN} UnProven
+  ((H-0.25)*((double )2))*pi @AARGB_MAIN-4183:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.25)*((double )2) @AARGB_MAIN-4183:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0.25 @AARGB_MAIN-4183:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+352. aargb.c:1684 {AARGB_MAIN} UnProven
+  (-__cil_tmp191)*rr @AARGB_MAIN-4184:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+353. aargb.c:1685 {AARGB_MAIN} UnProven
+  ((H-0.5)*((double )2))*pi @AARGB_MAIN-4185:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.5)*((double )2) @AARGB_MAIN-4185:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0.5 @AARGB_MAIN-4185:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+354. aargb.c:1685 {AARGB_MAIN} UnProven
+  (-__cil_tmp192)*rr @AARGB_MAIN-4186:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+355. aargb.c:1685 {AARGB_MAIN} UnProven
+  ((H-0.5)*((double )2))*pi @AARGB_MAIN-4187:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.5)*((double )2) @AARGB_MAIN-4187:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0.5 @AARGB_MAIN-4187:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+356. aargb.c:1685 {AARGB_MAIN} UnProven
+  (-__cil_tmp193)*rr @AARGB_MAIN-4188:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+357. aargb.c:1686 {AARGB_MAIN} UnProven
+  ((H-0.75)*((double )2))*pi @AARGB_MAIN-4189:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.75)*((double )2) @AARGB_MAIN-4189:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0.75 @AARGB_MAIN-4189:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+358. aargb.c:1686 {AARGB_MAIN} UnProven
+  (-__cil_tmp194)*rr @AARGB_MAIN-4190:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+359. aargb.c:1686 {AARGB_MAIN} UnProven
+  ((H-0.75)*((double )2))*pi @AARGB_MAIN-4191:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.75)*((double )2) @AARGB_MAIN-4191:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0.75 @AARGB_MAIN-4191:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+360. aargb.c:1686 {AARGB_MAIN} UnProven
+  __cil_tmp195*rr @AARGB_MAIN-4192:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+361. aargb.c:1687 {AARGB_MAIN} UnProven
+  lx*S @AARGB_MAIN-4193:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+362. aargb.c:1688 {AARGB_MAIN} UnProven
+  ly*S @AARGB_MAIN-4194:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+363. aargb.c:1690 {AARGB_MAIN} UnProven
+  (ly*rx)+(lx*ry) @AARGB_MAIN-4195:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ly*rx @AARGB_MAIN-4195:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  lx*ry @AARGB_MAIN-4195:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+364. aargb.c:1691 {AARGB_MAIN} UnProven
+  (lx*lx)+(ly*ly) @AARGB_MAIN-4196:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  lx*lx @AARGB_MAIN-4196:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ly*ly @AARGB_MAIN-4196:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+365. aargb.c:1691 {AARGB_MAIN} UnProven
+  d/__cil_tmp196 @AARGB_MAIN-4197:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+366. aargb.c:1692 {AARGB_MAIN} UnProven
+  ((double )0)-d @AARGB_MAIN-4198:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+367. aargb.c:1702 {AARGB_MAIN} UnProven
+  ((H-0.)*((double )2))*pi @AARGB_MAIN-4206:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.)*((double )2) @AARGB_MAIN-4206:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0. @AARGB_MAIN-4206:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+368. aargb.c:1702 {AARGB_MAIN} UnProven
+  __cil_tmp201*rr @AARGB_MAIN-4207:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+369. aargb.c:1702 {AARGB_MAIN} UnProven
+  ((H-0.)*((double )2))*pi @AARGB_MAIN-4208:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.)*((double )2) @AARGB_MAIN-4208:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0. @AARGB_MAIN-4208:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+370. aargb.c:1702 {AARGB_MAIN} UnProven
+  __cil_tmp202*rr @AARGB_MAIN-4209:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+371. aargb.c:1703 {AARGB_MAIN} UnProven
+  ((H-0.25)*((double )2))*pi @AARGB_MAIN-4210:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.25)*((double )2) @AARGB_MAIN-4210:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0.25 @AARGB_MAIN-4210:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+372. aargb.c:1703 {AARGB_MAIN} UnProven
+  __cil_tmp203*rr @AARGB_MAIN-4211:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+373. aargb.c:1703 {AARGB_MAIN} UnProven
+  ((H-0.25)*((double )2))*pi @AARGB_MAIN-4212:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.25)*((double )2) @AARGB_MAIN-4212:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0.25 @AARGB_MAIN-4212:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+374. aargb.c:1703 {AARGB_MAIN} UnProven
+  (-__cil_tmp204)*rr @AARGB_MAIN-4213:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+375. aargb.c:1704 {AARGB_MAIN} UnProven
+  ((H-0.5)*((double )2))*pi @AARGB_MAIN-4214:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.5)*((double )2) @AARGB_MAIN-4214:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0.5 @AARGB_MAIN-4214:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+376. aargb.c:1704 {AARGB_MAIN} UnProven
+  (-__cil_tmp205)*rr @AARGB_MAIN-4215:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+377. aargb.c:1704 {AARGB_MAIN} UnProven
+  ((H-0.5)*((double )2))*pi @AARGB_MAIN-4216:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.5)*((double )2) @AARGB_MAIN-4216:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0.5 @AARGB_MAIN-4216:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+378. aargb.c:1704 {AARGB_MAIN} UnProven
+  (-__cil_tmp206)*rr @AARGB_MAIN-4217:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+379. aargb.c:1705 {AARGB_MAIN} UnProven
+  ((H-0.75)*((double )2))*pi @AARGB_MAIN-4218:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.75)*((double )2) @AARGB_MAIN-4218:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0.75 @AARGB_MAIN-4218:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+380. aargb.c:1705 {AARGB_MAIN} UnProven
+  (-__cil_tmp207)*rr @AARGB_MAIN-4219:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+381. aargb.c:1705 {AARGB_MAIN} UnProven
+  ((H-0.75)*((double )2))*pi @AARGB_MAIN-4220:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  (H-0.75)*((double )2) @AARGB_MAIN-4220:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  H-0.75 @AARGB_MAIN-4220:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+382. aargb.c:1705 {AARGB_MAIN} UnProven
+  __cil_tmp208*rr @AARGB_MAIN-4221:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+383. aargb.c:1706 {AARGB_MAIN} UnProven
+  lx*S @AARGB_MAIN-4222:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+384. aargb.c:1707 {AARGB_MAIN} UnProven
+  ly*S @AARGB_MAIN-4223:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+385. aargb.c:1709 {AARGB_MAIN} UnProven
+  (ly*rx)+(lx*ry) @AARGB_MAIN-4224:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ly*rx @AARGB_MAIN-4224:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  lx*ry @AARGB_MAIN-4224:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+386. aargb.c:1710 {AARGB_MAIN} UnProven
+  (lx*lx)+(ly*ly) @AARGB_MAIN-4225:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  lx*lx @AARGB_MAIN-4225:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+  ly*ly @AARGB_MAIN-4225:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+387. aargb.c:1710 {AARGB_MAIN} UnProven
+  d/__cil_tmp209 @AARGB_MAIN-4226:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+388. aargb.c:1711 {AARGB_MAIN} UnProven
+  ((double )0)-d @AARGB_MAIN-4227:  source = BITMAP_READ_BMP-1263 @ aaio.c:869 UnProven
+
+#queries                 : 820
+#queries mod alarm point : 388
+#proven                  : 0
+#unproven                : 388
+#bot-involved            : 0
